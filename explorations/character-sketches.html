@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Manimo — karakterskisser</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body {
+    margin: 0;
+    padding: 64px 48px 96px;
+    background: var(--bg-canvas);
+    color: var(--fg-1);
+    min-height: 100vh;
+  }
+  .header {
+    max-width: 1200px;
+    margin: 0 auto 48px;
+  }
+  .eyebrow {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--amber-300);
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.05;
+    margin-bottom: 16px;
+    max-width: 24ch;
+  }
+  .lead {
+    font-size: var(--text-md);
+    color: var(--fg-2);
+    max-width: 60ch;
+  }
+  .grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .stage {
+    background:
+      radial-gradient(ellipse at 50% 60%, rgba(244,184,96,0.08), transparent 60%),
+      var(--plum-950);
+    aspect-ratio: 16 / 10;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .stage svg { width: 70%; height: 70%; overflow: visible; }
+  .label {
+    padding: 20px 24px 24px;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .name {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .desc {
+    font-size: var(--text-sm);
+    color: var(--fg-3);
+    line-height: 1.55;
+  }
+  .num {
+    position: absolute;
+    top: 16px;
+    left: 18px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--chalk-400);
+    letter-spacing: 0.1em;
+  }
+
+  /* Subtle drift animation so the character shows it can move */
+  @keyframes drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.05); } }
+  @keyframes wave-shift { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-6px); } }
+  .float { animation: drift 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .eye { animation: blink 5s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+
+  .pick {
+    margin: 64px auto 0;
+    max-width: 1200px;
+    padding: 28px 32px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+  }
+  .pick h2 {
+    font-size: 18px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .pick p { font-size: var(--text-sm); color: var(--fg-3); margin: 0; }
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="eyebrow">Karakter · 6 retninger</div>
+    <h1>Hvem er Manimo?</h1>
+    <p class="lead">Hver retning er en spinkel idé om karakter-DNA. Karakteren skal være tegnet med samme strek som tavle-formlene — så den kan bli til en kurve, en akse, et symbol — og tilbake. Velg én (eller miks elementer fra flere) og jeg tar den til ferdig stil-bibliotek.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- 1. SINUS — én bølge med ansikt -->
+    <div class="card">
+      <div class="stage">
+        <span class="num">01 · SINUS</span>
+        <svg viewBox="0 0 400 250">
+          <g class="float">
+            <!-- the wave body -->
+            <path d="M 40 140 Q 100 60, 160 140 T 280 140"
+                  stroke="#f4b860" stroke-width="6" fill="none" stroke-linecap="round"/>
+            <!-- continuation as a hint of more curve -->
+            <path d="M 280 140 Q 320 140, 340 130"
+                  stroke="#f4b860" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.35"/>
+            <!-- eyes on the crest -->
+            <circle class="eye" cx="148" cy="92" r="4" fill="#fbf7ee"/>
+            <circle class="eye" cx="172" cy="92" r="4" fill="#fbf7ee"/>
+            <!-- tiny mouth -->
+            <path d="M 155 108 Q 160 112, 165 108" stroke="#fbf7ee" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+      <div class="label">
+        <div class="name">Sinus</div>
+        <div class="desc">Karakteren <em>er</em> en bølge. Smelter direkte inn i grafer, animasjoner av periodisk bevegelse, signal-kurver. Periodisitet = liv.</div>
+      </div>
+    </div>
+
+    <!-- 2. KOMMA — en bøyd strek -->
+    <div class="card">
+      <div class="stage">
+        <span class="num">02 · KOMMA</span>
+        <svg viewBox="0 0 400 250">
+          <g class="float">
+            <!-- comma-shaped body, like a ribbon -->
+            <path d="M 240 90 C 240 60, 200 50, 170 65 C 130 85, 130 140, 170 155 C 200 165, 230 145, 230 120"
+                  stroke="#f4b860" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- tail curl -->
+            <path d="M 230 120 Q 240 145, 215 175"
+                  stroke="#f4b860" stroke-width="7" fill="none" stroke-linecap="round"/>
+            <circle class="eye" cx="178" cy="100" r="4.5" fill="#fbf7ee"/>
+            <circle class="eye" cx="200" cy="100" r="4.5" fill="#fbf7ee"/>
+            <path d="M 184 118 Q 190 122, 196 118" stroke="#fbf7ee" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <!-- pointing arm -->
+            <path d="M 235 110 Q 270 105, 295 130" stroke="#f4b860" stroke-width="5" fill="none" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+      <div class="label">
+        <div class="name">Komma</div>
+        <div class="desc">En levende komma- eller dråpe-form med en arm som peker. Føles som "et hint", "en pause til å tenke". Mer karakter, mindre matte.</div>
+      </div>
+    </div>
+
+    <!-- 3. NODE — en sirkel med en hale (graf-node) -->
+    <div class="card">
+      <div class="stage">
+        <span class="num">03 · NODE</span>
+        <svg viewBox="0 0 400 250">
+          <g class="float">
+            <!-- body: filled circle, the way you'd mark a point on a graph -->
+            <circle cx="200" cy="125" r="42" fill="#f4b860"/>
+            <!-- the line that arrives at the point -->
+            <path d="M 60 200 Q 130 195, 170 145" stroke="#f4b860" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.5"/>
+            <!-- eyes -->
+            <circle class="eye" cx="190" cy="118" r="4.5" fill="#0c0a1f"/>
+            <circle class="eye" cx="212" cy="118" r="4.5" fill="#0c0a1f"/>
+            <!-- mouth -->
+            <path d="M 192 138 Q 201 143, 210 138" stroke="#0c0a1f" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- arrow continuing past -->
+            <path d="M 242 125 L 320 125" stroke="#f4b860" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.5"/>
+            <path d="M 310 117 L 322 125 L 310 133" stroke="#f4b860" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+          </g>
+        </svg>
+      </div>
+      <div class="label">
+        <div class="name">Node</div>
+        <div class="desc">Karakteren er <em>et punkt på en graf</em> — på vei et sted. Linjen før og etter er fortid og fremtid. Egnet for "vi er her i forklaringen".</div>
+      </div>
+    </div>
+
+    <!-- 4. KRØLL — gresk bokstav-aktig (xi/zeta) -->
+    <div class="card">
+      <div class="stage">
+        <span class="num">04 · KRØLL</span>
+        <svg viewBox="0 0 400 250">
+          <g class="float">
+            <!-- a curlicue, like ξ (xi) but friendlier -->
+            <path d="M 150 70 C 230 60, 240 110, 180 115 C 140 118, 140 165, 200 168 C 245 170, 250 200, 200 210"
+                  stroke="#f4b860" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- top flourish -->
+            <path d="M 150 70 Q 145 55, 160 50" stroke="#f4b860" stroke-width="6" fill="none" stroke-linecap="round"/>
+            <!-- eyes on the upper loop -->
+            <circle class="eye" cx="178" cy="86" r="4" fill="#fbf7ee"/>
+            <circle class="eye" cx="200" cy="86" r="4" fill="#fbf7ee"/>
+            <path d="M 184 100 Q 189 103, 194 100" stroke="#fbf7ee" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+      <div class="label">
+        <div class="name">Krøll</div>
+        <div class="desc">Inspirert av en gresk bokstav, men aldri en faktisk en. Føles bokaktig, som en doodle i margen. Unik silhuett — gjenkjennes umiddelbart i liten skala.</div>
+      </div>
+    </div>
+
+    <!-- 5. PRISME — en geometrisk form med ansikt -->
+    <div class="card">
+      <div class="stage">
+        <span class="num">05 · PRISME</span>
+        <svg viewBox="0 0 400 250">
+          <g class="float">
+            <!-- soft rounded-triangle prism -->
+            <path d="M 200 70 L 260 170 Q 260 178, 252 178 L 148 178 Q 140 178, 140 170 Z"
+                  fill="#f4b860"/>
+            <!-- light split refraction lines coming out -->
+            <line x1="265" y1="120" x2="320" y2="100" stroke="#e87a90" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+            <line x1="265" y1="135" x2="325" y2="135" stroke="#7fd1c5" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+            <line x1="265" y1="150" x2="320" y2="170" stroke="#9b8cff" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+            <!-- single beam coming in -->
+            <line x1="80" y1="135" x2="140" y2="135" stroke="#fbf7ee" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+            <!-- eyes -->
+            <circle class="eye" cx="190" cy="135" r="4.5" fill="#0c0a1f"/>
+            <circle class="eye" cx="214" cy="135" r="4.5" fill="#0c0a1f"/>
+            <path d="M 192 156 Q 202 161, 212 156" stroke="#0c0a1f" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+      <div class="label">
+        <div class="name">Prisme</div>
+        <div class="desc">Karakteren splitter komplekse ideer i komponenter — bokstavelig, gjennom karakteren. Sterk metafor for "Manimo gjør det forståelig". Mer abstrakt.</div>
+      </div>
+    </div>
+
+    <!-- 6. M — bokstaven som figur -->
+    <div class="card">
+      <div class="stage">
+        <span class="num">06 · M</span>
+        <svg viewBox="0 0 400 250">
+          <g class="float">
+            <!-- M as a single continuous stroke, with serifs -->
+            <path d="M 130 180 L 130 90 Q 130 80, 142 92 L 200 150 L 258 92 Q 270 80, 270 90 L 270 180"
+                  stroke="#f4b860" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- eyes inside the two valleys/peaks -->
+            <circle class="eye" cx="160" cy="130" r="5" fill="#f4b860"/>
+            <circle class="eye" cx="240" cy="130" r="5" fill="#f4b860"/>
+            <!-- mouth -->
+            <path d="M 188 168 Q 200 174, 212 168" stroke="#f4b860" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+      <div class="label">
+        <div class="name">M</div>
+        <div class="desc">Bokstaven M som karakter. Direkte forbindelse til navnet, men risikerer å bli for "logo-aktig". Funker bra som favicon, mindre som forteller.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="pick">
+    <h2>Min anbefaling</h2>
+    <p><strong>01 Sinus</strong> er den sterkeste retningen for et matte/fysikk-produkt — den lever som karakter <em>og</em> som graf på samme tid, og kan animeres direkte inn i en formel. <strong>02 Komma</strong> er andrevalg hvis du vil ha mer personlighet og mindre matematisk-eksplisitt. Si fra hvilken (eller hvilke trekk) du vil at jeg skal videreutvikle.</p>
+  </div>
+</body>
+</html>

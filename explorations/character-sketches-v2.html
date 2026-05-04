@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Manimo — karakter v2 (Soul-inspirert)</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 64px 48px 96px; background: var(--bg-canvas); color: var(--fg-1); min-height: 100vh; }
+  .header { max-width: 1200px; margin: 0 auto 48px; }
+  .eyebrow { font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--amber-300); margin-bottom: 16px; }
+  h1 { font-size: 56px; font-weight: 400; line-height: 1.05; margin-bottom: 16px; max-width: 24ch; }
+  .lead { font-size: var(--text-md); color: var(--fg-2); max-width: 64ch; }
+  .grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .card { background: var(--bg-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; }
+  .stage { background: radial-gradient(ellipse at 50% 60%, rgba(244,184,96,0.08), transparent 60%), var(--plum-950); aspect-ratio: 16 / 10; display: grid; place-items: center; position: relative; }
+  .stage svg { width: 80%; height: 80%; overflow: visible; }
+  .label { padding: 20px 24px 24px; border-top: 1px solid var(--border-subtle); }
+  .name { font-family: var(--font-serif); font-size: 22px; font-weight: 500; margin-bottom: 6px; }
+  .desc { font-size: var(--text-sm); color: var(--fg-3); line-height: 1.55; }
+  .num { position: absolute; top: 16px; left: 18px; font-family: var(--font-mono); font-size: 11px; color: var(--chalk-400); letter-spacing: 0.1em; }
+
+  /* poses row at the bottom of each — show that it deforms */
+  .poses { display: flex; gap: 8px; padding: 16px 24px; background: var(--plum-950); border-top: 1px solid var(--border-subtle); justify-content: space-around; }
+  .pose { flex: 1; aspect-ratio: 1; display: grid; place-items: center; opacity: 0.85; }
+  .pose svg { width: 70%; height: 70%; overflow: visible; }
+  .pose-label { font-family: var(--font-mono); font-size: 9px; color: var(--chalk-500); text-align: center; margin-top: 4px; letter-spacing: 0.08em; }
+  .pose-wrap { display: flex; flex-direction: column; align-items: center; flex: 1; }
+
+  @keyframes float-y { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+  .float { animation: float-y 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+
+  .pick { margin: 64px auto 0; max-width: 1200px; padding: 28px 32px; background: var(--bg-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
+  .pick h2 { font-size: 18px; font-family: var(--font-sans); font-weight: 600; margin-bottom: 8px; }
+  .pick p { font-size: var(--text-sm); color: var(--fg-3); margin: 0; line-height: 1.6; }
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="eyebrow">Karakter v2 · Soul-inspirert</div>
+    <h1>Formen er karakteren.</h1>
+    <p class="lead">Som Terry og Jerry: hele silhuetten <em>er</em> uttrykket. Streken kan bøye seg, lene seg, strekke seg — det er sånn karakteren snakker. Ingen påklistret smilefjes. Hvert eksempel viser fire poseringer så du ser hvor mye personlighet det er i bevegelsen alene.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- A. SINGLE-LINE — én sammenhengende kalligrafi-strek -->
+    <div class="card">
+      <div class="stage">
+        <span class="num">A · ÉN STREK</span>
+        <svg viewBox="0 0 400 250">
+          <g class="float">
+            <!-- One continuous stroke that doubles back to form a head-like blob.
+                 Starts low, sweeps up into a curl that becomes the head, sweeps back down. -->
+            <path d="M 60 200
+                     Q 80 200, 110 180
+                     Q 140 160, 160 130
+                     C 165 90, 215 80, 240 110
+                     C 260 135, 240 170, 210 165
+                     Q 195 162, 195 150
+                     Q 230 220, 320 200"
+                  stroke="#f4b860" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- two minimal eye-dots — Terry/Jerry style: just enough to read as a face -->
+            <circle cx="200" cy="115" r="3" fill="#0c0a1f"/>
+            <circle cx="222" cy="115" r="3" fill="#0c0a1f"/>
+          </g>
+        </svg>
+      </div>
+      <div class="poses">
+        <div class="pose-wrap">
+          <div class="pose">
+            <svg viewBox="0 0 100 100">
+              <!-- neutral -->
+              <path d="M 20 70 Q 30 70, 40 60 C 45 35, 75 30, 80 55 C 82 70, 65 75, 58 68 Q 60 80, 80 78"
+                    stroke="#f4b860" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="62" cy="50" r="1.6" fill="#0c0a1f"/>
+              <circle cx="71" cy="50" r="1.6" fill="#0c0a1f"/>
+            </svg>
+          </div>
+          <div class="pose-label">NØYTRAL</div>
+        </div>
+        <div class="pose-wrap">
+          <div class="pose">
+            <svg viewBox="0 0 100 100">
+              <!-- thinking — head tilts, body curls more -->
+              <path d="M 20 75 Q 30 75, 40 65 C 35 35, 80 25, 85 50 C 88 65, 70 72, 60 65 Q 50 70, 75 75"
+                    stroke="#f4b860" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="60" cy="44" r="1.6" fill="#0c0a1f"/>
+              <circle cx="70" cy="44" r="1.6" fill="#0c0a1f"/>
+            </svg>
+          </div>
+          <div class="pose-label">UNDRER</div>
+        </div>
+        <div class="pose-wrap">
+          <div class="pose">
+            <svg viewBox="0 0 100 100">
+              <!-- excited — stretches up -->
+              <path d="M 20 75 Q 30 75, 40 65 C 50 20, 78 18, 82 45 C 84 60, 65 65, 58 58 Q 55 75, 78 78"
+                    stroke="#f4b860" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="60" cy="38" r="1.6" fill="#0c0a1f"/>
+              <circle cx="71" cy="38" r="1.6" fill="#0c0a1f"/>
+            </svg>
+          </div>
+          <div class="pose-label">AHA</div>
+        </div>
+        <div class="pose-wrap">
+          <div class="pose">
+            <svg viewBox="0 0 100 100">
+              <!-- pointing — line extends out -->
+              <path d="M 20 75 Q 30 75, 40 65 C 45 40, 72 35, 78 55 C 80 68, 65 72, 58 66 L 92 80"
+                    stroke="#f4b860" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="58" cy="51" r="1.6" fill="#0c0a1f"/>
+              <circle cx="68" cy="51" r="1.6" fill="#0c0a1f"/>
+            </svg>
+          </div>
+          <div class="pose-label">PEKER</div>
+        </div>
+      </div>
+      <div class="label">
+        <div class="name">Én strek</div>
+        <div class="desc">Hele kroppen er én tegnet linje som starter, krøller seg sammen til et hode, og fortsetter videre. Bare to prikker for øyne. Streken kan strekke seg ut for å peke, krølle seg sammen for å tenke. Føles som en skribbel som kom til liv.</div>
+      </div>
+    </div>
+
+    <!-- B. SOFT BLOB — Terry-aktig amorf form -->
+    <div class="card">
+      <div class="stage">
+        <span class="num">B · BLOB</span>
+        <svg viewBox="0 0 400 250">
+          <g class="float">
+            <!-- Soft blob — like Terry. Rounded, asymmetric, one little tail/foot.
+                 Filled with the warm amber so it has presence on the dark canvas. -->
+            <path d="M 160 90
+                     C 130 95, 110 130, 130 165
+                     C 145 195, 195 200, 230 185
+                     C 270 170, 280 130, 260 105
+                     C 240 80, 195 78, 175 88 Z"
+                  fill="#f4b860"/>
+            <!-- little stubby arm/protrusion -->
+            <path d="M 268 145 Q 295 150, 305 170"
+                  stroke="#f4b860" stroke-width="9" fill="none" stroke-linecap="round"/>
+            <!-- minimal eyes — small, set close, plum colored so they sit on the amber -->
+            <circle cx="190" cy="130" r="3" fill="#0c0a1f"/>
+            <circle cx="208" cy="130" r="3" fill="#0c0a1f"/>
+          </g>
+        </svg>
+      </div>
+      <div class="poses">
+        <div class="pose-wrap">
+          <div class="pose">
+            <svg viewBox="0 0 100 100">
+              <path d="M 35 30 C 22 35, 18 60, 30 75 C 45 88, 70 88, 78 70 C 85 55, 78 35, 60 28 C 50 25, 40 27, 35 30 Z" fill="#f4b860"/>
+              <circle cx="48" cy="52" r="1.6" fill="#0c0a1f"/>
+              <circle cx="58" cy="52" r="1.6" fill="#0c0a1f"/>
+            </svg>
+          </div>
+          <div class="pose-label">NØYTRAL</div>
+        </div>
+        <div class="pose-wrap">
+          <div class="pose">
+            <svg viewBox="0 0 100 100">
+              <!-- squashed: wider, shorter -->
+              <path d="M 22 50 C 18 65, 28 80, 50 82 C 75 84, 86 70, 84 56 C 82 42, 65 35, 48 38 C 32 41, 24 44, 22 50 Z" fill="#f4b860"/>
+              <circle cx="46" cy="58" r="1.6" fill="#0c0a1f"/>
+              <circle cx="56" cy="58" r="1.6" fill="#0c0a1f"/>
+            </svg>
+          </div>
+          <div class="pose-label">SQUASH</div>
+        </div>
+        <div class="pose-wrap">
+          <div class="pose">
+            <svg viewBox="0 0 100 100">
+              <!-- stretched: taller -->
+              <path d="M 38 18 C 26 25, 25 50, 32 70 C 40 88, 65 88, 70 72 C 75 55, 72 30, 60 18 C 52 12, 44 14, 38 18 Z" fill="#f4b860"/>
+              <circle cx="46" cy="38" r="1.6" fill="#0c0a1f"/>
+              <circle cx="58" cy="38" r="1.6" fill="#0c0a1f"/>
+            </svg>
+          </div>
+          <div class="pose-label">STRETCH</div>
+        </div>
+        <div class="pose-wrap">
+          <div class="pose">
+            <svg viewBox="0 0 100 100">
+              <!-- leaning, with arm out -->
+              <path d="M 28 40 C 18 55, 25 78, 50 80 C 70 82, 78 65, 75 50 C 70 32, 50 25, 40 30 C 32 33, 30 36, 28 40 Z" fill="#f4b860"/>
+              <path d="M 75 55 Q 88 55, 92 65" stroke="#f4b860" stroke-width="5" fill="none" stroke-linecap="round"/>
+              <circle cx="48" cy="55" r="1.6" fill="#0c0a1f"/>
+              <circle cx="58" cy="55" r="1.6" fill="#0c0a1f"/>
+            </svg>
+          </div>
+          <div class="pose-label">PEKER</div>
+        </div>
+      </div>
+      <div class="label">
+        <div class="name">Blob</div>
+        <div class="desc">Mest direkte Terry-referanse. En myk amorf form med én liten arm-protrusjon. Squash and stretch fungerer perfekt. Føles vennlig og litt rar — ikke for søtt, ikke for matematisk.</div>
+      </div>
+    </div>
+
+    <!-- C. RIBBON — bånd med dybde, sett fra siden -->
+    <div class="card">
+      <div class="stage">
+        <span class="num">C · BÅND</span>
+        <svg viewBox="0 0 400 250">
+          <g class="float">
+            <!-- A "ribbon" that has clear front/back, twists in space.
+                 Made of two parallel curves close together giving it 3D feel,
+                 even though it reads as a 2D character. -->
+            <!-- back edge -->
+            <path d="M 80 180 Q 130 100, 200 110 Q 270 120, 310 160"
+                  stroke="#a86d1d" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <!-- front edge — slightly offset to imply thickness -->
+            <path d="M 80 195 Q 130 115, 200 125 Q 270 135, 310 175"
+                  stroke="#f4b860" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <!-- end caps that close the ribbon -->
+            <path d="M 80 180 L 80 195" stroke="#f4b860" stroke-width="2" stroke-linecap="round"/>
+            <path d="M 310 160 L 310 175" stroke="#f4b860" stroke-width="2" stroke-linecap="round"/>
+            <!-- subtle fill between -->
+            <path d="M 80 180 Q 130 100, 200 110 Q 270 120, 310 160 L 310 175 Q 270 135, 200 125 Q 130 115, 80 195 Z"
+                  fill="#f4b860" opacity="0.18"/>
+            <!-- eyes near the apex -->
+            <circle cx="195" cy="120" r="3" fill="#0c0a1f"/>
+            <circle cx="213" cy="120" r="3" fill="#0c0a1f"/>
+          </g>
+        </svg>
+      </div>
+      <div class="poses">
+        <div class="pose-wrap">
+          <div class="pose">
+            <svg viewBox="0 0 100 100">
+              <path d="M 20 70 Q 35 35, 50 38 Q 70 42, 85 65" stroke="#a86d1d" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M 20 78 Q 35 43, 50 46 Q 70 50, 85 73" stroke="#f4b860" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <circle cx="48" cy="46" r="1.4" fill="#0c0a1f"/>
+              <circle cx="56" cy="47" r="1.4" fill="#0c0a1f"/>
+            </svg>
+          </div>
+          <div class="pose-label">FLAT</div>
+        </div>
+        <div class="pose-wrap">
+          <div class="pose">
+            <svg viewBox="0 0 100 100">
+              <!-- twist — front and back swap mid-line -->
+              <path d="M 20 70 Q 40 35, 50 50 Q 60 65, 85 50" stroke="#a86d1d" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M 20 78 Q 40 43, 50 50 Q 60 57, 85 58" stroke="#f4b860" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <circle cx="44" cy="48" r="1.4" fill="#0c0a1f"/>
+              <circle cx="52" cy="50" r="1.4" fill="#0c0a1f"/>
+            </svg>
+          </div>
+          <div class="pose-label">VRI</div>
+        </div>
+        <div class="pose-wrap">
+          <div class="pose">
+            <svg viewBox="0 0 100 100">
+              <!-- arch high -->
+              <path d="M 20 78 Q 40 18, 80 55" stroke="#a86d1d" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M 20 86 Q 40 26, 80 63" stroke="#f4b860" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <circle cx="44" cy="32" r="1.4" fill="#0c0a1f"/>
+              <circle cx="52" cy="30" r="1.4" fill="#0c0a1f"/>
+            </svg>
+          </div>
+          <div class="pose-label">SPRINGER</div>
+        </div>
+        <div class="pose-wrap">
+          <div class="pose">
+            <svg viewBox="0 0 100 100">
+              <!-- coiled -->
+              <path d="M 30 70 Q 25 50, 50 40 Q 75 35, 70 60 Q 65 75, 50 70" stroke="#a86d1d" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M 30 78 Q 25 56, 50 48 Q 75 43, 70 68 Q 65 83, 50 78" stroke="#f4b860" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <circle cx="48" cy="48" r="1.4" fill="#0c0a1f"/>
+              <circle cx="56" cy="46" r="1.4" fill="#0c0a1f"/>
+            </svg>
+          </div>
+          <div class="pose-label">RULLER</div>
+        </div>
+      </div>
+      <div class="label">
+        <div class="name">Bånd</div>
+        <div class="desc">Soul-aktig: en 2D-figur som tydelig lever i 3D-rom. Kan vri seg, snurre rundt, ligge flatt på et papir. Mer abstrakt enn Blob — føles som "ren matematikk som ble til en venn".</div>
+      </div>
+    </div>
+
+    <!-- D. INK BRUSH — kalligrafisk strek med variabel tykkelse -->
+    <div class="card">
+      <div class="stage">
+        <span class="num">D · KALLIGRAFI</span>
+        <svg viewBox="0 0 400 250">
+          <g class="float">
+            <!-- A calligraphy-style mark: thick at one end, tapers, has weight to it.
+                 Built as a filled shape rather than a stroke so we can vary thickness. -->
+            <path d="M 90 180
+                     C 100 175, 130 165, 150 140
+                     C 158 115, 175 95, 210 92
+                     C 245 90, 270 110, 268 138
+                     C 266 160, 248 168, 230 162
+                     C 215 158, 215 145, 225 140
+                     C 245 130, 275 145, 290 175
+                     C 300 195, 295 205, 280 200
+                     C 270 195, 270 188, 274 182
+                     L 268 178
+                     C 240 165, 200 168, 175 175
+                     C 145 184, 115 195, 95 195
+                     C 88 195, 85 188, 90 180 Z"
+                  fill="#f4b860"/>
+            <circle cx="220" cy="120" r="3" fill="#0c0a1f"/>
+            <circle cx="240" cy="120" r="3" fill="#0c0a1f"/>
+          </g>
+        </svg>
+      </div>
+      <div class="poses">
+        <div class="pose-wrap">
+          <div class="pose">
+            <svg viewBox="0 0 100 100">
+              <path d="M 25 70 C 30 65, 45 60, 52 50 C 58 38, 68 32, 78 38 C 85 45, 80 58, 70 60 C 62 60, 62 52, 70 50 C 80 50, 88 60, 88 72 C 86 78, 80 76, 80 70 L 75 70 C 60 65, 40 70, 30 75 C 25 78, 22 74, 25 70 Z" fill="#f4b860"/>
+              <circle cx="68" cy="46" r="1.4" fill="#0c0a1f"/>
+              <circle cx="74" cy="46" r="1.4" fill="#0c0a1f"/>
+            </svg>
+          </div>
+          <div class="pose-label">NØYTRAL</div>
+        </div>
+        <div class="pose-wrap">
+          <div class="pose">
+            <svg viewBox="0 0 100 100">
+              <!-- compressed -->
+              <path d="M 22 60 C 30 55, 45 52, 52 48 C 58 42, 70 40, 80 46 C 86 52, 82 60, 72 60 C 65 60, 66 54, 72 52 C 82 52, 88 58, 86 70 C 84 76, 78 74, 78 68 L 73 68 C 58 65, 38 68, 28 72 C 22 74, 18 64, 22 60 Z" fill="#f4b860"/>
+              <circle cx="68" cy="50" r="1.4" fill="#0c0a1f"/>
+              <circle cx="74" cy="50" r="1.4" fill="#0c0a1f"/>
+            </svg>
+          </div>
+          <div class="pose-label">SETTER SEG</div>
+        </div>
+        <div class="pose-wrap">
+          <div class="pose">
+            <svg viewBox="0 0 100 100">
+              <!-- elongated -->
+              <path d="M 22 80 C 28 70, 42 50, 50 35 C 56 22, 68 18, 76 26 C 82 33, 76 42, 68 44 C 62 44, 62 38, 68 36 C 78 34, 86 44, 84 60 C 82 70, 76 68, 76 60 L 70 60 C 60 60, 38 75, 28 84 C 22 88, 18 84, 22 80 Z" fill="#f4b860"/>
+              <circle cx="66" cy="33" r="1.4" fill="#0c0a1f"/>
+              <circle cx="72" cy="33" r="1.4" fill="#0c0a1f"/>
+            </svg>
+          </div>
+          <div class="pose-label">RAGER</div>
+        </div>
+        <div class="pose-wrap">
+          <div class="pose">
+            <svg viewBox="0 0 100 100">
+              <!-- pointing far -->
+              <path d="M 18 60 C 28 58, 42 56, 50 50 C 58 42, 68 40, 76 46 C 82 52, 76 60, 68 60 C 62 60, 62 54, 68 52 L 92 70" stroke="#f4b860" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M 22 64 C 30 62, 45 58, 52 52 C 58 44, 70 42, 78 48 C 84 54, 78 62, 70 62 C 64 62, 64 56, 70 54 L 75 56" fill="#f4b860"/>
+              <circle cx="62" cy="50" r="1.4" fill="#0c0a1f"/>
+              <circle cx="68" cy="50" r="1.4" fill="#0c0a1f"/>
+            </svg>
+          </div>
+          <div class="pose-label">PEKER</div>
+        </div>
+      </div>
+      <div class="label">
+        <div class="name">Kalligrafi</div>
+        <div class="desc">En enkelt kalligrafisk strek med variabel tykkelse — som om noen har dratt en bred-spiss penn én gang og fått en figur. Mest "håndtegnet" av alle. Støtter Manimo-fortellingen om "tegnet i sann tid".</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="pick">
+    <h2>Hva å se etter</h2>
+    <p>Se på <strong>poseringene</strong>, ikke bare hovedfiguren. Det er der personligheten bor. Hvilken liker du best — A (én strek), B (blob), C (bånd) eller D (kalligrafi)? Eller er det elementer fra flere som passer? Når du har valgt, bygger jeg en full karakter-spec: navn, signatur-poseringer, animasjons-states, hvordan den oppfører seg når den introduserer en formel.</p>
+  </div>
+</body>
+</html>

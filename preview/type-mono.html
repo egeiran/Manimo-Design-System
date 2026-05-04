@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Type — Mono &amp; Math</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 28px 32px; background: var(--bg-canvas); min-height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px; }
+  .row { display: flex; align-items: baseline; gap: 18px; }
+  .meta { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); width: 110px; flex-shrink: 0; }
+  pre { margin: 0; padding: 14px 16px; background: var(--bg-sunken); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); font-size: 13px; color: var(--chalk-100); }
+  .tok-k { color: var(--violet-300); }
+  .tok-s { color: var(--teal-300); }
+  .tok-c { color: var(--fg-4); font-style: italic; }
+  .math { font-family: 'Fraunces', serif; font-style: italic; font-size: 28px; color: var(--fg-1); }
+  .math .op { font-style: normal; color: var(--fg-3); margin: 0 6px; }
+</style>
+</head>
+<body>
+  <div class="row" style="align-items:flex-start"><span class="meta">Mono 13</span>
+<pre><span class="tok-c"># rotational kinetic energy</span>
+<span class="tok-k">def</span> rot_ke(I, omega):
+    <span class="tok-k">return</span> <span class="tok-s">0.5</span> * I * omega**<span class="tok-s">2</span></pre>
+  </div>
+  <div class="row"><span class="meta">Math (serif italic)</span>
+    <span class="math">K<sub style="font-size:14px">rot</sub><span class="op">=</span>½&#8239;I&#8239;ω<sup style="font-size:18px">2</sup></span>
+  </div>
+  <div class="row"><span class="meta">Inline</span>
+    <span style="font-size:15px;color:var(--fg-2)">For a hoop, the moment of inertia is <code>I = m·r²</code> about its central axis.</span>
+  </div>
+</body>
+</html>

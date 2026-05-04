@@ -1,0 +1,2385 @@
+Noen notater om fysikk
+˚	Asmund Eldhuset
+Dette er ikke ment som en frittst˚	aende eller fullstendig tekst,
+men kun som et uoffisielt supplement til læreboken i TFY4125.
+Hvis det er uoverensstemmelse mellom boken og disse notatene,
+hør p˚	a boken!
+Dette dokumentet bruker papirstørrelse A5,
+og er ment for ˚	a skrives ut som to sider per A4-ark.
+Denne versjonen er publisert 01.06.2025.
+1
+
+-- 1 of 53 --
+
+Innhold
+1 Enheter 4
+2 Rotasjonsmekanikk 7
+2.1 Rotasjon, vinkelhastighet og vinkelakselerasjon . . . . . . . . . . . . 7
+2.2 Rotasjonsenergi; treghetsmoment . . . . . . . . . . . . . . . . . . . . 7
+2.3 Dreiemoment . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.4 Spinn . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.5 Sammenhengene mellom translasjon og rotasjon . . . . . . . . . . . . 11
+2.6 Sentripetalakselerasjon . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+2.7 Generelle r˚ad om mekanikk . . . . . . . . . . . . . . . . . . . . . . . 13
+3 Harmoniske svingninger 14
+3.1 Periode og frekvens . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+3.2 Fjærsvingning . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+3.3 Pendel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+3.4 Demping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+3.5 Demping med ytre drivende kraft . . . . . . . . . . . . . . . . . . . . 17
+4 Elektromagnetisme 19
+4.1 Coulombs lov og elektriske felter . . . . . . . . . . . . . . . . . . . . 19
+4.2 Elektrisk potensial (spenning) . . . . . . . . . . . . . . . . . . . . . . 20
+4.2.1 Arbeid i elektrisk felt . . . . . . . . . . . . . . . . . . . . . . 21
+4.2.2 Elektrisk potensial . . . . . . . . . . . . . . . . . . . . . . . . 23
+4.2.3 Elektrisk strøm . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+4.2.4 Elektrisk effekt . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+4.3 Kondensatorer . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+4.3.1 Elektrisk felt i platekondensatorer . . . . . . . . . . . . . . . 26
+4.3.2 Arbeid og spenning i platekondensatorer; kapasitans . . . . . 27
+4.3.3 Energitetthet i elektrisk felt . . . . . . . . . . . . . . . . . . . 29
+4.3.4 Kondensatorer og motstander i parallel og i serie . . . . . . . 29
+4.3.5 Elektriske felter i dielektrika . . . . . . . . . . . . . . . . . . . 31
+4.3.6 RC-krets . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+4.3.7 Elektrisk dipolmoment . . . . . . . . . . . . . . . . . . . . . . 33
+4.4 Resistans, resistivitet, konduktans og konduktivitet . . . . . . . . . . 35
+4.4.1 Resistans og resistivitet . . . . . . . . . . . . . . . . . . . . . 35
+4.4.2 Konduktans og konduktivitet . . . . . . . . . . . . . . . . . . 36
+4.4.3 Konduktivitet og elektrisk felt . . . . . . . . . . . . . . . . . 36
+4.4.4 Drudemodellen . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+4.5 Magnetfelt . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+4.5.1 Magnetisk kraft p˚a ladning i bevegelse . . . . . . . . . . . . . 38
+4.5.2 Magnetisk kraft p˚a leder . . . . . . . . . . . . . . . . . . . . . 39
+Side 2
+
+-- 2 of 53 --
+
+4.5.3 Magnetisk dipolmoment . . . . . . . . . . . . . . . . . . . . . 40
+4.5.4 Magnetfelt fra ladning i bevegelse . . . . . . . . . . . . . . . 42
+4.5.5 Parallelle ledere . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+4.5.6 Magnetfelt i dielektrika . . . . . . . . . . . . . . . . . . . . . 43
+4.6 Induksjon . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+4.6.1 Magnetisk fluks . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+4.6.2 Faradays induksjonslov . . . . . . . . . . . . . . . . . . . . . 44
+4.6.3 Spoler . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+4.6.4 Gjensidig induktans og transformatorer . . . . . . . . . . . . 47
+4.6.5 RL-krets . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+4.6.6 LC-krets . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 49
+4.6.7 RLC-kretser . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50
+4.6.8 RLC-kretser med drivende vekselspenningskilde . . . . . . . . 50
+4.6.9 Impedans . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 51
+4.6.10 Energitetthet i magnetisk felt . . . . . . . . . . . . . . . . . . 53
+Side 3
+
+-- 3 of 53 --
+
+1 Enheter
+I fysikk jobber vi med fysiske størrelser (physical quantitites), som er ting eller feno-
+mener som kan m˚ales. Hver størrelse m˚ales i en enhet (unit). SI-systemet definerer
+syv basisenheter (base units), som alle andre enheter kan uttrykkes ved hjelp av.
+Tabellen under viser alle sammen, men i dette faget bruker vi ikke mol og candela,
+og vi er bare s˚a vidt innom kelvin.
+Størrelse Symbol Enhetsnavn Symbol
+Tid t, T sekund: s
+Strekning s, d, l, r, R meter: m
+Masse m, M kilogram: kg
+Strøm I ampere: A
+Temperatur T kelvin: K
+Stoffmengde n mol: mol
+Lysstyrke IV candela: cd
+Her er de viktigste sammensatte enhetene (compound units) som vi kommer til
+˚a bruke. Mange av enhetene er definert via andre sammensatte enheter, s˚a vi viser
+b˚ade den “kompakte” definisjonen og den “utvidete” definisjonen som kun best˚ar
+av SI-basisenheter (men noen ganger er disse to like):
+Side 4
+
+-- 4 of 53 --
+
+Størrelse Symbol Enhetsnavn Symbol Definisjon Med SI
+Kraft F newton: N = kg · m
+s2 = kg·m
+s2
+Energi, arbeid E, W joule: J = N · m = kg·m2
+s2
+Effekt P watt: W = J
+s = kg·m2
+s3
+Ladning q, Q coulomb: C = A · s = A · s
+Spenning V volt: V = J
+C = kg·m2
+A·s3
+Resistans R ohm: Ω = V
+A = kg·m2
+A2·s3
+Kapasitans C farad: F = C
+V = A2·s4
+kg·m2
+Induktans L henry: H = V
+A/s = kg·m2
+A2·s2
+Magnetisk feltstyrke B tesla: T = N
+C·m/s = kg
+A·s2
+Magnetisk fluks Φ weber: Wb = T · m2 = kg·m2
+A·s2
+Elektrisk feltstyrke E — — N
+C = V
+m = kg·m
+A·s3
+Vinkel θ radian: rad = 1 = 1
+Vinkelhastighet ω — — = rad
+s = 1
+s
+Vinkelakselerasjon α — — = rad
+s2 = 1
+s2
+Tabellen over er ment som en referanse; alt vil bli forklart etterhvert som vi kommer
+til de forskjellige temaene.
+Merk at noen størrelser har samme symbol som enheten for en annen størrelse!
+Derfor skriver vi alltid størrelsessymbolene i kursiv og enhetssymbolene i vanlig
+skrift.
+Her er de engelske begrepene (som ikke fikk plass i bredden i tabellen over):
+Norsk størrelse Engelsk størrelse
+Tid Time
+Strekning Distance
+Masse Mass
+Strøm (Electric) current
+Temperatur (Thermodynamic) temperature
+Stoffmengde Amount of substance
+Lysstyrke Luminous intensity
+Side 5
+
+-- 5 of 53 --
+
+Kraft Force
+Energi Energy
+Arbeid Work
+Effekt Power
+Ladning (Electric) charge
+Spenning Voltage
+Resistans / motstand (Electrical) resistance
+Kapasitans Capacitance
+Induktans Inductance
+Magnetisk feltstyrke /
+magnetisk flukstetthet
+Magnetic field strength /
+magnetic flux density
+Magnetisk fluks Magnetic flux
+Elektrisk feltstyrke Electric field strength
+Vinkel Angle
+Vinkelhastighet Angular velocity
+Vinkelakselerasjon Angular acceleration
+Det lønner seg alltid ˚a bruke enheter n˚ar du skal regne ut et numerisk svar — hvis
+enheten p˚a svaret ikke stemmer overens med den størrelsen du prøver ˚a regne ut, har
+du garantert gjort en feil. Selv hvis du bare skal finne et uttrykk, kan du ogs˚a bruke
+enheter til din fordel: bytt ut hvert symbol med enheten for den aktuelle størrelsen,
+og sjekk at resultatet blir enheten for størrelsen som du skulle finne et uttrykk for.
+Enheter kan fritt multipliseres og divideres, men addisjon og subtraksjon kan bare
+gjøres mellom like enheter. For eksempel har vi følgende uttrykk for Lorentzkraften
+(som vi dekker p˚a side 38): F = qE + qvB; dersom vi hadde kommet frem til dette
+resultatet selv, kunne vi ha kontrollert enhetene slik: enheten for qE blir C · V
+m =
+A·s· kg·m2
+A·s3·m = kg·m
+s2 = N, og enheten for qvB blir C· m
+s ·T = A·s· m
+s · kg
+A·s2 = kg·m
+s2 = N,
+s˚a qE og qvB har begge enheten newton, s˚a det er trygt ˚a addere dem, og enheten
+passer med at summen skal være lik en kraft F .
+N˚ar du skal jobbe med vinkler, bruk alltid radianer — og sjekk at kalkulatoren er
+stilt inn p˚a d´et!
+Side 6
+
+-- 6 of 53 --
+
+2 Rotasjonsmekanikk
+2.1 Rotasjon, vinkelhastighet og vinkelakselerasjon
+Hvis du forst˚ar translasjonsmekanikk, har du et godt grunnlag for ˚a forst˚a rotasjons-
+mekanikk. Translasjon og rotasjon henger sammen gjennom denne ene formelen:
+s = rθ
+Hvis et legeme beveger seg i en sirkelbevegelse med avstand r fra rotasjonssenteret,
+vil det etter et vinkelutslag θ ha beveget seg en strekning p˚a s = rθ. Eventuelt,
+hvis legemet selv roterer, vil et punkt p˚a legemet som befinner seg i avstand r fra
+rotasjonsaksen bevege seg den strekningen. Merk at dette passer med at et fullstendig
+omløp er en vinkel p˚a 2π radianer og at omkretsen i en sirkel er 2πr.
+Hvis vi deriverer begge sider med hensyn p˚a tiden og utnytter at translatorisk
+hastighet er definert som v = ds
+dt , f˚ar vi v = r dθ
+dt . Vi definerer vinkelhastighet (angular
+velocity) som ω = dθ
+dt (liten gresk omega, ikke w), og f˚ar:
+v = rω
+Tilsvarende kan vi definere vinkelakselerasjon (angular acceleration) som α = dω
+dt ,
+og ved ˚a derivere uttrykket over f˚ar vi:
+a = rα
+2.2 Rotasjonsenergi; treghetsmoment
+Ved rettlinjet bevegelse er det massen til et legeme som gjør det vanskelig ˚a sette
+legemet i bevegelse, og dette ser vi b˚ade i Newtons 2. lov og i uttrykket for kinetisk
+energi ved translasjon:
+E = 1
+2 mv2
+Selv om disse notatene stort sett antar at translasjonsmekanikken er kjent, kan
+det være kjekt ˚a vise hvor akkurat denne formelen kommer fra: vi ser p˚a arbeidet
+som gjøres av en kraft F som akselererer et legeme med masse m fra stillest˚aende
+til hastighet V (hvor legemet beveger seg i en rett linje og kraften angriper parallelt
+med denne):
+Side 7
+
+-- 7 of 53 --
+
+W =
+Z V
+0
+F ds =
+Z V
+0
+ma ds = m
+Z V
+0
+dv
+dt ds = m
+Z V
+0
+ds
+dt dv = m
+Z V
+0
+v dv
+= m
+ 1
+2 v2
+V
+0
+= 1
+2 mV 2
+Hvis en punktmasse beveger seg i en sirkel, kan man likevel anse bevegelsen i et
+enkelt “øyeblikk” for ˚a være rettlinjet (og tangentiell med sirkelen), s˚a formelen
+E = 1
+2 mv2 gjelder fortsatt. Men hvis vi i stedet bruker v = rω til ˚a uttrykke
+bevegelsen ved vinkelhastigheten i stedet, f˚ar vi:
+E = 1
+2 mv2 = 1
+2 m(rω)2 = 1
+2 mr2ω2
+Da er det fristende ˚a erklære at mr2 (som er konstant for et gitt legeme i en bestemt
+sirkelbevegelse) er det som gjør det vanskelig ˚a sette noe i sirkelbevegelse, for da vil
+vi f˚a en formel som ligner veldig p˚a det vi startet med. Vi definerer treghetsmomentet
+(moment of inertia) I:
+I = mr2
+Og ved ˚a sette dette inn i uttrykket for kinetisk energi f˚ar vi følgende uttrykk for
+kinetisk energi ved rotasjon:
+E = 1
+2 Iω2
+Hvis man har et legeme som ikke er en punktmasse (og som enten roterer rundt
+seg selv eller som g˚ar i rotasjonsbevegelse rundt et sentrum utenfor legemet), kan
+man resonnere p˚a samme m˚ate, men integrere over alle “punktmassene” som legemet
+best˚ar av. Man vil da f˚a et uttrykk for I som avhenger av formen p˚a legemet, men
+som er slik at alle formlene som involverer I fortsatt vil gjelde.
+Merk at et legeme som ruller har b˚ade kinetisk translasjonsenergi og kinetisk ro-
+tasjonsenergi:
+E = 1
+2 mv2 + 1
+2 Iω2
+Dersom legemet ikke glir (rullingen foreg˚ar uten at legemet gnisser mot underla-
+get), henger rotasjonen og translasjonen sammen via v = rω. I oppgaver som handler
+Side 8
+
+-- 8 of 53 --
+
+om jojoer eller andre legemer som har flere forskjellige radiuser, m˚a man passe p˚a
+˚a velge den radiusen hvor legemet ruller mot underlaget (eller vinder seg ut av en
+snor).
+Treghetsmomentet avhenger av rotasjonsaksen. Hvis man har et legeme med masse
+M og man kjenner treghetsmomentet I0 om en akse som g˚ar gjennom massesenteret
+til legemet, kan man finne treghetsmomentet Ir om en parallell akse i avstand r
+fra aksen gjennom massesenteret ved Ir = I0 + M r2. Dette kalles Steiners sats /
+parallellakseteoremet (Steiner’s theorem / parallel axis theorem). Merk at dette bare
+fungerer fra aksen gjennom massesenteret: hvis du kjenner treghetsmomentet om en
+akse som ikke g˚ar gjennom massesenteret og vil finne treghetsmomentet om en annen
+parallell akse, m˚a du først bruke formelen baklengs for ˚a komme til massesenteret,
+og s˚a evt. bruke formelen igjen for ˚a komme til en annen akse. Vi merker oss at
+treghetsmomentet alltid er minst gjennom massesenteret.
+2.3 Dreiemoment
+Kan vi gjøre noe tilsvarende med Newtons 2. lov?
+X F = ma
+Hvis legemet som ble utsatt for denne kraften er tvunget til ˚a bevege seg i en
+sirkel, vil det være mer nyttig for oss ˚a uttrykke den samme akselerasjonen som
+vinkelakselerasjon i henhold til a = rα:
+X F = mrα
+Ved ˚a multiplisere med r f˚ar vi treghetsmomentet til ˚a dukke opp igjen:
+r · X F = mr2α = Iα
+Siden r er konstant, kan vi trekke den inn i summen slik at vi f˚ar P rF p˚a venstre
+side. Vi definerer dreiemoment (torque) τ :
+τ = rF
+Dette er egentlig en vektorstørrelse: τ = r × F, hvor r g˚ar fra rotasjonsaksen til
+der hvor kraften angriper. Skalarformelen over gjelder kun hvis vinkelen ϕ mellom r
+og F er π
+2 (90◦); ellers m˚a man bruke τ = rF sin ϕ.
+Vi f˚ar da det som vi med litt godvilje kan kalle “Newtons 2. lov for rotasjon”:
+Side 9
+
+-- 9 of 53 --
+
+X τ = Iα = I dω
+dt
+(Til de som ogs˚a har lest 2024-versjonen av disse notatene: der begynte den forrige
+setningen med “Hvis vi har en rett vinkel, f˚ar vi...”, og det stod ingen P foran τ ;
+begge disse tingene var litt villedende. P τ = Iα gjelder alltid, men hvis det bare er
+´en kraft som skaper dreiemoment og det dermed bare finnes ett dreiemoment, kan
+man like godt skrive τ i stedet for P τ , tilsvarende det man ofte gjør med Netwons
+2. lov n˚ar det bare finnes ´en kraft. Det som derimot bare gjelder ved rett vinkel er
+τ = rF .)
+Dreiemoment er alts˚a det som skaper rotasjon, og treghetsmoment er det som gjør
+det vanskelig ˚a rotere noe.
+Merk at selv om dreiemoment har samme enhet (newtonmeter eller joule) som
+arbeid, og tilsynelatende har en lignende definisjon (dreiemoment er radius ganger
+kraft, og arbeid er strekning ganger kraft), er dreiemoment og arbeid to forskjellige
+størrelser som ikke direkte har noe med hverandre ˚a gjøre! Forskjellen er at arbeid
+er noe som gjøres i løpet av en bevegelse (og s er strekningen som bevegelsen foreg˚ar
+over), mens dreiemoment eksisterer uavhengig av bevegelse (og r beskriver ikke en
+bevegelse, bare avstanden fra rotasjonssenteret til punktet hvor kraften angriper).
+Dessuten er dreiemoment en vektor, og formelen involverer et kryssprodukt (eller
+sinus, hvis man bruker skalarformen og vinkelen ikke er rett), mens arbeid er en
+skalar, og formelen involverer et prikkprodukt (eller cosinus). For ˚a redusere forvir-
+ringen pleier man ˚a m˚ale dreiemoment i Nm (newtonmeter) og arbeid i J (joule),
+selv om begge er lik kg·m2
+s2 .
+2.4 Spinn
+La oss s˚a se p˚a bevegelsesmengde (momentum) i rotasjon:
+p = mv = mrω
+Vi multipliserer med r igjen for ˚a f˚a I = mr2 til ˚a dukke opp:
+rp = mr2ω
+Størrelsen rp kan vi anse for ˚a være “rotasjonsmengden”, som kalles spinn (angular
+momentum) L:
+L = Iω
+Side 10
+
+-- 10 of 53 --
+
+Dette er egentlig ogs˚a en vektorstørrelse: L = Iω. N˚ar rotasjonsrelaterte størrelser
+uttrykkes som vektorer (θ, ω, α, τ og L), peker vektoren langs rotasjonsaksen. Ret-
+ningen avgjøres vanligvis ut fra høyreh˚andsregelen for rotasjon: lat som at du griper
+om rotasjonsaksen slik at fingrene som krummer seg rundt aksen peker i retning av
+rotasjonen, og strekk ut tommelen, som da vil peke i retning av rotasjonsvektorene.
+Merk at α, τ og dL
+dt vil peke i motsatt retning av rotasjonen hvis rotasjonen er
+i ferd med ˚a sakke ned (akkurat som man kan ha negativ akselerasjon mens man
+fortsatt beveger seg fremover), og at hvis det finnes flere dreiemomenter fra forskjel-
+lige krefter, kan noen av dem være positive og noen negative og dermed jobbe mot
+hverandre.
+2.5 Sammenhengene mellom translasjon og rotasjon
+Vi ser alts˚a at det en fin sammenheng mellom størrelsene fra translasjon og størrelsene
+fra rotasjon. De er ikke like, men fyller tilsvarende roller:
+Translasjon Rotasjon
+Strekning s θ Vinkel
+Hastighet v ω Vinkelhastighet
+Akselerasjon a α Vinkelakselerasjon
+Masse m I Treghetsmoment
+Kraft F τ Dreiemoment
+Bevegelsesmengde p L Spinn
+Dette fører til at du kan finne de fleste rotasjonsformlene ved ˚a bytte ut symbolene
+fra den tilsvarende translasjonsformelen:
+Side 11
+
+-- 11 of 53 --
+
+Translasjon Rotasjon
+Hastighet fra strekning v = ds
+dt ω = dθ
+dt Vinkelhastighet fra vinkel
+Akselerasjon fra hastighet a = dv
+dt α = dω
+dt
+Vinkelakselerasjon
+fra vinkelhastighet
+Energi i translasjon E = 1
+2 mv2 E = 1
+2 Iω2 Energi i rotasjon
+Newtons 1. lov P F = 0 P τ = 0 “Newtons 1. lov for rotasjon”
+Newtons 2. lov P F = ma P τ = Iα “Newtons 2. lov for rotasjon”
+Bevegelsesmengde p = mv L = Iω Spinn
+Impuls dp
+dt = F dL
+dt = τ “Spinnimpuls”
+2.6 Sentripetalakselerasjon
+Til sist nevner vi sentripetalakselerasjon (centripetal acceleration). Hittil har vi snak-
+ket om vinkelakselerasjon og rettlinjet akselerasjon i sirkelbevegelser, som handler
+om endring i rotasjonshastigheten. Men for ˚a vedlikeholde en sirkelbevegelse er det
+ogs˚a nødvendig med en akselerasjon som alltid er rettet innover mot rotasjonssen-
+teret/rotasjonsaksen (uten denne ville de andre kreftene som virker p˚a legemet ha
+for˚arsaket en rettlinjet bevegelse i stedet). Sentripetalakselerasjonen as (skrevet a p˚a
+formelarket, dessverre, men det er alts˚a en annen a enn akselerasjon i sirkelbevegel-
+se) har bare med radiusen r og vinkelhastigheten ω (eller den rettlinjete hastigheten
+v) ˚a gjøre, ikke med vinkelakselerasjonen α (eller den rettlinjete akselerasjonen a):
+as = v2
+r = rω2
+Siden sentripetalakselerasjonen alltid angriper vinkelrett med strekningen legemet
+beveger seg i, gjør den aldri noe arbeid, s˚a det krever ingen energi ˚a holde et legeme
+i en sirkelbevegelse.
+Side 12
+
+-- 12 of 53 --
+
+2.7 Generelle r˚	ad om mekanikk
+N˚ar du løser en oppgave i mekanikk, begynn alltid med en kraftanalyse: finn alle
+kreftene (inkludert de som er null men som inng˚ar i formler som kanskje er rele-
+vante). Husk at du kan velge koordinatsystem fritt; velg et hvor flest mulig krefter
+er parallelle med en av aksene. Skriv ned alle størrelser som du kjenner verdien til
+(selv hvis du ikke har selve verdien, men oppgaven tilsier at det er en kjent størrelse
+hvor du kan benytte symbolet for størrelsen i svaret ditt), og de som du ikke kjenner
+(inkludert de(n) størrelsen(e) du skal finne). Pøs deretter p˚a med alle formler som
+involverer symbolene — s˚a lenge formlene du bruker er uavhengige av hverandre,
+trenger du like mange formler som antall ukjente (akkurat som i lineære systemer i
+matte 3).
+Husk at friksjonsformelen før ting har begynt ˚a gli er en ulikhet: K ≤ μS . Det er
+først n˚ar ting har begynt ˚a gli at det er en likhet: K = μD (merk ogs˚a at det er to
+ulike friksjonskoeffisienter i disse situasjonene: statisk og dynamisk).
+Du kan fritt velge aksen for beregning av vinkel, vinkelhastighet, vinkelakselera-
+sjon, dreiemoment, treghetsmoment og spinn. Husk at selv n˚ar et legeme ikke roterer
+eller roterer med konstant hastighet, kan det fortsatt finnes mange forskjellige dreie-
+momenter som angriper legemet, men de m˚a summere til null. Og selv n˚ar et legeme
+ikke roterer i det hele tatt (det st˚ar stille eller beveger seg rettlinjet), kan man fort-
+satt plukke et hvilket som helst punkt som rotasjonssentrum (eller en hvilken som
+helst akse som rotasjonsakse) og regne p˚a rotasjonsstørrelsene i forhold til det punk-
+tet. Men etterhvert som legemet beveger seg vil vinkelen ϕ mellom vektoren r (som
+g˚ar fra “rotasjonssenteret” og ut til legemet) og legemet sin streknings-/hastighets-
+/akselerasjonsvektor endre seg, s˚a ϕ m˚a tas med i formlene, f.eks. v = rω sin ϕ og
+a = rα sin ϕ.
+Jobb med symboler s˚a lenge som mulig, og sett inn tallverdiene helt til slutt —
+men bruk da ogs˚a enhetene, og kontroller at svaret f˚ar riktig enhet. Hvis enheten er
+feil, er svaret garantert feil.
+Side 13
+
+-- 13 of 53 --
+
+3 Harmoniske svingninger
+OBS: I denne seksjonen, og i flere av seksjonene om elektromagnetisme, har ω en
+annen betydning enn i rotasjonsmekanikk! Her betyr det vinkelfrekvens; i rotasjons-
+mekanikk betyr det vinkelhastighet.
+3.1 Periode og frekvens
+En periode (period ) er en hel svingning frem og tilbake av en pendel eller av en
+masse opphengt i en fjær. Frekvensen (frequency) er inversen av perioden — kortere
+periode gir høyere frekvens:
+f = 1
+T
+3.2 Fjærsvingning
+Med en forflytning (displacement) x fra nullpunktet sier Hooke’s lov at kraften fra
+fjæren er F = −kx, hvor k er konstant for akkurat denne fjæren. Kombinert med
+Newtons 2. lov gir dette ma = −kx eller ma + kx = 0. Siden x er strekning og
+a = d2x
+dt2 , f˚ar vi m d2x
+dt2 + kx = 0. Hvis vi deler p˚a m og innfører ω0 = pk/m (som da
+er konstant for et bestemt fjærsystem), f˚ar vi:
+d2x
+dt2 + ω2
+0 x = 0
+Den generelle løsningen p˚a denne diffligningen er:
+x(t) = A cos(ω0t + ϕ0)
+hvor A og ϕ0 er konstanter som avhenger av det spesifikke fjærsystemet. (Sidesprang:
+dette er ogs˚a formelen for x-komponenten av en sirkelbevegelse.) A er amplituden
+(amplitude), som indikerer det største utslaget (displacement) (alts˚a maks verdi av
+|x|), med enhet meter. ϕ0 er faseforskyvningen (phase shift) (med enhet radian),
+som indikerer hvor langt inne i en periode systemet var ved t = 0. For enkelhets
+skyld antar vi at ϕ0 = 0, som tilsier at systemet har maksimalt utslag ved t = 0.
+Siden perioden til cosinus er 2π og perioden til systemet v˚art er T , m˚a ω0 = 2π
+T =
+2πf for ˚a f˚a det til ˚a g˚a opp: da blir cos ω0T = cos 2π
+T T = cos 2π = 1 = cos 0, s˚a
+systemet er tilbake i nullposisjon etter ´en periode. Kombinert med definisjonen av
+ω0 f˚ar vi: r k
+m = 2π
+T
+T = 2π
+r m
+k = 2π
+ω0
+Side 14
+
+-- 14 of 53 --
+
+Frekvensen (antall perioder per sekund) er inversen av dette:
+f = 1
+T = 1
+2π
+r k
+m = ω0
+2π
+Dette kalles ogs˚a systemets egenfrekvens (natural frequency), siden det er frekvensen
+systemet f˚ar n˚ar det ikke p˚avirkes av ytre krefter (etter den kraften som for˚arsaket
+det initielle utslaget). Begrepene frekvens og egenfrekvens brukes ogs˚a ofte om w0,
+som man kan tolke som antall radianer per sekund dersom det man hadde studert
+var en faktisk sirkelbevegelse med x(t) = A cos(ω0t + ϕ0) og y(t) = A sin(ω0t + ϕ0).
+For en vertikal fjær ser alt tilsvarende ut; tyngdekraften forflytter bare nullpunktet
+nedover fra fjærens “naturlige” nullpunkt ved ˚a strekke fjæren ned til det punktet
+hvor fjærkraften er like stor som tyngdekraften — utslag relativt til det punktet vil
+da føre til samme “netto” fjærkraft (etter at tyngdekraften er trukket fra) som det
+samme utslaget fra det naturlige nullpunktet i en horisontal situasjon.
+3.3 Pendel
+Bevegelsen til en pendel (pendulum) med lengde L og masse m drives av tyngde-
+kraften, som ved et pendelutslag θ (m˚alt fra loddrett stilling) virker med en kraft
+−mg loddrett nedover. Hvis vi lager et bevegelig koordinatsystem hvor y-aksen til
+enhver tid er parallell med pendelen, ser vi at tyngdekraften sin x-komponent (alts˚a
+vinkelrett p˚a pendelen) er Fx = −mg sin θ. Hvis all massen befinner seg ytterst p˚a
+pendelen (en s˚akalt matematisk pendel (mathematical pendulum)), vil dette føre til
+et dreiemoment τ = LFx = −Lmg sin θ, samt at treghetsmomentet er I = mL2.
+Siden τ = Iα = I d2θ
+dt2 , f˚ar vi:
+mL2 d2θ
+dt2 = −Lmg sin θ
+d2θ
+dt2 = − g
+L sin θ
+d2θ
+dt2 + g
+L sin θ = 0
+For sm˚a vinkelutslag er sin θ ≈ θ, og vi kan forenkle til:
+d2θ
+dt2 + g
+L θ = 0
+som ser kjent ut. Hvis vi innfører ω0 = pg/L, f˚ar vi
+d2θ
+dt2 + ω2
+0 θ = 0
+Side 15
+
+-- 15 of 53 --
+
+som har en løsning av samme form som fjærsystemet, bare med vinkelutslaget θ i
+stedet for forflytningen x. Med samme resonnement som før blir perioden:
+T = 2π
+s
+L
+g
+For en fysisk pendel (physical pendulum), f.eks. en massiv stang eller et legeme av
+en annen form, kan vi gjøre samme utregning, men med en annen verdi for I, og i
+stedet for lengden p˚a legemet m˚a vi forholde oss til avstanden d mellom massesenteret
+(der tyngdekraften vil angripe) og rotasjonsaksen. Vi kan da definere ω0 = pmgd/I
+(som st˚ar p˚a formelarket; pass p˚a at I m˚a være regnet i forhold til rotasjonssenteret,
+s˚a du m˚a kanskje bruke Steiners sats), og vi f˚ar:
+T = 2π
+s
+I
+mgd
+Til sist: en torsjonspendel (torsion pendulum) best˚ar av en stang med treghetsmo-
+ment I0 som er montert vinkelrett p˚a en fjær slik at hvis man vrir litt p˚a pinnen,
+vil fjæren “vindes opp” eller “vindes ut”, og fjæren vil ved et vinkelutslag θ prøve
+˚a vri pinnen tilbake til nullpunktet med en kraft −κθ, hvor κ beskriver hvor sterk
+denne torsjonsfjæren er (en fjær har alts˚a to forskjellige fjærkonstanter: k for kom-
+presjon/ekspansjon, og κ for torsjon; siden stangen balanserer opp˚a fjæren, antas
+det at den er montert i massesenteret, hvor treghetsmomentet er I0). Utregningen
+blir tilsvarende, men vi definerer ω0 = pκ/I0 (som st˚ar p˚a formelarket), og vi f˚ar:
+T = 2π
+r I0
+κ
+3.4 Demping
+Hvis vi i en fjær- eller pendelbevegelse ogs˚a tar hensyn til luftmostand eller “væske-
+motstand” (sistnevnte vil f.eks. skje i en støtdemper, hvor en fjær og et stempel er
+montert inni en væskefylt sylinder), vil motstanden gradvis stjele energi fra syste-
+met. Dette kalles demping (damping). Ved langsom bevegelse gjennom gass/væske
+er motstandskraften proporsjonal med hastigheten, alts˚a det deriverte av forflyt-
+ningen. Derfor opptrer motstanden som et førsteordens (derivert ´en gang) ledd i
+diffligningen v˚ar, med en koeffisient b som avhenger av systemet:
+m d2x
+dt2 + b dx
+dt + kx = 0
+Ved ˚a dele p˚a m og innføre ω0 = pk/m (som før) og γ = b
+2m , f˚ar vi:
+d2x
+dt2 + 2γ dx
+dt + ω2
+0 x = 0
+Side 16
+
+-- 16 of 53 --
+
+Strukturen til den generelle løsningen p˚a denne diffligningen avhenger av γ og ω0:
+ Hvis γ = 0, er systemet udempet (undamped ), og vi kan bruke formlene fra
+seksjon 3.2.
+ Hvis 0 < γ < ω0, er systemet underkritisk dempet (underdamped ), og den
+generelle løsningen blir:
+x(t) = Ae−γt sin(ωt + ϕ)
+hvor ω = pω2
+0 − γ2. Her vil systemet riktignok oscillere frem og tilbake om
+nullpunktet, men med stadig mindre utslag, og med en frekvens f = ω
+2π som er
+konstant men mindre enn i et tilsvarende udempet system (hvor egenfrekvensen
+ville ha vært ω0 i stedet for ω), og med en periode T = 2π
+ω som er lengre.
+ Hvis γ > ω0, er systemet overkritisk dempet (overdamped ), og den generelle
+løsningen blir:
+x(t) = Ae−α1t + Be−α2t
+hvor α1 = γ + pγ2 − ω2
+0 og α2 = γ − pγ2 − ω2
+0 . Her er motstanden s˚a stor
+at systemet aldri vil komme seg forbi nullpunktet; det vil bare falle mot null-
+punktet langsommere og langsommere uten noensinne ˚a møte det.
+ Hvis γ = ω0, er systemet kritisk dempet (critically damped ), og den generelle
+løsningen blir:
+x(t) = Ae−γt + Bte−γt
+(merk t’en etter B’en). Her er motstanden akkurat p˚a vippepunktet mellom
+overkritisk og underkritisk demping, med det resultat at systemet vil falle s˚a
+fort tilbake mot nullpunktet som det er mulig ˚a gjøre uten ˚a faktisk noensinne
+møte eller krysse det.
+3.5 Demping med ytre drivende kraft
+Hvis det i tillegg til kraften fra fjæren (eller tyngdekraften hvis det er snakk om
+en pendelbevegelse) og luftmotstanden/væskemotstanden ogs˚a finnes en oscilleren-
+de ytre kraft som virker p˚a systemet, blir situasjonen mer komplisert. Hvis den ytre
+drivende kraften har amplitude (maksimal styrke) F0 og frekvens ω
+2π (pass p˚a for-
+skjellen p˚a ω og ω0: førstnevnte er en konstant som hører til den ytre drivende kraften
+og godt kan være annerledes enn sistnevnte, som fortsatt er definert som pk/m og
+sier hva systemets radianfrekvens ville ha vært uten den ytre drivende kraften —
+dessuten er denne ω’en noe annet en den vi fikk ovenfor, i det underkritisk dempete
+systemet uten noen ytre drivende kraft), blir diffligningen slik:
+m d2x
+dt2 + b dx
+dt + kx = F0 cos ωt
+Side 17
+
+-- 17 of 53 --
+
+Den generelle løsningen p˚a denne diffligningen best˚ar av to deler, hvor den ene bare
+avhenger av faktorene i selve diffligningen (massen, fjærkonstanten, luftmotstan-
+den/væskemotstanden og den ytre drivende kraften) og den andre ogs˚a avhenger av
+den initielle tilstanden til systemet (legemets initielle utslag og hastighet). Sistnevn-
+te forsvinner ganske raskt, s˚a vi bryr oss bare om førstnevnte, som beskriver den
+stabile sluttilstanden som systemet vil g˚a mot. Dette blir:
+x(t) = A(ω) sin(ωt + ϕ(ω))
+hvor frekvensen alts˚a er lik den ytre drivende frekvensen ω. Amplituden (som er
+konstant etter at systemet har n˚add en stabil tilstand; den er skrevet som en funksjon
+for ˚a vise at den avhenger av vinkelfrekvensen til den ytre drivende kraften) blir:
+A(ω) = F0
+mp(ω2 − ω2
+0 )2 + (2γω)2
+(Merk at formelarket skriver F0/m over brøkstreken; vi skriver i stedet m under
+brøkstreken fordi en tilsvarende formel vil dukke opp i elektromagnetisme.) Den
+resulterende amplituden avhenger alts˚a av b˚ade frekvensen til den ytre drivende
+kraften og systemets egenfrekvens, og den blir veldig mye større n˚ar ω er litt større
+enn (men ikke helt lik) ω0; dette kalles resonans (resonance). Amplituden er mak-
+simal hvis vi er i denne situasjonen:
+ω = ω0
+r
+1 − b2
+2mk
+For at uttrykket under kvadratroten ikke skal være negativt, m˚a b ≤ √2mk, som
+betyr at resonans bare er mulig n˚ar systemet er sterkt underkritisk dempet: under-
+kritisk demping skjer s˚a lenge 0 < γ < ω0, som tilsvarer 0 < b < √4mk, men b m˚a
+alts˚a være en faktor √2 mindre enn den grensen for at resonans kan oppst˚a.
+Side 18
+
+-- 18 of 53 --
+
+4 Elektromagnetisme
+4.1 Coulombs lov og elektriske felter
+Hvis man plasserer en elektrisk ladning (charge) q0 (m˚alt i enheten coulomb, med
+symbolet C) i en avstand r fra en annen ladning q, vil de p˚avirke hverandre med
+en kraft som er tiltrekkende hvis ladningene har forskjellig fortegn (´en positiv og
+´en negativ) eller frastøtende hvis ladningene har samme fortegn (to positive eller
+to negative). Kraften virker alltid langs linjen mellom de to ladningene. Hvis vi
+m˚aler denne kraften for forskjellige kombinasjoner av ladninger og avstand, vil vi
+se at kraften alltid er proporsjonal med produktet av ladningsstørrelsene (kraften
+dobles hvis ´en ladning dobles, og firedobles hvis begge ladningene dobles), og invers
+proporsjonal med kvadratet av avstanden (kraften firedeles hvis avstanden dobles,
+og firedobles hvis avstanden halveres). Proporsjonalitetsfaktoren vil vise seg ˚a være
+1
+4πϵ0 ≈ 8.99 · 109 Nm2/C2, hvor konstanten ϵ0 ≈ 8.85 · 10−12 F/m kalles tomroms-
+permittivitet (vacuum permittivity) og sier noe om hvordan elektriske felter sprer seg
+i vakuum. Denne sammenhengen mellom ladningene, avstanden og den resulterende
+kraften kalles Coulombs lov :
+F = qq0
+4πϵ0r2 = 1
+4πϵ0
+· qq0
+r2
+(Poenget med den siste formen er bare ˚a separarere den konstante delen fra den
+variable delen. Merk at dette har tilsvarende form som Newtons gravitasjonslov, s˚a
+elektrisk kraft og tyngdekraft oppfører seg overraskende likt, bortsett fra at masse
+kun kan være positiv, mens ladning kan være enten positiv eller negativ.) Egentlig
+er jo en kraft en vektorstørrelse; for ˚a forholde seg til vektorer i Coulombs lov,
+m˚a vi multiplisere inn ˆr (en enhetsvektor som peker i samme retning som r) fordi
+kvadrering av en vektor gir en skalar slik at man “mister” vektoren:
+F = qq0
+4πϵ0r2 ˆr
+(Man kan skrive r2 i stedet for r2, siden det ˚a prikke en vektor med seg selv er det
+samme som ˚a kvadrere lengden. Alternativt kan man bruke r i stedet for ˆr, men da
+m˚a man dele p˚a r3 i stedet.) Merk at man vanligvis velger at r skal peke fra q til q0,
+og da vil F beskrive kraften p˚a q0 som skapes av q (mens kraften p˚a q som skapes
+av q0 er like stor, men peker i motsatt retning).
+Det er fristende ˚a tenke p˚a kraften p˚a q0 som at den er for˚arsaket av noe som
+str˚aler ut fra q. N˚a avhenger jo kraften av q0 ogs˚a, ikke bare av q — men hvis vi
+velger ˚a se p˚a kraften i forhold til størrelsen p˚a ladningen q0, alts˚a F/q0, f˚ar vi et
+uttrykk for “noe” som er proporsjonalt med q og som sprer seg ut fra q p˚a en slik
+m˚ate at det blir fire ganger s˚a svakt n˚ar man kommer dobbelt s˚a langt unna, og som
+vil generere en kraft p˚a ladninger som plasseres i det. Dette kalles et elektrisk felt
+Side 19
+
+-- 19 of 53 --
+
+(electric field ), og i en avstand r observerer vi en elektrisk feltstyrke (electric field
+strength):
+E = F
+q0
+= q
+4πϵ0r2 = 1
+4πϵ0
+· q
+r2
+Dette er egentlig ogs˚a en vektorstørrelse: et elektrisk felt peker utover fra en positiv
+ladning og innover mot en negativ ladning, og indikerer retningen p˚a kraften som en
+positiv ladning vil bli p˚avirket av (mens en negativ ladning vil bli p˚avirket i motsatt
+retning):
+E = F
+q0
+= q
+4πϵ0r2 ˆr
+Merk at det elektriske feltet fra q eksisterer uavhengig av om det faktisk finnes noen
+ladning q0 eller ikke. Vi kan f.eks. bruke en ladning q0 for ˚a m˚ale E (via ˚a m˚ale kraften
+F som ladningen blir p˚avirket av og s˚a dele bort q0) og s˚a fjerne q0, og E vil være
+up˚avirket av dette — den elektriske feltstyrken avhenger kun av ladningen q som
+skaper det elektriske feltet og posisjonen r relativt til q. (Fordi form˚alet med q0 ofte
+bare er ˚a regne p˚a hvordan den blir p˚avirket av feltet den befinner seg i, kalles den
+ofte for en testladning (test charge).) Vi snakker alts˚a om et enkelt elektrisk felt som
+sprer seg utover i det uendelige fra q, men som har forskjellig elektrisk feltstyrke p˚a
+forskjellige steder — men inniblant er lærebøker og oppgaver unøyaktige og snakker
+om “det elektriske feltet i et punkt”.
+Newtons 3. lov gjelder her ogs˚a: q0 sender ut sitt eget elektriske felt, som vil ha en
+annen styrke enn feltet fra q (med mindre de to ladningene er like store), men som
+vil p˚avirke q med en like stor men motsatt rettet kraft.
+Hvis man kjenner den elektriske feltstyrken i et punkt hvor en ladning q0 befinner
+seg, er det enkelt ˚a finne kraften som ladningen blir p˚avirket av:
+F = E · q0
+Kraften peker langs feltet hvis q0 er positiv, og i motsatt retning hvis q0 er negativ.
+Hver ladning som befinner seg i et rom skaper et elektrisk felt. Elektriske felter
+kan legges sammen p˚a samme m˚ate som krefter: hvis det spørres om det elektriske
+feltet som skapes i et punkt av et antall ladninger, er det bare ˚a regne ut feltstyrken
+fra hver ladning som en vektor (husk retningen, basert p˚a polariteten til ladningen)
+og legge dem sammen. Hvis det befinner seg en ladning i det punktet, kan du da
+finne kraften ut fra formelen ovenfor (og husk at kraften vil peke i motsatt retning
+av feltet hvis ladningen er negativ).
+Merk at ladninger aldri p˚avirker seg selv med noen kraft.
+4.2 Elektrisk potensial (spenning)
+N˚a skal vi regne p˚a hvor mye potensiell energi som lagres i et elektrisk felt som
+kommer fra en punktladning, og bruke det til ˚a forenkle regning p˚a arbeid som
+Side 20
+
+-- 20 of 53 --
+
+gjøres av det elektriske feltet. Dette vil gi opphav til begrepet elektrisk potensial,
+ogs˚a kjent som elektrisk spenning (voltage).
+4.2.1 Arbeid i elektrisk felt
+La oss tenke oss at vi har en ladning q (som selvfølgelig skaper et elektrisk felt),
+og at vi plasserer en annen ladning q0 med samme fortegn “uendelig langt borte”
+(dette er jo ikke mulig i praksis, men vi kan velge en avstand som er s˚a stor at
+den elektriske feltstyrken fra q er ubetydelig). Med r = ∞ vil Coulumbs lov si at
+kraften fra q p˚a q0 er 0. S˚a gir vi q0 et ørlite dytt i retning q, slik at ladningen f˚ar
+en ørliten hastighet (s˚a liten at vi kan ignorere den kinetiske energien som ligger
+i bevegelsen). Med en gang q0 begynner ˚a bevege p˚a seg, g˚ar den over fra ˚a være
+uendelig langt unna q til ˚a ha en faktisk tallfestet avstand (i praksis sier vi at med
+en gang q0 flytter seg fra startposisjonen, er den elektriske feltstyrken fra q akkurat
+stor nok til at vi begynner ˚a bry oss om den). Siden r n˚a har en tallfestet verdi (alts˚a
+ikke uendelig), sier Coulombs lov at q0 vil bli p˚avirket av en kraft 1
+4πϵ0 · qq0
+r2 som
+peker bort fra q (siden ladningene har samme fortegn). Derfor m˚a vi n˚a bruke en
+tilsvarende stor kraft, motsatt rettet, for ˚a opprettholde q0 sin bevegelse inn mot q.
+Vi m˚a kontinuerlig øke kraften v˚ar etterhvert som q0 nærmer seg q og den elektriske
+kraften blir større og større. Siden q0 beveger seg mens vi bruker en kraft p˚a den i
+samme retning som bevegelsen, betyr det at vi gjør et positivt arbeid p˚a q0, alts˚a
+at vi tilfører energi til q0. Grunnen til at hastigheten til q0 ikke øker er at feltet gjør
+et like stort men negativt arbeid (via den elektriske kraften, som virker i motsatt
+retning av bevegelsen) — feltet “stjeler” alts˚a energi fra q0 — men denne energien
+kan vi anse at blir “lagret” i selve det elektriske feltet fra q, fordi feltet kommer til
+˚a dytte q0 ut igjen hvis vi slutter ˚a bruke kraft p˚a den. Derfor tenker vi at energien
+fra arbeidet vi utfører p˚a q0 blir omgjort til potensiell elektrisk energi.
+La oss regne p˚a dette: vi tegner en vannrett r-akse med q plassert p˚a nullpunktet
+og q0 ute til høyre; kraften fra det elektriske feltet er da positiv (den dytter mot
+høyre), kraften som vi dytter med er like stor men negativ (vi dytter mot venstre),
+og q0 sin bevegelse mot venstre er ogs˚a negativ. Hvis vi ser p˚a en “uendelig kort”
+strekning dr (s˚a kort at vi kan late som at kraften er den samme langs strekningen),
+gjør vi et arbeid dW = F dr p˚a q0 i løpet av denne strekningen. Siden b˚ade v˚ar
+kraft F og strekningen dr er negative, blir “det uendelig lille stykket arbeid” dW
+positivt. Ved ˚a bruke Coulombs lov (med negativt fortegn fordi v˚ar kraft er motsatt
+rettet av den elektriske) f˚ar vi:
+dW = F dr = − 1
+4πϵ0
+· qq0
+r2 dr = − qq0
+4πϵ0
+· 1
+r2 dr
+Den siste omskrivningen har vi gjort fordi q og q0 er konstante i situasjonen som
+vi jobber med n˚a, s˚a hele qq0
+4πϵ0 er konstant. Hvis vi integrerer alle de “uendelig sm˚a
+stykkene arbeid” langs r-aksen, fra “uendelig langt borte” og inn til en avstand R
+Side 21
+
+-- 21 of 53 --
+
+fra q, finner vi ut hvor mye arbeid vi m˚a gjøre p˚a q0 for ˚a f˚a den til ˚a flytte seg inn
+dit, og dette er alts˚a den potensielle energien vi har gitt til q0 som er blitt lagret i
+feltet fra q. Merk at 1
+r2 = r−2, s˚a integralet blir 1
+−2+1 r−2+1 = −r−1 = − 1
+r , og merk
+ogs˚a at vi integrerer baklengs n˚ar vi g˚ar fra uendelig ned til R, og at 1
+∞ er null:
+W =
+Z R
+∞
+dW
+=
+Z R
+∞
+F dr
+=
+Z R
+∞
+− qq0
+4πϵ0
+· 1
+r2 dr
+= − qq0
+4πϵ0
+Z R
+∞
+1
+r2 dr
+= − qq0
+4πϵ0
+
+− 1
+r
+R
+∞
+= − qq0
+4πϵ0
+
+− 1
+R − (− 1
+∞ )
+
+= qq0
+4πϵ0
+· 1
+R
+= qq0
+4πϵ0R
+Dersom ladningene hadde hatt forskjellig fortegn, kunne vi ha gjort den samme
+utregningen og endt opp med samme uttrykk, som da hadde resultert i et negativt
+arbeid. Tolkningen av d´et er at da er det feltet som gjør arbeidet, og vi som holder i
+mot og stjeler energien — og hvis vi holder i mot p˚a en smart m˚ate, f.eks. ved hjelp
+av en fjær, kan vi gi energien tilbake til feltet etterp˚a. Den potensielle energien er
+da høy n˚ar ladningene er langt fra hverandre, og vi kan gi q0 potensiell energi ved ˚a
+dytte den lengre unna q.
+Fordi statiske elektriske felter (de som skapes av stillest˚aende ladninger hvor lad-
+ningsmengden ikke endrer seg over tid) er konservative (conservative), er det slik at
+arbeidet som er nødvendig for ˚a flytte en ladning q0 fra uendelig langt unna inn til
+et punkt som ligger i en avstand R fra q er stiuavhengig (path independent) — det
+eneste som har noe ˚a si er avstanden R og størrelsene p˚a de to ladningene. (Mate-
+matikken for ˚a bevise dette er langt utenfor pensum.) Det betyr ogs˚a at det ˚a flytte
+en ladning mellom to punkter hvor ingen av dem er uendelig langt borte ogs˚a er
+stiuavhengig: hvis det ˚a flytte ladningen fra uendelig til et punkt i avstand R krever
+Side 22
+
+-- 22 of 53 --
+
+arbeidet WR uansett hvilken vei man g˚ar, og det ˚a flytte ladningen fra uendelig til
+et punkt i avstand S krever arbeidet WS uansett hvilken vei man g˚ar, m˚a det kreve
+arbeidet WS − WR ˚a flytte ladningen fra R til S, fordi enhver vei fra R til S kunne
+ha vært den siste delen av en vei fra uendelig til S. S˚a uansett stien ladningen q0
+beveger seg langs vil vi m˚atte gjøre følgende arbeid for ˚a flytte den fra et punkt i
+avstand R fra q til et punkt i avstand S:
+W = qq0
+4πϵ0S − qq0
+4πϵ0R
+Dette arbeidet omsettes til endring i potensiell energi for q0 (lagret i feltet fra q),
+som p˚a formelarket kalles ∆U , s˚a ∆U = W .
+4.2.2 Elektrisk potensial
+Akkurat som da vi definerte elektrisk felt kan vi n˚a prøve ˚a gjøre oss uavhengige av
+q0, for ˚a finne ut hvor mye arbeid som feltet fra q kommer til ˚a gjøre per ladningsenhet
+som flytter seg gjennom feltet fra uendelig avstand og inn til en avstand R fra q.
+Denne størrelsen kaller vi elektrisk potensial eller elektrisk spenning, med symbolet
+V og enheten V (volt):
+V = W
+q0
+= qq0
+4πϵ0Rq0
+= q
+4πϵ0R
+Merk at formelarket bruker liten r for avstanden fra q; vi brukte stor R fordi vi treng-
+te den lille r’en som integrasjonsvariabel. Men n˚a som vi er ferdige med utregningen
+v˚ar, kan vi skrive den som i formelarket:
+V = q
+4πϵ0r
+Spenningen fra en ladning sprer seg utover i det uendelige — men i motsetning
+til elektrisk feltstyrke, hvor styrken firedeles n˚ar man er dobbelt s˚a langt unna, blir
+spenningen bare halvert n˚ar man er dobbelt s˚a langt unna. Spenningen fra en positiv
+ladning er alltid positiv, og er sterkere jo nærmere man befinner seg ladningen og
+svakere jo lengre unna man befinner seg (s˚a den synker utover). Spenningen fra en
+negativ ladning er alltid negativ, og selv om den ogs˚a er sterkere i absoluttverdi
+jo nærmere man befinner seg ladningen og svakere i absoluttverdi jo lengre unna
+man befinner seg, øker den utover fordi tallene er negative. Positive ladninger som
+plasseres inn i et spenningsfelt vil trekkes mot omr˚ader med lavere spenning, og
+negative ladninger vil trekkes mot omr˚ader med høyere spenning.
+Spenningen uttrykker hvor mye energi som m˚a brukes per ladningsenhet for ˚a
+flytte en ladning fra uendelig langt inn til en avstand R; denne energien kan man
+se for seg at er “lagret” i feltet, siden feltet vil gjøre arbeid p˚a ladningen hvis vi
+slipper den og gradvis gi energien tilbake — alts˚a potensiell energi per ladning!
+Side 23
+
+-- 23 of 53 --
+
+N˚a er det sjelden at vi faktisk skal dytte en ladning hele veien fra uendelig, men
+det flotte med spenning er at vi kan bruke den til ˚a regne p˚a differanser mellom
+potensiell energi (akkurat som vi kan gjøre med potensiell tyngdeenergi). Dermed
+har vi en snarvei til ˚a regne p˚a arbeid i elektriske felter. Spenningsforskjellen, ogs˚a
+kjent som spenningsfallet (selv hvis det er en stigning) eller potensialforskjellen, fra
+et punkt i avstand r0 fra en punktladning q til et punkt i avstand r1 fra den samme
+punktladningen, er:
+∆V = q
+4πϵ0r1
+− q
+4πϵ0r0
+(Det er kanskje litt forvirrende at vi satte p˚a en ∆ her, men ikke da vi regnet p˚a
+arbeidet gjort mellom to forskjellige punkter. Det er fordi spenningen V faktisk
+“befinner” seg overalt i rommet, med forskjellige verdier p˚a forskjellige steder, s˚a vi
+m˚a se forskjell p˚a absolutt spenning V i et punkt og spenningsforskjellen ∆V mellom
+to punkter. Men arbeid er noe som “gjøres” over tid, s˚a selv om man kan skille p˚a
+totalt arbeid som er gjort og et “delarbeid” som gjøres over en kortere tid, er det
+mindre vanlig ˚a bruke ∆W . S˚a vær oppmerksom p˚a at W noen ganger refererer til
+“alt arbeidet” og noen ganger til “delarbeid”.)
+Merk at det er nettopp spenningsforskjellen ∆V som vi pleier ˚a være interessert
+i — den “absolutte” spenningen V er sjelden av interesse siden det er sjelden at vi
+faktisk flytter en partikkel hele veien inn fra uendelig langt borte. Valget av uendelig
+som utgangspunkt da vi definerte spenning skyldes at det forenklet utregningene,
+men man kunne godt ha tatt utgangspunkt i en annen avstand enn uendelig — da
+ville man ha f˚att forskjellige verdier for den absolutte spenningen overalt, men de
+samme verdiene for spenningsforskjellen mellom to hvilke som helst punkter.
+N˚ar du har regnet ut spenningsforskjellen, kan du lett finne b˚ade arbeidet og
+endringen i potensiell energi slik:
+∆U = W = q0∆V
+Denne formelen kan du bruke i alle situasjoner hvor det er snakk om en spennings-
+forskjell mellom to punkter (selv hvis feltet ikke kommer fra en punktladning) og
+du trenger ˚a finne arbeidet som er nødvendig for ˚a flytte en ladning q0 mellom de
+punktene.
+Merk at spenning er en skalarstørrelse, og at “absolutte” spenninger fra forskjellige
+ladninger kan adderes s˚a lenge de er regnet ut fra samme nullpunkt (dette gjelder
+da alle spenninger som er regnet ut med V = q
+4πϵ0r , hvor nullpunktet er uendelig
+langt borte).
+4.2.3 Elektrisk strøm
+Resten av denne teksten kommer til ˚a handle mye om strøm (current), som er
+ladninger i bevegelse. Som regel snakker vi om strøm gjennom en leder (conductor )
+Side 24
+
+-- 24 of 53 --
+
+(vanligvis en ledning av metall). Dersom vi stiller oss ved et punkt p˚a lederen og
+m˚aler hvor mye ladning som passerer det punktet, og bruker q(t) for ˚a angi mengden
+ladning som har passert etter tid t, vil strømmen I ved tidspunkt t være:
+I = dq
+dt
+I situasjoner hvor det er en jevn flyt av ladning er strømmen konstant, og man kan
+bare skrive:
+I = q
+t
+Det er viktig ˚a huske p˚a at strømretningen er retningen til som de positive ladnin-
+gene beveger seg i. Dette gjelder selv n˚ar det er snakk om strøm i en metalledning,
+hvor det egentlig er de negative elektronene som beveger p˚a seg — strømretningen
+er da det motsatte av retningen elektronene beveger seg i.
+4.2.4 Elektrisk effekt
+Vi kan ogs˚a bruke spenningen til ˚a regne p˚a elektrisk effekt (electric power ): energi
+per tid. Hvis vi flytter en ladning q langs et spenningsfall V (av en eller annen
+grunn pleier man ikke ˚a bruke ∆ n˚ar man snakker om effekt), gjøres alts˚a arbeidet
+W = qV . Effekten P avhenger av hvor lang tid dette tar, og ladningsforflytning per
+tid er jo lik strøm, s˚a da f˚ar vi:
+P = W
+t = qV
+t = V I
+Dette gjelder for alle typer kretselementer, men akkurat for motstander kan vi bruke
+Ohms lov (som dekkes senere) V = RI til ogs˚a ˚a f˚a P = RI2 og P = V 2
+R .
+I situasjoner hvor spenningen og/eller strømmen varierer over tid, m˚a man i ut-
+gangspunktet bruke integrasjon dersom man vil finne den gjennomsnittlige effekten
+over tid. Denne kan være kjekk ˚a vite, siden man kan gange den med en tid t for
+˚a finne total energi forbrukt i det tidsrommet, og den kan brukes til ˚a sammenlig-
+ne situasjonen med en lignende likestrømssituasjon. Dersom man har en sinusfor-
+met vekselspenning med maksimal spenning V0, er spenningen p˚a et tidspunkt t lik
+V = V0 sin t. Dersom denne vekselspenningen settes over en motstand med resistans
+R, vil strømmen være I = I0 sin t, hvor I0 = V0
+R . Da vil P = V I = V0I0 sin2 t, og hvis
+vi integrerer dette fra t = 0 til t = 2π (´en periode), f˚ar vi W = πV0I0 (integrering av
+effekt over tid gir arbeid). Den gjennomsnittlige effekten (totalt arbeid delt p˚a tiden
+som vi integrerte over) blir da P = W
+2π = 1
+2 V0I0 (i motsetning til formelarket setter vi
+strek over P for ˚a gjøre det klart at dette er et gjennomsnitt). Dette kan skrives om
+Side 25
+
+-- 25 of 53 --
+
+til P = 1	√2 V0 · 1	√2 I0, som er interessant fordi 1	√2 V0 er det man f˚ar hvis man integrerer
+V 2 = V 2
+0 sin2 t fra 0 til 2π, deler p˚a 2π for ˚a f˚a gjennomsnittet av V 2 over ´en peri-
+ode, og s˚a tar kvadratrot. Denne operasjonen (˚a ta kvadratroten av gjennomsnittet
+av integralet av kvadratet av en funksjon) kalles root mean square, forkortet RMS.
+Tilsvarende er RMS av strømmen over en periode lik 1	√2 I0. Formelarket benytter
+seg av dette, og skriver:
+P = 1
+2 V0I0 = VrmsIrms
+4.3 Kondensatorer
+4.3.1 Elektrisk felt i platekondensatorer
+En kondensator (capacitor ) er et kretselement som kan lagre ladninger og slippe
+dem ut igjen senere. Dette kan man tenke p˚a som at man kan fylle opp en vanntank
+med vann og s˚a slippe vannet ut igjen senere. ´En m˚ate ˚a gjøre dette p˚a er ˚a ha
+to parallelle metallplater nært inntil hverandre, og koble dem til hver sin ledning.
+Hvis man f.eks. setter dette inn i en krets med et batteri og en motstand, vil det
+begynne ˚a g˚a en strøm “gjennom” kondensatoren, men det som egentlig skjer er
+at elektronene som kommer inn p˚a den ene siden vil samle seg opp p˚a platen, og
+elektroner vil “stjeles” fra den andre platen og strømme ut fra den andre siden. Med
+en gang det begynner ˚a skje, vil det oppst˚a et elektrisk felt fordi vi f˚ar et overskudd
+av elektroner p˚a den ene platen (netto negativ ladning) og et underskudd p˚a den
+andre siden (netto positiv ladning). Det vil da ogs˚a oppst˚a en elektrisk spenning,
+som gjør at vi m˚a begynne ˚a bruke arbeid p˚a ˚a f˚a dyttet flere elektroner inn p˚a den
+negative platen og trukket flere elektroner ut av den positive; s˚a lenge vi fortsetter
+med dette, vil spenningen øke og øke og gjøre det tyngre og tyngre ˚a opprettholde
+ladningsstrømmen. P˚a grunn av dette vil strømmen i kretsen v˚ar gradvis synke fordi
+mer og mer av spenningen fra batteriet m˚a brukes p˚a kondensatoren, s˚a det blir
+mindre igjen til ˚a drive strøm gjennom motstanden, men dette kommer vi tilbake
+til.
+Hvert enkelt overskuddselektron i den negative platen lager et vanlig radielt (ra-
+dial ) (innover fra alle retninger) elektrisk felt (det gjør ogs˚a alle elektronene som
+opprinnelig befant seg i platen, men deres felt blir kansellert av de positive ladninge-
+ne, dvs. protonene i metallatomene). Men det kombinerte feltet fra alle elektronene
+som er spredt utover platen vil peke vinkelrett innover mot platen (fordi de sideleng-
+se komponentene av feltet fra hvert elektron blir kansellert av feltene fra elektronene
+ved siden av), med feltlinjer som er parallelle med hverandre (bortsett fra helt p˚a
+kantene, men det ser vi bort fra), og s˚a lenge vi er ganske nærme platen kan vi regne
+med at feltstyrken er like stor uansett avstand fra platen. Tilsvarende vil overskudds-
+protonene p˚a den positive platen lage et felt med parallelle linjer vinkelrett ut fra
+platen. Mellom platene peker de to feltene samme vei, og vil derfor samarbeide; p˚a
+utsiden peker de hver sin vei, og kansellerer hverandre.
+Side 26
+
+-- 26 of 53 --
+
+Gauss’ lov er en veldig fascinerende lov som sier at den elektriske fluksen ΦE
+(“mengden” elektrisk felt) gjennom en hvilken som helst lukket flate som omslutter
+en ladning Q er ΦE = Q
+ϵ0 . Denne loven er ikke lenger pensum fordi den oftest krever
+vektorintegrasjon, men her skal vi bruke den p˚a en forenklet m˚ate. Hvis vi tenker oss
+at vi tegner en boks rundt den ene platen i en platekondensator, vil det elektriske
+feltet g˚a vinkelrett ut gjennom den siden som vender mot den andre platen; denne
+siden har samme areal A som platen. Den elektriske fluksen fra et felt som st˚ar
+vinkelrett p˚a en flate er ΦE = EA, s˚a da er E = ΦE
+A = Q
+ϵ0A . Størrelsen Q
+A kalles
+ladningstetthet per areal (charge density per area), med symbol σ. Advarsel: i noen
+andre situasjoner snakker man om ladningstetthet per lengde eller per volum, men
+bruker samme symbol; σ har ogs˚a en helt annen betydning, som kalles konduktivitet
+(conductivity) og kommer i seksjon 4.4.2. Vi st˚ar da igjen med at det elektriske feltet
+inni en platekondensator med areal A og ladningstetthet σ er:
+E = Q
+ϵ0A = σ
+ϵ0
+(Merk: i formelarket har de skrevet ϵ i stedet for ϵ0 for ˚a ta høyde for dielektrika,
+som vi dekker nedenfor.)
+Den samme utledningen kan brukes til ˚a finne den elektriske feltstyrken fra en
+enkelt ladet plate som ikke er en del av en platekondensator (eller et uendelig stort
+ladet plan; da gir det ikke mening ˚a snakke om total ladning, s˚a vi m˚a holde oss til
+ladningstetthet). Uten feltet fra den andre platen vil vi se et halvparten s˚a stort felt
+p˚a den ene siden (fordi vi mister “samarbeidet” fra den andre platen), og p˚a den
+andre siden vil ikke lenger feltene fra de to platene kansellere hverandre, s˚a der er
+n˚a feltet like sterkt som p˚a den første siden. Feltstyrken er alts˚a halvparten av det
+det var i kondensatoren, p˚a grunn av det doble arealet som feltet m˚a spre seg over:
+E = Q
+ϵ0·2A = σ
+2ϵ0 .
+4.3.2 Arbeid og spenning i platekondensatorer; kapasitans
+Tilbake til platekondensatorer: hvor stor er spenningen mellom platene? Siden spen-
+ning er potensiell energi per ladning, kan vi finne spenningen ved ˚a regne p˚a hvor
+mye arbeid som krevdes for ˚a lade opp kondensatoren. La oss tenke oss at vi prøver
+˚a flytte en ørliten negativ ladning q0 (f.eks. et enkelt elektron) strekningen d fra
+den positive platen til den negative. I en platekondensator er feltstyrken p˚a ethvert
+tidspunkt uniform overalt i rommet mellom platene, s˚a ladningen bli utsatt for en
+kraft F = q0E fra feltet som prøver ˚a dytte ladningen tilbake til den positive platen,
+s˚a vi m˚a bruke en tilsvarende stor kraft rettet mot den negative platen for ˚a klare
+˚a flytte ladningen. Vi tenker oss at forflytningen skjer s˚a raskt at feltstyrken holder
+seg konstant i tiden det tar ˚a flytte ladningen; da blir kraften konstant, og arbeidet
+som kreves er:
+W = F d = q0Ed = q0
+q
+ϵ0A d
+Side 27
+
+-- 27 of 53 --
+
+hvor q er den totale ladningen som har blitt flyttet mellom platene hittil (m˚alt ved ˚a
+se p˚a overskuddsladningen p˚a den positive platen, som er det negative av ladningen
+til alle elektronene som er blitt flyttet derfra til den negative platen). Spenningen til
+enhver tid er dermed:
+V = W
+q0
+= q0qd
+ϵ0Aq0
+= qd
+ϵ0A = σd
+ϵ0
+= Ed
+Her vil noen kanskje p˚apeke at vi ikke kan flytte ladninger direkte fra den ene
+platen til den andre gjennom rommet mellom platene, og det er riktig; vi m˚a egentlig
+flytte dem hele veien gjennom kretsen som forbinder de to platene — men fordi
+arbeid i statiske elektriske felter er stiuavhengig, vil resultatet bli det samme.
+V = qd
+ϵ0A er et interessant resultat: spenningen over en platekondensator er pro-
+porsjonal med ladningen! (Dette viser seg ˚a gjelde for alle typer kondensatorer, selv
+om denne utledningen var spesifikk for platekondensatorer.) Vi kunne ogs˚a skrevet
+dette som q = ϵ0A
+d V , og vi definerer denne proporsjonalitetsfaktoren som denne kon-
+densatoren sin kapasitans (capacitance), med symbol C og enhet F (farad, som kan
+uttrykkes som C
+V eller A2·s4
+kg·m2 ):
+C = ϵ0A
+d
+Grunnen til at vi brukte denne brøken i stedet for inversen d
+ϵ0A er at vi har lyst til
+at større kapasitans skal bety at kondensatoren klarer ˚a holde p˚a mer ladning ved
+en gitt spenning. Dermed f˚ar vi denne sammenhengen for kondensatorer:
+q = CV
+Tilbake igjen til situasjonen hvor vi lader opp en platekondensator: den lille lad-
+ningen dq som vi n˚a har flyttet vil føre til at q, og dermed E og V , øker litt. Arbeidet
+dW som vi m˚atte gjøre for ˚a oppn˚a dette kan uttrykkes som dW = V dq. Siden
+V varierer, m˚a vi integrere for ˚a finne det totale arbeidet som m˚atte til for ˚a f˚a
+ladningen opp til et endelig niv˚a Q:
+W =
+Z
+dW =
+Z Q
+0
+V dq =
+Z Q
+0
+q
+C dq = 1
+C
+Z Q
+0
+q dq = 1
+C
+ 1
+2 q2
+Q
+0
+= Q2
+2C = CV 2
+2 = QV
+2
+(Hvis du n˚a tenker at spenningen V burde ha vært lik W
+Q = Q2
+2CQ = Q
+2C , som ikke
+ville ha stemt overens med definisjonen av kapasitans, s˚a skyldes dette at spennin-
+gen har variert under oppladningen, og i gjennomsnitt har den vært halvparten av
+sluttspenningen.)
+Side 28
+
+-- 28 of 53 --
+
+4.3.3 Energitetthet i elektrisk felt
+Det virker litt for godt til ˚a være sant at en ladning q tilsynelatende bare kan sitte
+der og gjøre ubegrenset mye arbeid for oss ved at vi bare setter flere og flere ladninger
+q0, q1, q2 osv. inn i feltet slik at q gladelig vil dytte dem unna eller trekke dem til
+seg. Forklaringen p˚a dette er at ladningene ikke oppst˚ar fra intet — de har befunnet
+seg i feltet hele tiden, og hvis vi vil ha dem til ˚a være p˚a en bestemt plass, m˚a vi
+flytte dem dit. Hvis vi vil flytte en ladning q0 “mot” feltet (inn mot q hvis q0 har
+samme fortegn, eller bort fra q hvis ikke), m˚a vi gjøre arbeid for ˚a flytte q0 dit vi
+vil ha den, og da øker vi q0 sin potensielle energi, og n˚ar vi slipper q0, vil feltet fra
+q gi oss energien tilbake ved ˚a dytte q0 utover eller innover (ved hhv. likt eller ulikt
+fortegn). Eventuelt kan vi la feltet gjøre sitt arbeid først, og da m˚a vi bruke arbeid
+p˚a ˚a flytte q0 etterp˚a hvis vi vil ha den tilbake dit den kom fra. S˚a alt g˚ar i null
+til slutt, men vi kan tenke p˚a “arbeidsviljen” til et elektrisk felt som et resultat av
+arbeidet som ble gjort for ˚a bygge opp feltet ved ˚a flytte om p˚a ladningene slik at
+de er plassert p˚a den m˚aten vi vil og skaper det feltet vi ønsker.
+For ˚a regne p˚a dette, kan vi se p˚a en platekondensator igjen, for hele poenget
+med den er jo nettopp ˚a flytte om p˚a ladninger for ˚a skape et elektrisk felt. Vi
+har allerede funnet ut at arbeidet som kreves for ˚a lade opp en kondensator til ˚a
+inneholde ladningen Q, og dermed energien som er lagret i kondensatoren, blant
+annet kan uttrykkes som W = Q2
+2C . Som vi ogs˚a fant tidligere, er det elektriske feltet
+mellom platene i en platekondensator uniformt lik E = Q
+ϵ0A , som vi kan skrive om
+til Q = EAϵ0. Dessuten er C = ϵ0A
+d . Vi setter alt dette sammen:
+W = Q2
+2C = (EAϵ0)2
+2 ϵ0A
+d
+= d E2A2ϵ2
+0
+2ϵ0A = dA 1
+2 ϵ0E2
+Dette er alts˚a arbeidet som kreves for ˚a bygge opp feltet E i en platekondensator
+med plateavstand d og plateareal A. Vi kan se for oss at denne energien er jevnt
+fordelt i rommet mellom platene. Dette rommet har et volum dA, s˚a hvis vi deler
+bort det, st˚ar vi igjen med energi per volum, som vi kaller energitetthet (energy
+density), med symbolet uE og enheten J/m3:
+uE = 1
+2 ϵ0E2
+Det viser seg at denne formelen gjelder for alle elektriske felter, selv om de ikke er
+skapt av platekondensatorer.
+4.3.4 Kondensatorer og motstander i parallel og i serie
+Hvis vi parallellkobler n kondensatorer og setter dem inn i en krets, m˚a alle kon-
+densatorene nødvendigvis f˚a samme spenningsfall V over seg. Hvis kapasitansene er
+C1, C2, . . . , Cn, vil ladingene i kondensatorene være q1 = C1V , q2 = C2V osv. Den
+Side 29
+
+-- 29 of 53 --
+
+totale ladningen q er summen av disse, og kondensatorene vil samarbeide om ˚a skape
+følgende kapasitans:
+C = q
+V = q1 + q2 + · · · + qn
+V = q1
+V + q2
+V + · · · + qn
+V = C1 + C2 + · · · + Cn = X
+j
+Cj
+Alts˚a blir den totale kapasitansen større n˚ar man parallellkobler kondensatorer. Hvis
+platearealene er A1, A2, . . . , An, og alle har samme plateavstand d, oppfører parall-
+ellkoblede kondensatorer seg som ´en kombinert kondensator med plateavstand d og
+plateareal A = A1 + A2 + · · · + An = P
+j Aj .
+Hvis vi i stedet seriekobler kondensatorene, m˚a hver kondensator inneholde samme
+ladning, fordi det eneste stedet ladningene i en plate kan komme fra er platen i
+nabokondensatoren. Siden det er en seriekobling, blir den totale spenningen:
+V = V1 + V2 + · · · + Vn = q
+C1
++ q
+C2
++ · · · + q
+Cn
+Den kombinerte kapasitansen blir da:
+C = q
+V = q
+q
+C1 + q
+C2 + · · · + q
+Cn
+= 1
+1
+C1 + 1
+C2 + · · · + 1
+Cn
+=
+
+X
+j
+C−1
+j
+
+
+−1
+Alts˚a blir den totale kapasitansen mindre n˚ar man seriekobler kondensatorer. Hvis
+plateavstandene er d1, d2, . . . , dn, og alle har samme plateareal A, oppfører seriekob-
+lede kondensatorer seg som ´en kombinert kondensator med plateareal A og plateav-
+stand d = d1 + d2 + · · · + dn = P
+j dj .
+Vi merker oss at mostander fungerer omvendt: seriekobling av n motstander med
+resistansene R1, R2, . . . , Rn vil gi en kombinert resistans p˚a:
+R = R1 + R2 + . . . + Rn = X
+j
+Rj
+fordi den samme strømmen m˚a gjennom alle motstandene etter tur, mens parallell-
+kobling vil gi en kombinert resistans p˚a:
+R = 1
+1
+R1 + 1
+R2 + · · · + 1
+Rn
+=
+
+X
+j
+R−1
+j
+
+
+−1
+fordi strømmen kan fordele seg mellom de forskjellige motstandene og den totale
+resistansen dermed blir mindre.
+Side 30
+
+-- 30 of 53 --
+
+4.3.5 Elektriske felter i dielektrika
+Hvis man skyver inn en skive av et ikke-ledende materiale (kalt et dielektrikum (di-
+electric)) mellom de to platene i en platekondensator, vil det elektriske feltet svekkes
+med en konstant faktor (relativt til styrken feltet hadde i vakuumet som vi opprin-
+nelig antok at befant seg mellom platene) som avhenger av det dielektriske mediet.
+Dette skyldes at molekylene i dielektrikaet lar seg bli polarisert (polarized ), slik at de
+snur seg med den negative enden mot den positive platen og den positive enden mot
+den negative platen; da skaper molekylene i dielektrikaet sitt eget elektriske felt som
+delvis motarbeider feltet fra platene. Dette gjør ogs˚a at den elektriske spenningen
+synker, s˚a det blir lettere ˚a lade opp kondensatoren, og kapasitansen øker.
+Faktoren som sier hvor mye den elektriske feltstyrken blir redusert er større enn 1
+for alle dielektrika, og er definert som:
+ϵr = E0
+E
+hvor E0 er feltet som ville ha oppst˚att ved vakuum, E er det svakere faktiske feltet
+(som peker samme vei) n˚a som dielektrikaet er der, og r st˚ar for “relativ”. Den
+resulterende permittiviteten ϵ, som man m˚a bruke i stedet for ϵ0 i f.eks. Coulombs
+lov, blir:
+ϵ = ϵr ϵ0
+Merk at større permittivitet fører til svakere elektrisk felt og svakere elektrisk kraft.
+Merk ogs˚a at ϵr ikke har noen enhet (i motsetning til ϵ og ϵ0); det er bare et for-
+holdstall.
+4.3.6 RC-krets
+La oss lage en elektrisk krets med et batteri med en konstant spenning V , en kon-
+densator med kapasitans C og en motstand med resistans R, og hvor I betegner
+strømmen som eventuelt g˚ar gjennom kretsen. Ohms lov sier at spennigen over
+motstanden m˚a være VR = RI; definisjonen av kapasitans sier at spenningen over
+kondensatoren m˚a være VC = q
+C (hvor q er mengden ladning som har g˚att “gjen-
+nom” kondensatoren, dvs. som har blitt lagret p˚a den positive platen), og Kirchhoffs
+spenningslov sier at spenningene i en krets m˚a summere til null (eller, hvis vi bruker
+positivt fortegn for alle spenningene, at batterispenningen V m˚a være lik summen
+av de andre spenningene):
+V = VR + VC = RI + q
+C
+Ved ˚a skrive om dette f˚ar vi:
+I = V
+R − q
+RC
+Side 31
+
+-- 31 of 53 --
+
+Siden ladningene p˚a kondensatorplaten bare kan komme fra strømmen i kretsen,
+er strømmen det tidsderiverte av ladningen:
+I = dq
+dt
+Dermed f˚ar vi en diffligning hvor funksjonen er q(t):
+dq
+dt = V
+R − q
+RC
+Det som vil skje hvis kondensatoren er utladet og vi lukker kretsen er at det umid-
+delbart oppst˚ar en strøm I = V
+R , fordi q til ˚a begynne med er null. Etterhvert som
+tiden g˚ar vil strømmen i kretsen gradvis lade opp kondensatoren, som dermed vil f˚a
+en større og større spenning. Jo større spenningen over kondensatoren blir, jo mindre
+av spenningen fra batteriet er “til overs” til ˚a drive strøm gjennom motstanden, s˚a
+strømmen vil synke over tid. Til slutt (i teorien etter uendelig lang tid; i praksis
+etter ikke s˚a lenge) stopper strømmen helt opp fordi spenningen over kondensatoren
+er blitt like stor som batterispenningen, s˚a det er ikke noe spenning igjen til ˚a drive
+strøm gjennom motstanden. Da er I = dq
+dt = 0. La oss kalle ladningsmengden som
+da har samlet seg opp i kondensatoren for Q0. Da reduseres diffligningen til:
+V
+R = Q0
+RC
+Q0 = V C
+(som ikke er s˚a overraskende, siden dette er definisjonen av kapasitans). Vi merker
+oss at sluttilstanden med denne ladningsmengden i kondensatoren vil n˚as uansett
+verdien av R; det er bare et spørsm˚al om hvor lang tid det tar ˚a nærme seg Q0. For
+˚a finne ut hvor raskt oppladningen g˚ar, la oss omarrangere diffligningen:
+dq
+dt = V
+R − q
+RC
+dq
+dt = − 1
+RC (q − CV )
+1
+q − CV dq = − 1
+RC dt
+Det virker kanskje rart ˚a splitte opp derivasjonsbrøken p˚a denne m˚aten, men det
+er matematisk gyldig: tolkningen av det som st˚ar her er at hvis vi ser p˚a et ørlite
+tidsrom dt og multipliserer det med − 1
+RC , vil det gi samme resultat som om vi
+tar ladningsendringen dq som skjer i det samme tidsrommet og multipliserer med
+1
+q−CV . Det fine med denne formen er at n˚a kan vi integrere begge sidene. Vi velger
+˚a integrere dt-siden fra tiden 0 til T , og da m˚a vi integrere dq-siden fra ladningen
+Side 32
+
+-- 32 of 53 --
+
+som eksisterer ved tid 0 (som er 0) til ladningen som eksisterer ved tid T (som er
+det vi skal finne et uttrykk for, s˚a vi bare kaller den for Q):
+1
+q − CV dq = − 1
+RC dt
+Z Q
+0
+1
+q − CV dq =
+Z T
+0
+− 1
+RC dt
+[ln (q − CV )]Q
+0 =
+
+− t
+RC
+T
+0
+(se Rottmann:
+Z dx
+ax + b )
+ln
+ Q − CV
+−CV
+
+= − T
+RC (ln a − ln b = ln a
+b )
+Q − CV
+−CV = e− T
+RC (opphøyer e i begge sider)
+Q − CV = −CV e− T
+RC
+Q = CV − CV e− T
+RC
+Q = CV
+
+1 − e− T
+RC
+
+Q = Q0
+
+1 − e− T
+RC
+
+Vi definerer tidskonstanten for RC-krets som τ = RC, og døper om T til t (siden vi
+midlertidig brukte T bare fordi t ble brukt som integrasjonsvariabel), og f˚ar formelen
+for oppladning av kondensator i RC-krets:
+Q = Q0
+
+1 − e− t
+τ
+
+Vi merker oss at den stabile sluttilstanden for en kondensator som opplades i en
+RC-krets er at strømmen er null og at kondensatoren er blitt ladet opp med lad-
+ningsmengden Q0 = CV .
+4.3.7 Elektrisk dipolmoment
+OBS: I denne seksjonen har p en annen betydning enn i resten av denne teksten!
+Her betyr det elektrisk dipolmoment; overalt ellers betyr det bevegelsesmengde.
+Betrakt to ladninger q og −q i et elektrisk felt E. For enkelhets skyld antar vi her at
+det er q som er positiv. Vi trekker vektoren d fra −q til q. q vil bli p˚avirket av en kraft
+F1 = qE som peker i samme retning som E, og −q vil bli p˚avirket av en like stor kraft
+F2 = −qE = −F1 i motsatt retning. Med mindre ladningene er plassert parallelt med
+Side 33
+
+-- 33 of 53 --
+
+feltet, vil de to kreftene skape et dreiemoment om en (imaginær) rotasjonsakse som
+ligger midt imellom de to ladningene. Strekningen fra rotasjonsaksen til q er d
+2 , og
+fra rotasjonsaksen til −q er − d
+2 . Dreiemomentene blir da τ 1 = r1 × F1 = d
+2 × (qE)
+og τ 2 = r2 × F2 = − d
+2 × (−qE) = τ 1. Dreiemomentene samarbeider alts˚a: en
+dreiemomentvektor beskriver aksen og retningen til rotasjonen som dreiemomentet
+prøver ˚a skape, og her peker begge dreiemomentvektorene i samme retning. Det
+totale dreiemomentet er τ = τ 1 + τ 2 = τ 1 + τ 1 = 2τ 1 = 2 d
+2 × (qE) = d × (qE) =
+qd × E. Størrelsen qd kalles det elektriske dipolmomentet (electric dipole moment)
+for denne dipolen (akkurat disse to ladningene i denne avstanden), med symbol p
+og enhet Cm (coulomb-meter):
+p = qd
+og ved hjelp av p blir uttrykket for dreiemomentet som virker p˚a en elektrisk dipol
+i et elektrisk felt:
+τ = p × E
+Hvis vi vil unng˚a vektorer kan vi skrive
+τ = pE sin θ = qdE sin θ
+hvor θ er vinkelen mellom feltlinjene og strekningen fra den negative til den positive
+ladningen.
+Vi kan ogs˚a regne p˚a den potensielle energien som ligger i en elektrisk dipol i et
+elektrisk felt. Vi velger nullpunktet til ˚a være der hvor dipolen st˚ar vinkelrett p˚a
+feltet (husk at med potensielle energier er ikke selve det potensielle energiniv˚aet
+viktig, men heller differansen mellom de potensielle energiniv˚aene p˚a to forskjellige
+punkter). For ˚a vri dipolen “mot” feltet slik at q havner “lengst inne” i forhold til
+feltlinjene og −q havner “lengst ute”, m˚a vi flytte hver ladning strekningen d
+2 mot
+feltet (siden vi m˚a gjøre dette ved ˚a vri dipolen, kommer hver ladning til ˚a gjøre
+en sirkelbevegelse, med strekningen dπ
+4 , men det viktigste her er hvor langt den
+flytter seg parallelt med feltlinjene). For ˚a f˚a til det m˚a vi gjøre arbeidet qE d
+2 per
+partikkel (formelen for arbeid i elektriske felter er jo vanligvis W = qEd, men her er
+strekningen bare d
+2 ), alts˚a totalt W = 2 · qE d
+2 = qdE = pE for de to partiklene til
+sammen. Dette er ogs˚a arbeidet vi m˚atte ha gjort for ˚a vri dipolen fra den motsatte
+posisjonen og bort til “nullposisjonen”. S˚a pE er den maksimale potensielle energien
+(n˚ar dipolmomentet, som peker fra −q til q, peker i motsatt retning av feltet), og
+−pE er den minimale potensielle energien (n˚ar dipolmomentet peker i samme retning
+som feltet). For andre retninger av dipolmomentet kan vi bruke cosinus til ˚a finne
+ut i hvilken grad det er parallelt med feltet, men vi trenger et minustegn fordi den
+potensielle energien er negativ n˚ar dipolmomentet peker med feltet og positiv n˚ar
+den peker mot feltet:
+U = −pE cos θ
+eller p˚a vektorform:
+U = −p · E
+Side 34
+
+-- 34 of 53 --
+
+4.4 Resistans, resistivitet, konduktans og konduktivitet
+4.4.1 Resistans og resistivitet
+OBS: I denne seksjonen har σ en annen betydning enn i resten av denne teksten!
+Her betyr det konduktivitet; overalt ellers betyr det ladningstetthet.
+Hittil har vi jobbet med størrelsen resistans (resistance), ogs˚a kjent som mot-
+stand, med symbolet R og enheten ohm (Ω eller kg·m2
+A2·s3 ). Enhver resistans er knyttet
+til en spesifikk kretskomponent som upraktisk nok ogs˚a heter motstand p˚a norsk
+(men resistor p˚a engelsk), som vi midlertidig skal kalle for motstandskomponent i
+denne seksjonen for ˚a unng˚a sammenblanding; vi skal ogs˚a holde oss til begrepet
+resistans. La oss se p˚a en spesifikk motstandskomponent med resistans R, lengde
+l og tverrsnittareal A (som m˚a være det samme langs hele lengden, s˚a formen p˚a
+motstandskomponenten m˚a være en stav med jevnt tverrsnitt, f.eks. en sylinder
+eller et prisme). Hvis vi gjør motstandskomponenten dobbelt s˚a lang (2l) ved ˚a leg-
+ge til mer materiale, vil vi se at resistansen dobles til 2R. Hvis vi i stedet dobler
+tverrsnittarealet til motstandskomponenten (2A) ved ˚a legge til mer materiale, ser
+vi at resistansen i stedet halveres til R
+2 . Dette tyder p˚a at selve materialet som
+motstandskomponenten er laget av har en egenskap som er kilden til resistansen.
+Vi kaller denne egenskapen for resistivitet (resistivity) med symbolet ρ og enheten
+ohmmeter (Ω · m eller kg·m3
+A2·s3 ), og ut fra observasjonene over ser vi at den henger
+sammen med resistans slik:
+R = ρ l
+A
+N˚ar vi kjenner resistiviteten til materialet som en motstandskomponent er laget av,
+kan vi alts˚a finne resistansen til akkurat den motstandskomponenten, og vi ser at den
+er proporsjonal med lengden og inversproporsjonal med tverrsnittarealet. Dessuten
+er resistansen proporsjonal med resistiviteten. Vi kan ogs˚a bruke denne formelen p˚a
+elektriske ledere; vanligvis gjør vi jo en forenkling ved ˚a anta at resistansen til en
+leder er null, men den er egentlig ikke det, og noen ganger kan det være aktuelt ˚a
+regne p˚a resistansen og resistiviteten til en leder (typisk i form av en metalledning).
+Resistiviteten i seg selv viser seg ˚a henge sammen med temperaturen til materialet
+som motstandskomponenten er laget av. Hvis vi m˚aler resistiviteten (indirekte via
+˚a m˚ale resistansen) til en motstandskomponent ved temperatur T0 og finner ut at
+den er ρ0, viser deg seg at resistiviteten ρ ved en annen temperatur T er:
+ρ = ρ0 (1 + α(T − T0))
+hvor α kalles temperaturkoeffisient (temperature coefficient), og avhenger av mate-
+rialet. Fordi resistansen til en spesifikk motstandskomponent er proporsjonal med
+resistiviteten til materialet den er laget av, f˚ar vi ogs˚a følgende (som er den varianten
+som st˚ar p˚a formelarket):
+R = R0 (1 + α(T − T0))
+Side 35
+
+-- 35 of 53 --
+
+Siden disse formlene involverer temperaturdifferanser, ikke absolutte temperaturer,
+kan vi velge om vi oppgir temperaturene i celsius eller i kelvin.
+4.4.2 Konduktans og konduktivitet
+Noen ganger ønsker man ˚a forholde seg til hvor godt et materiale eller en mostands-
+komponent leder strøm, i stedet for hvor gode de er til ˚a motsette seg strøm. Derfor
+har man ogs˚a definert et begrep for inversen til resistivitet (som alts˚a er en egen-
+skap ved et materiale): konduktivitet (concuctivity), med symbol σ (m˚a alts˚a ikke
+forveksles med ladningstetthet, som dessverre bruker det samme symbolet) og enhet
+siemens per meter ( S
+m eller A2·s3
+kg·m3 ). Den henger sammen med resistivitet slik:
+σ = 1
+ρ
+Og resistans kan uttrykkes fra konduktivitet slik:
+R = ρ l
+A = l
+σA
+Merk at formelarket tvetydig skriver R = l/σA, men A er alts˚a under brøkstreken,
+ikke utenfor brøken.
+Tilsvarende har man ogs˚a definert et begrep for inversen til resistans (som alts˚a
+er en egenskap ved en spesifikk motstandskomponent): konduktans (conductance),
+med symbol G og enhet siemens (S eller A2·s3
+kg·m2 ). Den henger sammen med resistans
+slik:
+G = 1
+R
+Ved ˚a sette sammen de to siste formlene ser vi at konduktans og konduktivitet henger
+sammen slik:
+G = σA
+l
+4.4.3 Konduktivitet og elektrisk felt
+Det viser seg at konduktiviteten henger tett sammen ikke bare med strøm (via re-
+sistans), men med elektrisk felt — og det er kanskje ikke s˚a overraskende at et
+elektrisk felt er nettopp det som driver en elektrisk strøm. Men feltet styrer ikke
+selve strømmen; den styrer strømtettheten (current density), som er strøm per areal.
+Den egentlige definisjonen av strømtetthet involverer et flateintegral, men hvis vi
+har et uniformt elektrisk felt som g˚ar parallelt med en leder som har uniform lad-
+ningstetthet og vi ser p˚a et tverrsnitt av lederen har areal A og hvor vinkelen mellom
+det elektriske feltet og normalvektoren til tverrsnittet er θ, er strømtettheten j (med
+enhet A
+m2 ) definert slik:
+j = I
+A cos θ
+Side 36
+
+-- 36 of 53 --
+
+Hvis tverrsnittet st˚ar vinkelrett p˚a feltet, alts˚a at normalvektoren er parallell med
+feltet, blir det bare:
+j = I
+A
+Det kan vises at sammenhengen mellom strømtetthet, konduktivitet og elektrisk
+felt er:
+j = σE
+Hvis vi vil regne p˚a vektorform, er strømtettheten j parallell med det elektriske
+feltet:
+j = σE
+og den resulterende strømretningen er parallell med begge disse.
+Ut fra dette, pluss det at resistans og konduktivitet henger sammen via σ = l
+RA , og
+det at spenningen over en strekning l i et uniformt elektrisk felt er V = El (akkurat
+som i en platekondensator), f˚ar vi Ohms lov :
+j = σE
+I
+A = σ V
+l
+I
+A = l
+RA · V
+l
+I = V
+R
+V = RI
+4.4.4 Drudemodellen
+P˚a partikkelniv˚a viser det seg at opphavet til resistiviteten ρ (og dermed kondukti-
+viteten σ) er kollisjoner mellom elektroner i bevegelse (som utgjør selve strømmen)
+og de stasjonære atomkjernene. Vi innfører disse betegnelsene:
+ n er elektrontettheten, m˚alt i antall elektroner per kubikkmeter (med enhet
+1
+m3 )
+ τ (her brukt i en annen betydning enn n˚ar den brukes for tidskonstantene for
+RC-kretser og RL-kretser) er gjennomsnittlig tid mellom hver gang et elektron
+kolliderer med en atomkjerne
+ e er elektronladningen (ladningen til et enkelt elektron, som er lik for alle
+elektroner)
+ me er elektronmassen (massen til et enkelt elektron, som ogs˚a er lik for alle
+elektroner)
+Side 37
+
+-- 37 of 53 --
+
+Etter en del statistisk mekanikk kommer man frem til Drudemodellen, som gir oss
+sammenhengen mellom disse størrelsene og konduktiviteten:
+σ = ne2τ
+me
+4.5 Magnetfelt
+4.5.1 Magnetisk kraft p˚	a ladning i bevegelse
+En ladning som beveger seg relativt til et magnetfelt (noe som kan skje enten fordi
+ladningen beveger seg, eller fordi feltet beveger seg eller endrer styrke, eller av alle
+tre ˚arsakene) vil utsettes for en kraft. Denne kraften er proporsjonal med b˚ade
+ladningsstørrelsen, magnetfeltstyrken og hastigheten som ladningen beveger seg med
+(som medfører at en ladning som st˚ar stille i forhold til et statisk felt ikke vil bli
+p˚avirket). Det siste er kanskje overraskende, og det lønner seg ˚a ikke prøve ˚a relatere
+dette til hvordan man er vant med at magneter oppfører seg, fordi krefter mellom to
+magneter og krefter fra magneter p˚a større metallgjenstander oppfører seg annerledes
+enn krefter fra magneter p˚a sm˚a ladninger.
+Magnetkraftens retning vil være vinkelrett p˚a b˚ade bevegelsesretningen og mag-
+netfeltet, og den vil peke i retningen som høyreh˚andsregelen tilsier (la armen din
+peke i bevegelsesretningen, og la fire av fingrene peke i magnetfeltretningen; da vil
+tommelen peke i magnetkraftretningen). Derfor bruker vi kryssproduktet til ˚a ut-
+trykke magnetkraften:
+F = qv × B
+Uten vektorer kan vi skrive det slik, hvor θ er vinkelen mellom bevegelsesretningen
+og magnetfeltet:
+F = qvB sin θ
+Dette st˚ar indirekte p˚a formelarket, i kombinasjon med formelen for kraft fra elekt-
+risk felt, som til sammen danner Lorentzkraften:
+F = qE + qv × B = q(E + v × B)
+Dette minner oss om at en ladning godt kan bli p˚avirket av b˚ade en elektrisk kraft
+og en magnetisk kraft samtidig (s˚a lenge ladningen befinner seg i et omr˚ade som
+inneholder b˚ade et elektrisk felt og et magnetfelt, og ladningen er i bevegelse relativt
+til magnetfeltet eller magnetfeltet endrer styrke).
+Merk at hvis en ladning i bevegelse gjennom et magnetfelt endrer retning (f.eks.
+pga. kraften fra magnetfeltet), endrer magnetkraften retning deretter slik at den
+holder seg vinkelrett p˚a ladningens bevegelsesretning. Hvis vi skyter en ladning inn
+i et magnetfelt vinkelrett p˚a feltlinjene (og ingen andre krefter virker p˚a ladningen),
+vil vi derfor f˚a en sirkelbevegelse, fordi magnetkraften alltid vil virke vinkelrett
+Side 38
+
+-- 38 of 53 --
+
+p˚a ladningens bevegelsesretning. Formelen for sentripetalakselerasjon (centripetal
+acceleration) er as = v2
+r , og kombinert med Newtons 2. lov F = ma og formelen for
+magnetkraft F = qvB (vi kan droppe sinus siden hastigheten alltid er vinkelrett p˚a
+magnetfeltet) kan vi finne radiusen for en slik sirkelbevegelse:
+F = mas
+qvB = m v2
+r
+r = mv2
+qvB
+r = mv
+qB
+4.5.2 Magnetisk kraft p˚	a leder
+La oss betrakte en rett elektrisk leder av lengde L som befinner seg i et magnetfelt B,
+og hvor det g˚ar en strøm I gjennom lederen. (Denne lederen m˚a selvfølgelig være en
+del av en større krets som er sluttet, slik at det faktisk kan g˚a strøm, men vi trenger
+ikke ˚a bry oss om resten av kretsen her.) La oss tenke p˚a alle ladningene i den
+rette lederen som ´en stor ladning q. Strømmen I = q
+t er jo et uttrykk for mengden
+ladning som passerer et punkt per tid, s˚a hvis vi tenker p˚a lederen som et rør fullt av
+kuler, vil q være mengden kuler i røret og t være tiden det tar for alle kulene ˚a rulle
+ut av røret (det kommer jo hele tiden kuler inn fra den ene siden, men vi stopper
+tidtagingen n˚ar alle de opprinnelige kulene har rent ut). Siden ladningsmengden q
+bruker tiden t p˚a ˚a “renne” ut av en leder med lengde L, m˚a hastigheten til hver
+enkelt ladning være v = L
+t . Vi finner da det følgende uttrykket for kraften som q
+(dvs. hele den rette lederen) blir p˚avirket av:
+F = qv × B = Itv × B = It L
+t × B = IL × B
+Eller uten vektorer:
+F = ILB sin θ
+hvor θ er vinkelen mellom lederen (i strømretningen) og feltet, s˚a det blir ganske
+enkelt F = ILB dersom de st˚ar vinkelrett p˚a hverandre.
+Dette er alts˚a kraften som en rett, strømførende leder i et magnetfelt vil bli p˚avirket
+av. Dette er et spesialtilfelle av en mer generell formel, som ogs˚a fungerer p˚a ledere
+som ikke er rette, men som dessverre krever vektorintegrasjon:
+F = I
+Z
+L
+ds × B
+Side 39
+
+-- 39 of 53 --
+
+4.5.3 Magnetisk dipolmoment
+OBS: I denne seksjonen har m en annen betydning enn i resten av denne teksten!
+Her betyr det magnetisk dipolmoment; overalt ellers betyr det masse.
+La oss se p˚a en rektangulær strømsløyfe som befinner seg i et magnetfelt. Strømsløyfen
+ligger i xy-planet, med sidekant X i x-retning og Y i y-retning. Magnetfeltet har
+uniform feltstyrke B og peker til høyre parallelt med x-aksen. Hvis vi n˚a skrur p˚a
+en strøm I mot klokken i strømsløyfen, vil følgende skje i de fire delene av lederen:
+ Høyre kant: strømmen g˚ar i positiv y-retning, som er vinkelrett p˚a magnet-
+feltet. Dette vil skape en magnetisk kraft F1 = ILB = IY B p˚a lederen;
+høyreh˚andsregelen tilsier at denne peker i negativ z-retning (“innover i papir-
+arket”).
+ Øvre kant: strømmen g˚ar i negativ x-retning, som er parallelt med magnetfel-
+tet. Dette vil ikke skape noen magnetisk kraft.
+ Venstre kant: strømmen g˚ar i negativ y-retning, som er vinkelrett p˚a mag-
+netfeltet. Dette vil skape en magnetisk kraft F2 = ILB = IY B p˚a lederen;
+høyreh˚andsregelen tilsier at denne peker i positiv z-retning (“utover fra papir-
+arket”).
+ Nedre kant: strømmen g˚ar i positiv x-retning, som er parallelt med magnetfel-
+tet. Dette vil ikke skape noen magnetisk kraft.
+Den høyre og venstre kanten vil alts˚a bli trukket hhv. nedover og oppover av to like
+store krefter, med det resultat at sløyfen vil begynne ˚a rotere om en akse som g˚ar
+parallelt med y-aksen, fra midten av den nedre kanten til midten av den øvre kanten.
+De to lederene som blir p˚avirket av de magnetiske kreftene p˚a ligger alts˚a i avstand
+X
+2 fra aksen. Dreiemomentene som for˚arsaker rotasjonen er τ1 = X
+2 F1 = XIY B
+2 og
+τ2 = X
+2 F2 = XIY B
+2 ; de kan legges sammen fordi de begge forsøker ˚a skape rotasjon
+samme vei, s˚a det totale dreiemomentet blir τ = τ1 + τ2 = XIY B
+2 + XIY B
+2 = IXY B.
+Arealet til strømsløyfen er jo A = XY , s˚a vi f˚ar:
+τ = IAB
+Størrelsen IA kalles det magnetiske dipolmomentet til strømsløyfen, med symbolet
+m (som her alts˚a ikke betyr masse):
+m = IA
+Vi kan da skrive dreiemomentet p˚a strømsløyfen som:
+τ = mB
+Dipolmomentet er egentlig en vektorstørrelse, hvor vi ser p˚a overflaten A som en
+vektor som st˚ar normalt p˚a overflaten og som har en lengde som er like stor som
+Side 40
+
+-- 40 of 53 --
+
+arealet til overflaten:
+m = IA
+Hvis vi har N viklinger i stedet for en enkelt strømsløyfe, øker det magnetiske di-
+polmomentet (og dermed dreiemomentet og den potensielle energien) proporsjonalt
+med antallet viklinger: m = N IA.
+Hvilken side normalvektoren skal peke ut av overflaten er valgfritt, men høyre-
+h˚andsregelen brukt p˚a A-vektoren viser hva som skal regnes som positiv strømretning,
+og fortegnet til I m˚a velges deretter.
+Dersom strømsløyfen st˚ar fritt til ˚a rotere om aksen, vil dreiemomentet føre til
+at den begynner ˚a rotere — det er slik elmotorer fungerer. Siden vi har plassert
+strømsløyfen og aksen dens p˚a en slik m˚ate at den høyre og venstre sidekanten
+kommer til ˚a holde seg vinkelrette med feltet, kommer magnetkreftene til ˚a fortsette
+˚a trekke de to sidekantene hhv. oppover og nedeover (de andre to sidekantene vil
+bli presset innover med en gang sløyfen har rotert seg ut av xy-planet, men her blir
+nettokraften null siden de to kreftene motvirker hverandre). Siden de to sidekantene
+er tvunget til ˚a g˚a i en sirkelbevegelse, vil magnetkreftene føre til mindre og mindre
+dreiemoment jo større utslaget er; dette kan vi bruke sinus til ˚a ta høyde for. Dersom
+vinkelen mellom normalvektoren A og feltet B er θ (som til ˚a begynne med er π
+2
+n˚ar sløyfen er i xy-planet), f˚ar vi:
+τ = mB sin θ
+eller med vektorer:
+τ = m × B
+(N˚ar sløyfen har rotert et kvart omløp fra xy-planet, slik at θ = 0, vil dreiemomen-
+tet fra magnetkreftene bli null, og hvis sløyfen fortsetter ˚a rotere p˚a grunn av det
+rotasjonsmekaniske spinnet den har bygd opp, vil magnetkreftene n˚a presse sløyfen
+tilbake til topposisjonen i en oscillerende bevegelse. For ˚a lage en faktisk elmotor
+er man derfor nødt til ˚a bruke vekselstrøm, slik at strømmen snur n˚ar sløyfen har
+“n˚add toppen”; da snur magnetkraften og begynner ˚a presse sidekantene motsatt
+vei, slik at sløyfen blir rotert videre.
+Med samme logikk som for elektriske dipoler kan vi ogs˚a snakke om potensiell
+energi for magnetiske dipoler, og uttrykket for dette blir:
+U = −mB cos θ
+eller med vektorer:
+U = −m · B
+Side 41
+
+-- 41 of 53 --
+
+4.5.4 Magnetfelt fra ladning i bevegelse
+Enhver ladning i bevegelse skaper et magnetfelt (magnetic field ) som sprer seg utover
+i rommet (som ladningen ikke selv blir p˚avirket av, men hvis det allerede eksisterte
+et magnetisk felt i rommet, blir ladningen fortsatt p˚avirket av d´et, i tillegg til at den
+vil bli p˚avirket av et eventuelt elektrisk felt). I motsetning til elektriske felter fra
+punktladninger, som er radielle (de str˚aler utover), er magnetfelter fra punktladnin-
+ger i bevegelse sirkulære (de danner større og større konsentriske sirkler utover). En
+strømførende leder skaper den samme effekten, siden den inneholder mange enkelt-
+ladninger som beveger seg gjennom den. Hvis vi har en lukket leder med en strøm I
+og vi velger oss et punkt i rommet utenfor lederen, kan Biot-Savarts lov fortelle oss
+hvor stort magnetfelt B som skapes i det punktet av strømmen i ledersløyfen:
+B = μ0
+4π I
+Z ds × ˆr
+r2
+hvor μ0 kalles tomromspermeabiliteten (vacuum permeability), og sier noe om hvor-
+dan magnetfelter sprer seg i vaakum.
+Biot-Savarts lov er dessverre komplisert ˚a anvende: vi m˚a gjøre vektorintegrasjon
+langs hele den lukkede kurven som beskriver formen p˚a lederen, og løse krysspro-
+duktet mellom hvert lille stykke leder ds og enhetsvektoren ˆr som peker fra det lille
+lederstykket til punktet vi valgte. Heldigvis presenterer formelarket to situasjoner
+hvor resultatet blir forholdsvis enkelt. Hvis man har en lang, rett leder (egentlig
+uendelig lang, men resultatet blir fortsatt ganske riktig s˚a lenge punktet v˚art er ve-
+sentlig nærmere lederen enn lederen er lang — dessuten tenker vi oss at den delen
+av lederen som g˚ar tilbake for ˚a lukke kretsen er s˚a langt unna at vi kan ignorere
+magnetfeltet derfra), skaper lederen følgende magnetfelt i hvert punkt som ligger
+i radius r fra lederen (m˚alt fra punktet og vinkelrett inn til nærmeste punkt p˚a
+lederen):
+B = μ0I
+2πr
+(Formelarket bruker av en eller annen grunn x for avstanden, men det fungerer
+uansett retningen fra ledningen til punktet.) Hvis man i stedet har en sirkulær leder
+med radius R og velger et punkt som ligger langs en akse gjennom sentrum av
+sirkelen i avstand x fra sirkelsentrumet (her føles det mer naturlig ˚a bruke en annen
+variabel enn r, siden denne avstanden ikke har noe med en radius ˚a gjøre, men aksen
+trenger ikke faktisk ˚a være parallell med x-aksen), blir magnetfeltet i det punktet:
+B = μ0IR2
+2(x2 + R2)3/2
+som blir til
+B = μ0I
+2R
+Side 42
+
+-- 42 of 53 --
+
+akkurat i sirkelsentrumet. Vi merker oss at denne formelen (i motsetning til den
+for en rett leder) ikke inneholder π i nevneren, s˚a det at lederen kurver seg rundt
+punktet v˚art skaper et kraftigere magnetfelt enn om lederen bare g˚ar forbi punktet.
+4.5.5 Parallelle ledere
+Hvis vi setter opp to lange, parallelle ledere med samme lengde l i avstand r fra
+hverandre og setter opp strømmen I1 i den ene lederen og I2 i den andre, vil den ene
+lederen skape et magnetfelt som har styrken B1 = μ0I1
+2πr i det omr˚adet hvor den andre
+lederen ligger. Den andre lederen vil da bli p˚avirket av kraften F = I2lB1 = μ0I1I2l
+2πr .
+Tilsvarende utregning motsatt vei vil vise at den første lederen vil bli p˚avirket av
+en like stor kraft (som stemmer overens med Newtons 3. lov). Høyreh˚andsregelen
+viser at lederene vil tiltrekke hverandre hvis strømmene g˚ar samme vei og frastøte
+hverandre hvis de g˚ar hver sin vei.
+4.5.6 Magnetfelt i dielektrika
+I likhet med elektriske felt vil magnetfelt som sprer seg gjennom et dielektrikum
+svekkes med en konstant faktor (relativt til styrken det ville ha hatt i vakuum) som
+avhenger av det dielektriske mediet. Denne faktoren, som er større enn 1 for alle
+dielektrika, er definert som:
+μr = B0
+B
+hvor B0 er feltstyrken som ville ha oppst˚att ved vakuum, B er den svakere faktiske
+feltstyrken n˚a som dielektrikaet er der (men det svakere feltet er rettet samme vei
+som det originale), og r st˚ar for “relativ”. Den resulterende permeabiliteten μ, som
+man m˚a bruke i stedet for μ0 i formlene v˚are dersom magnetfeltet g˚ar gjennom et
+dielektrisk medium, blir:
+μ = μr μ0
+Merk at større permeabilitet fører til svakere magnetisk felt og svakere magnetisk
+kraft. Merk ogs˚a at i motsetning til μ og μ0 har μr ingen enhet; det er bare et
+forholdstall.
+4.6 Induksjon
+OBS: I denne seksjonen har L en annen betydning enn i rotasjonsmekanikk! Her
+betyr det selvinduktans, ikke spinn.
+4.6.1 Magnetisk fluks
+Betrakt en lukket ledersløyfe, og definer en hvilken som helst ˚apen flate som har
+lederen som sidekant (i dette faget holder vi oss til ledere som befinner seg i et
+plan, og velger alltid flaten som ligger i samme plan — med andre ord “arealet inni
+Side 43
+
+-- 43 of 53 --
+
+ledersløyfen”). Hvis sløyfen befinner seg i et magnetfelt, kan vi finne den magnetiske
+fluksen (magnetic flux ) gjennom flaten, som ganske enkelt er “hvor mye” magnetfelt
+som g˚ar gjennom flaten. Her har b˚ade magnetfeltstyrken, arealet av flaten og vinkelen
+mellom feltet og flaten noe ˚a si. Generelt sett er magnetisk fluks definert slik:
+Φ =
+Z
+B · dA
+Dette er nok et vektorintegral, men i situasjoner hvor vi har et uniformt magnetfelt
+og en plan flate kan vi forenkle det til:
+Φ = BA cos θ
+hvor θ er vinkelen mellom magnetfeltet og normalvektoren til flaten. Hvis magnet-
+feltet er parallelt eller antiparallelt med normalvektoren (dvs. vinkelrett p˚a flaten),
+blir det ganske enkelt
+Φ = BA
+hvis de er parallelle og
+Φ = −BA
+hvis de er antiparallelle. Vi f˚ar alts˚a negativ fluks n˚ar magnetfeltet g˚ar motsatt vei
+av normalvektoren. Det virker kanskje litt rart at fortegnet avhenger av retningen p˚a
+normalvektoren, siden vi kan velge vilk˚arlig hvilken side av flaten den skal peke ut av.
+Men det vil g˚a seg til fordi det vi skal bruke fluksen til vil uttrykkes relativt til nor-
+malvektoren, s˚a selv om du kan snu fortegnet p˚a fluksen ved ˚a snu normalvektoren,
+vil fortegnet snu seg tilbake i løpet av utregningen.
+4.6.2 Faradays induksjonslov
+La oss tenke oss at vi gradvis bygger opp et magnetfelt inni ledersløyfen fra forrige
+seksjon. Dette kan f.eks. gjøres ved ˚a dytte sløyfen inn i et konstant magnetfelt,
+eller ved ˚a endre formen eller posisjonen p˚a sløyfen slik at den dekker over mer
+eller mindre av et konstant magnetfelt som den allerede st˚ar inni, eller ved ˚a endre
+styrken, retningen eller posisjonen til magnetfeltet. Da vil vi observere at det oppst˚ar
+en strøm i sløyfen. Denne strømmen skyldes at endringen i magnetfeltet induserer
+en spenning i strømsløyfen. Dette kalles Faradays induksjonslov :
+∆V = − dΦ
+dt
+Dersom vi heller lager oss en strømspiral med N viklinger, vil vi observere at den
+induserte spenningen blir proporsjonalt sterkere:
+∆V = −N dΦ
+dt
+Side 44
+
+-- 44 of 53 --
+
+Vi merker oss at det vi ser p˚a er endringen i magnetisk fluks over tid, ikke selve
+fluksen, og at disse to noen ganger peker motsatt vei. Fortegnet er relativt til det
+som “rotasjonshøyreh˚andsregelen” sier at er positiv retning om flatevektoren. Det
+vil si: gjør et vilk˚arlig valg av hva som er “oppsiden” av flaten; tenk deg en normal-
+vektor som kommer ut av denne oppsiden, og grip om den med h˚anden slik at den
+utstrakte tommelen peker utover fra oppsiden av flaten; m˚aten de fire andre fingrene
+krummer seg om normalvektoren viser hva som er den positive rotasjonsretningen
+rundt normalvektoren. Bruk den samme retningen p˚a normalvektoren n˚ar du skal
+finne Φ og dΦ
+dt , og det resulterende fortegnet p˚a spenningen i Faradays induksjonslov
+forteller om spenningen er positiv (slik at positive ladninger blir dyttet med finger-
+retningen fra rotasjonshøyreh˚andsregelen) eller negativ (slik at positive ladninger
+blir dyttet mot fingerretningen). Hvilken indusert strøm dette resulterer i avhenger
+av resistansen i sløyfen (og resten av kretsen som den evt. er koblet til).
+En enklere ˚a m˚ate ˚a finne retningen p˚a den induserte strømmen kalles Lenz’ lov.
+Den sier at den induserte strømmen g˚ar den veien som gjør at magnetfeltet som
+strømmen skaper (ihht. Biot-Savarts lov) motvirker endringen i magnetfelt. For
+eksempel: hvis vi har en strømsløyfe i xy-planet og definerer at normalvektoren
+peker i positiv z-retning, og s˚a skaper en økende magnetisk fluks (dvs. mer og
+mer oppoverpekende magnetfelt) innenfor sløyfen, vil den induserte strømmen g˚a
+med 1 klokken (negativ omløpsretning) hvis man stiller seg ovenfor sløyfen og ser
+nedover i synkende z-retning. Dette er fordi en slik strøm vil skape et magnet-
+felt som peker nedover mot synkende z p˚a innsiden av sløyfen (dette ser vi ogs˚a
+via “rotasjonshøyreh˚andsregelen”, ved ˚a gripe om lederen med tommelen pekende i
+strømretningen; da krummer de fire andre fingrene seg i retning magnetfeltet), som
+alts˚a motvirker økningen i fluks oppover.
+Indusert spenning, som vi kaller ∆V her, kalles ofte for elektromotorisk kraft eller
+emf (for electromotoric force), med symbolet E.
+4.6.3 Spoler
+Hvis man lager en tett spiral med mange vindinger av en leder (hvor avstanden
+mellom hver vikling i spiralen er mye mindre enn radiusen i spiralen), har vi bygget
+en spole (inductor ). Hvis vi setter p˚a en strøm gjennom lederen, vil hver lille del av
+spiralen bidra til ˚a skape et magnetfelt som p˚a innsiden av spolen alltid peker den
+samme veien: parallelt med lengden av spolen (og retningen finner man via rota-
+sjonshøyreh˚andsregelen: hvis man ser inn gjennom spolen i en av lengderetningene
+og strømmen g˚ar med klokken, g˚ar feltet bort fra deg mot den andre siden; hvis
+strømmen g˚ar mot klokken, kommer feltet mot deg fra den andre siden). Via nok en
+lov som ikke lenger er pensum — Amp`eres lov (som sier at det samlede magnetfel-
+tet langs en lukket kurve er proporsjonalt med strømmen som omsluttes av kurven:
+1I notatene som det ble linket til p˚a eksamensforelesningen 06.05.2023 stod det mot her, som er
+feil.
+Side 45
+
+-- 45 of 53 --
+
+H
+C B · dl = μ0I) — kan man vise at feltstyrken avhenger av strømmen, antallet
+viklinger, og lengden av spolen:
+B = μN
+l I
+(Det st˚ar μ i stedet for μ0 for ˚a ta høyde for at det er vanlig ˚a sette inn et di-
+elektrisk medium i spolen.) Dette magnetfeltet er konstant overalt inni spolen. Flere
+viklinger innenfor den samme lengden gir et sterkere felt fordi den samme strømmen
+“gjenbrukes” for hver vikling til ˚a generere mer magnetfelt, og en kortere spole med
+samme antall viklinger gir et sterkere felt fordi magnetfeltene fra viklingene blir mer
+konsentrert.
+Magnetfeltet inni spolen treffer ogs˚a spirallederen som utgjør spolen. S˚a lenge
+strømmen er konstant, vil magnetkraften virke inn mot sentrum i spolen og dermed
+ikke klare ˚a gjøre noe arbeid p˚a ladningene i spolen (som er fanget inni lederen og
+ikke kan bevege seg inn mot sentrum av spolen). Men hvis strømmen øker, skjer noe
+interessant: siden magnetfeltet øker mens spolens tverrsnittareal holder seg konstant,
+vil fluksen gjennom spolen øke — og da sier Faradays induksjonslov at det vil bli
+indusert en spenning i spolen, og Lenz’ lov sier at den induserte spenningen vil
+skape en strøm som motvirker økningen i magnetisk fluks — alts˚a motvirker spolen
+strømøkningen som vi prøvde ˚a oppn˚a! (Som et alternativ til Lenz’ lov kan vi se for
+oss at n˚ar feltstyrken øker, blir feltlinjene tettere og tettere, og at dette skjer ved
+at hele magnetfeltet “presses sammen”; da vil feltlinjene fra hvert lille segment av
+spolen bevege seg innover mens de krysser segmentet p˚a den motst˚aende siden, og
+dette skaper en kraft p˚a ladningene som ihht. høyreh˚andsregelen vil prøve ˚a dytte
+ladningene tilbake i motsatt retning av strømmen. Dette er vanskelig ˚a beskrive
+tekstlig, s˚a man bør finne en illustrasjon...)
+La oss kalle tverrsnittarealet til spolen A. Siden feltet g˚ar parallelt med lengden
+av spolen, st˚ar det vinkelrett p˚a tverrsnittarealet, s˚a fluksen gjennom spolen er:
+Φ = BA = μN A
+l I
+Det eneste p˚a høyre side i denne formelen som varierer med tid er I; alle de andre er
+konstante for en gitt spole. Det er derfor fristende ˚a se p˚a størrelsen Φ
+I , som kanskje
+kan fortelle oss noe interessant om spolen i seg selv. Det vil vise seg ˚a være nyttig
+˚a ha med en ekstra N -faktor (som jo ogs˚a er en egenskap ved selve spolen) i tillegg
+til den som allerede ligger inni uttrykket for Φ, og vi definerer derfor selvinduktans
+(inductance) (symbol L, enhet henry (H eller kg·m2
+A2·s2 )) for en bestemt spole slik:
+L = N Φ
+I = μN 2A
+l
+(Se godt etter, slik at du ikke blander sammen I og l her.) P˚a formelarket st˚ar det
+to formler for selvinduksjon; den første er bare L = Φ
+I , som gjelder for en enkel
+ledersløyfe (N = 1), og den andre er formelen ovenfor, som gjelder for spoler.
+Side 46
+
+-- 46 of 53 --
+
+La oss skrive om definisjonen av selvinduktans og derivere med hensyn p˚a tid:
+L = N Φ
+I
+LI = N Φ
+d
+dt (LI) = d
+dt (N Φ)
+L dI
+dt = N dΦ
+dt
+Høyresiden her er det negative av høyresiden av Faradays induksjonslov ∆V =
+−N dΦ
+dt , s˚a den er alts˚a lik −∆V . Vi f˚ar derfor:
+∆V = −L dI
+dt
+Dette betyr at endring av strømstyrken gjennom en spole selvinduserer en motsatt
+rettet spenning over spolen. Alternativt kommer en spenningsendring over spolen til
+˚a for˚arsake en strømendring dI
+dt = − ∆V
+L . Merk at spenningen vil falle til null hvis
+strømmen slutter ˚a endre seg, selv hvis den stabiliserer seg p˚a en konstant strøm
+som ikke er null. En spole er alts˚a et kretselement som prøver ˚a motvirke endring i
+strøm, men som ikke har noen virkning n˚ar strømmen er konstant.
+4.6.4 Gjensidig induktans og transformatorer
+Hvis man setter to strømsløyfer ved siden av hverandre og sender vekselstrøm gjen-
+nom den ene, vil det varierende magnetfeltet som skapes av den strømsløyfen indu-
+sere en varierende spenning i den andre. La oss si at den ene sløyfen inneholder N1
+viklinger, bærer en strøm I1, og at denne skaper en magnetisk fluks Φ2 gjennom den
+andre sløyfen, og at den andre sløyfen inneholder N2 viklinger, bærer en strøm I2,
+og at denne skaper en magnetisk fluks Φ1 gjennom den første spolen. Det vil da vise
+seg at brøkene N2Φ2
+I1 og N1Φ1
+I2 alltid er like, og vi kaller denne verdien for gjensidig
+induktans (mutual inductance):
+M = N2Φ2
+I1
+= N1Φ1
+I2
+(Pass p˚a subskriptene; hver side inneholder en blanding av 1 og 2. P˚a formelarket st˚ar
+en enklere versjon som antar at N1 = N2 = 1.) Siden forholdet mellom strømmen
+i den ene sløyfen og den magnetiske fluksen i den andre avhenger av geometrien til
+sløyfene (deres størrelse og form, samt hvordan de er plassert i forhold til hverandre),
+avhenger den gjensidige induktansen ogs˚a av dette.
+En transformator (transformer ) best˚ar av to parallelle spoler, gjerne viklet rundt
+to motst˚aende sidekanter av et rektangel laget av magnetiserbart materiale, noe som
+Side 47
+
+-- 47 of 53 --
+
+maksimerer den gjensidige induktansen M mellom de to spolene. Den magnetiske
+fluksen gjennom tverrsnittet til hver spole er lik, s˚a spenningen per vikling vil være
+den samme p˚a begge sider. Derfor blir forholdet mellom spenningene p˚a de to sidene
+det samme som forholdet mellom antallet viklinger:
+V2
+V1
+= N2
+N1
+V1
+N1
+= V2
+N2
+En transformator kan dermed brukes til ˚a konvertere spenning dersom man har
+vekselstrøm, men den vil ikke gjøre noe hvis man har likestrøm (for da blir det ikke
+noe varierende magnetfelt, og dermed ingen induksjon). Merk at vi ikke f˚ar gratis
+energi fra en transformator: V1I1 = V2I2, s˚a effekten vil være lik p˚a begge sider, og
+den siden som har høyest spenning vil ha tilsvarende lavere strøm (men i praksis
+vil det være litt energitap til varme i transformatoren, s˚a den utg˚aende effekten vil
+være litt mindre enn den inng˚aende).
+4.6.5 RL-krets
+Hvis vi bygger en krets med et batteri med spenning V , en mostand med resistans
+R og en spole med selvinduktans L, f˚ar vi en RL-krets. Hva skjer n˚ar vi lukker kret-
+sen? I motsetning til med RC-kretsen, hvor strømmen umiddelbart hopper opp til et
+høyt niv˚a og s˚a gradvis avtar, gjør spolen det umulig ˚a f˚a et plutselig strømsprang,
+fordi spenningen over en spole er proporsjonal med dI
+dt , og uendelig høy spenning
+er umulig. I stedet vil strømmen starte p˚a null, og siden spenningen VR over mot-
+standskomponenten da ogs˚a er null, kan all spenningen fra batteriet brukes p˚a ˚a
+skape spenning VL = V over spolen, noe som vil medføre et initielt stigningstall for
+strømøkningen p˚a: dI
+dt initiell
+= V
+L
+Med en gang strømmen blir større enn null, oppst˚ar det en spenning over motstands-
+komponenten. Generelt ser situasjonen slik ut:
+V = VR + VL
+V = RI + L dI
+dt
+dI
+dt = V
+L − R
+L I
+Dette er en diffligning p˚a samme form som for RC-kretsen, men med funksjonen I(t)
+i stedet for q(t). Hvis vi innfører τ = L
+R (tidskonstanten for RL-krets — merk at
+Side 48
+
+-- 48 of 53 --
+
+dette er forskjellig fra τ for RC-krets), kan vi skrive løsningen p˚a tilsvarende m˚ate:
+I = I0
+
+1 − e− t
+τ
+
+hvor I0 er strømmen som kommer til ˚a finnes i kretsen i den stabile sluttilstanden,
+hvor vi etter “uendelig” lang tid har f˚att en konstant strøm slik at dI
+dt = 0 og dermed
+VL = 0. Da er det kun batterispenningen og resistansen til motstandskomponenten
+som bestemmer hva sluttstrømmen blir:
+I0 = V
+R
+4.6.6 LC-krets
+La oss bygge en krets med en kondensator med kapasitans C og en spole med selv-
+induktans L (men ikke noen motstand). Hvis kondensatoren allerede var blitt opp-
+ladet før vi bygde kretsen, kommer spenningen fra kondensatoren til ˚a for˚arsake
+en strømendring gjennom spolen (og dermed gjennom kretsen som helhet). Etter-
+hvert som strømmen øker vil kondensatoren lades ut og dermed f˚a mindre spen-
+ning; strømendringen gjennom spolen vil da bli mindre og mindre til man n˚ar en
+“strømtopp”, akkurat n˚ar kondensatoren er ladet helt ut. Spolen vil helst holde
+strømmen i gang, men da begynner jo kondensatoren ˚a lades opp igjen; spenningen
+over kondensatoren vil da bli større og større mens strømmen blir mindre og mindre,
+frem til strømmen stopper og kondensatoren er ladet helt opp men med motsatt po-
+laritet. S˚a skjer samme prosess motsatt vei, frem til vi er tilbake til starttilstanden,
+hvor kondensatoren er ladet helt opp med samme polaritet som i begynnelsen. Og
+slik fortsetter det — dette er faktisk en udempet harmonisk oscillator!
+Spenningen VC = q
+C over kondensatoren m˚a være lik spenningen VL = −L dI
+dt =
+−L d2q
+dt2 over spolen, s˚a vi f˚ar denne diffligningen:
+L d2q
+dt2 + 1
+C q = 0
+d2q
+dt2 + 1
+LC q = 0
+Denne har samme form som da vi holdt p˚a med fjærsystemer og pendler: L spiller
+samme rolle som m, og 1
+C spiller samme rolle som k. Vi definerer ω0 =
+q 1
+LC , som
+spiller samme rolle som
+q k
+m . Diffligningen blir da identisk med den vi s˚a i seksjon
+3.2 (bare at funksjonen er q i stedet for x), og alt vi fant ut om den gjelder for
+LC-kretser ogs˚a:
+Side 49
+
+-- 49 of 53 --
+
+d2q
+dt2 + ω2
+0 q = 0
+4.6.7 RLC-kretser
+Hvis vi legger til en motstand med resistans R i en LC-krets, vil den kreve en
+spenning VR = RI = R dq
+dt s˚a lenge strømmen ikke er null, og den vil gradvis tappe
+systemet for energi. Dette f˚ar samme virkning som væskedempingen i en støtdemper,
+s˚a en RLC-krets er en dempet harmonisk oscillator! Diffligningen blir:
+L d2q
+dt2 + R dq
+dt + 1
+C q = 0
+d2q
+dt2 + R
+L
+dq
+dt + 1
+LC q = 0
+Her spiller R samme rolle som b da vi holdt p˚a med demping. Vi definerer ω0 =	q 1
+LC som i sted, og γ = R
+2L . Diffligningen blir da identisk med den vi s˚a i seksjon
+3.4 (bare at funksjonen er q(t) i stedet for x(t)), og alt vi fant ut om den gjelder for
+RLC-kretser ogs˚a:
+d2q
+dt2 + 2γ dq
+dt + ω2
+0 q = 0
+En RLC-krets vil dermed enten være underdempet, kritisk dempet eller overdem-
+pet, og akkurat de samme formlene som i seksjon 3.4 gjelder.
+4.6.8 RLC-kretser med drivende vekselspenningskilde
+Hvis vi setter inn en spenningskilde i en RLC-krets, vil høyresiden i diffligningen ikke
+være null lenger. Hvis spenningskilden gir vekselspenning V = V0 cos ωt (maksimal
+spenning V0 og vinkelfrekvens ω, alts˚a frekvens f = ω
+2π og periode T = 2π
+ω ), og vi
+definerer ω0 og γ som i forrige seksjon, f˚ar vi følgende diffligning:
+L d2q
+dt2 + R dq
+dt + 1
+C q = V0 cos ωt
+d2q
+dt2 + R
+L
+dq
+dt + 1
+LC q = V0 cos ωt
+d2q
+dt2 + 2γ dq
+dt + ω2
+0 q = V0 cos ωt
+Side 50
+
+-- 50 of 53 --
+
+Akkurat som i et dempet fjærsystem med en ytre drivende kraft kan vi n˚a f˚a
+resonans. Ladningen i kondensatoren blir:
+q(t) = A(ω) sin(ωt + ϕ(ω))
+Som vanlig antar vi for enkelhets skyld at faseforskyvningen ϕ(ω) er null. Amplitu-
+den (som er konstant etter at systemet har n˚add en stabil tilstand), alts˚a maksimal
+ladning i kondensatoren, blir:
+A(ω) = V0
+Lp(ω2 − ω2
+0 )2 + (2γω)2
+Begge disse formlene tilsvarer formlene fra seksjon 3.5.
+4.6.9 Impedans
+Denne seksjonen er ikke pensum, men kan være interessant for de som vil jobbe mer
+med elektriske kretser.
+Vi definerer induktiv reaktans (inductive reactance) XL = ωL, og kapasitiv re-
+aktans (capacitive reactance) XC = 1
+ωC . Disse vil vise seg ˚a fortelle noe om hvordan
+spoler og kondensatorer oppfører seg n˚ar de settes inn i en krets som inneholder
+en drivende vekselspenning med vinkelfrekvens ω. Dessuten definerer vi impedans
+(impedance), med symbol Z og enhet Ω:
+Z = pR2 + (XL − XC )2
+La oss skrive om størrelsen uder brøkstreken i uttrykket for amplituden i en RLC-
+krets med en drivende vekselspenningskilde slik at vi f˚ar inn størrelsene R, L og C
+(som definerer RLC-kretsen):
+Side 51
+
+-- 51 of 53 --
+
+L
+q
+(ω2 − ω2
+0 )2 + (2γω)2 =
+s
+L2
+
+ω2 − 1
+LC
+2
++ L2
+
+2 R
+2L ω
+2
+=
+s
+L2
+
+ω4 − 2 ω2
+LC + 1
+L2C2
+
++ L2 · R2ω2
+L2
+=
+r
+ω4L2 − 2 ω2L
+C + 1
+C2 + R2ω2
+=
+s
+ω2 ·
+
+ω2L2 − 2 L
+C + 1
+ω2C2 + R2
+
+= ω ·
+r
+ω2L2 − 2 L
+C + 1
+ω2C2 + R2
+= ω ·
+s
+ωL − 1
+Cω
+2
++ R2
+= ω · p(XL − XC )2 + R2
+= ωZ
+Dette er fortsatt lik det som stod under brøkstreken i uttrykket for amplituden,
+s˚a amplituden er:
+A(ω) = V0
+ωZ
+Hvis vi deriverer uttrykket for ladningen i kondensatoren (som var q(t) = A(ω) sin(ωt)
+n˚ar vi ser bort fra faseforskyvning), f˚ar vi et uttrykk for strømmen i kretsen. Dette
+kan vi til slutt relatere til den drivende vekselspenningen V = V0 cos ωt:
+I = dq
+dt = A(ω) · ω cos ωt = V0
+ωZ · ω cos ωt = V0 cos ωt
+Z = V
+Z
+Dette kan vi skrive om til V = ZI, som minner mistenkelig om Ohms lov! Kon-
+klusjonen er at impedans kan tolkes som hele RLC-kretsen sin “motstand” mot vek-
+selstrøm, tilsvarende det at en motstandskomponent sin resistans er komponenten
+sin “motstand” mot likestrøm.
+Side 52
+
+-- 52 of 53 --
+
+4.6.10 Energitetthet i magnetisk felt
+P˚a samme m˚ate som at vi kunne regne p˚a hvor mye energi en platekondensator
+bruker p˚a ˚a skape et elektrisk felt og bruke resultatet til ˚a definere energitettheten
+til det elektriske feltet, kan vi regne p˚a hvor mye energi en spole trenger bruker p˚a
+˚a skape et magnetisk felt og bruke resultatet til ˚a definere energitettheten til det
+magnetiske feltet. Utregningen er mer komplisert, men resultatet f˚ar en lignende
+form:
+uB = 1
+2μ0
+B2
+Formelarket viser ogs˚a det ˚apenbare resultatet av ˚a kombinere energitettheten fra
+et elektrisk og et magnetisk felt i det samme omr˚adet:
+u = 1
+2 ϵ0E2 + 1
+2μ0
+B2
+Side 53
+
+-- 53 of 53 --
+

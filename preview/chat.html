@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Chat bubbles</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 24px; background: var(--bg-canvas); min-height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; max-width: 540px; }
+  .msg { display: flex; gap: 12px; align-items: flex-start; }
+  .av { width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; }
+  .av.user { background: var(--bg-elevated); color: var(--fg-2); border: 1px solid var(--border-soft); }
+  .av.ai { background: rgba(155,140,255,0.16); color: var(--violet-300); border: 1px solid rgba(155,140,255,0.3); }
+  .bubble { padding: 10px 14px; border-radius: 14px; font-size: 14px; line-height: 1.5; max-width: 420px; }
+  .bubble.user { background: var(--bg-elevated); color: var(--fg-1); border: 1px solid var(--border-subtle); }
+  .bubble.ai { background: rgba(155,140,255,0.07); color: var(--fg-1); border: 1px solid rgba(155,140,255,0.18); }
+  .stamp { font-size: 11px; color: var(--fg-4); margin-top: 4px; }
+</style>
+</head>
+<body>
+  <div class="msg">
+    <div class="av user">Y</div>
+    <div>
+      <div class="bubble user">Make a 90-second lesson on moment of inertia, focused on a hoop vs a solid disk rolling down a ramp.</div>
+      <div class="stamp">You · 2:14 PM</div>
+    </div>
+  </div>
+  <div class="msg">
+    <div class="av ai">M</div>
+    <div>
+      <div class="bubble ai">Manimo sketched four scenes — an opening question, the formula <em>I = ∫r² dm</em>, a side-by-side animation, and a recap. Want to adjust the pace or swap the recap for a worked example?</div>
+      <div class="stamp">Manimo · just now</div>
+    </div>
+  </div>
+</body>
+</html>

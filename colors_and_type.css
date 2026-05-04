@@ -1,0 +1,349 @@
+/* ============================================================
+   Manimo — Design Tokens
+   Color, type, spacing, radius, shadow, motion.
+
+   Dark-first. Light mode is the secondary surface (see media query at end).
+   Tokens are split into:
+     1. PRIMITIVES — raw color and dimension values, named by what they ARE
+     2. SEMANTICS — what they MEAN (fg-1, bg-canvas, accent-warm, etc.)
+     3. ELEMENT TOKENS — semantic tokens applied to elements (h1, p, code, etc.)
+
+   Always reference SEMANTIC tokens in product code. Primitives exist for
+   reference and to make the system tweakable in one place.
+   ============================================================ */
+
+/* --- 1. FONTS ----------------------------------------------- */
+/* Substitute fonts pulled from Google Fonts. Replace with .woff2 in /fonts
+   when custom faces are commissioned. */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap');
+
+/* --- 2. PRIMITIVES ------------------------------------------ */
+
+:root {
+  /* Plum-indigo ground (the "chalkboard") */
+  --plum-950: #0c0a1f;
+  --plum-900: #14102b;
+  --plum-850: #1a1638;
+  --plum-800: #221c45;
+  --plum-700: #2e2658;
+  --plum-600: #3d326e;
+  --plum-500: #5b4c98;
+
+  /* Warm neutrals — chalk and parchment */
+  --chalk-50:  #fbf7ee;
+  --chalk-100: #f3ecdc;
+  --chalk-200: #e6dcc1;
+  --chalk-300: #c8b994;
+  --chalk-400: #97896a;
+  --chalk-500: #685c44;
+
+  /* Warm accents — used sparingly, one or two per screen */
+  --amber-300: #ffd49a;
+  --amber-400: #f4b860;   /* primary accent */
+  --amber-500: #d99435;
+  --amber-600: #a86d1d;
+
+  --rose-300:  #f5a8b6;
+  --rose-400:  #e87a90;   /* emphasis accent */
+  --rose-500:  #c14e68;
+
+  --teal-300:  #a8e5dc;
+  --teal-400:  #7fd1c5;   /* data + code accent */
+  --teal-500:  #3fa599;
+
+  --violet-300: #c8bdff;
+  --violet-400: #9b8cff;  /* AI / system tone */
+  --violet-500: #6f5be6;
+
+  /* Functional primitives — reds reserved for destructive */
+  --red-400:   #f06b6b;
+  --red-500:   #d44545;
+
+  /* True near-black for video frame contrast */
+  --ink-1000:  #050410;
+
+  /* --- 3. SEMANTIC COLOR ------------------------------------ */
+
+  /* Surfaces (dark mode default) */
+  --bg-canvas:    var(--plum-900);   /* the page ground */
+  --bg-elevated:  var(--plum-850);   /* cards, panels */
+  --bg-raised:    var(--plum-800);   /* popovers, menus */
+  --bg-sunken:    var(--plum-950);   /* code blocks, video frames */
+  --bg-overlay:   rgba(12, 10, 31, 0.72);  /* modal scrim */
+
+  /* Foreground — chalk hierarchy */
+  --fg-1: var(--chalk-50);    /* primary */
+  --fg-2: var(--chalk-200);   /* secondary */
+  --fg-3: var(--chalk-300);   /* tertiary / labels */
+  --fg-4: var(--chalk-400);   /* placeholder / disabled */
+  --fg-inverse: var(--plum-900);  /* on warm fills */
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-soft:   rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --border-focus:  var(--amber-400);
+
+  /* Accents */
+  --accent-warm:    var(--amber-400);  /* primary action */
+  --accent-warm-hover: var(--amber-300);
+  --accent-warm-press: var(--amber-500);
+
+  --accent-rose:    var(--rose-400);
+  --accent-teal:    var(--teal-400);
+  --accent-violet:  var(--violet-400);
+
+  /* Status */
+  --status-success: var(--teal-400);
+  --status-warning: var(--amber-400);
+  --status-danger:  var(--red-400);
+  --status-info:    var(--violet-400);
+
+  /* AI/system surfaces — a soft violet wash for AI messages */
+  --bg-ai:    rgba(155, 140, 255, 0.08);
+  --fg-ai:    var(--violet-300);
+
+  /* --- 4. TYPOGRAPHY --------------------------------------- */
+
+  --font-serif: 'Fraunces', 'Iowan Old Style', 'Hoefler Text', Georgia, serif;
+  --font-sans:  'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:  'JetBrains Mono', 'SF Mono', 'Menlo', 'Consolas', monospace;
+
+  /* Type scale — 1.25 modular, anchored at 16px base */
+  --text-xs:   12px;
+  --text-sm:   13px;
+  --text-base: 15px;
+  --text-md:   17px;
+  --text-lg:   20px;
+  --text-xl:   24px;
+  --text-2xl:  30px;
+  --text-3xl:  38px;
+  --text-4xl:  48px;
+  --text-5xl:  64px;
+  --text-6xl:  80px;
+
+  --leading-tight:  1.15;
+  --leading-snug:   1.3;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.6;
+
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semi:    600;
+  --weight-bold:    700;
+
+  /* --- 5. SPACING (8px base) ------------------------------- */
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  /* --- 6. RADII -------------------------------------------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* --- 7. SHADOWS (warm-tinted) ---------------------------- */
+  --shadow-1: 0 1px 2px rgba(12, 8, 30, 0.5),
+              0 1px 3px rgba(12, 8, 30, 0.35),
+              inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --shadow-2: 0 4px 8px rgba(12, 8, 30, 0.55),
+              0 2px 4px rgba(12, 8, 30, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --shadow-3: 0 10px 24px rgba(12, 8, 30, 0.6),
+              0 4px 8px rgba(12, 8, 30, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --shadow-4: 0 24px 48px rgba(12, 8, 30, 0.7),
+              0 8px 16px rgba(12, 8, 30, 0.5),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  /* Focus ring — universal */
+  --ring-focus: 0 0 0 2px var(--bg-canvas), 0 0 0 4px var(--amber-400);
+
+  /* --- 8. MOTION ------------------------------------------- */
+  --ease-draw: cubic-bezier(0.32, 0.72, 0.0, 1.0);  /* default — long ease-out */
+  --ease-out:  cubic-bezier(0.2, 0.7, 0.2, 1.0);
+  --ease-in:   cubic-bezier(0.6, 0.0, 0.8, 0.4);
+
+  --dur-fast:   120ms;
+  --dur-normal: 240ms;
+  --dur-slow:   480ms;
+  --dur-draw:   800ms;   /* for tracing reveals */
+
+  /* --- 9. LAYOUT ------------------------------------------- */
+  --topbar-height: 56px;
+  --sidebar-chat-width: 360px;
+  --sidebar-scenes-width: 280px;
+  --content-prose-max: 720px;
+  --content-app-max: 1280px;
+
+  /* --- 10. Z-INDEX ----------------------------------------- */
+  --z-base:    0;
+  --z-raised:  10;
+  --z-topbar:  100;
+  --z-popover: 500;
+  --z-modal:   1000;
+  --z-toast:   2000;
+}
+
+/* --- 11. ELEMENT TOKENS — opinionated defaults --------------- */
+
+html, body {
+  background: var(--bg-canvas);
+  color: var(--fg-1);
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-serif);
+  font-weight: var(--weight-semi);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  color: var(--fg-1);
+  margin: 0;
+}
+
+h1 { font-size: var(--text-5xl); font-weight: var(--weight-regular); }
+h2 { font-size: var(--text-3xl); font-weight: var(--weight-regular); }
+h3 { font-size: var(--text-2xl); font-weight: var(--weight-medium); }
+h4 { font-size: var(--text-xl);  font-weight: var(--weight-medium); }
+h5 { font-size: var(--text-lg);  font-weight: var(--weight-semi); font-family: var(--font-sans); letter-spacing: 0; }
+
+p {
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  color: var(--fg-2);
+  margin: 0;
+}
+
+small, .text-caption {
+  font-size: var(--text-sm);
+  color: var(--fg-3);
+  letter-spacing: var(--tracking-normal);
+}
+
+.text-eyebrow {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semi);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--fg-3);
+}
+
+code, kbd, pre, samp {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+code {
+  background: var(--bg-sunken);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  color: var(--teal-300);
+  border: 1px solid var(--border-subtle);
+}
+
+pre {
+  background: var(--bg-sunken);
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  border: 1px solid var(--border-subtle);
+  line-height: var(--leading-normal);
+  color: var(--chalk-100);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  border: 0;
+  color: inherit;
+}
+
+a {
+  color: var(--amber-300);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+a:hover { color: var(--amber-400); }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border-subtle);
+  margin: var(--space-6) 0;
+}
+
+::selection {
+  background: var(--amber-400);
+  color: var(--fg-inverse);
+}
+
+/* Focus outline default — replaceable per-component */
+:focus-visible {
+  outline: 2px solid var(--amber-400);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Reduced motion — collapse to instant fades */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- 12. LIGHT MODE (secondary) ------------------------------ */
+/* Activated with [data-theme="light"] — not via @media, since dark is canonical. */
+
+[data-theme="light"] {
+  --bg-canvas:   var(--chalk-50);
+  --bg-elevated: #ffffff;
+  --bg-raised:   #ffffff;
+  --bg-sunken:   var(--chalk-100);
+  --bg-overlay:  rgba(12, 10, 31, 0.4);
+
+  --fg-1: var(--plum-950);
+  --fg-2: var(--plum-700);
+  --fg-3: var(--plum-600);
+  --fg-4: var(--chalk-400);
+  --fg-inverse: var(--chalk-50);
+
+  --border-subtle: rgba(12, 10, 31, 0.06);
+  --border-soft:   rgba(12, 10, 31, 0.10);
+  --border-strong: rgba(12, 10, 31, 0.18);
+
+  --bg-ai: rgba(111, 91, 230, 0.08);
+  --fg-ai: var(--violet-500);
+
+  --shadow-1: 0 1px 2px rgba(12, 8, 30, 0.06),
+              0 1px 3px rgba(12, 8, 30, 0.04);
+  --shadow-2: 0 4px 8px rgba(12, 8, 30, 0.08),
+              0 2px 4px rgba(12, 8, 30, 0.05);
+  --shadow-3: 0 10px 24px rgba(12, 8, 30, 0.10),
+              0 4px 8px rgba(12, 8, 30, 0.06);
+  --shadow-4: 0 24px 48px rgba(12, 8, 30, 0.14),
+              0 8px 16px rgba(12, 8, 30, 0.08);
+}

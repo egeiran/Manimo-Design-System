@@ -1,0 +1,147 @@
+# Manimo — project conventions
+
+This file orients automated agents (Claude Code, Claude in this app) working
+in the repo. Read it first.
+
+## What this project is
+
+Manimo is a web product where students *talk* to an AI to produce animated,
+chalkboard-style explainers for physics/maths courses (Norwegian university
+context — initial pilot is TFY4125 fysikk at NTNU). The repo contains:
+
+- A **brand + design system** (tokens, type, components)
+- A **motion library** of named animation primitives
+- Two **UI kits**: `studio/` (the chat-driven editor) and `watch/` (the
+  public lesson page)
+- An **example scene** in `motion/` that shows the system in use
+
+The look is dark, warm-chalk, hand-drawn — Manim feeling, not corporate
+SaaS. Plum-indigo backgrounds, amber as the "chalk" color, Fraunces for
+display and italics, Inter for UI, JetBrains Mono for numeric labels.
+
+---
+
+## Repo layout
+
+```
+README.md                 Brand brief: voice, content fundamentals, visual foundations
+SKILL.md                  Skill manifest (when invoked from chat)
+CLAUDE.md                 (this file)
+colors_and_type.css       All design tokens — colors, fonts, spacing, radii, shadows
+fonts/                    Fraunces, Inter, JetBrains Mono (self-hosted woff2)
+assets/                   Brand mark, wordmark, icon set
+preview/                  Design-system review cards (type, colors, components, ...)
+motion/
+  animations.jsx          Stage / Sprite / useTime / Easing / interpolate (starter)
+  manimo-motion.jsx       Named primitives: TraceIn, FadeUp, WriteOn, etc.
+  README.md               Primitive reference — read before authoring scenes
+  rc-scene.jsx + .html    Example scene: τ = RC, 20 seconds
+  _scene-template.jsx     Empty starter for new scenes
+  _scene-template.html    Matching HTML bootstrap
+ui_kits/
+  studio/                 Chat-driven editor mock
+  watch/                  Public lesson page mock
+```
+
+---
+
+## Where new work goes
+
+- **A new scene** → `motion/<scene-name>.jsx` + `motion/<scene-name>.html`.
+  Copy from `_scene-template.*`. Don't fork `rc-scene.jsx`.
+- **A new motion primitive** → add to `motion/manimo-motion.jsx` AND
+  document it in `motion/README.md` AND export it on `window` in the
+  `Object.assign(window, { ... })` block at the bottom of the file.
+- **A new color/type/spacing token** → add it to `colors_and_type.css` in
+  the same primitive → semantic → element layering as the existing tokens.
+- **A new UI surface** → it's a kit under `ui_kits/<kit-name>/` with its
+  own `index.html`. Don't put product UI in the project root.
+
+---
+
+## Hard rules
+
+1. **Use design tokens, never raw hex.** All colors come from
+   `var(--amber-400)`, `var(--chalk-200)` etc. defined in
+   `colors_and_type.css`. Same for type (`var(--font-serif)`) and radii.
+
+2. **Don't load Google Fonts.** Fraunces, Inter and JetBrains Mono are
+   self-hosted in `fonts/` and wired in `colors_and_type.css`.
+
+3. **Pin React + Babel exactly as the existing scene HTML does.**
+   ```html
+   <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="..." crossorigin="anonymous"></script>
+   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="..." crossorigin="anonymous"></script>
+   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="..." crossorigin="anonymous"></script>
+   ```
+   Copy the integrity hashes from `motion/rc-scene.html` verbatim.
+
+4. **Babel scripts don't share scope.** When splitting a scene across
+   multiple `<script type="text/babel">` files, export shared identifiers
+   on `window` at the bottom of each file:
+   ```js
+   Object.assign(window, { CircuitDiagram, ChargingGraph });
+   ```
+
+5. **No `const styles = {}` at module scope.** Multiple Babel files with
+   a global named `styles` collide silently. Name them by component:
+   `circuitStyles`, `graphStyles`, etc., or use inline styles.
+
+6. **`FadeUp` inside `<svg>` does nothing.** Use `SvgFadeIn` for SVG
+   children, `FadeUp` for HTML/DOM children. This is the single most
+   common bug — see `motion/README.md`.
+
+7. **One Sprite per animation beat.** Don't try to choreograph an entire
+   scene from one Sprite. Multiple overlapping Sprites with explicit
+   `start`/`end` are how scenes are composed.
+
+8. **Stage size is 1280×720.** Don't change it without a reason; the
+   Watch UI player is built around 16:9 at that resolution.
+
+---
+
+## Authoring a new scene — checklist
+
+1. Read `motion/README.md` end-to-end if you haven't.
+2. `cp motion/_scene-template.jsx motion/<my-scene>.jsx`
+3. `cp motion/_scene-template.html motion/<my-scene>.html` and update the
+   `<title>` and the bottom `<script src>` to point at your jsx file.
+4. Plan the beats as a comment block at the top of the jsx — explicit
+   time ranges before you write any JSX.
+5. Write one component per beat (e.g. `Title`, `Diagram`, `Graph`,
+   `Formula`). Mount them inside `<Sprite start end>` blocks in `Scene`.
+6. Use only primitives from `manimo-motion.jsx`. If you reach for a new
+   one, that's a signal to add and document it (see Hard rule 5 above).
+7. Open the `.html` file, scrub through with the timeline, and adjust
+   `delay` values inside each Sprite for rhythm.
+
+---
+
+## Voice & content (when writing copy in scenes / UI)
+
+- Norwegian (bokmål) by default for student-facing copy. English is fine
+  for code, internal tooling and brand artifacts.
+- Mathematical notation uses Fraunces italics: *V*, *τ*, *RC*. Subscripts
+  via `<sub>` or unicode (V₀).
+- Captions are short and conversational, not lecture-formal. "La oss
+  tegne en krets" rather than "Vi vil nå studere kretsen".
+- Numbers/labels in formulas use JetBrains Mono (`.63`, `0:11`).
+
+See `README.md` (root) for the full voice guide.
+
+---
+
+## Verification
+
+After any non-trivial change, open the affected `.html` file in the
+preview and confirm:
+
+1. The page renders (no black screen) — check the browser console for
+   syntax errors from Babel.
+2. The animation plays through to the end without jumps or layout
+   shifts.
+3. Any text using token colors actually shows up against the background.
+
+The most common failure mode is a Babel parse error from mismatched JSX
+tags after a regex edit. Always re-read the changed file end-to-end if
+you used scripted find-and-replace.

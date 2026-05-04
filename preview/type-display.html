@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Type — Display</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 28px 32px; background: var(--bg-canvas); min-height: 100vh; box-sizing: border-box; }
+  .stack { display: flex; flex-direction: column; gap: 6px; }
+  .specimen { font-family: var(--font-serif); color: var(--fg-1); line-height: 1.05; letter-spacing: -0.02em; }
+  .meta { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); }
+  .row { display: flex; align-items: baseline; gap: 16px; }
+  .row .meta { width: 120px; }
+</style>
+</head>
+<body>
+  <div class="stack">
+    <div class="row"><span class="meta">Display 64 / 400</span><span class="specimen" style="font-size:64px;font-weight:400">Teach a topic in the time it takes to explain it.</span></div>
+    <div class="row" style="margin-top:14px"><span class="meta">H1 48 / 400</span><span class="specimen" style="font-size:48px;font-weight:400">Rotational kinetic energy</span></div>
+    <div class="row" style="margin-top:10px"><span class="meta">H2 30 / 500</span><span class="specimen" style="font-size:30px;font-weight:500">Moment of inertia, <em>I</em></span></div>
+    <div class="row" style="margin-top:8px"><span class="meta">H3 24 / 500</span><span class="specimen" style="font-size:24px;font-weight:500;font-family:var(--font-serif)">2.2 — A worked example</span></div>
+  </div>
+</body>
+</html>

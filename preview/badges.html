@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Badges &amp; chips</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 28px 32px; background: var(--bg-canvas); min-height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .badge { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 5px; }
+  .b-success { background: rgba(127,209,197,0.14); color: var(--teal-300); }
+  .b-warning { background: rgba(244,184,96,0.14); color: var(--amber-300); }
+  .b-danger  { background: rgba(240,107,107,0.14); color: var(--red-400); }
+  .b-info    { background: rgba(155,140,255,0.14); color: var(--violet-300); }
+  .b-neutral { background: var(--bg-elevated); color: var(--fg-2); border: 1px solid var(--border-soft); }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .chip { font-size: 13px; padding: 6px 12px; border-radius: 999px; background: var(--bg-elevated); color: var(--fg-2); border: 1px solid var(--border-soft); cursor: pointer; }
+  .chip.on { background: var(--amber-400); color: var(--plum-900); border-color: var(--amber-400); }
+  h6 { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); margin: 0; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+</style>
+</head>
+<body>
+  <h6>Status badges</h6>
+  <div class="row">
+    <span class="badge b-success"><span class="dot"></span>Rendered</span>
+    <span class="badge b-warning"><span class="dot"></span>Drafting</span>
+    <span class="badge b-info"><span class="dot"></span>Manimo thinking</span>
+    <span class="badge b-danger"><span class="dot"></span>Failed</span>
+    <span class="badge b-neutral">Beta</span>
+  </div>
+  <h6>Chips / filters</h6>
+  <div class="row">
+    <span class="chip on">All scenes</span>
+    <span class="chip">Math</span>
+    <span class="chip">Code</span>
+    <span class="chip">Diagrams</span>
+    <span class="chip">Data viz</span>
+    <span class="chip">Characters</span>
+  </div>
+</body>
+</html>

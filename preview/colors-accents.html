@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Color — Accents</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 24px; background: var(--bg-canvas); display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; min-height: 100vh; box-sizing: border-box; }
+  .col { display: flex; flex-direction: column; gap: 6px; }
+  .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+  .sw { height: 32px; border-radius: var(--radius-sm); }
+  .label { display: flex; justify-content: space-between; font-size: 12px; }
+  .label .n { color: var(--fg-1); font-weight: 600; }
+  .label .h { color: var(--fg-3); font-family: var(--font-mono); font-size: 10px; }
+  .ex { font-size: 11px; color: var(--fg-3); margin-top: 2px; }
+</style>
+</head>
+<body>
+  <div class="col">
+    <div class="row"><div class="sw" style="background:#ffd49a"></div><div class="sw" style="background:#f4b860"></div><div class="sw" style="background:#d99435"></div></div>
+    <div class="label"><span class="n">Amber</span><span class="h">#f4b860</span></div>
+    <div class="ex">Primary action</div>
+  </div>
+  <div class="col">
+    <div class="row"><div class="sw" style="background:#f5a8b6"></div><div class="sw" style="background:#e87a90"></div><div class="sw" style="background:#c14e68"></div></div>
+    <div class="label"><span class="n">Rose</span><span class="h">#e87a90</span></div>
+    <div class="ex">Emphasis</div>
+  </div>
+  <div class="col">
+    <div class="row"><div class="sw" style="background:#a8e5dc"></div><div class="sw" style="background:#7fd1c5"></div><div class="sw" style="background:#3fa599"></div></div>
+    <div class="label"><span class="n">Teal</span><span class="h">#7fd1c5</span></div>
+    <div class="ex">Data &amp; code</div>
+  </div>
+  <div class="col">
+    <div class="row"><div class="sw" style="background:#c8bdff"></div><div class="sw" style="background:#9b8cff"></div><div class="sw" style="background:#6f5be6"></div></div>
+    <div class="label"><span class="n">Violet</span><span class="h">#9b8cff</span></div>
+    <div class="ex">AI / system</div>
+  </div>
+</body>
+</html>

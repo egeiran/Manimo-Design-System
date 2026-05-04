@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Color — Surfaces</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 24px; background: var(--bg-canvas); display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; min-height: 100vh; box-sizing: border-box; }
+  .swatch { border-radius: var(--radius-md); padding: 16px; height: 100px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--border-subtle); }
+  .swatch .name { font-size: 12px; font-weight: 600; color: var(--fg-1); }
+  .swatch .hex { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); }
+  .s1 { background: var(--bg-canvas); }
+  .s2 { background: var(--bg-elevated); }
+  .s3 { background: var(--bg-raised); }
+  .s4 { background: var(--bg-sunken); }
+  .s5 { background: var(--ink-1000); }
+</style>
+</head>
+<body>
+  <div class="swatch s1"><div class="name">canvas</div><div class="hex">#14102b</div></div>
+  <div class="swatch s2"><div class="name">elevated</div><div class="hex">#1a1638</div></div>
+  <div class="swatch s3"><div class="name">raised</div><div class="hex">#221c45</div></div>
+  <div class="swatch s4"><div class="name">sunken</div><div class="hex">#0c0a1f</div></div>
+  <div class="swatch s5"><div class="name">ink</div><div class="hex">#050410</div></div>
+</body>
+</html>

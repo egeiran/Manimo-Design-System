@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Color — Foreground &amp; Status</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  body { margin: 0; padding: 24px; background: var(--bg-canvas); display: grid; grid-template-columns: 1fr 1fr; gap: 24px; min-height: 100vh; box-sizing: border-box; }
+  .group { display: flex; flex-direction: column; gap: 10px; }
+  .heading { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-3); font-weight: 600; }
+  .row { display: flex; align-items: center; gap: 12px; }
+  .dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-soft); flex-shrink: 0; }
+  .meta { flex: 1; display: flex; justify-content: space-between; align-items: baseline; }
+  .meta .n { font-size: 13px; color: var(--fg-1); }
+  .meta .h { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); }
+  .sample { font-size: 13px; }
+</style>
+</head>
+<body>
+  <div class="group">
+    <div class="heading">Foreground (chalk)</div>
+    <div class="row"><div class="dot" style="background:#fbf7ee"></div><div class="meta"><span class="n sample" style="color:#fbf7ee">fg-1 — primary text</span><span class="h">#fbf7ee</span></div></div>
+    <div class="row"><div class="dot" style="background:#e6dcc1"></div><div class="meta"><span class="n sample" style="color:#e6dcc1">fg-2 — body</span><span class="h">#e6dcc1</span></div></div>
+    <div class="row"><div class="dot" style="background:#c8b994"></div><div class="meta"><span class="n sample" style="color:#c8b994">fg-3 — labels</span><span class="h">#c8b994</span></div></div>
+    <div class="row"><div class="dot" style="background:#97896a"></div><div class="meta"><span class="n sample" style="color:#97896a">fg-4 — placeholder</span><span class="h">#97896a</span></div></div>
+  </div>
+  <div class="group">
+    <div class="heading">Status</div>
+    <div class="row"><div class="dot" style="background:#7fd1c5"></div><div class="meta"><span class="n">success</span><span class="h">#7fd1c5</span></div></div>
+    <div class="row"><div class="dot" style="background:#f4b860"></div><div class="meta"><span class="n">warning</span><span class="h">#f4b860</span></div></div>
+    <div class="row"><div class="dot" style="background:#f06b6b"></div><div class="meta"><span class="n">danger</span><span class="h">#f06b6b</span></div></div>
+    <div class="row"><div class="dot" style="background:#9b8cff"></div><div class="meta"><span class="n">info</span><span class="h">#9b8cff</span></div></div>
+  </div>
+</body>
+</html>

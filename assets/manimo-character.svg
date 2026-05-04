@@ -1,0 +1,9 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <g id="manimo" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 30 150&#xA;             Q 50 152, 70 138&#xA;             Q 90 122, 96 96&#xA;             C 100 70, 130 58, 152 78&#xA;             C 168 94, 162 122, 138 130&#xA;             Q 122 134, 116 124&#xA;             Q 138 178, 178 168" stroke="#f4b860" stroke-width="7"></path>
+    <ellipse cx="118" cy="98" rx="2.6" ry="5" fill="#0c0a1f" transform="rotate(-8 118 98)"></ellipse>
+    <ellipse cx="134" cy="96" rx="2.6" ry="5" fill="#0c0a1f" transform="rotate(-8 134 96)"></ellipse>
+    <path d="M 122 112 Q 126 115, 130 112" stroke="#0c0a1f" stroke-width="2" fill="none"></path>
+  </g>
+</svg>
