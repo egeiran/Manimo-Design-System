@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "manimo-scene-spec",
+  "title": "Manimo Scene Spec",
+  "description": "Structured intermediate representation for a Manimo scene. Sits between a natural-language topic request and the final JSX. An LLM fills this spec; a human reviews it; a second LLM pass generates the JSX. Dramatically cheaper to iterate than going straight to code.",
+  "type": "object",
+  "required": ["id", "title", "language", "duration", "beats"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Kebab-case identifier matching the scene file name, e.g. 'rc-circuit'"
+    },
+    "title": {
+      "type": "string",
+      "description": "Display title in the scene's language, e.g. 'Lading av en kondensator'"
+    },
+    "eyebrow": {
+      "type": "string",
+      "description": "Mono eyebrow line, e.g. 'Scene 1 · introduksjon'"
+    },
+    "language": {
+      "type": "string",
+      "enum": ["no", "en"],
+      "description": "'no' for Norwegian bokmål (student-facing), 'en' for English"
+    },
+    "duration": {
+      "type": "number",
+      "description": "Total scene length in seconds"
+    },
+    "topic": {
+      "type": "string",
+      "description": "One-line topic summary for the scene manifest"
+    },
+    "prerequisites": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Scene IDs that should be understood before this one"
+    },
+    "beats": {
+      "type": "array",
+      "description": "Ordered list of animation beats. Each beat maps to one <Sprite> in the generated JSX.",
+      "items": {
+        "type": "object",
+        "required": ["id", "start", "end", "narration", "visuals"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Short camelCase identifier, e.g. 'manimoIntro', 'circuitDiagram'"
+          },
+          "start": { "type": "number", "description": "Sprite start time in seconds" },
+          "end":   { "type": "number", "description": "Sprite end time in seconds" },
+          "narration": {
+            "type": "string",
+            "description": "One sentence of spoken narration for this beat (source of truth for TTS)"
+          },
+          "visuals": {
+            "type": "object",
+            "description": "What should appear on screen during this beat",
+            "properties": {
+              "layout": {
+                "type": "string",
+                "enum": ["center", "left-right", "top-bottom", "full"],
+                "description": "High-level spatial arrangement of elements"
+              },
+              "elements": {
+                "type": "array",
+                "description": "Individual visual elements, in the order they should appear",
+                "items": {
+                  "type": "object",
+                  "required": ["type", "content"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "text-title", "text-caption", "text-formula",
+                        "svg-path", "svg-circle", "svg-arc", "svg-label",
+                        "manimo-enter", "manimo-corner",
+                        "graph-axes", "graph-curve", "graph-marker"
+                      ]
+                    },
+                    "content": {
+                      "type": "string",
+                      "description": "The text, formula (Unicode or LaTeX), or path description"
+                    },
+                    "delay": {
+                      "type": "number",
+                      "description": "Seconds after beat start before this element appears"
+                    },
+                    "color": {
+                      "type": "string",
+                      "description": "CSS token, e.g. 'var(--amber-400)' or 'var(--rose-300)'"
+                    },
+                    "position": {
+                      "type": "string",
+                      "description": "Freeform hint, e.g. 'center', 'below arm midpoint', 'upper-left'"
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "Optional authoring note for the JSX-generation step"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

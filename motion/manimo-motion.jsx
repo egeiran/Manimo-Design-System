@@ -322,9 +322,97 @@ function SvgFadeIn({ duration = 0.4, delay = 0, ease = Easing.easeOutCubic, chil
   return <g style={{ opacity }}>{children}</g>;
 }
 
+// ─── SceneChrome ──────────────────────────────────────────────────────────
+// Wrapper that provides all per-scene boilerplate: grid background,
+// watermark, persistent title block, and corner Manimo mascot.
+// Scene authors only pass eyebrow/title/duration and write beat <Sprite>s
+// as children — no copying of Background/Watermark/ManimoCorner needed.
+//
+// Usage:
+//   <SceneChrome eyebrow="Scene 2 · intro" title="My Topic" duration={SCENE_DURATION}>
+//     <Sprite start={3} end={10}><MyBeat /></Sprite>
+//   </SceneChrome>
+//
+// Props:
+//   eyebrow   string   Mono eyebrow line, e.g. "Scene 2 · rotational mechanics"
+//   title     string   Serif italic title, e.g. "Moment of Inertia"
+//   duration  number   SCENE_DURATION — used as the end time for persistent elements
+//   children  node     Beat <Sprite> blocks; rendered on top of all chrome
+function SceneChrome({ eyebrow, title, duration, children }) {
+  return (
+    <div style={{
+      width: '100%', height: '100%',
+      background: 'radial-gradient(ellipse at 50% 60%, rgba(244,184,96,0.05), transparent 60%), #0c0a1f',
+      position: 'relative', overflow: 'hidden',
+      fontFamily: 'var(--font-sans)',
+    }}>
+      {/* Grid */}
+      <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
+        <defs>
+          <pattern id="scChromGrid" width="48" height="48" patternUnits="userSpaceOnUse">
+            <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(232,220,193,0.04)" strokeWidth="1"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#scChromGrid)"/>
+      </svg>
+
+      {/* Watermark */}
+      <div style={{
+        position: 'absolute', top: 24, right: 32, pointerEvents: 'none',
+        fontFamily: 'var(--font-serif)', fontSize: 18, fontStyle: 'italic',
+        color: 'rgba(232,220,193,0.4)',
+      }}>
+        Manimo
+      </div>
+
+      {/* Title block — fades in at t=1 and persists */}
+      {(eyebrow || title) && (
+        <Sprite start={1.0} end={duration}>
+          <div style={{
+            position: 'absolute', left: 48, top: 28,
+            display: 'flex', flexDirection: 'column', gap: 4,
+          }}>
+            {eyebrow && (
+              <FadeUp duration={0.4} delay={0} distance={6}
+                style={{
+                  fontFamily: 'var(--font-mono)', fontSize: 11,
+                  color: 'var(--amber-300)', letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                }}>
+                {eyebrow}
+              </FadeUp>
+            )}
+            {title && (
+              <FadeUp duration={0.5} delay={0.2} distance={10}
+                style={{
+                  fontFamily: 'var(--font-serif)', fontSize: 32,
+                  color: 'var(--chalk-100)', fontStyle: 'italic',
+                }}>
+                {title}
+              </FadeUp>
+            )}
+          </div>
+        </Sprite>
+      )}
+
+      {/* Corner mascot — bobs in at t=2.2 and stays */}
+      <Sprite start={2.2} end={duration}>
+        <div style={{ position: 'absolute', left: 24, bottom: 16, width: 110, height: 110 }}>
+          <svg width="110" height="110" viewBox="0 0 200 200" style={{ overflow: 'visible' }}>
+            <Manimo bob={true} bobAmplitude={3} bobSpeed={2.2}/>
+          </svg>
+        </div>
+      </Sprite>
+
+      {children}
+    </div>
+  );
+}
+
 // ─── Export to global scope ───────────────────────────────────────────────
 Object.assign(window, {
   TraceIn, FadeUp, WriteOn, PulseMark, ChalkWipe,
   SvgFadeIn,
   Manimo, ManimoEnter, ChalkTip, Bracket,
+  SceneChrome,
 });

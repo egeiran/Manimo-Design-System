@@ -1,0 +1,83 @@
+{
+  "id": "hoop-disk",
+  "title": "Hoop vs Disk: Why a Disk Wins",
+  "eyebrow": "Scene 3 · rolling motion",
+  "language": "en",
+  "duration": 26,
+  "topic": "Rolling without slipping — energy conservation gives v = √(2gh / (1 + I/MR²)); disk beats hoop because less inertia goes into rotation",
+  "prerequisites": ["moment-of-inertia"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0.2,
+      "end": 3.2,
+      "narration": "Two wheels — same mass, same radius, same hill. Which one reaches the bottom first?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-top", "delay": 0 },
+          { "type": "text-caption", "content": "Two wheels, same mass, same radius — which one wins?", "delay": 0.7, "color": "var(--chalk-100)" }
+        ]
+      }
+    },
+    {
+      "id": "rampSetup",
+      "start": 3.2,
+      "end": 9.5,
+      "narration": "We release a hoop and a solid disk from rest at the top of an inclined ramp. Both roll without slipping.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Inclined ramp from upper-left to lower-right (hypotenuse, ground line)", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "svg-label", "content": "h (height label with bracket on left side)", "delay": 0.8, "color": "var(--chalk-200)" },
+          { "type": "svg-circle", "content": "Hoop: ring outline at top of ramp, amber stroke", "delay": 1.4, "color": "var(--amber-400)", "position": "upper hoop, slightly above ramp surface" },
+          { "type": "svg-label", "content": "I = MR² label next to hoop", "delay": 2.0, "color": "var(--amber-300)" },
+          { "type": "svg-circle", "content": "Disk: filled solid circle at top of ramp, rose stroke", "delay": 2.4, "color": "var(--rose-400)", "position": "lower disk, slightly above ramp surface" },
+          { "type": "svg-label", "content": "I = ½MR² label next to disk", "delay": 3.0, "color": "var(--rose-300)" }
+        ]
+      }
+    },
+    {
+      "id": "energyDerivation",
+      "start": 9.5,
+      "end": 17,
+      "narration": "Energy conservation: the gravitational potential mgh becomes kinetic energy — split between translation ½Mv² and rotation ½Iω².",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-formula", "content": "Mgh = ½Mv² + ½Iω²", "delay": 0.5, "color": "var(--chalk-100)", "position": "centre, large serif italic" },
+          { "type": "text-caption", "content": "rolling without slipping  →  v = ωR", "delay": 2.5, "color": "var(--chalk-300)" },
+          { "type": "text-formula", "content": "v = √( 2gh / (1 + I/MR²) )", "delay": 4.5, "color": "var(--amber-300)", "position": "below, large amber" }
+        ]
+      }
+    },
+    {
+      "id": "verdict",
+      "start": 17,
+      "end": 22.5,
+      "narration": "Plug in: the disk gives v = √(4gh/3), the hoop gives v = √(gh). The disk is always faster — about 15% quicker at the bottom.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "text-title", "content": "Hoop", "delay": 0.2, "color": "var(--chalk-300)", "position": "left column header" },
+          { "type": "text-formula", "content": "v = √(gh)", "delay": 0.5, "color": "var(--chalk-200)", "position": "left column" },
+          { "type": "text-title", "content": "Disk", "delay": 1.0, "color": "var(--amber-300)", "position": "right column header" },
+          { "type": "text-formula", "content": "v = √(4gh/3)", "delay": 1.3, "color": "var(--amber-300)", "position": "right column" },
+          { "type": "text-caption", "content": "Disk wins by ≈15% — every time.", "delay": 2.5, "color": "var(--chalk-100)", "position": "centred below both columns" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 22.5,
+      "end": 26,
+      "narration": "Less rotational inertia leaves more energy for translation — that's why a solid disk beats a hoop.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "Less rotational inertia → more translational speed.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic, ~22px" }
+        ]
+      }
+    }
+  ]
+}

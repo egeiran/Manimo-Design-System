@@ -8,6 +8,15 @@
 //  10.8–11.4   Circuit wipes off (chalk wipe, last 0.6s of its sprite)
 //  11.5–20.0   Charging curve traces, axis labels, τ marker, formula reveal at 16.5
 
+// Narration script (one sentence per beat — source of truth for TTS/subtitles)
+const NARRATION = [
+  /* 0.0– 3.0 */ 'La oss tegne en krets og se hva som skjer når vi lader en kondensator.',
+  /* 3.2– 6.5 */ 'Her er en enkel RC-krets: en spenningskilde, en motstand R, og en kondensator C.',
+  /* 6.5–10.5 */ 'Når du lukker bryteren — hvor raskt fylles kondensatoren?',
+  /* 11.5–16.5*/ 'Spenningen over kondensatoren stiger eksponentielt og nærmer seg V₀ asymptotisk.',
+  /* 16.5–20.0*/ 'Tidskonstanten τ = RC forteller oss at etter én τ har kondensatoren ladet seg til 63 % av V₀.',
+];
+
 const { useState, useEffect } = React;
 
 const SCENE_DURATION = 20;
@@ -432,6 +441,9 @@ function FormulaReveal() {
     </div>
   );
 }
+
+// Expose narration to external tooling (TTS generation, subtitle export)
+window.sceneNarration = NARRATION;
 
 // ─── Mount ────────────────────────────────────────────────────────────────
 function App() {

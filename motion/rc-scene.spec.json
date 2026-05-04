@@ -1,0 +1,98 @@
+{
+  "id": "rc-circuit",
+  "title": "Lading av en kondensator",
+  "eyebrow": "Scene 1 · introduksjon",
+  "language": "no",
+  "duration": 20,
+  "topic": "RC circuits — charging curve, time constant τ = RC",
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0.0,
+      "end": 3.2,
+      "narration": "La oss tegne en krets og se hva som skjer når vi lader en kondensator.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo enters centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "La oss tegne en krets.", "delay": 0.7, "color": "var(--chalk-100)" }
+        ]
+      }
+    },
+    {
+      "id": "sceneTitle",
+      "start": 1.0,
+      "end": 20,
+      "narration": "",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "text-title", "content": "Scene 1 · introduksjon", "delay": 0, "color": "var(--amber-300)", "position": "upper-left eyebrow" },
+          { "type": "text-title", "content": "Lading av en kondensator", "delay": 0.2, "color": "var(--chalk-100)", "position": "upper-left main title" }
+        ]
+      }
+    },
+    {
+      "id": "circuitDiagram",
+      "start": 3.2,
+      "end": 11.4,
+      "narration": "Her er en enkel RC-krets: en spenningskilde V₀, en motstand R, og en kondensator C.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Battery symbol (two parallel lines, vertical)", "delay": 0, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "V₀", "delay": 1.0, "color": "var(--chalk-200)", "position": "left of battery" },
+          { "type": "svg-path", "content": "Top wire left-to-right", "delay": 1.0, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Switch (open, closes at t=3.2+4=7.2)", "delay": 1.4, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Resistor zigzag", "delay": 2.5, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "R", "delay": 3.0, "color": "var(--chalk-200)", "position": "right of resistor" },
+          { "type": "svg-path", "content": "Capacitor two horizontal plates", "delay": 3.4, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "C", "delay": 3.8, "color": "var(--chalk-200)", "position": "right of capacitor" },
+          { "type": "svg-path", "content": "Bottom return wire", "delay": 3.9, "color": "var(--amber-400)" }
+        ]
+      }
+    },
+    {
+      "id": "question",
+      "start": 6.5,
+      "end": 10.5,
+      "narration": "Når du lukker bryteren — hvor raskt fylles kondensatoren?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "Når du lukker bryteren — hvor raskt fylles kondensatoren?", "delay": 0.2, "color": "var(--chalk-100)", "position": "bottom-center below circuit" }
+        ]
+      }
+    },
+    {
+      "id": "chargingCurve",
+      "start": 11.5,
+      "end": 20,
+      "narration": "Spenningen over kondensatoren stiger eksponentielt: V(t) = V₀(1 − e^(−t/τ)).",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "graph-axes", "content": "V (vertical) vs t (horizontal)", "delay": 0, "color": "var(--chalk-300)" },
+          { "type": "svg-label", "content": "V₀ dashed reference line", "delay": 0.9, "color": "var(--chalk-200)" },
+          { "type": "graph-curve", "content": "V = V₀(1 − e^(−4t)) charging curve", "delay": 1.5, "color": "var(--amber-400)", "note": "4 time-constants across full graph width" },
+          { "type": "graph-marker", "content": "63% marker at τ with PulseMark", "delay": 4.6, "color": "var(--rose-400)" },
+          { "type": "svg-label", "content": ".63 on y-axis, τ on x-axis", "delay": 4.8, "color": "var(--rose-300)" }
+        ]
+      }
+    },
+    {
+      "id": "formulaReveal",
+      "start": 16.5,
+      "end": 20,
+      "narration": "Tidskonstanten τ = RC forteller oss at etter én τ har kondensatoren ladet seg til 63 % av V₀.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "text-formula", "content": "τ = RC", "delay": 0, "color": "var(--amber-300)", "position": "top-centre, large serif italic" },
+          { "type": "text-caption", "content": "tidskonstanten — produktet av motstand og kapasitans", "delay": 0.6, "color": "var(--chalk-300)" }
+        ]
+      }
+    }
+  ]
+}

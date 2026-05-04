@@ -51,6 +51,25 @@ const initialScenes = [
     cardTitle: 'What we saw',
     duration: '0:24',
   },
+  // ── Live scenes — render real motion/*.html via iframe ──
+  {
+    id: 'live-rc', kind: 'live', kindLabel: 'Live',
+    cardTitle: 'Lading av en kondensator',
+    duration: '0:20',
+    html: '../../motion/rc-scene.html',
+  },
+  {
+    id: 'live-derivation', kind: 'live', kindLabel: 'Live',
+    cardTitle: 'Moment of Inertia',
+    duration: '0:28',
+    html: '../../motion/derivation-scene.html',
+  },
+  {
+    id: 'live-hoop-disk', kind: 'live', kindLabel: 'Live',
+    cardTitle: 'Hoop vs Disk',
+    duration: '0:26',
+    html: '../../motion/hoop-disk.html',
+  },
 ];
 
 function App() {

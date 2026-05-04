@@ -1,0 +1,42 @@
+{
+  "$schema": "./scene-spec.schema.json",
+  "scenes": [
+    {
+      "id": "rc-circuit",
+      "file": "rc-scene.jsx",
+      "html": "rc-scene.html",
+      "title": "Lading av en kondensator",
+      "eyebrow": "Scene 1 · introduksjon",
+      "topic": "RC circuits — charging curve, time constant τ = RC",
+      "duration": 20,
+      "language": "no",
+      "prerequisites": [],
+      "concepts": ["RC circuit", "capacitor charging", "time constant", "exponential decay"]
+    },
+    {
+      "id": "moment-of-inertia",
+      "file": "derivation-scene.jsx",
+      "html": "derivation-scene.html",
+      "title": "Moment of Inertia",
+      "eyebrow": "Scene 2 · rotational mechanics",
+      "topic": "Moment of inertia — I = mr², quadratic radius scaling, disk integral I = ½MR²",
+      "duration": 28,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": ["moment of inertia", "rotational inertia", "angular acceleration", "disk vs ring", "integration"]
+    },
+    {
+      "id": "hoop-disk",
+      "file": "hoop-disk.jsx",
+      "html": "hoop-disk.html",
+      "spec": "hoop-disk.spec.json",
+      "title": "Hoop vs Disk: Why a Disk Wins",
+      "eyebrow": "Scene 3 · rolling motion",
+      "topic": "Rolling without slipping — energy conservation gives v = √(2gh / (1 + I/MR²)); disk beats hoop because less inertia goes into rotation",
+      "duration": 26,
+      "language": "en",
+      "prerequisites": ["moment-of-inertia"],
+      "concepts": ["rolling motion", "energy conservation", "rotational kinetic energy", "rolling without slipping", "moment of inertia"]
+    }
+  ]
+}

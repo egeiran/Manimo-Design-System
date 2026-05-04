@@ -62,6 +62,16 @@ function SceneThumb({ kind }) {
       </svg>
     );
   }
+  if (kind === 'live') {
+    return (
+      <svg viewBox="0 0 80 45" width="100%" height="100%">
+        <rect width="80" height="45" fill="#0c0a1f"/>
+        <circle cx="40" cy="22.5" r="11" fill="none" stroke="#f4b860" strokeWidth="1.2"/>
+        <polygon points="36,17 36,28 47,22.5" fill="#f4b860"/>
+        <text x="40" y="40" fontFamily="JetBrains Mono, monospace" fontSize="6" fill="rgba(232,220,193,0.5)" textAnchor="middle" letterSpacing="0.2em">LIVE</text>
+      </svg>
+    );
+  }
   return null;
 }
 

@@ -84,6 +84,50 @@ function SceneComparison({ scene }) {
   );
 }
 
+// Live scene — loads a real motion/<scene>.html via iframe and scales it
+// to fit the preview frame. The Stage is intrinsically 1280×720 inside the
+// iframe; we use a CSS transform to fit it to the available width.
+function SceneLive({ scene }) {
+  const wrapperRef = React.useRef(null);
+  const [scale, setScale] = React.useState(1);
+
+  React.useEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
+    const update = () => {
+      const w = el.clientWidth;
+      const h = el.clientHeight;
+      // Fit-to-contain: pick the smaller of width-fit and height-fit
+      setScale(Math.min(w / 1280, h / 720));
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [scene.html]);
+
+  return (
+    <div ref={wrapperRef} className="scene scene-live"
+         style={{ position: 'absolute', inset: 0, overflow: 'hidden',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <iframe
+        key={scene.html}
+        src={scene.html}
+        width={1280}
+        height={720}
+        title={scene.cardTitle || scene.id}
+        style={{
+          border: 0,
+          background: 'var(--bg-canvas)',
+          transform: `scale(${scale})`,
+          transformOrigin: 'center center',
+          flexShrink: 0,
+        }}
+      />
+    </div>
+  );
+}
+
 function SceneRecap({ scene }) {
   return (
     <div className="scene scene-recap">
@@ -105,6 +149,7 @@ const sceneRenderers = {
   formula: SceneFormula,
   comparison: SceneComparison,
   recap: SceneRecap,
+  live: SceneLive,
 };
 
 function PreviewCanvas({ aspect, scene, sceneIndex, sceneCount, isPlaying, setPlaying, progress }) {

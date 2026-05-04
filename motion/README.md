@@ -243,6 +243,70 @@ var(--font-mono)    JetBrains Mono — code, numeric labels (.63, 0:11)
   a structural reason to add more.
 - **Default 1280×720, 16:9.** Stage width/height should match.
 
+## Timing cheatsheet — how `delay` works
+
+Every primitive (`TraceIn`, `FadeUp`, `SvgFadeIn`, …) calls `useSprite()`
+internally to get `localTime`. **`localTime` is always relative to the
+nearest parent `<Sprite>`'s `start`.** So `delay` means "seconds after this
+beat starts", not "seconds from the beginning of the video".
+
+```
+Stage time:   0────1────2────3────4────5────6────7────8
+                             ├── Sprite start={3} end={8} ──────┤
+                             │   localTime: 0──1──2──3──4──5
+                             │
+                             │   TraceIn delay={1}  → visible at stage 4
+                             │   FadeUp  delay={2.5}→ visible at stage 5.5
+```
+
+Worked example — a beat that starts at `t=10`:
+
+```jsx
+<Sprite start={10} end={16}>
+  <MyBeat />
+</Sprite>
+
+function MyBeat() {
+  // localTime: 0 at stage t=10, 6 at stage t=16
+  return (
+    <>
+      <TraceIn delay={0}   ... />  {/* draws at stage t=10   */}
+      <TraceIn delay={1.5} ... />  {/* draws at stage t=11.5 */}
+      <FadeUp  delay={3}   ... />  {/* fades  at stage t=13  */}
+    </>
+  );
+}
+```
+
+### The nested-Sprite trap
+
+`<Sprite>` reads from `useTimeline()` (absolute stage time), **not** from a
+parent Sprite's context. A nested `<Sprite start={0} end={99}>` inside your
+beat component gives `localTime = absolute stage time`, so all delays become
+absolute stage times — almost certainly wrong.
+
+```jsx
+// ✗ WRONG — inner Sprite's localTime = absolute stage time
+<Sprite start={10} end={16}>
+  <Sprite start={0} end={99}>   {/* delay={1} means stage t=1, already past */}
+    <TraceIn delay={1} />
+  </Sprite>
+</Sprite>
+
+// ✓ CORRECT — primitives directly inside the beat's Sprite
+<Sprite start={10} end={16}>
+  <TraceIn delay={1} />         {/* delay={1} means stage t=11 */}
+</Sprite>
+```
+
+The only legitimate use of nested Sprites is in `rc-scene.jsx`'s circuit
+components, where the inner `<Sprite start={0} end={20} keepMounted>` is
+intentionally used to express delays as absolute stage times. Avoid this
+pattern in new scenes — it is confusing and only necessary for `keepMounted`
+re-mount choreography.
+
+---
+
 ## Common gotchas
 
 - **`FadeUp` inside `<svg>` does nothing visible.** Use `SvgFadeIn`.
@@ -251,7 +315,9 @@ var(--font-mono)    JetBrains Mono — code, numeric labels (.63, 0:11)
 - **`pathLength={1000}` is normalised** — the actual stroke-dashoffset
   math uses 1000 regardless of real path length, so trace timing is
   predictable. Don't override unless you know why.
-- **Sprite `localTime` resets to 0 at `start`.** All `delay` values are
-  relative to that, not to the Stage's absolute time.
+- **`strokeDasharray` on `TraceIn` is spread after the internal default**,
+  so it overrides the 1000-unit dash. With a repeating pattern like `"6 6"`,
+  dashoffset animation no longer produces a clean draw-in — use `SvgFadeIn`
+  wrapping a plain `<path>` for dashed lines instead.
 - **Fonts:** local font-face CSS in `colors_and_type.css` already loads
   Fraunces, Inter and JetBrains Mono. Don't import from Google Fonts.
