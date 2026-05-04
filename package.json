@@ -1,0 +1,15 @@
+{
+  "name": "manimo-design-system",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Brand + design system + motion library + AI scene-generation pipeline for Manimo physics explainers.",
+  "scripts": {
+    "lint": "node scripts/lint-tokens.js",
+    "snapshot": "node scripts/snapshot-scene.js",
+    "postinstall": "playwright install chromium --with-deps"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}

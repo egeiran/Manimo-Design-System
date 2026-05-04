@@ -49,14 +49,14 @@ be reviewed/merged independently.
 
 ## Rationale — Phase 1
 
-| Item | Why now |
-|------|---------|
-| SceneChrome | Every new scene currently copies ~80 lines of boilerplate. One source of truth. |
-| Manifest | Without a registry an AI has no way to know what scenes exist or what's missing. |
-| Timing cheatsheet | The nested-Sprite trap is the #1 authoring mistake. Document it once. |
-| Token linter | The hard rule has no enforcement — one raw hex slips through per session. |
-| Narration stubs | TTS/subtitles are the next obvious feature; stubs make the jump trivial. |
-| Spec format | Separating *what to teach* from *how to animate it* is the lever that makes AI video generation scalable. |
+| Item              | Why now                                                                                                   |
+| ----------------- | --------------------------------------------------------------------------------------------------------- |
+| SceneChrome       | Every new scene currently copies ~80 lines of boilerplate. One source of truth.                           |
+| Manifest          | Without a registry an AI has no way to know what scenes exist or what's missing.                          |
+| Timing cheatsheet | The nested-Sprite trap is the #1 authoring mistake. Document it once.                                     |
+| Token linter      | The hard rule has no enforcement — one raw hex slips through per session.                                 |
+| Narration stubs   | TTS/subtitles are the next obvious feature; stubs make the jump trivial.                                  |
+| Spec format       | Separating *what to teach* from *how to animate it* is the lever that makes AI video generation scalable. |
 
 ---
 
@@ -118,12 +118,14 @@ Claude API to produce a ready-to-open JSX scene file. With this script the workf
 That is the MVP of AI-powered scene creation. No studio UI needed to prove it works.
 
 Implementation:
-- [x] `scripts/generate-scene.js` — reads a spec JSON, sends it + CLAUDE.md + motion/README.md
-  as context to Claude API (`claude-sonnet-4-6`) with prompt-caching breakpoints
-- [x] System prompt: the scene authoring rules (CLAUDE.md hard rules + README conventions),
-  the spec schema, and an example (rc-scene.spec.json → rc-scene.jsx) as few-shot reference
+- [x] `scripts/generate-scene.js` — reads a spec JSON, builds a self-contained
+  prompt (CLAUDE.md + motion/README.md + spec schema + rc-scene example),
+  invokes `claude -p --model claude-sonnet-4-6`. **No API key required** —
+  routes through your Max subscription via the Claude Code CLI.
+- [x] Self-contained prompt: rules + schema + few-shot example (rc-scene.spec.json
+  → rc-scene.jsx) + new spec
 - [x] Output: `motion/<id>.jsx` + `motion/<id>.html` (templated HTML with correct script src)
-- [x] `--dry-run` flag prints prompt sizes without calling the API
+- [x] `--dry-run` flag prints prompt size without spawning claude
 - [x] `--force` flag allows overwriting existing files
 - [x] Post-generation lint run, scoped to the new file only
 
@@ -171,14 +173,26 @@ violations** across the codebase — hardcoded brand hex values like `#f4b860`,
 These are not regressions from Phase 1/2 work — they are pre-existing technical
 debt that was masked by the broken linter. New code (Phase 1+2) is clean.
 
-- [ ] **Migrate hardcoded brand hex to CSS tokens** in:
-  - `motion/animations.jsx` (sample/legacy primitives)
-  - `motion/manimo-motion.jsx` (default props on Manimo, ChalkTip, etc.)
-  - `ui_kits/studio/*.jsx`, `ui_kits/watch/*.jsx` (mockup hex literals)
-- [ ] **Decide on policy for primitive defaults** — library primitives like `<Manimo>`
-  reasonably want a fallback color when no prop is passed. Either accept this as
-  legitimate (and add a per-line lint comment), or pull defaults from CSS variables
-  via getComputedStyle on a sentinel element.
+- [x] **Migrate hardcoded brand hex to CSS tokens**:
+  - `motion/manimo-motion.jsx` — defaults on TraceIn, PulseMark, Manimo, ChalkTip,
+    Bracket migrated from raw hex to `'var(--amber-400)'` / `'var(--chalk-300)'` strings
+  - `motion/animations.jsx` — deleted unused samples (TextSprite, ImageSprite,
+    RectSprite); migrated remaining Stage/PlaybackBar defaults to `var(--bg-canvas)`,
+    `var(--bg-sunken)`, `var(--bg-overlay)`, `var(--chalk-50)`
+  - `ui_kits/studio/PreviewCanvas.jsx`, `ui_kits/studio/SceneList.jsx`,
+    `ui_kits/watch/ChapterList.jsx`, `ui_kits/watch/VideoPlayer.jsx` — all
+    `#f4b860`/`#fbf7ee`/`#e87a90`/`#7fd1c5`/`#c8b994` migrated to brand tokens
+- [x] **Linter bugfix** — regex was matching HTML numeric entities like `&#8239;`
+  as hex colors; fixed with negative lookbehind `(?<!&)`
+- [x] **Allowlist additions** — `rgba(232,122,144,…)` (rose-400 derivative),
+  `rgba(155,140,255,…)` (violet-400), `rgba(246,244,239,…)` (chalk-50 with alpha),
+  `rgba(255,255,255,…)` (white-on-dark UI overlay pattern)
+- [x] **Policy decision: primitive defaults use `var(--token)` strings**, not raw
+  hex or runtime CSS lookup. Works in SVG attribute contexts in modern browsers,
+  and is consistent with how scenes already pass color props.
+
+**Result:** linter now passes cleanly across the entire repo (0 violations,
+down from 49 — the silent URL-encoding bug had been hiding all of them).
 
 ---
 
@@ -192,3 +206,38 @@ debt that was masked by the broken linter. New code (Phase 1+2) is clean.
   Candidates: Newton's laws, energy conservation, wave interference, thermodynamics basics.
 - **Watch UI** — Wire the watch player to the scene manifest so students can browse and play
   lessons. A thin layer on top of the existing mock.
+
+---
+
+## Nightly agent queue
+
+Single rolling section. The nightly agent processes [AGENT] items, removes
+them from this list when done (git history is the audit trail), and appends
+new items found during the run. Items tagged [HUMAN] are skipped by the agent
+and require your input. Total queue size is kept ≤ 12 items.
+
+### [AGENT] — safe for the next nightly run
+
+- Backfill `motion/derivation-scene.spec.json` from the existing JSX. The
+  scene has a `NARRATION` array (5 entries) and 5 `<Sprite>` blocks; reverse-
+  engineer a spec that validates against `motion/scene-spec.schema.json`.
+  After writing, add a `"spec": "derivation-scene.spec.json"` field to the
+  `moment-of-inertia` entry in `motion/scene-manifest.json`.
+- Add a `"spec": "rc-scene.spec.json"` field to the `rc-circuit` entry in
+  `motion/scene-manifest.json`. The file already exists; the manifest just
+  doesn't reference it.
+- Verify the three `motion/*.html` files use **identical integrity hashes**
+  for React, ReactDOM, and Babel-standalone scripts. They should all match
+  `motion/rc-scene.html` (the canonical bootstrap). If any have drifted,
+  normalize to the rc-scene values.
+- In `motion/_scene-template.jsx`, the placeholder `NARRATION` entries say
+  `"TODO: ..."` — update the trailing comment about beats to mention that
+  `NARRATION.length` should equal the number of `<Sprite>` beats in `Scene()`.
+
+### [HUMAN] — needs your input
+
+- **Pick the topic for the agent's first authored scene.** The agent will
+  pick something reasonable on its own, but a curated first pick keeps the
+  trajectory aligned with TFY4125's order. Strong candidates from the PDF:
+  Pendulum (§3.3), Spring oscillation (§3.2), Coulomb's law (§4.1), Torque
+  (§2.3). Reply in chat with your pick or say "agent's choice".

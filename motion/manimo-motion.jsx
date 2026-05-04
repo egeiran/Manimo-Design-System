@@ -26,7 +26,7 @@ const MM_DEFAULT_EASE = Easing.easeOutCubic;
 // Use for: formulas (one path per glyph), curves, axes, geometric figures.
 function TraceIn({
   d,
-  stroke = '#f4b860',
+  stroke = 'var(--amber-400)',
   strokeWidth = 3,
   fill = 'none',
   strokeLinecap = 'round',
@@ -139,7 +139,7 @@ function WriteOn({
 // attention to a specific location on a graph.
 function PulseMark({
   cx, cy,
-  color = '#f4b860',
+  color = 'var(--amber-400)',
   radius = 4,
   pulseRadius = 18,
   duration = 0.9,
@@ -211,8 +211,8 @@ function ChalkWipe({
 // character's local 200×200 frame; transform the parent <g> to position.
 function Manimo({
   size = 120,
-  color = '#f4b860',
-  eyeColor = '#0c0a1f',
+  color = 'var(--amber-400)',
+  eyeColor = 'var(--bg-canvas)',
   point = null, // {x, y} in local-frame coords; if set, tail reaches toward it
   bob = true,   // gentle idle float
   bobAmplitude = 4,
@@ -278,7 +278,7 @@ function ManimoEnter({ duration = 0.7, ease = Easing.easeOutBack, ...props }) {
 // ─── Cursor (drawing pointer) ─────────────────────────────────────────────
 // A small chalk-tip cursor that glides along a path. Use as a visual
 // counterpart to TraceIn — the tip "draws" the line.
-function ChalkTip({ x, y, color = '#f4b860', size = 8, opacity = 1 }) {
+function ChalkTip({ x, y, color = 'var(--amber-400)', size = 8, opacity = 1 }) {
   return (
     <g style={{ opacity }}>
       <circle cx={x} cy={y} r={size * 0.7} fill={color} opacity={0.25}/>
@@ -294,7 +294,7 @@ function Bracket({
   x1, y1, x2, y2,
   side = 'bottom',
   depth = 12,
-  color = '#c8b994',
+  color = 'var(--chalk-300)',
   strokeWidth = 1.5,
   duration = 0.5,
   delay = 0,

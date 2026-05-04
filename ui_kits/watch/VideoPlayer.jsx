@@ -27,12 +27,12 @@ function VideoPlayer({ progress, setProgress, isPlaying, setPlaying, chapters, d
           <line x1="20" y1="120" x2="210" y2="120" stroke="rgba(232,220,193,0.3)" strokeWidth="1"/>
           <line x1="20" y1="20" x2="20" y2="120" stroke="rgba(232,220,193,0.3)" strokeWidth="1"/>
           <line x1="20" y1="40" x2="210" y2="40" stroke="rgba(232,220,193,0.18)" strokeWidth="1" strokeDasharray="3 3"/>
-          <text x="0" y="44" fontSize="9" fill="#c8b994" fontFamily="JetBrains Mono">V₀</text>
-          <text x="0" y="86" fontSize="9" fill="#f4b860" fontFamily="JetBrains Mono">.63</text>
+          <text x="0" y="44" fontSize="9" fill="var(--chalk-300)" fontFamily="JetBrains Mono">V₀</text>
+          <text x="0" y="86" fontSize="9" fill="var(--amber-400)" fontFamily="JetBrains Mono">.63</text>
           <line x1="80" y1="40" x2="80" y2="120" stroke="rgba(244,184,96,0.4)" strokeWidth="1" strokeDasharray="3 3"/>
-          <text x="74" y="134" fontSize="9" fill="#f4b860" fontFamily="JetBrains Mono">τ</text>
-          <path d="M 20 120 Q 60 120, 80 80 T 210 42" stroke="#f4b860" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-          <circle cx="80" cy="80" r="3" fill="#f4b860"/>
+          <text x="74" y="134" fontSize="9" fill="var(--amber-400)" fontFamily="JetBrains Mono">τ</text>
+          <path d="M 20 120 Q 60 120, 80 80 T 210 42" stroke="var(--amber-400)" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+          <circle cx="80" cy="80" r="3" fill="var(--amber-400)"/>
         </svg>
       </div>
 

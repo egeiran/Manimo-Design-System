@@ -62,7 +62,7 @@ function SceneComparison({ scene }) {
             <svg viewBox="0 0 200 140" width="100%" height="100%">
               <line x1="20" y1="120" x2="180" y2="40" stroke="rgba(232,220,193,0.5)" strokeWidth="2"/>
               <line x1="20" y1="120" x2="180" y2="120" stroke="rgba(232,220,193,0.3)" strokeWidth="1" strokeDasharray="3 3"/>
-              <circle cx="80" cy="93" r="14" fill="none" stroke="#f4b860" strokeWidth="2.5"/>
+              <circle cx="80" cy="93" r="14" fill="none" stroke="var(--amber-400)" strokeWidth="2.5"/>
             </svg>
           </div>
           <div className="compare-label">Hoop</div>
@@ -73,7 +73,7 @@ function SceneComparison({ scene }) {
             <svg viewBox="0 0 200 140" width="100%" height="100%">
               <line x1="20" y1="120" x2="180" y2="40" stroke="rgba(232,220,193,0.5)" strokeWidth="2"/>
               <line x1="20" y1="120" x2="180" y2="120" stroke="rgba(232,220,193,0.3)" strokeWidth="1" strokeDasharray="3 3"/>
-              <circle cx="105" cy="80" r="14" fill="rgba(232,122,144,0.25)" stroke="#e87a90" strokeWidth="2.5"/>
+              <circle cx="105" cy="80" r="14" fill="rgba(232,122,144,0.25)" stroke="var(--rose-400)" strokeWidth="2.5"/>
             </svg>
           </div>
           <div className="compare-label">Solid disk</div>

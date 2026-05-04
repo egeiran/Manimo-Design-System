@@ -1,0 +1,16 @@
+# Snapshot output (regenerated per run, not source of truth)
+.tmp/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Local credentials — never commit
+.env
+.env.local

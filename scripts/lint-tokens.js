@@ -19,8 +19,9 @@ import { fileURLToPath } from 'url';
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const SCAN_DIRS = ['motion', 'ui_kits'];
 
-// Matches #rgb, #rrggbb, #rrggbbaa (case-insensitive)
-const HEX_RE = /#([0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\b/g;
+// Matches #rgb, #rrggbb, #rrggbbaa (case-insensitive).
+// The (?<!&) avoids matching HTML numeric entities like &#8239; (narrow no-break space).
+const HEX_RE = /(?<!&)#([0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\b/g;
 
 // Matches rgb(...) or rgba(...) that aren't inside a CSS var() or token comment
 // Allow-listed patterns that are intentional (e.g. radial-gradient internals):
@@ -32,6 +33,10 @@ const ALLOWLIST_SUBSTRINGS = [
   'radial-gradient',     // scene background gradient uses rgba() intentionally
   'rgba(232,220,193,',   // chalk grid lines — derived from --chalk-100 token value
   'rgba(244,184,96,',    // amber glow — derived from --amber-400 token value
+  'rgba(232,122,144,',   // rose fills — derived from --rose-400 token value
+  'rgba(155,140,255,',   // violet glow — derived from --violet-400 token value
+  'rgba(246,244,239,',   // chalk-50 with alpha — used for dimmed labels in PlaybackBar
+  'rgba(255,255,255,',   // white-on-dark UI overlay (PlaybackBar hovers, scrub track)
   'rgba(0,0,0,',         // generic black with alpha (shadows)
   '#0c0a1f',             // bg-canvas raw value (token not yet wired to CSS var in JSX)
   'lint-tokens',         // this file itself

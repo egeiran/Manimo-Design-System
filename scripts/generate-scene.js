@@ -1,35 +1,25 @@
 #!/usr/bin/env node
-// generate-scene.js — turn a scene spec JSON into a working Manimo scene file.
+// generate-scene.js — turn a scene spec JSON into a Manimo scene file.
+//
+// Uses the `claude` CLI in print mode, which routes through your Claude Code
+// session and your Claude Max subscription. NO ANTHROPIC_API_KEY REQUIRED.
 //
 // Usage:
-//   node scripts/generate-scene.js motion/hoop-disk.spec.json
+//   node scripts/generate-scene.js motion/<id>.spec.json
 //   node scripts/generate-scene.js motion/<id>.spec.json --dry-run
 //   node scripts/generate-scene.js motion/<id>.spec.json --force
 //
 // Requires:
-//   • Node 18+ (uses built-in fetch — no npm install needed)
-//   • ANTHROPIC_API_KEY env var
-//
-// Pipeline:
-//   1. Read spec JSON (must validate against motion/scene-spec.schema.json)
-//   2. Build a 2-message prompt: rc-scene as the few-shot example,
-//      then the new spec. System prompt caches authoring rules.
-//   3. Call claude-sonnet-4-6 with two cache breakpoints (system + few-shot).
-//   4. Write motion/<id>.jsx + motion/<id>.html.
-//   5. Run scripts/lint-tokens.js to verify no raw color slipped in.
+//   • Node 18+
+//   • `claude` CLI on PATH (Claude Code installed + signed in)
 
 import { readFileSync, writeFileSync, existsSync } from 'fs';
-import { join, dirname, basename, resolve } from 'path';
+import { join, dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
-import { execSync } from 'child_process';
+import { execSync, spawnSync } from 'child_process';
 
-const __filename = fileURLToPath(import.meta.url);
-const ROOT = resolve(dirname(__filename), '..');
-
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const MODEL = 'claude-sonnet-4-6';
-const MAX_TOKENS = 8192;
-const ANTHROPIC_VERSION = '2023-06-01';
-const ENDPOINT = 'https://api.anthropic.com/v1/messages';
 
 // ─── CLI args ────────────────────────────────────────────────────────────
 const args = process.argv.slice(2);
@@ -45,15 +35,12 @@ const specPath = resolve(positional[0]);
 const dryRun = flags.has('--dry-run');
 const force = flags.has('--force');
 
-// ─── Read inputs ─────────────────────────────────────────────────────────
-function read(rel) {
-  return readFileSync(join(ROOT, rel), 'utf8');
-}
+// ─── Read inputs and validate ────────────────────────────────────────────
+function read(rel) { return readFileSync(join(ROOT, rel), 'utf8'); }
 
 let spec;
-try {
-  spec = JSON.parse(readFileSync(specPath, 'utf8'));
-} catch (e) {
+try { spec = JSON.parse(readFileSync(specPath, 'utf8')); }
+catch (e) {
   console.error(`Failed to read spec at ${specPath}: ${e.message}`);
   process.exit(1);
 }
@@ -71,19 +58,17 @@ if (!dryRun && !force && (existsSync(outJsx) || existsSync(outHtml))) {
   process.exit(1);
 }
 
-// ─── Reference materials (cached portion of the prompt) ──────────────────
+// ─── Build the prompt ────────────────────────────────────────────────────
+// Single self-contained prompt: rules + schema + few-shot example + new spec.
+// No prompt caching (the CLI doesn't expose breakpoints), but Max subscription
+// covers the cost.
 const claudeMd     = read('CLAUDE.md');
 const motionReadme = read('motion/README.md');
 const schemaJson   = read('motion/scene-spec.schema.json');
 const exampleSpec  = read('motion/rc-scene.spec.json');
 const exampleJsx   = read('motion/rc-scene.jsx');
 
-const systemPrompt = `You are generating a single React/JSX file for a Manimo lesson scene.
-
-Manimo scenes are rendered via @babel/standalone in the browser. Each scene is
-one .jsx file plus one .html bootstrap file. Animations are composed from a
-small library of primitives (TraceIn, FadeUp, SvgFadeIn, WriteOn, …) on top of
-a Sprite/Stage timeline system.
+const prompt = `Generate a single React/JSX file for a Manimo lesson scene.
 
 # Project conventions (CLAUDE.md)
 
@@ -95,19 +80,34 @@ ${motionReadme}
 
 # Scene spec schema (motion/scene-spec.schema.json)
 
-The user will give you a filled spec object. Treat it as a structured description
-of beats, narration, and visual elements. Translate it into JSX. Use the spec's
-\`narration\` array to populate the NARRATION constant at the top of the file.
-
 \`\`\`json
 ${schemaJson}
 \`\`\`
 
-# Output format
+# Example — input spec (motion/rc-scene.spec.json)
 
-Output ONLY the contents of the .jsx file. No code fences, no commentary, no
-preamble, no trailing explanation. Start with the file's leading comment block;
-end with \`ReactDOM.createRoot(document.getElementById('root')).render(<App/>);\`.
+\`\`\`json
+${exampleSpec}
+\`\`\`
+
+# Example — matching output JSX (motion/rc-scene.jsx produced from the spec above)
+
+\`\`\`jsx
+${exampleJsx}
+\`\`\`
+
+# Now: generate the .jsx for this new spec
+
+\`\`\`json
+${JSON.stringify(spec, null, 2)}
+\`\`\`
+
+# Output rules — read carefully
+
+- Output ONLY the .jsx file content. No code fences, no commentary, no preamble,
+  no trailing explanation. The first line of your output should be the file's
+  leading \`//\` comment header. The last line should be
+  \`ReactDOM.createRoot(document.getElementById('root')).render(<App/>);\`.
 
 # Critical reminders
 
@@ -115,123 +115,55 @@ end with \`ReactDOM.createRoot(document.getElementById('root')).render(<App/>);\
 - One <Sprite> per beat, no nested Sprites inside beat components. Stagger via delay.
 - delay is relative to the parent Sprite's localTime — NOT absolute stage time.
 - SvgFadeIn (not FadeUp) for elements inside <svg>.
-- Use design tokens — no raw hex, no bare rgb()/rgba() except in the existing
-  background gradient pattern (radial-gradient is allow-listed by the linter).
-- Set window.sceneNarration = NARRATION near the bottom (before App).
-`;
-
-const exampleUserMsg = `Generate the .jsx scene file for this spec:
-
-\`\`\`json
-${exampleSpec}
-\`\`\``;
-
-const exampleAssistantMsg = exampleJsx;
-
-const userMsg = `Generate the .jsx scene file for this spec:
-
-\`\`\`json
-${JSON.stringify(spec, null, 2)}
-\`\`\``;
-
-// ─── Build request ───────────────────────────────────────────────────────
-const requestBody = {
-  model: MODEL,
-  max_tokens: MAX_TOKENS,
-  system: [
-    {
-      type: 'text',
-      text: systemPrompt,
-      cache_control: { type: 'ephemeral' },
-    },
-  ],
-  messages: [
-    {
-      role: 'user',
-      content: [{ type: 'text', text: exampleUserMsg }],
-    },
-    {
-      role: 'assistant',
-      content: [
-        {
-          type: 'text',
-          text: exampleAssistantMsg,
-          cache_control: { type: 'ephemeral' },
-        },
-      ],
-    },
-    {
-      role: 'user',
-      content: [{ type: 'text', text: userMsg }],
-    },
-  ],
-};
+- Use design tokens — no raw hex.
+- Set \`window.sceneNarration = NARRATION;\` near the bottom (before the App component).`;
 
 if (dryRun) {
   console.log('=== Dry run ===');
   console.log(`Model: ${MODEL}`);
-  console.log(`System prompt: ${systemPrompt.length} chars`);
-  console.log(`Few-shot user: ${exampleUserMsg.length} chars`);
-  console.log(`Few-shot assistant: ${exampleAssistantMsg.length} chars`);
-  console.log(`New user message: ${userMsg.length} chars`);
-  console.log(`Cache breakpoints: 2 (system + few-shot assistant)`);
-  console.log(`Output: ${outJsx} + ${outHtml}`);
+  console.log(`Prompt size: ${prompt.length} chars (~${Math.round(prompt.length / 4)} tokens)`);
+  console.log(`Output:  ${outJsx}`);
+  console.log(`         ${outHtml}`);
+  console.log(`\nWill invoke: claude -p --model ${MODEL} <prompt-via-argv>`);
   process.exit(0);
 }
 
-// ─── Call API ────────────────────────────────────────────────────────────
-const apiKey = process.env.ANTHROPIC_API_KEY;
-if (!apiKey) {
-  console.error('ANTHROPIC_API_KEY is not set. Export it and retry.');
+// ─── Verify the claude CLI is available ──────────────────────────────────
+try { execSync('command -v claude', { stdio: 'ignore' }); }
+catch {
+  console.error('`claude` CLI not found on PATH.');
+  console.error('Install Claude Code (https://claude.ai/code) and sign in, then retry.');
   process.exit(1);
 }
 
-console.log(`→ Generating ${spec.id}.jsx via ${MODEL} …`);
+console.log(`→ Generating ${spec.id}.jsx via \`claude -p\` (Max subscription)…`);
 
-let response;
-try {
-  response = await fetch(ENDPOINT, {
-    method: 'POST',
-    headers: {
-      'x-api-key': apiKey,
-      'anthropic-version': ANTHROPIC_VERSION,
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify(requestBody),
-  });
-} catch (e) {
-  console.error(`Network error: ${e.message}`);
+// ─── Invoke claude -p ────────────────────────────────────────────────────
+const result = spawnSync('claude', ['-p', prompt, '--model', MODEL], {
+  encoding: 'utf8',
+  maxBuffer: 16 * 1024 * 1024,
+});
+
+if (result.error) {
+  console.error(`Failed to spawn claude: ${result.error.message}`);
+  process.exit(1);
+}
+if (result.status !== 0) {
+  console.error(`claude exited with status ${result.status}`);
+  if (result.stderr) console.error(result.stderr);
   process.exit(1);
 }
 
-if (!response.ok) {
-  const errBody = await response.text();
-  console.error(`API error ${response.status}: ${errBody}`);
+const jsxText = (result.stdout || '').trim();
+if (!jsxText) {
+  console.error('Empty response from claude.');
+  if (result.stderr) console.error(result.stderr);
   process.exit(1);
 }
 
-const result = await response.json();
-
-const usage = result.usage || {};
-console.log(`  input: ${usage.input_tokens ?? '?'} tokens` +
-  (usage.cache_read_input_tokens ? ` (cache read: ${usage.cache_read_input_tokens})` : '') +
-  (usage.cache_creation_input_tokens ? ` (cache write: ${usage.cache_creation_input_tokens})` : ''));
-console.log(`  output: ${usage.output_tokens ?? '?'} tokens`);
-
-const jsxText = (result.content || [])
-  .filter(b => b.type === 'text')
-  .map(b => b.text)
-  .join('');
-
-if (!jsxText.trim()) {
-  console.error('Empty response from API.');
-  process.exit(1);
-}
-
-// Sometimes models still wrap output in a code fence — strip if present.
+// ─── Clean up and write ──────────────────────────────────────────────────
 const cleaned = stripCodeFence(jsxText);
-
-writeFileSync(outJsx, cleaned);
+writeFileSync(outJsx, cleaned.endsWith('\n') ? cleaned : cleaned + '\n');
 writeFileSync(outHtml, htmlForScene(spec));
 
 console.log(`✓ Wrote ${outJsx}`);
@@ -249,7 +181,7 @@ console.log(`\nOpen file://${outHtml} in a browser to preview.`);
 // ─── Helpers ─────────────────────────────────────────────────────────────
 function stripCodeFence(s) {
   const fenced = s.match(/^\s*```(?:jsx|javascript|js)?\n([\s\S]*?)\n```\s*$/);
-  return fenced ? fenced[1] : s;
+  return fenced ? fenced[1].trim() : s;
 }
 
 function htmlForScene(spec) {

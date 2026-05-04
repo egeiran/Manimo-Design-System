@@ -27,8 +27,8 @@ function SceneThumb({ kind }) {
     return (
       <svg viewBox="0 0 80 45" width="100%" height="100%">
         <rect width="80" height="45" fill="#0c0a1f"/>
-        <text x="8" y="18" fontFamily="Fraunces, serif" fontSize="9" fill="#fbf7ee">A question</text>
-        <line x1="8" y1="26" x2="62" y2="26" stroke="#f4b860" strokeWidth="1"/>
+        <text x="8" y="18" fontFamily="Fraunces, serif" fontSize="9" fill="var(--chalk-50)">A question</text>
+        <line x1="8" y1="26" x2="62" y2="26" stroke="var(--amber-400)" strokeWidth="1"/>
         <line x1="8" y1="32" x2="40" y2="32" stroke="rgba(232,220,193,0.3)" strokeWidth="1"/>
       </svg>
     );
@@ -37,7 +37,7 @@ function SceneThumb({ kind }) {
     return (
       <svg viewBox="0 0 80 45" width="100%" height="100%">
         <rect width="80" height="45" fill="#0c0a1f"/>
-        <text x="40" y="26" fontFamily="Fraunces, serif" fontStyle="italic" fontSize="11" fill="#fbf7ee" textAnchor="middle">K = ½ I ω²</text>
+        <text x="40" y="26" fontFamily="Fraunces, serif" fontStyle="italic" fontSize="11" fill="var(--chalk-50)" textAnchor="middle">K = ½ I ω²</text>
       </svg>
     );
   }
@@ -46,9 +46,9 @@ function SceneThumb({ kind }) {
       <svg viewBox="0 0 80 45" width="100%" height="100%">
         <rect width="80" height="45" fill="#0c0a1f"/>
         <line x1="6" y1="36" x2="38" y2="14" stroke="rgba(232,220,193,0.5)" strokeWidth="1"/>
-        <circle cx="22" cy="26" r="4" fill="none" stroke="#f4b860" strokeWidth="1.2"/>
+        <circle cx="22" cy="26" r="4" fill="none" stroke="var(--amber-400)" strokeWidth="1.2"/>
         <line x1="42" y1="36" x2="74" y2="14" stroke="rgba(232,220,193,0.5)" strokeWidth="1"/>
-        <circle cx="58" cy="26" r="4" fill="rgba(232,122,144,0.4)" stroke="#e87a90" strokeWidth="1.2"/>
+        <circle cx="58" cy="26" r="4" fill="rgba(232,122,144,0.4)" stroke="var(--rose-400)" strokeWidth="1.2"/>
       </svg>
     );
   }
@@ -56,9 +56,9 @@ function SceneThumb({ kind }) {
     return (
       <svg viewBox="0 0 80 45" width="100%" height="100%">
         <rect width="80" height="45" fill="#0c0a1f"/>
-        <circle cx="10" cy="14" r="1.4" fill="#f4b860"/><line x1="16" y1="14" x2="56" y2="14" stroke="rgba(232,220,193,0.5)" strokeWidth="1"/>
-        <circle cx="10" cy="22" r="1.4" fill="#e87a90"/><line x1="16" y1="22" x2="50" y2="22" stroke="rgba(232,220,193,0.5)" strokeWidth="1"/>
-        <circle cx="10" cy="30" r="1.4" fill="#7fd1c5"/><line x1="16" y1="30" x2="58" y2="30" stroke="rgba(232,220,193,0.5)" strokeWidth="1"/>
+        <circle cx="10" cy="14" r="1.4" fill="var(--amber-400)"/><line x1="16" y1="14" x2="56" y2="14" stroke="rgba(232,220,193,0.5)" strokeWidth="1"/>
+        <circle cx="10" cy="22" r="1.4" fill="var(--rose-400)"/><line x1="16" y1="22" x2="50" y2="22" stroke="rgba(232,220,193,0.5)" strokeWidth="1"/>
+        <circle cx="10" cy="30" r="1.4" fill="var(--teal-400)"/><line x1="16" y1="30" x2="58" y2="30" stroke="rgba(232,220,193,0.5)" strokeWidth="1"/>
       </svg>
     );
   }
@@ -66,8 +66,8 @@ function SceneThumb({ kind }) {
     return (
       <svg viewBox="0 0 80 45" width="100%" height="100%">
         <rect width="80" height="45" fill="#0c0a1f"/>
-        <circle cx="40" cy="22.5" r="11" fill="none" stroke="#f4b860" strokeWidth="1.2"/>
-        <polygon points="36,17 36,28 47,22.5" fill="#f4b860"/>
+        <circle cx="40" cy="22.5" r="11" fill="none" stroke="var(--amber-400)" strokeWidth="1.2"/>
+        <polygon points="36,17 36,28 47,22.5" fill="var(--amber-400)"/>
         <text x="40" y="40" fontFamily="JetBrains Mono, monospace" fontSize="6" fill="rgba(232,220,193,0.5)" textAnchor="middle" letterSpacing="0.2em">LIVE</text>
       </svg>
     );
