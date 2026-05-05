@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Brand + design system + motion library + AI scene-generation pipeline for Manimo physics explainers.",
   "scripts": {
+    "dev": "node scripts/dev-server.js",
     "lint": "node scripts/lint-tokens.js",
     "snapshot": "node scripts/snapshot-scene.js",
     "vendor": "node scripts/vendor.js",

@@ -112,10 +112,14 @@ function animate({ from = 0, to = 1, start = 0, end = 1, ease = Easing.easeInOut
 
 // ── Timeline context ────────────────────────────────────────────────────────
 
-const TimelineContext = React.createContext({ time: 0, duration: 10, playing: false });
+const TimelineContext = React.createContext({
+  time: 0, duration: 10, playing: false,
+  portrait: false, width: 1280, height: 720,
+});
 
 const useTime = () => React.useContext(TimelineContext).time;
 const useTimeline = () => React.useContext(TimelineContext);
+const usePortrait = () => React.useContext(TimelineContext).portrait;
 
 // ── Sprite ──────────────────────────────────────────────────────────────────
 // Renders children only when the playhead is inside [start, end]. Provides
@@ -175,6 +179,12 @@ function Stage({
   const embedded = params.get('embed') === '1' || (() => {
     try { return window.parent && window.parent !== window; } catch { return false; }
   })();
+  // ?aspect=9:16 (or "portrait") rotates the stage to a 720×1280 canvas.
+  // Scenes can branch on `useTimeline().portrait` to lay beats out vertically.
+  const aspectParam = (params.get('aspect') || '').toLowerCase();
+  const portrait = aspectParam === '9:16' || aspectParam === 'portrait';
+  const stageW = portrait ? 720  : width;
+  const stageH = portrait ? 1280 : height;
 
   const [time, setTime] = React.useState(() => {
     if (freezeTime != null) return freezeTime;
@@ -193,12 +203,14 @@ function Stage({
     const handle = stageHandleRef.current;
     window.__manimoStage = {
       setTime, setPlaying, duration,
+      width: stageW, height: stageH, portrait,
       getTime: () => handle.time,
       isPlaying: () => handle.playing,
+      getCanvasEl: () => canvasRef.current,
       subscribe: (fn) => { handle.subs.add(fn); return () => handle.subs.delete(fn); },
     };
     return () => { try { delete window.__manimoStage; } catch {} };
-  }, [duration]);
+  }, [duration, stageW, stageH, portrait]);
   React.useEffect(() => {
     const handle = stageHandleRef.current;
     handle.time = time;
@@ -229,8 +241,8 @@ function Stage({
     const measure = () => {
       const barH = embedded ? 0 : 44; // playback bar height
       const s = Math.min(
-        el.clientWidth / width,
-        (el.clientHeight - barH) / height
+        el.clientWidth / stageW,
+        (el.clientHeight - barH) / stageH
       );
       setScale(Math.max(0.05, s));
     };
@@ -242,7 +254,7 @@ function Stage({
       ro.disconnect();
       window.removeEventListener('resize', measure);
     };
-  }, [width, height]);
+  }, [stageW, stageH, embedded]);
 
   // Animation loop
   React.useEffect(() => {
@@ -293,8 +305,11 @@ function Stage({
   const displayTime = hoverTime != null ? hoverTime : time;
 
   const ctxValue = React.useMemo(
-    () => ({ time: displayTime, duration, playing, setTime, setPlaying }),
-    [displayTime, duration, playing]
+    () => ({
+      time: displayTime, duration, playing, setTime, setPlaying,
+      portrait, width: stageW, height: stageH,
+    }),
+    [displayTime, duration, playing, portrait, stageW, stageH]
   );
 
   return (
@@ -319,7 +334,7 @@ function Stage({
         <div
           ref={canvasRef}
           style={{
-            width, height,
+            width: stageW, height: stageH,
             background,
             position: 'relative',
             transform: `scale(${scale})`,
@@ -543,7 +558,7 @@ function IconButton({ children, onClick, title }) {
 
 Object.assign(window, {
   Easing, interpolate, animate, clamp,
-  TimelineContext, useTime, useTimeline,
+  TimelineContext, useTime, useTimeline, usePortrait,
   Sprite, SpriteContext, useSprite,
   Stage, PlaybackBar,
 });

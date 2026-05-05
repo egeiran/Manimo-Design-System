@@ -28,9 +28,17 @@ function fmtTime(s) {
 // the iframe; we use a CSS transform to fit it to the available width.
 // Uses forwardRef so the parent can grab the iframe element to talk to
 // the inner Stage via window.__manimoStage.
-const SceneLive = React.forwardRef(function SceneLive({ scene, onLoad }, iframeRef) {
+const SceneLive = React.forwardRef(function SceneLive({ scene, aspect, onLoad }, iframeRef) {
   const wrapperRef = React.useRef(null);
   const [scale, setScale] = React.useState(1);
+  const portrait = aspect === '9:16';
+  // Stage canvas dims must match what animations.jsx Stage uses internally
+  // when the ?aspect query param flips to portrait.
+  const innerW = portrait ? 720 : 1280;
+  const innerH = portrait ? 1280 : 720;
+  const src = portrait
+    ? scene.html + (scene.html.includes('?') ? '&aspect=9:16' : '?aspect=9:16')
+    : scene.html;
 
   React.useEffect(() => {
     const el = wrapperRef.current;
@@ -38,24 +46,24 @@ const SceneLive = React.forwardRef(function SceneLive({ scene, onLoad }, iframeR
     const update = () => {
       const w = el.clientWidth;
       const h = el.clientHeight;
-      setScale(Math.min(w / 1280, h / 720));
+      setScale(Math.min(w / innerW, h / innerH));
     };
     update();
     const ro = new ResizeObserver(update);
     ro.observe(el);
     return () => ro.disconnect();
-  }, [scene.html]);
+  }, [scene.html, innerW, innerH]);
 
   return (
     <div ref={wrapperRef} className="scene scene-live"
          style={{ position: 'absolute', inset: 0, overflow: 'hidden',
                   display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <iframe
-        key={scene.html}
+        key={src}
         ref={iframeRef}
-        src={scene.html}
-        width={1280}
-        height={720}
+        src={src}
+        width={innerW}
+        height={innerH}
         title={scene.cardTitle || scene.id}
         onLoad={onLoad}
         style={{
@@ -86,6 +94,13 @@ function ScenePlaceholder({ scene }) {
   );
 }
 
+// "motion/rc-scene.html" → "rc-scene" (scene id used for the notes folder).
+function sceneIdFromHtml(htmlPath) {
+  if (!htmlPath) return null;
+  const base = htmlPath.split('/').pop() || '';
+  return base.replace(/\.html$/i, '') || null;
+}
+
 function PreviewCanvas({ aspect, scenes, sceneIndex, onSelectScene }) {
   const scene = scenes[sceneIndex];
   const sceneCount = scenes.length;
@@ -94,6 +109,9 @@ function PreviewCanvas({ aspect, scenes, sceneIndex, onSelectScene }) {
   const [playing, setPlaying] = React.useState(false);
   const [time, setTime] = React.useState(0);
   const [duration, setDuration] = React.useState(scene?.duration || 0);
+  const [composerOpen, setComposerOpen] = React.useState(false);
+  const [notesRefresh, setNotesRefresh] = React.useState(0);
+  const noteSceneId = sceneIdFromHtml(scene && scene.html);
 
   // Total lesson duration + cumulative offsets (seconds).
   const { total, offsets } = React.useMemo(() => {
@@ -216,17 +234,69 @@ function PreviewCanvas({ aspect, scenes, sceneIndex, onSelectScene }) {
 
   const progressPct = total > 0 ? (globalTime / total) * 100 : 0;
 
+  // ── Comment / screenshot ───────────────────────────────────────────────
+  // Capture target inside the iframe — Stage exposes its canvas div so we
+  // can rasterise it without grabbing the iframe chrome.
+  const getCanvasEl = React.useCallback(() => {
+    const win = iframeRef.current && iframeRef.current.contentWindow;
+    const s = win && win.__manimoStage;
+    if (!s || typeof s.getCanvasEl !== 'function') return null;
+    return s.getCanvasEl();
+  }, []);
+
+  const openComposer = React.useCallback(() => {
+    if (!stage || !noteSceneId) return;
+    try { stage.setPlaying(false); } catch {}
+    setComposerOpen(true);
+  }, [stage, noteSceneId]);
+
+  // Global "C" hotkey — only when not typing in an input.
+  React.useEffect(() => {
+    const onKey = (e) => {
+      if (e.key !== 'c' && e.key !== 'C') return;
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const t = e.target;
+      const tag = t && t.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || (t && t.isContentEditable)) return;
+      e.preventDefault();
+      openComposer();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [openComposer]);
+
+  const handleNoteSaved = React.useCallback(() => {
+    setComposerOpen(false);
+    setNotesRefresh(n => n + 1);
+  }, []);
+
+  const seekToLocalTime = React.useCallback((t) => {
+    if (stage) {
+      try { stage.setTime(Math.max(0, Math.min(scene?.duration || 0, t))); } catch {}
+    }
+  }, [stage, scene && scene.duration]);
+
   return (
     <main className="preview-area">
       <div className={`preview-frame aspect-${aspect.replace(':', '-')}`}>
         <div className="preview-stage">
           {scene && scene.html
-            ? <SceneLive ref={iframeRef} scene={scene} onLoad={handleIframeLoad}/>
+            ? <SceneLive ref={iframeRef} scene={scene} aspect={aspect} onLoad={handleIframeLoad}/>
             : <ScenePlaceholder scene={scene || {}}/>}
         </div>
         <div className="preview-watermark">
           <img src="../../assets/manimo-mark.svg" alt=""/>
         </div>
+        {composerOpen && noteSceneId && (
+          <CommentComposer
+            open={composerOpen}
+            sceneId={noteSceneId}
+            timeSec={time}
+            getCanvasEl={getCanvasEl}
+            onCancel={() => setComposerOpen(false)}
+            onSaved={handleNoteSaved}
+          />
+        )}
       </div>
       <div className="transport">
         <button className="transport-btn" onClick={togglePlay} disabled={!stage}
@@ -249,8 +319,26 @@ function PreviewCanvas({ aspect, scenes, sceneIndex, onSelectScene }) {
           <span className="time-sep">/</span>
           <span className="time-tot">{fmtTime(total)}</span>
         </div>
+        <button
+          className={`transport-btn-camera ${composerOpen ? 'active' : ''}`}
+          onClick={openComposer}
+          disabled={!stage || !noteSceneId}
+          title="Add comment with screenshot (C)"
+          aria-label="Add comment">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4 7h3l2-2h6l2 2h3v12H4z"/>
+            <circle cx="12" cy="13" r="3.5"/>
+          </svg>
+        </button>
         <div className="transport-meta">Scene {sceneIndex + 1} of {sceneCount}</div>
       </div>
+      {noteSceneId && (
+        <NotesPanel
+          sceneId={noteSceneId}
+          refreshKey={notesRefresh}
+          onSeek={seekToLocalTime}
+        />
+      )}
     </main>
   );
 }
