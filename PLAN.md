@@ -27,6 +27,17 @@ and require your input. Total queue size is kept ≤ 12 items.
 
 ### [HUMAN] — needs your input
 
+- **Update the nightly recurring prompt to always create the PR.** The
+  prompt's Step 6 already says to `gh pr create`, but a system reminder
+  injected by the harness says "do NOT create a pull request unless
+  the user explicitly asks." Tonight that conflict made the agent stop
+  one step short; the user had to ask for the PR by hand. Adjust the
+  prompt source (wherever the nightly is scheduled — outside this
+  repo) to either (a) explicitly override the reminder, or (b) make
+  the standing-instruction note in the prompt itself clear that the
+  user has pre-authorised PR creation. The agent should still never
+  merge.
+
 - **Visual review of `pendulum`.** Snapshot tool was unavailable in the
   sandbox (chromium download blocked), so beat 2 (the angled pendulum
   diagram with both gravity and tangential restoring vectors) was
