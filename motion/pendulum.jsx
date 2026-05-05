@@ -34,12 +34,13 @@ function Scene() {
       eyebrow="Scene 5 · pendulum motion"
       title="The Simple Pendulum: Why Mass Doesn't Matter"
       duration={SCENE_DURATION}
+      // Beat 1 is owned by SceneChrome's JourneyManimo: she enters at centre,
+      // holds while the caption reads, then glides to the bottom-left corner
+      // where she stays. No separate intro Sprite needed.
+      introEnd={6.19}
+      introCaption="Pull a weight on a string — what sets the rhythm?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
-
-      <Sprite start={0} end={6.19}>
-        <ManimoBubbleIntro />
-      </Sprite>
 
       <Sprite start={6.19} end={18.18}>
         <PendulumDiagram />
@@ -57,38 +58,6 @@ function Scene() {
         <Takeaway />
       </Sprite>
     </SceneChrome>
-  );
-}
-
-// ─── Beat 1: Manimo intro ─────────────────────────────────────────────────
-function ManimoBubbleIntro() {
-  const portrait = usePortrait();
-  return (
-    <div style={{
-      position: 'absolute', left: '50%', top: portrait ? '46%' : '42%',
-      transform: 'translate(-50%, -50%)',
-      display: 'flex',
-      flexDirection: portrait ? 'column' : 'row',
-      alignItems: 'center',
-      gap: portrait ? 28 : 20,
-      textAlign: portrait ? 'center' : 'left',
-    }}>
-      <svg width={portrait ? 200 : 160} height={portrait ? 200 : 160}
-           viewBox="0 0 200 200" style={{ overflow: 'visible' }}>
-        <ManimoEnter duration={0.7} bob={true} />
-      </svg>
-      <FadeUp duration={0.5} delay={0.7} distance={8}
-        style={{
-          fontFamily: 'var(--font-serif)',
-          fontSize: portrait ? 30 : 26,
-          fontStyle: 'italic',
-          color: 'var(--chalk-100)',
-          maxWidth: portrait ? '18ch' : '34ch',
-          lineHeight: 1.25,
-        }}>
-        Pull a weight on a string — what sets the rhythm?
-      </FadeUp>
-    </div>
   );
 }
 

@@ -165,8 +165,15 @@ body { overflow: hidden; }
   width: 100%;
   max-height: 100%;
 }
-.preview-frame.aspect-16-9 { aspect-ratio: 16/9; max-width: min(100%, calc((100vh - 200px) * 16/9)); }
-.preview-frame.aspect-9-16 { aspect-ratio: 9/16; max-width: min(100%, calc((100vh - 200px) * 9/16)); max-height: calc(100vh - 200px); }
+.preview-frame.aspect-16-9 { aspect-ratio: 16/9; max-width: min(100%, calc((100vh - 140px) * 16/9)); }
+.preview-frame.aspect-9-16 {
+  aspect-ratio: 9/16;
+  /* Portrait: use the full available vertical room — width follows the
+     aspect-ratio. Capped at 70% of the preview area so it doesn't squeeze
+     into a thin column on tall viewports. */
+  max-width: min(70%, calc((100vh - 130px) * 9/16));
+  max-height: calc(100vh - 130px);
+}
 .preview-stage { position: absolute; inset: 0; }
 .preview-watermark { position: absolute; bottom: 14px; right: 14px; opacity: 0.4; }
 .preview-watermark img { width: 22px; height: 22px; }

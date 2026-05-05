@@ -338,8 +338,17 @@ function SvgFadeIn({ duration = 0.4, delay = 0, ease = Easing.easeOutCubic, chil
 //   title     string   Serif italic title, e.g. "Moment of Inertia"
 //   duration  number   SCENE_DURATION — used as the end time for persistent elements
 //   children  node     Beat <Sprite> blocks; rendered on top of all chrome
-function SceneChrome({ eyebrow, title, duration, children }) {
+function SceneChrome({
+  eyebrow, title, duration,
+  // Optional intro: when set, SceneChrome owns Manimo and the intro caption
+  // for the entire intro phase. Manimo enters at centre, holds while the
+  // viewer reads the caption, then morphs (one continuous element) to the
+  // bottom-left corner where she lives for the rest of the scene.
+  introEnd, introCaption, introCaptionDelay = 0.7,
+  children,
+}) {
   const portrait = usePortrait();
+  const useJourney = typeof introEnd === 'number' && introEnd > 0;
   // Portrait gets a tighter title block (top of screen, smaller type) and
   // a smaller bottom-right mascot so the centre of the canvas stays free.
   const titleStyle = portrait
@@ -411,25 +420,146 @@ function SceneChrome({ eyebrow, title, duration, children }) {
         </Sprite>
       )}
 
-      {/* Corner mascot — bobs in at t=2.2 and stays. In portrait it's smaller
-          and tucked into the bottom-left so it doesn't eat vertical real
-          estate that beats need. */}
-      <Sprite start={2.2} end={duration}>
-        <div style={{
-          position: 'absolute',
-          left: portrait ? 16 : 24,
-          bottom: portrait ? 12 : 16,
-          width: portrait ? 78 : 110,
-          height: portrait ? 78 : 110,
-        }}>
-          <svg width={portrait ? 78 : 110} height={portrait ? 78 : 110}
-               viewBox="0 0 200 200" style={{ overflow: 'visible' }}>
-            <Manimo bob={true} bobAmplitude={3} bobSpeed={2.2}/>
-          </svg>
-        </div>
-      </Sprite>
+      {useJourney ? (
+        <>
+          <JourneyManimo introEnd={introEnd} portrait={portrait}/>
+          {introCaption && (
+            // Caption must be fully gone before Manimo begins her journey, so
+            // the viewer's eye isn't split between two moving things. Anchor
+            // its `end` to journey-transition-start (minus a small breath)
+            // rather than to introEnd directly.
+            <IntroCaption text={introCaption} portrait={portrait}
+              start={introCaptionDelay}
+              end={journeyTransitionStart(introEnd) - JOURNEY_CAPTION_GAP}/>
+          )}
+        </>
+      ) : (
+        /* Legacy corner mascot — pops in at t=2.2 and stays. Used by scenes
+           that don't opt into the introEnd journey. */
+        <Sprite start={2.2} end={duration}>
+          <div style={{
+            position: 'absolute',
+            left: portrait ? 16 : 24,
+            bottom: portrait ? 12 : 16,
+            width: portrait ? 78 : 110,
+            height: portrait ? 78 : 110,
+          }}>
+            <svg width={portrait ? 78 : 110} height={portrait ? 78 : 110}
+                 viewBox="0 0 200 200" style={{ overflow: 'visible' }}>
+              <Manimo bob={true} bobAmplitude={3} bobSpeed={2.2}/>
+            </svg>
+          </div>
+        </Sprite>
+      )}
 
       {children}
+    </div>
+  );
+}
+
+// Shared journey timing — kept at module scope so SceneChrome can size the
+// intro caption window without re-deriving the maths.
+const JOURNEY_TRANSITION_LEN = 1.5;  // seconds Manimo spends gliding to corner
+const JOURNEY_CAPTION_GAP    = 0.15; // breath between caption-gone and Manimo-moving
+function journeyTransitionStart(introEnd) {
+  return Math.max(0.9, introEnd - JOURNEY_TRANSITION_LEN);
+}
+
+// ─── JourneyManimo ────────────────────────────────────────────────────────
+// One Manimo for the whole scene: enters at centre, holds while the intro
+// caption reads, then glides to the bottom-left corner. Used by SceneChrome
+// when a scene passes `introEnd` — replaces the previous "two separate
+// Manimos overlap and one disappears" pattern with a single continuous
+// element so the viewer's eye tracks her through the transition.
+function JourneyManimo({ introEnd, portrait }) {
+  const time = useTime();
+  const { height } = useTimeline();
+
+  // Pose at the start (centre, large) and end (bottom-left, small).
+  const introSize = portrait ? 200 : 160;
+  const introCx = portrait ? 360 : 460;
+  const introCy = portrait ? 514 : 300;
+  const cornerSize = portrait ? 78 : 110;
+  const cornerLeft = portrait ? 16 : 24;
+  const cornerBottom = portrait ? 12 : 16;
+  const cornerCx = cornerLeft + cornerSize / 2;
+  const cornerCy = (height || (portrait ? 1280 : 720)) - cornerBottom - cornerSize / 2;
+
+  // Entry: 0..0.7 (ManimoEnter handles its own anim).
+  // Hold: 0.7..transitionStart (sits at centre, bobbing).
+  // Transition: transitionStart..introEnd (eased lerp to corner).
+  // Settled: introEnd..duration (sits at corner, bobbing).
+  const transitionStart = journeyTransitionStart(introEnd);
+  const tFrac = clamp((time - transitionStart) / Math.max(0.001, introEnd - transitionStart), 0, 1);
+  const eased = Easing.easeInOutCubic(tFrac);
+
+  const x = introCx + (cornerCx - introCx) * eased;
+  const y = introCy + (cornerCy - introCy) * eased;
+  const size = introSize + (cornerSize - introSize) * eased;
+  const useEnter = time < 0.9;
+
+  return (
+    <div style={{
+      position: 'absolute',
+      left: x - size / 2, top: y - size / 2,
+      width: size, height: size,
+      pointerEvents: 'none',
+      // pixel-perfect sizing as we scale; suppress any sub-pixel jitter
+      willChange: 'left, top, width, height',
+    }}>
+      <svg width={size} height={size} viewBox="0 0 200 200" style={{ overflow: 'visible' }}>
+        {useEnter
+          ? <ManimoEnter duration={0.7} bob={true} bobAmplitude={3} bobSpeed={2.2}/>
+          : <Manimo bob={true} bobAmplitude={3} bobSpeed={2.2}/>}
+      </svg>
+    </div>
+  );
+}
+
+// ─── IntroCaption ─────────────────────────────────────────────────────────
+// The serif italic line that flanks Manimo during the intro. Fades up at
+// `start`, fades out as the journey transition begins, and unmounts at
+// `end`. Positioned next to the JourneyManimo's hold pose so the two read
+// as a pair.
+function IntroCaption({ text, portrait, start, end }) {
+  const time = useTime();
+  if (time < start || time > end) return null;
+
+  const fadeIn  = clamp((time - start) / 0.5, 0, 1);
+  const fadeOut = clamp((end - time) / 0.4, 0, 1);
+  const opacity = fadeIn * fadeOut;
+
+  // Position next to JourneyManimo's hold pose:
+  //   landscape: right of Manimo, vertically aligned.
+  //   portrait:  below Manimo, horizontally centred.
+  const style = portrait
+    ? {
+        position: 'absolute',
+        left: 360, top: 720,
+        transform: 'translate(-50%, 0)',
+        textAlign: 'center',
+        maxWidth: 520,
+      }
+    : {
+        position: 'absolute',
+        left: 560, top: 300,
+        transform: 'translate(0, -50%)',
+        textAlign: 'left',
+        maxWidth: 460,
+      };
+
+  return (
+    <div style={{
+      ...style,
+      opacity,
+      fontFamily: 'var(--font-serif)',
+      fontStyle: 'italic',
+      fontSize: portrait ? 30 : 26,
+      color: 'var(--chalk-100)',
+      lineHeight: 1.25,
+      pointerEvents: 'none',
+    }}>
+      {text}
     </div>
   );
 }

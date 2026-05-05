@@ -38,12 +38,12 @@ function Scene() {
       eyebrow="Scene 4 · harmonic motion"
       title="Hooke's Law: Why a Spring Bobs"
       duration={SCENE_DURATION}
+      // Beat 1 is owned by SceneChrome's JourneyManimo: enter → hold → glide
+      // to corner. No standalone intro Sprite needed.
+      introEnd={4.51}
+      introCaption="Pull a spring, release — what sets the rhythm?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
-
-      <Sprite start={0} end={4.51}>
-        <ManimoBubbleIntro />
-      </Sprite>
 
       <Sprite start={4.51} end={14.19}>
         <HookesLaw />
@@ -64,28 +64,6 @@ function Scene() {
   );
 }
 
-// ─── Beat 1: Manimo intro ─────────────────────────────────────────────────
-function ManimoBubbleIntro() {
-  return (
-    <div style={{
-      position: 'absolute', left: '50%', top: '42%',
-      transform: 'translate(-50%, -50%)',
-      display: 'flex', alignItems: 'center', gap: 20,
-    }}>
-      <svg width={160} height={160} viewBox="0 0 200 200" style={{ overflow: 'visible' }}>
-        <ManimoEnter duration={0.7} bob={true} />
-      </svg>
-      <FadeUp duration={0.5} delay={0.7} distance={8}
-        style={{
-          fontFamily: 'var(--font-serif)', fontSize: 26, fontStyle: 'italic',
-          color: 'var(--chalk-100)', maxWidth: '34ch',
-        }}>
-        Pull a spring, release — what sets the rhythm?
-      </FadeUp>
-    </div>
-  );
-}
-
 // ─── Beat 2: Hooke's law diagram ──────────────────────────────────────────
 // Geometry (in 880×340 viewBox):
 //   Wall: vertical line at x=80, hatched.
@@ -94,36 +72,64 @@ function ManimoBubbleIntro() {
 //   Spring zigzag from wall (x=100, y=200) to mass-left (x=612, y=200) —
 //   that's a 512px run, broken into 9 zig endpoints (8 segments).
 function HookesLaw() {
-  // Pre-compute zigzag spring path: alternates above (y=180) / below (y=220).
-  const springStart = 100;
-  const springEnd = 612;        // left edge of mass square
-  const yMid = 200, yHi = 180, yLo = 220;
-  const N = 8;                   // segments
-  const dx = (springEnd - springStart) / N;
-  const pts = [];
-  pts.push(`M ${springStart} ${yMid}`);
+  const portrait = usePortrait();
+  // Geometry tuned per aspect: portrait shrinks the horizontal layout to fit
+  // a 720-wide canvas while keeping every label legible.
+  const G = portrait
+    ? { wallX: 60, springStart: 78, springEnd: 472, massCx: 500, massSize: 50,
+        eqX: 380, fLen: 56,
+        vbW: 600, vbH: 320, yMid: 180, yHi: 162, yLo: 198,
+        wallTop: 110, wallBot: 250,
+        eqTop: 110, eqBot: 260, eqLabelY: 280,
+        bracketY: 132, bracketTickTop: 126, bracketTickBot: 138, xLabelY: 122,
+        forceY: 222, fLabelY: 214, fontXLabel: 22, fontMass: 18,
+        fontEqLabel: 11, fontF: 22, fontCaption: 14,
+        captionY: 305 }
+    : { wallX: 80, springStart: 100, springEnd: 612, massCx: 640, massSize: 56,
+        eqX: 520, fLen: 70,
+        vbW: 880, vbH: 340, yMid: 200, yHi: 180, yLo: 220,
+        wallTop: 120, wallBot: 280,
+        eqTop: 120, eqBot: 290, eqLabelY: 310,
+        bracketY: 146, bracketTickTop: 140, bracketTickBot: 152, xLabelY: 134,
+        forceY: 246, fLabelY: 236, fontXLabel: 22, fontMass: 20,
+        fontEqLabel: 11, fontF: 22, fontCaption: 14,
+        captionY: 325 };
+
+  const massLeft = G.massCx - G.massSize / 2;
+  const massTop = G.yMid - G.massSize / 2;
+  const massBottom = G.yMid + G.massSize / 2;
+  const forceTipX = G.massCx - G.fLen;
+
+  // Pre-compute zigzag spring path: alternates above (yHi) / below (yLo).
+  const N = 8;
+  const dx = (G.springEnd - G.springStart) / N;
+  const pts = [`M ${G.springStart} ${G.yMid}`];
   for (let i = 1; i < N; i++) {
-    const x = springStart + i * dx;
-    const y = i % 2 === 1 ? yHi : yLo;
+    const x = G.springStart + i * dx;
+    const y = i % 2 === 1 ? G.yHi : G.yLo;
     pts.push(`L ${x.toFixed(1)} ${y}`);
   }
-  pts.push(`L ${springEnd} ${yMid}`);
+  pts.push(`L ${G.springEnd} ${G.yMid}`);
   const springD = pts.join(' ');
+
+  // Wall hatch: 7 short ticks (portrait squeezes them slightly).
+  const hatchPitch = portrait ? 18 : 22;
+  const hatchOffsetY = portrait ? 16 : 18;
 
   return (
     <div style={{
-      position: 'absolute', left: '50%', top: '54%',
+      position: 'absolute', left: '50%', top: portrait ? '50%' : '54%',
       transform: 'translate(-50%, -50%)',
     }}>
-      <svg width={880} height={340} viewBox="0 0 880 340" style={{ overflow: 'visible' }}>
+      <svg width={G.vbW} height={G.vbH} viewBox={`0 0 ${G.vbW} ${G.vbH}`} style={{ overflow: 'visible' }}>
         {/* Wall: vertical post + hatching */}
         <SvgFadeIn duration={0.4} delay={0.0}>
-          <line x1={80} y1={120} x2={80} y2={280}
+          <line x1={G.wallX} y1={G.wallTop} x2={G.wallX} y2={G.wallBot}
                 stroke="var(--chalk-300)" strokeWidth={2.5}/>
           {[0, 1, 2, 3, 4, 5, 6].map(i => (
             <line key={i}
-                  x1={80} y1={130 + i * 22}
-                  x2={62} y2={148 + i * 22}
+                  x1={G.wallX} y1={G.wallTop + 10 + i * hatchPitch}
+                  x2={G.wallX - 18} y2={G.wallTop + 10 + hatchOffsetY + i * hatchPitch}
                   stroke="var(--chalk-300)" strokeWidth={1.2}/>
           ))}
         </SvgFadeIn>
@@ -134,65 +140,64 @@ function HookesLaw() {
                  fill="none"
                  duration={1.0} delay={0.4}/>
 
-        {/* Mass: filled square, centred at (640, 200), 56×56 */}
+        {/* Mass: filled square */}
         <SvgFadeIn duration={0.4} delay={1.2}>
-          <rect x={612} y={172} width={56} height={56}
+          <rect x={massLeft} y={massTop} width={G.massSize} height={G.massSize}
                 fill="var(--amber-400)" opacity={0.92}
                 stroke="var(--amber-300)" strokeWidth={1.5}
                 rx={4}/>
-          <text x={640} y={206} textAnchor="middle"
+          <text x={G.massCx} y={G.yMid + 6} textAnchor="middle"
                 fill="var(--bg-canvas)" fontFamily="var(--font-serif)"
-                fontStyle="italic" fontSize="20">m</text>
+                fontStyle="italic" fontSize={G.fontMass}>m</text>
         </SvgFadeIn>
 
-        {/* Equilibrium dashed line at x=520 (mass centre when at rest) */}
+        {/* Equilibrium dashed line at the mass-centre rest position */}
         <SvgFadeIn duration={0.35} delay={1.6}>
-          <line x1={520} y1={120} x2={520} y2={290}
+          <line x1={G.eqX} y1={G.eqTop} x2={G.eqX} y2={G.eqBot}
                 stroke="var(--chalk-300)" strokeWidth={1.2}
                 strokeDasharray="5 5"/>
-          <text x={520} y={310} textAnchor="middle"
+          <text x={G.eqX} y={G.eqLabelY} textAnchor="middle"
                 fill="var(--chalk-300)" fontFamily="var(--font-mono)"
-                fontSize="11" letterSpacing="0.12em">EQUILIBRIUM</text>
+                fontSize={G.fontEqLabel} letterSpacing="0.12em">EQUILIBRIUM</text>
         </SvgFadeIn>
 
-        {/* x displacement bracket: from equilibrium (520) to mass-centre (640) */}
+        {/* x displacement bracket: equilibrium → mass centre */}
         <SvgFadeIn duration={0.35} delay={2.0}>
-          <line x1={520} y1={146} x2={640} y2={146}
+          <line x1={G.eqX} y1={G.bracketY} x2={G.massCx} y2={G.bracketY}
                 stroke="var(--chalk-200)" strokeWidth={1.2}/>
-          <line x1={520} y1={140} x2={520} y2={152}
+          <line x1={G.eqX} y1={G.bracketTickTop} x2={G.eqX} y2={G.bracketTickBot}
                 stroke="var(--chalk-200)" strokeWidth={1.5}/>
-          <line x1={640} y1={140} x2={640} y2={152}
+          <line x1={G.massCx} y1={G.bracketTickTop} x2={G.massCx} y2={G.bracketTickBot}
                 stroke="var(--chalk-200)" strokeWidth={1.5}/>
-          <text x={580} y={134} textAnchor="middle"
+          <text x={(G.eqX + G.massCx) / 2} y={G.xLabelY} textAnchor="middle"
                 fill="var(--chalk-200)" fontFamily="var(--font-serif)"
-                fontStyle="italic" fontSize="22">x</text>
+                fontStyle="italic" fontSize={G.fontXLabel}>x</text>
         </SvgFadeIn>
 
-        {/* Restoring force arrow on the mass: pointing left, length 70 */}
+        {/* Restoring force arrow on the mass: pointing left */}
         <SvgFadeIn duration={0.4} delay={2.6}>
-          <line x1={640} y1={246} x2={570} y2={246}
+          <line x1={G.massCx} y1={G.forceY} x2={forceTipX} y2={G.forceY}
                 stroke="var(--rose-400)" strokeWidth={2.5}/>
-          {/* arrow head */}
-          <path d="M 570 246 L 580 240 L 580 252 Z"
+          <path d={`M ${forceTipX} ${G.forceY} L ${forceTipX + 10} ${G.forceY - 6} L ${forceTipX + 10} ${G.forceY + 6} Z`}
                 fill="var(--rose-400)"/>
         </SvgFadeIn>
 
-        {/* F = -kx label above the arrow — end-anchored at x=608 so the
-            label's right edge sits just before the mass left edge (x=612),
-            avoiding overlap with the amber square. */}
+        {/* F = -kx label, end-anchored just before the mass left edge */}
         <SvgFadeIn duration={0.35} delay={3.0}>
-          <text x={608} y={236}
+          <text x={massLeft - 4} y={G.fLabelY}
                 fill="var(--rose-300)" fontFamily="var(--font-serif)"
-                fontStyle="italic" fontSize="22"
+                fontStyle="italic" fontSize={G.fontF}
                 textAnchor="end">F = −kx</text>
         </SvgFadeIn>
 
         {/* Caption beneath the diagram */}
         <SvgFadeIn duration={0.4} delay={4.2}>
-          <text x={440} y={325} textAnchor="middle"
+          <text x={G.vbW / 2} y={G.captionY} textAnchor="middle"
                 fill="var(--chalk-300)" fontFamily="var(--font-sans)"
-                fontSize="14" letterSpacing="0.02em">
-            the further you stretch it, the harder it pulls back
+                fontSize={G.fontCaption} letterSpacing="0.02em">
+            {portrait
+              ? 'further you stretch, harder it pulls back'
+              : 'the further you stretch it, the harder it pulls back'}
           </text>
         </SvgFadeIn>
       </svg>
@@ -202,15 +207,19 @@ function HookesLaw() {
 
 // ─── Beat 3: Equation of motion ───────────────────────────────────────────
 function EquationOfMotion() {
+  const portrait = usePortrait();
+  // Portrait stacks the chain into three rows (F=−kx, F=ma, ⇒ ma=−kx) so each
+  // equation gets full canvas width. Landscape keeps them on a single row.
   const stepStyle = {
     fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-    fontSize: 32, letterSpacing: '0.02em',
+    fontSize: portrait ? 30 : 32, letterSpacing: '0.02em',
   };
   return (
     <div style={{
       position: 'absolute', left: '50%', top: '50%',
       transform: 'translate(-50%, -50%)',
-      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28,
+      display: 'flex', flexDirection: 'column', alignItems: 'center',
+      gap: portrait ? 22 : 28,
     }}>
       <FadeUp duration={0.4} delay={0} distance={8}
         style={{
@@ -221,39 +230,65 @@ function EquationOfMotion() {
         Newton meets Hooke
       </FadeUp>
 
-      {/* Three-step chain: F=-kx,  F=ma,  ma=-kx */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 38 }}>
-        <FadeUp duration={0.5} delay={0.3} distance={10}
-          style={{ ...stepStyle, color: 'var(--chalk-200)' }}>
-          F = −kx
-        </FadeUp>
-        <FadeUp duration={0.4} delay={1.0} distance={6}
-          style={{
-            fontFamily: 'var(--font-mono)', fontSize: 18,
-            color: 'var(--chalk-300)',
-          }}>
-          +
-        </FadeUp>
-        <FadeUp duration={0.5} delay={1.0} distance={10}
-          style={{ ...stepStyle, color: 'var(--chalk-200)' }}>
-          F = ma
-        </FadeUp>
-        <FadeUp duration={0.4} delay={1.7} distance={6}
-          style={{
-            fontFamily: 'var(--font-mono)', fontSize: 18,
-            color: 'var(--chalk-300)',
-          }}>
-          ⇒
-        </FadeUp>
-        <FadeUp duration={0.5} delay={1.8} distance={10}
-          style={{ ...stepStyle, color: 'var(--chalk-100)', fontSize: 36 }}>
-          ma = −kx
-        </FadeUp>
-      </div>
+      {portrait ? (
+        // Stacked chain in portrait — each row centred.
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
+          <FadeUp duration={0.5} delay={0.3} distance={10}
+            style={{ ...stepStyle, color: 'var(--chalk-200)' }}>
+            F = −kx
+          </FadeUp>
+          <FadeUp duration={0.5} delay={1.0} distance={10}
+            style={{ ...stepStyle, color: 'var(--chalk-200)' }}>
+            F = ma
+          </FadeUp>
+          <FadeUp duration={0.4} delay={1.7} distance={6}
+            style={{
+              fontFamily: 'var(--font-mono)', fontSize: 18,
+              color: 'var(--chalk-300)',
+            }}>
+            ⇓
+          </FadeUp>
+          <FadeUp duration={0.5} delay={1.8} distance={10}
+            style={{ ...stepStyle, color: 'var(--chalk-100)', fontSize: 36 }}>
+            ma = −kx
+          </FadeUp>
+        </div>
+      ) : (
+        // Three-step chain on a single row: F=-kx, F=ma, ⇒ ma=-kx.
+        <div style={{ display: 'flex', alignItems: 'center', gap: 38 }}>
+          <FadeUp duration={0.5} delay={0.3} distance={10}
+            style={{ ...stepStyle, color: 'var(--chalk-200)' }}>
+            F = −kx
+          </FadeUp>
+          <FadeUp duration={0.4} delay={1.0} distance={6}
+            style={{
+              fontFamily: 'var(--font-mono)', fontSize: 18,
+              color: 'var(--chalk-300)',
+            }}>
+            +
+          </FadeUp>
+          <FadeUp duration={0.5} delay={1.0} distance={10}
+            style={{ ...stepStyle, color: 'var(--chalk-200)' }}>
+            F = ma
+          </FadeUp>
+          <FadeUp duration={0.4} delay={1.7} distance={6}
+            style={{
+              fontFamily: 'var(--font-mono)', fontSize: 18,
+              color: 'var(--chalk-300)',
+            }}>
+            ⇒
+          </FadeUp>
+          <FadeUp duration={0.5} delay={1.8} distance={10}
+            style={{ ...stepStyle, color: 'var(--chalk-100)', fontSize: 36 }}>
+            ma = −kx
+          </FadeUp>
+        </div>
+      )}
 
       <FadeUp duration={0.5} delay={2.6} distance={10}
         style={{
-          fontFamily: 'var(--font-sans)', fontSize: 15, color: 'var(--chalk-300)',
+          fontFamily: 'var(--font-sans)', fontSize: portrait ? 14 : 15, color: 'var(--chalk-300)',
+          textAlign: 'center', maxWidth: portrait ? '24ch' : 'none',
         }}>
         rearrange — the equation of simple harmonic motion
       </FadeUp>
@@ -261,7 +296,7 @@ function EquationOfMotion() {
       <FadeUp duration={0.6} delay={3.4} distance={14}
         style={{
           fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-          fontSize: 56, color: 'var(--amber-300)', letterSpacing: '0.02em',
+          fontSize: portrait ? 50 : 56, color: 'var(--amber-300)', letterSpacing: '0.02em',
           marginTop: 8,
         }}>
         ω₀ = √(k/m)
@@ -271,6 +306,8 @@ function EquationOfMotion() {
         style={{
           fontFamily: 'var(--font-sans)', fontSize: 13,
           color: 'var(--chalk-300)', marginTop: -12,
+          textAlign: 'center', maxWidth: portrait ? '28ch' : 'none',
+          lineHeight: 1.3,
         }}>
         the natural angular frequency of the spring–mass system
       </FadeUp>
@@ -280,6 +317,7 @@ function EquationOfMotion() {
 
 // ─── Beat 4: Period formula ───────────────────────────────────────────────
 function PeriodFormula() {
+  const portrait = usePortrait();
   const labelStyle = {
     fontFamily: 'var(--font-sans)', fontSize: 13,
     letterSpacing: '0.08em', textTransform: 'uppercase',
@@ -289,11 +327,29 @@ function PeriodFormula() {
     fontSize: 30, letterSpacing: '0.04em',
   };
 
+  // Each "intuition" cell renders the same way in both aspects — only the
+  // surrounding flex container's direction + divider geometry change.
+  const StifferCell = (
+    <FadeUp duration={0.5} delay={1.4} distance={12}
+      style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 12 }}>
+      <div style={{ ...labelStyle, color: 'var(--chalk-300)' }}>stiffer spring</div>
+      <div style={{ ...arrowStyle, color: 'var(--chalk-100)' }}>k ↑  →  T ↓</div>
+    </FadeUp>
+  );
+  const HeavierCell = (
+    <FadeUp duration={0.5} delay={2.2} distance={12}
+      style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 12 }}>
+      <div style={{ ...labelStyle, color: 'var(--chalk-300)' }}>heavier mass</div>
+      <div style={{ ...arrowStyle, color: 'var(--chalk-100)' }}>m ↑  →  T ↑</div>
+    </FadeUp>
+  );
+
   return (
     <div style={{
       position: 'absolute', left: '50%', top: '50%',
       transform: 'translate(-50%, -50%)',
-      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 32,
+      display: 'flex', flexDirection: 'column', alignItems: 'center',
+      gap: portrait ? 26 : 32,
     }}>
       <FadeUp duration={0.4} delay={0} distance={8}
         style={{
@@ -307,36 +363,38 @@ function PeriodFormula() {
       <FadeUp duration={0.6} delay={0.3} distance={14}
         style={{
           fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-          fontSize: 60, color: 'var(--amber-300)', letterSpacing: '0.02em',
+          fontSize: portrait ? 48 : 60, color: 'var(--amber-300)', letterSpacing: '0.02em',
         }}>
         T = 2π√(m/k)
       </FadeUp>
 
-      <div style={{ display: 'flex', gap: 110, alignItems: 'flex-start',
-                    borderTop: '1px solid rgba(232,220,193,0.12)',
-                    paddingTop: 22, marginTop: 6 }}>
-        <FadeUp duration={0.5} delay={1.4} distance={12}
-          style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <div style={{ ...labelStyle, color: 'var(--chalk-300)' }}>stiffer spring</div>
-          <div style={{ ...arrowStyle, color: 'var(--chalk-100)' }}>k ↑  →  T ↓</div>
-        </FadeUp>
-
-        <FadeUp duration={0.3} delay={1.6} distance={0}
-          style={{ width: 1, height: 70, background: 'rgba(232,220,193,0.15)',
-                   marginTop: 20 }}/>
-
-        <FadeUp duration={0.5} delay={2.2} distance={12}
-          style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <div style={{ ...labelStyle, color: 'var(--chalk-300)' }}>heavier mass</div>
-          <div style={{ ...arrowStyle, color: 'var(--chalk-100)' }}>m ↑  →  T ↑</div>
-        </FadeUp>
-      </div>
+      {portrait ? (
+        // Stack stiffer/heavier vertically with a horizontal divider between.
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',
+                      gap: 22, paddingTop: 18, marginTop: 4,
+                      borderTop: '1px solid rgba(232,220,193,0.12)' }}>
+          {StifferCell}
+          <div style={{ width: 80, height: 1, background: 'rgba(232,220,193,0.15)' }}/>
+          {HeavierCell}
+        </div>
+      ) : (
+        <div style={{ display: 'flex', gap: 110, alignItems: 'flex-start',
+                      borderTop: '1px solid rgba(232,220,193,0.12)',
+                      paddingTop: 22, marginTop: 6 }}>
+          {StifferCell}
+          <FadeUp duration={0.3} delay={1.6} distance={0}
+            style={{ width: 1, height: 70, background: 'rgba(232,220,193,0.15)',
+                     marginTop: 20 }}/>
+          {HeavierCell}
+        </div>
+      )}
     </div>
   );
 }
 
 // ─── Beat 5: Takeaway ────────────────────────────────────────────────────
 function Takeaway() {
+  const portrait = usePortrait();
   return (
     <div style={{
       position: 'absolute', left: '50%', top: '50%',
@@ -346,8 +404,11 @@ function Takeaway() {
     }}>
       <FadeUp duration={0.6} delay={0.3} distance={12}
         style={{
-          fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 28,
-          color: 'var(--chalk-100)', maxWidth: '46ch',
+          fontFamily: 'var(--font-serif)', fontStyle: 'italic',
+          fontSize: portrait ? 26 : 28,
+          color: 'var(--chalk-100)',
+          maxWidth: portrait ? '20ch' : '46ch',
+          lineHeight: 1.3,
         }}>
         Stiffer spring → quicker beat. Heavier mass → slower beat.
       </FadeUp>
@@ -356,6 +417,7 @@ function Takeaway() {
         style={{
           fontFamily: 'var(--font-mono)', fontSize: 12,
           color: 'var(--chalk-300)', letterSpacing: '0.12em',
+          textAlign: 'center', maxWidth: portrait ? '32ch' : 'none',
         }}>
         (no g in sight — pure spring and inertia)
       </FadeUp>

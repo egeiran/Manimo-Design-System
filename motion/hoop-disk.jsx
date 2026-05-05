@@ -33,12 +33,11 @@ function Scene() {
       eyebrow="Scene 3 · rolling motion"
       title="Hoop vs Disk: Why a Disk Wins"
       duration={SCENE_DURATION}
+      // SceneChrome's JourneyManimo handles the intro. No standalone Sprite.
+      introEnd={6.07}
+      introCaption="Two wheels, same mass, same radius — which one wins?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
-
-      <Sprite start={0} end={6.07}>
-        <ManimoBubbleIntro />
-      </Sprite>
 
       <Sprite start={6.07} end={12.53}>
         <RampSetup />
@@ -59,28 +58,6 @@ function Scene() {
   );
 }
 
-// ─── Beat 1: Intro ────────────────────────────────────────────────────────
-function ManimoBubbleIntro() {
-  return (
-    <div style={{
-      position: 'absolute', left: '50%', top: '40%',
-      transform: 'translate(-50%, -50%)',
-      display: 'flex', alignItems: 'center', gap: 20,
-    }}>
-      <svg width={160} height={160} viewBox="0 0 200 200" style={{ overflow: 'visible' }}>
-        <ManimoEnter duration={0.7} bob={true} />
-      </svg>
-      <FadeUp duration={0.5} delay={0.7} distance={8}
-        style={{
-          fontFamily: 'var(--font-serif)', fontSize: 26, fontStyle: 'italic',
-          color: 'var(--chalk-100)', maxWidth: '34ch',
-        }}>
-        Two wheels, same mass, same radius — which one wins?
-      </FadeUp>
-    </div>
-  );
-}
-
 // ─── Beat 2: Ramp setup ──────────────────────────────────────────────────
 // Right triangle ramp:
 //   top-left   (80, 80)   — top of hypotenuse
@@ -90,16 +67,44 @@ function ManimoBubbleIntro() {
 // Outward unit normal (into the air above ramp) ≈ (0.3868, -0.9226)
 // Wheels are tangent to the hypotenuse: center = surface + R * normal
 function RampSetup() {
-  const R = 24;
-  // Ramp surface: (80,80) → (700,340). Length ≈ 672.3.
-  const RAMP_LEN = Math.hypot(620, 260);
-  const TX = 620 / RAMP_LEN, TY = 260 / RAMP_LEN; // unit tangent (down-ramp)
-  const NX = 0.3868, NY = -0.9226;                // outward normal (above ramp)
+  const portrait = usePortrait();
+  // Geometry tuned per aspect: portrait makes the ramp steeper and shorter
+  // so labels can sit under it instead of crowding into a narrow side gap.
+  const G = portrait
+    ? {
+        R: 20, vbW: 600, vbH: 660,
+        topX: 80, topY: 70,
+        cornerX: 80, cornerY: 400,
+        baseX: 540,                       // bottom-right of ramp triangle
+        labelHoopX: 300, labelHoopY: 470, labelHoopFY: 504,
+        labelDiskX: 300, labelDiskY: 550, labelDiskFY: 584,
+        captionX: 300, captionY: 630,
+        hLabelX: 42, hLabelY: 235,
+        hMarkerX: 62,
+      }
+    : {
+        R: 24, vbW: 800, vbH: 400,
+        topX: 80, topY: 80,
+        cornerX: 80, cornerY: 340,
+        baseX: 700,
+        labelHoopX: 300, labelHoopY: 84, labelHoopFY: 112,
+        labelDiskX: 300, labelDiskY: 166, labelDiskFY: 194,
+        captionX: 500, captionY: 310,
+        hLabelX: 42, hLabelY: 216,
+        hMarkerX: 62,
+      };
+
+  // Ramp surface: top → base. Length and unit tangent/normal.
+  const dx = G.baseX - G.topX;
+  const dy = G.cornerY - G.topY;
+  const RAMP_LEN = Math.hypot(dx, dy);
+  const TX = dx / RAMP_LEN, TY = dy / RAMP_LEN;     // unit tangent (down-ramp)
+  const NX = TY, NY = -TX;                          // outward normal (above ramp)
 
   function onRamp(t) {
-    const sx = 80 + t * 620;
-    const sy = 80 + t * 260;
-    return { cx: sx + R * NX, cy: sy + R * NY };
+    const sx = G.topX + t * dx;
+    const sy = G.topY + t * dy;
+    return { cx: sx + G.R * NX, cy: sy + G.R * NY };
   }
 
   const hoop = onRamp(0.04);
@@ -109,32 +114,32 @@ function RampSetup() {
   // slipping". They start moving as the narrator says that phrase.
   const ROLL_DELAY = 3.6;
   const ROLL_DURATION = 1.6;
-  const ROLL_DIST = 70; // svg units, ~3 wheel-widths — enough to read motion
+  const ROLL_DIST = portrait ? 90 : 70;
 
   return (
     <div style={{
-      position: 'absolute', left: '50%', top: '54%',
+      position: 'absolute', left: '50%', top: '52%',
       transform: 'translate(-50%, -50%)',
     }}>
-      <svg width={800} height={400} viewBox="0 0 800 400" style={{ overflow: 'visible' }}>
-        {/* Ramp triangle — hypotenuse drawn first, then ground, then height bracket */}
-        <TraceIn d="M 80 80 L 700 340"
+      <svg width={G.vbW} height={G.vbH} viewBox={`0 0 ${G.vbW} ${G.vbH}`} style={{ overflow: 'visible' }}>
+        {/* Ramp triangle — hypotenuse, ground, vertical leg */}
+        <TraceIn d={`M ${G.topX} ${G.topY} L ${G.baseX} ${G.cornerY}`}
                  stroke="var(--chalk-200)" strokeWidth={2.5}
                  duration={0.9} delay={0.0}/>
-        <TraceIn d="M 80 340 L 700 340"
+        <TraceIn d={`M ${G.cornerX} ${G.cornerY} L ${G.baseX} ${G.cornerY}`}
                  stroke="var(--chalk-300)" strokeWidth={2}
                  duration={0.7} delay={0.6}/>
 
         {/* Height marker — dashed vertical guide + 'h' label */}
         <SvgFadeIn duration={0.4} delay={1.0}>
-          <line x1={62} y1={80} x2={62} y2={340}
+          <line x1={G.hMarkerX} y1={G.topY} x2={G.hMarkerX} y2={G.cornerY}
                 stroke="var(--chalk-300)" strokeWidth={1}
                 strokeDasharray="4 4"/>
-          <line x1={56} y1={80} x2={68} y2={80}
+          <line x1={G.hMarkerX - 6} y1={G.topY} x2={G.hMarkerX + 6} y2={G.topY}
                 stroke="var(--chalk-300)" strokeWidth={1.5}/>
-          <line x1={56} y1={340} x2={68} y2={340}
+          <line x1={G.hMarkerX - 6} y1={G.cornerY} x2={G.hMarkerX + 6} y2={G.cornerY}
                 stroke="var(--chalk-300)" strokeWidth={1.5}/>
-          <text x={42} y={216} fill="var(--chalk-200)"
+          <text x={G.hLabelX} y={G.hLabelY} fill="var(--chalk-200)"
                 fontFamily="var(--font-serif)" fontStyle="italic"
                 fontSize="22" textAnchor="middle">h</text>
         </SvgFadeIn>
@@ -144,7 +149,7 @@ function RampSetup() {
           <RollingWheel
             cx={hoop.cx} cy={hoop.cy}
             dirX={TX} dirY={TY}
-            distance={ROLL_DIST} R={R} type="hoop"
+            distance={ROLL_DIST} R={G.R} type="hoop"
             color="var(--amber-400)"
             duration={ROLL_DURATION} delay={ROLL_DELAY}
           />
@@ -155,35 +160,41 @@ function RampSetup() {
           <RollingWheel
             cx={disk.cx} cy={disk.cy}
             dirX={TX} dirY={TY}
-            distance={ROLL_DIST} R={R} type="disk"
+            distance={ROLL_DIST} R={G.R} type="disk"
             color="var(--rose-400)"
             duration={ROLL_DURATION} delay={ROLL_DELAY}
           />
         </SvgFadeIn>
 
-        {/* Side-stack labels — Hoop / Disk with their I */}
+        {/* Side-stack (landscape) or below-ramp (portrait) labels:
+            HOOP / I = MR², then DISK / I = ½MR² */}
         <SvgFadeIn duration={0.4} delay={3.2}>
-          <text x={300} y={84} fill="var(--amber-300)"
+          <text x={G.labelHoopX} y={G.labelHoopY} fill="var(--amber-300)"
                 fontFamily="var(--font-mono)" fontSize="12"
-                letterSpacing="0.15em">HOOP</text>
-          <text x={300} y={112} fill="var(--amber-300)"
+                letterSpacing="0.15em"
+                textAnchor={portrait ? 'middle' : 'start'}>HOOP</text>
+          <text x={G.labelHoopX} y={G.labelHoopFY} fill="var(--amber-300)"
                 fontFamily="var(--font-serif)" fontStyle="italic"
-                fontSize="24">I = MR²</text>
+                fontSize="24"
+                textAnchor={portrait ? 'middle' : 'start'}>I = MR²</text>
         </SvgFadeIn>
         <SvgFadeIn duration={0.4} delay={3.8}>
-          <text x={300} y={166} fill="var(--rose-300)"
+          <text x={G.labelDiskX} y={G.labelDiskY} fill="var(--rose-300)"
                 fontFamily="var(--font-mono)" fontSize="12"
-                letterSpacing="0.15em">DISK</text>
-          <text x={300} y={194} fill="var(--rose-300)"
+                letterSpacing="0.15em"
+                textAnchor={portrait ? 'middle' : 'start'}>DISK</text>
+          <text x={G.labelDiskX} y={G.labelDiskFY} fill="var(--rose-300)"
                 fontFamily="var(--font-serif)" fontStyle="italic"
-                fontSize="24">I = ½MR²</text>
+                fontSize="24"
+                textAnchor={portrait ? 'middle' : 'start'}>I = ½MR²</text>
         </SvgFadeIn>
 
         {/* "rolls without slipping" tag */}
         <SvgFadeIn duration={0.4} delay={4.6}>
-          <text x={500} y={310} fill="var(--chalk-300)"
+          <text x={G.captionX} y={G.captionY} fill="var(--chalk-300)"
                 fontFamily="var(--font-sans)" fontSize="13"
-                letterSpacing="0.04em">rolls without slipping</text>
+                letterSpacing="0.04em"
+                textAnchor={portrait ? 'middle' : 'start'}>rolls without slipping</text>
         </SvgFadeIn>
       </svg>
     </div>
@@ -192,11 +203,15 @@ function RampSetup() {
 
 // ─── Beat 3: Energy conservation derivation ──────────────────────────────
 function EnergyDerivation() {
+  const portrait = usePortrait();
   return (
     <div style={{
       position: 'absolute', left: '50%', top: '50%',
       transform: 'translate(-50%, -50%)',
-      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28,
+      display: 'flex', flexDirection: 'column', alignItems: 'center',
+      gap: portrait ? 24 : 28,
+      textAlign: 'center',
+      width: portrait ? 660 : undefined,
     }}>
       <FadeUp duration={0.5} delay={0.3} distance={12}
         style={{
@@ -210,7 +225,8 @@ function EnergyDerivation() {
       <FadeUp duration={0.6} delay={0.6} distance={14}
         style={{
           fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-          fontSize: 48, color: 'var(--chalk-100)', letterSpacing: '0.02em',
+          fontSize: portrait ? 36 : 48, color: 'var(--chalk-100)', letterSpacing: '0.02em',
+          lineHeight: 1.15,
         }}>
         Mgh = ½Mv² + ½Iω²
       </FadeUp>
@@ -218,7 +234,8 @@ function EnergyDerivation() {
       <FadeUp duration={0.5} delay={2.4} distance={10}
         style={{
           fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-          fontSize: 22, color: 'var(--chalk-300)',
+          fontSize: portrait ? 20 : 22, color: 'var(--chalk-300)',
+          maxWidth: portrait ? '24ch' : 'none',
         }}>
         rolling without slipping  →  v = ωR
       </FadeUp>
@@ -226,8 +243,8 @@ function EnergyDerivation() {
       <FadeUp duration={0.6} delay={4.4} distance={14}
         style={{
           fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-          fontSize: 56, color: 'var(--amber-300)', letterSpacing: '0.02em',
-          marginTop: 8,
+          fontSize: portrait ? 40 : 56, color: 'var(--amber-300)', letterSpacing: '0.02em',
+          marginTop: 8, lineHeight: 1.15,
         }}>
         v = √( 2gh / (1 + I/MR²) )
       </FadeUp>
@@ -236,6 +253,7 @@ function EnergyDerivation() {
         style={{
           fontFamily: 'var(--font-sans)', fontSize: 14,
           color: 'var(--chalk-300)', marginTop: -12,
+          maxWidth: portrait ? '32ch' : 'none', lineHeight: 1.3,
         }}>
         smaller I/MR² → faster bottom-of-ramp speed
       </FadeUp>
@@ -249,25 +267,33 @@ function EnergyDerivation() {
 // number in the caption. Formulas now use a smaller font so the race
 // has room to breathe.
 function Verdict() {
+  const portrait = usePortrait();
   const labelStyle = {
     fontFamily: 'var(--font-sans)', fontSize: 12,
     letterSpacing: '0.08em', textTransform: 'uppercase',
   };
   const formulaStyle = {
-    fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 36,
+    fontFamily: 'var(--font-serif)', fontStyle: 'italic',
+    fontSize: portrait ? 30 : 36,
   };
 
   // Race geometry — two stacked ramps sharing slope/length. Same h, same
-  // angle, just drawn parallel so each wheel has a clean lane.
-  const X1 = 50, X2 = 700;
-  const UPPER_Y1 = 70, UPPER_Y2 = 170;   // hoop ramp
-  const LOWER_Y1 = 200, LOWER_Y2 = 300;  // disk ramp
+  // angle, just drawn parallel so each wheel has a clean lane. Portrait
+  // shrinks the run so the SVG fits the 720-wide canvas.
+  const X1 = portrait ? 40 : 50;
+  const X2 = portrait ? 580 : 700;
+  const UPPER_Y1 = portrait ? 60  : 70;
+  const UPPER_Y2 = portrait ? 150 : 170;
+  const LOWER_Y1 = portrait ? 180 : 200;
+  const LOWER_Y2 = portrait ? 270 : 300;
+  const VB_W = portrait ? 620 : 760;
+  const VB_H = portrait ? 300 : 330;
   const dx = X2 - X1, dy = UPPER_Y2 - UPPER_Y1;
   const LEN = Math.hypot(dx, dy);
   const TX = dx / LEN, TY = dy / LEN;        // unit tangent (down-ramp)
   const ONX = TY,      ONY = -TX;            // outward normal (above ramp)
 
-  const R = 20;
+  const R = portrait ? 16 : 20;
   const hoopStart = { cx: X1 + R * ONX, cy: UPPER_Y1 + R * ONY };
   const diskStart = { cx: X1 + R * ONX, cy: LOWER_Y1 + R * ONY };
 
@@ -296,7 +322,7 @@ function Verdict() {
         same mass, same radius, same h
       </FadeUp>
 
-      <div style={{ display: 'flex', gap: 80, alignItems: 'flex-start' }}>
+      <div style={{ display: 'flex', gap: portrait ? 50 : 80, alignItems: 'flex-start' }}>
         <FadeUp duration={0.5} delay={0.3} distance={10}
           style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 6 }}>
           <div style={{ ...labelStyle, color: 'var(--chalk-300)' }}>Hoop</div>
@@ -314,7 +340,7 @@ function Verdict() {
       </div>
 
       {/* Race — two parallel ramps, wheels released together */}
-      <svg width={760} height={330} viewBox="0 0 760 330" style={{ overflow: 'visible' }}>
+      <svg width={VB_W} height={VB_H} viewBox={`0 0 ${VB_W} ${VB_H}`} style={{ overflow: 'visible' }}>
         {/* Upper ramp (hoop lane) */}
         <TraceIn d={`M ${X1} ${UPPER_Y1} L ${X2} ${UPPER_Y2}`}
                  stroke="var(--chalk-200)" strokeWidth={2}
@@ -392,6 +418,7 @@ function Verdict() {
 
 // ─── Beat 5: Takeaway ────────────────────────────────────────────────────
 function Takeaway() {
+  const portrait = usePortrait();
   return (
     <div style={{
       position: 'absolute', left: '50%', top: '50%',
@@ -400,8 +427,11 @@ function Takeaway() {
     }}>
       <FadeUp duration={0.6} delay={0.3} distance={12}
         style={{
-          fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 28,
-          color: 'var(--chalk-100)', maxWidth: '40ch',
+          fontFamily: 'var(--font-serif)', fontStyle: 'italic',
+          fontSize: portrait ? 26 : 28,
+          color: 'var(--chalk-100)',
+          maxWidth: portrait ? '20ch' : '40ch',
+          lineHeight: 1.3,
         }}>
         Less rotational inertia → more translational speed.
       </FadeUp>

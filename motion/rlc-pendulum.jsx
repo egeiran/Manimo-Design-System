@@ -33,12 +33,11 @@ function Scene() {
       eyebrow="Scene 6 · analogy"
       title="RLC and Pendulum: Same Math, Different Physics"
       duration={SCENE_DURATION}
+      // SceneChrome's JourneyManimo handles the intro.
+      introEnd={4.9}
+      introCaption="A swinging weight, a flowing current — same rule?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
-
-      <Sprite start={0} end={4.9}>
-        <ManimoBubbleIntro />
-      </Sprite>
 
       <Sprite start={4.9} end={12.75}>
         <SideBySide />
@@ -63,28 +62,6 @@ function Scene() {
   );
 }
 
-// ─── Beat 1: Manimo intro ─────────────────────────────────────────────────
-function ManimoBubbleIntro() {
-  return (
-    <div style={{
-      position: 'absolute', left: '50%', top: '44%',
-      transform: 'translate(-50%, -50%)',
-      display: 'flex', alignItems: 'center', gap: 20,
-    }}>
-      <svg width={160} height={160} viewBox="0 0 200 200" style={{ overflow: 'visible' }}>
-        <ManimoEnter duration={0.7} bob={true} />
-      </svg>
-      <FadeUp duration={0.5} delay={0.7} distance={8}
-        style={{
-          fontFamily: 'var(--font-serif)', fontSize: 26, fontStyle: 'italic',
-          color: 'var(--chalk-100)', maxWidth: '36ch',
-        }}>
-        A swinging weight, a flowing current — same rule?
-      </FadeUp>
-    </div>
-  );
-}
-
 // ─── Beat 2: Side-by-side oscillation ─────────────────────────────────────
 // Two systems, same period. The pendulum on the left swings via SHM. The
 // LC tank on the right has charge q(t) = Q · cos(2π t/T) on its top plate
@@ -93,6 +70,7 @@ function ManimoBubbleIntro() {
 // indicate current direction (current = -dq/dt). Sharing one period makes
 // the rhythmic equivalence visceral.
 function SideBySide() {
+  const portrait = usePortrait();
   const PERIOD = 2.4;
   const { localTime } = useSprite();
   // Phase aligned so both systems "release" near localTime ≈ 0.5.
@@ -100,6 +78,61 @@ function SideBySide() {
   const cyc = Math.cos(2 * Math.PI * phaseT / PERIOD); // q(t) / Q, also θ/θmax
   // Current direction sign: I = -dq/dt ∝ sin(2π t/T)
   const cur = Math.sin(2 * Math.PI * phaseT / PERIOD);
+
+  if (portrait) {
+    // Stacked: pendulum on top, LC tank below, separator between.
+    return (
+      <div style={{
+        position: 'absolute', left: '50%', top: '52%',
+        transform: 'translate(-50%, -50%)',
+      }}>
+        <svg width={660} height={980} viewBox="0 0 660 980" style={{ overflow: 'visible' }}>
+          {/* Top half: pendulum */}
+          <SvgFadeIn duration={0.4} delay={0.3}>
+            <text x={330} y={32} textAnchor="middle"
+                  fill="var(--chalk-300)" fontFamily="var(--font-mono)" fontSize="12"
+                  letterSpacing="0.16em">MECHANICAL</text>
+          </SvgFadeIn>
+
+          <SvgFadeIn duration={0.5} delay={0.5}>
+            <SwingingPendulum
+              pivX={330} pivY={70} L={210}
+              maxAngle={22} period={PERIOD}
+              bobR={22} color="var(--amber-400)"
+              delay={0.5}
+            />
+          </SvgFadeIn>
+
+          {/* Horizontal separator */}
+          <SvgFadeIn duration={0.4} delay={0.5}>
+            <line x1={80} y1={400} x2={580} y2={400}
+                  stroke="var(--chalk-300)" strokeWidth={1}
+                  strokeDasharray="3 6" opacity={0.4}/>
+          </SvgFadeIn>
+
+          {/* Bottom half: LC tank */}
+          <SvgFadeIn duration={0.4} delay={0.3}>
+            <text x={330} y={446} textAnchor="middle"
+                  fill="var(--chalk-300)" fontFamily="var(--font-mono)" fontSize="12"
+                  letterSpacing="0.16em">ELECTRICAL</text>
+          </SvgFadeIn>
+
+          <SvgFadeIn duration={0.5} delay={0.8}>
+            <LCTankCircuit cx={330} cy={620} chargeFrac={cyc} currentDir={cur} animateCharge={true}/>
+          </SvgFadeIn>
+
+          {/* Caption beneath */}
+          <SvgFadeIn duration={0.4} delay={4.5}>
+            <text x={330} y={950} textAnchor="middle"
+                  fill="var(--chalk-300)" fontFamily="var(--font-sans)"
+                  fontSize="14" letterSpacing="0.02em">
+              same rhythm, totally different systems
+            </text>
+          </SvgFadeIn>
+        </svg>
+      </div>
+    );
+  }
 
   return (
     <div style={{
@@ -263,7 +296,8 @@ function LCTankCircuit({ cx, cy, chargeFrac = 0, currentDir = 0, animateCharge =
 // Two columns, four rows. Rows fade in as the narration mentions them, with
 // timing aligned to spoken cues (~1.7s spacing).
 function MappingTable() {
-  const ROW_GAP = 80;
+  const portrait = usePortrait();
+  const ROW_GAP = portrait ? 90 : 80;
   const ROW_Y0 = 110;
   const rows = [
     { delay: 0.4, mech: 'x',  elec: 'q',    mechCap: 'position',  elecCap: 'charge',      accent: false },
@@ -272,29 +306,34 @@ function MappingTable() {
     { delay: 5.4, mech: 'k',  elec: '1/C',  mechCap: 'stiffness', elecCap: 'capacitance', accent: true  },
   ];
 
-  const COL_X_LEFT = 280;
-  const COL_X_MID = 480;
-  const COL_X_RIGHT = 680;
+  // Portrait shrinks the column spacing so the table fits a 720-wide canvas.
+  const COL_X_LEFT  = portrait ? 160 : 280;
+  const COL_X_MID   = portrait ? 320 : 480;
+  const COL_X_RIGHT = portrait ? 480 : 680;
+  const VB_W = portrait ? 640 : 960;
+  const VB_H = portrait ? 540 : 520;
+  const headerLine = portrait ? { x1: 80, x2: 560 } : { x1: 140, x2: 820 };
+  const symFont = portrait ? 38 : 42;
 
   return (
     <div style={{
       position: 'absolute', left: '50%', top: '50%',
       transform: 'translate(-50%, -50%)',
     }}>
-      <svg width={960} height={520} viewBox="0 0 960 520" style={{ overflow: 'visible' }}>
+      <svg width={VB_W} height={VB_H} viewBox={`0 0 ${VB_W} ${VB_H}`} style={{ overflow: 'visible' }}>
         {/* Headers */}
         <SvgFadeIn duration={0.4} delay={0}>
           <text x={COL_X_LEFT} y={50} textAnchor="middle"
-                fill="var(--chalk-300)" fontFamily="var(--font-mono)" fontSize="13"
+                fill="var(--chalk-300)" fontFamily="var(--font-mono)" fontSize={portrait ? 12 : 13}
                 letterSpacing="0.18em">MECHANICAL</text>
         </SvgFadeIn>
         <SvgFadeIn duration={0.4} delay={0}>
           <text x={COL_X_RIGHT} y={50} textAnchor="middle"
-                fill="var(--chalk-300)" fontFamily="var(--font-mono)" fontSize="13"
+                fill="var(--chalk-300)" fontFamily="var(--font-mono)" fontSize={portrait ? 12 : 13}
                 letterSpacing="0.18em">ELECTRICAL</text>
         </SvgFadeIn>
         <SvgFadeIn duration={0.4} delay={0.1}>
-          <line x1={140} y1={70} x2={820} y2={70}
+          <line x1={headerLine.x1} y1={70} x2={headerLine.x2} y2={70}
                 stroke="var(--chalk-300)" strokeWidth={1} opacity={0.4}/>
         </SvgFadeIn>
 
@@ -307,17 +346,17 @@ function MappingTable() {
               <SvgFadeIn duration={0.4} delay={r.delay}>
                 <text x={COL_X_LEFT} y={y} textAnchor="middle"
                       fill={symColor} fontFamily="var(--font-serif)"
-                      fontStyle="italic" fontSize="42">{r.mech}</text>
+                      fontStyle="italic" fontSize={symFont}>{r.mech}</text>
               </SvgFadeIn>
               <SvgFadeIn duration={0.4} delay={r.delay + 0.15}>
                 <text x={COL_X_MID} y={y} textAnchor="middle"
                       fill="var(--chalk-300)" fontFamily="var(--font-serif)"
-                      fontSize="32">↔</text>
+                      fontSize={portrait ? 28 : 32}>↔</text>
               </SvgFadeIn>
               <SvgFadeIn duration={0.4} delay={r.delay + 0.3}>
                 <text x={COL_X_RIGHT} y={y} textAnchor="middle"
                       fill={symColor} fontFamily="var(--font-serif)"
-                      fontStyle="italic" fontSize="42">{r.elec}</text>
+                      fontStyle="italic" fontSize={symFont}>{r.elec}</text>
               </SvgFadeIn>
               {/* Captions below symbols */}
               <SvgFadeIn duration={0.4} delay={r.delay + 0.4}>
@@ -341,6 +380,63 @@ function MappingTable() {
 // ─── Beat 4: Equation reveal ──────────────────────────────────────────────
 // Two ODEs side by side, then a unified caption, then the two ω₀ payoffs.
 function EquationReveal() {
+  const portrait = usePortrait();
+  // Portrait stacks the two ODEs (and the two ω₀ payoffs) vertically; each
+  // gets a small "MECH" / "ELEC" label so the column identity isn't lost.
+  if (portrait) {
+    return (
+      <div style={{
+        position: 'absolute', left: '50%', top: '50%',
+        transform: 'translate(-50%, -50%)',
+        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16,
+        width: 660, textAlign: 'center',
+      }}>
+        <FadeUp duration={0.4} delay={0.1} distance={6}
+          style={{ fontFamily: 'var(--font-mono)', fontSize: 11,
+                   color: 'var(--chalk-300)', letterSpacing: '0.18em' }}>
+          MECHANICAL
+        </FadeUp>
+        <FadeUp duration={0.5} delay={0.3} distance={12}
+          style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic',
+                   fontSize: 26, color: 'var(--chalk-100)', letterSpacing: '0.02em' }}>
+          m·d²x/dt² + b·dx/dt + k·x = 0
+        </FadeUp>
+
+        <FadeUp duration={0.4} delay={1.4} distance={6}
+          style={{ fontFamily: 'var(--font-mono)', fontSize: 11,
+                   color: 'var(--chalk-300)', letterSpacing: '0.18em', marginTop: 8 }}>
+          ELECTRICAL
+        </FadeUp>
+        <FadeUp duration={0.5} delay={1.6} distance={12}
+          style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic',
+                   fontSize: 26, color: 'var(--chalk-100)', letterSpacing: '0.02em' }}>
+          L·d²q/dt² + R·dq/dt + (1/C)·q = 0
+        </FadeUp>
+
+        <FadeUp duration={0.5} delay={3.4} distance={10}
+          style={{ fontFamily: 'var(--font-sans)', fontSize: 14,
+                   color: 'var(--chalk-300)', letterSpacing: '0.02em',
+                   marginTop: 6, maxWidth: '28ch' }}>
+          same structure — only the letters differ
+        </FadeUp>
+
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',
+                      gap: 18, marginTop: 14 }}>
+          <FadeUp duration={0.6} delay={5.6} distance={14}
+            style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic',
+                     fontSize: 44, color: 'var(--amber-300)', letterSpacing: '0.02em' }}>
+            ω₀ = √(k/m)
+          </FadeUp>
+          <FadeUp duration={0.6} delay={7.4} distance={14}
+            style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic',
+                     fontSize: 44, color: 'var(--amber-300)', letterSpacing: '0.02em' }}>
+            ω₀ = 1/√(LC)
+          </FadeUp>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div style={{
       position: 'absolute', left: '50%', top: '50%',
@@ -410,6 +506,7 @@ function EquationReveal() {
 // dashed rose envelope tracing the decay. The two visuals share period
 // and decay so the eye sees the same shape in two domains.
 function DampingAdded() {
+  const portrait = usePortrait();
   const PERIOD = 2.0;
   const DECAY = 0.28;       // 1/s — moderate damping
   const PEND_AMP = 22;      // degrees
@@ -418,6 +515,72 @@ function DampingAdded() {
   const t = Math.max(0, localTime - RELEASE);
   const env = Math.exp(-DECAY * t);
   const angle = PEND_AMP * env * Math.cos(2 * Math.PI * t / PERIOD);
+
+  if (portrait) {
+    return (
+      <div style={{
+        position: 'absolute', left: '50%', top: '52%',
+        transform: 'translate(-50%, -50%)',
+      }}>
+        <svg width={660} height={980} viewBox="0 0 660 980" style={{ overflow: 'visible' }}>
+          {/* Top half: damped pendulum */}
+          <SvgFadeIn duration={0.4} delay={0}>
+            <text x={330} y={32} textAnchor="middle"
+                  fill="var(--rose-300)" fontFamily="var(--font-mono)" fontSize="12"
+                  letterSpacing="0.16em">+ FRICTION</text>
+          </SvgFadeIn>
+
+          <SvgFadeIn duration={0.5} delay={0.3}>
+            <Pendulum
+              pivX={330} pivY={70} L={210}
+              angle={angle}
+              bobR={22} color="var(--amber-400)"
+            />
+          </SvgFadeIn>
+
+          {/* Friction tag — anchored to the right of the bob */}
+          <SvgFadeIn duration={0.4} delay={1.0}>
+            <g>
+              <line x1={420} y1={250} x2={370} y2={282}
+                    stroke="var(--rose-400)" strokeWidth={1.2}
+                    strokeDasharray="3 3"/>
+              <text x={428} y={254} fill="var(--rose-300)"
+                    fontFamily="var(--font-mono)" fontSize="12"
+                    letterSpacing="0.12em">−b·v</text>
+            </g>
+          </SvgFadeIn>
+
+          {/* Horizontal separator */}
+          <SvgFadeIn duration={0.4} delay={0.3}>
+            <line x1={80} y1={420} x2={580} y2={420}
+                  stroke="var(--chalk-300)" strokeWidth={1}
+                  strokeDasharray="3 6" opacity={0.4}/>
+          </SvgFadeIn>
+
+          {/* Bottom half: decaying q(t) trace */}
+          <SvgFadeIn duration={0.4} delay={0}>
+            <text x={330} y={466} textAnchor="middle"
+                  fill="var(--rose-300)" fontFamily="var(--font-mono)" fontSize="12"
+                  letterSpacing="0.16em">+ RESISTANCE</text>
+          </SvgFadeIn>
+
+          <DampedTracePlot x={120} y={520} w={420} h={300}
+                           period={PERIOD} decay={DECAY}
+                           drawDelay={0.8} drawDur={3.6}
+                           envelopeDelay={2.2}/>
+
+          {/* Caption beneath */}
+          <SvgFadeIn duration={0.4} delay={5.0}>
+            <text x={330} y={950} textAnchor="middle"
+                  fill="var(--chalk-300)" fontFamily="var(--font-sans)"
+                  fontSize="14" letterSpacing="0.02em">
+              amplitude decays exponentially
+            </text>
+          </SvgFadeIn>
+        </svg>
+      </div>
+    );
+  }
 
   return (
     <div style={{
@@ -544,6 +707,7 @@ function DampedTracePlot({ x, y, w, h, period, decay, drawDelay, drawDur, envelo
 
 // ─── Beat 6: Takeaway ─────────────────────────────────────────────────────
 function Takeaway() {
+  const portrait = usePortrait();
   return (
     <div style={{
       position: 'absolute', left: '50%', top: '50%',
@@ -553,15 +717,21 @@ function Takeaway() {
     }}>
       <FadeUp duration={0.6} delay={0.3} distance={14}
         style={{
-          fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 38,
-          color: 'var(--chalk-100)', maxWidth: '40ch',
+          fontFamily: 'var(--font-serif)', fontStyle: 'italic',
+          fontSize: portrait ? 32 : 38,
+          color: 'var(--chalk-100)',
+          maxWidth: portrait ? '20ch' : '40ch',
+          lineHeight: 1.2,
         }}>
         Same math, different physics.
       </FadeUp>
       <FadeUp duration={0.6} delay={1.4} distance={12}
         style={{
-          fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 26,
-          color: 'var(--amber-300)', maxWidth: '46ch',
+          fontFamily: 'var(--font-serif)', fontStyle: 'italic',
+          fontSize: portrait ? 22 : 26,
+          color: 'var(--amber-300)',
+          maxWidth: portrait ? '22ch' : '46ch',
+          lineHeight: 1.3,
         }}>
         Once you understand one, you understand the other.
       </FadeUp>
