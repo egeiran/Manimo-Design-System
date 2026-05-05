@@ -189,7 +189,7 @@ Internally uses a TraceIn so it draws itself in.
 Small cursor dot. Use as a visual counterpart to a TraceIn — interpolate
 its (x, y) along the path so it looks like the tip drew the line.
 
-### `<SceneNarration src tracks volume />`
+### `<SceneNarration src tracks volume playbackRate />`
 Plays narration audio in sync with Stage time. Two modes:
 
 - **Single-track (recommended)** — one continuous MP3 covering the whole
@@ -205,6 +205,67 @@ Generate audio with `npm run audio <scene-id>` (single-track default) or
 suggested `<Sprite start>` values to paste into the JSX. Browser autoplay
 rules block playback until the user interacts; clicking the PlaybackBar
 play button counts, so audio kicks in the moment they hit play.
+
+---
+
+## Adding narration audio to a scene
+
+Canonical workflow — same shape whether the ElevenLabs key works or not.
+
+**Step 1 — write spoken-natural narration.**
+Open `motion/<scene-id>.spec.json`. Each `beat.narration` is read verbatim
+by TTS. Symbol-laden phrasing sounds robotic. Rewrite math expressions as
+they would be *spoken*:
+
+| Symbolic                          | Spoken (use this)                                              |
+| --------------------------------- | -------------------------------------------------------------- |
+| `F = ma`                          | force equals mass times acceleration                           |
+| `ma = -kx`                        | m a equals minus k x                                            |
+| `ω₀ = √(k/m)`                     | omega zero equals the square root of k over m                  |
+| `T = 2π√(m/k)`                    | T equals two pi times the square root of m over k              |
+| `omega-zero` (hyphenated)         | omega zero (TTS reads hyphens as the word "dash")              |
+
+The visual `text-formula` elements still use the symbolic form — this rule
+only applies to spoken/narration strings. Mirror the rewrite in the JSX's
+top-of-file `NARRATION` array (same texts).
+
+**Step 2 — generate audio.**
+
+```sh
+npm run audio <scene-id>
+```
+
+Single-track is the default. The script either succeeds (writes
+`motion/audio/<scene-id>/scene.mp3` + `manifest.json`, removes any stale
+per-beat MP3s, prints the wire-up edits) **or** falls back gracefully when
+the key is missing/expired/quota-empty: it estimates each beat's spoken
+duration at ~14 chars/sec, writes a no-audio `manifest.json` with
+estimated `audioStart` offsets, and prints the same wire-up shape minus
+the `<SceneNarration>` line. Re-running with a working key later overwrites
+the manifest with real timings.
+
+**Step 3 — apply the printed wire-up to four files.**
+
+The script's tail output names exactly what to edit:
+
+| File                              | Change                                                           |
+| --------------------------------- | ---------------------------------------------------------------- |
+| `motion/<scene-id>.jsx`           | `SCENE_DURATION`, every `<Sprite start/end>`, `<SceneNarration src=…/>` (audio mode only), `<Stage … loop={false}>` (audio mode only), and the time prefixes in the `NARRATION` array comment |
+| `motion/<scene-id>.spec.json`     | Each `beat.start` / `beat.end` and the top-level `duration`      |
+| `motion/scene-manifest.json`      | This scene's `duration`                                          |
+| `ui_kits/studio/app.jsx`          | This scene's `duration: 'M:SS'` string in `initialScenes`        |
+
+**Step 4 — verify.**
+
+```sh
+npm run lint
+node scripts/snapshot-scene.js motion/<scene-id>.html
+```
+
+The snapshot's playback bar should show the new total duration. If audio
+exists, open the `.html` in a browser and click play — narration should
+start in sync. (Audio is gitignored-friendly: the MP3 is a few hundred KB
+per scene; commit alongside the spec for reproducible playback.)
 
 ---
 

@@ -14,20 +14,15 @@ and require your input. Total queue size is kept ≤ 12 items.
 
 ### [AGENT] — safe for the next nightly run
 
-- Migrate `spring-oscillation` from legacy per-beat audio to the new
-  single-track mode: run `npm run audio spring-oscillation -- --force`,
-  paste the printed `<Sprite start>` values into
-  `motion/spring-oscillation.jsx`, replace `<SceneNarration tracks=…/>`
-  with `<SceneNarration src="audio/spring-oscillation/scene.mp3"/>`, and
-  bump `SCENE_DURATION` to the suggested value. Then delete the now-unused
-  per-beat MP3s in `motion/audio/spring-oscillation/`. Cost: ~600 chars.
-- Generate narration for the other three scenes (`rc-circuit`,
-  `moment-of-inertia`, `hoop-disk`) using `npm run audio <scene-id>`
-  (single-track is default). Wire each scene with `<SceneNarration
-  src="..." />` at the top of `<Scene>` and update `<Sprite start>`
-  values from each manifest. Each scene costs ≲ 1 K characters against
-  the 10 K/month free tier. Skip if `ELEVENLABS_API_KEY` is not set in
-  the agent's environment.
+- Add narration audio to `rc-circuit`, `moment-of-inertia`, and
+  `hoop-disk`. Follow the **"Adding narration audio to a scene"** workflow
+  in `motion/README.md` for each — that doc is the source of truth (Step
+  1: rewrite narration as spoken prose per Hard rule 9 in CLAUDE.md;
+  Step 2: `npm run audio <scene-id>` — falls back to estimated timings
+  if the key is missing or quota-empty, never errors out; Step 3: apply
+  printed wire-up to the four named files; Step 4: lint + snapshot).
+  Real audio costs ≲ 1 K chars/scene against the 10 K/month free tier;
+  fallback path costs nothing.
 
 ### [HUMAN] — needs your input
 

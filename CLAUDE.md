@@ -98,6 +98,18 @@ ui_kits/
 8. **Stage size is 1280×720.** Don't change it without a reason; the
    Watch UI player is built around 16:9 at that resolution.
 
+9. **Narration text is spoken, not symbolic.** The `narration` field in
+   each beat (and the matching `NARRATION` array in the JSX) is read
+   verbatim by TTS — symbol-laden phrasing sounds robotic. Always write
+   it as natural prose:
+   - "F = ma" → "force equals mass times acceleration"
+   - "ω₀ = √(k/m)" → "omega zero equals the square root of k over m"
+   - "T = 2π√(m/k)" → "T equals two pi times the square root of m over k"
+   - Hyphens between words ("omega-zero") → plain space ("omega zero"),
+     because TTS pronounces the hyphen as "dash".
+   The visual `text-formula` elements still use the symbolic form — this
+   rule applies only to spoken/narration strings.
+
 ---
 
 ## Authoring a new scene — checklist
