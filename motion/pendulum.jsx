@@ -1,31 +1,32 @@
 // The Simple Pendulum: Why Mass Doesn't Matter — Manimo lesson scene.
 // Generated from motion/pendulum.spec.json. Builds on Scene 4 (spring oscillation).
 //
-// Beats (timings sized for narration audio — fallback estimated, no scene.mp3 yet):
-//    0.00– 6.44  Manimo enters; hook question
-//    6.44–19.39  Pendulum diagram; gravity decomposes; restoring force = −mg sin θ
-//   19.39–36.19  Small-angle approx; equation of motion; ω₀ = √(g/L)
-//   36.19–45.49  Period T = 2π√(L/g); the mass disappears
-//   45.49–53.00  Takeaway
+// Beats (timed to single-track narration in motion/audio/pendulum/):
+//    0.00– 6.19  Manimo enters; hook question
+//    6.19–18.18  Pendulum diagram; gravity decomposes; restoring force = −mg sin θ
+//   18.18–33.44  Small-angle approx; equation of motion; ω₀ = √(g/L)
+//   33.44–42.95  Period T = 2π√(L/g); the mass disappears
+//   42.95–50.00  Takeaway
 //
 // Authoring notes:
 //   • All delays below are relative to the enclosing Sprite's start (localTime).
 //   • SvgFadeIn for every element inside <svg>. FadeUp for HTML/DOM only.
 //   • SceneChrome handles background, watermark, title block, corner Manimo.
-//   • Re-run `npm run audio pendulum` once ELEVENLABS_API_KEY works to
-//     overwrite manifest.json with real timings and add scene.mp3.
 
-const SCENE_DURATION = 53;
+const SCENE_DURATION = 50;
 
 // Narration script (one sentence per beat — source of truth for TTS/subtitles).
 // NARRATION.length must equal the number of <Sprite> beats in Scene().
 const NARRATION = [
-  /*  0.00– 6.44 */ 'A weight on a string — pull it sideways and let go. What sets the rhythm of its swing?',
-  /*  6.44–19.39 */ 'Hang a mass from a string of length L. Pull it to angle theta. Gravity pulls straight down, but only the tangential component, minus m g sine theta, restores it toward vertical.',
-  /* 19.39–36.19 */ 'For small swings, sine theta is approximately theta. The equation of motion becomes the second derivative of theta plus g over L theta equals zero — exactly the spring equation, with omega zero equal to the square root of g over L.',
-  /* 36.19–45.49 */ 'The period is two pi over omega zero — so T equals two pi times the square root of L over g. Notice what is missing: the mass.',
-  /* 45.49–53.00 */ 'Heavier bob, lighter bob — same length swings to the same beat. Gravity sets the metronome.',
+  /*  0.00– 6.19 */ 'A weight on a string — pull it sideways and let go. What sets the rhythm of its swing?',
+  /*  6.19–18.18 */ 'Hang a mass from a string of length L. Pull it to angle theta. Gravity pulls straight down, but only the tangential component, minus m g sine theta, restores it toward vertical.',
+  /* 18.18–33.44 */ 'For small swings, sine theta is approximately theta. The equation of motion becomes the second derivative of theta plus g over L theta equals zero — exactly the spring equation, with omega zero equal to the square root of g over L.',
+  /* 33.44–42.95 */ 'The period is two pi over omega zero — so T equals two pi times the square root of L over g. Notice what is missing: the mass.',
+  /* 42.95–50.00 */ 'Heavier bob, lighter bob — same length swings to the same beat. Gravity sets the metronome.',
 ];
+
+// Single continuous narration track aligned to manifest.json offsets.
+const NARRATION_AUDIO = 'audio/pendulum/scene.mp3';
 
 function Scene() {
   return (
@@ -34,23 +35,25 @@ function Scene() {
       title="The Simple Pendulum: Why Mass Doesn't Matter"
       duration={SCENE_DURATION}
     >
-      <Sprite start={0} end={6.44}>
+      <SceneNarration src={NARRATION_AUDIO} />
+
+      <Sprite start={0} end={6.19}>
         <ManimoBubbleIntro />
       </Sprite>
 
-      <Sprite start={6.44} end={19.39}>
+      <Sprite start={6.19} end={18.18}>
         <PendulumDiagram />
       </Sprite>
 
-      <Sprite start={19.39} end={36.19}>
+      <Sprite start={18.18} end={33.44}>
         <SmallAngle />
       </Sprite>
 
-      <Sprite start={36.19} end={45.49}>
+      <Sprite start={33.44} end={42.95}>
         <PeriodFormula />
       </Sprite>
 
-      <Sprite start={45.49} end={SCENE_DURATION}>
+      <Sprite start={42.95} end={SCENE_DURATION}>
         <Takeaway />
       </Sprite>
     </SceneChrome>
@@ -357,7 +360,12 @@ window.sceneNarration = NARRATION;
 // ─── Mount ────────────────────────────────────────────────────────────────
 function App() {
   return (
-    <Stage width={1280} height={720} duration={SCENE_DURATION} background="#0c0a1f">
+    <Stage
+      width={1280} height={720}
+      duration={SCENE_DURATION}
+      background="#0c0a1f"
+      loop={false}
+    >
       <Scene/>
     </Stage>
   );

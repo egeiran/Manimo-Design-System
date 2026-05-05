@@ -3,14 +3,14 @@
   "title": "Hoop vs Disk: Why a Disk Wins",
   "eyebrow": "Scene 3 · rolling motion",
   "language": "en",
-  "duration": 40,
+  "duration": 48,
   "topic": "Rolling without slipping — energy conservation gives v = √(2gh / (1 + I/MR²)); disk beats hoop because less inertia goes into rotation",
   "prerequisites": ["moment-of-inertia"],
   "beats": [
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 6.23,
+      "end": 6.07,
       "narration": "Two wheels — same mass, same radius, same hill. Which one reaches the bottom first?",
       "visuals": {
         "layout": "center",
@@ -22,8 +22,8 @@
     },
     {
       "id": "rampSetup",
-      "start": 6.23,
-      "end": 13.96,
+      "start": 6.07,
+      "end": 12.53,
       "narration": "We release a hoop and a solid disk from rest at the top of an inclined ramp. Both roll without slipping.",
       "visuals": {
         "layout": "center",
@@ -39,9 +39,9 @@
     },
     {
       "id": "energyDerivation",
-      "start": 13.96,
-      "end": 23.33,
-      "narration": "Energy conservation: the gravitational potential mgh becomes kinetic energy — split between translation ½Mv² and rotation ½Iω².",
+      "start": 12.53,
+      "end": 26.29,
+      "narration": "By energy conservation, the gravitational potential energy m g h becomes kinetic energy — split between translation, one half m v squared, and rotation, one half I omega squared.",
       "visuals": {
         "layout": "center",
         "elements": [
@@ -53,9 +53,9 @@
     },
     {
       "id": "verdict",
-      "start": 23.33,
-      "end": 32.49,
-      "narration": "Plug in: the disk gives v = √(4gh/3), the hoop gives v = √(gh). The disk is always faster — about 15% quicker at the bottom.",
+      "start": 26.29,
+      "end": 40.38,
+      "narration": "Plug in: for the disk, v equals the square root of four g h divided by three. For the hoop, v equals the square root of g h. The disk is always faster — about fifteen percent quicker at the bottom.",
       "visuals": {
         "layout": "left-right",
         "elements": [
@@ -69,8 +69,8 @@
     },
     {
       "id": "takeaway",
-      "start": 32.49,
-      "end": 40,
+      "start": 40.38,
+      "end": 48,
       "narration": "Less rotational inertia leaves more energy for translation — that's why a solid disk beats a hoop.",
       "visuals": {
         "layout": "center",

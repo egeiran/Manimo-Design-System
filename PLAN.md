@@ -14,16 +14,7 @@ and require your input. Total queue size is kept ≤ 12 items.
 
 ### [AGENT] — safe for the next nightly run
 
-- Re-run `npm run audio hoop-disk` and `npm run audio pendulum` once
-  `ELEVENLABS_API_KEY` reaches the API (the sandbox returns HTTP 403
-  "Host not in allowlist" today). Both scenes currently ship with
-  fallback estimated timings — re-running with a working key will
-  overwrite each `manifest.json` with real per-character offsets and
-  drop a `scene.mp3` next to it. After audio lands, apply the printed
-  wire-up: add `<SceneNarration src=…/>` inside `<Scene>` and
-  `loop={false}` on `<Stage>` for each scene, and refresh the four
-  files (jsx / spec.json / scene-manifest.json / studio app.jsx) with
-  the new timings.
+_(empty — append new items as they're discovered)_
 
 ### [HUMAN] — needs your input
 

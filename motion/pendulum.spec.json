@@ -3,14 +3,14 @@
   "title": "The Simple Pendulum: Why Mass Doesn't Matter",
   "eyebrow": "Scene 5 · pendulum motion",
   "language": "en",
-  "duration": 53,
+  "duration": 50,
   "topic": "Simple pendulum — for small swings, T = 2π√(L/g); the period depends on length and gravity, not mass",
   "prerequisites": ["spring-oscillation"],
   "beats": [
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 6.44,
+      "end": 6.19,
       "narration": "A weight on a string — pull it sideways and let go. What sets the rhythm of its swing?",
       "visuals": {
         "layout": "center",
@@ -22,8 +22,8 @@
     },
     {
       "id": "pendulumDiagram",
-      "start": 6.44,
-      "end": 19.39,
+      "start": 6.19,
+      "end": 18.18,
       "narration": "Hang a mass from a string of length L. Pull it to angle theta. Gravity pulls straight down, but only the tangential component, minus m g sine theta, restores it toward vertical.",
       "visuals": {
         "layout": "center",
@@ -45,8 +45,8 @@
     },
     {
       "id": "smallAngle",
-      "start": 19.39,
-      "end": 36.19,
+      "start": 18.18,
+      "end": 33.44,
       "narration": "For small swings, sine theta is approximately theta. The equation of motion becomes the second derivative of theta plus g over L theta equals zero — exactly the spring equation, with omega zero equal to the square root of g over L.",
       "visuals": {
         "layout": "center",
@@ -61,8 +61,8 @@
     },
     {
       "id": "periodFormula",
-      "start": 36.19,
-      "end": 45.49,
+      "start": 33.44,
+      "end": 42.95,
       "narration": "The period is two pi over omega zero — so T equals two pi times the square root of L over g. Notice what is missing: the mass.",
       "visuals": {
         "layout": "center",
@@ -78,8 +78,8 @@
     },
     {
       "id": "takeaway",
-      "start": 45.49,
-      "end": 53,
+      "start": 42.95,
+      "end": 50,
       "narration": "Heavier bob, lighter bob — same length swings to the same beat. Gravity sets the metronome.",
       "visuals": {
         "layout": "center",

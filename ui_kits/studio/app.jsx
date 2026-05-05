@@ -47,7 +47,7 @@ const initialScenes = [
   {
     id: 'live-hoop-disk', kind: 'live', kindLabel: 'Live',
     cardTitle: 'Hoop vs Disk',
-    duration: '0:39',
+    duration: '0:47',
     html: '../../motion/hoop-disk.html',
   },
   {
@@ -59,7 +59,7 @@ const initialScenes = [
   {
     id: 'live-pendulum', kind: 'live', kindLabel: 'Live',
     cardTitle: 'The Simple Pendulum',
-    duration: '0:52',
+    duration: '0:50',
     html: '../../motion/pendulum.html',
   },
 ];

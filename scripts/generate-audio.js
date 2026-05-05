@@ -50,7 +50,7 @@ const positional = [];
 const flags = {};
 for (let i = 0; i < args.length; i++) {
   const a = args[i];
-  if (a === '--dry-run' || a === '--force' || a === '--legacy') {
+  if (a === '--dry-run' || a === '--force' || a === '--legacy' || a === '--unsafe-narration') {
     flags[a.slice(2)] = true;
   } else if (a === '--voice') {
     flags.voice = args[++i];
@@ -63,7 +63,7 @@ for (let i = 0; i < args.length; i++) {
 }
 
 if (positional.length !== 1) {
-  console.error('Usage: node scripts/generate-audio.js <scene-id> [--dry-run] [--force] [--legacy] [--voice <id>]');
+  console.error('Usage: node scripts/generate-audio.js <scene-id> [--dry-run] [--force] [--legacy] [--voice <id>] [--unsafe-narration]');
   process.exit(1);
 }
 
@@ -74,6 +74,55 @@ if (!existsSync(specPath)) {
   process.exit(1);
 }
 const spec = JSON.parse(readFileSync(specPath, 'utf8'));
+
+// ─── Pre-flight: refuse formula-shaped narration ────────────────────────
+// Per CLAUDE.md hard rule 9, the `narration` field is read verbatim by TTS
+// and must be spoken English, not symbols. We catch the most common
+// regressions before spending API quota on bad audio. Bypass with
+// --unsafe-narration (ONLY when narration genuinely needs a non-prose
+// character, e.g. an actual citation).
+function checkNarrationIsSpoken(beats) {
+  // Unicode chars that occur in math but never in natural speech text.
+  const MATH_SYMBOLS = /[√½¼¾⅓⅔²³⁴⁵⁶⁷⁸⁹⁰₀₁₂₃₄₅₆₇₈₉πωθμαβγλΩΔ∫∑∏≈≤≥≠∂±·×÷→⇒⇔]/;
+  // "X = " patterns: single Latin letter equation lhs (e.g. "F = ma").
+  // Excludes "T equals" (already spoken). Allows "the e equals m c squared"
+  // as a corner case — we only flag the equals-sign form.
+  const EQUATION = /(^|\W)[A-Za-z]\s*=\s*\S/;
+  // "%" is fine in writing but TTS reads it inconsistently — prefer "percent".
+  const PERCENT = /\d\s*%/;
+
+  const issues = [];
+  for (const b of beats) {
+    const text = b.narration || '';
+    const m1 = text.match(MATH_SYMBOLS);
+    if (m1) issues.push({ id: b.id, kind: 'math symbol', sample: m1[0], text });
+    const m2 = text.match(EQUATION);
+    if (m2) issues.push({ id: b.id, kind: 'equation form', sample: m2[0].trim(), text });
+    const m3 = text.match(PERCENT);
+    if (m3) issues.push({ id: b.id, kind: 'percent sign', sample: m3[0], text });
+  }
+  return issues;
+}
+
+const narrationIssues = checkNarrationIsSpoken(spec.beats || []);
+if (narrationIssues.length && !flags['unsafe-narration']) {
+  console.error('\n✗ Refusing to generate audio — narration looks formula-shaped:');
+  for (const i of narrationIssues) {
+    console.error(`  beat "${i.id}": ${i.kind} "${i.sample}"`);
+    console.error(`    text: "${i.text}"`);
+  }
+  console.error('\nPer CLAUDE.md hard rule 9, narration must be spoken English.');
+  console.error('Examples of fixes:');
+  console.error('  "F = ma"          → "force equals mass times acceleration"');
+  console.error('  "½Mv²"            → "one half m v squared"');
+  console.error('  "v = √(4gh/3)"    → "v equals the square root of four g h divided by three"');
+  console.error('  "15%"             → "fifteen percent"');
+  console.error('  "ω₀"              → "omega zero"');
+  console.error('\nRewrite the narration in motion/' + sceneId + '.spec.json');
+  console.error('(and mirror in motion/' + sceneId + '.jsx NARRATION array), then re-run.');
+  console.error('To bypass (rare cases only): pass --unsafe-narration.');
+  process.exit(1);
+}
 
 const beats = (spec.beats || []).filter(b => b.narration && b.narration.trim());
 if (beats.length === 0) {

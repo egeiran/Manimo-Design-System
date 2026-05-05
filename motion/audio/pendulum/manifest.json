@@ -1,8 +1,10 @@
 {
   "sceneId": "pendulum",
-  "mode": "fallback-estimated",
-  "chars": 711,
-  "durationSec": 51.99,
+  "mode": "single-track",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/pendulum/scene.mp3",
+  "durationSec": 49.27,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -11,24 +13,23 @@
     },
     {
       "id": "pendulumDiagram",
-      "audioStart": 6.44,
+      "audioStart": 6.19,
       "narration": "Hang a mass from a string of length L. Pull it to angle theta. Gravity pulls straight down, but only the tangential component, minus m g sine theta, restores it toward vertical."
     },
     {
       "id": "smallAngle",
-      "audioStart": 19.39,
+      "audioStart": 18.18,
       "narration": "For small swings, sine theta is approximately theta. The equation of motion becomes the second derivative of theta plus g over L theta equals zero — exactly the spring equation, with omega zero equal to the square root of g over L."
     },
     {
       "id": "periodFormula",
-      "audioStart": 36.19,
+      "audioStart": 33.44,
       "narration": "The period is two pi over omega zero — so T equals two pi times the square root of L over g. Notice what is missing: the mass."
     },
     {
       "id": "takeaway",
-      "audioStart": 45.49,
+      "audioStart": 42.95,
       "narration": "Heavier bob, lighter bob — same length swings to the same beat. Gravity sets the metronome."
     }
-  ],
-  "note": "Estimated at 14 chars/sec — no audio file. Re-run with ELEVENLABS_API_KEY set to overwrite with real audio."
+  ]
 }

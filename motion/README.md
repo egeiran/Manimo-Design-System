@@ -223,11 +223,20 @@ they would be *spoken*:
 | `ma = -kx`                        | m a equals minus k x                                            |
 | `ω₀ = √(k/m)`                     | omega zero equals the square root of k over m                  |
 | `T = 2π√(m/k)`                    | T equals two pi times the square root of m over k              |
+| `½Mv²`                            | one half m v squared                                           |
+| `v = √(4gh/3)`                    | v equals the square root of four g h divided by three          |
+| `15%`                             | fifteen percent                                                |
 | `omega-zero` (hyphenated)         | omega zero (TTS reads hyphens as the word "dash")              |
 
 The visual `text-formula` elements still use the symbolic form — this rule
 only applies to spoken/narration strings. Mirror the rewrite in the JSX's
 top-of-file `NARRATION` array (same texts).
+
+**This rule is enforced.** `scripts/generate-audio.js` has a pre-flight
+check that refuses to call the ElevenLabs API if narration contains math
+symbols (√, ², ½, π, ω, =, %, …). The script aborts and prints which beat
+needs rewriting. Bypass with `--unsafe-narration` only when you genuinely
+need a non-prose character in the script (rare).
 
 **Step 2 — generate audio.**
 

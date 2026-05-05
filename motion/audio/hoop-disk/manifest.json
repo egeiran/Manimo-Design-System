@@ -1,8 +1,10 @@
 {
   "sceneId": "hoop-disk",
-  "mode": "fallback-estimated",
-  "chars": 536,
-  "durationSec": 39.49,
+  "mode": "single-track",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/hoop-disk/scene.mp3",
+  "durationSec": 46.77,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -11,24 +13,23 @@
     },
     {
       "id": "rampSetup",
-      "audioStart": 6.23,
+      "audioStart": 6.07,
       "narration": "We release a hoop and a solid disk from rest at the top of an inclined ramp. Both roll without slipping."
     },
     {
       "id": "energyDerivation",
-      "audioStart": 13.96,
-      "narration": "Energy conservation: the gravitational potential mgh becomes kinetic energy — split between translation ½Mv² and rotation ½Iω²."
+      "audioStart": 12.53,
+      "narration": "By energy conservation, the gravitational potential energy m g h becomes kinetic energy — split between translation, one half m v squared, and rotation, one half I omega squared."
     },
     {
       "id": "verdict",
-      "audioStart": 23.33,
-      "narration": "Plug in: the disk gives v = √(4gh/3), the hoop gives v = √(gh). The disk is always faster — about 15% quicker at the bottom."
+      "audioStart": 26.29,
+      "narration": "Plug in: for the disk, v equals the square root of four g h divided by three. For the hoop, v equals the square root of g h. The disk is always faster — about fifteen percent quicker at the bottom."
     },
     {
       "id": "takeaway",
-      "audioStart": 32.49,
+      "audioStart": 40.38,
       "narration": "Less rotational inertia leaves more energy for translation — that's why a solid disk beats a hoop."
     }
-  ],
-  "note": "Estimated at 14 chars/sec — no audio file. Re-run with ELEVENLABS_API_KEY set to overwrite with real audio."
+  ]
 }
