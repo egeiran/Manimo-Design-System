@@ -139,13 +139,27 @@ ui_kits/
 
 ## Voice & content (when writing copy in scenes / UI)
 
-- Norwegian (bokmål) by default for student-facing copy. English is fine
-  for code, internal tooling and brand artifacts.
+- **Scene language: English by default.** All current scenes except the
+  original `rc-circuit` prototype are in English (see
+  `motion/scene-manifest.json` — `language` field). When authoring a new
+  scene, write narration, captions, titles, and labels in English unless
+  the user explicitly asks for Norwegian. **The language of the prompt
+  you receive is not a signal** — the scene-authoring prompt may be
+  written in Norwegian for the developer's convenience while the scene
+  itself should be English. If unsure, ask.
+- The eventual student-facing pilot is Norwegian (NTNU TFY4125), so a
+  Norwegian translation pass will happen later — but new scenes are
+  authored in English first to match the existing library.
 - Mathematical notation uses Fraunces italics: *V*, *τ*, *RC*. Subscripts
   via `<sub>` or unicode (V₀).
-- Captions are short and conversational, not lecture-formal. "La oss
-  tegne en krets" rather than "Vi vil nå studere kretsen".
+- Captions are short and conversational, not lecture-formal. "Pull a
+  weight on a string — what sets the rhythm?" rather than "We will now
+  examine the dynamics of a simple pendulum."
 - Numbers/labels in formulas use JetBrains Mono (`.63`, `0:11`).
+- The `language` field in `<scene>.spec.json` is the source of truth for
+  the scene's language. Match it to the actual narration/captions you
+  write; downstream tooling (TTS voice selection, subtitle export) reads
+  this field.
 
 See `README.md` (root) for the full voice guide.
 

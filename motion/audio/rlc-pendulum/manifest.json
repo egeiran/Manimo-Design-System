@@ -1,0 +1,40 @@
+{
+  "sceneId": "rlc-pendulum",
+  "mode": "single-track",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/rlc-pendulum/scene.mp3",
+  "durationSec": 46.91,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "A swinging weight and a flowing current — could they really obey the same rule?"
+    },
+    {
+      "id": "sideBySide",
+      "audioStart": 4.9,
+      "narration": "The pendulum swings back and forth, and the current in the circuit sloshes between coil and capacitor in exactly the same rhythm."
+    },
+    {
+      "id": "mappingTable",
+      "audioStart": 12.75,
+      "narration": "Position becomes charge, velocity becomes current, mass becomes inductance, and spring stiffness becomes one over capacitance."
+    },
+    {
+      "id": "equationReveal",
+      "audioStart": 21.4,
+      "narration": "Both systems obey the same second-order differential equation. The natural frequency for the pendulum is the square root of k over m, and for the circuit, one over the square root of L times C."
+    },
+    {
+      "id": "dampingAdded",
+      "audioStart": 34.13,
+      "narration": "Add resistance to the circuit or friction to the pendulum — both decay, and the amplitude falls exponentially toward zero."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 41.69,
+      "narration": "Same math, different physics. Once you understand one, you understand the other."
+    }
+  ]
+}

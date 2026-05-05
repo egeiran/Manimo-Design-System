@@ -62,6 +62,12 @@ const initialScenes = [
     duration: '0:50',
     html: '../../motion/pendulum.html',
   },
+  {
+    id: 'live-rlc-pendulum', kind: 'live', kindLabel: 'Live',
+    cardTitle: 'RLC ↔ Pendulum Analogy',
+    duration: '0:47',
+    html: '../../motion/rlc-pendulum.html',
+  },
 ];
 
 function App() {
