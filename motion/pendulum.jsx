@@ -148,7 +148,7 @@ function PendulumDiagram() {
         <SvgFadeIn duration={0.4} delay={1.4}>
           <path d={`M ${pivX} ${pivY + 50} A 50 50 0 0 1 ${arcEndX.toFixed(2)} ${arcEndY.toFixed(2)}`}
                 fill="none" stroke="var(--chalk-200)" strokeWidth={1.5}/>
-          <text x={pivX + 22} y={pivY + 78}
+          <text x={pivX + 17} y={pivY + 65}
                 fill="var(--chalk-200)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize="22">θ</text>
         </SvgFadeIn>
