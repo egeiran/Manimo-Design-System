@@ -5,6 +5,7 @@
       "id": "rc-circuit",
       "file": "rc-scene.jsx",
       "html": "rc-scene.html",
+      "spec": "rc-scene.spec.json",
       "title": "Lading av en kondensator",
       "eyebrow": "Scene 1 · introduksjon",
       "topic": "RC circuits — charging curve, time constant τ = RC",
@@ -17,6 +18,7 @@
       "id": "moment-of-inertia",
       "file": "derivation-scene.jsx",
       "html": "derivation-scene.html",
+      "spec": "derivation-scene.spec.json",
       "title": "Moment of Inertia",
       "eyebrow": "Scene 2 · rotational mechanics",
       "topic": "Moment of inertia — I = mr², quadratic radius scaling, disk integral I = ½MR²",
@@ -37,6 +39,19 @@
       "language": "en",
       "prerequisites": ["moment-of-inertia"],
       "concepts": ["rolling motion", "energy conservation", "rotational kinetic energy", "rolling without slipping", "moment of inertia"]
+    },
+    {
+      "id": "spring-oscillation",
+      "file": "spring-oscillation.jsx",
+      "html": "spring-oscillation.html",
+      "spec": "spring-oscillation.spec.json",
+      "title": "Hooke's Law: Why a Spring Bobs",
+      "eyebrow": "Scene 4 · harmonic motion",
+      "topic": "Simple harmonic motion of a spring — Hooke's law F = -kx leads to ω₀ = √(k/m) and period T = 2π√(m/k)",
+      "duration": 26,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": ["simple harmonic motion", "Hooke's law", "natural frequency", "spring constant", "period"]
     }
   ]
 }

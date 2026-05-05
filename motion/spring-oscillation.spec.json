@@ -1,0 +1,88 @@
+{
+  "id": "spring-oscillation",
+  "title": "Hooke's Law: Why a Spring Bobs",
+  "eyebrow": "Scene 4 · harmonic motion",
+  "language": "en",
+  "duration": 26,
+  "topic": "Simple harmonic motion of a spring — Hooke's law F = -kx leads to ω₀ = √(k/m) and period T = 2π√(m/k)",
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0.2,
+      "end": 3.5,
+      "narration": "Pull a mass on a spring, let go — what does it do, and how fast?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "Pull a spring, release — what sets the rhythm?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "hookesLaw",
+      "start": 3.5,
+      "end": 9.5,
+      "narration": "Stretch it by x and the spring pulls back with a force F equal to minus k times x — proportional to displacement, opposite in direction.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Hatched wall on left side, vertical line + diagonal hatching", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "svg-path", "content": "Zigzag spring from wall to mass (stretched right)", "delay": 0.4, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Mass — filled square at right end of spring", "delay": 1.2, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Equilibrium dashed vertical reference line", "delay": 1.6, "color": "var(--chalk-300)" },
+          { "type": "svg-label", "content": "x label between equilibrium line and mass", "delay": 2.0, "color": "var(--chalk-200)" },
+          { "type": "svg-path", "content": "Restoring force arrow on the mass pointing left", "delay": 2.6, "color": "var(--rose-400)" },
+          { "type": "svg-label", "content": "F = -kx label above the arrow", "delay": 3.0, "color": "var(--rose-300)" },
+          { "type": "text-caption", "content": "the further you stretch it, the harder it pulls back", "delay": 4.2, "color": "var(--chalk-300)", "position": "below the diagram, sans 14" }
+        ]
+      }
+    },
+    {
+      "id": "equationOfMotion",
+      "start": 9.5,
+      "end": 16.0,
+      "narration": "Newton says ma = F. Combine with Hooke's law and the natural frequency falls out: omega-zero equals the square root of k over m.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-formula", "content": "F = -kx", "delay": 0.3, "color": "var(--chalk-200)", "position": "left of three-step chain" },
+          { "type": "text-formula", "content": "F = ma", "delay": 1.0, "color": "var(--chalk-200)", "position": "centre of chain" },
+          { "type": "text-formula", "content": "ma = -kx", "delay": 1.8, "color": "var(--chalk-100)", "position": "right of chain" },
+          { "type": "text-caption", "content": "rearrange — the equation of simple harmonic motion", "delay": 2.6, "color": "var(--chalk-300)", "position": "small caption below the chain" },
+          { "type": "text-formula", "content": "ω₀ = √(k/m)", "delay": 3.4, "color": "var(--amber-300)", "position": "centre, large amber payoff" }
+        ]
+      }
+    },
+    {
+      "id": "period",
+      "start": 16.0,
+      "end": 21.5,
+      "narration": "Period is two pi over omega-zero — so T equals two pi times the square root of m over k.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-formula", "content": "T = 2π√(m/k)", "delay": 0.3, "color": "var(--amber-300)", "position": "centre, large serif italic amber" },
+          { "type": "text-title", "content": "stiffer spring", "delay": 1.4, "color": "var(--chalk-300)", "position": "left column header" },
+          { "type": "text-caption", "content": "k ↑  →  T ↓", "delay": 1.7, "color": "var(--chalk-200)", "position": "left column" },
+          { "type": "text-title", "content": "heavier mass", "delay": 2.2, "color": "var(--chalk-300)", "position": "right column header" },
+          { "type": "text-caption", "content": "m ↑  →  T ↑", "delay": 2.5, "color": "var(--chalk-200)", "position": "right column" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 21.5,
+      "end": 26.0,
+      "narration": "Stiffer spring, quicker beat; heavier mass, slower beat — and gravity never enters the formula.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "Stiffer spring → quicker beat. Heavier mass → slower beat.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic ~24px" },
+          { "type": "text-caption", "content": "(no g in sight — pure spring and inertia)", "delay": 1.6, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}

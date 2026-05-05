@@ -218,26 +218,36 @@ and require your input. Total queue size is kept ≤ 12 items.
 
 ### [AGENT] — safe for the next nightly run
 
-- Backfill `motion/derivation-scene.spec.json` from the existing JSX. The
-  scene has a `NARRATION` array (5 entries) and 5 `<Sprite>` blocks; reverse-
-  engineer a spec that validates against `motion/scene-spec.schema.json`.
-  After writing, add a `"spec": "derivation-scene.spec.json"` field to the
-  `moment-of-inertia` entry in `motion/scene-manifest.json`.
-- Add a `"spec": "rc-scene.spec.json"` field to the `rc-circuit` entry in
-  `motion/scene-manifest.json`. The file already exists; the manifest just
-  doesn't reference it.
-- Verify the three `motion/*.html` files use **identical integrity hashes**
-  for React, ReactDOM, and Babel-standalone scripts. They should all match
-  `motion/rc-scene.html` (the canonical bootstrap). If any have drifted,
-  normalize to the rc-scene values.
-- In `motion/_scene-template.jsx`, the placeholder `NARRATION` entries say
-  `"TODO: ..."` — update the trailing comment about beats to mention that
-  `NARRATION.length` should equal the number of `<Sprite>` beats in `Scene()`.
+- The `scripts/snapshot-scene.js` headless render fails in sandboxed agent
+  environments because `unpkg.com` is blocked at the network layer (403,
+  host_not_allowed). Add a `--vendor` (or `npm run vendor`) helper that
+  mirrors React 18.3.1, ReactDOM 18.3.1 and Babel-standalone 7.29.0 into
+  `motion/vendor/` once, plus a tiny rewrite step (or template flag) that
+  swaps the `<script src=…unpkg.com…>` URLs for the local copies during
+  snapshot runs only — not in the committed HTML, which still uses unpkg
+  with integrity hashes for the actual browser preview.
+- Add a `"concepts": [...]` array to the `derivation-scene.spec.json` and
+  `rc-scene.spec.json` files (currently the field lives only on the
+  manifest entry). The agent backfilled the scene-side spec but did not
+  duplicate the concepts list. Either add the field to the spec schema or
+  decide concepts live only in the manifest — pick one and document it.
 
 ### [HUMAN] — needs your input
 
-- **Pick the topic for the agent's first authored scene.** The agent will
-  pick something reasonable on its own, but a curated first pick keeps the
-  trajectory aligned with TFY4125's order. Strong candidates from the PDF:
-  Pendulum (§3.3), Spring oscillation (§3.2), Coulomb's law (§4.1), Torque
-  (§2.3). Reply in chat with your pick or say "agent's choice".
+- **Visual review of `motion/spring-oscillation.html`.** Tonight the agent
+  could not run the snapshot self-review pass because `unpkg.com` is
+  blocked from the sandbox (the React/Babel CDN fetch fails with HTTP
+  403). Open the page locally and verify: (a) Beat 2 — does the spring
+  zigzag visually connect the wall to the mass without gaps or overlaps,
+  is the equilibrium dashed line cleanly positioned at x=520 in the
+  diagram, and is the F = −kx force arrow obviously pointing back toward
+  equilibrium? (b) Beat 3 — do the three formula chips ("F = −kx", "F =
+  ma", "ma = −kx") fit on one row at 1280px without wrapping? (c) Beat 4
+  — does the two-column "stiffer spring" / "heavier mass" intuition read
+  cleanly under the T = 2π√(m/k) headline?
+- **Next topic candidates beyond Spring Oscillation.** Adjacent picks
+  that build on tonight's scene: §3.3 Pendel (small-angle pendulum,
+  T = 2π√(L/g) — sets up "period independent of mass"), §2.3 Dreiemoment
+  (torque, τ = r×F — needed before §2.4 spinn), §4.1 Coulombs lov
+  (F = kq₁q₂/r², the electromagnetism opener). Reply in chat with a pick
+  or say "agent's choice".
