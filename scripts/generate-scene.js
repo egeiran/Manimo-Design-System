@@ -116,7 +116,50 @@ ${JSON.stringify(spec, null, 2)}
 - delay is relative to the parent Sprite's localTime — NOT absolute stage time.
 - SvgFadeIn (not FadeUp) for elements inside <svg>.
 - Use design tokens — no raw hex.
-- Set \`window.sceneNarration = NARRATION;\` near the bottom (before the App component).`;
+- Set \`window.sceneNarration = NARRATION;\` near the bottom (before the App component).
+
+# Quality bar — non-negotiables
+
+The default failure mode is shipping a static deck of fade-ins. Don't.
+
+## Dual aspect (HARD)
+
+The scene MUST render correctly at BOTH 16:9 (1280×720, default) and
+9:16 portrait (720×1280, query param \`?aspect=9:16\`).
+
+- Call \`usePortrait()\` from manimo-motion.jsx in any component whose
+  layout, geometry, or font sizing breaks when the canvas rotates.
+- Reference implementation: motion/spring-oscillation.jsx — geometry,
+  font sizes, hatch pitch, gaps, max-width all branch on \`portrait\`.
+- For diagrams that don't fit horizontally, provide a stacked
+  portrait branch. Tighten gaps and shrink fonts ~85% in portrait.
+- A scene that only looks right in landscape is incomplete output.
+
+## Genuine animation (HARD)
+
+A Manimo scene exists to show something *moving* that you cannot show
+on a static chalkboard. Output where every beat's animation budget is
+exhausted by FadeUp + TraceIn + WriteOn is rejected — those build text,
+they don't demonstrate physics.
+
+At least one beat must include one of:
+- Physics-driven motion (oscillation, projectile, charging curve, swing)
+- A value-driven graph that grows synchronously with a moving diagram
+  element (the dot moves, the curve traces from the same parameter)
+- A morphing diagram (vector rotates with angle, area fills with
+  integral, shape transitions between states)
+- A swept parameter visualised through its range (damping, k, mass…)
+
+Ask "what would *bevegelse* mean here?" before reaching for another
+fade. If the topic genuinely admits no motion, leave a comment in the
+JSX flagging the static beat for human review.
+
+## Polish
+
+- Plan beats as a comment block at the top with explicit start/end
+  ranges before writing JSX. Beats < 2 s or > 8 s should be revised.
+- Every motion uses easing — no linear ramps unless physically motivated.
+- Every formula appears via TraceIn or WriteOn. Jump cuts are a failure.`;
 
 if (dryRun) {
   console.log('=== Dry run ===');
