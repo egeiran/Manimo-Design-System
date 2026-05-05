@@ -55,6 +55,7 @@ primitive below reads from that, so timing composes naturally.
 | Mark a point on a graph             | `PulseMark`     |
 | Erase a chalk element off-screen    | `ChalkWipe`     |
 | Square label bracket on a diagram   | `Bracket`       |
+| Wheel rolling without slipping      | `RollingWheel`  |
 | Pendulum at a specific angle        | `Pendulum`      |
 | Pendulum swinging in SHM            | `SwingingPendulum` |
 | Mascot                              | `Manimo`, `ManimoEnter` |
@@ -190,6 +191,26 @@ Internally uses a TraceIn so it draws itself in.
 ### `<ChalkTip x y color size opacity />`
 Small cursor dot. Use as a visual counterpart to a TraceIn — interpolate
 its (x, y) along the path so it looks like the tip drew the line.
+
+### `<RollingWheel cx cy dirX dirY distance R type color duration delay />`
+Wheel that rolls along a straight line with rotation tied to translation
+(`angle = distance / R` — true rolling without slipping). `type` is `'hoop'`
+(ring outline) or `'disk'` (filled). The visible spoke is what makes the
+rotation legible. Default ease is `easeInQuad` (gravity-style acceleration
+from rest). Wrap in `<SvgFadeIn>` if you want it to fade in before rolling.
+
+```jsx
+<SvgFadeIn delay={1.0}>
+  <RollingWheel
+    cx={80} cy={50}
+    dirX={0.946} dirY={0.325}    // unit vector along ramp
+    distance={600}
+    R={26} type="disk"
+    color="var(--rose-400)"
+    duration={4.5} delay={3.0}
+  />
+</SvgFadeIn>
+```
 
 ### `<Pendulum pivX pivY L angle bobR color bobLabel showPivot showString showBob />`
 Render-only pendulum at a given `angle` (degrees, +right of vertical).

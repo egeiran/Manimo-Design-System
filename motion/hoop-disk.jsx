@@ -91,7 +91,10 @@ function ManimoBubbleIntro() {
 // Wheels are tangent to the hypotenuse: center = surface + R * normal
 function RampSetup() {
   const R = 24;
-  const NX = 0.3868, NY = -0.9226;
+  // Ramp surface: (80,80) → (700,340). Length ≈ 672.3.
+  const RAMP_LEN = Math.hypot(620, 260);
+  const TX = 620 / RAMP_LEN, TY = 260 / RAMP_LEN; // unit tangent (down-ramp)
+  const NX = 0.3868, NY = -0.9226;                // outward normal (above ramp)
 
   function onRamp(t) {
     const sx = 80 + t * 620;
@@ -101,6 +104,12 @@ function RampSetup() {
 
   const hoop = onRamp(0.04);
   const disk = onRamp(0.13);
+
+  // Short release-and-roll near end of beat to literalise "rolls without
+  // slipping". They start moving as the narrator says that phrase.
+  const ROLL_DELAY = 3.6;
+  const ROLL_DURATION = 1.6;
+  const ROLL_DIST = 70; // svg units, ~3 wheel-widths — enough to read motion
 
   return (
     <div style={{
@@ -130,20 +139,26 @@ function RampSetup() {
                 fontSize="22" textAnchor="middle">h</text>
         </SvgFadeIn>
 
-        {/* Hoop — ring outline at top of ramp */}
+        {/* Hoop — appears, then releases and rolls a short distance */}
         <SvgFadeIn duration={0.4} delay={1.6}>
-          <circle cx={hoop.cx} cy={hoop.cy} r={R}
-                  fill="none" stroke="var(--amber-400)" strokeWidth={3}/>
-          {/* tiny axle dot to make it read as a wheel */}
-          <circle cx={hoop.cx} cy={hoop.cy} r={2.5} fill="var(--amber-400)"/>
+          <RollingWheel
+            cx={hoop.cx} cy={hoop.cy}
+            dirX={TX} dirY={TY}
+            distance={ROLL_DIST} R={R} type="hoop"
+            color="var(--amber-400)"
+            duration={ROLL_DURATION} delay={ROLL_DELAY}
+          />
         </SvgFadeIn>
 
-        {/* Disk — filled circle, slightly further down the ramp */}
+        {/* Disk — appears slightly later, releases at the same instant */}
         <SvgFadeIn duration={0.4} delay={2.4}>
-          <circle cx={disk.cx} cy={disk.cy} r={R}
-                  fill="var(--rose-400)" opacity={0.85}
-                  stroke="var(--rose-400)" strokeWidth={1}/>
-          <circle cx={disk.cx} cy={disk.cy} r={2.5} fill="var(--bg-canvas)"/>
+          <RollingWheel
+            cx={disk.cx} cy={disk.cy}
+            dirX={TX} dirY={TY}
+            distance={ROLL_DIST} R={R} type="disk"
+            color="var(--rose-400)"
+            duration={ROLL_DURATION} delay={ROLL_DELAY}
+          />
         </SvgFadeIn>
 
         {/* Side-stack labels — Hoop / Disk with their I */}
@@ -229,56 +244,145 @@ function EnergyDerivation() {
 }
 
 // ─── Beat 4: Verdict — Hoop vs Disk ──────────────────────────────────────
+// Compact formula header at the top, then two parallel ramps with the
+// wheels racing down. Disk arrives ≈15% sooner — the visual proof of the
+// number in the caption. Formulas now use a smaller font so the race
+// has room to breathe.
 function Verdict() {
   const labelStyle = {
-    fontFamily: 'var(--font-sans)', fontSize: 13,
+    fontFamily: 'var(--font-sans)', fontSize: 12,
     letterSpacing: '0.08em', textTransform: 'uppercase',
   };
   const formulaStyle = {
-    fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 52,
+    fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 36,
   };
+
+  // Race geometry — two stacked ramps sharing slope/length. Same h, same
+  // angle, just drawn parallel so each wheel has a clean lane.
+  const X1 = 50, X2 = 700;
+  const UPPER_Y1 = 70, UPPER_Y2 = 170;   // hoop ramp
+  const LOWER_Y1 = 200, LOWER_Y2 = 300;  // disk ramp
+  const dx = X2 - X1, dy = UPPER_Y2 - UPPER_Y1;
+  const LEN = Math.hypot(dx, dy);
+  const TX = dx / LEN, TY = dy / LEN;        // unit tangent (down-ramp)
+  const ONX = TY,      ONY = -TX;            // outward normal (above ramp)
+
+  const R = 20;
+  const hoopStart = { cx: X1 + R * ONX, cy: UPPER_Y1 + R * ONY };
+  const diskStart = { cx: X1 + R * ONX, cy: LOWER_Y1 + R * ONY };
+
+  // Roll most of the ramp; leave a small margin past the bottom so the
+  // wheel ends visibly past the corner.
+  const ROLL_DIST = LEN - 60;
+  // Both wheels released at the same instant. Disk's acceleration is
+  // a_disk / a_hoop = (1 + I/MR²)_hoop / (1 + I/MR²)_disk = 2 / 1.5 = 4/3,
+  // so t_hoop = t_disk * sqrt(4/3) ≈ 1.155 — that's the 15% gap.
+  const RELEASE_DELAY = 4.5;
+  const DISK_DUR = 4.5;
+  const HOOP_DUR = DISK_DUR * Math.sqrt(4 / 3);
 
   return (
     <div style={{
       position: 'absolute', left: '50%', top: '50%',
       transform: 'translate(-50%, -50%)',
-      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 26,
+      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14,
     }}>
-      <FadeUp duration={0.4} delay={0} distance={8}
+      <FadeUp duration={0.4} delay={0} distance={6}
         style={{
-          fontFamily: 'var(--font-mono)', fontSize: 12,
+          fontFamily: 'var(--font-mono)', fontSize: 11,
           color: 'var(--amber-300)', letterSpacing: '0.14em',
           textTransform: 'uppercase',
         }}>
         same mass, same radius, same h
       </FadeUp>
 
-      <div style={{ display: 'flex', gap: 96, alignItems: 'flex-start' }}>
-        {/* Hoop */}
-        <FadeUp duration={0.5} delay={0.3} distance={12}
-          style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 10 }}>
+      <div style={{ display: 'flex', gap: 80, alignItems: 'flex-start' }}>
+        <FadeUp duration={0.5} delay={0.3} distance={10}
+          style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 6 }}>
           <div style={{ ...labelStyle, color: 'var(--chalk-300)' }}>Hoop</div>
           <div style={{ ...formulaStyle, color: 'var(--chalk-200)' }}>√(gh)</div>
         </FadeUp>
 
-        {/* Divider */}
         <FadeUp duration={0.3} delay={0.5} distance={0}
-          style={{ width: 1, height: 90, background: 'rgba(232,220,193,0.15)', marginTop: 28 }}/>
+          style={{ width: 1, height: 64, background: 'rgba(232,220,193,0.15)', marginTop: 22 }}/>
 
-        {/* Disk */}
-        <FadeUp duration={0.5} delay={1.0} distance={12}
-          style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <FadeUp duration={0.5} delay={1.0} distance={10}
+          style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 6 }}>
           <div style={{ ...labelStyle, color: 'var(--amber-300)' }}>Disk</div>
           <div style={{ ...formulaStyle, color: 'var(--amber-300)' }}>√(4gh/3)</div>
         </FadeUp>
       </div>
 
-      <FadeUp duration={0.6} delay={2.5} distance={10}
+      {/* Race — two parallel ramps, wheels released together */}
+      <svg width={760} height={330} viewBox="0 0 760 330" style={{ overflow: 'visible' }}>
+        {/* Upper ramp (hoop lane) */}
+        <TraceIn d={`M ${X1} ${UPPER_Y1} L ${X2} ${UPPER_Y2}`}
+                 stroke="var(--chalk-200)" strokeWidth={2}
+                 duration={0.7} delay={2.0}/>
+        <TraceIn d={`M ${X1} ${UPPER_Y2} L ${X2} ${UPPER_Y2}`}
+                 stroke="var(--chalk-300)" strokeWidth={1.5}
+                 duration={0.5} delay={2.4}/>
+        <TraceIn d={`M ${X1} ${UPPER_Y1} L ${X1} ${UPPER_Y2}`}
+                 stroke="var(--chalk-300)" strokeWidth={1.5}
+                 duration={0.4} delay={2.3}/>
+        <SvgFadeIn duration={0.3} delay={2.7}>
+          <text x={X1 - 12} y={UPPER_Y1 - 8}
+                fill="var(--amber-300)" fontFamily="var(--font-mono)" fontSize="10"
+                letterSpacing="0.14em" textAnchor="end">HOOP</text>
+        </SvgFadeIn>
+
+        {/* Lower ramp (disk lane) */}
+        <TraceIn d={`M ${X1} ${LOWER_Y1} L ${X2} ${LOWER_Y2}`}
+                 stroke="var(--chalk-200)" strokeWidth={2}
+                 duration={0.7} delay={2.2}/>
+        <TraceIn d={`M ${X1} ${LOWER_Y2} L ${X2} ${LOWER_Y2}`}
+                 stroke="var(--chalk-300)" strokeWidth={1.5}
+                 duration={0.5} delay={2.6}/>
+        <TraceIn d={`M ${X1} ${LOWER_Y1} L ${X1} ${LOWER_Y2}`}
+                 stroke="var(--chalk-300)" strokeWidth={1.5}
+                 duration={0.4} delay={2.5}/>
+        <SvgFadeIn duration={0.3} delay={2.9}>
+          <text x={X1 - 12} y={LOWER_Y1 - 8}
+                fill="var(--rose-300)" fontFamily="var(--font-mono)" fontSize="10"
+                letterSpacing="0.14em" textAnchor="end">DISK</text>
+        </SvgFadeIn>
+
+        {/* Finish-line ticks past the bottom of each ramp */}
+        <SvgFadeIn duration={0.3} delay={3.4}>
+          <line x1={X2} y1={UPPER_Y2 - 28} x2={X2} y2={UPPER_Y2}
+                stroke="var(--chalk-300)" strokeWidth={1} strokeDasharray="3 3"/>
+          <line x1={X2} y1={LOWER_Y2 - 28} x2={X2} y2={LOWER_Y2}
+                stroke="var(--chalk-300)" strokeWidth={1} strokeDasharray="3 3"/>
+        </SvgFadeIn>
+
+        {/* Hoop wheel — upper lane */}
+        <SvgFadeIn duration={0.4} delay={3.4}>
+          <RollingWheel
+            cx={hoopStart.cx} cy={hoopStart.cy}
+            dirX={TX} dirY={TY}
+            distance={ROLL_DIST} R={R} type="hoop"
+            color="var(--amber-400)"
+            duration={HOOP_DUR} delay={RELEASE_DELAY}
+          />
+        </SvgFadeIn>
+
+        {/* Disk wheel — lower lane, releases at the same instant */}
+        <SvgFadeIn duration={0.4} delay={3.6}>
+          <RollingWheel
+            cx={diskStart.cx} cy={diskStart.cy}
+            dirX={TX} dirY={TY}
+            distance={ROLL_DIST} R={R} type="disk"
+            color="var(--rose-400)"
+            duration={DISK_DUR} delay={RELEASE_DELAY}
+          />
+        </SvgFadeIn>
+      </svg>
+
+      <FadeUp duration={0.6} delay={9.6} distance={10}
         style={{
           fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 22,
           color: 'var(--chalk-100)', textAlign: 'center', maxWidth: '52ch',
-          borderTop: '1px solid rgba(232,220,193,0.12)',
-          paddingTop: 18,
+          marginTop: -8,
         }}>
         Disk wins by ≈15% — every time.
       </FadeUp>

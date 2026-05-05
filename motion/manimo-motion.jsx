@@ -524,6 +524,65 @@ function SceneNarration({ src, tracks, volume = 1, playbackRate = 1 }) {
   );
 }
 
+// ─── RollingWheel ─────────────────────────────────────────────────────────
+// Wheel that rolls along a 2D direction with rotation tied to translation
+// (rolling without slipping → angle = distance / R). Use for hoops, disks,
+// rolling masses, balls down ramps, anything where seeing the spoke turn is
+// the whole point.
+//
+// Position is controlled by `cx`/`cy` (start centre, in svg coords),
+// `dirX`/`dirY` (unit vector along motion), and `distance` (svg units to
+// roll over `duration`). Easing defaults to easeInQuad to mimic gravity.
+// `type` picks between 'hoop' (ring outline + spoke) and 'disk' (filled
+// circle + contrasting spoke).
+//
+// Wrap with <SvgFadeIn> if you want it to appear gradually before rolling.
+function RollingWheel({
+  cx, cy,
+  dirX, dirY,
+  distance,
+  R = 24,
+  type = 'hoop', // 'hoop' | 'disk'
+  color = 'var(--amber-400)',
+  spokeColor = null, // null → auto: same as color for hoop, bg-canvas for disk
+  duration = 2,
+  delay = 0,
+  ease = Easing.easeInQuad,
+  strokeWidth = 3,
+}) {
+  const { localTime } = useSprite();
+  const t = clamp((localTime - delay) / duration, 0, 1);
+  const eased = ease(t);
+  const d = eased * distance;
+  const x = cx + d * dirX;
+  const y = cy + d * dirY;
+  // Sign matches direction of travel along the ramp surface; SVG y-down
+  // means a wheel moving with positive (dirX, dirY) rotates with positive
+  // angle visually (clockwise on screen).
+  const angleDeg = (d / R) * (180 / Math.PI);
+  const sColor = spokeColor != null
+    ? spokeColor
+    : (type === 'disk' ? 'var(--bg-canvas)' : color);
+  return (
+    <g transform={`translate(${x} ${y})`}>
+      <g transform={`rotate(${angleDeg})`}>
+        {type === 'disk' ? (
+          <circle cx={0} cy={0} r={R}
+                  fill={color} opacity={0.85}
+                  stroke={color} strokeWidth={1}/>
+        ) : (
+          <circle cx={0} cy={0} r={R}
+                  fill="none" stroke={color} strokeWidth={strokeWidth}/>
+        )}
+        {/* spoke from centre to rim — makes rotation visible */}
+        <line x1={0} y1={0} x2={R} y2={0}
+              stroke={sColor} strokeWidth={2.5} strokeLinecap="round"/>
+        <circle cx={0} cy={0} r={2.5} fill={sColor}/>
+      </g>
+    </g>
+  );
+}
+
 // ─── Pendulum (render-only) ───────────────────────────────────────────────
 // Pure renderer for a pendulum at a given angle. No motion logic — pass
 // `angle` in degrees (positive = swung to the right of vertical) and it
@@ -613,6 +672,7 @@ Object.assign(window, {
   TraceIn, FadeUp, WriteOn, PulseMark, ChalkWipe,
   SvgFadeIn,
   Manimo, ManimoEnter, ChalkTip, Bracket,
+  RollingWheel,
   Pendulum, SwingingPendulum,
   SceneChrome, SceneNarration,
 });
