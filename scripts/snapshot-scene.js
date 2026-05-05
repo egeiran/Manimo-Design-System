@@ -37,6 +37,7 @@ function flag(name) {
 // Positional = anything that's neither a --flag nor the value immediately
 // following one. Without this, `--times 9.0` makes "9.0" look positional.
 const FLAGS_WITH_VALUE = new Set(['times', 'frames', 'out']);
+const BOOLEAN_FLAGS = new Set(['portrait']);
 const positional = [];
 for (let i = 0; i < args.length; i++) {
   const a = args[i];
@@ -46,6 +47,7 @@ for (let i = 0; i < args.length; i++) {
   }
   positional.push(a);
 }
+const PORTRAIT = args.includes('--portrait');
 
 if (positional.length !== 1) {
   console.error('Usage: node scripts/snapshot-scene.js <scene.html> [--times t1,t2,…] [--frames N] [--out dir]');
@@ -120,7 +122,7 @@ const browser = await chromium.launch({
   args: ['--allow-file-access-from-files', '--disable-web-security'],
 });
 const context = await browser.newContext({
-  viewport: { width: 1280, height: 720 },
+  viewport: PORTRAIT ? { width: 720, height: 1280 } : { width: 1280, height: 720 },
   deviceScaleFactor: 1,
 });
 const page = await context.newPage();
@@ -166,7 +168,7 @@ if (vendorReady) {
   loadPath = tempHtmlPath;
 }
 
-const url = `file://${loadPath}?freeze=0`;
+const url = `file://${loadPath}?freeze=0${PORTRAIT ? '&aspect=9:16' : ''}`;
 await page.goto(url, { waitUntil: 'load' });
 
 // Wait for the Stage to mount and expose the global handle.

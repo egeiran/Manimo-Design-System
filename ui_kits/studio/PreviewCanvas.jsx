@@ -36,9 +36,10 @@ const SceneLive = React.forwardRef(function SceneLive({ scene, aspect, onLoad },
   // when the ?aspect query param flips to portrait.
   const innerW = portrait ? 720 : 1280;
   const innerH = portrait ? 1280 : 720;
-  const src = portrait
-    ? scene.html + (scene.html.includes('?') ? '&aspect=9:16' : '?aspect=9:16')
-    : scene.html;
+  // Use a hash fragment (not a query) so the aspect survives any *.html
+  // → extensionless 301 redirect that some dev servers do (Vercel `serve`
+  // strips the query on redirect; the hash is preserved per the URL spec).
+  const src = portrait ? scene.html + '#aspect=9:16' : scene.html;
 
   React.useEffect(() => {
     const el = wrapperRef.current;

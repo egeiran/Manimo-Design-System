@@ -180,8 +180,14 @@ function Stage({
     try { return window.parent && window.parent !== window; } catch { return false; }
   })();
   // ?aspect=9:16 (or "portrait") rotates the stage to a 720×1280 canvas.
-  // Scenes can branch on `useTimeline().portrait` to lay beats out vertically.
-  const aspectParam = (params.get('aspect') || '').toLowerCase();
+  // Also accept the same key in the hash fragment (#aspect=9:16) — some
+  // dev servers (Vercel `serve`) 301-redirect *.html → extensionless and
+  // drop the query string, but the hash survives that redirect.
+  const hashParams = (() => {
+    try { return new URLSearchParams((window.location.hash || '').replace(/^#/, '')); }
+    catch { return new URLSearchParams(); }
+  })();
+  const aspectParam = (params.get('aspect') || hashParams.get('aspect') || '').toLowerCase();
   const portrait = aspectParam === '9:16' || aspectParam === 'portrait';
   const stageW = portrait ? 720  : width;
   const stageH = portrait ? 1280 : height;

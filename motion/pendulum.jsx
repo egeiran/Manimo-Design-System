@@ -62,19 +62,29 @@ function Scene() {
 
 // ─── Beat 1: Manimo intro ─────────────────────────────────────────────────
 function ManimoBubbleIntro() {
+  const portrait = usePortrait();
   return (
     <div style={{
-      position: 'absolute', left: '50%', top: '42%',
+      position: 'absolute', left: '50%', top: portrait ? '46%' : '42%',
       transform: 'translate(-50%, -50%)',
-      display: 'flex', alignItems: 'center', gap: 20,
+      display: 'flex',
+      flexDirection: portrait ? 'column' : 'row',
+      alignItems: 'center',
+      gap: portrait ? 28 : 20,
+      textAlign: portrait ? 'center' : 'left',
     }}>
-      <svg width={160} height={160} viewBox="0 0 200 200" style={{ overflow: 'visible' }}>
+      <svg width={portrait ? 200 : 160} height={portrait ? 200 : 160}
+           viewBox="0 0 200 200" style={{ overflow: 'visible' }}>
         <ManimoEnter duration={0.7} bob={true} />
       </svg>
       <FadeUp duration={0.5} delay={0.7} distance={8}
         style={{
-          fontFamily: 'var(--font-serif)', fontSize: 26, fontStyle: 'italic',
-          color: 'var(--chalk-100)', maxWidth: '34ch',
+          fontFamily: 'var(--font-serif)',
+          fontSize: portrait ? 30 : 26,
+          fontStyle: 'italic',
+          color: 'var(--chalk-100)',
+          maxWidth: portrait ? '18ch' : '34ch',
+          lineHeight: 1.25,
         }}>
         Pull a weight on a string — what sets the rhythm?
       </FadeUp>
@@ -91,8 +101,17 @@ function ManimoBubbleIntro() {
 //   to literalise "Pull it to angle theta" in the narration. The force
 //   diagram (gravity, tangent, arc, labels) appears after the pull settles.
 function PendulumDiagram() {
-  const pivX = 440, pivY = 50;
-  const L = 240;
+  const portrait = usePortrait();
+  // Portrait gets a taller, narrower viewBox with a longer string — there's
+  // vertical room to spare, and the "pull-it-and-let-it-fall" geometry reads
+  // best when the string actually feels long.
+  const pivX = portrait ? 320 : 440;
+  const pivY = portrait ? 60  : 50;
+  const L    = portrait ? 420 : 240;
+  const ARC_R = portrait ? 60 : 50;
+  const VB_W = portrait ? 640 : 880;
+  const VB_H = portrait ? 720 : 420;
+  const VERT_REF = portrait ? 540 : 290; // length of dashed vertical guide
   const HOLD_ANGLE = 30;
   const PULL_START = 1.2, PULL_END = 2.6;
 
@@ -104,7 +123,7 @@ function PendulumDiagram() {
   const sinT = Math.sin(rad), cosT = Math.cos(rad);
   const bobX = pivX + L * sinT;
   const bobY = pivY + L * cosT;
-  const bobR = 18;
+  const bobR = portrait ? 22 : 18;
 
   // Static geometry for force vectors — they only appear after the pull
   // completes (delay 3.0+), so they can safely use the held angle (30°).
@@ -115,19 +134,21 @@ function PendulumDiagram() {
   const tDx = -cH, tDy = sH;
   const tStartX = holdBobX + bobR * tDx;
   const tStartY = holdBobY + bobR * tDy;
-  const tEndX = tStartX + 60 * tDx;
-  const tEndY = tStartY + 60 * tDy;
+  const tLen = portrait ? 80 : 60;          // tangent arrow length
+  const gLen = portrait ? 90 : 70;          // gravity arrow length
+  const tEndX = tStartX + tLen * tDx;
+  const tEndY = tStartY + tLen * tDy;
   const gStartX = holdBobX, gStartY = holdBobY + bobR;
-  const gEndX = holdBobX,   gEndY = holdBobY + bobR + 70;
-  const arcEndX = pivX + 50 * sH;
-  const arcEndY = pivY + 50 * cH;
+  const gEndX = holdBobX,   gEndY = holdBobY + bobR + gLen;
+  const arcEndX = pivX + ARC_R * sH;
+  const arcEndY = pivY + ARC_R * cH;
 
   return (
     <div style={{
-      position: 'absolute', left: '50%', top: '54%',
+      position: 'absolute', left: '50%', top: portrait ? '50%' : '54%',
       transform: 'translate(-50%, -50%)',
     }}>
-      <svg width={880} height={420} viewBox="0 0 880 420" style={{ overflow: 'visible' }}>
+      <svg width={VB_W} height={VB_H} viewBox={`0 0 ${VB_W} ${VB_H}`} style={{ overflow: 'visible' }}>
         {/* Pivot bracket — appears first */}
         <SvgFadeIn duration={0.4} delay={0.0}>
           <Pendulum pivX={pivX} pivY={pivY} L={L}
@@ -136,7 +157,7 @@ function PendulumDiagram() {
 
         {/* Vertical reference (dashed) */}
         <SvgFadeIn duration={0.4} delay={0.4}>
-          <line x1={pivX} y1={pivY} x2={pivX} y2={pivY + 290}
+          <line x1={pivX} y1={pivY} x2={pivX} y2={pivY + VERT_REF}
                 stroke="var(--chalk-300)" strokeWidth={1.2}
                 strokeDasharray="5 5"/>
         </SvgFadeIn>
@@ -156,18 +177,18 @@ function PendulumDiagram() {
 
         {/* Angle arc + θ label — appear after pull settles */}
         <SvgFadeIn duration={0.4} delay={2.9}>
-          <path d={`M ${pivX} ${pivY + 50} A 50 50 0 0 1 ${arcEndX.toFixed(2)} ${arcEndY.toFixed(2)}`}
+          <path d={`M ${pivX} ${pivY + ARC_R} A ${ARC_R} ${ARC_R} 0 0 1 ${arcEndX.toFixed(2)} ${arcEndY.toFixed(2)}`}
                 fill="none" stroke="var(--chalk-200)" strokeWidth={1.5}/>
-          <text x={pivX + 17} y={pivY + 65}
+          <text x={pivX + (portrait ? 20 : 17)} y={pivY + ARC_R + 15}
                 fill="var(--chalk-200)" fontFamily="var(--font-serif)"
-                fontStyle="italic" fontSize="22">θ</text>
+                fontStyle="italic" fontSize={portrait ? 26 : 22}>θ</text>
         </SvgFadeIn>
 
         {/* L label — pinned to held string midpoint */}
         <SvgFadeIn duration={0.4} delay={3.1}>
-          <text x={(pivX + holdBobX) / 2 + 18} y={(pivY + holdBobY) / 2}
+          <text x={(pivX + holdBobX) / 2 + (portrait ? 22 : 18)} y={(pivY + holdBobY) / 2}
                 fill="var(--chalk-200)" fontFamily="var(--font-serif)"
-                fontStyle="italic" fontSize="22">L</text>
+                fontStyle="italic" fontSize={portrait ? 26 : 22}>L</text>
         </SvgFadeIn>
 
         {/* Gravity arrow — straight down from bob, with mg label */}
@@ -180,7 +201,7 @@ function PendulumDiagram() {
         <SvgFadeIn duration={0.35} delay={4.0}>
           <text x={gEndX + 12} y={gEndY + 4}
                 fill="var(--rose-300)" fontFamily="var(--font-serif)"
-                fontStyle="italic" fontSize="22">mg</text>
+                fontStyle="italic" fontSize={portrait ? 26 : 22}>mg</text>
         </SvgFadeIn>
 
         {/* Tangential restoring arrow + label */}
@@ -193,18 +214,20 @@ function PendulumDiagram() {
                 fill="var(--rose-400)"/>
         </SvgFadeIn>
         <SvgFadeIn duration={0.35} delay={5.2}>
-          <text x={tEndX - 8} y={tEndY + 22}
+          <text x={tEndX - 8} y={tEndY + (portrait ? 28 : 22)}
                 fill="var(--rose-300)" fontFamily="var(--font-serif)"
-                fontStyle="italic" fontSize="20"
+                fontStyle="italic" fontSize={portrait ? 24 : 20}
                 textAnchor="end">−mg sin θ</text>
         </SvgFadeIn>
 
         {/* Caption beneath the diagram */}
         <SvgFadeIn duration={0.4} delay={6.4}>
-          <text x={440} y={400} textAnchor="middle"
+          <text x={VB_W / 2} y={VB_H - 20} textAnchor="middle"
                 fill="var(--chalk-300)" fontFamily="var(--font-sans)"
-                fontSize="14" letterSpacing="0.02em">
-            only the tangential component restores it toward vertical
+                fontSize={portrait ? 16 : 14} letterSpacing="0.02em">
+            {portrait
+              ? 'tangent component restores toward vertical'
+              : 'only the tangential component restores it toward vertical'}
           </text>
         </SvgFadeIn>
       </svg>
@@ -214,11 +237,15 @@ function PendulumDiagram() {
 
 // ─── Beat 3: Small-angle approximation ────────────────────────────────────
 function SmallAngle() {
+  const portrait = usePortrait();
   return (
     <div style={{
       position: 'absolute', left: '50%', top: '50%',
       transform: 'translate(-50%, -50%)',
-      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24,
+      display: 'flex', flexDirection: 'column', alignItems: 'center',
+      gap: portrait ? 30 : 24,
+      width: portrait ? 660 : undefined,
+      textAlign: 'center',
     }}>
       <FadeUp duration={0.4} delay={0} distance={8}
         style={{
@@ -232,7 +259,7 @@ function SmallAngle() {
       <FadeUp duration={0.5} delay={0.3} distance={10}
         style={{
           fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-          fontSize: 38, color: 'var(--chalk-200)', letterSpacing: '0.02em',
+          fontSize: portrait ? 36 : 38, color: 'var(--chalk-200)', letterSpacing: '0.02em',
         }}>
         sin θ ≈ θ
       </FadeUp>
@@ -240,15 +267,15 @@ function SmallAngle() {
       <FadeUp duration={0.6} delay={1.6} distance={14}
         style={{
           fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-          fontSize: 44, color: 'var(--chalk-100)', letterSpacing: '0.02em',
-          marginTop: 8,
+          fontSize: portrait ? 36 : 44, color: 'var(--chalk-100)', letterSpacing: '0.02em',
+          marginTop: 8, lineHeight: 1.15,
         }}>
         d²θ/dt² + (g/L) θ = 0
       </FadeUp>
 
       <FadeUp duration={0.5} delay={3.2} distance={10}
         style={{
-          fontFamily: 'var(--font-sans)', fontSize: 15, color: 'var(--chalk-300)',
+          fontFamily: 'var(--font-sans)', fontSize: portrait ? 16 : 15, color: 'var(--chalk-300)',
         }}>
         same shape as the spring equation
       </FadeUp>
@@ -256,7 +283,7 @@ function SmallAngle() {
       <FadeUp duration={0.6} delay={4.4} distance={14}
         style={{
           fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-          fontSize: 56, color: 'var(--amber-300)', letterSpacing: '0.02em',
+          fontSize: portrait ? 52 : 56, color: 'var(--amber-300)', letterSpacing: '0.02em',
           marginTop: 8,
         }}>
         ω₀ = √(g/L)
@@ -272,15 +299,21 @@ function SmallAngle() {
 // from the original spec is dropped — g is fixed in the world and already
 // in the formula; the L visual carries the variable that's varying.
 function PeriodFormula() {
+  const portrait = usePortrait();
   // Period ratio: with L_long = 2·L_short, T_long = √2 · T_short.
   const SHORT_L = 110, LONG_L = 220;
   const SHORT_T = 1.4, LONG_T = SHORT_T * Math.SQRT2;
   const RELEASE_DELAY = 1.6;
+
+  // Portrait stacks the two pendulums vertically (top: short/fast, bottom:
+  // long/slow). Same kinematics — viewers still see the contrast in period
+  // even when the comparison is along the y-axis instead of the x-axis.
   return (
     <div style={{
       position: 'absolute', left: '50%', top: '50%',
       transform: 'translate(-50%, -50%)',
-      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14,
+      display: 'flex', flexDirection: 'column', alignItems: 'center',
+      gap: portrait ? 18 : 14,
     }}>
       <FadeUp duration={0.4} delay={0} distance={8}
         style={{
@@ -294,39 +327,66 @@ function PeriodFormula() {
       <FadeUp duration={0.6} delay={0.4} distance={14}
         style={{
           fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-          fontSize: 50, color: 'var(--amber-300)', letterSpacing: '0.02em',
+          fontSize: portrait ? 42 : 50, color: 'var(--amber-300)', letterSpacing: '0.02em',
         }}>
         T = 2π√(L/g)
       </FadeUp>
 
-      {/* Length comparison — short L swings fast, long L swings slow */}
-      <svg width={720} height={290} viewBox="0 0 720 290" style={{ overflow: 'visible' }}>
-        {/* Short pendulum (left) */}
-        <SvgFadeIn duration={0.4} delay={1.2}>
-          <SwingingPendulum
-            pivX={200} pivY={30} L={SHORT_L}
-            maxAngle={20} period={SHORT_T}
-            bobR={14} color="var(--chalk-200)"
-            delay={RELEASE_DELAY}
-          />
-          <text x={200} y={SHORT_L + 30 + 14 + 26} textAnchor="middle"
-                fill="var(--chalk-300)" fontFamily="var(--font-mono)" fontSize="11"
-                letterSpacing="0.14em">SHORT L · FAST T</text>
-        </SvgFadeIn>
+      {portrait ? (
+        // Stacked: short on top, long below. SVG width fits the portrait
+        // canvas with comfortable side margins.
+        <svg width={620} height={500} viewBox="0 0 620 500" style={{ overflow: 'visible' }}>
+          <SvgFadeIn duration={0.4} delay={1.2}>
+            <SwingingPendulum
+              pivX={310} pivY={20} L={SHORT_L}
+              maxAngle={20} period={SHORT_T}
+              bobR={14} color="var(--chalk-200)"
+              delay={RELEASE_DELAY}
+            />
+            <text x={310} y={SHORT_L + 20 + 14 + 26} textAnchor="middle"
+                  fill="var(--chalk-300)" fontFamily="var(--font-mono)" fontSize="12"
+                  letterSpacing="0.14em">SHORT L · FAST T</text>
+          </SvgFadeIn>
 
-        {/* Long pendulum (right) */}
-        <SvgFadeIn duration={0.4} delay={1.2}>
-          <SwingingPendulum
-            pivX={520} pivY={30} L={LONG_L}
-            maxAngle={20} period={LONG_T}
-            bobR={14} color="var(--amber-400)"
-            delay={RELEASE_DELAY}
-          />
-          <text x={520} y={LONG_L + 30 + 14 + 18} textAnchor="middle"
-                fill="var(--amber-300)" fontFamily="var(--font-mono)" fontSize="11"
-                letterSpacing="0.14em">LONG L · SLOW T</text>
-        </SvgFadeIn>
-      </svg>
+          <SvgFadeIn duration={0.4} delay={1.2}>
+            <SwingingPendulum
+              pivX={310} pivY={220} L={LONG_L}
+              maxAngle={20} period={LONG_T}
+              bobR={14} color="var(--amber-400)"
+              delay={RELEASE_DELAY}
+            />
+            <text x={310} y={LONG_L + 220 + 14 + 26} textAnchor="middle"
+                  fill="var(--amber-300)" fontFamily="var(--font-mono)" fontSize="12"
+                  letterSpacing="0.14em">LONG L · SLOW T</text>
+          </SvgFadeIn>
+        </svg>
+      ) : (
+        <svg width={720} height={290} viewBox="0 0 720 290" style={{ overflow: 'visible' }}>
+          <SvgFadeIn duration={0.4} delay={1.2}>
+            <SwingingPendulum
+              pivX={200} pivY={30} L={SHORT_L}
+              maxAngle={20} period={SHORT_T}
+              bobR={14} color="var(--chalk-200)"
+              delay={RELEASE_DELAY}
+            />
+            <text x={200} y={SHORT_L + 30 + 14 + 26} textAnchor="middle"
+                  fill="var(--chalk-300)" fontFamily="var(--font-mono)" fontSize="11"
+                  letterSpacing="0.14em">SHORT L · FAST T</text>
+          </SvgFadeIn>
+
+          <SvgFadeIn duration={0.4} delay={1.2}>
+            <SwingingPendulum
+              pivX={520} pivY={30} L={LONG_L}
+              maxAngle={20} period={LONG_T}
+              bobR={14} color="var(--amber-400)"
+              delay={RELEASE_DELAY}
+            />
+            <text x={520} y={LONG_L + 30 + 14 + 18} textAnchor="middle"
+                  fill="var(--amber-300)" fontFamily="var(--font-mono)" fontSize="11"
+                  letterSpacing="0.14em">LONG L · SLOW T</text>
+          </SvgFadeIn>
+        </svg>
+      )}
     </div>
   );
 }
@@ -336,31 +396,47 @@ function PeriodFormula() {
 // masses (small amber vs large rose), released together and swinging in
 // perfect sync. The caption above tells you why; the motion below shows it.
 function Takeaway() {
+  const portrait = usePortrait();
   // Both pendulums share L, maxAngle, period, and start delay → identical
   // motion. Period 2.4s gives ~2.5 full swings across the 7.05s beat.
   const SWING_DELAY = 0.7; // matches the SvgFadeIn so they're released visibly
+  // Portrait keeps them side-by-side (the synced swing reads strongest along
+  // the same horizontal line) but stretches the strings down the long axis
+  // and pushes the pivots toward the canvas edges so the bobs don't crowd.
+  const L     = portrait ? 320 : 220;
+  const pivYa = portrait ? 60  : 40;
+  const pivXL = portrait ? 200 : 210;
+  const pivXR = portrait ? 520 : 510;
+  const bobLight = portrait ? 16 : 12;
+  const bobHeavy = portrait ? 30 : 26;
+  const svgW = portrait ? 720 : 720;
+  const svgH = portrait ? 460 : 320;
   return (
     <div style={{
       position: 'absolute', left: '50%', top: '50%',
       transform: 'translate(-50%, -50%)',
       textAlign: 'center',
-      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14,
+      display: 'flex', flexDirection: 'column', alignItems: 'center',
+      gap: portrait ? 18 : 14,
     }}>
       <FadeUp duration={0.6} delay={0.3} distance={12}
         style={{
-          fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 26,
-          color: 'var(--chalk-100)', maxWidth: '46ch',
+          fontFamily: 'var(--font-serif)', fontStyle: 'italic',
+          fontSize: portrait ? 26 : 26,
+          color: 'var(--chalk-100)',
+          maxWidth: portrait ? '24ch' : '46ch',
+          lineHeight: 1.25,
         }}>
         Heavier bob, lighter bob — same length, same beat.
       </FadeUp>
 
-      <svg width={720} height={320} viewBox="0 0 720 320" style={{ overflow: 'visible' }}>
+      <svg width={svgW} height={svgH} viewBox={`0 0 ${svgW} ${svgH}`} style={{ overflow: 'visible' }}>
         {/* Light pendulum (amber, small bob) */}
         <SvgFadeIn duration={0.5} delay={SWING_DELAY}>
           <SwingingPendulum
-            pivX={210} pivY={40} L={220}
+            pivX={pivXL} pivY={pivYa} L={L}
             maxAngle={22} period={2.4}
-            bobR={12} color="var(--amber-400)"
+            bobR={bobLight} color="var(--amber-400)"
             delay={SWING_DELAY}
           />
         </SvgFadeIn>
@@ -368,9 +444,9 @@ function Takeaway() {
         {/* Heavy pendulum (rose, large bob) */}
         <SvgFadeIn duration={0.5} delay={SWING_DELAY}>
           <SwingingPendulum
-            pivX={510} pivY={40} L={220}
+            pivX={pivXR} pivY={pivYa} L={L}
             maxAngle={22} period={2.4}
-            bobR={26} color="var(--rose-400)"
+            bobR={bobHeavy} color="var(--rose-400)"
             delay={SWING_DELAY}
           />
         </SvgFadeIn>

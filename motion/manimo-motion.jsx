@@ -339,6 +339,12 @@ function SvgFadeIn({ duration = 0.4, delay = 0, ease = Easing.easeOutCubic, chil
 //   duration  number   SCENE_DURATION — used as the end time for persistent elements
 //   children  node     Beat <Sprite> blocks; rendered on top of all chrome
 function SceneChrome({ eyebrow, title, duration, children }) {
+  const portrait = usePortrait();
+  // Portrait gets a tighter title block (top of screen, smaller type) and
+  // a smaller bottom-right mascot so the centre of the canvas stays free.
+  const titleStyle = portrait
+    ? { left: 32, right: 32, top: 32, fontTitle: 22, fontEyebrow: 10, gap: 4 }
+    : { left: 48, right: 'auto', top: 28, fontTitle: 32, fontEyebrow: 11, gap: 4 };
   return (
     <div style={{
       width: '100%', height: '100%',
@@ -356,10 +362,16 @@ function SceneChrome({ eyebrow, title, duration, children }) {
         <rect width="100%" height="100%" fill="url(#scChromGrid)"/>
       </svg>
 
-      {/* Watermark */}
+      {/* Watermark — top-right in landscape, bottom-right in portrait so it
+          doesn't compete with the title block above. */}
       <div style={{
-        position: 'absolute', top: 24, right: 32, pointerEvents: 'none',
-        fontFamily: 'var(--font-serif)', fontSize: 18, fontStyle: 'italic',
+        position: 'absolute',
+        ...(portrait
+          ? { right: 24, bottom: 28 }
+          : { right: 32, top: 24 }),
+        pointerEvents: 'none',
+        fontFamily: 'var(--font-serif)',
+        fontSize: portrait ? 14 : 18, fontStyle: 'italic',
         color: 'rgba(232,220,193,0.4)',
       }}>
         Manimo
@@ -369,13 +381,16 @@ function SceneChrome({ eyebrow, title, duration, children }) {
       {(eyebrow || title) && (
         <Sprite start={1.0} end={duration}>
           <div style={{
-            position: 'absolute', left: 48, top: 28,
-            display: 'flex', flexDirection: 'column', gap: 4,
+            position: 'absolute',
+            left: titleStyle.left,
+            ...(portrait ? { right: titleStyle.right } : {}),
+            top: titleStyle.top,
+            display: 'flex', flexDirection: 'column', gap: titleStyle.gap,
           }}>
             {eyebrow && (
               <FadeUp duration={0.4} delay={0} distance={6}
                 style={{
-                  fontFamily: 'var(--font-mono)', fontSize: 11,
+                  fontFamily: 'var(--font-mono)', fontSize: titleStyle.fontEyebrow,
                   color: 'var(--amber-300)', letterSpacing: '0.15em',
                   textTransform: 'uppercase',
                 }}>
@@ -385,8 +400,9 @@ function SceneChrome({ eyebrow, title, duration, children }) {
             {title && (
               <FadeUp duration={0.5} delay={0.2} distance={10}
                 style={{
-                  fontFamily: 'var(--font-serif)', fontSize: 32,
+                  fontFamily: 'var(--font-serif)', fontSize: titleStyle.fontTitle,
                   color: 'var(--chalk-100)', fontStyle: 'italic',
+                  lineHeight: 1.15,
                 }}>
                 {title}
               </FadeUp>
@@ -395,10 +411,19 @@ function SceneChrome({ eyebrow, title, duration, children }) {
         </Sprite>
       )}
 
-      {/* Corner mascot — bobs in at t=2.2 and stays */}
+      {/* Corner mascot — bobs in at t=2.2 and stays. In portrait it's smaller
+          and tucked into the bottom-left so it doesn't eat vertical real
+          estate that beats need. */}
       <Sprite start={2.2} end={duration}>
-        <div style={{ position: 'absolute', left: 24, bottom: 16, width: 110, height: 110 }}>
-          <svg width="110" height="110" viewBox="0 0 200 200" style={{ overflow: 'visible' }}>
+        <div style={{
+          position: 'absolute',
+          left: portrait ? 16 : 24,
+          bottom: portrait ? 12 : 16,
+          width: portrait ? 78 : 110,
+          height: portrait ? 78 : 110,
+        }}>
+          <svg width={portrait ? 78 : 110} height={portrait ? 78 : 110}
+               viewBox="0 0 200 200" style={{ overflow: 'visible' }}>
             <Manimo bob={true} bobAmplitude={3} bobSpeed={2.2}/>
           </svg>
         </div>
