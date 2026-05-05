@@ -171,7 +171,7 @@ function HookesLaw() {
 
         {/* F = -kx label above the arrow */}
         <SvgFadeIn duration={0.35} delay={3.0}>
-          <text x={605} y={272}
+          <text x={605} y={236}
                 fill="var(--rose-300)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize="22"
                 textAnchor="middle">F = −kx</text>
