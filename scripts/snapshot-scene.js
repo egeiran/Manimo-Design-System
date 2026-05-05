@@ -23,17 +23,28 @@
 // playwright's postinstall fetches chromium (~150 MB).
 
 import { resolve, dirname, basename, join, relative } from 'path';
-import { mkdirSync, existsSync, readFileSync, statSync } from 'fs';
+import { mkdirSync, existsSync, readFileSync, statSync, writeFileSync, unlinkSync } from 'fs';
 import { fileURLToPath } from 'url';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
 // ─── CLI parsing ─────────────────────────────────────────────────────────
 const args = process.argv.slice(2);
-const positional = args.filter(a => !a.startsWith('--'));
 function flag(name) {
   const i = args.indexOf(`--${name}`);
   return i >= 0 ? args[i + 1] : null;
+}
+// Positional = anything that's neither a --flag nor the value immediately
+// following one. Without this, `--times 9.0` makes "9.0" look positional.
+const FLAGS_WITH_VALUE = new Set(['times', 'frames', 'out']);
+const positional = [];
+for (let i = 0; i < args.length; i++) {
+  const a = args[i];
+  if (a.startsWith('--')) {
+    if (FLAGS_WITH_VALUE.has(a.slice(2))) i++;
+    continue;
+  }
+  positional.push(a);
 }
 
 if (positional.length !== 1) {
@@ -100,7 +111,14 @@ try {
 
 mkdirSync(outDir, { recursive: true });
 
-const browser = await chromium.launch({ headless: true });
+// --allow-file-access-from-files lets Babel-standalone XHR-load the
+// <script type="text/babel" src="..."> jsx files from file:// without
+// hitting CORS. --disable-web-security relaxes the same-origin check
+// for the file:// document. Both are needed for snapshot runs only.
+const browser = await chromium.launch({
+  headless: true,
+  args: ['--allow-file-access-from-files', '--disable-web-security'],
+});
 const context = await browser.newContext({
   viewport: { width: 1280, height: 720 },
   deviceScaleFactor: 1,
@@ -113,7 +131,42 @@ page.on('console', msg => {
   if (msg.type() === 'error') console.error(`[console] ${msg.text()}`);
 });
 
-const url = `file://${htmlPath}?freeze=0`;
+// If motion/vendor/ has been populated by `npm run vendor`, rewrite the
+// scene's HTML to point its <script src=…unpkg.com…> tags at the local
+// copies and load that rewritten copy instead. Lets the snapshot run in
+// sandboxed environments where unpkg is firewalled. The committed HTML
+// is never modified — the rewrite lives in a sibling temp file that's
+// deleted before exit.
+const VENDOR_DIR = join(ROOT, 'motion', 'vendor');
+const VENDOR_FILES = {
+  'react@18.3.1/umd/react.development.js':            'react.development.js',
+  'react-dom@18.3.1/umd/react-dom.development.js':    'react-dom.development.js',
+  '@babel/standalone@7.29.0/babel.min.js':            'babel.min.js',
+};
+const vendorReady = Object.values(VENDOR_FILES)
+  .every(f => existsSync(join(VENDOR_DIR, f)));
+
+let loadPath = htmlPath;
+let tempHtmlPath = null;
+if (vendorReady) {
+  const original = readFileSync(htmlPath, 'utf8');
+  const rewritten = original.replace(
+    /<script\b[^>]*\bsrc="https:\/\/unpkg\.com\/([^"]+)"[^>]*><\/script>/g,
+    (full, pkgPath) => {
+      const local = VENDOR_FILES[pkgPath];
+      return local
+        ? `<script src="vendor/${local}"></script>`
+        : full;
+    },
+  );
+  // Write next to the original so relative paths (./animations.jsx,
+  // ../colors_and_type.css, vendor/...) resolve identically.
+  tempHtmlPath = join(dirname(htmlPath), `.${sceneId}.snapshot.html`);
+  writeFileSync(tempHtmlPath, rewritten);
+  loadPath = tempHtmlPath;
+}
+
+const url = `file://${loadPath}?freeze=0`;
 await page.goto(url, { waitUntil: 'load' });
 
 // Wait for the Stage to mount and expose the global handle.
@@ -126,6 +179,9 @@ try {
   console.error(`Timed out waiting for window.__manimoStage in ${sceneId}.`);
   console.error('Likely causes: Babel parse error, missing primitive, or Stage failed to mount.');
   await browser.close();
+  if (tempHtmlPath && existsSync(tempHtmlPath)) {
+    try { unlinkSync(tempHtmlPath); } catch { /* best-effort */ }
+  }
   process.exit(1);
 }
 
@@ -144,6 +200,10 @@ for (const { label, t } of snapshots) {
 }
 
 await browser.close();
+
+if (tempHtmlPath && existsSync(tempHtmlPath)) {
+  try { unlinkSync(tempHtmlPath); } catch { /* best-effort */ }
+}
 
 // Print one path per line so callers can capture with mapfile / xargs / etc.
 for (const p of written) console.log(p);

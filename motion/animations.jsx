@@ -319,7 +319,13 @@ function Stage({
         actualTime={time}
         duration={duration}
         playing={playing}
-        onPlayPause={() => setPlaying(p => !p)}
+        onPlayPause={() => {
+          // If we're at the end of a non-looping scene, pressing play
+          // should rewind first — otherwise the play toggle does nothing
+          // (RAF would tick once, see time>=duration, and pause again).
+          if (!playing && time >= duration) setTime(0);
+          setPlaying(p => !p);
+        }}
         onReset={() => { setTime(0); }}
         onSeek={(t) => setTime(t)}
         onHover={(t) => setHoverTime(t)}
@@ -516,7 +522,6 @@ Object.assign(window, {
   Easing, interpolate, animate, clamp,
   TimelineContext, useTime, useTimeline,
   Sprite, SpriteContext, useSprite,
-  TextSprite, ImageSprite, RectSprite,
   Stage, PlaybackBar,
 });
 

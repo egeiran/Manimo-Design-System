@@ -1,0 +1,107 @@
+{
+  "id": "moment-of-inertia",
+  "title": "Moment of Inertia",
+  "eyebrow": "Scene 2 · rotational mechanics",
+  "language": "en",
+  "duration": 28,
+  "topic": "Moment of inertia — I = mr², quadratic radius scaling, disk integral I = ½MR²",
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0.2,
+      "end": 3.2,
+      "narration": "Why does a figure skater spin faster when she pulls her arms in?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "Why does a figure skater spin faster when she pulls her arms in?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "pointMass",
+      "start": 3.0,
+      "end": 10.0,
+      "narration": "A single mass m at distance r from the rotation axis has moment of inertia I = mr² — the further out, the harder it is to spin.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-label", "content": "Axis cross + 'axis' label at centre-bottom-left", "delay": 0, "color": "var(--chalk-300)" },
+          { "type": "svg-arc", "content": "Dashed 270° orbit arc from east to north (radius = arm length)", "delay": 0.3, "color": "var(--chalk-100)", "note": "uses rgba(232,220,193,0.22) — chalk-100 token derivative" },
+          { "type": "svg-path", "content": "Amber arm from axis to mass dot", "delay": 0.2, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "r label above arm midpoint", "delay": 1.0, "color": "var(--amber-300)" },
+          { "type": "svg-circle", "content": "Mass dot (filled amber circle) at end of arm", "delay": 1.1, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "m label right of mass dot, serif italic", "delay": 1.4, "color": "var(--chalk-200)" },
+          { "type": "svg-arc", "content": "Small rotation indicator arc near axis", "delay": 2.4, "color": "var(--chalk-300)" },
+          { "type": "svg-label", "content": "ω next to rotation arc", "delay": 2.7, "color": "var(--chalk-300)" },
+          { "type": "text-formula", "content": "I = mr²", "delay": 2.9, "color": "var(--amber-300)", "position": "below diagram, large serif italic" },
+          { "type": "text-caption", "content": "resistance to angular acceleration", "delay": 4.0, "color": "var(--chalk-300)", "position": "small caption under formula" }
+        ]
+      }
+    },
+    {
+      "id": "twoRadii",
+      "start": 10.0,
+      "end": 15.5,
+      "narration": "Doubling the radius quadruples the inertia: I scales with r², not r.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "svg-path", "content": "Vertical dashed divider at centre", "delay": 0, "color": "var(--chalk-100)" },
+          { "type": "svg-label", "content": "Left axis cross", "delay": 0, "color": "var(--chalk-300)" },
+          { "type": "svg-path", "content": "Left arm (length r₁) traced amber", "delay": 0.2, "color": "var(--amber-400)" },
+          { "type": "svg-circle", "content": "Left mass dot at radius r₁", "delay": 0.8, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "r₁ label above left arm", "delay": 1.1, "color": "var(--amber-300)" },
+          { "type": "svg-label", "content": "I₁ = mr₁² label below left", "delay": 1.9, "color": "var(--chalk-200)" },
+          { "type": "svg-label", "content": "Right axis cross", "delay": 0.4, "color": "var(--chalk-300)" },
+          { "type": "svg-path", "content": "Right arm (length r₂ = 2r₁) traced rose", "delay": 0.6, "color": "var(--rose-400)" },
+          { "type": "svg-circle", "content": "Right mass dot at radius r₂", "delay": 1.5, "color": "var(--rose-400)" },
+          { "type": "svg-label", "content": "r₂ = 2r₁ label above right arm", "delay": 1.8, "color": "var(--rose-300)" },
+          { "type": "svg-label", "content": "I₂ = 4mr₁² label below right", "delay": 2.5, "color": "var(--rose-300)" },
+          { "type": "text-caption", "content": "Double the radius — four times the inertia.", "delay": 3.3, "color": "var(--chalk-100)", "position": "centred below both diagrams, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "diskIntegral",
+      "start": 15.5,
+      "end": 21.5,
+      "narration": "For a solid disk we sum the contributions of infinitely many thin rings, giving I = ∫r²dm = ½MR².",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "svg-circle", "content": "Faint amber-tinted disk fill (rgba(244,184,96,0.07))", "delay": 0, "color": "var(--amber-400)" },
+          { "type": "svg-arc", "content": "Outermost ring (bright amber)", "delay": 0.3, "color": "var(--amber-400)" },
+          { "type": "svg-arc", "content": "Inner concentric rings (dim amber, traced outermost-first)", "delay": 0.7, "color": "var(--amber-400)", "note": "delays 0.3+i*0.4 for i in 0..4 — each ring traces in sequence" },
+          { "type": "svg-circle", "content": "Tiny axis dot at centre", "delay": 0, "color": "var(--chalk-300)" },
+          { "type": "svg-label", "content": "dm callout pointing at a middle ring", "delay": 2.2, "color": "var(--chalk-300)" },
+          { "type": "svg-path", "content": "Teal radius line from centre to edge", "delay": 2.7, "color": "var(--teal-400)" },
+          { "type": "svg-label", "content": "R label above radius line", "delay": 3.0, "color": "var(--teal-400)" },
+          { "type": "text-formula", "content": "I = Σ mᵢrᵢ²", "delay": 3.0, "color": "var(--chalk-300)", "position": "right column, serif italic 30" },
+          { "type": "text-formula", "content": "I = ∫ r² dm", "delay": 3.7, "color": "var(--chalk-200)", "position": "right column" },
+          { "type": "text-formula", "content": "I = ½MR²", "delay": 4.6, "color": "var(--amber-300)", "position": "right column, large amber payoff" },
+          { "type": "text-caption", "content": "for a solid disk about its centre", "delay": 5.4, "color": "var(--chalk-300)", "position": "small caption under formula" }
+        ]
+      }
+    },
+    {
+      "id": "ringVsDisk",
+      "start": 21.5,
+      "end": 28.0,
+      "narration": "A ring has all its mass at the edge, so I = MR²; a disk spreads mass inward, so I = ½MR² — distribution is everything.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "text-caption", "content": "same mass M, same radius R", "delay": 0, "color": "var(--amber-300)", "position": "mono eyebrow above the comparison" },
+          { "type": "text-title", "content": "Ring", "delay": 0.3, "color": "var(--chalk-300)", "position": "left column header" },
+          { "type": "text-formula", "content": "MR²", "delay": 0.3, "color": "var(--chalk-200)", "position": "left column, large serif italic" },
+          { "type": "text-title", "content": "Solid Disk", "delay": 0.7, "color": "var(--amber-300)", "position": "right column header" },
+          { "type": "text-formula", "content": "½MR²", "delay": 0.7, "color": "var(--amber-300)", "position": "right column, large amber" },
+          { "type": "text-caption", "content": "Mass closer to the axis contributes less — distribution is everything.", "delay": 1.9, "color": "var(--chalk-100)", "position": "centred below both columns, serif italic, hairline divider above" }
+        ]
+      }
+    }
+  ]
+}

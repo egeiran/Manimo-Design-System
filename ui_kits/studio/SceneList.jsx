@@ -1,6 +1,17 @@
 // Manimo Studio — Scene list (right column)
 // Ordered list of scenes Manimo composed. Click to select.
 
+function formatTotalDuration(scenes) {
+  // Each scene.duration is a "M:SS" string. Sum and re-format.
+  const totalSec = scenes.reduce((sum, s) => {
+    const [m, sec] = (s.duration || '0:00').split(':').map(Number);
+    return sum + (m * 60 + sec);
+  }, 0);
+  const m = Math.floor(totalSec / 60);
+  const sec = totalSec % 60;
+  return `${m} min ${String(sec).padStart(2, '0')} sec`;
+}
+
 function SceneCard({ scene, index, selected, onSelect }) {
   return (
     <button
@@ -81,7 +92,7 @@ function SceneList({ scenes, selectedIdx, onSelect, onAddScene }) {
       <div className="scene-list-head">
         <div>
           <div className="text-eyebrow">Scenes</div>
-          <div className="scene-list-count">{scenes.length} · 1 min 42 sec</div>
+          <div className="scene-list-count">{scenes.length} · {formatTotalDuration(scenes)}</div>
         </div>
         <button className="tool-btn" aria-label="Library">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>

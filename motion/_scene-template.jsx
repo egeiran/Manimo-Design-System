@@ -18,7 +18,8 @@
 
 const SCENE_DURATION = 20; // seconds — adjust to fit your beats
 
-// Narration script (one sentence per beat — source of truth for TTS/subtitles)
+// Narration script (one sentence per beat — source of truth for TTS/subtitles).
+// NARRATION.length must equal the number of <Sprite> beats in Scene().
 const NARRATION = [
   /* 0.0– 3.0 */ 'TODO: opening line that hooks the question.',
   /* 3.0– …  */ 'TODO: beat 2 narration.',

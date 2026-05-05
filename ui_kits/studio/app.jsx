@@ -28,30 +28,10 @@ const initialMessages = [
   }
 ];
 
+// All four scenes are live — each entry renders the real motion/*.html
+// in an iframe via PreviewCanvas's SceneLive renderer. To add a scene:
+// drop a new motion/<id>.html, then append an entry below.
 const initialScenes = [
-  {
-    id: 's1', kind: 'opening', kindLabel: 'Opening',
-    cardTitle: 'A question to start',
-    duration: '0:18',
-    title: 'Two shapes, one ramp.',
-    lede: 'Same height, same mass, same radius. Which one reaches the bottom first?'
-  },
-  {
-    id: 's2', kind: 'formula', kindLabel: 'Formula',
-    cardTitle: 'Moment of inertia',
-    duration: '0:24',
-  },
-  {
-    id: 's3', kind: 'comparison', kindLabel: 'Compare',
-    cardTitle: 'Hoop vs disk',
-    duration: '0:36',
-  },
-  {
-    id: 's4', kind: 'recap', kindLabel: 'Recap',
-    cardTitle: 'What we saw',
-    duration: '0:24',
-  },
-  // ── Live scenes — render real motion/*.html via iframe ──
   {
     id: 'live-rc', kind: 'live', kindLabel: 'Live',
     cardTitle: 'Lading av en kondensator',
@@ -70,10 +50,16 @@ const initialScenes = [
     duration: '0:26',
     html: '../../motion/hoop-disk.html',
   },
+  {
+    id: 'live-spring', kind: 'live', kindLabel: 'Live',
+    cardTitle: "Hooke's Law: Spring Bobs",
+    duration: '0:41',
+    html: '../../motion/spring-oscillation.html',
+  },
 ];
 
 function App() {
-  const [title, setTitle] = useState('Why a hoop rolls slower than a disk');
+  const [title, setTitle] = useState('Manimo · scene library');
   const [aspect, setAspect] = useState('16:9');
   const [messages, setMessages] = useState(initialMessages);
   const [scenes, setScenes] = useState(initialScenes);
