@@ -1,11 +1,11 @@
 // Moment of Inertia — Manimo lesson scene.
 //
-// Beats:
-//   0.0– 4.5  Manimo enters → holds → glides to corner (SceneChrome owns it)
-//   4.5–10.0  Single point mass orbiting axis → I = mr²
-//  10.0–15.5  Two masses spinning together at same ω → quadratic scaling
-//  15.5–21.5  Disk decomposed into rings → I = ∫r²dm → I = ½MR²
-//  21.5–28.0  Ring vs Disk glyphs + formula punchline
+// Beats (timed to single-track narration in motion/audio/derivation-scene/):
+//    0.00– 3.98  Manimo enters → holds → glides to corner (SceneChrome owns it)
+//    3.98–14.97  Single point mass orbiting axis → I = mr²
+//   14.97–20.86  Two masses spinning together at same ω → quadratic scaling
+//   20.86–30.85  Disk decomposed into rings → I = ∫r²dm → I = ½MR²
+//   30.85–43.00  Ring vs Disk glyphs + formula punchline
 //
 // Authoring notes:
 //   • All delays below are relative to the enclosing Sprite's start (localTime).
@@ -13,15 +13,22 @@
 //   • No nested Sprites inside beat components — stagger via delay only.
 
 // Narration script (one sentence per beat — source of truth for TTS/subtitles)
+// Beat starts below are placeholders — they get rewritten by generate-audio.js
+// against the real ElevenLabs alignment timings.
 const NARRATION = [
-  /* 0.0– 4.5 */ 'Why does a figure skater spin faster when she pulls her arms in?',
-  /* 4.5–10.0 */ 'A single mass m at distance r from the rotation axis has moment of inertia I = mr² — the further out, the harder it is to spin.',
-  /* 10.0–15.5*/ 'Doubling the radius quadruples the inertia: I scales with r², not r.',
-  /* 15.5–21.5*/ 'For a solid disk we sum the contributions of infinitely many thin rings, giving I = ∫r²dm = ½MR².',
-  /* 21.5–28.0*/ 'A ring has all its mass at the edge, so I = MR²; a disk spreads mass inward, so I = ½MR² — distribution is everything.',
+  'Why does a figure skater spin faster when she pulls her arms in?',
+  'A single mass m at distance r from the rotation axis has a moment of inertia equal to m times r squared — the further out, the harder it is to spin.',
+  'Doubling the radius quadruples the inertia — it scales with r squared, not r.',
+  'For a solid disk we sum the contributions of infinitely many thin rings, giving the integral of r squared dm — which works out to one half M R squared.',
+  'A ring has all its mass at the edge, so its inertia is M R squared. A disk spreads mass inward, so its inertia is one half M R squared — distribution is everything.',
 ];
 
-const SCENE_DURATION = 28;
+const SCENE_DURATION = 43;
+
+// Single continuous narration track — one ElevenLabs render covering the
+// whole scene. Beat <Sprite start> values below match the audioStart offsets
+// in motion/audio/derivation-scene/manifest.json.
+const NARRATION_AUDIO = 'audio/derivation-scene/scene.mp3';
 
 function Scene() {
   return (
@@ -31,26 +38,28 @@ function Scene() {
       duration={SCENE_DURATION}
       // Beat 1 is owned by SceneChrome's JourneyManimo: enter → hold → glide
       // to corner. Caption is a tight hook; full question lives in narration.
-      introEnd={4.5}
+      introEnd={3.98}
       introCaption="Pull arms in — spin faster. Why?"
     >
+      <SceneNarration src={NARRATION_AUDIO} />
+
       {/* Beat 2: Point mass → I = mr² */}
-      <Sprite start={4.5} end={10.0}>
+      <Sprite start={3.98} end={14.97}>
         <PointMassBeat />
       </Sprite>
 
       {/* Beat 3: Two radii — quadratic scaling */}
-      <Sprite start={10.0} end={15.5}>
+      <Sprite start={14.97} end={20.86}>
         <TwoRadiiBeat />
       </Sprite>
 
       {/* Beat 4: Disk → ∫r²dm → ½MR² */}
-      <Sprite start={15.5} end={21.5}>
+      <Sprite start={20.86} end={30.85}>
         <DiskBeat />
       </Sprite>
 
       {/* Beat 5: Ring vs Disk + punchline */}
-      <Sprite start={21.5} end={SCENE_DURATION}>
+      <Sprite start={30.85} end={SCENE_DURATION}>
         <FormulaReveal />
       </Sprite>
     </SceneChrome>
@@ -58,11 +67,12 @@ function Scene() {
 }
 
 // ─── Beat 2: Single point mass ────────────────────────────────────────────
-// Axis at (140, 190), arm 130 px. Mass starts at east (270, 190) and after
-// the labels settle, orbits CCW at constant ω so the angular velocity
+// SVG 520×340. Axis placed at SVG centre (260, 190) so the orbit (which is
+// the persistent visual once rotation begins) is horizontally canvas-centred.
+// Mass starts east, then orbits CCW at constant ω so the angular velocity
 // implied by the formula becomes literal motion on screen.
 function PointMassBeat() {
-  const cx = 140, cy = 190, arm = 130;
+  const cx = 260, cy = 190, arm = 130;
   const { localTime } = useSprite();
 
   // Rotation: starts after labels are placed; constant 50°/s CCW.
@@ -168,51 +178,60 @@ function PointMassBeat() {
 }
 
 // ─── Beat 3: Two masses, same m, different radii ──────────────────────────
-// Left: cx=180, r₁=100. Right: cx=580, r₂=200.  SVG 860×280.
-// r₂ = 2r₁ → I₂ = 4I₁. Both arms spin together at the same ω so the outer
-// mass's tangential speed v=ωr is visibly twice the inner mass's — the eye
-// sees the linear v scaling, the labels supply the quadratic I scaling.
+// SVG 880×360. Axes positioned so the static rest pose (both arms east) is
+// horizontally centered on the canvas: composition x range is symmetric about
+// the SVG centre. Rotation is rate-capped so the rotating masses + their
+// tangential velocity arrows always stay inside the SVG bounds.
+//
+// Centering math: at rest the composition spans (lCx − 13) to (rCx + r2 + 17).
+// Setting that midpoint to SVG_W/2 gives lCx + rCx = SVG_W − r2 − 4.
 function TwoRadiiBeat() {
-  const lCx = 180, lCy = 145, r1 = 100;
-  const rCx = 580, rCy = 145, r2 = 200;
-  const divX = 400;
+  const SVG_W = 880, SVG_H = 360;
+  const lCx = 138, lCy = 240, r1 = 100;
+  const rCx = 538, rCy = 240, r2 = 200;
+  const divX = 440;            // visual midpoint between lollipops (= SVG centre)
+  const BOTTOM_LABEL_Y = 325;
   const { localTime } = useSprite();
 
-  // Both lollipops rotate CCW at the same ω, starting after labels are placed.
+  // Rate-cap on rotation: at ω = 20°/s, the masses reach ~75° by end of beat,
+  // staying clear of the SVG top edge (orbit reaches y = lCy − r·sin75° ≈ 47
+  // for the rose mass; tangential velocity arrow tip stays above y ≈ 0).
   const ROT_START = 2.2;
-  const omegaRad = 45 * Math.PI / 180;
+  const omegaRad = 20 * Math.PI / 180;
   const angle = Math.max(0, localTime - ROT_START) * omegaRad;
   const cosA = Math.cos(angle), sinA = Math.sin(angle);
 
-  // Mass positions
   const lMx = lCx + r1 * cosA, lMy = lCy - r1 * sinA;
   const rMx = rCx + r2 * cosA, rMy = rCy - r2 * sinA;
 
-  // Trace-in / fade-in opacities for elements that pre-date rotation.
   const fade = (t0, dur) => Math.max(0, Math.min(1, (localTime - t0) / dur));
   const lArmTrace = fade(0.2, 0.5);
   const rArmTrace = fade(0.6, 0.8);
   const lMassFade = fade(0.8, 0.35);
   const rMassFade = fade(1.5, 0.35);
 
-  // Velocity arrows appear with the rotation and scale tangentially with r.
-  // Tangent direction at angle: (-sin, -cos) in SVG-Y-down for CCW motion.
+  // Velocity arrows + labels appear with rotation; tangent for CCW motion in
+  // SVG-Y-down is (−sin, −cos).
   const vFade = fade(2.4, 0.5);
-  const vScale = 0.55;  // arrow length per unit r (so v₁=55, v₂=110)
-  const lvLen = r1 * vScale;
-  const rvLen = r2 * vScale;
+  const vScale = 0.55;
+  const lvLen = r1 * vScale, rvLen = r2 * vScale;
   const tx = -sinA, ty = -cosA;
-  const lvx0 = lMx,            lvy0 = lMy;
   const lvx1 = lMx + tx * lvLen, lvy1 = lMy + ty * lvLen;
-  const rvx0 = rMx,            rvy0 = rMy;
   const rvx1 = rMx + tx * rvLen, rvy1 = rMy + ty * rvLen;
+
+  // r₁, r₂ labels track the arm midpoint with a perpendicular outward offset
+  // so they stay legible during rotation instead of being swept through.
+  const perpX = -sinA, perpY = -cosA;
+  const lMidX = (lCx + lMx) / 2, lMidY = (lCy + lMy) / 2;
+  const rMidX = (rCx + rMx) / 2, rMidY = (rCy + rMy) / 2;
+  const lrLabelX = lMidX + perpX * 16, lrLabelY = lMidY + perpY * 16 + 5;
+  const rrLabelX = rMidX + perpX * 18, rrLabelY = rMidY + perpY * 18 + 5;
 
   function Arrow({ x0, y0, x1, y1, color, opacity, head = 7 }) {
     const dx = x1 - x0, dy = y1 - y0;
     const len = Math.hypot(dx, dy);
     if (len < 1) return null;
     const ux = dx / len, uy = dy / len;
-    // Perpendicular for arrowhead wings
     const px = -uy, py = ux;
     const tipBx = x1 - ux * head + px * head * 0.55;
     const tipBy = y1 - uy * head + py * head * 0.55;
@@ -230,14 +249,15 @@ function TwoRadiiBeat() {
 
   return (
     <div style={{
-      position: 'absolute', left: '50%', top: '46%',
+      position: 'absolute', left: '50%', top: '50%',
       transform: 'translate(-50%, -50%)',
       display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18,
     }}>
-      <svg width={860} height={280} viewBox="0 0 860 280" style={{ overflow: 'visible' }}>
-        {/* Divider */}
+      <svg width={SVG_W} height={SVG_H} viewBox={`0 0 ${SVG_W} ${SVG_H}`}
+           style={{ overflow: 'visible' }}>
+        {/* Divider — at the visual midpoint between the two lollipops */}
         <SvgFadeIn duration={0.3} delay={0}>
-          <line x1={divX} y1={20} x2={divX} y2={250}
+          <line x1={divX} y1={30} x2={divX} y2={SVG_H - 20}
                 stroke="rgba(232,220,193,0.12)" strokeWidth={1} strokeDasharray="4 4"/>
         </SvgFadeIn>
 
@@ -248,7 +268,6 @@ function TwoRadiiBeat() {
           <line x1={lCx} y1={lCy - 13} x2={lCx} y2={lCy + 13}
                 stroke="var(--chalk-300)" strokeWidth={2}/>
         </SvgFadeIn>
-        {/* Arm — traced in, then sweeps with rotation */}
         <line x1={lCx} y1={lCy} x2={lMx} y2={lMy}
               stroke="var(--amber-400)" strokeWidth={3}
               strokeDasharray={r1}
@@ -256,19 +275,18 @@ function TwoRadiiBeat() {
               strokeLinecap="round"/>
         <circle cx={lMx} cy={lMy} r={17}
                 fill="var(--amber-400)" opacity={0.9 * lMassFade}/>
-        <SvgFadeIn duration={0.3} delay={1.1}>
-          <text x={lCx + r1 / 2} y={lCy - 16}
-                fill="var(--amber-300)" fontFamily="var(--font-serif)"
-                fontStyle="italic" fontSize="20" textAnchor="middle">r₁</text>
-        </SvgFadeIn>
-        <Arrow x0={lvx0} y0={lvy0} x1={lvx1} y1={lvy1}
+        <text x={lrLabelX} y={lrLabelY}
+              fill="var(--amber-300)" fontFamily="var(--font-serif)"
+              fontStyle="italic" fontSize="20" textAnchor="middle"
+              opacity={fade(1.1, 0.3)}>r₁</text>
+        <Arrow x0={lMx} y0={lMy} x1={lvx1} y1={lvy1}
                color="var(--amber-300)" opacity={vFade}/>
         <text x={lvx1 + tx * 14} y={lvy1 + ty * 14 + 5}
               fill="var(--amber-300)" fontFamily="var(--font-serif)"
               fontStyle="italic" fontSize="16" textAnchor="middle"
               opacity={vFade}>v₁</text>
         <SvgFadeIn duration={0.4} delay={1.9}>
-          <text x={lCx + r1 / 2} y={250}
+          <text x={lCx + r1 / 2} y={BOTTOM_LABEL_Y}
                 fill="var(--chalk-200)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize="24" textAnchor="middle">I₁ = mr₁²</text>
         </SvgFadeIn>
@@ -287,19 +305,18 @@ function TwoRadiiBeat() {
               strokeLinecap="round"/>
         <circle cx={rMx} cy={rMy} r={17}
                 fill="var(--rose-400)" opacity={0.9 * rMassFade}/>
-        <SvgFadeIn duration={0.3} delay={1.8}>
-          <text x={rCx + r2 / 2} y={rCy - 16}
-                fill="var(--rose-300)" fontFamily="var(--font-serif)"
-                fontStyle="italic" fontSize="20" textAnchor="middle">r₂ = 2r₁</text>
-        </SvgFadeIn>
-        <Arrow x0={rvx0} y0={rvy0} x1={rvx1} y1={rvy1}
+        <text x={rrLabelX} y={rrLabelY}
+              fill="var(--rose-300)" fontFamily="var(--font-serif)"
+              fontStyle="italic" fontSize="20" textAnchor="middle"
+              opacity={fade(1.8, 0.3)}>r₂ = 2r₁</text>
+        <Arrow x0={rMx} y0={rMy} x1={rvx1} y1={rvy1}
                color="var(--rose-300)" opacity={vFade}/>
         <text x={rvx1 + tx * 14} y={rvy1 + ty * 14 + 5}
               fill="var(--rose-300)" fontFamily="var(--font-serif)"
               fontStyle="italic" fontSize="16" textAnchor="middle"
               opacity={vFade}>v₂ = 2v₁</text>
         <SvgFadeIn duration={0.4} delay={2.5}>
-          <text x={rCx + r2 / 2} y={250}
+          <text x={rCx + r2 / 2} y={BOTTOM_LABEL_Y}
                 fill="var(--rose-300)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize="24" textAnchor="middle">I₂ = 4mr₁²</text>
         </SvgFadeIn>
@@ -545,7 +562,7 @@ window.sceneNarration = NARRATION;
 // ─── Mount ────────────────────────────────────────────────────────────────
 function App() {
   return (
-    <Stage width={1280} height={720} duration={SCENE_DURATION} background="#0c0a1f">
+    <Stage width={1280} height={720} duration={SCENE_DURATION} background="#0c0a1f" loop={false}>
       <Scene/>
     </Stage>
   );

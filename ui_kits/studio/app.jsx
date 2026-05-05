@@ -37,7 +37,7 @@ const seedMessages = [
 // iframe via PreviewCanvas. duration is seconds (matches scene-manifest.json).
 const initialScenes = [
   { id: 'live-rc',           kind: 'live', kindLabel: 'Live', cardTitle: 'Lading av en kondensator', duration: 20, html: '../../motion/rc-scene.html' },
-  { id: 'live-derivation',   kind: 'live', kindLabel: 'Live', cardTitle: 'Moment of Inertia',         duration: 28, html: '../../motion/derivation-scene.html' },
+  { id: 'live-derivation',   kind: 'live', kindLabel: 'Live', cardTitle: 'Moment of Inertia',         duration: 43, html: '../../motion/derivation-scene.html' },
   { id: 'live-hoop-disk',    kind: 'live', kindLabel: 'Live', cardTitle: 'Hoop vs Disk',              duration: 48, html: '../../motion/hoop-disk.html' },
   { id: 'live-spring',       kind: 'live', kindLabel: 'Live', cardTitle: "Hooke's Law: Spring Bobs",  duration: 41, html: '../../motion/spring-oscillation.html' },
   { id: 'live-pendulum',     kind: 'live', kindLabel: 'Live', cardTitle: 'The Simple Pendulum',       duration: 50, html: '../../motion/pendulum.html' },

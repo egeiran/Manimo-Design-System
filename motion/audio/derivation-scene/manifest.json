@@ -1,0 +1,35 @@
+{
+  "sceneId": "derivation-scene",
+  "mode": "single-track",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/derivation-scene/scene.mp3",
+  "durationSec": 42.08,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Why does a figure skater spin faster when she pulls her arms in?"
+    },
+    {
+      "id": "pointMass",
+      "audioStart": 3.98,
+      "narration": "A single mass m at distance r from the rotation axis has a moment of inertia equal to m times r squared — the further out, the harder it is to spin."
+    },
+    {
+      "id": "twoRadii",
+      "audioStart": 14.97,
+      "narration": "Doubling the radius quadruples the inertia — it scales with r squared, not r."
+    },
+    {
+      "id": "diskIntegral",
+      "audioStart": 20.86,
+      "narration": "For a solid disk we sum the contributions of infinitely many thin rings, giving the integral of r squared dm — which works out to one half M R squared."
+    },
+    {
+      "id": "ringVsDisk",
+      "audioStart": 30.85,
+      "narration": "A ring has all its mass at the edge, so its inertia is M R squared. A disk spreads mass inward, so its inertia is one half M R squared — distribution is everything."
+    }
+  ]
+}

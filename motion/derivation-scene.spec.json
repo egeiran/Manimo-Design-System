@@ -3,14 +3,14 @@
   "title": "Moment of Inertia",
   "eyebrow": "Scene 2 · rotational mechanics",
   "language": "en",
-  "duration": 28,
+  "duration": 43,
   "topic": "Moment of inertia — I = mr², quadratic radius scaling, disk integral I = ½MR²",
   "prerequisites": [],
   "beats": [
     {
       "id": "manimoIntro",
       "start": 0.0,
-      "end": 4.5,
+      "end": 3.98,
       "narration": "Why does a figure skater spin faster when she pulls her arms in?",
       "visuals": {
         "layout": "center",
@@ -22,9 +22,9 @@
     },
     {
       "id": "pointMass",
-      "start": 4.5,
-      "end": 10.0,
-      "narration": "A single mass m at distance r from the rotation axis has moment of inertia I = mr² — the further out, the harder it is to spin.",
+      "start": 3.98,
+      "end": 14.97,
+      "narration": "A single mass m at distance r from the rotation axis has a moment of inertia equal to m times r squared — the further out, the harder it is to spin.",
       "visuals": {
         "layout": "center",
         "elements": [
@@ -43,9 +43,9 @@
     },
     {
       "id": "twoRadii",
-      "start": 10.0,
-      "end": 15.5,
-      "narration": "Doubling the radius quadruples the inertia: I scales with r², not r.",
+      "start": 14.97,
+      "end": 20.86,
+      "narration": "Doubling the radius quadruples the inertia — it scales with r squared, not r.",
       "visuals": {
         "layout": "left-right",
         "elements": [
@@ -66,9 +66,9 @@
     },
     {
       "id": "diskIntegral",
-      "start": 15.5,
-      "end": 21.5,
-      "narration": "For a solid disk we sum the contributions of infinitely many thin rings, giving I = ∫r²dm = ½MR².",
+      "start": 20.86,
+      "end": 30.85,
+      "narration": "For a solid disk we sum the contributions of infinitely many thin rings, giving the integral of r squared dm — which works out to one half M R squared.",
       "visuals": {
         "layout": "left-right",
         "elements": [
@@ -88,9 +88,9 @@
     },
     {
       "id": "ringVsDisk",
-      "start": 21.5,
-      "end": 28.0,
-      "narration": "A ring has all its mass at the edge, so I = MR²; a disk spreads mass inward, so I = ½MR² — distribution is everything.",
+      "start": 30.85,
+      "end": 43.0,
+      "narration": "A ring has all its mass at the edge, so its inertia is M R squared. A disk spreads mass inward, so its inertia is one half M R squared — distribution is everything.",
       "visuals": {
         "layout": "left-right",
         "elements": [
