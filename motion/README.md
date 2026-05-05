@@ -55,6 +55,8 @@ primitive below reads from that, so timing composes naturally.
 | Mark a point on a graph             | `PulseMark`     |
 | Erase a chalk element off-screen    | `ChalkWipe`     |
 | Square label bracket on a diagram   | `Bracket`       |
+| Pendulum at a specific angle        | `Pendulum`      |
+| Pendulum swinging in SHM            | `SwingingPendulum` |
 | Mascot                              | `Manimo`, `ManimoEnter` |
 | Cursor following a TraceIn          | `ChalkTip`      |
 | **Fade in something inside an `<svg>`** | **`SvgFadeIn`** (NOT FadeUp) |
@@ -188,6 +190,30 @@ Internally uses a TraceIn so it draws itself in.
 ### `<ChalkTip x y color size opacity />`
 Small cursor dot. Use as a visual counterpart to a TraceIn — interpolate
 its (x, y) along the path so it looks like the tip drew the line.
+
+### `<Pendulum pivX pivY L angle bobR color bobLabel showPivot showString showBob />`
+Render-only pendulum at a given `angle` (degrees, +right of vertical).
+Use directly when you need custom motion (release-from-rest, narration-
+synced pull, scrubbing); use `<SwingingPendulum>` for steady SHM.
+
+```jsx
+<Pendulum pivX={440} pivY={50} L={240} angle={30}
+          bobR={18} bobLabel="m" color="var(--amber-400)"/>
+```
+
+### `<SwingingPendulum pivX pivY L maxAngle period phase delay ...pendulumProps />`
+Drives `<Pendulum>` with simple-harmonic motion:
+`θ(t) = maxAngle · cos(2π · ((localTime − delay)/period + phase))`. So at
+`localTime = delay` it sits at `+maxAngle` (released from rest). All
+`<Pendulum>` props pass through.
+
+```jsx
+<SwingingPendulum
+  pivX={300} pivY={60} L={180}
+  maxAngle={20} period={2.4}
+  bobR={20} color="var(--amber-400)"
+/>
+```
 
 ### `<SceneNarration src tracks volume playbackRate />`
 Plays narration audio in sync with Stage time. Two modes:

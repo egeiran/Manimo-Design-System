@@ -524,10 +524,95 @@ function SceneNarration({ src, tracks, volume = 1, playbackRate = 1 }) {
   );
 }
 
+// ─── Pendulum (render-only) ───────────────────────────────────────────────
+// Pure renderer for a pendulum at a given angle. No motion logic — pass
+// `angle` in degrees (positive = swung to the right of vertical) and it
+// draws the string + bob + optional pivot bracket. Use this directly when
+// you need custom motion (e.g. release-from-rest, narration-synced pull,
+// scrubbing); use <SwingingPendulum> for steady SHM.
+function Pendulum({
+  pivX, pivY,
+  L,
+  angle = 0, // degrees, signed
+  bobR = 16,
+  color = 'var(--amber-400)',
+  bobLabel = null, // optional text inside the bob (e.g. "m")
+  bobLabelColor = 'var(--bg-canvas)',
+  showPivot = true,
+  showString = true,
+  showBob = true,
+  stringWidth = 2.5,
+}) {
+  const rad = angle * Math.PI / 180;
+  const bobX = pivX + L * Math.sin(rad);
+  const bobY = pivY + L * Math.cos(rad);
+  return (
+    <g>
+      {showPivot && (
+        <g>
+          <line x1={pivX - 36} y1={pivY} x2={pivX + 36} y2={pivY}
+                stroke="var(--chalk-300)" strokeWidth={2.2}/>
+          {[0, 1, 2, 3, 4, 5].map(i => (
+            <line key={i}
+                  x1={pivX - 32 + i * 13} y1={pivY}
+                  x2={pivX - 44 + i * 13} y2={pivY - 12}
+                  stroke="var(--chalk-300)" strokeWidth={1}/>
+          ))}
+          <circle cx={pivX} cy={pivY} r={2.5} fill="var(--chalk-200)"/>
+        </g>
+      )}
+      {showString && (
+        <line x1={pivX} y1={pivY} x2={bobX} y2={bobY}
+              stroke={color} strokeWidth={stringWidth}/>
+      )}
+      {showBob && (
+        <g>
+          <circle cx={bobX} cy={bobY} r={bobR}
+                  fill={color} opacity={0.92}
+                  stroke={color} strokeWidth={1.5}/>
+          {bobLabel != null && (
+            <text x={bobX} y={bobY + bobR * 0.34} textAnchor="middle"
+                  fill={bobLabelColor} fontFamily="var(--font-serif)"
+                  fontStyle="italic" fontSize={Math.round(bobR * 1.05)}>
+              {bobLabel}
+            </text>
+          )}
+        </g>
+      )}
+    </g>
+  );
+}
+
+// ─── SwingingPendulum ─────────────────────────────────────────────────────
+// Drives <Pendulum>'s angle with simple-harmonic motion:
+//   θ(t) = maxAngle · cos(2π · ((localTime − delay) / period + phase))
+// so at localTime = delay it sits at +maxAngle (released from rest), then
+// swings as one full period takes `period` seconds. Use `phase` (0..1) to
+// offset where in the cycle the swing starts.
+//
+// Wrap with <SvgFadeIn> if you want it to appear gradually.
+function SwingingPendulum({
+  pivX, pivY,
+  L,
+  maxAngle = 18, // degrees
+  period = 2.0,  // seconds for a full swing
+  phase = 0,     // 0..1, fraction of period offset
+  delay = 0,     // seconds within the parent Sprite before motion starts
+  ...pendulumProps
+}) {
+  const { localTime } = useSprite();
+  const t = Math.max(0, localTime - delay);
+  const angle = maxAngle * Math.cos(2 * Math.PI * (t / period + phase));
+  return (
+    <Pendulum pivX={pivX} pivY={pivY} L={L} angle={angle} {...pendulumProps}/>
+  );
+}
+
 // ─── Export to global scope ───────────────────────────────────────────────
 Object.assign(window, {
   TraceIn, FadeUp, WriteOn, PulseMark, ChalkWipe,
   SvgFadeIn,
   Manimo, ManimoEnter, ChalkTip, Bracket,
+  Pendulum, SwingingPendulum,
   SceneChrome, SceneNarration,
 });
