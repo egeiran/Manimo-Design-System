@@ -516,7 +516,6 @@ Object.assign(window, {
   Easing, interpolate, animate, clamp,
   TimelineContext, useTime, useTimeline,
   Sprite, SpriteContext, useSprite,
-  TextSprite, ImageSprite, RectSprite,
   Stage, PlaybackBar,
 });
 

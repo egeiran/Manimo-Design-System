@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "manimo-scene-spec",
   "title": "Manimo Scene Spec",
-  "description": "Structured intermediate representation for a Manimo scene. Sits between a natural-language topic request and the final JSX. An LLM fills this spec; a human reviews it; a second LLM pass generates the JSX. Dramatically cheaper to iterate than going straight to code.",
+  "description": "Structured intermediate representation for a Manimo scene. Sits between a natural-language topic request and the final JSX. An LLM fills this spec; a human reviews it; a second LLM pass generates the JSX. Dramatically cheaper to iterate than going straight to code. Note: registry-level metadata such as `concepts` (the list of pedagogical concepts a scene teaches, used for cross-scene search and lesson assembly) lives in motion/scene-manifest.json, NOT in spec files. Specs describe how to render a single scene; the manifest describes what scenes exist and how they relate.",
   "type": "object",
   "required": ["id", "title", "language", "duration", "beats"],
   "additionalProperties": false,

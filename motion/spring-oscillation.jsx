@@ -169,12 +169,14 @@ function HookesLaw() {
                 fill="var(--rose-400)"/>
         </SvgFadeIn>
 
-        {/* F = -kx label above the arrow */}
+        {/* F = -kx label above the arrow — end-anchored at x=608 so the
+            label's right edge sits just before the mass left edge (x=612),
+            avoiding overlap with the amber square. */}
         <SvgFadeIn duration={0.35} delay={3.0}>
-          <text x={605} y={236}
+          <text x={608} y={236}
                 fill="var(--rose-300)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize="22"
-                textAnchor="middle">F = −kx</text>
+                textAnchor="end">F = −kx</text>
         </SvgFadeIn>
 
         {/* Caption beneath the diagram */}
