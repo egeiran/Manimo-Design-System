@@ -1,27 +1,29 @@
 // Hoop vs Disk: Why a Disk Wins — Manimo lesson scene.
 // Generated from motion/hoop-disk.spec.json. Builds on Scene 2 (moment of inertia).
 //
-// Beats:
-//   0.2– 3.2  Manimo enters; hook question
-//   3.2– 9.5  Ramp setup: hoop and disk at top, labels for their I
-//   9.5–17.0  Energy conservation derivation → general v formula
-//  17.0–22.5  Verdict: hoop v = √(gh), disk v = √(4gh/3), disk wins ≈15%
-//  22.5–26.0  Takeaway caption
+// Beats (timings sized for narration audio — fallback estimated, no scene.mp3 yet):
+//    0.00– 6.23  Manimo enters; hook question
+//    6.23–13.96  Ramp setup: hoop and disk at top, labels for their I
+//   13.96–23.33  Energy conservation derivation → general v formula
+//   23.33–32.49  Verdict: hoop v = √(gh), disk v = √(4gh/3), disk wins ≈15%
+//   32.49–40.00  Takeaway caption
 //
 // Authoring notes:
 //   • All delays below are relative to the enclosing Sprite's start (localTime).
 //   • SvgFadeIn for every element inside <svg>. FadeUp for HTML/DOM only.
 //   • SceneChrome handles background, watermark, title block, corner Manimo.
+//   • Re-run `npm run audio hoop-disk` once ELEVENLABS_API_KEY works to
+//     overwrite manifest.json with real timings and add scene.mp3.
 
-const SCENE_DURATION = 26;
+const SCENE_DURATION = 40;
 
 // Narration script (one sentence per beat — source of truth for TTS/subtitles)
 const NARRATION = [
-  /* 0.2– 3.2 */ 'Two wheels — same mass, same radius, same hill. Which one reaches the bottom first?',
-  /* 3.2– 9.5 */ 'We release a hoop and a solid disk from rest at the top of an inclined ramp. Both roll without slipping.',
-  /* 9.5–17.0 */ 'Energy conservation: the gravitational potential mgh becomes kinetic energy — split between translation ½Mv² and rotation ½Iω².',
-  /* 17.0–22.5*/ 'Plug in: the disk gives v = √(4gh/3), the hoop gives v = √(gh). The disk is always faster — about 15% quicker at the bottom.',
-  /* 22.5–26.0*/ 'Less rotational inertia leaves more energy for translation — that is why a solid disk beats a hoop.',
+  /*  0.00– 6.23 */ 'Two wheels — same mass, same radius, same hill. Which one reaches the bottom first?',
+  /*  6.23–13.96 */ 'We release a hoop and a solid disk from rest at the top of an inclined ramp. Both roll without slipping.',
+  /* 13.96–23.33 */ 'Energy conservation: the gravitational potential mgh becomes kinetic energy — split between translation ½Mv² and rotation ½Iω².',
+  /* 23.33–32.49 */ 'Plug in: the disk gives v = √(4gh/3), the hoop gives v = √(gh). The disk is always faster — about 15% quicker at the bottom.',
+  /* 32.49–40.00 */ 'Less rotational inertia leaves more energy for translation — that is why a solid disk beats a hoop.',
 ];
 
 function Scene() {
@@ -31,23 +33,23 @@ function Scene() {
       title="Hoop vs Disk: Why a Disk Wins"
       duration={SCENE_DURATION}
     >
-      <Sprite start={0.2} end={3.2}>
+      <Sprite start={0} end={6.23}>
         <ManimoBubbleIntro />
       </Sprite>
 
-      <Sprite start={3.2} end={9.5}>
+      <Sprite start={6.23} end={13.96}>
         <RampSetup />
       </Sprite>
 
-      <Sprite start={9.5} end={17.0}>
+      <Sprite start={13.96} end={23.33}>
         <EnergyDerivation />
       </Sprite>
 
-      <Sprite start={17.0} end={22.5}>
+      <Sprite start={23.33} end={32.49}>
         <Verdict />
       </Sprite>
 
-      <Sprite start={22.5} end={SCENE_DURATION}>
+      <Sprite start={32.49} end={SCENE_DURATION}>
         <Takeaway />
       </Sprite>
     </SceneChrome>

@@ -3,14 +3,14 @@
   "title": "Hoop vs Disk: Why a Disk Wins",
   "eyebrow": "Scene 3 · rolling motion",
   "language": "en",
-  "duration": 26,
+  "duration": 40,
   "topic": "Rolling without slipping — energy conservation gives v = √(2gh / (1 + I/MR²)); disk beats hoop because less inertia goes into rotation",
   "prerequisites": ["moment-of-inertia"],
   "beats": [
     {
       "id": "manimoIntro",
-      "start": 0.2,
-      "end": 3.2,
+      "start": 0,
+      "end": 6.23,
       "narration": "Two wheels — same mass, same radius, same hill. Which one reaches the bottom first?",
       "visuals": {
         "layout": "center",
@@ -22,8 +22,8 @@
     },
     {
       "id": "rampSetup",
-      "start": 3.2,
-      "end": 9.5,
+      "start": 6.23,
+      "end": 13.96,
       "narration": "We release a hoop and a solid disk from rest at the top of an inclined ramp. Both roll without slipping.",
       "visuals": {
         "layout": "center",
@@ -39,8 +39,8 @@
     },
     {
       "id": "energyDerivation",
-      "start": 9.5,
-      "end": 17,
+      "start": 13.96,
+      "end": 23.33,
       "narration": "Energy conservation: the gravitational potential mgh becomes kinetic energy — split between translation ½Mv² and rotation ½Iω².",
       "visuals": {
         "layout": "center",
@@ -53,8 +53,8 @@
     },
     {
       "id": "verdict",
-      "start": 17,
-      "end": 22.5,
+      "start": 23.33,
+      "end": 32.49,
       "narration": "Plug in: the disk gives v = √(4gh/3), the hoop gives v = √(gh). The disk is always faster — about 15% quicker at the bottom.",
       "visuals": {
         "layout": "left-right",
@@ -69,8 +69,8 @@
     },
     {
       "id": "takeaway",
-      "start": 22.5,
-      "end": 26,
+      "start": 32.49,
+      "end": 40,
       "narration": "Less rotational inertia leaves more energy for translation — that's why a solid disk beats a hoop.",
       "visuals": {
         "layout": "center",

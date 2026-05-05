@@ -1,0 +1,34 @@
+{
+  "sceneId": "hoop-disk",
+  "mode": "fallback-estimated",
+  "chars": 536,
+  "durationSec": 39.49,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Two wheels — same mass, same radius, same hill. Which one reaches the bottom first?"
+    },
+    {
+      "id": "rampSetup",
+      "audioStart": 6.23,
+      "narration": "We release a hoop and a solid disk from rest at the top of an inclined ramp. Both roll without slipping."
+    },
+    {
+      "id": "energyDerivation",
+      "audioStart": 13.96,
+      "narration": "Energy conservation: the gravitational potential mgh becomes kinetic energy — split between translation ½Mv² and rotation ½Iω²."
+    },
+    {
+      "id": "verdict",
+      "audioStart": 23.33,
+      "narration": "Plug in: the disk gives v = √(4gh/3), the hoop gives v = √(gh). The disk is always faster — about 15% quicker at the bottom."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 32.49,
+      "narration": "Less rotational inertia leaves more energy for translation — that's why a solid disk beats a hoop."
+    }
+  ],
+  "note": "Estimated at 14 chars/sec — no audio file. Re-run with ELEVENLABS_API_KEY set to overwrite with real audio."
+}

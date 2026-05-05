@@ -35,7 +35,7 @@
       "title": "Hoop vs Disk: Why a Disk Wins",
       "eyebrow": "Scene 3 · rolling motion",
       "topic": "Rolling without slipping — energy conservation gives v = √(2gh / (1 + I/MR²)); disk beats hoop because less inertia goes into rotation",
-      "duration": 26,
+      "duration": 40,
       "language": "en",
       "prerequisites": ["moment-of-inertia"],
       "concepts": ["rolling motion", "energy conservation", "rotational kinetic energy", "rolling without slipping", "moment of inertia"]
@@ -52,6 +52,19 @@
       "language": "en",
       "prerequisites": [],
       "concepts": ["simple harmonic motion", "Hooke's law", "natural frequency", "spring constant", "period"]
+    },
+    {
+      "id": "pendulum",
+      "file": "pendulum.jsx",
+      "html": "pendulum.html",
+      "spec": "pendulum.spec.json",
+      "title": "The Simple Pendulum: Why Mass Doesn't Matter",
+      "eyebrow": "Scene 5 · pendulum motion",
+      "topic": "Simple pendulum — for small swings, T = 2π√(L/g); the period depends on length and gravity, not mass",
+      "duration": 53,
+      "language": "en",
+      "prerequisites": ["spring-oscillation"],
+      "concepts": ["pendulum", "small-angle approximation", "simple harmonic motion", "period", "gravity"]
     }
   ]
 }

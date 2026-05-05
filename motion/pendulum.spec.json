@@ -1,0 +1,93 @@
+{
+  "id": "pendulum",
+  "title": "The Simple Pendulum: Why Mass Doesn't Matter",
+  "eyebrow": "Scene 5 · pendulum motion",
+  "language": "en",
+  "duration": 53,
+  "topic": "Simple pendulum — for small swings, T = 2π√(L/g); the period depends on length and gravity, not mass",
+  "prerequisites": ["spring-oscillation"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.44,
+      "narration": "A weight on a string — pull it sideways and let go. What sets the rhythm of its swing?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "Pull a weight on a string — what sets the rhythm?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "pendulumDiagram",
+      "start": 6.44,
+      "end": 19.39,
+      "narration": "Hang a mass from a string of length L. Pull it to angle theta. Gravity pulls straight down, but only the tangential component, minus m g sine theta, restores it toward vertical.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Pivot bracket at top — small horizontal bar with hatching", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "svg-path", "content": "Vertical dashed reference line from pivot straight down (rest position)", "delay": 0.4, "color": "var(--chalk-300)" },
+          { "type": "svg-path", "content": "String from pivot to bob at angle θ to the right", "delay": 0.8, "color": "var(--amber-400)" },
+          { "type": "svg-arc", "content": "Small arc between vertical and string near pivot, with θ label", "delay": 1.4, "color": "var(--chalk-200)" },
+          { "type": "svg-label", "content": "L label centred along the string (italic serif)", "delay": 1.6, "color": "var(--chalk-200)" },
+          { "type": "svg-circle", "content": "Bob — filled amber circle at end of string", "delay": 2.0, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "m label right of bob", "delay": 2.3, "color": "var(--chalk-200)" },
+          { "type": "svg-path", "content": "Gravity vector straight down from bob (rose, length 70)", "delay": 3.0, "color": "var(--rose-400)" },
+          { "type": "svg-label", "content": "mg label below gravity arrow tip", "delay": 3.4, "color": "var(--rose-300)" },
+          { "type": "svg-path", "content": "Tangential restoring force arrow perpendicular to string, pointing back toward vertical", "delay": 4.2, "color": "var(--rose-400)" },
+          { "type": "svg-label", "content": "−mg sin θ label near tangential arrow", "delay": 4.6, "color": "var(--rose-300)" },
+          { "type": "text-caption", "content": "only the tangential component restores it", "delay": 6.0, "color": "var(--chalk-300)", "position": "below the diagram, sans 14" }
+        ]
+      }
+    },
+    {
+      "id": "smallAngle",
+      "start": 19.39,
+      "end": 36.19,
+      "narration": "For small swings, sine theta is approximately theta. The equation of motion becomes the second derivative of theta plus g over L theta equals zero — exactly the spring equation, with omega zero equal to the square root of g over L.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-formula", "content": "sin θ ≈ θ", "delay": 0.3, "color": "var(--chalk-200)", "position": "top, mono eyebrow style above" },
+          { "type": "text-caption", "content": "small-angle approximation", "delay": 0.3, "color": "var(--chalk-300)", "position": "small mono eyebrow above formula" },
+          { "type": "text-formula", "content": "d²θ/dt² + (g/L) θ = 0", "delay": 1.6, "color": "var(--chalk-100)", "position": "centre, large serif italic" },
+          { "type": "text-caption", "content": "same shape as the spring equation", "delay": 3.2, "color": "var(--chalk-300)", "position": "small caption below" },
+          { "type": "text-formula", "content": "ω₀ = √(g/L)", "delay": 4.4, "color": "var(--amber-300)", "position": "centre, large amber payoff" }
+        ]
+      }
+    },
+    {
+      "id": "periodFormula",
+      "start": 36.19,
+      "end": 45.49,
+      "narration": "The period is two pi over omega zero — so T equals two pi times the square root of L over g. Notice what is missing: the mass.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "period of one full swing", "delay": 0, "color": "var(--amber-300)", "position": "mono eyebrow above formula" },
+          { "type": "text-formula", "content": "T = 2π√(L/g)", "delay": 0.4, "color": "var(--amber-300)", "position": "centre, large serif italic amber" },
+          { "type": "text-title", "content": "longer string", "delay": 1.6, "color": "var(--chalk-300)", "position": "left column header" },
+          { "type": "text-caption", "content": "L ↑  →  T ↑", "delay": 1.9, "color": "var(--chalk-100)", "position": "left column" },
+          { "type": "text-title", "content": "stronger gravity", "delay": 2.4, "color": "var(--chalk-300)", "position": "right column header" },
+          { "type": "text-caption", "content": "g ↑  →  T ↓", "delay": 2.7, "color": "var(--chalk-100)", "position": "right column" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 45.49,
+      "end": 53,
+      "narration": "Heavier bob, lighter bob — same length swings to the same beat. Gravity sets the metronome.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "Heavier bob, lighter bob — same length, same beat.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic ~24px" },
+          { "type": "text-caption", "content": "(no m in the formula — gravity sets the metronome)", "delay": 1.6, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}

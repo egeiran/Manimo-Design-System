@@ -14,24 +14,40 @@ and require your input. Total queue size is kept ≤ 12 items.
 
 ### [AGENT] — safe for the next nightly run
 
-- Add narration audio to `rc-circuit`, `moment-of-inertia`, and
-  `hoop-disk`. Follow the **"Adding narration audio to a scene"** workflow
-  in `motion/README.md` for each — that doc is the source of truth (Step
-  1: rewrite narration as spoken prose per Hard rule 9 in CLAUDE.md;
-  Step 2: `npm run audio <scene-id>` — falls back to estimated timings
-  if the key is missing or quota-empty, never errors out; Step 3: apply
-  printed wire-up to the four named files; Step 4: lint + snapshot).
-  Real audio costs ≲ 1 K chars/scene against the 10 K/month free tier;
-  fallback path costs nothing.
+- Re-run `npm run audio hoop-disk` and `npm run audio pendulum` once
+  `ELEVENLABS_API_KEY` reaches the API (the sandbox returns HTTP 403
+  "Host not in allowlist" today). Both scenes currently ship with
+  fallback estimated timings — re-running with a working key will
+  overwrite each `manifest.json` with real per-character offsets and
+  drop a `scene.mp3` next to it. After audio lands, apply the printed
+  wire-up: add `<SceneNarration src=…/>` inside `<Scene>` and
+  `loop={false}` on `<Stage>` for each scene, and refresh the four
+  files (jsx / spec.json / scene-manifest.json / studio app.jsx) with
+  the new timings.
 
 ### [HUMAN] — needs your input
 
-- **Next topic candidates beyond Spring Oscillation.** Adjacent picks
-  that build on the spring-oscillation scene: §3.3 Pendel (small-angle
-  pendulum, T = 2π√(L/g) — sets up "period independent of mass"),
-  §2.3 Dreiemoment (torque, τ = r×F — needed before §2.4 spinn),
-  §4.1 Coulombs lov (F = kq₁q₂/r², the electromagnetism opener). Reply
-  in chat with a pick or say "agent's choice".
+- **Visual review of `pendulum`.** Snapshot tool was unavailable in the
+  sandbox (chromium download blocked), so beat 2 (the angled pendulum
+  diagram with both gravity and tangential restoring vectors) was
+  shipped without a visual pass. Open `motion/pendulum.html` and check
+  that: (a) the −mg sin θ label is readable and not overlapping the
+  bob, (b) the tangential arrowhead points clearly back-toward-vertical,
+  (c) the angle arc near the pivot is large enough to read.
+
+- **Rename `rc-scene.*` → `rc-circuit.*` and `derivation-scene.*` →
+  `moment-of-inertia.*`** so the audio script (`npm run audio
+  <scene-id>`) can find their specs. Today the file names diverge from
+  the manifest's `id`, which is why the nightly couldn't add audio to
+  those two scenes. Touches: `motion/{rc-scene,derivation-scene}.{jsx,html,spec.json}`,
+  the `<script src>` in each HTML, `motion/scene-manifest.json` (file/html/spec
+  fields), and the studio `app.jsx` `initialScenes` `html` paths.
+
+- **Next topic after Pendulum.** Adjacent picks: §2.3 Dreiemoment
+  (torque, τ = r×F — needed before §2.4 spinn), §2.6 Sentripetalakselerasjon
+  (a = v²/r), §4.1 Coulombs lov (F = kq₁q₂/r², the electromagnetism
+  opener), §3.4 Demping (damped oscillator, builds directly on spring
+  + pendulum). Reply in chat with a pick or say "agent's choice".
 
 ---
 
