@@ -30,8 +30,20 @@ const MIME = {
   '.png':  'image/png',
   '.jpg':  'image/jpeg',
   '.jpeg': 'image/jpeg',
+  '.gif':  'image/gif',
+  '.webp': 'image/webp',
+  '.ico':  'image/x-icon',
   '.woff2':'font/woff2',
   '.woff': 'font/woff',
+  '.ttf':  'font/ttf',
+  '.otf':  'font/otf',
+  '.mp3':  'audio/mpeg',
+  '.m4a':  'audio/mp4',
+  '.wav':  'audio/wav',
+  '.ogg':  'audio/ogg',
+  '.mp4':  'video/mp4',
+  '.webm': 'video/webm',
+  '.mov':  'video/quicktime',
   '.pdf':  'application/pdf',
   '.txt':  'text/plain; charset=utf-8',
   '.md':   'text/markdown; charset=utf-8',
@@ -167,34 +179,81 @@ async function serveStatic(req, res) {
   let urlPath = req.url.split('?')[0];
   if (urlPath === '/') urlPath = '/index.html';
   const filePath = safeJoin(ROOT, urlPath);
-  if (!filePath) { res.writeHead(403); res.end('forbidden'); return; }
+  if (!filePath) { res.writeHead(403); res.end('forbidden'); return 403; }
 
   try {
     const st = await stat(filePath);
     if (st.isDirectory()) {
       const idx = join(filePath, 'index.html');
-      if (existsSync(idx)) return serveStaticFile(idx, res);
-      res.writeHead(404); res.end('not found'); return;
+      if (existsSync(idx)) return serveStaticFile(idx, req, res);
+      res.writeHead(404); res.end('not found'); return 404;
     }
-    return serveStaticFile(filePath, res);
+    return serveStaticFile(filePath, req, res);
   } catch {
+    // Extensionless fallback: matches `npx serve` behavior, so cached 301
+    // redirects from prior `serve` sessions don't break here.
+    if (!extname(filePath)) {
+      const html = `${filePath}.html`;
+      if (existsSync(html)) return serveStaticFile(html, req, res);
+    }
     res.writeHead(404); res.end('not found');
+    return 404;
   }
 }
 
-async function serveStaticFile(filePath, res) {
+async function serveStaticFile(filePath, req, res) {
   const ext = extname(filePath).toLowerCase();
+  const contentType = MIME[ext] || 'application/octet-stream';
   const buf = await readFile(filePath);
+  const total = buf.length;
+
+  // Range support — required for reliable <audio>/<video> seeking in Safari
+  // and used by Chrome for media playback. Parse only "bytes=start-end".
+  const range = req.headers.range;
+  const m = range && /^bytes=(\d*)-(\d*)$/.exec(range);
+  if (m) {
+    let start = m[1] === '' ? null : parseInt(m[1], 10);
+    let end   = m[2] === '' ? null : parseInt(m[2], 10);
+    if (start === null && end !== null) { start = total - end; end = total - 1; }
+    if (start === null) start = 0;
+    if (end === null) end = total - 1;
+    if (Number.isNaN(start) || Number.isNaN(end) || start > end || start >= total) {
+      res.writeHead(416, { 'content-range': `bytes */${total}` });
+      res.end();
+      return 416;
+    }
+    end = Math.min(end, total - 1);
+    res.writeHead(206, {
+      'content-type': contentType,
+      'content-range': `bytes ${start}-${end}/${total}`,
+      'accept-ranges': 'bytes',
+      'content-length': end - start + 1,
+      'cache-control': 'no-cache',
+    });
+    res.end(buf.subarray(start, end + 1));
+    return 206;
+  }
+
   res.writeHead(200, {
-    'content-type': MIME[ext] || 'application/octet-stream',
+    'content-type': contentType,
+    'content-length': total,
+    'accept-ranges': 'bytes',
     'cache-control': 'no-cache',
   });
   res.end(buf);
+  return 200;
 }
 
 // ─── Router ──────────────────────────────────────────────────────────────
 
 const server = createServer(async (req, res) => {
+  const started = Date.now();
+  res.on('finish', () => {
+    const ms = Date.now() - started;
+    const tag = res.statusCode >= 400 ? '!' : ' ';
+    console.log(`${tag} ${res.statusCode} ${req.method} ${req.url} (${ms}ms)`);
+  });
+
   try {
     const url = new URL(req.url, `http://${req.headers.host}`);
 
