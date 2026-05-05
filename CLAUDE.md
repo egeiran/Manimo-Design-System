@@ -105,10 +105,18 @@ ui_kits/
    - "F = ma" → "force equals mass times acceleration"
    - "ω₀ = √(k/m)" → "omega zero equals the square root of k over m"
    - "T = 2π√(m/k)" → "T equals two pi times the square root of m over k"
+   - "½Mv²" → "one half m v squared"
+   - "v = √(4gh/3)" → "v equals the square root of four g h divided by three"
+   - "15%" → "fifteen percent"
    - Hyphens between words ("omega-zero") → plain space ("omega zero"),
      because TTS pronounces the hyphen as "dash".
+
    The visual `text-formula` elements still use the symbolic form — this
-   rule applies only to spoken/narration strings.
+   rule applies only to spoken/narration strings. `scripts/generate-audio.js`
+   has a pre-flight check that refuses to call the API when narration
+   contains math symbols (√, ², ½, π, ω, =, %, …); this rule is enforced,
+   not optional. If the script aborts on this rule, rewrite the narration
+   first.
 
 ---
 

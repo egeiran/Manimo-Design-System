@@ -1,0 +1,35 @@
+{
+  "sceneId": "hoop-disk",
+  "mode": "single-track",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/hoop-disk/scene.mp3",
+  "durationSec": 46.77,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Two wheels — same mass, same radius, same hill. Which one reaches the bottom first?"
+    },
+    {
+      "id": "rampSetup",
+      "audioStart": 6.07,
+      "narration": "We release a hoop and a solid disk from rest at the top of an inclined ramp. Both roll without slipping."
+    },
+    {
+      "id": "energyDerivation",
+      "audioStart": 12.53,
+      "narration": "By energy conservation, the gravitational potential energy m g h becomes kinetic energy — split between translation, one half m v squared, and rotation, one half I omega squared."
+    },
+    {
+      "id": "verdict",
+      "audioStart": 26.29,
+      "narration": "Plug in: for the disk, v equals the square root of four g h divided by three. For the hoop, v equals the square root of g h. The disk is always faster — about fifteen percent quicker at the bottom."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 40.38,
+      "narration": "Less rotational inertia leaves more energy for translation — that's why a solid disk beats a hoop."
+    }
+  ]
+}

@@ -1,28 +1,31 @@
 // Hoop vs Disk: Why a Disk Wins — Manimo lesson scene.
 // Generated from motion/hoop-disk.spec.json. Builds on Scene 2 (moment of inertia).
 //
-// Beats:
-//   0.2– 3.2  Manimo enters; hook question
-//   3.2– 9.5  Ramp setup: hoop and disk at top, labels for their I
-//   9.5–17.0  Energy conservation derivation → general v formula
-//  17.0–22.5  Verdict: hoop v = √(gh), disk v = √(4gh/3), disk wins ≈15%
-//  22.5–26.0  Takeaway caption
+// Beats (timed to single-track narration in motion/audio/hoop-disk/):
+//    0.00– 6.07  Manimo enters; hook question
+//    6.07–12.53  Ramp setup: hoop and disk at top, labels for their I
+//   12.53–26.29  Energy conservation derivation → general v formula
+//   26.29–40.38  Verdict: hoop v = √(gh), disk v = √(4gh/3), disk wins ≈15%
+//   40.38–48.00  Takeaway caption
 //
 // Authoring notes:
 //   • All delays below are relative to the enclosing Sprite's start (localTime).
 //   • SvgFadeIn for every element inside <svg>. FadeUp for HTML/DOM only.
 //   • SceneChrome handles background, watermark, title block, corner Manimo.
 
-const SCENE_DURATION = 26;
+const SCENE_DURATION = 48;
 
 // Narration script (one sentence per beat — source of truth for TTS/subtitles)
 const NARRATION = [
-  /* 0.2– 3.2 */ 'Two wheels — same mass, same radius, same hill. Which one reaches the bottom first?',
-  /* 3.2– 9.5 */ 'We release a hoop and a solid disk from rest at the top of an inclined ramp. Both roll without slipping.',
-  /* 9.5–17.0 */ 'Energy conservation: the gravitational potential mgh becomes kinetic energy — split between translation ½Mv² and rotation ½Iω².',
-  /* 17.0–22.5*/ 'Plug in: the disk gives v = √(4gh/3), the hoop gives v = √(gh). The disk is always faster — about 15% quicker at the bottom.',
-  /* 22.5–26.0*/ 'Less rotational inertia leaves more energy for translation — that is why a solid disk beats a hoop.',
+  /*  0.00– 6.07 */ 'Two wheels — same mass, same radius, same hill. Which one reaches the bottom first?',
+  /*  6.07–12.53 */ 'We release a hoop and a solid disk from rest at the top of an inclined ramp. Both roll without slipping.',
+  /* 12.53–26.29 */ 'By energy conservation, the gravitational potential energy m g h becomes kinetic energy — split between translation, one half m v squared, and rotation, one half I omega squared.',
+  /* 26.29–40.38 */ 'Plug in: for the disk, v equals the square root of four g h divided by three. For the hoop, v equals the square root of g h. The disk is always faster — about fifteen percent quicker at the bottom.',
+  /* 40.38–48.00 */ 'Less rotational inertia leaves more energy for translation — that is why a solid disk beats a hoop.',
 ];
+
+// Single continuous narration track aligned to manifest.json offsets.
+const NARRATION_AUDIO = 'audio/hoop-disk/scene.mp3';
 
 function Scene() {
   return (
@@ -31,23 +34,25 @@ function Scene() {
       title="Hoop vs Disk: Why a Disk Wins"
       duration={SCENE_DURATION}
     >
-      <Sprite start={0.2} end={3.2}>
+      <SceneNarration src={NARRATION_AUDIO} />
+
+      <Sprite start={0} end={6.07}>
         <ManimoBubbleIntro />
       </Sprite>
 
-      <Sprite start={3.2} end={9.5}>
+      <Sprite start={6.07} end={12.53}>
         <RampSetup />
       </Sprite>
 
-      <Sprite start={9.5} end={17.0}>
+      <Sprite start={12.53} end={26.29}>
         <EnergyDerivation />
       </Sprite>
 
-      <Sprite start={17.0} end={22.5}>
+      <Sprite start={26.29} end={40.38}>
         <Verdict />
       </Sprite>
 
-      <Sprite start={22.5} end={SCENE_DURATION}>
+      <Sprite start={40.38} end={SCENE_DURATION}>
         <Takeaway />
       </Sprite>
     </SceneChrome>
@@ -306,7 +311,12 @@ window.sceneNarration = NARRATION;
 // ─── Mount ────────────────────────────────────────────────────────────────
 function App() {
   return (
-    <Stage width={1280} height={720} duration={SCENE_DURATION} background="#0c0a1f">
+    <Stage
+      width={1280} height={720}
+      duration={SCENE_DURATION}
+      background="#0c0a1f"
+      loop={false}
+    >
       <Scene/>
     </Stage>
   );
