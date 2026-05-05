@@ -409,10 +409,125 @@ function SceneChrome({ eyebrow, title, duration, children }) {
   );
 }
 
+// ─── SceneNarration ───────────────────────────────────────────────────────
+// Plays scene narration audio in sync with Stage time. Two modes:
+//
+// Single-track (recommended) — one continuous MP3 covering the whole scene,
+// produced by `npm run audio <scene-id>`. Reads more naturally because the
+// TTS model handles pauses between sentences itself.
+//
+//   <SceneNarration src="audio/spring-oscillation/scene.mp3" />
+//
+// Per-beat (legacy) — one MP3 per beat, switched as the playhead crosses
+// each beat's `start`. Allows partial regeneration of individual beats
+// but the join points feel choppy because each clip has its own padding
+// silence.
+//
+//   <SceneNarration tracks={[
+//     { start: 0.2,  src: 'audio/spring-oscillation/manimoIntro.mp3' },
+//     { start: 3.5,  src: 'audio/spring-oscillation/hookesLaw.mp3' },
+//   ]}/>
+//
+// Browser autoplay policy blocks audio.play() until the user has interacted
+// with the page. The PlaybackBar play button counts as interaction, so audio
+// starts the moment the user clicks play.
+function SceneNarration({ src, tracks, volume = 1, playbackRate = 1 }) {
+  const { time, playing } = useTimeline();
+  const singleRef = React.useRef(null);
+  const trackRefs = React.useRef([]);
+  // Track previous frame's state so we only re-seek on actual scrubs or
+  // play/pause edges — not on every frame's small natural drift, which
+  // would manifest as audible clicks/stutters ("lagging").
+  const prevRef = React.useRef({ time: 0, playing: false, activeIdx: -1 });
+
+  // Per-beat mode: figure out which clip should currently be audible.
+  let activeIdx = -1;
+  if (tracks) {
+    for (let i = 0; i < tracks.length; i++) {
+      if (time >= tracks[i].start) activeIdx = i;
+    }
+  }
+
+  React.useEffect(() => {
+    const prev = prevRef.current;
+    // A "jump" is a backwards step (loop wrap or rewind) or a forward
+    // step bigger than a frame's worth of dt — i.e. a user scrub.
+    const jumped = time < prev.time || (time - prev.time) > 0.5;
+    const justStarted = playing && !prev.playing;
+
+    // Single-track mode
+    if (src) {
+      const audio = singleRef.current;
+      if (audio) {
+        if (audio.volume !== volume) audio.volume = volume;
+        if (audio.playbackRate !== playbackRate) audio.playbackRate = playbackRate;
+        const expectedAudio = time * playbackRate;
+
+        if (playing) {
+          // Only re-seek on scrubs / loop wraps / fresh play. During steady
+          // playback, let the audio clock coast — forcing currentTime each
+          // frame causes audible glitches even when the new value is
+          // identical because the browser re-decodes the seek target.
+          if ((jumped || justStarted) && Math.abs(audio.currentTime - expectedAudio) > 0.1) {
+            try { audio.currentTime = Math.max(0, expectedAudio); } catch {}
+          }
+          if (audio.paused) audio.play().catch(() => { /* autoplay blocked, retries on next gesture */ });
+        } else {
+          if (!audio.paused) audio.pause();
+          // While paused, keep audio aligned so scrubbing in the timeline
+          // updates which sentence we'd resume on.
+          if (Math.abs(audio.currentTime - expectedAudio) > 0.1) {
+            try { audio.currentTime = Math.max(0, expectedAudio); } catch {}
+          }
+        }
+      }
+    }
+
+    // Per-beat mode
+    if (tracks) {
+      trackRefs.current.forEach((audio, i) => {
+        if (!audio) return;
+        if (audio.volume !== volume) audio.volume = volume;
+        if (i !== activeIdx) {
+          if (!audio.paused) audio.pause();
+          return;
+        }
+        const localT = time - tracks[i].start;
+        const switchedClip = prev.activeIdx !== activeIdx;
+        if ((jumped || justStarted || switchedClip)
+            && Math.abs(audio.currentTime - localT) > 0.1) {
+          try { audio.currentTime = Math.max(0, localT); } catch {}
+        }
+        if (playing) {
+          if (audio.paused) audio.play().catch(() => {});
+        } else if (!audio.paused) {
+          audio.pause();
+        }
+      });
+    }
+
+    prevRef.current = { time, playing, activeIdx };
+  });
+
+  return (
+    <>
+      {src && <audio ref={singleRef} src={src} preload="auto" />}
+      {tracks && tracks.map((t, i) => (
+        <audio
+          key={t.src}
+          ref={el => (trackRefs.current[i] = el)}
+          src={t.src}
+          preload="auto"
+        />
+      ))}
+    </>
+  );
+}
+
 // ─── Export to global scope ───────────────────────────────────────────────
 Object.assign(window, {
   TraceIn, FadeUp, WriteOn, PulseMark, ChalkWipe,
   SvgFadeIn,
   Manimo, ManimoEnter, ChalkTip, Bracket,
-  SceneChrome,
+  SceneChrome, SceneNarration,
 });

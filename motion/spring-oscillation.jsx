@@ -2,29 +2,35 @@
 // Generated from motion/spring-oscillation.spec.json. Standalone — no
 // prerequisite scene.
 //
-// Beats:
-//   0.2– 3.5  Manimo enters; hook question
-//   3.5– 9.5  Hooke's law: spring + mass + restoring force F = -kx
-//   9.5–16.0  Newton + Hooke → ω₀ = √(k/m)
-//  16.0–21.5  Period formula T = 2π√(m/k); two-column intuition
-//  21.5–26.0  Takeaway
+// Beats (timed to single-track narration in motion/audio/spring-oscillation/):
+//    0.00– 4.51  Manimo enters; hook question
+//    4.51–14.19  Hooke's law: spring + mass + restoring force F = -kx
+//   14.19–26.35  Newton + Hooke → ω₀ = √(k/m)
+//   26.35–33.66  Period formula T = 2π√(m/k); two-column intuition
+//   33.66–41.00  Takeaway
 //
 // Authoring notes:
 //   • All delays below are relative to the enclosing Sprite's start (localTime).
 //   • SvgFadeIn for every element inside <svg>. FadeUp for HTML/DOM only.
 //   • SceneChrome handles background, watermark, title block, corner Manimo.
 
-const SCENE_DURATION = 26;
+const SCENE_DURATION = 41;
 
 // Narration script (one sentence per beat — source of truth for TTS/subtitles).
 // NARRATION.length must equal the number of <Sprite> beats in Scene().
 const NARRATION = [
-  /* 0.2– 3.5 */ 'Pull a mass on a spring, let go — what does it do, and how fast?',
-  /* 3.5– 9.5 */ "Stretch it by x and the spring pulls back with a force F equal to minus k times x — proportional to displacement, opposite in direction.",
-  /* 9.5–16.0 */ "Newton says ma equals F. Combine with Hooke's law and the natural frequency falls out: omega-zero equals the square root of k over m.",
-  /*16.0–21.5 */ 'Period is two pi over omega-zero — so T equals two pi times the square root of m over k.',
-  /*21.5–26.0 */ 'Stiffer spring, quicker beat; heavier mass, slower beat — and gravity never enters the formula.',
+  /*  0.00– 4.51 */ 'Pull a mass on a spring, let go — what does it do, and how fast?',
+  /*  4.51–14.19 */ "Stretch it by x and the spring pulls back with a force F equal to minus k times x — proportional to displacement, opposite in direction.",
+  /* 14.19–26.35 */ "Newton's second law says force equals mass times acceleration. Combine that with Hooke's law and the natural frequency drops out: omega zero equals the square root of k over m.",
+  /* 26.35–33.66 */ 'The period is two pi over omega zero — so T equals two pi times the square root of m over k.',
+  /* 33.66–41.00 */ 'Stiffer spring, quicker beat; heavier mass, slower beat — and gravity never enters the formula.',
 ];
+
+// Single continuous narration track — one ElevenLabs render covering the
+// whole scene. Beat <Sprite start> values below match the audioStart
+// offsets in motion/audio/spring-oscillation/manifest.json so visuals
+// land on the corresponding sentence in the audio.
+const NARRATION_AUDIO = 'audio/spring-oscillation/scene.mp3';
 
 function Scene() {
   return (
@@ -33,23 +39,25 @@ function Scene() {
       title="Hooke's Law: Why a Spring Bobs"
       duration={SCENE_DURATION}
     >
-      <Sprite start={0.2} end={3.5}>
+      <SceneNarration src={NARRATION_AUDIO} />
+
+      <Sprite start={0} end={4.51}>
         <ManimoBubbleIntro />
       </Sprite>
 
-      <Sprite start={3.5} end={9.5}>
+      <Sprite start={4.51} end={14.19}>
         <HookesLaw />
       </Sprite>
 
-      <Sprite start={9.5} end={16.0}>
+      <Sprite start={14.19} end={26.35}>
         <EquationOfMotion />
       </Sprite>
 
-      <Sprite start={16.0} end={21.5}>
+      <Sprite start={26.35} end={33.66}>
         <PeriodFormula />
       </Sprite>
 
-      <Sprite start={21.5} end={SCENE_DURATION}>
+      <Sprite start={33.66} end={SCENE_DURATION}>
         <Takeaway />
       </Sprite>
     </SceneChrome>
@@ -361,7 +369,12 @@ window.sceneNarration = NARRATION;
 // ─── Mount ────────────────────────────────────────────────────────────────
 function App() {
   return (
-    <Stage width={1280} height={720} duration={SCENE_DURATION} background="#0c0a1f">
+    <Stage
+      width={1280} height={720}
+      duration={SCENE_DURATION}
+      background="#0c0a1f"
+      loop={false}
+    >
       <Scene/>
     </Stage>
   );

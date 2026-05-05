@@ -14,7 +14,20 @@ and require your input. Total queue size is kept ≤ 12 items.
 
 ### [AGENT] — safe for the next nightly run
 
-_(empty — append new items as they're discovered)_
+- Migrate `spring-oscillation` from legacy per-beat audio to the new
+  single-track mode: run `npm run audio spring-oscillation -- --force`,
+  paste the printed `<Sprite start>` values into
+  `motion/spring-oscillation.jsx`, replace `<SceneNarration tracks=…/>`
+  with `<SceneNarration src="audio/spring-oscillation/scene.mp3"/>`, and
+  bump `SCENE_DURATION` to the suggested value. Then delete the now-unused
+  per-beat MP3s in `motion/audio/spring-oscillation/`. Cost: ~600 chars.
+- Generate narration for the other three scenes (`rc-circuit`,
+  `moment-of-inertia`, `hoop-disk`) using `npm run audio <scene-id>`
+  (single-track is default). Wire each scene with `<SceneNarration
+  src="..." />` at the top of `<Scene>` and update `<Sprite start>`
+  values from each manifest. Each scene costs ≲ 1 K characters against
+  the 10 K/month free tier. Skip if `ELEVENLABS_API_KEY` is not set in
+  the agent's environment.
 
 ### [HUMAN] — needs your input
 
@@ -29,9 +42,6 @@ _(empty — append new items as they're discovered)_
 
 ## Later — not blocking, in priority order
 
-- **TTS pipeline** — `window.sceneNarration` → audio file via a TTS API
-  (ElevenLabs or browser Web Speech API for prototyping). The narration
-  stubs in each scene make this a one-afternoon task.
 - **KaTeX formula rendering** — Replace Unicode formula strings (`½MR²`)
   with properly typeset math via KaTeX → SVG paths fed into `TraceIn`.
   Necessary for complex multi-line derivations.

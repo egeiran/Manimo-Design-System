@@ -189,6 +189,23 @@ Internally uses a TraceIn so it draws itself in.
 Small cursor dot. Use as a visual counterpart to a TraceIn — interpolate
 its (x, y) along the path so it looks like the tip drew the line.
 
+### `<SceneNarration src tracks volume />`
+Plays narration audio in sync with Stage time. Two modes:
+
+- **Single-track (recommended)** — one continuous MP3 covering the whole
+  scene. Pass `src="audio/<scene-id>/scene.mp3"`. Reads more naturally
+  because the TTS handles inter-sentence pauses itself, and Sprite start
+  times are aligned to audio offsets via `manifest.json`.
+- **Per-beat (legacy)** — one MP3 per beat, switched on each beat
+  boundary. Pass `tracks={[{start, src}, …]}`. Allows partial regeneration
+  but the join points feel choppy.
+
+Generate audio with `npm run audio <scene-id>` (single-track default) or
+`npm run audio <scene-id> -- --legacy` for per-beat. The script prints
+suggested `<Sprite start>` values to paste into the JSX. Browser autoplay
+rules block playback until the user interacts; clicking the PlaybackBar
+play button counts, so audio kicks in the moment they hit play.
+
 ---
 
 ## Color tokens (use these, don't hardcode)

@@ -3,14 +3,14 @@
   "title": "Hooke's Law: Why a Spring Bobs",
   "eyebrow": "Scene 4 · harmonic motion",
   "language": "en",
-  "duration": 26,
+  "duration": 41,
   "topic": "Simple harmonic motion of a spring — Hooke's law F = -kx leads to ω₀ = √(k/m) and period T = 2π√(m/k)",
   "prerequisites": [],
   "beats": [
     {
       "id": "manimoIntro",
-      "start": 0.2,
-      "end": 3.5,
+      "start": 0,
+      "end": 4.51,
       "narration": "Pull a mass on a spring, let go — what does it do, and how fast?",
       "visuals": {
         "layout": "center",
@@ -22,8 +22,8 @@
     },
     {
       "id": "hookesLaw",
-      "start": 3.5,
-      "end": 9.5,
+      "start": 4.51,
+      "end": 14.19,
       "narration": "Stretch it by x and the spring pulls back with a force F equal to minus k times x — proportional to displacement, opposite in direction.",
       "visuals": {
         "layout": "center",
@@ -41,9 +41,9 @@
     },
     {
       "id": "equationOfMotion",
-      "start": 9.5,
-      "end": 16.0,
-      "narration": "Newton says ma = F. Combine with Hooke's law and the natural frequency falls out: omega-zero equals the square root of k over m.",
+      "start": 14.19,
+      "end": 26.35,
+      "narration": "Newton's second law says force equals mass times acceleration. Combine that with Hooke's law and the natural frequency drops out: omega zero equals the square root of k over m.",
       "visuals": {
         "layout": "center",
         "elements": [
@@ -57,9 +57,9 @@
     },
     {
       "id": "period",
-      "start": 16.0,
-      "end": 21.5,
-      "narration": "Period is two pi over omega-zero — so T equals two pi times the square root of m over k.",
+      "start": 26.35,
+      "end": 33.66,
+      "narration": "The period is two pi over omega zero — so T equals two pi times the square root of m over k.",
       "visuals": {
         "layout": "center",
         "elements": [
@@ -73,8 +73,8 @@
     },
     {
       "id": "takeaway",
-      "start": 21.5,
-      "end": 26.0,
+      "start": 33.66,
+      "end": 41,
       "narration": "Stiffer spring, quicker beat; heavier mass, slower beat — and gravity never enters the formula.",
       "visuals": {
         "layout": "center",
