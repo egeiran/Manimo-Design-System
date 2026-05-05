@@ -9,20 +9,20 @@
   "beats": [
     {
       "id": "manimoIntro",
-      "start": 0.2,
-      "end": 3.2,
+      "start": 0.0,
+      "end": 4.5,
       "narration": "Why does a figure skater spin faster when she pulls her arms in?",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
-          { "type": "text-caption", "content": "Why does a figure skater spin faster when she pulls her arms in?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+          { "type": "manimo-journey", "content": "JourneyManimo: enters centre, holds, glides to bottom-left corner where it stays for the rest of the scene", "delay": 0 },
+          { "type": "text-caption", "content": "Pull arms in — spin faster. Why?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
         ]
       }
     },
     {
       "id": "pointMass",
-      "start": 3.0,
+      "start": 4.5,
       "end": 10.0,
       "narration": "A single mass m at distance r from the rotation axis has moment of inertia I = mr² — the further out, the harder it is to spin.",
       "visuals": {
