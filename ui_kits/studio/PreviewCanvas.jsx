@@ -1,5 +1,7 @@
 // Manimo Studio — Preview canvas
-// 16:9 or 9:16 viewport. Renders the currently-selected scene.
+// Drives the currently-selected scene's iframe via window.__manimoStage,
+// so the studio's transport (play/pause/scrub) is the same playback the
+// scene exposes internally — no fake timers.
 
 function GraphBackground() {
   return (
@@ -14,80 +16,19 @@ function GraphBackground() {
   );
 }
 
-// --- Scene renderers — keyed by scene.kind ---
-
-function SceneOpening({ scene }) {
-  return (
-    <div className="scene scene-opening">
-      <GraphBackground/>
-      <div className="scene-content">
-        <div className="text-eyebrow" style={{ color: 'var(--amber-300)' }}>A question</div>
-        <h2 className="scene-title">{scene.title}</h2>
-        <p className="scene-lede">{scene.lede}</p>
-      </div>
-    </div>
-  );
-}
-
-function SceneFormula({ scene }) {
-  return (
-    <div className="scene scene-formula">
-      <GraphBackground/>
-      <div className="scene-content centered">
-        <div className="formula-stack">
-          <div className="formula-eq">
-            K<sub>rot</sub> <span className="op">=</span> <span className="frac"><span className="num">1</span><span className="den">2</span></span> I&#8239;ω<sup>2</sup>
-          </div>
-          <div className="formula-caption">Rotational kinetic energy</div>
-        </div>
-        <div className="formula-stack" style={{ marginTop: 36 }}>
-          <div className="formula-eq small">
-            I <span className="op">=</span> <span className="integral">∫</span> r² dm
-          </div>
-          <div className="formula-caption">Moment of inertia</div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function SceneComparison({ scene }) {
-  // Side-by-side: hoop vs disk rolling down a ramp
-  return (
-    <div className="scene scene-comparison">
-      <GraphBackground/>
-      <div className="scene-content compare-grid">
-        <div className="compare-col">
-          <div className="ramp-stage">
-            <svg viewBox="0 0 200 140" width="100%" height="100%">
-              <line x1="20" y1="120" x2="180" y2="40" stroke="rgba(232,220,193,0.5)" strokeWidth="2"/>
-              <line x1="20" y1="120" x2="180" y2="120" stroke="rgba(232,220,193,0.3)" strokeWidth="1" strokeDasharray="3 3"/>
-              <circle cx="80" cy="93" r="14" fill="none" stroke="var(--amber-400)" strokeWidth="2.5"/>
-            </svg>
-          </div>
-          <div className="compare-label">Hoop</div>
-          <div className="compare-formula">I = m r²</div>
-        </div>
-        <div className="compare-col">
-          <div className="ramp-stage">
-            <svg viewBox="0 0 200 140" width="100%" height="100%">
-              <line x1="20" y1="120" x2="180" y2="40" stroke="rgba(232,220,193,0.5)" strokeWidth="2"/>
-              <line x1="20" y1="120" x2="180" y2="120" stroke="rgba(232,220,193,0.3)" strokeWidth="1" strokeDasharray="3 3"/>
-              <circle cx="105" cy="80" r="14" fill="rgba(232,122,144,0.25)" stroke="var(--rose-400)" strokeWidth="2.5"/>
-            </svg>
-          </div>
-          <div className="compare-label">Solid disk</div>
-          <div className="compare-formula">I = ½ m r²</div>
-        </div>
-      </div>
-    </div>
-  );
+function fmtTime(s) {
+  const total = Math.max(0, s | 0);
+  const m = Math.floor(total / 60);
+  const sec = total % 60;
+  return `${m}:${String(sec).padStart(2, '0')}`;
 }
 
 // Live scene — loads a real motion/<scene>.html via iframe and scales it
-// to fit the preview frame. The Stage is intrinsically 1280×720 inside the
-// iframe; we use a CSS transform to fit it to the available width.
-function SceneLive({ scene }) {
+// to fit the preview frame. The Stage is intrinsically 1280×720 inside
+// the iframe; we use a CSS transform to fit it to the available width.
+// Uses forwardRef so the parent can grab the iframe element to talk to
+// the inner Stage via window.__manimoStage.
+const SceneLive = React.forwardRef(function SceneLive({ scene, onLoad }, iframeRef) {
   const wrapperRef = React.useRef(null);
   const [scale, setScale] = React.useState(1);
 
@@ -97,7 +38,6 @@ function SceneLive({ scene }) {
     const update = () => {
       const w = el.clientWidth;
       const h = el.clientHeight;
-      // Fit-to-contain: pick the smaller of width-fit and height-fit
       setScale(Math.min(w / 1280, h / 720));
     };
     update();
@@ -112,10 +52,12 @@ function SceneLive({ scene }) {
                   display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <iframe
         key={scene.html}
+        ref={iframeRef}
         src={scene.html}
         width={1280}
         height={720}
         title={scene.cardTitle || scene.id}
+        onLoad={onLoad}
         style={{
           border: 0,
           background: 'var(--bg-canvas)',
@@ -126,64 +68,186 @@ function SceneLive({ scene }) {
       />
     </div>
   );
-}
+});
 
-function SceneRecap({ scene }) {
+// Empty placeholder for scenes with no html yet (e.g. an "Add scene" stub).
+function ScenePlaceholder({ scene }) {
   return (
-    <div className="scene scene-recap">
+    <div className="scene scene-placeholder">
       <GraphBackground/>
-      <div className="scene-content">
-        <div className="text-eyebrow" style={{ color: 'var(--rose-300)' }}>To remember</div>
-        <ul className="recap-list">
-          <li><span className="dot dot-amber"/>The hoop carries more of its mass far from the axis.</li>
-          <li><span className="dot dot-rose"/>So more of its potential energy goes into <em>rotation</em>, not motion.</li>
-          <li><span className="dot dot-teal"/>Same height, same mass — different finish line.</li>
-        </ul>
+      <div className="scene-content centered">
+        <div className="text-eyebrow" style={{ color: 'var(--fg-3)' }}>Empty scene</div>
+        <h2 className="scene-title" style={{ fontSize: 'clamp(20px, 2.4vw, 32px)' }}>
+          {scene.cardTitle || 'New scene'}
+        </h2>
+        <p className="scene-lede">Describe this scene in chat to have Manimo author it.</p>
       </div>
     </div>
   );
 }
 
-const sceneRenderers = {
-  opening: SceneOpening,
-  formula: SceneFormula,
-  comparison: SceneComparison,
-  recap: SceneRecap,
-  live: SceneLive,
-};
+function PreviewCanvas({ aspect, scenes, sceneIndex, onSelectScene }) {
+  const scene = scenes[sceneIndex];
+  const sceneCount = scenes.length;
+  const iframeRef = React.useRef(null);
+  const [stage, setStage] = React.useState(null);          // iframe's __manimoStage
+  const [playing, setPlaying] = React.useState(false);
+  const [time, setTime] = React.useState(0);
+  const [duration, setDuration] = React.useState(scene?.duration || 0);
 
-function PreviewCanvas({ aspect, scene, sceneIndex, sceneCount, isPlaying, setPlaying, progress }) {
-  const Renderer = sceneRenderers[scene.kind] || SceneOpening;
+  // Total lesson duration + cumulative offsets (seconds).
+  const { total, offsets } = React.useMemo(() => {
+    let acc = 0;
+    const offs = scenes.map(s => { const o = acc; acc += s.duration || 0; return o; });
+    return { total: acc, offsets: offs };
+  }, [scenes]);
+
+  const currentOffset = offsets[sceneIndex] || 0;
+  const globalTime = currentOffset + Math.min(time, scene?.duration || 0);
+
+  // When the iframe loads, attach to its Stage handle. Reset to t=0 (Stage's
+  // localStorage time-persistence is great for solo scene authoring, but
+  // confusing in studio playback). Subscribe for tick updates.
+  const handleIframeLoad = React.useCallback(() => {
+    const win = iframeRef.current && iframeRef.current.contentWindow;
+    if (!win) return;
+    // Stage mounts asynchronously; poll briefly until __manimoStage exists.
+    let cancelled = false;
+    const start = performance.now();
+    const tryAttach = () => {
+      if (cancelled) return;
+      const s = win.__manimoStage;
+      if (!s) {
+        if (performance.now() - start < 4000) requestAnimationFrame(tryAttach);
+        return;
+      }
+      try { s.setTime(0); } catch {}
+      try { s.setPlaying(playing); } catch {}
+      setStage(s);
+      setDuration(s.duration || scene?.duration || 0);
+      const unsub = s.subscribe(({ time: t, playing: p, duration: d }) => {
+        setTime(t);
+        setPlaying(p);
+        if (d && d !== duration) setDuration(d);
+      });
+      // Stash for cleanup on next load
+      iframeRef.current.__unsub = unsub;
+    };
+    requestAnimationFrame(tryAttach);
+  }, [playing, scene && scene.html]);
+
+  // Cleanup subscription when iframe element is replaced (scene change).
+  React.useEffect(() => {
+    return () => {
+      const fr = iframeRef.current;
+      if (fr && typeof fr.__unsub === 'function') {
+        try { fr.__unsub(); } catch {}
+        fr.__unsub = null;
+      }
+      setStage(null);
+    };
+  }, [scene && scene.html]);
+
+  // Auto-advance: when time crosses duration on the last tick of a playing
+  // scene, jump to the next scene (or stop on the final).
+  const lastTimeRef = React.useRef(0);
+  React.useEffect(() => {
+    const prev = lastTimeRef.current;
+    lastTimeRef.current = time;
+    if (!playing) return;
+    // Stage loops by default — detect wrap (time jumped backwards) or
+    // the rare exact-end stop. Either way, advance.
+    const wrapped = prev > duration - 0.6 && time < 0.4;
+    if (wrapped) {
+      if (sceneIndex + 1 < sceneCount) {
+        onSelectScene(sceneIndex + 1);
+      } else {
+        // End of lesson — pause at end of last scene.
+        if (stage) try { stage.setPlaying(false); } catch {}
+      }
+    }
+  }, [time, playing, duration, sceneIndex, sceneCount, onSelectScene, stage]);
+
+  const togglePlay = () => {
+    if (!stage) return;
+    const next = !playing;
+    // If we'd press play at the very end, restart the lesson.
+    if (next && sceneIndex === sceneCount - 1 && time >= duration - 0.05) {
+      try { stage.setTime(0); } catch {}
+    }
+    try { stage.setPlaying(next); } catch {}
+  };
+
+  // Global scrub: convert click position → which scene + local time.
+  const seekGlobal = (gt) => {
+    if (total <= 0) return;
+    const clamped = Math.max(0, Math.min(total, gt));
+    let idx = sceneCount - 1;
+    for (let i = 0; i < sceneCount; i++) {
+      const start = offsets[i];
+      const end = start + (scenes[i].duration || 0);
+      if (clamped < end) { idx = i; break; }
+    }
+    const localT = clamped - offsets[idx];
+    if (idx !== sceneIndex) {
+      onSelectScene(idx);
+      // After scene swap, the new iframe's load handler resets to 0; we then
+      // need to re-seek. Defer until the new stage is attached.
+      pendingSeekRef.current = localT;
+    } else if (stage) {
+      try { stage.setTime(localT); } catch {}
+    }
+  };
+
+  const pendingSeekRef = React.useRef(null);
+  React.useEffect(() => {
+    if (stage && pendingSeekRef.current != null) {
+      try { stage.setTime(pendingSeekRef.current); } catch {}
+      pendingSeekRef.current = null;
+    }
+  }, [stage]);
+
+  const trackRef = React.useRef(null);
+  const onTrackClick = (e) => {
+    const r = trackRef.current.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    seekGlobal(Math.max(0, Math.min(1, x)) * total);
+  };
+
+  const progressPct = total > 0 ? (globalTime / total) * 100 : 0;
+
   return (
     <main className="preview-area">
       <div className={`preview-frame aspect-${aspect.replace(':', '-')}`}>
         <div className="preview-stage">
-          <Renderer scene={scene}/>
+          {scene && scene.html
+            ? <SceneLive ref={iframeRef} scene={scene} onLoad={handleIframeLoad}/>
+            : <ScenePlaceholder scene={scene || {}}/>}
         </div>
         <div className="preview-watermark">
           <img src="../../assets/manimo-mark.svg" alt=""/>
         </div>
       </div>
       <div className="transport">
-        <button className="transport-btn" onClick={() => setPlaying(!isPlaying)} aria-label={isPlaying ? 'Pause' : 'Play'}>
-          {isPlaying
+        <button className="transport-btn" onClick={togglePlay} disabled={!stage}
+                aria-label={playing ? 'Pause' : 'Play'}>
+          {playing
             ? <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
             : <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>}
         </button>
-        <div className="scrub">
+        <div className="scrub" ref={trackRef} onClick={onTrackClick}>
           <div className="scrub-track">
-            <div className="scrub-fill" style={{ width: `${progress * 100}%` }}/>
-            <div className="scrub-thumb" style={{ left: `${progress * 100}%` }}/>
-            {/* scene tick marks */}
-            {Array.from({ length: sceneCount - 1 }).map((_, i) => (
-              <div key={i} className="scrub-tick" style={{ left: `${((i + 1) / sceneCount) * 100}%` }}/>
+            <div className="scrub-fill" style={{ width: `${progressPct}%` }}/>
+            <div className="scrub-thumb" style={{ left: `${progressPct}%` }}/>
+            {scenes.map((s, i) => i === 0 ? null : (
+              <div key={i} className="scrub-tick" style={{ left: `${(offsets[i] / total) * 100}%` }}/>
             ))}
           </div>
         </div>
         <div className="transport-time">
-          <span className="time-cur">0:42</span>
+          <span className="time-cur">{fmtTime(globalTime)}</span>
           <span className="time-sep">/</span>
-          <span className="time-tot">1:42</span>
+          <span className="time-tot">{fmtTime(total)}</span>
         </div>
         <div className="transport-meta">Scene {sceneIndex + 1} of {sceneCount}</div>
       </div>

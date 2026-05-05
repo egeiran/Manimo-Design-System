@@ -2,14 +2,18 @@
 // Ordered list of scenes Manimo composed. Click to select.
 
 function formatTotalDuration(scenes) {
-  // Each scene.duration is a "M:SS" string. Sum and re-format.
-  const totalSec = scenes.reduce((sum, s) => {
-    const [m, sec] = (s.duration || '0:00').split(':').map(Number);
-    return sum + (m * 60 + sec);
-  }, 0);
+  // scene.duration is seconds. Sum and format.
+  const totalSec = scenes.reduce((sum, s) => sum + (s.duration || 0), 0);
   const m = Math.floor(totalSec / 60);
   const sec = totalSec % 60;
   return `${m} min ${String(sec).padStart(2, '0')} sec`;
+}
+
+function formatSceneDuration(s) {
+  const total = Math.max(0, s | 0);
+  const m = Math.floor(total / 60);
+  const sec = total % 60;
+  return `${m}:${String(sec).padStart(2, '0')}`;
 }
 
 function SceneCard({ scene, index, selected, onSelect }) {
@@ -26,7 +30,7 @@ function SceneCard({ scene, index, selected, onSelect }) {
         <div className="scene-card-title">{scene.cardTitle}</div>
         <div className="scene-card-sub">
           <span className={`kind-tag kind-${scene.kind}`}>{scene.kindLabel}</span>
-          <span className="scene-card-dur">{scene.duration}</span>
+          <span className="scene-card-dur">{formatSceneDuration(scene.duration)}</span>
         </div>
       </div>
     </button>
@@ -86,7 +90,7 @@ function SceneThumb({ kind }) {
   return null;
 }
 
-function SceneList({ scenes, selectedIdx, onSelect, onAddScene }) {
+function SceneList({ scenes, selectedIdx, onSelect }) {
   return (
     <aside className="scene-list">
       <div className="scene-list-head">
@@ -94,18 +98,11 @@ function SceneList({ scenes, selectedIdx, onSelect, onAddScene }) {
           <div className="text-eyebrow">Scenes</div>
           <div className="scene-list-count">{scenes.length} · {formatTotalDuration(scenes)}</div>
         </div>
-        <button className="tool-btn" aria-label="Library">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-        </button>
       </div>
       <div className="scene-list-scroll">
         {scenes.map((s, i) => (
           <SceneCard key={s.id} scene={s} index={i} selected={i === selectedIdx} onSelect={onSelect}/>
         ))}
-        <button className="add-scene" onClick={onAddScene}>
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M12 5v14M5 12h14"/></svg>
-          Add scene
-        </button>
       </div>
     </aside>
   );

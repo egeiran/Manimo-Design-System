@@ -163,13 +163,17 @@ function Stage({
 }) {
   // ?freeze=N URL param overrides everything: pin to time N, no autoplay.
   // Used by scripts/snapshot-scene.js for headless screenshots.
+  // ?embed=1 hides the internal playback bar — used when the scene is
+  // rendered inside a host (e.g. Studio) that draws its own transport.
+  const params = (() => { try { return new URLSearchParams(window.location.search); } catch { return new URLSearchParams(); } })();
   const freezeTime = (() => {
-    try {
-      const v = new URLSearchParams(window.location.search).get('freeze');
-      if (v === null) return null;
-      const t = parseFloat(v);
-      return isFinite(t) ? clamp(t, 0, duration) : null;
-    } catch { return null; }
+    const v = params.get('freeze');
+    if (v === null) return null;
+    const t = parseFloat(v);
+    return isFinite(t) ? clamp(t, 0, duration) : null;
+  })();
+  const embedded = params.get('embed') === '1' || (() => {
+    try { return window.parent && window.parent !== window; } catch { return false; }
   })();
 
   const [time, setTime] = React.useState(() => {
@@ -181,12 +185,30 @@ function Stage({
   });
   const [playing, setPlaying] = React.useState(freezeTime != null ? false : autoplay);
 
-  // Expose a global handle for headless drivers (Playwright). This lets the
-  // snapshot script seek to arbitrary timestamps without page reloads.
+  // Expose a global handle for headless drivers (Playwright) and parent shells
+  // (Studio). Exposes setters plus a getter and a tick subscription so a
+  // parent iframe can observe playback without polling React state.
+  const stageHandleRef = React.useRef({ time: 0, playing: false, subs: new Set() });
   React.useEffect(() => {
-    window.__manimoStage = { setTime, setPlaying, duration };
+    const handle = stageHandleRef.current;
+    window.__manimoStage = {
+      setTime, setPlaying, duration,
+      getTime: () => handle.time,
+      isPlaying: () => handle.playing,
+      subscribe: (fn) => { handle.subs.add(fn); return () => handle.subs.delete(fn); },
+    };
     return () => { try { delete window.__manimoStage; } catch {} };
   }, [duration]);
+  React.useEffect(() => {
+    const handle = stageHandleRef.current;
+    handle.time = time;
+    handle.subs.forEach(fn => { try { fn({ time, playing: handle.playing, duration }); } catch {} });
+  }, [time, duration]);
+  React.useEffect(() => {
+    const handle = stageHandleRef.current;
+    handle.playing = playing;
+    handle.subs.forEach(fn => { try { fn({ time: handle.time, playing, duration }); } catch {} });
+  }, [playing, duration]);
   const [hoverTime, setHoverTime] = React.useState(null);
   const [scale, setScale] = React.useState(1);
 
@@ -205,7 +227,7 @@ function Stage({
     if (!stageRef.current) return;
     const el = stageRef.current;
     const measure = () => {
-      const barH = 44; // playback bar height
+      const barH = embedded ? 0 : 44; // playback bar height
       const s = Math.min(
         el.clientWidth / width,
         (el.clientHeight - barH) / height
@@ -313,8 +335,9 @@ function Stage({
         </div>
       </div>
 
-      {/* Playback bar — stacked below canvas, never overlapping */}
-      <PlaybackBar
+      {/* Playback bar — stacked below canvas, never overlapping.
+          Hidden when embedded (host draws its own transport). */}
+      {!embedded && <PlaybackBar
         time={displayTime}
         actualTime={time}
         duration={duration}
@@ -329,7 +352,7 @@ function Stage({
         onReset={() => { setTime(0); }}
         onSeek={(t) => setTime(t)}
         onHover={(t) => setHoverTime(t)}
-      />
+      />}
     </div>
   );
 }
