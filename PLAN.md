@@ -14,7 +14,15 @@ and require your input. Total queue size is kept ≤ 12 items.
 
 ### [AGENT] — safe for the next nightly run
 
-_(empty — append new items as they're discovered)_
+- **Re-run `npm run audio centripetal-acceleration`** once
+  `ELEVENLABS_API_KEY` can reach the API. Tonight the host was off the
+  sandbox allowlist, so the script fell back to estimated 14 chars/sec
+  timings (no `scene.mp3`, manifest is `mode: fallback-estimated`).
+  Re-running with a working key writes the real MP3 + audio-aligned
+  offsets — then re-apply the printed wire-up to `.jsx`, `.spec.json`,
+  `scene-manifest.json`, and `ui_kits/studio/app.jsx`. (Same applies to
+  `rc-circuit` and `moment-of-inertia` if/once the rename TODO below
+  lands — those two still have no audio at all.)
 
 ### [HUMAN] — needs your input
 
@@ -45,11 +53,25 @@ _(empty — append new items as they're discovered)_
   the `<script src>` in each HTML, `motion/scene-manifest.json` (file/html/spec
   fields), and the studio `app.jsx` `initialScenes` `html` paths.
 
-- **Next topic after Pendulum.** Adjacent picks: §2.3 Dreiemoment
-  (torque, τ = r×F — needed before §2.4 spinn), §2.6 Sentripetalakselerasjon
-  (a = v²/r), §4.1 Coulombs lov (F = kq₁q₂/r², the electromagnetism
-  opener), §3.4 Demping (damped oscillator, builds directly on spring
-  + pendulum). Reply in chat with a pick or say "agent's choice".
+- **Visual review of `centripetal-acceleration`.** Snapshot tool was
+  unavailable in the sandbox again (chromium download blocked, same
+  failure mode as Pendulum night), so the new scene shipped without a
+  visual pass. Open `motion/centripetal-acceleration.html` and check:
+  (a) at the rightmost orbit position in beat 2 the velocity arrow
+  doesn't run off the 1280-wide canvas, (b) in beat 3 the inward `aᶜ`
+  arrow reads cleanly against the bright amber ball (the tangent rose
+  is intentionally dimmed at 0.7 — confirm the contrast still reads
+  pedagogically), (c) in beat 4 the three-formula chain doesn't wrap
+  on narrower aspect ratios when the studio kit shrinks the preview.
+  The `c` subscript is rendered via `<sub>` (HTML) and `<tspan dy>`
+  (SVG), so no Unicode-glyph fallback risk.
+
+- **Next topic after Centripetal acceleration.** Remaining adjacent
+  picks: §2.3 Dreiemoment (torque, τ = r×F — needed before §2.4 spinn),
+  §4.1 Coulombs lov (F = kq₁q₂/r², the electromagnetism opener), §3.4
+  Demping (damped oscillator, builds directly on spring + pendulum),
+  §4.6.6 LC-krets (an oscillating circuit, mirrors the spring scene with
+  current ↔ velocity). Reply in chat with a pick or say "agent's choice".
 
 ---
 

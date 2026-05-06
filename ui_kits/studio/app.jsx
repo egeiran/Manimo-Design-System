@@ -42,6 +42,7 @@ const initialScenes = [
   { id: 'live-spring',       kind: 'live', kindLabel: 'Live', cardTitle: "Hooke's Law: Spring Bobs",  duration: 41, html: '../../motion/spring-oscillation.html' },
   { id: 'live-pendulum',     kind: 'live', kindLabel: 'Live', cardTitle: 'The Simple Pendulum',       duration: 50, html: '../../motion/pendulum.html' },
   { id: 'live-rlc-pendulum', kind: 'live', kindLabel: 'Live', cardTitle: 'RLC ↔ Pendulum Analogy',    duration: 48, html: '../../motion/rlc-pendulum.html' },
+  { id: 'live-centripetal',  kind: 'live', kindLabel: 'Live', cardTitle: 'Centripetal Acceleration',  duration: 45, html: '../../motion/centripetal-acceleration.html' },
 ];
 
 function loadJSON(key, fallback) {

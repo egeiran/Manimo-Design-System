@@ -78,6 +78,19 @@
       "language": "en",
       "prerequisites": ["spring-oscillation", "pendulum", "rc-circuit"],
       "concepts": ["analogy", "second-order ODE", "RLC circuit", "damped oscillation", "natural frequency", "energy exchange"]
+    },
+    {
+      "id": "centripetal-acceleration",
+      "file": "centripetal-acceleration.jsx",
+      "html": "centripetal-acceleration.html",
+      "spec": "centripetal-acceleration.spec.json",
+      "title": "Centripetal Acceleration: Steering, Not Speeding",
+      "eyebrow": "Scene 7 · circular motion",
+      "topic": "Centripetal acceleration — uniform circular motion gives a = v²/r = rω², always pointing toward the centre",
+      "duration": 45,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": ["centripetal acceleration", "uniform circular motion", "angular velocity", "radial acceleration", "no work done"]
     }
   ]
 }
