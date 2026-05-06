@@ -1,10 +1,15 @@
 # Snapshot output (regenerated per run, not source of truth)
 .tmp/
 
-# Snapshot temp HTML — written by scripts/snapshot-scene.js when motion/vendor/
-# is populated; rewrites unpkg <script> tags to local paths. Deleted on exit
-# but pattern guards against orphaned files from interrupted runs.
+# Rendered videos (regenerated per run, not source of truth)
+renders/
+
+# Snapshot / render temp HTML — written by scripts/snapshot-scene.js and
+# scripts/render-scene.js when motion/vendor/ is populated; rewrites unpkg
+# <script> tags to local paths. Deleted on exit but pattern guards against
+# orphaned files from interrupted runs.
 motion/.*.snapshot.html
+motion/.*.render.html
 
 # Node
 node_modules/
