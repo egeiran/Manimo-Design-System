@@ -210,7 +210,7 @@ function CentripetalReveal() {
       transform: 'translate(-50%, -50%)',
       display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18,
     }}>
-      <svg width={720} height={280} viewBox="0 0 880 280" style={{ overflow: 'visible' }}>
+      <svg width={720} height={229} viewBox="0 0 880 280" style={{ overflow: 'visible' }}>
         {/* Dashed orbit + centre dot */}
         <SvgFadeIn duration={0.4} delay={0.0}>
           <circle cx={cx} cy={cy} r={R}
