@@ -91,6 +91,19 @@
       "language": "en",
       "prerequisites": [],
       "concepts": ["centripetal acceleration", "uniform circular motion", "angular velocity", "radial acceleration", "no work done"]
+    },
+    {
+      "id": "steiners-theorem",
+      "file": "steiners-theorem.jsx",
+      "html": "steiners-theorem.html",
+      "spec": "steiners-theorem.spec.json",
+      "title": "Steiner's Theorem: The Cost of an Off-Centre Axis",
+      "eyebrow": "Scene 8 · rotational mechanics",
+      "topic": "Parallel-axis (Steiner's) theorem — I = I_cm + Md², the moment of inertia about any axis equals the inertia about a parallel axis through the centre of mass plus M times the squared offset",
+      "duration": 54.85,
+      "language": "en",
+      "prerequisites": ["moment-of-inertia"],
+      "concepts": ["parallel axis theorem", "Steiner's theorem", "moment of inertia", "centre of mass", "rigid body rotation"]
     }
   ]
 }

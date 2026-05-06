@@ -1,0 +1,35 @@
+{
+  "sceneId": "steiners-theorem",
+  "mode": "single-track",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/steiners-theorem/scene.mp3",
+  "durationSec": 54.85,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "We know a disk's moment of inertia is one half M R squared, about its centre. But what if you spin it about a different axis?"
+    },
+    {
+      "id": "twoAxes",
+      "audioStart": 8.09,
+      "narration": "Take the same disk with two parallel axes — one through the centre of mass, and one offset by a distance d. Spinning about the offset axis is always harder. But how much harder?"
+    },
+    {
+      "id": "theoremReveal",
+      "audioStart": 20.09,
+      "narration": "Steiner's theorem says the total inertia equals I about the centre of mass, plus M times d squared. The first term is the body still spinning about its own centre. The second term is the centre itself swinging in a circle of radius d."
+    },
+    {
+      "id": "rimExample",
+      "audioStart": 34.71,
+      "narration": "Take a disk spun about its rim, where d equals R. Then I equals one half M R squared, plus M R squared, giving three halves M R squared — three times the inertia of spinning about the centre."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 48.09,
+      "narration": "The centre of mass always gives the smallest moment of inertia. Move the axis away, and spinning only gets harder."
+    }
+  ]
+}

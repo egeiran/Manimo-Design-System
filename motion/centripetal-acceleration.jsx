@@ -45,7 +45,7 @@ function Sub({ children }) {
 function Scene() {
   return (
     <SceneChrome
-      eyebrow="Scene 6 · circular motion"
+      eyebrow="Scene 7 · circular motion"
       title="Centripetal Acceleration: Steering, Not Speeding"
       duration={SCENE_DURATION}
     >
@@ -74,19 +74,29 @@ function Scene() {
 
 // ─── Beat 1: Manimo intro ─────────────────────────────────────────────────
 function ManimoBubbleIntro() {
+  const portrait = usePortrait();
   return (
     <div style={{
-      position: 'absolute', left: '50%', top: '42%',
+      position: 'absolute', left: '50%', top: portrait ? '46%' : '42%',
       transform: 'translate(-50%, -50%)',
-      display: 'flex', alignItems: 'center', gap: 20,
+      display: 'flex',
+      flexDirection: portrait ? 'column' : 'row',
+      alignItems: 'center',
+      gap: portrait ? 28 : 20,
     }}>
-      <svg width={160} height={160} viewBox="0 0 200 200" style={{ overflow: 'visible' }}>
+      <svg width={portrait ? 200 : 160} height={portrait ? 200 : 160}
+           viewBox="0 0 200 200" style={{ overflow: 'visible' }}>
         <ManimoEnter duration={0.7} bob={true} />
       </svg>
       <FadeUp duration={0.5} delay={0.7} distance={8}
         style={{
-          fontFamily: 'var(--font-serif)', fontSize: 26, fontStyle: 'italic',
-          color: 'var(--chalk-100)', maxWidth: '34ch',
+          fontFamily: 'var(--font-serif)',
+          fontSize: portrait ? 26 : 26,
+          fontStyle: 'italic',
+          color: 'var(--chalk-100)',
+          maxWidth: portrait ? '20ch' : '34ch',
+          textAlign: portrait ? 'center' : 'left',
+          lineHeight: 1.3,
         }}>
         Constant speed, curved path — yet it's accelerating.
       </FadeUp>
@@ -95,53 +105,57 @@ function ManimoBubbleIntro() {
 }
 
 // ─── Beat 2: Uniform circular motion + tangent velocity ───────────────────
-// Geometry (in 880×420 viewBox):
-//   Centre at (440, 200). Radius R = 130.
-//   Ball radius 14, orbiting once per 4 seconds.
-//   Velocity arrow length 70, tangent to circle at the ball.
+// Landscape geometry: 880×420 viewBox, centre (440,200), R=130.
+// Portrait geometry: tighter horizontal extent, taller vertical room — the
+// circle sits in the upper third with the caption below; viewBox is 660×680.
 function CircularMotion() {
-  const cx = 440, cy = 200, R = 130;
-  const ballR = 14;
+  const portrait = usePortrait();
+  const G = portrait
+    ? { vbW: 660, vbH: 680, cx: 330, cy: 280, R: 200, ballR: 16, V_LEN: 90,
+        labelFont: 12, vFont: 26, captionY: 620, captionFont: 18,
+        captionText: 'same speed — but the velocity vector keeps turning' }
+    : { vbW: 880, vbH: 420, cx: 440, cy: 200, R: 130, ballR: 14, V_LEN: 70,
+        labelFont: 11, vFont: 22, captionY: 400, captionFont: 14,
+        captionText: 'same speed — but the velocity vector keeps turning' };
   const PERIOD = 4;          // seconds per revolution
-  const V_LEN = 70;          // velocity arrow length
 
   const { localTime } = useSprite();
   const angle = -Math.PI / 2 + (2 * Math.PI * localTime) / PERIOD;
   const ca = Math.cos(angle), sa = Math.sin(angle);
-  const ballX = cx + R * ca;
-  const ballY = cy + R * sa;
+  const ballX = G.cx + G.R * ca;
+  const ballY = G.cy + G.R * sa;
   // Tangent direction (counterclockwise sense for SVG y-down: as angle
   // increases, position sweeps clockwise on screen, so tangent = (-sin, cos))
   const tDx = -sa, tDy = ca;
-  const vStartX = ballX + ballR * tDx;
-  const vStartY = ballY + ballR * tDy;
-  const vEndX = vStartX + V_LEN * tDx;
-  const vEndY = vStartY + V_LEN * tDy;
+  const vStartX = ballX + G.ballR * tDx;
+  const vStartY = ballY + G.ballR * tDy;
+  const vEndX = vStartX + G.V_LEN * tDx;
+  const vEndY = vStartY + G.V_LEN * tDy;
 
   return (
     <div style={{
-      position: 'absolute', left: '50%', top: '54%',
+      position: 'absolute', left: '50%', top: portrait ? '50%' : '54%',
       transform: 'translate(-50%, -50%)',
     }}>
-      <svg width={880} height={420} viewBox="0 0 880 420" style={{ overflow: 'visible' }}>
+      <svg width={G.vbW} height={G.vbH} viewBox={`0 0 ${G.vbW} ${G.vbH}`} style={{ overflow: 'visible' }}>
         {/* Dashed orbit circle */}
         <SvgFadeIn duration={0.5} delay={0.0}>
-          <circle cx={cx} cy={cy} r={R}
+          <circle cx={G.cx} cy={G.cy} r={G.R}
                   fill="none" stroke="var(--chalk-300)" strokeWidth={1.5}
                   strokeDasharray="5 5"/>
         </SvgFadeIn>
 
         {/* Centre dot */}
         <SvgFadeIn duration={0.4} delay={0.4}>
-          <circle cx={cx} cy={cy} r={3} fill="var(--chalk-300)"/>
-          <text x={cx + 8} y={cy + 4}
+          <circle cx={G.cx} cy={G.cy} r={3} fill="var(--chalk-300)"/>
+          <text x={G.cx + 8} y={G.cy + 4}
                 fill="var(--chalk-300)" fontFamily="var(--font-mono)"
-                fontSize="11" letterSpacing="0.12em">CENTRE</text>
+                fontSize={G.labelFont} letterSpacing="0.12em">CENTRE</text>
         </SvgFadeIn>
 
         {/* Orbiting ball */}
         <SvgFadeIn duration={0.4} delay={0.8}>
-          <circle cx={ballX} cy={ballY} r={ballR}
+          <circle cx={ballX} cy={ballY} r={G.ballR}
                   fill="var(--amber-400)" opacity={0.95}
                   stroke="var(--amber-300)" strokeWidth={1.5}/>
         </SvgFadeIn>
@@ -161,15 +175,15 @@ function CircularMotion() {
         <SvgFadeIn duration={0.4} delay={1.6}>
           <text x={vEndX + 6 * tDx + 6 * tDy} y={vEndY + 6 * tDy - 6 * tDx + 6}
                 fill="var(--rose-300)" fontFamily="var(--font-serif)"
-                fontStyle="italic" fontSize="22">v</text>
+                fontStyle="italic" fontSize={G.vFont}>v</text>
         </SvgFadeIn>
 
         {/* Caption beneath the diagram */}
         <SvgFadeIn duration={0.4} delay={6.0}>
-          <text x={440} y={400} textAnchor="middle"
+          <text x={G.vbW / 2} y={G.captionY} textAnchor="middle"
                 fill="var(--chalk-300)" fontFamily="var(--font-sans)"
-                fontSize="14" letterSpacing="0.02em">
-            same speed — but the velocity vector keeps turning
+                fontSize={G.captionFont} letterSpacing="0.02em">
+            {G.captionText}
           </text>
         </SvgFadeIn>
       </svg>
@@ -178,50 +192,55 @@ function CircularMotion() {
 }
 
 // ─── Beat 3: Inward acceleration + formula reveal ─────────────────────────
-// Smaller orbit (R=92) sits in the upper portion; the formula a_c = v²/r is
-// revealed as a large amber payoff below.
+// Smaller orbit sits in the upper portion; the formula a_c = v²/r is
+// revealed as a large amber payoff below. Portrait pulls the orbit a touch
+// tighter and shrinks the formula so it fits the 720-wide canvas.
 function CentripetalReveal() {
-  const cx = 440, cy = 130, R = 92;
-  const ballR = 12;
+  const portrait = usePortrait();
+  const G = portrait
+    ? { vbW: 660, vbH: 320, svgW: 600, svgH: 291,
+        cx: 330, cy: 150, R: 110, ballR: 13, V_LEN: 64, A_LEN: 58,
+        formulaSize: 46, captionSize: 13, gap: 14 }
+    : { vbW: 880, vbH: 280, svgW: 720, svgH: 229,
+        cx: 440, cy: 130, R: 92, ballR: 12, V_LEN: 56, A_LEN: 50,
+        formulaSize: 54, captionSize: 14, gap: 18 };
   const PERIOD = 4;
-  const V_LEN = 56;
-  const A_LEN = 50;          // inward acceleration arrow length
 
   const { localTime } = useSprite();
   const angle = -Math.PI / 2 + (2 * Math.PI * localTime) / PERIOD;
   const ca = Math.cos(angle), sa = Math.sin(angle);
-  const ballX = cx + R * ca;
-  const ballY = cy + R * sa;
+  const ballX = G.cx + G.R * ca;
+  const ballY = G.cy + G.R * sa;
   const tDx = -sa, tDy = ca;
-  const vStartX = ballX + ballR * tDx;
-  const vStartY = ballY + ballR * tDy;
-  const vEndX = vStartX + V_LEN * tDx;
-  const vEndY = vStartY + V_LEN * tDy;
+  const vStartX = ballX + G.ballR * tDx;
+  const vStartY = ballY + G.ballR * tDy;
+  const vEndX = vStartX + G.V_LEN * tDx;
+  const vEndY = vStartY + G.V_LEN * tDy;
   // Inward unit direction (from ball toward centre)
   const aDx = -ca, aDy = -sa;
-  const aStartX = ballX + ballR * aDx;
-  const aStartY = ballY + ballR * aDy;
-  const aEndX = aStartX + A_LEN * aDx;
-  const aEndY = aStartY + A_LEN * aDy;
+  const aStartX = ballX + G.ballR * aDx;
+  const aStartY = ballY + G.ballR * aDy;
+  const aEndX = aStartX + G.A_LEN * aDx;
+  const aEndY = aStartY + G.A_LEN * aDy;
 
   return (
     <div style={{
       position: 'absolute', left: '50%', top: '50%',
       transform: 'translate(-50%, -50%)',
-      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18,
+      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: G.gap,
     }}>
-      <svg width={720} height={229} viewBox="0 0 880 280" style={{ overflow: 'visible' }}>
+      <svg width={G.svgW} height={G.svgH} viewBox={`0 0 ${G.vbW} ${G.vbH}`} style={{ overflow: 'visible' }}>
         {/* Dashed orbit + centre dot */}
         <SvgFadeIn duration={0.4} delay={0.0}>
-          <circle cx={cx} cy={cy} r={R}
+          <circle cx={G.cx} cy={G.cy} r={G.R}
                   fill="none" stroke="var(--chalk-300)" strokeWidth={1.5}
                   strokeDasharray="5 5"/>
-          <circle cx={cx} cy={cy} r={3} fill="var(--chalk-300)"/>
+          <circle cx={G.cx} cy={G.cy} r={3} fill="var(--chalk-300)"/>
         </SvgFadeIn>
 
         {/* Orbiting ball */}
         <SvgFadeIn duration={0.4} delay={0.0}>
-          <circle cx={ballX} cy={ballY} r={ballR}
+          <circle cx={ballX} cy={ballY} r={G.ballR}
                   fill="var(--amber-400)" opacity={0.95}
                   stroke="var(--amber-300)" strokeWidth={1.5}/>
         </SvgFadeIn>
@@ -263,7 +282,7 @@ function CentripetalReveal() {
       <FadeUp duration={0.6} delay={3.0} distance={14}
         style={{
           fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-          fontSize: 54, color: 'var(--amber-300)', letterSpacing: '0.02em',
+          fontSize: G.formulaSize, color: 'var(--amber-300)', letterSpacing: '0.02em',
           marginTop: 4,
         }}>
         a<Sub>c</Sub> = v²/r
@@ -271,8 +290,9 @@ function CentripetalReveal() {
 
       <FadeUp duration={0.5} delay={4.6} distance={10}
         style={{
-          fontFamily: 'var(--font-sans)', fontSize: 14,
+          fontFamily: 'var(--font-sans)', fontSize: G.captionSize,
           color: 'var(--chalk-300)', letterSpacing: '0.02em',
+          maxWidth: portrait ? '24ch' : 'none', textAlign: 'center',
         }}>
         always inward — toward the centre of the curve
       </FadeUp>
@@ -281,10 +301,13 @@ function CentripetalReveal() {
 }
 
 // ─── Beat 4: Angular form ─────────────────────────────────────────────────
+// Landscape: chain on a single row (v=rω + a_c=v²/r ⇒ a_c=rω²).
+// Portrait: stack each step on its own line so 720-wide canvas isn't crowded.
 function AngularForm() {
+  const portrait = usePortrait();
   const stepStyle = {
     fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-    fontSize: 32, letterSpacing: '0.02em',
+    fontSize: portrait ? 30 : 32, letterSpacing: '0.02em',
   };
   const arrowStyle = {
     fontFamily: 'var(--font-mono)', fontSize: 18,
@@ -294,7 +317,8 @@ function AngularForm() {
     <div style={{
       position: 'absolute', left: '50%', top: '50%',
       transform: 'translate(-50%, -50%)',
-      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28,
+      display: 'flex', flexDirection: 'column', alignItems: 'center',
+      gap: portrait ? 22 : 28,
     }}>
       <FadeUp duration={0.4} delay={0} distance={8}
         style={{
@@ -305,30 +329,53 @@ function AngularForm() {
         substitute v = rω
       </FadeUp>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
-        <FadeUp duration={0.5} delay={0.3} distance={10}
-          style={{ ...stepStyle, color: 'var(--chalk-200)' }}>
-          v = rω
-        </FadeUp>
-        <FadeUp duration={0.4} delay={0.8} distance={6} style={arrowStyle}>
-          +
-        </FadeUp>
-        <FadeUp duration={0.5} delay={1.0} distance={10}
-          style={{ ...stepStyle, color: 'var(--chalk-200)' }}>
-          a<Sub>c</Sub> = v²/r
-        </FadeUp>
-        <FadeUp duration={0.4} delay={1.7} distance={6} style={arrowStyle}>
-          ⇒
-        </FadeUp>
-        <FadeUp duration={0.6} delay={2.0} distance={12}
-          style={{ ...stepStyle, color: 'var(--amber-300)', fontSize: 38 }}>
-          a<Sub>c</Sub> = rω²
-        </FadeUp>
-      </div>
+      {portrait ? (
+        // Stacked chain in portrait — each row centred.
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
+          <FadeUp duration={0.5} delay={0.3} distance={10}
+            style={{ ...stepStyle, color: 'var(--chalk-200)' }}>
+            v = rω
+          </FadeUp>
+          <FadeUp duration={0.5} delay={1.0} distance={10}
+            style={{ ...stepStyle, color: 'var(--chalk-200)' }}>
+            a<Sub>c</Sub> = v²/r
+          </FadeUp>
+          <FadeUp duration={0.4} delay={1.7} distance={6}
+            style={{ fontFamily: 'var(--font-mono)', fontSize: 18, color: 'var(--chalk-300)' }}>
+            ⇓
+          </FadeUp>
+          <FadeUp duration={0.6} delay={2.0} distance={12}
+            style={{ ...stepStyle, color: 'var(--amber-300)', fontSize: 38 }}>
+            a<Sub>c</Sub> = rω²
+          </FadeUp>
+        </div>
+      ) : (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
+          <FadeUp duration={0.5} delay={0.3} distance={10}
+            style={{ ...stepStyle, color: 'var(--chalk-200)' }}>
+            v = rω
+          </FadeUp>
+          <FadeUp duration={0.4} delay={0.8} distance={6} style={arrowStyle}>
+            +
+          </FadeUp>
+          <FadeUp duration={0.5} delay={1.0} distance={10}
+            style={{ ...stepStyle, color: 'var(--chalk-200)' }}>
+            a<Sub>c</Sub> = v²/r
+          </FadeUp>
+          <FadeUp duration={0.4} delay={1.7} distance={6} style={arrowStyle}>
+            ⇒
+          </FadeUp>
+          <FadeUp duration={0.6} delay={2.0} distance={12}
+            style={{ ...stepStyle, color: 'var(--amber-300)', fontSize: 38 }}>
+            a<Sub>c</Sub> = rω²
+          </FadeUp>
+        </div>
+      )}
 
       <FadeUp duration={0.5} delay={3.4} distance={10}
         style={{
           fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--chalk-300)',
+          textAlign: 'center', maxWidth: portrait ? '28ch' : 'none',
         }}>
         two ways of saying the same thing
       </FadeUp>
@@ -338,6 +385,7 @@ function AngularForm() {
 
 // ─── Beat 5: Takeaway ─────────────────────────────────────────────────────
 function Takeaway() {
+  const portrait = usePortrait();
   return (
     <div style={{
       position: 'absolute', left: '50%', top: '50%',
@@ -347,16 +395,22 @@ function Takeaway() {
     }}>
       <FadeUp duration={0.6} delay={0.3} distance={12}
         style={{
-          fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 28,
-          color: 'var(--chalk-100)', maxWidth: '46ch',
+          fontFamily: 'var(--font-serif)', fontStyle: 'italic',
+          fontSize: portrait ? 26 : 28,
+          color: 'var(--chalk-100)',
+          maxWidth: portrait ? '20ch' : '46ch',
+          lineHeight: 1.3,
         }}>
         Always perpendicular to v — does no work.
       </FadeUp>
 
       <FadeUp duration={0.5} delay={1.4} distance={10}
         style={{
-          fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 22,
-          color: 'var(--chalk-100)', maxWidth: '46ch',
+          fontFamily: 'var(--font-serif)', fontStyle: 'italic',
+          fontSize: portrait ? 21 : 22,
+          color: 'var(--chalk-100)',
+          maxWidth: portrait ? '22ch' : '46ch',
+          lineHeight: 1.3,
         }}>
         It doesn't speed the ball up — it just steers.
       </FadeUp>
@@ -365,6 +419,7 @@ function Takeaway() {
         style={{
           fontFamily: 'var(--font-mono)', fontSize: 12,
           color: 'var(--chalk-300)', letterSpacing: '0.12em',
+          maxWidth: portrait ? '32ch' : 'none',
         }}>
         (no work, no energy spent — pure direction change)
       </FadeUp>
