@@ -1,0 +1,34 @@
+{
+  "sceneId": "centripetal-acceleration",
+  "mode": "fallback-estimated",
+  "chars": 599,
+  "durationSec": 43.99,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Whirl a ball around at constant speed — same speed, curved path, and it is still accelerating. How?"
+    },
+    {
+      "id": "circularMotion",
+      "audioStart": 7.37,
+      "narration": "A ball moving in a circle keeps turning. Even at constant speed, the velocity vector keeps changing direction — and a change in velocity is acceleration."
+    },
+    {
+      "id": "centripetalReveal",
+      "audioStart": 18.6,
+      "narration": "That acceleration always points inward, toward the centre of the circle. Its size is the speed squared divided by the radius."
+    },
+    {
+      "id": "angularForm",
+      "audioStart": 27.83,
+      "narration": "Substitute v equals r omega, and the same acceleration becomes r omega squared."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 33.77,
+      "narration": "Centripetal acceleration sits perpendicular to the motion at every instant — so it does no work. It does not speed the ball up. It just steers."
+    }
+  ],
+  "note": "Estimated at 14 chars/sec — no audio file. Re-run with ELEVENLABS_API_KEY set to overwrite with real audio."
+}

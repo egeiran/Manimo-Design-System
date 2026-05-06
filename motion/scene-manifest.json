@@ -78,6 +78,32 @@
       "language": "en",
       "prerequisites": ["spring-oscillation", "pendulum", "rc-circuit"],
       "concepts": ["analogy", "second-order ODE", "RLC circuit", "damped oscillation", "natural frequency", "energy exchange"]
+    },
+    {
+      "id": "centripetal-acceleration",
+      "file": "centripetal-acceleration.jsx",
+      "html": "centripetal-acceleration.html",
+      "spec": "centripetal-acceleration.spec.json",
+      "title": "Centripetal Acceleration: Steering, Not Speeding",
+      "eyebrow": "Scene 7 · circular motion",
+      "topic": "Centripetal acceleration — uniform circular motion gives a = v²/r = rω², always pointing toward the centre",
+      "duration": 45,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": ["centripetal acceleration", "uniform circular motion", "angular velocity", "radial acceleration", "no work done"]
+    },
+    {
+      "id": "steiners-theorem",
+      "file": "steiners-theorem.jsx",
+      "html": "steiners-theorem.html",
+      "spec": "steiners-theorem.spec.json",
+      "title": "Steiner's Theorem: The Cost of an Off-Centre Axis",
+      "eyebrow": "Scene 8 · rotational mechanics",
+      "topic": "Parallel-axis (Steiner's) theorem — I = I_cm + Md², the moment of inertia about any axis equals the inertia about a parallel axis through the centre of mass plus M times the squared offset",
+      "duration": 54.85,
+      "language": "en",
+      "prerequisites": ["moment-of-inertia"],
+      "concepts": ["parallel axis theorem", "Steiner's theorem", "moment of inertia", "centre of mass", "rigid body rotation"]
     }
   ]
 }
