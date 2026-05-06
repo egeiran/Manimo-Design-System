@@ -10,6 +10,7 @@
     "snapshot": "node scripts/snapshot-scene.js",
     "vendor": "node scripts/vendor.js",
     "audio": "node scripts/generate-audio.js",
+    "render": "node scripts/render-scene.js",
     "postinstall": "playwright install chromium --with-deps"
   },
   "devDependencies": {
