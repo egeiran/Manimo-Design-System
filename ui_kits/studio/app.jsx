@@ -44,6 +44,7 @@ const initialScenes = [
   { id: 'live-rlc-pendulum', kind: 'live', kindLabel: 'Live', cardTitle: 'RLC ↔ Pendulum Analogy',    duration: 48, html: '../../motion/rlc-pendulum.html' },
   { id: 'live-centripetal',  kind: 'live', kindLabel: 'Live', cardTitle: 'Centripetal Acceleration',  duration: 45, html: '../../motion/centripetal-acceleration.html' },
   { id: 'live-steiners',     kind: 'live', kindLabel: 'Live', cardTitle: "Steiner's Theorem",         duration: 55, html: '../../motion/steiners-theorem.html' },
+  { id: 'live-damping',      kind: 'live', kindLabel: 'Live', cardTitle: 'Damped Oscillation',        duration: 49, html: '../../motion/damped-oscillation.html' },
 ];
 
 function loadJSON(key, fallback) {

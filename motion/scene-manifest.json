@@ -104,6 +104,19 @@
       "language": "en",
       "prerequisites": ["moment-of-inertia"],
       "concepts": ["parallel axis theorem", "Steiner's theorem", "moment of inertia", "centre of mass", "rigid body rotation"]
+    },
+    {
+      "id": "damped-oscillation",
+      "file": "damped-oscillation.jsx",
+      "html": "damped-oscillation.html",
+      "spec": "damped-oscillation.spec.json",
+      "title": "Damped Oscillation: Why Real Springs Stop",
+      "eyebrow": "Scene 9 · damping",
+      "topic": "Damped harmonic oscillator — adding velocity-proportional drag turns Hooke's law into m·ẍ + b·ẋ + k·x = 0; underdamped solution x(t) = A·e^(-γt)·sin(ωt+φ); regimes: underdamped, critically damped, overdamped",
+      "duration": 49,
+      "language": "en",
+      "prerequisites": ["spring-oscillation"],
+      "concepts": ["damped oscillation", "viscous drag", "exponential decay", "underdamped", "critically damped", "overdamped"]
     }
   ]
 }
