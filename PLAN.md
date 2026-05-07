@@ -14,15 +14,30 @@ and require your input. Total queue size is kept ≤ 12 items.
 
 ### [AGENT] — safe for the next nightly run
 
-- **Re-run `npm run audio centripetal-acceleration`** once
-  `ELEVENLABS_API_KEY` can reach the API. Tonight the host was off the
-  sandbox allowlist, so the script fell back to estimated 14 chars/sec
-  timings (no `scene.mp3`, manifest is `mode: fallback-estimated`).
-  Re-running with a working key writes the real MP3 + audio-aligned
-  offsets — then re-apply the printed wire-up to `.jsx`, `.spec.json`,
-  `scene-manifest.json`, and `ui_kits/studio/app.jsx`. (Same applies to
-  `rc-circuit` and `moment-of-inertia` if/once the rename TODO below
-  lands — those two still have no audio at all.)
+- **Re-run `npm run audio centripetal-acceleration`** and
+  `npm run audio damped-oscillation` once `ELEVENLABS_API_KEY` can
+  reach the API. Both currently sit on `mode: fallback-estimated`
+  manifests because the ElevenLabs host is still off the sandbox
+  allowlist (HTTP 403 "Host not in allowlist" tonight, same as the
+  centripetal night). Re-running with a working key writes real MP3s
+  + audio-aligned offsets — then re-apply the printed wire-up to each
+  scene's `.jsx`, `.spec.json`, `scene-manifest.json`, and
+  `ui_kits/studio/app.jsx`. (Same applies to `rc-circuit` and
+  `moment-of-inertia` if/once the rename TODO below lands — those two
+  still have no audio at all.)
+
+- **Snapshot tool path workaround.** The pre-cached chromium under
+  `/opt/pw-browsers/chromium_headless_shell-1194` doesn't match the
+  revision Playwright 1.59 expects (1217). Tonight the agent worked
+  around it with `mkdir -p /tmp/pw-browsers/chromium_headless_shell-1217
+  && ln -sfn /opt/pw-browsers/chromium_headless_shell-1194/chrome-linux
+  /tmp/pw-browsers/chromium_headless_shell-1217/chrome-headless-shell-linux64`
+  + a `chrome-headless-shell` symlink to `headless_shell`, then
+  `PLAYWRIGHT_BROWSERS_PATH=/tmp/pw-browsers` for the snapshot run. If
+  this keeps recurring, codify it: either pin Playwright in
+  `package.json` to the version that matches the cached browser revision,
+  or add a small `scripts/ensure-browsers.js` that lays down the symlinks
+  before the snapshot tool runs.
 
 ### [HUMAN] — needs your input
 
@@ -37,13 +52,16 @@ and require your input. Total queue size is kept ≤ 12 items.
   user has pre-authorised PR creation. The agent should still never
   merge.
 
-- **Visual review of `pendulum`.** Snapshot tool was unavailable in the
-  sandbox (chromium download blocked), so beat 2 (the angled pendulum
-  diagram with both gravity and tangential restoring vectors) was
-  shipped without a visual pass. Open `motion/pendulum.html` and check
-  that: (a) the −mg sin θ label is readable and not overlapping the
-  bob, (b) the tangential arrowhead points clearly back-toward-vertical,
-  (c) the angle arc near the pivot is large enough to read.
+- **Visual review of `pendulum`.** Snapshot tool was unavailable on
+  the sandbox the night this scene shipped (chromium download blocked),
+  so beat 2 (the angled pendulum diagram with both gravity and
+  tangential restoring vectors) was shipped without a visual pass.
+  Tonight's snapshot workaround (see [AGENT] item above) means a
+  follow-up nightly could now re-snapshot; in the meantime, open
+  `motion/pendulum.html` manually and check: (a) the −mg sin θ label
+  is readable and not overlapping the bob, (b) the tangential arrowhead
+  points clearly back-toward-vertical, (c) the angle arc near the pivot
+  is large enough to read.
 
 - **Rename `rc-scene.*` → `rc-circuit.*` and `derivation-scene.*` →
   `moment-of-inertia.*`** so the audio script (`npm run audio
@@ -53,25 +71,35 @@ and require your input. Total queue size is kept ≤ 12 items.
   the `<script src>` in each HTML, `motion/scene-manifest.json` (file/html/spec
   fields), and the studio `app.jsx` `initialScenes` `html` paths.
 
-- **Visual review of `centripetal-acceleration`.** Snapshot tool was
-  unavailable in the sandbox again (chromium download blocked, same
-  failure mode as Pendulum night), so the new scene shipped without a
-  visual pass. Open `motion/centripetal-acceleration.html` and check:
-  (a) at the rightmost orbit position in beat 2 the velocity arrow
-  doesn't run off the 1280-wide canvas, (b) in beat 3 the inward `aᶜ`
-  arrow reads cleanly against the bright amber ball (the tangent rose
-  is intentionally dimmed at 0.7 — confirm the contrast still reads
+- **Visual review of `centripetal-acceleration`.** Same situation —
+  snapshot was blocked on the night this scene shipped. Tonight's
+  workaround would have unblocked it; consider re-snapshotting on the
+  next nightly. Until then: open `motion/centripetal-acceleration.html`
+  and check: (a) at the rightmost orbit position in beat 2 the velocity
+  arrow doesn't run off the 1280-wide canvas, (b) in beat 3 the inward
+  `aᶜ` arrow reads cleanly against the bright amber ball (the tangent
+  rose is intentionally dimmed at 0.7 — confirm the contrast still reads
   pedagogically), (c) in beat 4 the three-formula chain doesn't wrap
   on narrower aspect ratios when the studio kit shrinks the preview.
   The `c` subscript is rendered via `<sub>` (HTML) and `<tspan dy>`
   (SVG), so no Unicode-glyph fallback risk.
 
-- **Next topic after Centripetal acceleration.** Remaining adjacent
-  picks: §2.3 Dreiemoment (torque, τ = r×F — needed before §2.4 spinn),
-  §4.1 Coulombs lov (F = kq₁q₂/r², the electromagnetism opener), §3.4
-  Demping (damped oscillator, builds directly on spring + pendulum),
-  §4.6.6 LC-krets (an oscillating circuit, mirrors the spring scene with
-  current ↔ velocity). Reply in chat with a pick or say "agent's choice".
+- **Visual review of `damped-oscillation` portrait beat 5.**
+  Snapshotted both aspects tonight; the overdamped curve in portrait
+  mode is intentionally a shallow slope (it's *supposed* to look almost
+  flat — slow exponential creep with γ > ω₀), but a sanity-check pass
+  from a human eye would help confirm it doesn't read as "broken". The
+  snapshot at midpoint t=43.2s in `.tmp/snapshots/damped-oscillation/portrait/`
+  is the one to check. Same prompt for landscape if you want a
+  side-by-side.
+
+- **Next topic after Damped oscillation.** Remaining adjacent picks:
+  §2.3 Dreiemoment (torque, τ = r×F — needed before §2.4 spinn),
+  §4.1 Coulombs lov (F = kq₁q₂/r², the electromagnetism opener),
+  §4.6.6 LC-krets (an oscillating circuit, mirrors the spring scene
+  with current ↔ velocity), §3.5 Resonance (driven damped oscillator —
+  natural sequel to tonight's damping scene). Reply in chat with a
+  pick or say "agent's choice".
 
 ---
 
