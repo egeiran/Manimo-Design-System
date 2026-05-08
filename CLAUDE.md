@@ -165,6 +165,41 @@ See `README.md` (root) for the full voice guide.
 
 ---
 
+## Publishing scenes to kort-forklart
+
+The companion repo `egeiran/kort-forklart` (Next.js + Supabase) consumes
+finished videos from this project. The flow is one-way: render here, push
+to Supabase, fetch from Next.js.
+
+**One-time setup (kort-forklart's Supabase project):**
+
+1. Open the Supabase dashboard's SQL editor and run `supabase/scenes.sql`
+   — it creates the `scenes` table, the public `scenes` storage bucket,
+   and the public-read RLS policies.
+2. Copy `.env.example` to `.env` at the Manimo repo root and fill in
+   `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` (Project Settings → API).
+   The service-role key bypasses RLS and stays local — never commit it.
+
+**Per-scene publish:**
+
+```bash
+npm run render motion/<id>.html --landscape-only   # produces renders/<id>.mp4
+npm run publish <id>                               # uploads + upserts row
+```
+
+`scripts/publish-scene.js` extracts a poster JPG via ffmpeg, uploads
+`<id>/video.mp4` and `<id>/poster.jpg` to the `scenes` bucket, and
+upserts a row in the `scenes` table with metadata pulled from
+`motion/scene-manifest.json`. Re-publishing the same id is safe — both
+the storage write and the SQL upsert are idempotent. `npm run publish all`
+walks the whole manifest.
+
+**Currently 16:9 only.** Portrait (9:16) is rendered by default by
+`render-scene.js` but not uploaded; if reels become a delivery target,
+add a second column + key to the schema and the script.
+
+---
+
 ## Verification
 
 After any non-trivial change, open the affected `.html` file in the

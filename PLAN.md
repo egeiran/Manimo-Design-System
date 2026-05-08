@@ -14,17 +14,38 @@ and require your input. Total queue size is kept ≤ 12 items.
 
 ### [AGENT] — safe for the next nightly run
 
-- **Re-run `npm run audio centripetal-acceleration`** and
-  `npm run audio damped-oscillation` once `ELEVENLABS_API_KEY` can
-  reach the API. Both currently sit on `mode: fallback-estimated`
-  manifests because the ElevenLabs host is still off the sandbox
-  allowlist (HTTP 403 "Host not in allowlist" tonight, same as the
-  centripetal night). Re-running with a working key writes real MP3s
-  + audio-aligned offsets — then re-apply the printed wire-up to each
-  scene's `.jsx`, `.spec.json`, `scene-manifest.json`, and
-  `ui_kits/studio/app.jsx`. (Same applies to `rc-circuit` and
-  `moment-of-inertia` if/once the rename TODO below lands — those two
-  still have no audio at all.)
+- **Audio + render + publish loop for every scene without real audio.**
+  Walk `motion/scene-manifest.json`. For each scene whose
+  `motion/audio/<id>/scene.mp3` is missing OR whose
+  `motion/audio/<id>/manifest.json` has `"mode": "fallback-estimated"`:
+
+  1. `npm run audio <id> -- --engine local --force` — uses macOS `say`
+     locally and `espeak-ng` on Linux sandboxes (no ElevenLabs key
+     needed; auto-picks). On Linux: `apt-get install espeak-ng` if it's
+     not already on PATH. The script now also resolves spec paths via
+     the manifest's `spec` field, so this works for `rc-circuit` and
+     `moment-of-inertia` even before the rename TODO below lands.
+  2. Apply the printed wire-up to `motion/<file>.jsx`,
+     `motion/<spec>.json`, `motion/scene-manifest.json` (just the
+     `duration` field), and `ui_kits/studio/app.jsx`. The wire-up
+     instructions are emitted at the end of the audio run.
+  3. `npm run render motion/<html> -- --landscape-only` — re-renders
+     `renders/<id>.mp4` so the new audio is muxed in. Skip portrait
+     (16:9 only is the new publish target — see CLAUDE.md "Publishing
+     scenes").
+  4. `npm run publish <id>` — uploads `<id>/video.mp4` + auto-extracted
+     `<id>/poster.jpg` to the Supabase `scenes` bucket and upserts the
+     row. Requires `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` in
+     `.env`. If those are missing on the sandbox, log it as a [HUMAN]
+     follow-up and skip step 4 — but still complete steps 1–3 so the
+     audio is committed and ready to publish on the next run with a
+     working key.
+
+  Quality note: `say` and `espeak-ng` are noticeably more robotic than
+  ElevenLabs (especially `espeak`). These audio tracks are placeholders
+  until the user can re-run with `--engine elevenlabs` from a host that
+  can reach the API; the wire-up shape is identical so swapping engines
+  later only requires the audio call + re-render + republish.
 
 - **Snapshot tool path workaround.** The pre-cached chromium under
   `/opt/pw-browsers/chromium_headless_shell-1194` doesn't match the
