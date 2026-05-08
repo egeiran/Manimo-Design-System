@@ -389,7 +389,7 @@ function InverseSquareSweep() {
                 stroke="var(--rose-400)" strokeWidth={2.5}/>
           <path d={`M ${fTip} ${G.diagY} L ${fTip - 10} ${G.diagY - 6} L ${fTip - 10} ${G.diagY + 6} Z`}
                 fill="var(--rose-400)"/>
-          <text x={fStart + fLen / 2} y={G.diagY - 12} textAnchor="middle"
+          <text x={fStart + Math.max(fLen / 2, G.qR)} y={G.diagY - 12} textAnchor="middle"
                 fill="var(--rose-300)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={G.fontF}>F</text>
         </SvgFadeIn>
