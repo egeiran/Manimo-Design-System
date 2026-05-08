@@ -14,30 +14,35 @@ and require your input. Total queue size is kept ≤ 12 items.
 
 ### [AGENT] — safe for the next nightly run
 
-- **Re-run `npm run audio centripetal-acceleration`** and
-  `npm run audio damped-oscillation` once `ELEVENLABS_API_KEY` can
-  reach the API. Both currently sit on `mode: fallback-estimated`
-  manifests because the ElevenLabs host is still off the sandbox
-  allowlist (HTTP 403 "Host not in allowlist" tonight, same as the
-  centripetal night). Re-running with a working key writes real MP3s
-  + audio-aligned offsets — then re-apply the printed wire-up to each
-  scene's `.jsx`, `.spec.json`, `scene-manifest.json`, and
-  `ui_kits/studio/app.jsx`. (Same applies to `rc-circuit` and
+- **Re-run `npm run audio centripetal-acceleration`,**
+  `npm run audio damped-oscillation`, and `npm run audio coulombs-law`
+  once `ELEVENLABS_API_KEY` can reach the API. All three currently sit
+  on `mode: fallback-estimated` manifests because the ElevenLabs host
+  is still off the sandbox allowlist (HTTP 403 "Host not in allowlist"
+  tonight too — third night in a row). Re-running with a working key
+  writes real MP3s + audio-aligned offsets — then re-apply the printed
+  wire-up to each scene's `.jsx`, `.spec.json`, `scene-manifest.json`,
+  and `ui_kits/studio/app.jsx`. (Same applies to `rc-circuit` and
   `moment-of-inertia` if/once the rename TODO below lands — those two
   still have no audio at all.)
 
-- **Snapshot tool path workaround.** The pre-cached chromium under
-  `/opt/pw-browsers/chromium_headless_shell-1194` doesn't match the
-  revision Playwright 1.59 expects (1217). Tonight the agent worked
-  around it with `mkdir -p /tmp/pw-browsers/chromium_headless_shell-1217
-  && ln -sfn /opt/pw-browsers/chromium_headless_shell-1194/chrome-linux
-  /tmp/pw-browsers/chromium_headless_shell-1217/chrome-headless-shell-linux64`
-  + a `chrome-headless-shell` symlink to `headless_shell`, then
-  `PLAYWRIGHT_BROWSERS_PATH=/tmp/pw-browsers` for the snapshot run. If
-  this keeps recurring, codify it: either pin Playwright in
-  `package.json` to the version that matches the cached browser revision,
-  or add a small `scripts/ensure-browsers.js` that lays down the symlinks
-  before the snapshot tool runs.
+- **Codify the snapshot chromium symlink workaround.** Recurred again
+  tonight — third night in a row — so the "if this keeps recurring,
+  codify it" trigger has fired. Add `scripts/ensure-browsers.js` that
+  reads the expected revision from
+  `node_modules/playwright-core/browsers.json`, finds an installed
+  `chromium_headless_shell-*` under `/opt/pw-browsers/` (or wherever),
+  and lays down the
+  `/tmp/pw-browsers/chromium_headless_shell-<expected>/chrome-headless-shell-linux64`
+  symlink + a `chrome-headless-shell` → `headless_shell` symlink inside.
+  Have `scripts/snapshot-scene.js` import it at the top so the snapshot
+  workflow becomes one command again. Tonight's manual fix (in shell):
+  `mkdir -p /tmp/pw-browsers/chromium_headless_shell-1217 && ln -sfn
+  /opt/pw-browsers/chromium_headless_shell-1194/chrome-linux
+  /tmp/pw-browsers/chromium_headless_shell-1217/chrome-headless-shell-linux64
+  && ln -sfn headless_shell
+  /opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/chrome-headless-shell`
+  then `PLAYWRIGHT_BROWSERS_PATH=/tmp/pw-browsers ...`.
 
 ### [HUMAN] — needs your input
 
@@ -93,13 +98,27 @@ and require your input. Total queue size is kept ≤ 12 items.
   is the one to check. Same prompt for landscape if you want a
   side-by-side.
 
-- **Next topic after Damped oscillation.** Remaining adjacent picks:
+- **Visual review of `coulombs-law` beat 4 (inverse-square sweep).**
+  Snapshotted both aspects tonight — the sweep, the moving force arrow
+  (length ∝ 1/r²) and the F-vs-r curve trace look right structurally.
+  But two things want a human eye: (a) when r is large and the force
+  arrow is short, the "F" label hugs the right edge of the +q₂ charge
+  circle in portrait — readable but tight; consider whether to flip
+  the F label below the line when fLen drops under ~25px. (b) The
+  graph baseline sits below the diagram with no labelled tick marks
+  on either axis — only "F" and "r" axis names. Decide whether to add
+  one tick at r = 2·rMin so the "twice the distance → quarter the
+  force" payoff has a visible anchor on the curve. Snapshots are at
+  `.tmp/snapshots/coulombs-law/{landscape,portrait}/`.
+
+- **Next topic after Coulomb's law.** Remaining adjacent picks:
   §2.3 Dreiemoment (torque, τ = r×F — needed before §2.4 spinn),
-  §4.1 Coulombs lov (F = kq₁q₂/r², the electromagnetism opener),
   §4.6.6 LC-krets (an oscillating circuit, mirrors the spring scene
   with current ↔ velocity), §3.5 Resonance (driven damped oscillator —
-  natural sequel to tonight's damping scene). Reply in chat with a
-  pick or say "agent's choice".
+  natural sequel to the damping scene), §4.2 Electric potential
+  (immediate sequel to tonight's Coulomb scene — same setup, integrate
+  to potential V = kq/r). Reply in chat with a pick or say "agent's
+  choice".
 
 ---
 
