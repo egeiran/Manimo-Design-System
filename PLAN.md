@@ -15,16 +15,16 @@ and require your input. Total queue size is kept ≤ 12 items.
 ### [AGENT] — safe for the next nightly run
 
 - **Re-run `npm run audio centripetal-acceleration`,**
-  `npm run audio damped-oscillation`, and `npm run audio coulombs-law`
-  once `ELEVENLABS_API_KEY` can reach the API. All three currently sit
-  on `mode: fallback-estimated` manifests because the ElevenLabs host
-  is still off the sandbox allowlist (HTTP 403 "Host not in allowlist"
-  tonight too — third night in a row). Re-running with a working key
-  writes real MP3s + audio-aligned offsets — then re-apply the printed
-  wire-up to each scene's `.jsx`, `.spec.json`, `scene-manifest.json`,
-  and `ui_kits/studio/app.jsx`. (Same applies to `rc-circuit` and
-  `moment-of-inertia` if/once the rename TODO below lands — those two
-  still have no audio at all.)
+  `npm run audio damped-oscillation`, `npm run audio torque`, and
+  `npm run audio coulombs-law` once `ELEVENLABS_API_KEY` can reach the
+  API. All four currently sit on `mode: fallback-estimated` manifests
+  because the ElevenLabs host is still off the sandbox allowlist
+  (HTTP 403 "Host not in allowlist" tonight too — third night in a row).
+  Re-running with a working key writes real MP3s + audio-aligned offsets
+  — then re-apply the printed wire-up to each scene's `.jsx`,
+  `.spec.json`, `scene-manifest.json`, and `ui_kits/studio/app.jsx`.
+  (Same applies to `rc-circuit` and `moment-of-inertia` if/once the
+  rename TODO below lands — those two still have no audio at all.)
 
 - **Codify the snapshot chromium symlink workaround.** Recurred again
   tonight — third night in a row — so the "if this keeps recurring,
@@ -98,6 +98,22 @@ and require your input. Total queue size is kept ≤ 12 items.
   is the one to check. Same prompt for landscape if you want a
   side-by-side.
 
+- **Visual review of `torque` (especially the sweep beat).** Authored
+  in the previous nightly (§2.3 Dreiemoment). The sweep beat
+  (29.33–38.99 s) is a value-driven animation — the force vector
+  rotates around the wrench tip while a τ = rF sin θ curve traces in
+  synchronously below. Snapshots only catch one frame, so the *motion*
+  needs a human eye. Open `motion/torque.html` and watch beat 4
+  end-to-end: (a) the rotating arrow and the moving curve-marker should
+  stay mathematically locked (sin θ readout matches the dot's height),
+  (b) at θ = 90° the dot should sit precisely at τ = rF on the y axis,
+  (c) the dashed half-circle reference around the wrench tip shouldn't
+  feel cluttered against the graph axes (they were nudged apart in
+  landscape during the visual pass; portrait already separates them
+  vertically). Beat 3 (`angleMatters`) also worth a glance — the
+  dashed `F cos θ` parallel arrow runs into the wrench-head boundary
+  on the right; not a blocker but it could read cleaner.
+
 - **Visual review of `coulombs-law` beat 4 (inverse-square sweep).**
   Snapshotted both aspects tonight — the sweep, the moving force arrow
   (length ∝ 1/r²) and the F-vs-r curve trace look right structurally.
@@ -111,14 +127,16 @@ and require your input. Total queue size is kept ≤ 12 items.
   force" payoff has a visible anchor on the curve. Snapshots are at
   `.tmp/snapshots/coulombs-law/{landscape,portrait}/`.
 
-- **Next topic after Coulomb's law.** Remaining adjacent picks:
-  §2.3 Dreiemoment (torque, τ = r×F — needed before §2.4 spinn),
+- **Next topic after Torque + Coulomb's law.** Remaining adjacent picks:
   §4.6.6 LC-krets (an oscillating circuit, mirrors the spring scene
-  with current ↔ velocity), §3.5 Resonance (driven damped oscillator —
-  natural sequel to the damping scene), §4.2 Electric potential
-  (immediate sequel to tonight's Coulomb scene — same setup, integrate
-  to potential V = kq/r). Reply in chat with a pick or say "agent's
-  choice".
+  with current ↔ velocity),
+  §3.5 Resonance (driven damped oscillator — natural sequel to the
+  damping scene),
+  §4.2 Electric potential (immediate sequel to the Coulomb scene —
+  same setup, integrate to potential V = kq/r),
+  §2.4 Spinn (angular momentum L = Iω — sits naturally next to the
+  torque scene since τ = dL/dt is the rotational analogue of F = dp/dt).
+  Reply in chat with a pick or say "agent's choice".
 
 ---
 

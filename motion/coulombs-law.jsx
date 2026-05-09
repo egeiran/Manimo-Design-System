@@ -47,7 +47,7 @@ function Sub({ children }) {
 function Scene() {
   return (
     <SceneChrome
-      eyebrow="Scene 10 · electromagnetism"
+      eyebrow="Scene 11 · electromagnetism"
       title="Coulomb's Law: The Inverse-Square Tug"
       duration={SCENE_DURATION}
     >
