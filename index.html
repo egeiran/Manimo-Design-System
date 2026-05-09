@@ -154,9 +154,12 @@
   const UNATTACHED = '__unattached__';
 
   function sceneCard(s) {
+    const path = s.subject_id
+      ? `motion/${s.subject_id}/${s.html}`
+      : `motion/${s.html}`;
     return `
       <li>
-        <a class="card" href="motion/${escapeHtml(s.html)}">
+        <a class="card" href="${escapeHtml(path)}">
           ${s.eyebrow ? `<p class="eyebrow">${escapeHtml(s.eyebrow)}</p>` : ''}
           <h2 class="title">${escapeHtml(s.title)}</h2>
           <p class="meta">

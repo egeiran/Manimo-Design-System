@@ -40,7 +40,7 @@
 //   • playwright (already a devDependency — installed via npm install)
 //   • ffmpeg on PATH (brew install ffmpeg)
 
-import { resolve, dirname, basename, join } from 'path';
+import { resolve, dirname, basename, join, relative } from 'path';
 import { mkdirSync, existsSync, readFileSync, writeFileSync, rmSync, unlinkSync, statSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { spawn, spawnSync } from 'child_process';
@@ -111,9 +111,12 @@ if (ffmpegProbe.status !== 0) {
 }
 
 // ─── Resolve duration + audio from spec/manifest ────────────────────────
-const specPath = join(ROOT, 'motion', `${sceneId}.spec.json`);
-const audioManifestPath = join(ROOT, 'motion', 'audio', sceneId, 'manifest.json');
-const audioMp3Path = join(ROOT, 'motion', 'audio', sceneId, 'scene.mp3');
+// Sibling layout: spec.json + audio/<sceneId>/ live next to the html file.
+// Works for both legacy flat motion/<id>.html and per-subject motion/<sub>/<id>.html.
+const sceneDir = dirname(htmlPath);
+const specPath = join(sceneDir, `${sceneId}.spec.json`);
+const audioManifestPath = join(sceneDir, 'audio', sceneId, 'manifest.json');
+const audioMp3Path = join(sceneDir, 'audio', sceneId, 'scene.mp3');
 
 let duration;
 if (flags.duration) {
@@ -185,12 +188,16 @@ const vendorReady = Object.values(VENDOR_FILES).every(f => existsSync(join(VENDO
 let loadPath = htmlPath;
 let tempHtmlPath = null;
 if (vendorReady) {
+  // Compute the relative path from the scene's directory to motion/vendor/.
+  // Works whether the scene lives at motion/<id>.html (legacy) or
+  // motion/<subject>/<id>.html (current per-subject layout).
+  const vendorRel = relative(dirname(htmlPath), VENDOR_DIR).split(/[\\/]/).join('/') || '.';
   const original = readFileSync(htmlPath, 'utf8');
   const rewritten = original.replace(
     /<script\b[^>]*\bsrc="https:\/\/unpkg\.com\/([^"]+)"[^>]*><\/script>/g,
     (full, pkgPath) => {
       const local = VENDOR_FILES[pkgPath];
-      return local ? `<script src="vendor/${local}"></script>` : full;
+      return local ? `<script src="${vendorRel}/${local}"></script>` : full;
     },
   );
   tempHtmlPath = join(dirname(htmlPath), `.${sceneId}.render.html`);

@@ -95,25 +95,30 @@ if (flags.legacy && ENGINE !== 'elevenlabs') {
 
 const sceneId = positional[0];
 
-// Resolve spec path: prefer the manifest's `spec` field (handles cases
-// where filenames diverge from manifest ids, e.g. rc-circuit ↔ rc-scene).
-const specPath = resolveSpecPath(sceneId);
+// Resolve manifest entry → spec path + subject_id. Manifest fields (`spec`,
+// `html`, `file`) are bare filenames; the subject folder is added here.
+const manifestEntry = readManifestEntry(sceneId);
+const subjectId = manifestEntry?.subject_id || null;
+const specPath = resolveSpecPath(sceneId, manifestEntry, subjectId);
 if (!existsSync(specPath)) {
   console.error(`Spec not found: ${specPath}`);
   process.exit(1);
 }
 const spec = JSON.parse(readFileSync(specPath, 'utf8'));
 
-function resolveSpecPath(id) {
+function readManifestEntry(id) {
   const manifestPath = join(ROOT, 'motion', 'scene-manifest.json');
-  if (existsSync(manifestPath)) {
-    try {
-      const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
-      const entry = (manifest.scenes || []).find(s => s.id === id);
-      if (entry?.spec) return join(ROOT, 'motion', entry.spec);
-    } catch { /* fall through to filename convention */ }
-  }
-  return join(ROOT, 'motion', `${id}.spec.json`);
+  if (!existsSync(manifestPath)) return null;
+  try {
+    const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+    return (manifest.scenes || []).find(s => s.id === id) || null;
+  } catch { return null; }
+}
+
+function resolveSpecPath(id, entry, subject) {
+  const specName = entry?.spec || `${id}.spec.json`;
+  if (subject) return join(ROOT, 'motion', subject, specName);
+  return join(ROOT, 'motion', specName);
 }
 
 // ─── Pre-flight: refuse formula-shaped narration ────────────────────────
@@ -159,8 +164,11 @@ if (narrationIssues.length && !flags['unsafe-narration']) {
   console.error('  "v = √(4gh/3)"    → "v equals the square root of four g h divided by three"');
   console.error('  "15%"             → "fifteen percent"');
   console.error('  "ω₀"              → "omega zero"');
-  console.error('\nRewrite the narration in motion/' + sceneId + '.spec.json');
-  console.error('(and mirror in motion/' + sceneId + '.jsx NARRATION array), then re-run.');
+  const _subjPrefix = subjectId ? subjectId + '/' : '';
+  const _specName = manifestEntry?.spec || (sceneId + '.spec.json');
+  const _jsxName = manifestEntry?.file || (sceneId + '.jsx');
+  console.error('\nRewrite the narration in motion/' + _subjPrefix + _specName);
+  console.error('(and mirror in motion/' + _subjPrefix + _jsxName + ' NARRATION array), then re-run.');
   console.error('To bypass (rare cases only): pass --unsafe-narration.');
   process.exit(1);
 }
@@ -189,7 +197,9 @@ const VOICE_ID = flags.voice || 'JBFqnCBsd6RMkjVDRZzb';
 const MODEL_ID = 'eleven_multilingual_v2';
 const OUTPUT_FORMAT = 'mp3_44100_128';
 
-const outDir = join(ROOT, 'motion', 'audio', sceneId);
+const outDir = subjectId
+  ? join(ROOT, 'motion', subjectId, 'audio', sceneId)
+  : join(ROOT, 'motion', 'audio', sceneId);
 mkdirSync(outDir, { recursive: true });
 
 // ─── Dry run ───────────────────────────────────────────────────────────
@@ -377,9 +387,13 @@ function printWireUp({ tracks, totalSec, audio }) {
   const minutes = Math.floor(totalSec / 60);
   const secs = String(Math.round(totalSec % 60)).padStart(2, '0');
 
+  const subjectPrefix = subjectId ? `${subjectId}/` : '';
+  const jsxName = manifestEntry?.file || `${sceneId}.jsx`;
+  const specName = manifestEntry?.spec || `${sceneId}.spec.json`;
+
   console.log('\n─── Wire-up — apply these edits ───────────────────────');
 
-  console.log(`\n  motion/${sceneId}.jsx`);
+  console.log(`\n  motion/${subjectPrefix}${jsxName}`);
   console.log(`    const SCENE_DURATION = ${sceneDur};`);
   if (audio) {
     console.log(`    const NARRATION_AUDIO = 'audio/${sceneId}/scene.mp3';`);
@@ -397,7 +411,7 @@ function printWireUp({ tracks, totalSec, audio }) {
     console.log(`      <Sprite start={${start}} end={${end}}>  // ${tracks[i].id}`);
   }
 
-  console.log(`\n  motion/${sceneId}.spec.json`);
+  console.log(`\n  motion/${subjectPrefix}${specName}`);
   console.log(`    duration: ${sceneDur}`);
   console.log(`    beats[].start / end matching the Sprite ranges above`);
 

@@ -13,7 +13,7 @@
 //   • Node 18+
 //   • `claude` CLI on PATH (Claude Code installed + signed in)
 
-import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join, dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync, spawnSync } from 'child_process';
@@ -50,8 +50,14 @@ if (!spec.id || !spec.beats) {
   process.exit(1);
 }
 
-const outJsx  = join(ROOT, 'motion', `${spec.id}.jsx`);
-const outHtml = join(ROOT, 'motion', `${spec.id}.html`);
+if (!spec.subject_id) {
+  console.error('Spec is missing top-level `subject_id` (required for per-subject layout — set e.g. "fysikk").');
+  process.exit(1);
+}
+
+const sceneDir = join(ROOT, 'motion', spec.subject_id);
+const outJsx  = join(sceneDir, `${spec.id}.jsx`);
+const outHtml = join(sceneDir, `${spec.id}.html`);
 
 if (!dryRun && !force && (existsSync(outJsx) || existsSync(outHtml))) {
   console.error(`Refusing to overwrite existing ${spec.id}.jsx/.html — pass --force to allow.`);
@@ -65,8 +71,8 @@ if (!dryRun && !force && (existsSync(outJsx) || existsSync(outHtml))) {
 const claudeMd     = read('CLAUDE.md');
 const motionReadme = read('motion/README.md');
 const schemaJson   = read('motion/scene-spec.schema.json');
-const exampleSpec  = read('motion/rc-scene.spec.json');
-const exampleJsx   = read('motion/rc-scene.jsx');
+const exampleSpec  = read('motion/fysikk/rc-scene.spec.json');
+const exampleJsx   = read('motion/fysikk/rc-scene.jsx');
 
 const prompt = `Generate a single React/JSX file for a Manimo lesson scene.
 
@@ -206,6 +212,7 @@ if (!jsxText) {
 
 // ─── Clean up and write ──────────────────────────────────────────────────
 const cleaned = stripCodeFence(jsxText);
+mkdirSync(sceneDir, { recursive: true });
 writeFileSync(outJsx, cleaned.endsWith('\n') ? cleaned : cleaned + '\n');
 writeFileSync(outHtml, htmlForScene(spec));
 
@@ -268,26 +275,11 @@ function stripCodeFence(s) {
 function htmlForScene(spec) {
   const lang = spec.language === 'no' ? 'no' : 'en';
   const title = spec.title || spec.id;
-  return `<!doctype html>
-<html lang="${lang}">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>${title} — Manimo</title>
-<link rel="stylesheet" href="../colors_and_type.css"/>
-<style>
-  body { margin: 0; background: var(--bg-canvas); overflow: hidden; }
-</style>
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-</head>
-<body>
-<div id="root"></div>
-<script type="text/babel" data-presets="react" src="animations.jsx"></script>
-<script type="text/babel" data-presets="react" src="manimo-motion.jsx"></script>
-<script type="text/babel" data-presets="react" src="${spec.id}.jsx"></script>
-</body>
-</html>
-`;
+  const template = readFileSync(join(ROOT, 'motion', '_scene-template.html'), 'utf8');
+  return template
+    .replace(/<html lang="[^"]*">/, `<html lang="${lang}">`)
+    .replace(/<title>[^<]*<\/title>/, `<title>${title} — Manimo</title>`)
+    .replace(/<!-- TODO: rename the src below to match your scene's \.jsx file -->\s*\n/, '')
+    .replace(/src="_scene-template\.jsx"/, `src="${spec.id}.jsx"`);
 }
+

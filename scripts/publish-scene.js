@@ -105,8 +105,12 @@ async function publishOne(scene) {
   } = scene;
   console.log(`── ${id}`);
 
-  const sceneUrl = `${SCENE_BASE_URL}/${html}?embed=1`;
-  const hasAudio = existsSync(join(ROOT, 'motion', 'audio', id, 'scene.mp3'));
+  const sceneUrl = subject_id
+    ? `${SCENE_BASE_URL}/${subject_id}/${html}?embed=1`
+    : `${SCENE_BASE_URL}/${html}?embed=1`;
+  const hasAudio = subject_id
+    ? existsSync(join(ROOT, 'motion', subject_id, 'audio', id, 'scene.mp3'))
+    : existsSync(join(ROOT, 'motion', 'audio', id, 'scene.mp3'));
   const subjectId = subject_id ?? null;
   const chapterNumber = Number.isInteger(chapter_number) ? chapter_number : null;
   const attach = subjectId === null

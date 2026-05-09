@@ -12,7 +12,7 @@
 
 import { createServer } from 'http';
 import { readFile, writeFile, mkdir, readdir, stat } from 'fs/promises';
-import { existsSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { resolve, dirname, join, extname, normalize, sep } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -79,12 +79,30 @@ async function readJsonBody(req, limitBytes = 25 * 1024 * 1024) {
 
 // ─── Notes API ───────────────────────────────────────────────────────────
 
-// Map sceneId → notes directory and ensure it exists.
+// Map sceneId → notes directory and ensure it exists. Notes live under the
+// scene's subject folder (motion/<subject>/<sceneId>.notes) to match the
+// per-subject layout of the scene assets themselves.
+function manifestSubjectFor(sceneId) {
+  // sceneId here is the html basename (e.g. "rc-scene"); look it up by `html`
+  // or `file` field, not by the manifest's `id` (which can differ from the
+  // file basename, e.g. "rc-circuit" ↔ "rc-scene").
+  try {
+    const raw = readFileSync(join(MOTION_DIR, 'scene-manifest.json'), 'utf8');
+    const manifest = JSON.parse(raw);
+    const target = `${sceneId}.html`;
+    const entry = (manifest.scenes || []).find(s => s.html === target || s.file === `${sceneId}.jsx`);
+    return entry?.subject_id || null;
+  } catch { return null; }
+}
+
 async function notesDirFor(sceneId) {
   if (!/^[a-z0-9][a-z0-9_-]{0,80}$/i.test(sceneId)) {
     throw new Error('invalid sceneId');
   }
-  const dir = join(MOTION_DIR, `${sceneId}.notes`);
+  const subject = manifestSubjectFor(sceneId);
+  const dir = subject
+    ? join(MOTION_DIR, subject, `${sceneId}.notes`)
+    : join(MOTION_DIR, `${sceneId}.notes`);
   await mkdir(dir, { recursive: true });
   return dir;
 }

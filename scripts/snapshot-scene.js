@@ -67,7 +67,9 @@ const outDir = resolve(flag('out') || join(ROOT, '.tmp', 'snapshots', sceneId));
 
 // ─── Determine timestamps ────────────────────────────────────────────────
 function loadSpec(id) {
-  const specPath = join(ROOT, 'motion', `${id}.spec.json`);
+  // Spec lives next to the html file (motion/<subject>/<id>.spec.json or
+  // legacy motion/<id>.spec.json).
+  const specPath = join(dirname(htmlPath), `${id}.spec.json`);
   if (!existsSync(specPath)) return null;
   try { return JSON.parse(readFileSync(specPath, 'utf8')); }
   catch (e) { console.warn(`Spec exists but failed to parse: ${e.message}`); return null; }
@@ -151,18 +153,22 @@ const vendorReady = Object.values(VENDOR_FILES)
 let loadPath = htmlPath;
 let tempHtmlPath = null;
 if (vendorReady) {
+  // Compute the relative path from the scene's directory to motion/vendor/.
+  // Works whether the scene lives at motion/<id>.html (legacy) or
+  // motion/<subject>/<id>.html (current per-subject layout).
+  const vendorRel = relative(dirname(htmlPath), VENDOR_DIR).split(/[\\/]/).join('/') || '.';
   const original = readFileSync(htmlPath, 'utf8');
   const rewritten = original.replace(
     /<script\b[^>]*\bsrc="https:\/\/unpkg\.com\/([^"]+)"[^>]*><\/script>/g,
     (full, pkgPath) => {
       const local = VENDOR_FILES[pkgPath];
       return local
-        ? `<script src="vendor/${local}"></script>`
+        ? `<script src="${vendorRel}/${local}"></script>`
         : full;
     },
   );
   // Write next to the original so relative paths (./animations.jsx,
-  // ../colors_and_type.css, vendor/...) resolve identically.
+  // ../../colors_and_type.css, ../vendor/...) resolve identically.
   tempHtmlPath = join(dirname(htmlPath), `.${sceneId}.snapshot.html`);
   writeFileSync(tempHtmlPath, rewritten);
   loadPath = tempHtmlPath;

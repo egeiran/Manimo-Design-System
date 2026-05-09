@@ -35,20 +35,39 @@ motion/
   animations.jsx          Stage / Sprite / useTime / Easing / interpolate (starter)
   manimo-motion.jsx       Named primitives: TraceIn, FadeUp, WriteOn, etc.
   README.md               Primitive reference — read before authoring scenes
-  rc-scene.jsx + .html    Example scene: τ = RC, 20 seconds
+  scene-manifest.json     Registry of all scenes (id, file, html, spec, subject_id, …)
+  scene-spec.schema.json  JSON-schema for scene spec files
   _scene-template.jsx     Empty starter for new scenes
-  _scene-template.html    Matching HTML bootstrap
+  _scene-template.html    Matching HTML bootstrap (uses depth-2 paths: ../animations.jsx, ../../colors_and_type.css)
+  vendor/                 Local mirror of React/Babel for offline snapshot/render
+  fysikk/                 Per-subject folder — every scene asset lives here
+    rc-scene.{html,jsx,spec.json}
+    rc-scene.notes/       Studio screenshot+comment pairs for this scene
+    pendulum.{html,jsx,spec.json}
+    …
+    audio/<sceneId>/scene.mp3   Per-scene narration mp3 + manifest.json
 ui_kits/
   studio/                 Chat-driven editor mock
   watch/                  Public lesson page mock
 ```
 
+Scenes live under `motion/<subject_id>/` (currently only `fysikk/`).
+Subject is organisational only — scene IDs remain globally unique and
+stable, and `scene-manifest.json` entries store bare filenames in
+`html`/`file`/`spec`; scripts compose `motion/<subject_id>/<file>` at
+use time. New subjects (e.g. `matematikk1`) follow the same shape.
+
 ---
 
 ## Where new work goes
 
-- **A new scene** → `motion/<scene-name>.jsx` + `motion/<scene-name>.html`.
-  Copy from `_scene-template.*`. Don't fork `rc-scene.jsx`.
+- **A new scene** → `motion/<subject_id>/<scene-name>.{jsx,html,spec.json}`.
+  Copy from `motion/_scene-template.*` (the template uses depth-2
+  relative paths so it works once placed under a subject folder). Don't
+  fork `rc-scene.jsx`. Set `subject_id` (and ideally `chapter_number`)
+  at the top of the spec — `scripts/generate-scene.js` reads them and
+  writes the new files into the right subject folder, then upserts the
+  manifest entry.
 - **A new motion primitive** → add to `motion/manimo-motion.jsx` AND
   document it in `motion/README.md` AND export it on `window` in the
   `Object.assign(window, { ... })` block at the bottom of the file.
@@ -74,7 +93,7 @@ ui_kits/
    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="..." crossorigin="anonymous"></script>
    <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="..." crossorigin="anonymous"></script>
    ```
-   Copy the integrity hashes from `motion/rc-scene.html` verbatim.
+   Copy the integrity hashes from `motion/fysikk/rc-scene.html` verbatim.
 
 4. **Babel scripts don't share scope.** When splitting a scene across
    multiple `<script type="text/babel">` files, export shared identifiers
@@ -175,8 +194,8 @@ Supabase pointing at the live URL. No MP4 upload, no storage bucket.
 The Pages site lives at
 `https://egeiran.github.io/Manimo-Design-System/`. Every scene in
 `motion/scene-manifest.json` is reachable at
-`https://egeiran.github.io/Manimo-Design-System/motion/<html>` (with
-`?embed=1` for iframe-style hosts that draw their own transport bar).
+`https://egeiran.github.io/Manimo-Design-System/motion/<subject_id>/<html>`
+(with `?embed=1` for iframe-style hosts that draw their own transport bar).
 Pages is "Deploy from a branch", source `main` / root `/`; `.nojekyll`
 at the repo root keeps Pages from stripping `_scene-template.*` files.
 
@@ -193,7 +212,7 @@ at the repo root keeps Pages from stripping `_scene-template.*` files.
 **Per-scene publish:**
 
 ```bash
-git push origin main      # Pages picks up the new motion/<id>.html
+git push origin main      # Pages picks up the new motion/<subject_id>/<id>.html
 npm run publish <id>      # upserts row with scene_url
 ```
 
