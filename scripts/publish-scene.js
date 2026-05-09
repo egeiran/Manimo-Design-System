@@ -99,17 +99,27 @@ console.log('\nDone.');
 
 // ─── per-scene ───────────────────────────────────────────────────────────
 async function publishOne(scene) {
-  const { id, html, title, eyebrow, topic, language, duration, prerequisites, concepts } = scene;
+  const {
+    id, html, title, eyebrow, topic, language, duration, prerequisites, concepts,
+    subject_id, chapter_number,
+  } = scene;
   console.log(`── ${id}`);
 
   const sceneUrl = `${SCENE_BASE_URL}/${html}?embed=1`;
   const hasAudio = existsSync(join(ROOT, 'motion', 'audio', id, 'scene.mp3'));
+  const subjectId = subject_id ?? null;
+  const chapterNumber = Number.isInteger(chapter_number) ? chapter_number : null;
+  const attach = subjectId === null
+    ? '(unattached)'
+    : `${subjectId}${chapterNumber === null ? '' : ` ch.${chapterNumber}`}`;
 
   if (flags['dry-run']) {
-    console.log(`  (dry-run) row: ${title} (${language}, ${duration}s, audio=${hasAudio})`);
+    console.log(`  (dry-run) row: ${title} (${language}, ${duration}s, audio=${hasAudio}, ${attach})`);
     console.log(`  (dry-run) scene_url: ${sceneUrl}`);
     return;
   }
+
+  await validateAttachment(subjectId, chapterNumber);
 
   await upsertRow({
     id,
@@ -122,9 +132,48 @@ async function publishOne(scene) {
     concepts: concepts || [],
     scene_url: sceneUrl,
     has_audio: hasAudio,
+    subject_id: subjectId,
+    chapter_number: chapterNumber,
     updated_at: new Date().toISOString(),
   });
-  console.log(`  ✓ row upserted (${sceneUrl})`);
+  console.log(`  ✓ row upserted (${sceneUrl}) [${attach}]`);
+}
+
+// ─── Validation (warn-only, skipped in --dry-run) ────────────────────────
+async function validateAttachment(subjectId, chapterNumber) {
+  if (!subjectId) return;
+  try {
+    const subjUrl = `${SUPABASE_URL}/rest/v1/subjects?id=eq.${encodeURIComponent(subjectId)}&select=id`;
+    const subjRes = await fetch(subjUrl, {
+      headers: {
+        apikey: SUPABASE_SERVICE_ROLE_KEY,
+        Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+      },
+    });
+    if (subjRes.ok) {
+      const rows = await subjRes.json();
+      if (!Array.isArray(rows) || rows.length === 0) {
+        console.warn(`  ⚠ subject_id "${subjectId}" not found in public.subjects — row will still upsert (FK is ON DELETE SET NULL)`);
+      }
+    }
+    if (chapterNumber !== null) {
+      const chUrl = `${SUPABASE_URL}/rest/v1/chapters?subject_id=eq.${encodeURIComponent(subjectId)}&chapter_number=eq.${chapterNumber}&select=chapter_number`;
+      const chRes = await fetch(chUrl, {
+        headers: {
+          apikey: SUPABASE_SERVICE_ROLE_KEY,
+          Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+        },
+      });
+      if (chRes.ok) {
+        const rows = await chRes.json();
+        if (!Array.isArray(rows) || rows.length === 0) {
+          console.warn(`  ⚠ (${subjectId}, ch.${chapterNumber}) not found in public.chapters — composite FK will null-out the link`);
+        }
+      }
+    }
+  } catch (err) {
+    console.warn(`  ⚠ validation skipped: ${err.message}`);
+  }
 }
 
 // ─── Supabase REST ───────────────────────────────────────────────────────

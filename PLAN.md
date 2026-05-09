@@ -183,6 +183,16 @@ and require your input. Total queue size is kept ≤ 12 items.
 
 ---
 
+## Notes
+
+- **Publishing is subject-aware.** `motion/scene-manifest.json` carries
+  `subject_id` + `chapter_number` per scene; `scripts/publish-scene.js`
+  propagates both into `public.scenes`. New scenes should set these in
+  the spec's top-level fields — `generate-scene.js` mirrors them into
+  the manifest entry automatically.
+
+---
+
 ## Later — not blocking, in priority order
 
 - **KaTeX formula rendering** — Replace Unicode formula strings (`½MR²`)

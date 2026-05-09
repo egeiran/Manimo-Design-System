@@ -212,6 +212,9 @@ writeFileSync(outHtml, htmlForScene(spec));
 console.log(`✓ Wrote ${outJsx}`);
 console.log(`✓ Wrote ${outHtml}`);
 
+// ─── Upsert manifest entry ───────────────────────────────────────────────
+upsertManifestEntry(spec, specPath);
+
 // ─── Verify with linter (only the new file) ──────────────────────────────
 try {
   execSync(`node scripts/lint-tokens.js "${outJsx}"`, { cwd: ROOT, stdio: 'inherit' });
@@ -222,6 +225,41 @@ try {
 console.log(`\nOpen file://${outHtml} in a browser to preview.`);
 
 // ─── Helpers ─────────────────────────────────────────────────────────────
+function upsertManifestEntry(spec, specPath) {
+  const manifestPath = join(ROOT, 'motion', 'scene-manifest.json');
+  const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+  const existing = manifest.scenes.find(s => s.id === spec.id);
+
+  // Field order matches the existing entry shape so diffs stay clean.
+  const next = {
+    id: spec.id,
+    file: existing?.file ?? `${spec.id}.jsx`,
+    html: existing?.html ?? `${spec.id}.html`,
+    spec: existing?.spec ?? specPath.split('/').pop(),
+    title: spec.title,
+    eyebrow: spec.eyebrow ?? existing?.eyebrow ?? '',
+    topic: spec.topic ?? existing?.topic ?? '',
+    duration: spec.duration,
+    language: spec.language,
+    prerequisites: spec.prerequisites ?? existing?.prerequisites ?? [],
+    concepts: existing?.concepts ?? [],
+  };
+  if (spec.subject_id !== undefined) next.subject_id = spec.subject_id;
+  else if (existing?.subject_id !== undefined) next.subject_id = existing.subject_id;
+  if (Number.isInteger(spec.chapter_number)) next.chapter_number = spec.chapter_number;
+  else if (Number.isInteger(existing?.chapter_number)) next.chapter_number = existing.chapter_number;
+
+  if (existing) {
+    const idx = manifest.scenes.indexOf(existing);
+    manifest.scenes[idx] = next;
+    console.log(`✓ Updated manifest entry for ${spec.id}`);
+  } else {
+    manifest.scenes.push(next);
+    console.log(`✓ Appended manifest entry for ${spec.id} (concepts: [] — fill in by hand)`);
+  }
+  writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
+}
+
 function stripCodeFence(s) {
   const fenced = s.match(/^\s*```(?:jsx|javascript|js)?\n([\s\S]*?)\n```\s*$/);
   return fenced ? fenced[1].trim() : s;

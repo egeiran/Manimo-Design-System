@@ -203,6 +203,21 @@ plus `?embed=1`, and upserts a row in the `scenes` table. Re-publishing
 the same id is safe — the SQL upsert merges on the primary key.
 `npm run publish all` walks the whole manifest.
 
+**Subject + chapter attachment.** Each manifest entry carries optional
+`subject_id` (e.g. `"fysikk"`, `"matematikk1"`) and `chapter_number`
+(integer) fields. `publish-scene.js` writes both into `public.scenes`
+so kort-forklart can group scenes under
+`(subject_id, chapter_number)` → `public.chapters`. Valid `subject_id`
+values are the rows in kort-forklart's `public.subjects` table. If a
+scene is unattached (sandbox, demo, preview), omit both fields and the
+row is written with SQL `NULL`. The publish script does a best-effort
+warn-only lookup against `public.subjects` / `public.chapters` to catch
+typos before they propagate; missing rows do not abort the publish (the
+FK is `ON DELETE SET NULL`). When generating a new scene with
+`scripts/generate-scene.js`, set `subject_id` and `chapter_number` at
+the top level of the spec — they get mirrored into the manifest entry
+automatically.
+
 **MP4 export is now ad-hoc.** `scripts/render-scene.js` still produces
 `renders/<id>.mp4` for social cuts and downloads, but it's no longer in
 the publish flow. Portrait (9:16) is no longer relevant to publishing

@@ -12,7 +12,9 @@
       "duration": 34,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["RC circuit", "capacitor charging", "time constant", "exponential decay"]
+      "concepts": ["RC circuit", "capacitor charging", "time constant", "exponential decay"],
+      "subject_id": "fysikk",
+      "chapter_number": 4
     },
     {
       "id": "moment-of-inertia",
@@ -25,7 +27,9 @@
       "duration": 43,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["moment of inertia", "rotational inertia", "angular acceleration", "disk vs ring", "integration"]
+      "concepts": ["moment of inertia", "rotational inertia", "angular acceleration", "disk vs ring", "integration"],
+      "subject_id": "fysikk",
+      "chapter_number": 2
     },
     {
       "id": "hoop-disk",
@@ -38,7 +42,9 @@
       "duration": 48,
       "language": "en",
       "prerequisites": ["moment-of-inertia"],
-      "concepts": ["rolling motion", "energy conservation", "rotational kinetic energy", "rolling without slipping", "moment of inertia"]
+      "concepts": ["rolling motion", "energy conservation", "rotational kinetic energy", "rolling without slipping", "moment of inertia"],
+      "subject_id": "fysikk",
+      "chapter_number": 2
     },
     {
       "id": "spring-oscillation",
@@ -51,7 +57,9 @@
       "duration": 41,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["simple harmonic motion", "Hooke's law", "natural frequency", "spring constant", "period"]
+      "concepts": ["simple harmonic motion", "Hooke's law", "natural frequency", "spring constant", "period"],
+      "subject_id": "fysikk",
+      "chapter_number": 3
     },
     {
       "id": "pendulum",
@@ -64,7 +72,9 @@
       "duration": 50,
       "language": "en",
       "prerequisites": ["spring-oscillation"],
-      "concepts": ["pendulum", "small-angle approximation", "simple harmonic motion", "period", "gravity"]
+      "concepts": ["pendulum", "small-angle approximation", "simple harmonic motion", "period", "gravity"],
+      "subject_id": "fysikk",
+      "chapter_number": 3
     },
     {
       "id": "rlc-pendulum",
@@ -77,7 +87,9 @@
       "duration": 48,
       "language": "en",
       "prerequisites": ["spring-oscillation", "pendulum", "rc-circuit"],
-      "concepts": ["analogy", "second-order ODE", "RLC circuit", "damped oscillation", "natural frequency", "energy exchange"]
+      "concepts": ["analogy", "second-order ODE", "RLC circuit", "damped oscillation", "natural frequency", "energy exchange"],
+      "subject_id": "fysikk",
+      "chapter_number": 3
     },
     {
       "id": "centripetal-acceleration",
@@ -90,7 +102,9 @@
       "duration": 42,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["centripetal acceleration", "uniform circular motion", "angular velocity", "radial acceleration", "no work done"]
+      "concepts": ["centripetal acceleration", "uniform circular motion", "angular velocity", "radial acceleration", "no work done"],
+      "subject_id": "fysikk",
+      "chapter_number": 1
     },
     {
       "id": "steiners-theorem",
@@ -103,7 +117,9 @@
       "duration": 54.85,
       "language": "en",
       "prerequisites": ["moment-of-inertia"],
-      "concepts": ["parallel axis theorem", "Steiner's theorem", "moment of inertia", "centre of mass", "rigid body rotation"]
+      "concepts": ["parallel axis theorem", "Steiner's theorem", "moment of inertia", "centre of mass", "rigid body rotation"],
+      "subject_id": "fysikk",
+      "chapter_number": 2
     },
     {
       "id": "damped-oscillation",
@@ -116,7 +132,9 @@
       "duration": 46,
       "language": "en",
       "prerequisites": ["spring-oscillation"],
-      "concepts": ["damped oscillation", "viscous drag", "exponential decay", "underdamped", "critically damped", "overdamped"]
+      "concepts": ["damped oscillation", "viscous drag", "exponential decay", "underdamped", "critically damped", "overdamped"],
+      "subject_id": "fysikk",
+      "chapter_number": 3
     },
     {
       "id": "torque",
@@ -129,7 +147,9 @@
       "duration": 45,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["torque", "lever arm", "cross product", "rotational mechanics", "moment of force"]
+      "concepts": ["torque", "lever arm", "cross product", "rotational mechanics", "moment of force"],
+      "subject_id": "fysikk",
+      "chapter_number": 2
     },
     {
       "id": "coulombs-law",
@@ -142,7 +162,9 @@
       "duration": 46,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["Coulomb's law", "electric charge", "inverse-square law", "Coulomb's constant", "electrostatic force"]
+      "concepts": ["Coulomb's law", "electric charge", "inverse-square law", "Coulomb's constant", "electrostatic force"],
+      "subject_id": "fysikk",
+      "chapter_number": 4
     }
   ]
 }

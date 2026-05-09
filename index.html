@@ -44,6 +44,23 @@
     display: grid;
     gap: 14px;
   }
+  section.subject { margin-bottom: 36px; }
+  section.subject:last-of-type { margin-bottom: 0; }
+  .subject-heading {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+    margin: 0 0 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .subject-heading .count {
+    color: var(--fg-4);
+    font-size: 11px;
+  }
   a.card {
     display: block;
     padding: 20px 24px;
@@ -114,7 +131,7 @@
       your browser. Each scene is self-contained HTML.
     </p>
   </header>
-  <ul id="scenes" aria-busy="true"><li class="empty">Loading scenes…</li></ul>
+  <div id="scenes" aria-busy="true"><p class="empty">Loading scenes…</p></div>
   <footer>
     Brand and motion library: <a href="ui_kits/studio/">studio</a> ·
     <a href="preview/">design system preview</a>
@@ -131,31 +148,72 @@
     const sec = Math.round(s - m * 60).toString().padStart(2, '0');
     return m + ':' + sec;
   }
+  // Preferred display order — matches kort-forklart's subject ids.
+  // Subjects not listed sort alphabetically after; unattached scenes go last.
+  const SUBJECT_ORDER = ['fysikk', 'matematikk1', 'statistikk', 'algoritmer'];
+  const UNATTACHED = '__unattached__';
+
+  function sceneCard(s) {
+    return `
+      <li>
+        <a class="card" href="motion/${escapeHtml(s.html)}">
+          ${s.eyebrow ? `<p class="eyebrow">${escapeHtml(s.eyebrow)}</p>` : ''}
+          <h2 class="title">${escapeHtml(s.title)}</h2>
+          <p class="meta">
+            <span>${fmtDuration(s.duration)}</span>
+            <span class="lang">${escapeHtml(s.language)}</span>
+          </p>
+        </a>
+      </li>
+    `;
+  }
+
+  function groupBySubject(scenes) {
+    const groups = new Map();
+    for (const s of scenes) {
+      const key = s.subject_id || UNATTACHED;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(s);
+    }
+    const keys = [...groups.keys()];
+    keys.sort((a, b) => {
+      if (a === UNATTACHED) return 1;
+      if (b === UNATTACHED) return -1;
+      const ai = SUBJECT_ORDER.indexOf(a);
+      const bi = SUBJECT_ORDER.indexOf(b);
+      if (ai !== -1 && bi !== -1) return ai - bi;
+      if (ai !== -1) return -1;
+      if (bi !== -1) return 1;
+      return a.localeCompare(b);
+    });
+    return keys.map(k => [k, groups.get(k)]);
+  }
+
+  function subjectHeading(key, count) {
+    const label = key === UNATTACHED ? 'sandbox' : key;
+    return `<h2 class="subject-heading">${escapeHtml(label)} <span class="count">${count} scene${count === 1 ? '' : 's'}</span></h2>`;
+  }
+
   fetch('motion/scene-manifest.json')
     .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(({ scenes }) => {
-      const ul = document.getElementById('scenes');
+      const root = document.getElementById('scenes');
       if (!scenes || scenes.length === 0) {
-        ul.innerHTML = '<li class="empty">No scenes published yet.</li>';
+        root.innerHTML = '<p class="empty">No scenes published yet.</p>';
         return;
       }
-      ul.innerHTML = scenes.map(s => `
-        <li>
-          <a class="card" href="motion/${escapeHtml(s.html)}">
-            ${s.eyebrow ? `<p class="eyebrow">${escapeHtml(s.eyebrow)}</p>` : ''}
-            <h2 class="title">${escapeHtml(s.title)}</h2>
-            <p class="meta">
-              <span>${fmtDuration(s.duration)}</span>
-              <span class="lang">${escapeHtml(s.language)}</span>
-            </p>
-          </a>
-        </li>
+      const sections = groupBySubject(scenes).map(([key, list]) => `
+        <section class="subject">
+          ${subjectHeading(key, list.length)}
+          <ul>${list.map(sceneCard).join('')}</ul>
+        </section>
       `).join('');
-      ul.removeAttribute('aria-busy');
+      root.innerHTML = sections;
+      root.removeAttribute('aria-busy');
     })
     .catch(err => {
       document.getElementById('scenes').innerHTML =
-        '<li class="err">Failed to load scene manifest: ' + escapeHtml(err.message) + '</li>';
+        '<p class="err">Failed to load scene manifest: ' + escapeHtml(err.message) + '</p>';
     });
 </script>
 </body>

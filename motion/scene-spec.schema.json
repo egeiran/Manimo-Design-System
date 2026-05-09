@@ -32,6 +32,14 @@
       "type": "string",
       "description": "One-line topic summary for the scene manifest"
     },
+    "subject_id": {
+      "type": "string",
+      "description": "Subject this scene belongs to, matching an `id` in the kort-forklart `public.subjects` table (e.g. 'fysikk', 'matematikk1'). Optional — omit for unattached/sandbox scenes. Mirrored into motion/scene-manifest.json by generate-scene.js and propagated to public.scenes by publish-scene.js."
+    },
+    "chapter_number": {
+      "type": "integer",
+      "description": "Chapter number within `subject_id`, matching `chapter_number` in kort-forklart's `public.chapters` table. Optional — omit for unattached/sandbox scenes. Requires `subject_id` to be set."
+    },
     "prerequisites": {
       "type": "array",
       "items": { "type": "string" },
