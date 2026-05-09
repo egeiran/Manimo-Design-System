@@ -130,6 +130,19 @@
       "language": "en",
       "prerequisites": [],
       "concepts": ["torque", "lever arm", "cross product", "rotational mechanics", "moment of force"]
+    },
+    {
+      "id": "coulombs-law",
+      "file": "coulombs-law.jsx",
+      "html": "coulombs-law.html",
+      "spec": "coulombs-law.spec.json",
+      "title": "Coulomb's Law: The Inverse-Square Tug",
+      "eyebrow": "Scene 11 · electromagnetism",
+      "topic": "Coulomb's law — F = k·q₁q₂/r²; force scales with the product of charges and the inverse square of distance; like repels, opposite attracts",
+      "duration": 49,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": ["Coulomb's law", "electric charge", "inverse-square law", "Coulomb's constant", "electrostatic force"]
     }
   ]
 }

@@ -45,6 +45,7 @@ const initialScenes = [
   { id: 'live-centripetal',  kind: 'live', kindLabel: 'Live', cardTitle: 'Centripetal Acceleration',  duration: 45, html: '../../motion/centripetal-acceleration.html' },
   { id: 'live-steiners',     kind: 'live', kindLabel: 'Live', cardTitle: "Steiner's Theorem",         duration: 55, html: '../../motion/steiners-theorem.html' },
   { id: 'live-damping',      kind: 'live', kindLabel: 'Live', cardTitle: 'Damped Oscillation',        duration: 49, html: '../../motion/damped-oscillation.html' },
+  { id: 'live-coulomb',      kind: 'live', kindLabel: 'Live', cardTitle: "Coulomb's Law",             duration: 49, html: '../../motion/coulombs-law.html' },
   { id: 'live-torque',       kind: 'live', kindLabel: 'Live', cardTitle: 'Torque: Leverage Beats Force', duration: 47, html: '../../motion/torque.html' },
 ];
 
