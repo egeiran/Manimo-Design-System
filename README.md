@@ -41,7 +41,7 @@ If a real Figma file or production codebase later exists, it should replace this
 
 ### Exemplar content
 
-The user attached **`tfy4125.pdf`** (`uploads/tfy4125.pdf` and extracted text in `uploads/tfy4125.txt`) — physics notes for *TFY4125 Fysikk* at NTNU by Åsmund Eldhuset, covering rotational mechanics, harmonic oscillations, and electromagnetism. **All example content in the studio and watch UI kits is drawn from this document** — the fake video being composed teaches *rotational kinetic energy and moment of inertia* from chapter 2; the watch page shows *RC circuits* from chapter 4. This grounds the design in the kind of dense, formula-rich technical material Manimo is built to teach, instead of generic Lorem-Ipsum lessons.
+The user attached **`tfy4125.pdf`** (`uploads/fysikk/tfy4125.pdf` and extracted text in `uploads/fysikk/tfy4125.txt`) — physics notes for *TFY4125 Fysikk* at NTNU by Åsmund Eldhuset, covering rotational mechanics, harmonic oscillations, and electromagnetism. **All example content in the studio and watch UI kits is drawn from this document** — the fake video being composed teaches *rotational kinetic energy and moment of inertia* from chapter 2; the watch page shows *RC circuits* from chapter 4. This grounds the design in the kind of dense, formula-rich technical material Manimo is built to teach, instead of generic Lorem-Ipsum lessons.
 
 ---
 
@@ -49,19 +49,19 @@ The user attached **`tfy4125.pdf`** (`uploads/tfy4125.pdf` and extracted text in
 
 Top-level files:
 
-| File | What it is |
-|---|---|
-| `README.md` | This document — brand context, content rules, visual foundations, iconography |
-| `SKILL.md` | Front-matter wrapper so this folder works as a Claude Code skill |
-| `colors_and_type.css` | All design tokens (color, type scale, spacing, radius, shadow, motion) as CSS custom properties |
-| `assets/` | Logos, illustrations, brand imagery |
-| `fonts/` | Web fonts (or notes on Google Fonts substitutions) |
-| `preview/` | Design-system cards rendered for the Design System tab |
-| `ui_kits/studio/` | Hi-fi recreation of the chat-driven video studio |
-| `ui_kits/watch/` | Hi-fi recreation of the public video watch page |
-| `motion/` | Animation primitives + scene template + worked example (`rc-scene`) |
-| `CLAUDE.md` | Project conventions for automated agents — read first when authoring new scenes |
-| `uploads/tfy4125.pdf` + `.txt` | Source PDF for the exemplar lesson content |
+| File                                  | What it is                                                                                      |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `README.md`                           | This document — brand context, content rules, visual foundations, iconography                   |
+| `SKILL.md`                            | Front-matter wrapper so this folder works as a Claude Code skill                                |
+| `colors_and_type.css`                 | All design tokens (color, type scale, spacing, radius, shadow, motion) as CSS custom properties |
+| `assets/`                             | Logos, illustrations, brand imagery                                                             |
+| `fonts/`                              | Web fonts (or notes on Google Fonts substitutions)                                              |
+| `preview/`                            | Design-system cards rendered for the Design System tab                                          |
+| `ui_kits/studio/`                     | Hi-fi recreation of the chat-driven video studio                                                |
+| `ui_kits/watch/`                      | Hi-fi recreation of the public video watch page                                                 |
+| `motion/`                             | Animation primitives + scene template + worked example (`rc-scene`)                             |
+| `CLAUDE.md`                           | Project conventions for automated agents — read first when authoring new scenes                 |
+| `uploads/fysikk/tfy4125.pdf` + `.txt` | Source PDF for the exemplar lesson content                                                      |
 
 ### Quick links
 
@@ -105,13 +105,13 @@ How Manimo writes copy.
 
 ### Examples — voice in product copy
 
-| Surface | ✅ On-brand | ❌ Off-brand |
-|---|---|---|
-| Empty editor | "Describe the lesson you want to teach. We'll sketch the first scene together." | "🚀 Let's make some videos!!" |
-| Render success | "Your video is ready. 1 min 42 sec." | "Boom! 💥 Done!" |
-| Error | "Something went wrong while rendering. We saved your work — try again, or ask for help." | "Oops! Looks like our gremlins are at it again 😅" |
-| Marketing hero | "Teach a topic in the time it takes to explain it." | "Create stunning AI videos in seconds!" |
-| Onboarding step | "Pick a topic you've thought about for a long time. Familiarity is the best start." | "Let's get you set up and ready to ROCK 🎸" |
+| Surface         | ✅ On-brand                                                                               | ❌ Off-brand                                       |
+| --------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| Empty editor    | "Describe the lesson you want to teach. We'll sketch the first scene together."          | "🚀 Let's make some videos!!"                      |
+| Render success  | "Your video is ready. 1 min 42 sec."                                                     | "Boom! 💥 Done!"                                   |
+| Error           | "Something went wrong while rendering. We saved your work — try again, or ask for help." | "Oops! Looks like our gremlins are at it again 😅" |
+| Marketing hero  | "Teach a topic in the time it takes to explain it."                                      | "Create stunning AI videos in seconds!"           |
+| Onboarding step | "Pick a topic you've thought about for a long time. Familiarity is the best start."      | "Let's get you set up and ready to ROCK 🎸"        |
 
 ### Examples — voice in narration scripts (the videos themselves)
 
@@ -257,11 +257,11 @@ Lucide is the canonical pick going forward. If a future custom icon set is commi
 
 The display face and body face here are **substitutions** for unspecified-yet-custom faces:
 
-| Role | Currently using | Source | Status |
-|---|---|---|---|
-| Display / serif | **Fraunces** | Google Fonts | Substitute — flagged |
-| Body / sans | **Inter** | Google Fonts | Substitute — flagged |
-| Mono | **JetBrains Mono** | Google Fonts | Substitute — flagged |
+| Role            | Currently using    | Source       | Status               |
+| --------------- | ------------------ | ------------ | -------------------- |
+| Display / serif | **Fraunces**       | Google Fonts | Substitute — flagged |
+| Body / sans     | **Inter**          | Google Fonts | Substitute — flagged |
+| Mono            | **JetBrains Mono** | Google Fonts | Substitute — flagged |
 
 Fraunces has a warm, slightly quirky personality that matches the "mathy + warm dark" direction well. Inter is a safe, neutral body face. JetBrains Mono is the mono pick because of its strong italics (good for variables in code).
 
