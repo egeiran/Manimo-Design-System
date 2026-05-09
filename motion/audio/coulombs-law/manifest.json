@@ -1,8 +1,10 @@
 {
   "sceneId": "coulombs-law",
-  "mode": "fallback-estimated",
-  "chars": 656,
-  "durationSec": 48.06,
+  "mode": "single-track",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/coulombs-law/scene.mp3",
+  "durationSec": 45.33,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -11,24 +13,23 @@
     },
     {
       "id": "chargesAndLine",
-      "audioStart": 5.16,
+      "audioStart": 4.49,
       "narration": "Place a positive charge here and another positive charge there. The line between them is the line of force. Like signs push apart; opposite signs pull together."
     },
     {
       "id": "formula",
-      "audioStart": 16.89,
+      "audioStart": 15.05,
       "narration": "The strength of that push or pull follows Coulomb's law: F equals k times q one q two divided by r squared. Three knobs — the two charges and the distance."
     },
     {
       "id": "inverseSquareSweep",
-      "audioStart": 28.26,
+      "audioStart": 27.18,
       "narration": "Watch what the inverse square does. As we slide the second charge away, the force does not just fall — it falls fast. Twice the distance, one quarter the force."
     },
     {
       "id": "takeaway",
-      "audioStart": 39.99,
+      "audioStart": 37.59,
       "narration": "Same shape as Newton's gravity, but stronger by far — and signed. Charges can pull or push; mass only ever pulls."
     }
-  ],
-  "note": "Estimated at 14 chars/sec — no audio file. Re-run with ELEVENLABS_API_KEY set to overwrite with real audio."
+  ]
 }

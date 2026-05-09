@@ -2,15 +2,13 @@
 // Generated from motion/coulombs-law.spec.json. Standalone — opens the
 // electromagnetism arc; sits adjacent to rc-circuit and rlc-pendulum.
 //
-// Beats (timed to estimated narration durations — re-run `npm run audio
-// coulombs-law` when ELEVENLABS_API_KEY can reach the API to replace these
-// with real audio-aligned offsets):
-//    0.00– 5.16  Manimo enters; hook question
-//    5.16–16.89  Two charges on a line: r between them, like-repels arrows
-//   16.89–28.26  Coulomb's law payoff: F = k · q₁q₂ / r²
-//   28.26–39.99  Genuine animation — sweep r, force shrinks as 1/r², graph
+// Beats (timed to single-track narration in motion/audio/coulombs-law/):
+//    0.00– 4.49  Manimo enters; hook question
+//    4.49–15.05  Two charges on a line: r between them, like-repels arrows
+//   15.05–27.18  Coulomb's law payoff: F = k · q₁q₂ / r²
+//   27.18–37.59  Genuine animation — sweep r, force shrinks as 1/r², graph
 //                traces in sync with the moving charge
-//   39.99–49.00  Takeaway — same shape as gravity but stronger and signed
+//   37.59–46.00  Takeaway — same shape as gravity but stronger and signed
 //
 // Authoring notes:
 //   • All delays below are relative to the enclosing Sprite's start (localTime).
@@ -21,17 +19,23 @@
 //     frame, so the diagram arrow and the graph marker stay in lockstep —
 //     this is the genuine value-driven motion this scene is built around.
 
-const SCENE_DURATION = 49;
+const SCENE_DURATION = 46;
 
 // Narration script (one sentence per beat — source of truth for TTS/subtitles).
 // NARRATION.length must equal the number of <Sprite> beats in Scene().
 const NARRATION = [
-  /*  0.00– 5.16 */ 'Two charges in empty space — what does each one feel from the other?',
-  /*  5.16–16.89 */ 'Place a positive charge here and another positive charge there. The line between them is the line of force. Like signs push apart; opposite signs pull together.',
-  /* 16.89–28.26 */ "The strength of that push or pull follows Coulomb's law: F equals k times q one q two divided by r squared. Three knobs — the two charges and the distance.",
-  /* 28.26–39.99 */ 'Watch what the inverse square does. As we slide the second charge away, the force does not just fall — it falls fast. Twice the distance, one quarter the force.',
-  /* 39.99–49.00 */ "Same shape as Newton's gravity, but stronger by far — and signed. Charges can pull or push; mass only ever pulls.",
+  /*  0.00– 4.49 */ 'Two charges in empty space — what does each one feel from the other?',
+  /*  4.49–15.05 */ 'Place a positive charge here and another positive charge there. The line between them is the line of force. Like signs push apart; opposite signs pull together.',
+  /* 15.05–27.18 */ "The strength of that push or pull follows Coulomb's law: F equals k times q one q two divided by r squared. Three knobs — the two charges and the distance.",
+  /* 27.18–37.59 */ 'Watch what the inverse square does. As we slide the second charge away, the force does not just fall — it falls fast. Twice the distance, one quarter the force.',
+  /* 37.59–46.00 */ "Same shape as Newton's gravity, but stronger by far — and signed. Charges can pull or push; mass only ever pulls.",
 ];
+
+// Single continuous narration track — one ElevenLabs render covering the
+// whole scene. Beat <Sprite start> values below match the audioStart
+// offsets in motion/audio/coulombs-law/manifest.json so visuals
+// land on the corresponding sentence in the audio.
+const NARRATION_AUDIO = 'audio/coulombs-law/scene.mp3';
 
 // HTML subscript helper. Unicode has no neat subscript-1/2 in serif italic
 // at every weight, so we render via `<sub>` and tweak font size to match.
@@ -51,23 +55,25 @@ function Scene() {
       title="Coulomb's Law: The Inverse-Square Tug"
       duration={SCENE_DURATION}
     >
-      <Sprite start={0} end={5.16}>
+      <SceneNarration src={NARRATION_AUDIO} />
+
+      <Sprite start={0} end={4.49}>
         <ManimoBubbleIntro />
       </Sprite>
 
-      <Sprite start={5.16} end={16.89}>
+      <Sprite start={4.49} end={15.05}>
         <ChargesAndLine />
       </Sprite>
 
-      <Sprite start={16.89} end={28.26}>
+      <Sprite start={15.05} end={27.18}>
         <FormulaPayoff />
       </Sprite>
 
-      <Sprite start={28.26} end={39.99}>
+      <Sprite start={27.18} end={37.59}>
         <InverseSquareSweep />
       </Sprite>
 
-      <Sprite start={39.99} end={SCENE_DURATION}>
+      <Sprite start={37.59} end={SCENE_DURATION}>
         <Takeaway />
       </Sprite>
     </SceneChrome>
@@ -490,7 +496,7 @@ window.sceneNarration = NARRATION;
 // ─── Mount ────────────────────────────────────────────────────────────────
 function App() {
   return (
-    <Stage width={1280} height={720} duration={SCENE_DURATION} background="#0c0a1f">
+    <Stage width={1280} height={720} duration={SCENE_DURATION} background="#0c0a1f" loop={false}>
       <Scene/>
     </Stage>
   );

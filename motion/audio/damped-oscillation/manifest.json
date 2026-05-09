@@ -1,8 +1,10 @@
 {
   "sceneId": "damped-oscillation",
-  "mode": "fallback-estimated",
-  "chars": 651,
-  "durationSec": 47.7,
+  "mode": "single-track",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/damped-oscillation/scene.mp3",
+  "durationSec": 45.05,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -11,24 +13,23 @@
     },
     {
       "id": "addDrag",
-      "audioStart": 5.44,
+      "audioStart": 6.54,
       "narration": "Add air resistance — a drag force proportional to velocity. Newton's law gains a new term: m x double dot plus b x dot plus k x equals zero."
     },
     {
       "id": "solution",
-      "audioStart": 15.74,
+      "audioStart": 17.69,
       "narration": "Divide by m, set gamma equal to b over two m, and the underdamped solution turns out to be a sine wave whose amplitude decays exponentially."
     },
     {
       "id": "dampedTrace",
-      "audioStart": 26.04,
+      "audioStart": 27.23,
       "narration": "Watch each swing fall a little short of the last, while the dashed envelope curves squeeze in toward zero — the amplitude shrinks, but the rhythm survives."
     },
     {
       "id": "regimes",
-      "audioStart": 37.41,
+      "audioStart": 36.54,
       "narration": "Crank the drag higher and the oscillation disappears. Crank it just right and the spring returns home in the shortest time without overshooting."
     }
-  ],
-  "note": "Estimated at 14 chars/sec — no audio file. Re-run with ELEVENLABS_API_KEY set to overwrite with real audio."
+  ]
 }

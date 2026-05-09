@@ -1,43 +1,43 @@
 {
   "id": "rc-circuit",
-  "title": "Lading av en kondensator",
-  "eyebrow": "Scene 1 · introduksjon",
-  "language": "no",
-  "duration": 20,
+  "title": "Charging a Capacitor",
+  "eyebrow": "Scene 1 · introduction",
+  "language": "en",
+  "duration": 34,
   "topic": "RC circuits — charging curve, time constant τ = RC",
   "prerequisites": [],
   "beats": [
     {
       "id": "manimoIntro",
       "start": 0.0,
-      "end": 3.2,
-      "narration": "La oss tegne en krets og se hva som skjer når vi lader en kondensator.",
+      "end": 4.1,
+      "narration": "Let's draw a circuit and see what happens when we charge a capacitor.",
       "visuals": {
         "layout": "center",
         "elements": [
           { "type": "manimo-enter", "content": "Manimo enters centre-screen", "delay": 0 },
-          { "type": "text-caption", "content": "La oss tegne en krets.", "delay": 0.7, "color": "var(--chalk-100)" }
+          { "type": "text-caption", "content": "Let's draw a circuit.", "delay": 0.7, "color": "var(--chalk-100)" }
         ]
       }
     },
     {
       "id": "sceneTitle",
       "start": 1.0,
-      "end": 20,
+      "end": 34,
       "narration": "",
       "visuals": {
         "layout": "top-bottom",
         "elements": [
-          { "type": "text-title", "content": "Scene 1 · introduksjon", "delay": 0, "color": "var(--amber-300)", "position": "upper-left eyebrow" },
-          { "type": "text-title", "content": "Lading av en kondensator", "delay": 0.2, "color": "var(--chalk-100)", "position": "upper-left main title" }
+          { "type": "text-title", "content": "Scene 1 · introduction", "delay": 0, "color": "var(--amber-300)", "position": "upper-left eyebrow" },
+          { "type": "text-title", "content": "Charging a Capacitor", "delay": 0.2, "color": "var(--chalk-100)", "position": "upper-left main title" }
         ]
       }
     },
     {
       "id": "circuitDiagram",
-      "start": 3.2,
-      "end": 11.4,
-      "narration": "Her er en enkel RC-krets: en spenningskilde V₀, en motstand R, og en kondensator C.",
+      "start": 4.1,
+      "end": 11.7,
+      "narration": "Here is a simple R C circuit: a voltage source V naught, a resistor R, and a capacitor C.",
       "visuals": {
         "layout": "center",
         "elements": [
@@ -55,21 +55,21 @@
     },
     {
       "id": "question",
-      "start": 6.5,
-      "end": 10.5,
-      "narration": "Når du lukker bryteren — hvor raskt fylles kondensatoren?",
+      "start": 11.7,
+      "end": 15.72,
+      "narration": "When you close the switch — how quickly does the capacitor fill up?",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-caption", "content": "Når du lukker bryteren — hvor raskt fylles kondensatoren?", "delay": 0.2, "color": "var(--chalk-100)", "position": "bottom-center below circuit" }
+          { "type": "text-caption", "content": "When you close the switch — how quickly does the capacitor fill up?", "delay": 0.2, "color": "var(--chalk-100)", "position": "bottom-center below circuit" }
         ]
       }
     },
     {
       "id": "chargingCurve",
-      "start": 11.5,
-      "end": 20,
-      "narration": "Spenningen over kondensatoren stiger eksponentielt: V(t) = V₀(1 − e^(−t/τ)).",
+      "start": 15.72,
+      "end": 34,
+      "narration": "The voltage across the capacitor rises exponentially: V of t equals V naught times one minus e to the minus t over tau.",
       "visuals": {
         "layout": "center",
         "elements": [
@@ -83,14 +83,14 @@
     },
     {
       "id": "formulaReveal",
-      "start": 16.5,
-      "end": 20,
-      "narration": "Tidskonstanten τ = RC forteller oss at etter én τ har kondensatoren ladet seg til 63 % av V₀.",
+      "start": 24.95,
+      "end": 34,
+      "narration": "The time constant tau equals R C tells us that after one tau the capacitor has charged to sixty-three percent of V naught.",
       "visuals": {
         "layout": "top-bottom",
         "elements": [
           { "type": "text-formula", "content": "τ = RC", "delay": 0, "color": "var(--amber-300)", "position": "top-centre, large serif italic" },
-          { "type": "text-caption", "content": "tidskonstanten — produktet av motstand og kapasitans", "delay": 0.6, "color": "var(--chalk-300)" }
+          { "type": "text-caption", "content": "the time constant — the product of resistance and capacitance", "delay": 0.6, "color": "var(--chalk-300)" }
         ]
       }
     }

@@ -3,14 +3,14 @@
   "title": "Damped Oscillation: Why Real Springs Stop",
   "eyebrow": "Scene 9 · damping",
   "language": "en",
-  "duration": 49,
+  "duration": 46,
   "topic": "Damped harmonic oscillator — adding a velocity-proportional drag b·v turns Hooke's law into m·ẍ + b·ẋ + k·x = 0; the underdamped solution is x(t) = A·e^(-γt)·sin(ωt + φ) with γ = b/2m, and increasing γ takes the system from underdamped through critical to overdamped",
   "prerequisites": ["spring-oscillation"],
   "beats": [
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 5.44,
+      "end": 6.54,
       "narration": "Pull a real spring, let it go — it bobs, then stops. What slows it down?",
       "visuals": {
         "layout": "center",
@@ -22,8 +22,8 @@
     },
     {
       "id": "addDrag",
-      "start": 5.44,
-      "end": 15.74,
+      "start": 6.54,
+      "end": 17.69,
       "narration": "Add air resistance — a drag force proportional to velocity. Newton's law gains a new term: m x double dot plus b x dot plus k x equals zero.",
       "visuals": {
         "layout": "top-bottom",
@@ -40,8 +40,8 @@
     },
     {
       "id": "solution",
-      "start": 15.74,
-      "end": 26.04,
+      "start": 17.69,
+      "end": 27.23,
       "narration": "Divide by m, set gamma equal to b over two m, and the underdamped solution turns out to be a sine wave whose amplitude decays exponentially.",
       "visuals": {
         "layout": "center",
@@ -56,8 +56,8 @@
     },
     {
       "id": "dampedTrace",
-      "start": 26.04,
-      "end": 37.41,
+      "start": 27.23,
+      "end": 36.54,
       "narration": "Watch each swing fall a little short of the last, while the dashed envelope curves squeeze in toward zero — the amplitude shrinks, but the rhythm survives.",
       "visuals": {
         "layout": "full",
@@ -75,8 +75,8 @@
     },
     {
       "id": "regimes",
-      "start": 37.41,
-      "end": 49,
+      "start": 36.54,
+      "end": 46,
       "narration": "Crank the drag higher and the oscillation disappears. Crank it just right and the spring returns home in the shortest time without overshooting.",
       "visuals": {
         "layout": "left-right",

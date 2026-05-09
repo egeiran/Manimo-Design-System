@@ -1,8 +1,10 @@
 {
   "sceneId": "torque",
-  "mode": "fallback-estimated",
-  "chars": 633,
-  "durationSec": 46.41,
+  "mode": "single-track",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/torque/scene.mp3",
+  "durationSec": 43.84,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -11,24 +13,23 @@
     },
     {
       "id": "leverArm",
-      "audioStart": 8.51,
+      "audioStart": 7.93,
       "narration": "Apply a force at distance r from the pivot. When the force is perpendicular to the arm, the torque is simply r times F."
     },
     {
       "id": "angleMatters",
-      "audioStart": 17.31,
+      "audioStart": 16.15,
       "narration": "Tilt the force at an angle theta to the arm. Only the perpendicular component, F sine theta, actually turns the lever — so the torque is r times F times sine theta."
     },
     {
       "id": "sweep",
-      "audioStart": 29.33,
+      "audioStart": 28.47,
       "narration": "Sweep the angle from zero to one hundred eighty degrees and watch the torque trace a sine curve — peak at ninety, zero at the ends."
     },
     {
       "id": "takeaway",
-      "audioStart": 38.99,
+      "audioStart": 36.79,
       "narration": "Maximum at right angles, zero when the force points along the arm. Leverage is geometry, not just force."
     }
-  ],
-  "note": "Estimated at 14 chars/sec — no audio file. Re-run with ELEVENLABS_API_KEY set to overwrite with real audio."
+  ]
 }
