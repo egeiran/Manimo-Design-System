@@ -29,9 +29,10 @@ between a Manimo scene and a generic explainer; do not soften them.
 - Read `motion/README.md` end-to-end before writing anything. Read
   `CLAUDE.md` Hard Rules 1–9 — especially the FadeUp-vs-SvgFadeIn rule
   and the spoken-narration rule.
-- Pick an existing scene as reference: `motion/spring-oscillation.jsx`
-  (best dual-aspect example) or `motion/pendulum.jsx`. Match its level
-  of polish, not the bare minimum that compiles.
+- Pick an existing scene as reference: `motion/fysikk/spring-oscillation.jsx`
+  (best dual-aspect example, has audio wired up). Match its level of
+  polish, not the bare minimum that compiles. The fysikk subject is
+  irrelevant — the STRUCTURE is the template.
 - Plan beats as an explicit comment block at the top of the new `.jsx`
   with `start`/`end` ranges, BEFORE writing JSX. Revise the plan if a
   beat is shorter than 2 s or longer than 8 s.
@@ -56,10 +57,12 @@ and 9:16 portrait (720×1280, query-param `?aspect=9:16`).
 - Provide a portrait branch for diagrams that don't fit horizontally
   (typically: stacked instead of side-by-side, ~85% font size,
   tightened gaps).
-- After generation, snapshot both aspects and visually inspect:
+- After generation, snapshot both aspects and visually inspect (paths
+  use the subject namespace — every scene lives under
+  `motion/<subject_id>/`):
   ```
-  node scripts/snapshot-scene.js motion/<id>.html
-  node scripts/snapshot-scene.js motion/<id>.html --portrait
+  node scripts/snapshot-scene.js motion/<subject_id>/<id>.html --out .tmp/snapshots/<id>/landscape
+  node scripts/snapshot-scene.js motion/<subject_id>/<id>.html --portrait --out .tmp/snapshots/<id>/portrait
   ```
   Fix layout problems before the routine reports success. A scene that
   only looks right in landscape is incomplete.
@@ -89,31 +92,30 @@ flag this in the routine output rather than ship a static deck.
 
 ### Audio
 
-- After the JSX passes lint and visual check, run
-  `npm run audio <id> -- --engine local`. This uses `say` on macOS and
-  `espeak-ng` on Linux sandboxes — no ElevenLabs key required, no
-  network dependency, real per-beat audioStart offsets via ffprobe.
-  If `espeak-ng` isn't on PATH, install it first
-  (`apt-get install espeak-ng`). Quality is rough; the human can
-  re-run with `--engine elevenlabs` later — wire-up shape is identical
-  so swapping engines is just audio + re-render + republish.
-- Apply the printed wire-up to `motion/<id>.jsx`,
-  `motion/<id>.spec.json`, `motion/scene-manifest.json` (`duration`
-  field), and `ui_kits/studio/app.jsx` (`initialScenes` entry).
+- After the JSX passes lint and visual check, run `npm run audio <id>`.
+  If `ELEVENLABS_API_KEY` is set and quota is healthy, you get a real
+  MP3 + audio-aligned offsets. Otherwise the script falls back to
+  estimated timings without erroring. The remote nightly sandbox usually
+  has the key; locally on macOS you can also pass `--engine local` to
+  use `say` (rougher but offline).
+- Apply the printed wire-up to `motion/<subject_id>/<id>.jsx`,
+  `motion/<subject_id>/<id>.spec.json`, `motion/scene-manifest.json`
+  (`duration` field), and `ui_kits/studio/app.jsx` (`initialScenes` entry).
 - Narration must follow CLAUDE.md Hard Rule 9 (spoken, not symbolic);
   `generate-audio.js` refuses to render formula-shaped narration
   regardless of engine.
 
 ### Publish to kort-forklart
 
-After audio is wired up:
+After audio is wired up AND the PR has been merged to main:
 
 - `npm run publish <id>` — upserts the scene row in the Supabase
   `scenes` table with `scene_url` pointing at the live GitHub Pages
-  HTML (`https://egeiran.github.io/Manimo-Design-System/motion/<html>?embed=1`).
+  HTML (`https://egeiran.github.io/Manimo-Design-System/motion/<subject_id>/<html>?embed=1`).
   Metadata-only; no MP4 upload, no Storage bucket. The scene becomes
-  reachable as soon as Pages picks up the new `motion/<id>.html` from
-  the merged PR.
+  reachable as soon as Pages picks up the new files from the merged PR.
+- For nightly runs, the **reviewer agent** publishes after merging — the
+  authoring agent should NOT publish itself.
 - If `SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` are missing in the
   sandbox's `.env`, log it as a [HUMAN] follow-up in `PLAN.md` and
   skip the publish — don't fail the whole routine.

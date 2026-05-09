@@ -12,6 +12,17 @@ them from this list when done (git history is the audit trail), and appends
 new items found during the run. Items tagged [HUMAN] are skipped by the agent
 and require your input. Total queue size is kept ≤ 12 items.
 
+**Current defaults (set 2026-05-09):** the nightly authoring agent now
+ships **three OS scenes per run**, sourcing topics from
+`uploads/operativsystemer/` (TDT4186 — Operativsystemer). The reviewer
+**merges by default** unless the PR is genuinely broken (page crash,
+render failure, missing file, build error); quality concerns are logged
+back into this queue as [HUMAN] items rather than blocking the merge.
+The reviewer also **publishes each merged scene to Supabase** via
+`npm run publish <id>`. See `trig_01W4V9M7fWvGN7J989JBeQsh` (author,
+midnight UTC) and `trig_01QXiioNfPwJnDgThdsmQfXt` (reviewer, 03:00 UTC)
+for the exact prompts.
+
 ### [AGENT] — safe for the next nightly run
 
 - **Audio + render + publish loop for every scene without real audio.**
@@ -89,17 +100,6 @@ and require your input. Total queue size is kept ≤ 12 items.
 
 ### [HUMAN] — needs your input
 
-- **Update the nightly recurring prompt to always create the PR.** The
-  prompt's Step 6 already says to `gh pr create`, but a system reminder
-  injected by the harness says "do NOT create a pull request unless
-  the user explicitly asks." Tonight that conflict made the agent stop
-  one step short; the user had to ask for the PR by hand. Adjust the
-  prompt source (wherever the nightly is scheduled — outside this
-  repo) to either (a) explicitly override the reminder, or (b) make
-  the standing-instruction note in the prompt itself clear that the
-  user has pre-authorised PR creation. The agent should still never
-  merge.
-
 - **Visual review of `pendulum`.** Snapshot tool was unavailable on
   the sandbox the night this scene shipped (chromium download blocked),
   so beat 2 (the angled pendulum diagram with both gravity and
@@ -170,16 +170,14 @@ and require your input. Total queue size is kept ≤ 12 items.
   force" payoff has a visible anchor on the curve. Snapshots are at
   `.tmp/snapshots/coulombs-law/{landscape,portrait}/`.
 
-- **Next topic after Torque + Coulomb's law.** Remaining adjacent picks:
-  §4.6.6 LC-krets (an oscillating circuit, mirrors the spring scene
-  with current ↔ velocity),
-  §3.5 Resonance (driven damped oscillator — natural sequel to the
-  damping scene),
-  §4.2 Electric potential (immediate sequel to the Coulomb scene —
-  same setup, integrate to potential V = kq/r),
-  §2.4 Spinn (angular momentum L = Iω — sits naturally next to the
-  torque scene since τ = dL/dt is the rotational analogue of F = dp/dt).
-  Reply in chat with a pick or say "agent's choice".
+- **Subject focus is now Operativsystemer (TDT4186).** Fysikk topics are
+  paused — the nightly author picks three OS topics per run from
+  `uploads/operativsystemer/`. If you want a specific OS topic prioritised
+  (e.g. "do scheduling next, then page tables, then locks"), reply in
+  chat. Otherwise the agent picks based on coverage gaps in the manifest.
+  To reopen fysikk later, edit the author trigger
+  (`trig_01W4V9M7fWvGN7J989JBeQsh`) and swap the `uploads/...` source
+  pointer + chapter list back.
 
 ---
 
