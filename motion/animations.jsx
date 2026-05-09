@@ -162,7 +162,6 @@ function Stage({
   fps = 60,
   loop = true,
   autoplay = true,
-  persistKey = 'animstage',
   children,
 }) {
   // ?freeze=N URL param overrides everything: pin to time N, no autoplay.
@@ -192,13 +191,7 @@ function Stage({
   const stageW = portrait ? 720  : width;
   const stageH = portrait ? 1280 : height;
 
-  const [time, setTime] = React.useState(() => {
-    if (freezeTime != null) return freezeTime;
-    try {
-      const v = parseFloat(localStorage.getItem(persistKey + ':t') || '0');
-      return isFinite(v) ? clamp(v, 0, duration) : 0;
-    } catch { return 0; }
-  });
+  const [time, setTime] = React.useState(() => freezeTime != null ? freezeTime : 0);
   const [playing, setPlaying] = React.useState(freezeTime != null ? false : autoplay);
 
   // Expose a global handle for headless drivers (Playwright) and parent shells
@@ -326,11 +319,6 @@ function Stage({
   const canvasRef = React.useRef(null);
   const rafRef = React.useRef(null);
   const lastTsRef = React.useRef(null);
-
-  // Persist playhead
-  React.useEffect(() => {
-    try { localStorage.setItem(persistKey + ':t', String(time)); } catch {}
-  }, [time, persistKey]);
 
   // Auto-scale to fit viewport
   React.useEffect(() => {
