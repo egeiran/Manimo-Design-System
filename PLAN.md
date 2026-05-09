@@ -14,17 +14,17 @@ and require your input. Total queue size is kept ≤ 12 items.
 
 ### [AGENT] — safe for the next nightly run
 
-- **Re-run `npm run audio centripetal-acceleration`** and
-  `npm run audio damped-oscillation` once `ELEVENLABS_API_KEY` can
-  reach the API. Both currently sit on `mode: fallback-estimated`
-  manifests because the ElevenLabs host is still off the sandbox
-  allowlist (HTTP 403 "Host not in allowlist" tonight, same as the
-  centripetal night). Re-running with a working key writes real MP3s
-  + audio-aligned offsets — then re-apply the printed wire-up to each
-  scene's `.jsx`, `.spec.json`, `scene-manifest.json`, and
-  `ui_kits/studio/app.jsx`. (Same applies to `rc-circuit` and
-  `moment-of-inertia` if/once the rename TODO below lands — those two
-  still have no audio at all.)
+- **Re-run `npm run audio centripetal-acceleration`**,
+  `npm run audio damped-oscillation`, and `npm run audio torque`
+  once `ELEVENLABS_API_KEY` can reach the API. All three currently
+  sit on `mode: fallback-estimated` manifests because the ElevenLabs
+  host is still off the sandbox allowlist (HTTP 403 "Host not in
+  allowlist" tonight, same as the previous two nights). Re-running
+  with a working key writes real MP3s + audio-aligned offsets —
+  then re-apply the printed wire-up to each scene's `.jsx`,
+  `.spec.json`, `scene-manifest.json`, and `ui_kits/studio/app.jsx`.
+  (Same applies to `rc-circuit` and `moment-of-inertia` if/once the
+  rename TODO below lands — those two still have no audio at all.)
 
 - **Snapshot tool path workaround.** The pre-cached chromium under
   `/opt/pw-browsers/chromium_headless_shell-1194` doesn't match the
@@ -93,13 +93,32 @@ and require your input. Total queue size is kept ≤ 12 items.
   is the one to check. Same prompt for landscape if you want a
   side-by-side.
 
-- **Next topic after Damped oscillation.** Remaining adjacent picks:
-  §2.3 Dreiemoment (torque, τ = r×F — needed before §2.4 spinn),
-  §4.1 Coulombs lov (F = kq₁q₂/r², the electromagnetism opener),
+- **Visual review of `torque` (especially the sweep beat).** Authored
+  tonight (§2.3 Dreiemoment). The sweep beat (29.33–38.99 s) is a
+  value-driven animation — the force vector rotates around the wrench
+  tip while a τ = rF sin θ curve traces in synchronously below.
+  Snapshots only catch one frame, so the *motion* needs a human eye.
+  Open `motion/torque.html` and watch beat 4 end-to-end:
+  (a) the rotating arrow and the moving curve-marker should stay
+  mathematically locked (sin θ readout matches the dot's height),
+  (b) at θ = 90° the dot should sit precisely at τ = rF on the y axis,
+  (c) the dashed half-circle reference around the wrench tip shouldn't
+  feel cluttered against the graph axes (they were nudged apart in
+  landscape during the visual pass; portrait already separates them
+  vertically). Beat 3 (`angleMatters`) also worth a glance — the
+  dashed `F cos θ` parallel arrow runs into the wrench-head boundary
+  on the right; not a blocker but it could read cleaner.
+
+- **Next topic after Torque.** Remaining adjacent picks:
+  §4.1 Coulombs lov (F = kq₁q₂/r², the electromagnetism opener — would
+  open a new chapter parallel to the rotational arc),
   §4.6.6 LC-krets (an oscillating circuit, mirrors the spring scene
-  with current ↔ velocity), §3.5 Resonance (driven damped oscillator —
-  natural sequel to tonight's damping scene). Reply in chat with a
-  pick or say "agent's choice".
+  with current ↔ velocity),
+  §3.5 Resonance (driven damped oscillator — natural sequel to the
+  damping scene),
+  §2.4 Spinn (angular momentum L = Iω — sits naturally next to tonight's
+  torque scene since τ = dL/dt is the rotational analogue of F = dp/dt).
+  Reply in chat with a pick or say "agent's choice".
 
 ---
 

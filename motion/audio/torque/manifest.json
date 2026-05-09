@@ -1,0 +1,34 @@
+{
+  "sceneId": "torque",
+  "mode": "fallback-estimated",
+  "chars": 633,
+  "durationSec": 46.41,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Push a door near the hinge — almost nothing happens. Push at the handle, and it swings open. What's the difference?"
+    },
+    {
+      "id": "leverArm",
+      "audioStart": 8.51,
+      "narration": "Apply a force at distance r from the pivot. When the force is perpendicular to the arm, the torque is simply r times F."
+    },
+    {
+      "id": "angleMatters",
+      "audioStart": 17.31,
+      "narration": "Tilt the force at an angle theta to the arm. Only the perpendicular component, F sine theta, actually turns the lever — so the torque is r times F times sine theta."
+    },
+    {
+      "id": "sweep",
+      "audioStart": 29.33,
+      "narration": "Sweep the angle from zero to one hundred eighty degrees and watch the torque trace a sine curve — peak at ninety, zero at the ends."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 38.99,
+      "narration": "Maximum at right angles, zero when the force points along the arm. Leverage is geometry, not just force."
+    }
+  ],
+  "note": "Estimated at 14 chars/sec — no audio file. Re-run with ELEVENLABS_API_KEY set to overwrite with real audio."
+}
