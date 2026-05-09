@@ -37,7 +37,7 @@ const NARRATION = [
 function Scene() {
   return (
     <SceneChrome
-      eyebrow="Scene 8 · rotational mechanics"
+      eyebrow="rotational mechanics"
       title="Steiner's Theorem: The Cost of an Off-Centre Axis"
       duration={SCENE_DURATION}
     >

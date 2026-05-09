@@ -30,7 +30,7 @@ const NARRATION = [
 function Scene() {
   return (
     <SceneChrome
-      eyebrow="Scene 6 · analogy"
+      eyebrow="analogy"
       title="RLC and Pendulum: Same Math, Different Physics"
       duration={SCENE_DURATION}
       // SceneChrome's JourneyManimo handles the intro.

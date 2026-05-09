@@ -1,0 +1,86 @@
+{
+  "id": "fork-process",
+  "title": "fork(): One Process Becomes Two",
+  "eyebrow": "processes",
+  "language": "en",
+  "duration": 44,
+  "topic": "fork() duplicates the calling process — both parent and child return from the same call with different return values, and run concurrently from there",
+  "subject_id": "operativsystemer",
+  "chapter_number": 2,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.99,
+      "narration": "What if a program could split itself in two — same code, same memory, but two living processes?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "what if a program could split itself in two?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "oneProcess",
+      "start": 6.99,
+      "end": 15.93,
+      "narration": "Here is a process P. It has its own code, its own heap, its own stack — a private little universe with one thread of control.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Process box with address-space stripes (stack, heap, data, code)", "delay": 0.3, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Process P labels with PID", "delay": 0.8, "color": "var(--chalk-100)" },
+          { "type": "svg-label", "content": "PC pointer marker on the code segment", "delay": 1.6, "color": "var(--rose-400)" },
+          { "type": "text-caption", "content": "one process: code, heap, stack, registers", "delay": 4.5, "color": "var(--chalk-300)", "position": "below box" }
+        ]
+      }
+    },
+    {
+      "id": "forkSplits",
+      "start": 15.93,
+      "end": 27.06,
+      "narration": "Then P calls fork. The kernel makes an exact copy of the address space. Now there are two processes — a parent and a child — each with the same memory and registers.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "text-formula", "content": "fork()", "delay": 0.0, "color": "var(--amber-300)", "position": "centre top, mono" },
+          { "type": "svg-path", "content": "Parent process box on the left (PID 1234)", "delay": 0.6, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Child process box on the right (PID 1235), slides in from parent", "delay": 1.6, "color": "var(--rose-400)" },
+          { "type": "svg-label", "content": "Identical address-space contents in both boxes", "delay": 2.2, "color": "var(--chalk-200)" },
+          { "type": "text-caption", "content": "exact copy — separate from this moment on", "delay": 4.5, "color": "var(--chalk-300)", "position": "below diagram" }
+        ]
+      }
+    },
+    {
+      "id": "distinguishing",
+      "start": 27.06,
+      "end": 37.58,
+      "narration": "Both processes return from the very same call. The parent gets back the child's PID; the child gets back zero. That is how each one knows who it is.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-formula", "content": "pid_t rc = fork();", "delay": 0.3, "color": "var(--chalk-100)", "position": "code panel, mono" },
+          { "type": "text-formula", "content": "if (rc == 0) child(); else parent(rc);", "delay": 1.2, "color": "var(--chalk-100)", "position": "code panel" },
+          { "type": "svg-path", "content": "Branch arrow left, labelled rc = 0 → child", "delay": 2.6, "color": "var(--rose-400)" },
+          { "type": "svg-path", "content": "Branch arrow right, labelled rc > 0 → parent", "delay": 3.4, "color": "var(--amber-400)" },
+          { "type": "text-caption", "content": "fork() returns twice — and the value is the only clue", "delay": 5.5, "color": "var(--chalk-300)", "position": "below diagram" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 37.58,
+      "end": 44,
+      "narration": "One call. Two returns. Two processes — running concurrently from there.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "One call. Two returns. Two processes.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic ~30px" },
+          { "type": "text-caption", "content": "(fork is the simplest way to spawn concurrent work)", "delay": 1.6, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}

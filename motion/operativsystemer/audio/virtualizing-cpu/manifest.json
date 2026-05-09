@@ -1,0 +1,35 @@
+{
+  "sceneId": "virtualizing-cpu",
+  "mode": "single-track",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/virtualizing-cpu/scene.mp3",
+  "durationSec": 43.89,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Your laptop runs dozens of programs at once — but the chip inside has only a handful of cores. How can that be?"
+    },
+    {
+      "id": "illusion",
+      "audioStart": 7.99,
+      "narration": "Picture four programs running side by side. Each one acts as if it owns the entire processor — its own counter, its own registers, its own little CPU."
+    },
+    {
+      "id": "reality",
+      "audioStart": 18.31,
+      "narration": "But underneath there is only one CPU. The operating system slices time into tiny pieces, and on each slice a different program gets to run."
+    },
+    {
+      "id": "contextSwitch",
+      "audioStart": 27.69,
+      "narration": "Between slices the OS saves the running program's state, and restores the next one's — a context switch, performed thousands of times every second."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 37.16,
+      "narration": "One processor, many processes — that is the illusion the operating system calls CPU virtualization."
+    }
+  ]
+}

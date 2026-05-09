@@ -37,7 +37,7 @@ const NARRATION_AUDIO = 'audio/damped-oscillation/scene.mp3';
 function Scene() {
   return (
     <SceneChrome
-      eyebrow="Scene 9 · damping"
+      eyebrow="damping"
       title="Damped Oscillation: Why Real Springs Stop"
       duration={SCENE_DURATION}
       // Beat 1 owned by SceneChrome's JourneyManimo.

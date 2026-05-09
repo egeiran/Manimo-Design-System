@@ -49,7 +49,7 @@ function Sub({ children }) {
 function Scene() {
   return (
     <SceneChrome
-      eyebrow="Scene 7 · circular motion"
+      eyebrow="circular motion"
       title="Centripetal Acceleration: Steering, Not Speeding"
       duration={SCENE_DURATION}
     >

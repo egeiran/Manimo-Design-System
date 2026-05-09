@@ -41,7 +41,7 @@ const NARRATION_AUDIO = 'audio/torque/scene.mp3';
 function Scene() {
   return (
     <SceneChrome
-      eyebrow="Scene 10 · rotational mechanics"
+      eyebrow="rotational mechanics"
       title="Torque: Why Leverage Beats Force"
       duration={SCENE_DURATION}
       // Beat 1 is owned by SceneChrome's JourneyManimo.

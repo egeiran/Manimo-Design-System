@@ -157,7 +157,7 @@ function SceneTitle() {
           fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--amber-300)',
           textTransform: 'uppercase', letterSpacing: '0.16em',
         }}>
-        Scene 1 · introduction
+        introduction
       </FadeUp>
       <FadeUp duration={0.5} delay={0.2} distance={10}
         style={{

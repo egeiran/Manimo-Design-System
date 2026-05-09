@@ -1,0 +1,89 @@
+{
+  "id": "user-kernel-mode",
+  "title": "User Mode and Kernel Mode: The Trap Door",
+  "eyebrow": "Limited Direct Execution",
+  "language": "en",
+  "duration": 42,
+  "topic": "User mode vs kernel mode — programs run directly on the CPU in user mode; a trap instruction is the only legal way to reach the kernel for privileged work, and a return-from-trap brings the CPU back",
+  "subject_id": "operativsystemer",
+  "chapter_number": 3,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.78,
+      "narration": "How can a program run fast on the real hardware, and yet be unable to do anything dangerous?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "fast on the metal — but never trusted with the keys", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "twoModes",
+      "start": 5.78,
+      "end": 16.1,
+      "narration": "The CPU has two modes. In user mode a program does arithmetic and calls its own functions — but it cannot touch the disk, the network, or other processes.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "svg-path", "content": "User mode lane on top, with safe-ops list", "delay": 0.3, "color": "var(--chalk-200)" },
+          { "type": "svg-path", "content": "Kernel mode lane on bottom, with privileged-ops list", "delay": 1.4, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Privilege boundary line between lanes", "delay": 2.4, "color": "var(--rose-400)" },
+          { "type": "text-caption", "content": "two modes, one CPU — and a wall between them", "delay": 5.0, "color": "var(--chalk-300)", "position": "below diagram" }
+        ]
+      }
+    },
+    {
+      "id": "trap",
+      "start": 16.1,
+      "end": 25.99,
+      "narration": "When the program needs something privileged, it executes a trap instruction. The CPU flips into kernel mode and jumps to a fixed handler chosen by the OS.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "text-formula", "content": "x = read(fd, buf, n);", "delay": 0.3, "color": "var(--chalk-100)", "position": "user lane code panel" },
+          { "type": "graph-marker", "content": "PC pulse marker on read() line", "delay": 1.0, "color": "var(--rose-400)" },
+          { "type": "svg-path", "content": "TRAP arrow drawn from read() line down through the boundary", "delay": 2.0, "color": "var(--rose-400)" },
+          { "type": "svg-label", "content": "Mode switches: user → kernel", "delay": 2.6, "color": "var(--amber-300)" },
+          { "type": "svg-path", "content": "Kernel-side trap handler entry point highlighted", "delay": 3.2, "color": "var(--amber-400)" },
+          { "type": "text-caption", "content": "the trap is the only legal door into the kernel", "delay": 6.0, "color": "var(--chalk-300)", "position": "below diagram" }
+        ]
+      }
+    },
+    {
+      "id": "kernelAndReturn",
+      "start": 25.99,
+      "end": 33.56,
+      "narration": "The kernel does the work, then a return-from-trap puts the CPU back in user mode, right where the program left off.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "text-formula", "content": "1. validate the args", "delay": 0.3, "color": "var(--chalk-200)", "position": "kernel handler line 1" },
+          { "type": "text-formula", "content": "2. read from disk", "delay": 1.0, "color": "var(--chalk-200)", "position": "kernel handler line 2" },
+          { "type": "text-formula", "content": "3. copy bytes to the user buffer", "delay": 1.6, "color": "var(--chalk-200)", "position": "kernel handler line 3" },
+          { "type": "svg-path", "content": "return-from-trap arrow drawn back up to the user code", "delay": 2.6, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Mode flips back: kernel → user", "delay": 3.2, "color": "var(--chalk-100)" },
+          { "type": "graph-marker", "content": "PC marker resumes on the line after read()", "delay": 4.0, "color": "var(--rose-400)" },
+          { "type": "text-caption", "content": "the program never noticed the detour", "delay": 6.0, "color": "var(--chalk-300)", "position": "below diagram" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 33.56,
+      "end": 42,
+      "narration": "This is Limited Direct Execution. Programs run on real hardware — but the keys to the system stay with the kernel.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "Direct on the metal. Through the kernel for the keys.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic ~28px" },
+          { "type": "text-caption", "content": "(this is what we call Limited Direct Execution)", "delay": 1.6, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}

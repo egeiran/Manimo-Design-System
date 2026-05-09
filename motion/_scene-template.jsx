@@ -30,7 +30,7 @@ const NARRATION = [
 function Scene() {
   return (
     <SceneChrome
-      eyebrow="Scene N · TODO section"
+      eyebrow="TODO section"
       title="TODO: scene title"
       duration={SCENE_DURATION}
     >

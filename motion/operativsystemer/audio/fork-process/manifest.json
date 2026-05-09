@@ -1,0 +1,35 @@
+{
+  "sceneId": "fork-process",
+  "mode": "single-track",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/fork-process/scene.mp3",
+  "durationSec": 42.63,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "What if a program could split itself in two — same code, same memory, but two living processes?"
+    },
+    {
+      "id": "oneProcess",
+      "audioStart": 6.99,
+      "narration": "Here is a process P. It has its own code, its own heap, its own stack — a private little universe with one thread of control."
+    },
+    {
+      "id": "forkSplits",
+      "audioStart": 15.93,
+      "narration": "Then P calls fork. The kernel makes an exact copy of the address space. Now there are two processes — a parent and a child — each with the same memory and registers."
+    },
+    {
+      "id": "distinguishing",
+      "audioStart": 27.06,
+      "narration": "Both processes return from the very same call. The parent gets back the child's PID; the child gets back zero. That is how each one knows who it is."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 37.58,
+      "narration": "One call. Two returns. Two processes — running concurrently from there."
+    }
+  ]
+}

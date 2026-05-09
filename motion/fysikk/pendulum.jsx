@@ -31,7 +31,7 @@ const NARRATION_AUDIO = 'audio/pendulum/scene.mp3';
 function Scene() {
   return (
     <SceneChrome
-      eyebrow="Scene 5 · pendulum motion"
+      eyebrow="pendulum motion"
       title="The Simple Pendulum: Why Mass Doesn't Matter"
       duration={SCENE_DURATION}
       // Beat 1 is owned by SceneChrome's JourneyManimo: she enters at centre,

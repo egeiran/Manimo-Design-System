@@ -1,7 +1,7 @@
 {
   "id": "steiners-theorem",
   "title": "Steiner's Theorem: The Cost of an Off-Centre Axis",
-  "eyebrow": "Scene 8 · rotational mechanics",
+  "eyebrow": "rotational mechanics",
   "language": "en",
   "duration": 54.85,
   "topic": "Parallel-axis (Steiner's) theorem — I = I_cm + Md², the moment of inertia about any axis equals the inertia about a parallel axis through the centre of mass plus M times the squared offset",

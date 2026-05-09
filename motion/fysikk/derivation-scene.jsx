@@ -33,7 +33,7 @@ const NARRATION_AUDIO = 'audio/derivation-scene/scene.mp3';
 function Scene() {
   return (
     <SceneChrome
-      eyebrow="Scene 2 · rotational mechanics"
+      eyebrow="rotational mechanics"
       title="Moment of Inertia"
       duration={SCENE_DURATION}
       // Beat 1 is owned by SceneChrome's JourneyManimo: enter → hold → glide

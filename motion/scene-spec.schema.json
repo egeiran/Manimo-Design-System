@@ -17,7 +17,7 @@
     },
     "eyebrow": {
       "type": "string",
-      "description": "Mono eyebrow line, e.g. 'Scene 1 · introduksjon'"
+      "description": "Mono eyebrow line, e.g. 'introduksjon'"
     },
     "language": {
       "type": "string",

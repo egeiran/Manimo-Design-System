@@ -35,7 +35,7 @@ const NARRATION_AUDIO = 'audio/spring-oscillation/scene.mp3';
 function Scene() {
   return (
     <SceneChrome
-      eyebrow="Scene 4 · harmonic motion"
+      eyebrow="harmonic motion"
       title="Hooke's Law: Why a Spring Bobs"
       duration={SCENE_DURATION}
       // Beat 1 is owned by SceneChrome's JourneyManimo: enter → hold → glide

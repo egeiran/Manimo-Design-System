@@ -329,12 +329,12 @@ function SvgFadeIn({ duration = 0.4, delay = 0, ease = Easing.easeOutCubic, chil
 // as children — no copying of Background/Watermark/ManimoCorner needed.
 //
 // Usage:
-//   <SceneChrome eyebrow="Scene 2 · intro" title="My Topic" duration={SCENE_DURATION}>
+//   <SceneChrome eyebrow="intro" title="My Topic" duration={SCENE_DURATION}>
 //     <Sprite start={3} end={10}><MyBeat /></Sprite>
 //   </SceneChrome>
 //
 // Props:
-//   eyebrow   string   Mono eyebrow line, e.g. "Scene 2 · rotational mechanics"
+//   eyebrow   string   Mono eyebrow line, e.g. "rotational mechanics"
 //   title     string   Serif italic title, e.g. "Moment of Inertia"
 //   duration  number   SCENE_DURATION — used as the end time for persistent elements
 //   children  node     Beat <Sprite> blocks; rendered on top of all chrome

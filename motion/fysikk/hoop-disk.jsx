@@ -30,7 +30,7 @@ const NARRATION_AUDIO = 'audio/hoop-disk/scene.mp3';
 function Scene() {
   return (
     <SceneChrome
-      eyebrow="Scene 3 · rolling motion"
+      eyebrow="rolling motion"
       title="Hoop vs Disk: Why a Disk Wins"
       duration={SCENE_DURATION}
       // SceneChrome's JourneyManimo handles the intro. No standalone Sprite.

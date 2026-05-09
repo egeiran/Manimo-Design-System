@@ -1,7 +1,7 @@
 {
   "id": "pendulum",
   "title": "The Simple Pendulum: Why Mass Doesn't Matter",
-  "eyebrow": "Scene 5 · pendulum motion",
+  "eyebrow": "pendulum motion",
   "language": "en",
   "duration": 50,
   "topic": "Simple pendulum — for small swings, T = 2π√(L/g); the period depends on length and gravity, not mass",

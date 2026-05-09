@@ -1,0 +1,35 @@
+{
+  "sceneId": "user-kernel-mode",
+  "mode": "single-track",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/user-kernel-mode/scene.mp3",
+  "durationSec": 40.63,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "How can a program run fast on the real hardware, and yet be unable to do anything dangerous?"
+    },
+    {
+      "id": "twoModes",
+      "audioStart": 5.78,
+      "narration": "The CPU has two modes. In user mode a program does arithmetic and calls its own functions — but it cannot touch the disk, the network, or other processes."
+    },
+    {
+      "id": "trap",
+      "audioStart": 16.1,
+      "narration": "When the program needs something privileged, it executes a trap instruction. The CPU flips into kernel mode and jumps to a fixed handler chosen by the OS."
+    },
+    {
+      "id": "kernelAndReturn",
+      "audioStart": 25.99,
+      "narration": "The kernel does the work, then a return-from-trap puts the CPU back in user mode, right where the program left off."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 33.56,
+      "narration": "This is Limited Direct Execution. Programs run on real hardware — but the keys to the system stay with the kernel."
+    }
+  ]
+}

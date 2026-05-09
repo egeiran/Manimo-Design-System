@@ -1,0 +1,86 @@
+{
+  "id": "virtualizing-cpu",
+  "title": "Virtualizing the CPU: One Processor, Many Programs",
+  "eyebrow": "introduction",
+  "language": "en",
+  "duration": 45,
+  "topic": "CPU virtualization — the OS gives each process the illusion of its own CPU by time-slicing one physical processor and performing context switches",
+  "subject_id": "operativsystemer",
+  "chapter_number": 1,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.99,
+      "narration": "Your laptop runs dozens of programs at once — but the chip inside has only a handful of cores. How can that be?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "How does one chip run a hundred things at once?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "illusion",
+      "start": 7.99,
+      "end": 18.31,
+      "narration": "Picture four programs running side by side. Each one acts as if it owns the entire processor — its own counter, its own registers, its own little CPU.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "the illusion", "delay": 0, "color": "var(--amber-300)", "position": "small mono eyebrow above" },
+          { "type": "svg-path", "content": "Four CPU cards in a row, each labelled A, B, C, D", "delay": 0.3, "color": "var(--chalk-200)" },
+          { "type": "svg-label", "content": "Each card shows registers + PC, plus a pulsing 'running' dot", "delay": 1.0, "color": "var(--amber-400)" },
+          { "type": "text-caption", "content": "every program thinks it owns the whole machine", "delay": 4.5, "color": "var(--chalk-300)", "position": "below cards" }
+        ]
+      }
+    },
+    {
+      "id": "reality",
+      "start": 18.31,
+      "end": 27.69,
+      "narration": "But underneath there is only one CPU. The operating system slices time into tiny pieces, and on each slice a different program gets to run.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "text-caption", "content": "the reality", "delay": 0, "color": "var(--rose-300)", "position": "small mono eyebrow above" },
+          { "type": "svg-path", "content": "One large CPU box centred, labelled '1 CPU'", "delay": 0.3, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Horizontal time-slice strip below — coloured slots A B A C A D B A C A …", "delay": 1.6, "color": "var(--chalk-200)" },
+          { "type": "graph-marker", "content": "Sweeping playhead highlights the active slice", "delay": 2.0, "color": "var(--rose-400)" },
+          { "type": "text-caption", "content": "time", "delay": 1.6, "color": "var(--chalk-300)", "position": "small mono label under timeline" }
+        ]
+      }
+    },
+    {
+      "id": "contextSwitch",
+      "start": 27.69,
+      "end": 37.16,
+      "narration": "Between slices the OS saves the running program's state, and restores the next one's — a context switch, performed thousands of times every second.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Process A state box on left (PC, SP, registers); arrow → memory", "delay": 0.3, "color": "var(--chalk-200)" },
+          { "type": "svg-label", "content": "save", "delay": 1.0, "color": "var(--rose-300)" },
+          { "type": "svg-path", "content": "Process B state box on right; arrow ← memory", "delay": 2.0, "color": "var(--chalk-200)" },
+          { "type": "svg-label", "content": "restore", "delay": 2.6, "color": "var(--amber-300)" },
+          { "type": "text-caption", "content": "thousands of switches per second — so fast it feels parallel", "delay": 5.0, "color": "var(--chalk-300)", "position": "below diagram" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 37.16,
+      "end": 45,
+      "narration": "One processor, many processes — that is the illusion the operating system calls CPU virtualization.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "One processor. Many processes. One illusion.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic ~28px" },
+          { "type": "text-caption", "content": "(this is what we mean by CPU virtualization)", "delay": 1.6, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}

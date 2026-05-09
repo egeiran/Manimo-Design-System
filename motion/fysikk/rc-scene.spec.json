@@ -1,7 +1,7 @@
 {
   "id": "rc-circuit",
   "title": "Charging a Capacitor",
-  "eyebrow": "Scene 1 · introduction",
+  "eyebrow": "introduction",
   "language": "en",
   "duration": 34,
   "topic": "RC circuits — charging curve, time constant τ = RC",
@@ -28,7 +28,7 @@
       "visuals": {
         "layout": "top-bottom",
         "elements": [
-          { "type": "text-title", "content": "Scene 1 · introduction", "delay": 0, "color": "var(--amber-300)", "position": "upper-left eyebrow" },
+          { "type": "text-title", "content": "introduction", "delay": 0, "color": "var(--amber-300)", "position": "upper-left eyebrow" },
           { "type": "text-title", "content": "Charging a Capacitor", "delay": 0.2, "color": "var(--chalk-100)", "position": "upper-left main title" }
         ]
       }

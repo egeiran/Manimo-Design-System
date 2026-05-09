@@ -1,7 +1,7 @@
 {
   "id": "damped-oscillation",
   "title": "Damped Oscillation: Why Real Springs Stop",
-  "eyebrow": "Scene 9 · damping",
+  "eyebrow": "damping",
   "language": "en",
   "duration": 46,
   "topic": "Damped harmonic oscillator — adding a velocity-proportional drag b·v turns Hooke's law into m·ẍ + b·ẋ + k·x = 0; the underdamped solution is x(t) = A·e^(-γt)·sin(ωt + φ) with γ = b/2m, and increasing γ takes the system from underdamped through critical to overdamped",

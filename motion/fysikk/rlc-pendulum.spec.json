@@ -1,7 +1,7 @@
 {
   "id": "rlc-pendulum",
   "title": "RLC and Pendulum: Same Math, Different Physics",
-  "eyebrow": "Scene 6 · analogy",
+  "eyebrow": "analogy",
   "language": "en",
   "duration": 48,
   "topic": "RLC ↔ pendulum analogy — both obey the same second-order linear ODE, with q↔x, I↔v, L↔m, 1/C↔k, R↔b",
