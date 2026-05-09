@@ -227,6 +227,98 @@ function Stage({
     handle.playing = playing;
     handle.subs.forEach(fn => { try { fn({ time: handle.time, playing, duration }); } catch {} });
   }, [playing, duration]);
+
+  // ── Cross-origin postMessage protocol ──────────────────────────────────
+  // When the scene is embedded in an iframe, the same-origin
+  // `window.__manimoStage` handle is unreachable from the host. This block
+  // mirrors that surface over `postMessage` so a parent can read playback
+  // state and control playback across origins.
+  //
+  // Outbound (to window.parent):
+  //   { source: 'manimo', type: 'manimo:ready', duration, width, height, portrait }
+  //   { source: 'manimo', type: 'manimo:state', time, playing, duration }   // ≤30Hz
+  // Inbound (from window.parent), all gated on { source: 'manimo', type }:
+  //   manimo:setTime    { time }       → setTime(clamp(time, 0, duration))
+  //   manimo:setPlaying { playing }    → setPlaying(playing)
+  //   manimo:reset      —              → setTime(0); setPlaying(true)
+  //   manimo:requestState —            → reply with one manimo:state
+  const lastPostRef = React.useRef({ at: 0, playing: null });
+  const postState = React.useCallback(() => {
+    try {
+      const handle = stageHandleRef.current;
+      window.parent.postMessage({
+        source: 'manimo', type: 'manimo:state',
+        time: handle.time, playing: handle.playing, duration,
+      }, '*');
+      lastPostRef.current.at = (typeof performance !== 'undefined' ? performance.now() : Date.now());
+      lastPostRef.current.playing = handle.playing;
+    } catch {}
+  }, [duration]);
+
+  // Fire manimo:ready once after mount (and on geometry changes).
+  React.useEffect(() => {
+    if (!embedded) return;
+    try {
+      window.parent.postMessage({
+        source: 'manimo', type: 'manimo:ready',
+        duration, width: stageW, height: stageH, portrait,
+      }, '*');
+    } catch {}
+  }, [embedded, duration, stageW, stageH, portrait]);
+
+  // Subscribe to ticks → emit manimo:state, throttled to ~30Hz.
+  // Always emit on a play/pause edge so the host never misses a transition.
+  React.useEffect(() => {
+    if (!embedded) return;
+    const handle = stageHandleRef.current;
+    const fn = ({ time: t, playing: p, duration: d }) => {
+      const now = (typeof performance !== 'undefined' ? performance.now() : Date.now());
+      const last = lastPostRef.current;
+      const playingChanged = last.playing !== p;
+      if (!playingChanged && now - last.at < 33) return;
+      last.at = now;
+      last.playing = p;
+      try {
+        window.parent.postMessage({
+          source: 'manimo', type: 'manimo:state',
+          time: t, playing: p, duration: d,
+        }, '*');
+      } catch {}
+    };
+    handle.subs.add(fn);
+    return () => { handle.subs.delete(fn); };
+  }, [embedded]);
+
+  // Inbound message handler.
+  React.useEffect(() => {
+    if (!embedded) return;
+    const onMessage = (e) => {
+      const data = e.data;
+      if (!data || data.source !== 'manimo' || typeof data.type !== 'string') return;
+      switch (data.type) {
+        case 'manimo:setTime':
+          if (typeof data.time === 'number' && isFinite(data.time)) {
+            setTime(clamp(data.time, 0, duration));
+          }
+          break;
+        case 'manimo:setPlaying':
+          setPlaying(!!data.playing);
+          break;
+        case 'manimo:reset':
+          setTime(0);
+          setPlaying(true);
+          break;
+        case 'manimo:requestState':
+          postState();
+          break;
+        default:
+          break;
+      }
+    };
+    window.addEventListener('message', onMessage);
+    return () => window.removeEventListener('message', onMessage);
+  }, [embedded, duration, postState]);
+
   const [hoverTime, setHoverTime] = React.useState(null);
   const [scale, setScale] = React.useState(1);
 
