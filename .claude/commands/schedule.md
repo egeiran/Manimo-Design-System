@@ -89,9 +89,34 @@ flag this in the routine output rather than ship a static deck.
 
 ### Audio
 
-- After the JSX passes lint and visual check, run `npm run audio <id>`.
-  Narration must follow CLAUDE.md Hard Rule 9 (spoken, not symbolic);
-  `generate-audio.js` will refuse the API call otherwise.
+- After the JSX passes lint and visual check, run
+  `npm run audio <id> -- --engine local`. This uses `say` on macOS and
+  `espeak-ng` on Linux sandboxes — no ElevenLabs key required, no
+  network dependency, real per-beat audioStart offsets via ffprobe.
+  If `espeak-ng` isn't on PATH, install it first
+  (`apt-get install espeak-ng`). Quality is rough; the human can
+  re-run with `--engine elevenlabs` later — wire-up shape is identical
+  so swapping engines is just audio + re-render + republish.
+- Apply the printed wire-up to `motion/<id>.jsx`,
+  `motion/<id>.spec.json`, `motion/scene-manifest.json` (`duration`
+  field), and `ui_kits/studio/app.jsx` (`initialScenes` entry).
+- Narration must follow CLAUDE.md Hard Rule 9 (spoken, not symbolic);
+  `generate-audio.js` refuses to render formula-shaped narration
+  regardless of engine.
+
+### Publish to kort-forklart
+
+After audio + landscape render are done:
+
+- `npm run render motion/<id>.html -- --landscape-only` — produces
+  `renders/<id>.mp4` with the audio muxed in. Skip portrait; the
+  publish flow is 16:9 only.
+- `npm run publish <id>` — uploads `<id>/video.mp4` plus an auto-
+  extracted poster JPG to the Supabase `scenes` bucket and upserts
+  the row in the `scenes` table.
+- If `SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` are missing in the
+  sandbox's `.env`, log it as a [HUMAN] follow-up in `PLAN.md` and
+  skip the publish — don't fail the whole routine.
 
 ### Reporting
 

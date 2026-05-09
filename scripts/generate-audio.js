@@ -1,32 +1,46 @@
 #!/usr/bin/env node
-// generate-audio.js — synthesize narration audio for a scene via the
-// ElevenLabs TTS REST API.
+// generate-audio.js — synthesize narration audio for a scene.
 //
-// Default mode (recommended): single-track. One ElevenLabs `/with-timestamps`
-// call generates one continuous MP3 (`scene.mp3`) plus per-character timing
-// data, from which we derive the audio-time offset where each beat's
-// narration begins. Result feels like a single continuous reading instead
-// of five separate clips with restart-y silence between them.
+// Engines (`--engine`, default `elevenlabs`):
+//   elevenlabs   ElevenLabs cloud TTS — best quality, requires API key
+//   say          macOS built-in `say` — offline, no key, decent prosody
+//   espeak       Linux `espeak-ng` — offline, no key, robotic but works
+//   local        auto-pick: `say` on macOS, `espeak-ng` on Linux
 //
-// Legacy mode: `--legacy` runs the previous per-beat behavior (one MP3 per
-// beat, no timestamps). Kept for partial regenerations and as a fallback.
+// ElevenLabs default mode (recommended where reachable): single-track. One
+// `/with-timestamps` call generates one continuous MP3 (`scene.mp3`) plus
+// per-character timing data, from which we derive the audio-time offset
+// where each beat's narration begins.
+//
+// ElevenLabs legacy mode: `--legacy` runs the previous per-beat behavior
+// (one MP3 per beat, no timestamps). Deprecated, kept as escape hatch.
+//
+// Local engines (`say` / `espeak`) render one audio file per beat and
+// concatenate via ffmpeg into a single `scene.mp3`. Per-beat durations are
+// measured with ffprobe, so audioStart offsets are exact. Output shape
+// matches single-track mode so the wire-up step is identical.
 //
 // Usage:
 //   node scripts/generate-audio.js spring-oscillation
+//   node scripts/generate-audio.js spring-oscillation --engine local
+//   node scripts/generate-audio.js spring-oscillation --engine say
 //   node scripts/generate-audio.js spring-oscillation --dry-run
 //   node scripts/generate-audio.js spring-oscillation --force
-//   node scripts/generate-audio.js spring-oscillation --voice <voice_id>
-//   node scripts/generate-audio.js spring-oscillation --legacy   (per-beat)
+//   node scripts/generate-audio.js spring-oscillation --voice <id|name>
+//   node scripts/generate-audio.js spring-oscillation --legacy   (elevenlabs per-beat)
 //
 // Free-tier note: ElevenLabs gives 10 000 characters / month. A 5-beat
 // scene is typically 500-700 chars. Single-track mode uses one API call
 // per scene (cheaper at the request level), legacy mode uses N calls.
+// Local engines have no quota and no network dependency.
 //
-// Requires ELEVENLABS_API_KEY in env or .env at the repo root.
+// ElevenLabs requires ELEVENLABS_API_KEY in env or .env at the repo root.
+// Local engines need ffmpeg + ffprobe on PATH (and `say` or `espeak-ng`).
 
 import { resolve, dirname, join } from 'path';
 import { mkdirSync, existsSync, readFileSync, writeFileSync, readdirSync, unlinkSync } from 'fs';
 import { fileURLToPath } from 'url';
+import { spawnSync } from 'child_process';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -54,6 +68,8 @@ for (let i = 0; i < args.length; i++) {
     flags[a.slice(2)] = true;
   } else if (a === '--voice') {
     flags.voice = args[++i];
+  } else if (a === '--engine') {
+    flags.engine = args[++i];
   } else if (a.startsWith('--')) {
     console.error(`Unknown flag: ${a}`);
     process.exit(1);
@@ -63,17 +79,42 @@ for (let i = 0; i < args.length; i++) {
 }
 
 if (positional.length !== 1) {
-  console.error('Usage: node scripts/generate-audio.js <scene-id> [--dry-run] [--force] [--legacy] [--voice <id>] [--unsafe-narration]');
+  console.error('Usage: node scripts/generate-audio.js <scene-id> [--engine elevenlabs|say|espeak|local] [--dry-run] [--force] [--legacy] [--voice <id>] [--unsafe-narration]');
+  process.exit(1);
+}
+
+const ENGINE = flags.engine || 'elevenlabs';
+if (!['elevenlabs', 'say', 'espeak', 'local'].includes(ENGINE)) {
+  console.error(`--engine must be one of: elevenlabs, say, espeak, local`);
+  process.exit(1);
+}
+if (flags.legacy && ENGINE !== 'elevenlabs') {
+  console.error(`--legacy only applies to --engine elevenlabs.`);
   process.exit(1);
 }
 
 const sceneId = positional[0];
-const specPath = join(ROOT, 'motion', `${sceneId}.spec.json`);
+
+// Resolve spec path: prefer the manifest's `spec` field (handles cases
+// where filenames diverge from manifest ids, e.g. rc-circuit ↔ rc-scene).
+const specPath = resolveSpecPath(sceneId);
 if (!existsSync(specPath)) {
   console.error(`Spec not found: ${specPath}`);
   process.exit(1);
 }
 const spec = JSON.parse(readFileSync(specPath, 'utf8'));
+
+function resolveSpecPath(id) {
+  const manifestPath = join(ROOT, 'motion', 'scene-manifest.json');
+  if (existsSync(manifestPath)) {
+    try {
+      const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+      const entry = (manifest.scenes || []).find(s => s.id === id);
+      if (entry?.spec) return join(ROOT, 'motion', entry.spec);
+    } catch { /* fall through to filename convention */ }
+  }
+  return join(ROOT, 'motion', `${id}.spec.json`);
+}
 
 // ─── Pre-flight: refuse formula-shaped narration ────────────────────────
 // Per CLAUDE.md hard rule 9, the `narration` field is read verbatim by TTS
@@ -131,11 +172,13 @@ if (beats.length === 0) {
 }
 
 const totalChars = beats.reduce((n, b) => n + b.narration.length, 0);
-const mode = flags.legacy ? 'legacy (per-beat)' : 'single-track';
+const mode = ENGINE !== 'elevenlabs'
+  ? `local (${ENGINE})`
+  : (flags.legacy ? 'elevenlabs (legacy per-beat)' : 'elevenlabs (single-track)');
 console.log(`Scene: ${sceneId}`);
 console.log(`Mode:  ${mode}`);
 console.log(`Beats with narration: ${beats.length}`);
-console.log(`Total characters: ${totalChars}  (free tier = 10 000 / month)`);
+console.log(`Total characters: ${totalChars}${ENGINE === 'elevenlabs' ? '  (free tier = 10 000 / month)' : ''}`);
 
 // Default voice — `JBFqnCBsd6RMkjVDRZzb` is "George", a calm British male
 // from ElevenLabs' default library. Pairs well with the multilingual_v2
@@ -151,7 +194,16 @@ mkdirSync(outDir, { recursive: true });
 
 // ─── Dry run ───────────────────────────────────────────────────────────
 if (flags['dry-run']) {
-  if (flags.legacy) {
+  if (ENGINE !== 'elevenlabs') {
+    const picked = pickLocalBinary(ENGINE, /* dryProbe */ true);
+    console.log(`\n[dry-run] would render with local engine "${picked || ENGINE}":`);
+    for (const b of beats) {
+      console.log(`  ${b.id.padEnd(20)} ${String(b.narration.length).padStart(4)}ch  →  ${b.id}.${picked === 'say' ? 'aiff' : 'wav'} (tmp)`);
+    }
+    console.log(`  → concat to ${join(outDir, 'scene.mp3')}`);
+    const sceneExists = existsSync(join(outDir, 'scene.mp3'));
+    if (sceneExists) console.log('  (scene.mp3 already exists — pass --force to regenerate)');
+  } else if (flags.legacy) {
     console.log('\n[dry-run] would call ElevenLabs once per beat:');
     for (const b of beats) {
       const fname = `${b.id}.mp3`;
@@ -171,22 +223,23 @@ if (flags['dry-run']) {
 }
 
 // ─── Real run ──────────────────────────────────────────────────────────
-const apiKey = process.env.ELEVENLABS_API_KEY;
-
-// Legacy per-beat mode requires a working key — there's no useful fallback
-// equivalent for that path and it's deprecated anyway.
-if (flags.legacy) {
-  if (!apiKey) {
-    console.error('Missing ELEVENLABS_API_KEY. Add it to .env or export it in your shell.');
-    process.exit(1);
-  }
-  await runLegacyPerBeat();
+if (ENGINE !== 'elevenlabs') {
+  await runLocalTTS();
 } else {
-  await runSingleTrack();
+  const apiKey = process.env.ELEVENLABS_API_KEY;
+  if (flags.legacy) {
+    if (!apiKey) {
+      console.error('Missing ELEVENLABS_API_KEY. Add it to .env or export it in your shell.');
+      process.exit(1);
+    }
+    await runLegacyPerBeat(apiKey);
+  } else {
+    await runSingleTrack(apiKey);
+  }
 }
 
 // ─── Single-track mode ─────────────────────────────────────────────────
-async function runSingleTrack() {
+async function runSingleTrack(apiKey) {
   const sceneMp3 = join(outDir, 'scene.mp3');
   const manifestPath = join(outDir, 'manifest.json');
 
@@ -357,7 +410,7 @@ function printWireUp({ tracks, totalSec, audio }) {
 }
 
 // ─── Legacy per-beat mode ──────────────────────────────────────────────
-async function runLegacyPerBeat() {
+async function runLegacyPerBeat(apiKey) {
   let charsUsed = 0;
   const tracks = [];
   for (const b of beats) {
@@ -409,4 +462,202 @@ async function runLegacyPerBeat() {
 
   console.log(`\nWrote ${tracks.length} tracks to ${outDir}`);
   console.log(`Characters consumed this run: ${charsUsed}`);
+}
+
+// ─── Local TTS mode (`say` / `espeak-ng`) ──────────────────────────────
+// Renders one audio file per beat with the chosen offline binary, probes
+// each duration with ffprobe, then concatenates everything into a single
+// scene.mp3 via ffmpeg. Output shape matches single-track mode so the
+// wire-up step is identical.
+async function runLocalTTS() {
+  const sceneMp3 = join(outDir, 'scene.mp3');
+  if (existsSync(sceneMp3) && !flags.force) {
+    console.log(`✓ scene.mp3 exists — pass --force to regenerate.`);
+    process.exit(0);
+  }
+
+  const binary = pickLocalBinary(ENGINE);
+  if (!binary) {
+    if (ENGINE === 'say') {
+      console.error('`say` not found on PATH. macOS only.');
+    } else if (ENGINE === 'espeak') {
+      console.error('`espeak-ng` (or `espeak`) not found on PATH.');
+      console.error('Install: `apt-get install espeak-ng` (Linux) or `brew install espeak-ng` (mac).');
+    } else {
+      console.error('No local TTS engine available.');
+      console.error('Install `espeak-ng` (Linux: `apt-get install espeak-ng`), or use macOS where `say` ships built-in.');
+    }
+    process.exit(1);
+  }
+  if (!hasBinary('ffmpeg') || !hasBinary('ffprobe')) {
+    console.error('ffmpeg and ffprobe must both be on PATH (brew install ffmpeg).');
+    process.exit(1);
+  }
+
+  const lang = spec.language || 'en';
+  const voice = flags.voice || defaultLocalVoice(binary, lang);
+  console.log(`Engine: ${binary}${voice ? `   Voice: ${voice}` : '   Voice: (system default)'}`);
+
+  const tmpDir = join(ROOT, '.tmp', 'audio', sceneId);
+  mkdirSync(tmpDir, { recursive: true });
+
+  const round2 = v => Math.round(v * 100) / 100;
+  const ext = binary === 'say' ? 'aiff' : 'wav';
+  const beatFiles = [];
+  const tracks = [];
+  let cursor = 0;
+  // Tiny gap between beats so concatenated speech doesn't run together as
+  // one breath. ElevenLabs adds this naturally via punctuation; offline
+  // engines tend to clip the trailing silence.
+  const INTER_BEAT_GAP = 0.25;
+
+  for (let i = 0; i < beats.length; i++) {
+    const b = beats[i];
+    const beatPath = join(tmpDir, `${b.id}.${ext}`);
+    process.stdout.write(`↓ ${b.id} (${b.narration.length}ch) `);
+    try {
+      renderBeatLocal(binary, voice, b.narration, beatPath);
+    } catch (err) {
+      console.error(`\n${err.message}`);
+      process.exit(1);
+    }
+    const dur = round2(probeDuration(beatPath));
+    console.log(`(${dur}s)`);
+    beatFiles.push(beatPath);
+
+    tracks.push({
+      id: b.id,
+      audioStart: round2(cursor),
+      narration: b.narration,
+    });
+    cursor += dur + (i < beats.length - 1 ? INTER_BEAT_GAP : 0);
+  }
+  const totalSec = round2(cursor);
+
+  // Write a concat list file for ffmpeg's concat demuxer. Build silent
+  // padding files for the inter-beat gaps so the offsets we just computed
+  // line up exactly with the encoded MP3.
+  const silencePath = join(tmpDir, '_gap.wav');
+  const sil = spawnSync('ffmpeg', [
+    '-y', '-loglevel', 'error',
+    '-f', 'lavfi', '-i', `anullsrc=r=22050:cl=mono`,
+    '-t', String(INTER_BEAT_GAP),
+    '-c:a', 'pcm_s16le',
+    silencePath,
+  ]);
+  if (sil.status !== 0) {
+    console.error('Failed to generate silence padding.');
+    process.exit(1);
+  }
+
+  const listPath = join(tmpDir, 'concat.txt');
+  const escaped = p => p.replace(/'/g, "'\\''");
+  const lines = [];
+  for (let i = 0; i < beatFiles.length; i++) {
+    lines.push(`file '${escaped(beatFiles[i])}'`);
+    if (i < beatFiles.length - 1) lines.push(`file '${escaped(silencePath)}'`);
+  }
+  writeFileSync(listPath, lines.join('\n') + '\n');
+
+  process.stdout.write(`encoding scene.mp3… `);
+  const ff = spawnSync('ffmpeg', [
+    '-y', '-loglevel', 'error',
+    '-f', 'concat', '-safe', '0', '-i', listPath,
+    '-c:a', 'libmp3lame', '-b:a', '128k',
+    '-ar', '44100',
+    sceneMp3,
+  ]);
+  if (ff.status !== 0) {
+    console.error('\nffmpeg concat failed:');
+    console.error(ff.stderr?.toString().slice(0, 500));
+    process.exit(1);
+  }
+  console.log('done');
+
+  writeFileSync(join(outDir, 'manifest.json'), JSON.stringify({
+    sceneId,
+    mode: `local-${binary}`,
+    voice: voice || null,
+    audio: `audio/${sceneId}/scene.mp3`,
+    durationSec: totalSec,
+    tracks,
+  }, null, 2) + '\n');
+
+  // Cleanup tmp files (keep .tmp dir, it's gitignored)
+  for (const f of beatFiles) { try { unlinkSync(f); } catch {} }
+  try { unlinkSync(silencePath); } catch {}
+  try { unlinkSync(listPath); } catch {}
+
+  // Wipe stale per-beat MP3s left over from legacy ElevenLabs runs.
+  const stale = readdirSync(outDir).filter(f => f.endsWith('.mp3') && f !== 'scene.mp3');
+  for (const f of stale) unlinkSync(join(outDir, f));
+  if (stale.length) console.log(`Removed ${stale.length} legacy per-beat MP3(s).`);
+
+  console.log(`\nWrote scene.mp3 (${totalSec}s) and manifest.json to ${outDir}`);
+  printWireUp({ tracks, totalSec, audio: true });
+}
+
+function pickLocalBinary(requested) {
+  if (requested === 'say') return hasBinary('say') ? 'say' : null;
+  if (requested === 'espeak') {
+    if (hasBinary('espeak-ng')) return 'espeak-ng';
+    if (hasBinary('espeak')) return 'espeak';
+    return null;
+  }
+  // local: auto-detect
+  if (hasBinary('say')) return 'say';
+  if (hasBinary('espeak-ng')) return 'espeak-ng';
+  if (hasBinary('espeak')) return 'espeak';
+  return null;
+}
+
+function hasBinary(name) {
+  // `command -v` is more portable than `which` and respects shell builtins.
+  const r = spawnSync(process.platform === 'win32' ? 'where' : 'sh',
+    process.platform === 'win32' ? [name] : ['-c', `command -v ${name}`],
+    { stdio: 'ignore' });
+  return r.status === 0;
+}
+
+function defaultLocalVoice(binary, lang) {
+  if (binary === 'say') {
+    // macOS `say` falls back to system default if -v is omitted. For
+    // Norwegian, prefer Nora if available — otherwise system default.
+    if (lang === 'no') return 'Nora';
+    return null; // system default (typically Samantha on en-US machines)
+  }
+  // espeak-ng / espeak: -v <lang>
+  if (lang === 'no') return 'no';
+  return 'en-us';
+}
+
+function renderBeatLocal(binary, voice, text, outPath) {
+  const args = [];
+  if (binary === 'say') {
+    if (voice) args.push('-v', voice);
+    args.push('-o', outPath, '--', text);
+  } else {
+    if (voice) args.push('-v', voice);
+    args.push('-w', outPath, text);
+  }
+  const r = spawnSync(binary, args, { encoding: 'utf8' });
+  if (r.status !== 0) {
+    const err = (r.stderr || '').toString().trim().slice(0, 300);
+    throw new Error(`${binary} failed (status ${r.status}): ${err || '(no stderr)'}`);
+  }
+}
+
+function probeDuration(path) {
+  const r = spawnSync('ffprobe', [
+    '-v', 'error',
+    '-show_entries', 'format=duration',
+    '-of', 'default=noprint_wrappers=1:nokey=1',
+    path,
+  ], { encoding: 'utf8' });
+  if (r.status !== 0) {
+    throw new Error(`ffprobe failed for ${path}: ${(r.stderr || '').toString().slice(0, 200)}`);
+  }
+  const v = parseFloat(r.stdout.trim());
+  if (!isFinite(v) || v <= 0) throw new Error(`ffprobe returned non-positive duration for ${path}`);
+  return v;
 }

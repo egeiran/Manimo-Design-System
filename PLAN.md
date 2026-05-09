@@ -14,6 +14,51 @@ and require your input. Total queue size is kept ≤ 12 items.
 
 ### [AGENT] — safe for the next nightly run
 
+- **Audio + render + publish loop for every scene without real audio.**
+  Walk `motion/scene-manifest.json`. For each scene whose
+  `motion/audio/<id>/scene.mp3` is missing OR whose
+  `motion/audio/<id>/manifest.json` has `"mode": "fallback-estimated"`:
+
+  1. `npm run audio <id> -- --engine local --force` — uses macOS `say`
+     locally and `espeak-ng` on Linux sandboxes (no ElevenLabs key
+     needed; auto-picks). On Linux: `apt-get install espeak-ng` if it's
+     not already on PATH. The script now also resolves spec paths via
+     the manifest's `spec` field, so this works for `rc-circuit` and
+     `moment-of-inertia` even before the rename TODO below lands.
+  2. Apply the printed wire-up to `motion/<file>.jsx`,
+     `motion/<spec>.json`, `motion/scene-manifest.json` (just the
+     `duration` field), and `ui_kits/studio/app.jsx`. The wire-up
+     instructions are emitted at the end of the audio run.
+  3. `npm run render motion/<html> -- --landscape-only` — re-renders
+     `renders/<id>.mp4` so the new audio is muxed in. Skip portrait
+     (16:9 only is the new publish target — see CLAUDE.md "Publishing
+     scenes").
+  4. `npm run publish <id>` — uploads `<id>/video.mp4` + auto-extracted
+     `<id>/poster.jpg` to the Supabase `scenes` bucket and upserts the
+     row. Requires `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` in
+     `.env`. If those are missing on the sandbox, log it as a [HUMAN]
+     follow-up and skip step 4 — but still complete steps 1–3 so the
+     audio is committed and ready to publish on the next run with a
+     working key.
+
+  Quality note: `say` and `espeak-ng` are noticeably more robotic than
+  ElevenLabs (especially `espeak`). These audio tracks are placeholders
+  until the user can re-run with `--engine elevenlabs` from a host that
+  can reach the API; the wire-up shape is identical so swapping engines
+  later only requires the audio call + re-render + republish.
+
+- **Snapshot tool path workaround.** The pre-cached chromium under
+  `/opt/pw-browsers/chromium_headless_shell-1194` doesn't match the
+  revision Playwright 1.59 expects (1217). Tonight the agent worked
+  around it with `mkdir -p /tmp/pw-browsers/chromium_headless_shell-1217
+  && ln -sfn /opt/pw-browsers/chromium_headless_shell-1194/chrome-linux
+  /tmp/pw-browsers/chromium_headless_shell-1217/chrome-headless-shell-linux64`
+  + a `chrome-headless-shell` symlink to `headless_shell`, then
+  `PLAYWRIGHT_BROWSERS_PATH=/tmp/pw-browsers` for the snapshot run. If
+  this keeps recurring, codify it: either pin Playwright in
+  `package.json` to the version that matches the cached browser revision,
+  or add a small `scripts/ensure-browsers.js` that lays down the symlinks
+  before the snapshot tool runs.
 - **Re-run `npm run audio centripetal-acceleration`,**
   `npm run audio damped-oscillation`, `npm run audio torque`, and
   `npm run audio coulombs-law` once `ELEVENLABS_API_KEY` can reach the
