@@ -1,15 +1,12 @@
 #!/usr/bin/env node
-// publish-scene.js — upload a Manimo scene's rendered video + metadata to
-// the kort-forklart Supabase project.
+// publish-scene.js — upsert a Manimo scene's metadata into the kort-forklart
+// Supabase project. The scene itself is served as live HTML from GitHub Pages
+// (no MP4 upload, no Storage bucket).
 //
-// For each scene:
-//   1. Verifies renders/<id>.mp4 exists (run `npm run render` first if not)
-//   2. Extracts a poster JPG from ~1/3 into the video via ffmpeg
-//   3. Uploads <id>/video.mp4 + <id>/poster.jpg to the public `scenes` bucket
-//   4. Upserts a row in the `scenes` table with metadata + public URLs
-//
-// Re-publishing the same scene is safe: storage uploads use x-upsert and the
-// SQL upsert merges on the id primary key, so it just refreshes the files.
+// For each scene we upsert a row in `public.scenes` with a `scene_url` that
+// embeds the live HTML at https://egeiran.github.io/Manimo-Design-System/
+// motion/<id>.html?embed=1. Re-publishing the same id is safe (merge-duplicates
+// on the primary key).
 //
 // Usage:
 //   node scripts/publish-scene.js damped-oscillation
@@ -20,12 +17,13 @@
 // (Service role only — never bundle this in any client app.)
 
 import { resolve, dirname, join } from 'path';
-import { mkdirSync, existsSync, readFileSync, statSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
-import { spawnSync } from 'child_process';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const BUCKET = 'scenes';
+
+// Live-HTML host. Update if Pages moves to a custom domain.
+const SCENE_BASE_URL = 'https://egeiran.github.io/Manimo-Design-System/motion';
 
 // ─── .env loader (mirrors generate-audio.js — repo avoids dotenv dep) ────
 function loadDotenv() {
@@ -45,7 +43,7 @@ const args = process.argv.slice(2);
 const flags = {};
 const positional = [];
 for (const a of args) {
-  if (a === '--dry-run' || a === '--force') flags[a.slice(2)] = true;
+  if (a === '--dry-run') flags['dry-run'] = true;
   else if (a.startsWith('--')) {
     console.error(`Unknown flag: ${a}`);
     process.exit(1);
@@ -78,14 +76,8 @@ if (scenes.length === 0) {
   process.exit(1);
 }
 
-// ─── ffmpeg presence (poster extraction) ────────────────────────────────
-if (spawnSync('ffmpeg', ['-version'], { stdio: 'ignore' }).status !== 0) {
-  console.error('ffmpeg not found on PATH. Install with: brew install ffmpeg');
-  process.exit(1);
-}
-
 console.log(`Target:   ${SUPABASE_URL || '(dry-run)'}`);
-console.log(`Bucket:   ${BUCKET}`);
+console.log(`Host:     ${SCENE_BASE_URL}`);
 console.log(`Scenes:   ${scenes.map(s => s.id).join(', ')}`);
 console.log('');
 
@@ -107,44 +99,17 @@ console.log('\nDone.');
 
 // ─── per-scene ───────────────────────────────────────────────────────────
 async function publishOne(scene) {
-  const { id, title, eyebrow, topic, language, duration, prerequisites, concepts } = scene;
+  const { id, html, title, eyebrow, topic, language, duration, prerequisites, concepts } = scene;
   console.log(`── ${id}`);
 
-  const videoPath = join(ROOT, 'renders', `${id}.mp4`);
-  if (!existsSync(videoPath)) {
-    throw new Error(`renders/${id}.mp4 not found. Run: npm run render motion/${scene.html}`);
-  }
-
-  // Poster: pick a frame ~1/3 into the scene to skip the empty intro beat.
-  const posterDir = join(ROOT, '.tmp', 'publish', id);
-  mkdirSync(posterDir, { recursive: true });
-  const posterPath = join(posterDir, 'poster.jpg');
-  const posterTime = Math.max(0.5, Math.min(duration - 0.5, duration / 3));
-  const ff = spawnSync('ffmpeg', [
-    '-y', '-loglevel', 'error',
-    '-ss', String(posterTime),
-    '-i', videoPath,
-    '-vframes', '1',
-    '-q:v', '3',
-    posterPath,
-  ], { stdio: 'inherit' });
-  if (ff.status !== 0) throw new Error('ffmpeg failed to extract poster frame');
-
+  const sceneUrl = `${SCENE_BASE_URL}/${html}?embed=1`;
   const hasAudio = existsSync(join(ROOT, 'motion', 'audio', id, 'scene.mp3'));
-  const videoSizeMB = (statSize(videoPath) / 1e6).toFixed(1);
-  const posterSizeKB = (statSize(posterPath) / 1024).toFixed(0);
 
   if (flags['dry-run']) {
-    console.log(`  (dry-run) video.mp4 ${videoSizeMB} MB + poster.jpg ${posterSizeKB} KB`);
     console.log(`  (dry-run) row: ${title} (${language}, ${duration}s, audio=${hasAudio})`);
+    console.log(`  (dry-run) scene_url: ${sceneUrl}`);
     return;
   }
-
-  const videoKey = `${id}/video.mp4`;
-  const posterKey = `${id}/poster.jpg`;
-  await uploadFile(videoKey, videoPath, 'video/mp4');
-  await uploadFile(posterKey, posterPath, 'image/jpeg');
-  console.log(`  ✓ uploaded ${videoKey} (${videoSizeMB} MB) + ${posterKey} (${posterSizeKB} KB)`);
 
   await upsertRow({
     id,
@@ -155,33 +120,14 @@ async function publishOne(scene) {
     duration_seconds: duration,
     prerequisites: prerequisites || [],
     concepts: concepts || [],
-    video_url: publicUrl(videoKey),
-    poster_url: publicUrl(posterKey),
+    scene_url: sceneUrl,
     has_audio: hasAudio,
     updated_at: new Date().toISOString(),
   });
-  console.log(`  ✓ row upserted`);
+  console.log(`  ✓ row upserted (${sceneUrl})`);
 }
 
-// ─── Supabase REST helpers ───────────────────────────────────────────────
-async function uploadFile(key, path, contentType) {
-  const body = readFileSync(path);
-  const url = `${SUPABASE_URL}/storage/v1/object/${BUCKET}/${key}`;
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
-      'Content-Type': contentType,
-      'x-upsert': 'true',
-    },
-    body,
-  });
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`storage upload failed (${res.status}): ${text}`);
-  }
-}
-
+// ─── Supabase REST ───────────────────────────────────────────────────────
 async function upsertRow(row) {
   const url = `${SUPABASE_URL}/rest/v1/scenes`;
   const res = await fetch(url, {
@@ -199,9 +145,3 @@ async function upsertRow(row) {
     throw new Error(`scenes upsert failed (${res.status}): ${text}`);
   }
 }
-
-function publicUrl(key) {
-  return `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${key}`;
-}
-
-function statSize(p) { try { return statSync(p).size; } catch { return 0; } }

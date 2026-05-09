@@ -106,17 +106,19 @@ flag this in the routine output rather than ship a static deck.
 
 ### Publish to kort-forklart
 
-After audio + landscape render are done:
+After audio is wired up:
 
-- `npm run render motion/<id>.html -- --landscape-only` — produces
-  `renders/<id>.mp4` with the audio muxed in. Skip portrait; the
-  publish flow is 16:9 only.
-- `npm run publish <id>` — uploads `<id>/video.mp4` plus an auto-
-  extracted poster JPG to the Supabase `scenes` bucket and upserts
-  the row in the `scenes` table.
+- `npm run publish <id>` — upserts the scene row in the Supabase
+  `scenes` table with `scene_url` pointing at the live GitHub Pages
+  HTML (`https://egeiran.github.io/Manimo-Design-System/motion/<html>?embed=1`).
+  Metadata-only; no MP4 upload, no Storage bucket. The scene becomes
+  reachable as soon as Pages picks up the new `motion/<id>.html` from
+  the merged PR.
 - If `SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` are missing in the
   sandbox's `.env`, log it as a [HUMAN] follow-up in `PLAN.md` and
   skip the publish — don't fail the whole routine.
+- An MP4 export via `scripts/render-scene.js` is still useful for
+  ad-hoc social cuts but is **not** part of the publish flow.
 
 ### Reporting
 
