@@ -168,14 +168,24 @@ See `README.md` (root) for the full voice guide.
 ## Publishing scenes to kort-forklart
 
 The companion repo `egeiran/kort-forklart` (Next.js + Supabase) consumes
-finished videos from this project. The flow is one-way: render here, push
-to Supabase, fetch from Next.js.
+scenes from this project as **live HTML** hosted on GitHub Pages. The flow:
+push the scene HTML to `main` (Pages auto-deploys), then write a row in
+Supabase pointing at the live URL. No MP4 upload, no storage bucket.
+
+The Pages site lives at
+`https://egeiran.github.io/Manimo-Design-System/`. Every scene in
+`motion/scene-manifest.json` is reachable at
+`https://egeiran.github.io/Manimo-Design-System/motion/<html>` (with
+`?embed=1` for iframe-style hosts that draw their own transport bar).
+Pages is "Deploy from a branch", source `main` / root `/`; `.nojekyll`
+at the repo root keeps Pages from stripping `_scene-template.*` files.
 
 **One-time setup (kort-forklart's Supabase project):**
 
 1. Open the Supabase dashboard's SQL editor and run `supabase/scenes.sql`
-   — it creates the `scenes` table, the public `scenes` storage bucket,
-   and the public-read RLS policies.
+   — it creates the `scenes` table and the public-read RLS policy.
+   Re-running on an existing install drops the legacy `video_url` /
+   `poster_url` columns and adds `scene_url`.
 2. Copy `.env.example` to `.env` at the Manimo repo root and fill in
    `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` (Project Settings → API).
    The service-role key bypasses RLS and stays local — never commit it.
@@ -183,20 +193,20 @@ to Supabase, fetch from Next.js.
 **Per-scene publish:**
 
 ```bash
-npm run render motion/<id>.html --landscape-only   # produces renders/<id>.mp4
-npm run publish <id>                               # uploads + upserts row
+git push origin main      # Pages picks up the new motion/<id>.html
+npm run publish <id>      # upserts row with scene_url
 ```
 
-`scripts/publish-scene.js` extracts a poster JPG via ffmpeg, uploads
-`<id>/video.mp4` and `<id>/poster.jpg` to the `scenes` bucket, and
-upserts a row in the `scenes` table with metadata pulled from
-`motion/scene-manifest.json`. Re-publishing the same id is safe — both
-the storage write and the SQL upsert are idempotent. `npm run publish all`
-walks the whole manifest.
+`scripts/publish-scene.js` is metadata-only: it reads the scene from
+`motion/scene-manifest.json`, sets `scene_url` to the live Pages URL
+plus `?embed=1`, and upserts a row in the `scenes` table. Re-publishing
+the same id is safe — the SQL upsert merges on the primary key.
+`npm run publish all` walks the whole manifest.
 
-**Currently 16:9 only.** Portrait (9:16) is rendered by default by
-`render-scene.js` but not uploaded; if reels become a delivery target,
-add a second column + key to the schema and the script.
+**MP4 export is now ad-hoc.** `scripts/render-scene.js` still produces
+`renders/<id>.mp4` for social cuts and downloads, but it's no longer in
+the publish flow. Portrait (9:16) is no longer relevant to publishing
+either; the live HTML adapts via `?aspect=9:16` at view time.
 
 ---
 

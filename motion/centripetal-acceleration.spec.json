@@ -3,14 +3,14 @@
   "title": "Centripetal Acceleration: Steering, Not Speeding",
   "eyebrow": "Scene 6 · circular motion",
   "language": "en",
-  "duration": 45,
+  "duration": 42,
   "topic": "Centripetal acceleration — uniform circular motion gives a = v²/r = rω², always pointing toward the centre",
   "prerequisites": [],
   "beats": [
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 7.37,
+      "end": 7.52,
       "narration": "Whirl a ball around at constant speed — same speed, curved path, and it is still accelerating. How?",
       "visuals": {
         "layout": "center",
@@ -22,8 +22,8 @@
     },
     {
       "id": "circularMotion",
-      "start": 7.37,
-      "end": 18.6,
+      "start": 7.52,
+      "end": 17.42,
       "narration": "A ball moving in a circle keeps turning. Even at constant speed, the velocity vector keeps changing direction — and a change in velocity is acceleration.",
       "visuals": {
         "layout": "center",
@@ -39,8 +39,8 @@
     },
     {
       "id": "centripetalReveal",
-      "start": 18.6,
-      "end": 27.83,
+      "start": 17.42,
+      "end": 25.62,
       "narration": "That acceleration always points inward, toward the centre of the circle. Its size is the speed squared divided by the radius.",
       "visuals": {
         "layout": "top-bottom",
@@ -57,8 +57,8 @@
     },
     {
       "id": "angularForm",
-      "start": 27.83,
-      "end": 33.77,
+      "start": 25.62,
+      "end": 31.92,
       "narration": "Substitute v equals r omega, and the same acceleration becomes r omega squared.",
       "visuals": {
         "layout": "center",
@@ -72,8 +72,8 @@
     },
     {
       "id": "takeaway",
-      "start": 33.77,
-      "end": 45,
+      "start": 31.92,
+      "end": 42,
       "narration": "Centripetal acceleration sits perpendicular to the motion at every instant — so it does no work. It does not speed the ball up. It just steers.",
       "visuals": {
         "layout": "center",

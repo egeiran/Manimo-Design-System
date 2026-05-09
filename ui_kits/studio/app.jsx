@@ -36,17 +36,17 @@ const seedMessages = [
 // All scenes are live — each entry renders the real motion/*.html in an
 // iframe via PreviewCanvas. duration is seconds (matches scene-manifest.json).
 const initialScenes = [
-  { id: 'live-rc',           kind: 'live', kindLabel: 'Live', cardTitle: 'Lading av en kondensator', duration: 20, html: '../../motion/rc-scene.html' },
+  { id: 'live-rc',           kind: 'live', kindLabel: 'Live', cardTitle: 'Charging a Capacitor', duration: 34, html: '../../motion/rc-scene.html' },
   { id: 'live-derivation',   kind: 'live', kindLabel: 'Live', cardTitle: 'Moment of Inertia',         duration: 43, html: '../../motion/derivation-scene.html' },
   { id: 'live-hoop-disk',    kind: 'live', kindLabel: 'Live', cardTitle: 'Hoop vs Disk',              duration: 48, html: '../../motion/hoop-disk.html' },
   { id: 'live-spring',       kind: 'live', kindLabel: 'Live', cardTitle: "Hooke's Law: Spring Bobs",  duration: 41, html: '../../motion/spring-oscillation.html' },
   { id: 'live-pendulum',     kind: 'live', kindLabel: 'Live', cardTitle: 'The Simple Pendulum',       duration: 50, html: '../../motion/pendulum.html' },
   { id: 'live-rlc-pendulum', kind: 'live', kindLabel: 'Live', cardTitle: 'RLC ↔ Pendulum Analogy',    duration: 48, html: '../../motion/rlc-pendulum.html' },
-  { id: 'live-centripetal',  kind: 'live', kindLabel: 'Live', cardTitle: 'Centripetal Acceleration',  duration: 45, html: '../../motion/centripetal-acceleration.html' },
+  { id: 'live-centripetal',  kind: 'live', kindLabel: 'Live', cardTitle: 'Centripetal Acceleration',  duration: 42, html: '../../motion/centripetal-acceleration.html' },
   { id: 'live-steiners',     kind: 'live', kindLabel: 'Live', cardTitle: "Steiner's Theorem",         duration: 55, html: '../../motion/steiners-theorem.html' },
-  { id: 'live-damping',      kind: 'live', kindLabel: 'Live', cardTitle: 'Damped Oscillation',        duration: 49, html: '../../motion/damped-oscillation.html' },
-  { id: 'live-coulomb',      kind: 'live', kindLabel: 'Live', cardTitle: "Coulomb's Law",             duration: 49, html: '../../motion/coulombs-law.html' },
-  { id: 'live-torque',       kind: 'live', kindLabel: 'Live', cardTitle: 'Torque: Leverage Beats Force', duration: 47, html: '../../motion/torque.html' },
+  { id: 'live-damping',      kind: 'live', kindLabel: 'Live', cardTitle: 'Damped Oscillation',        duration: 46, html: '../../motion/damped-oscillation.html' },
+  { id: 'live-coulomb',      kind: 'live', kindLabel: 'Live', cardTitle: "Coulomb's Law",             duration: 46, html: '../../motion/coulombs-law.html' },
+  { id: 'live-torque',       kind: 'live', kindLabel: 'Live', cardTitle: 'Torque: Leverage Beats Force', duration: 45, html: '../../motion/torque.html' },
 ];
 
 function loadJSON(key, fallback) {

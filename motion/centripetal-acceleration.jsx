@@ -2,14 +2,12 @@
 // Generated from motion/centripetal-acceleration.spec.json. Standalone — sits
 // alongside the other rotational mechanics scenes (moment-of-inertia, hoop-disk).
 //
-// Beats (timed to estimated narration durations — re-run `npm run audio
-// centripetal-acceleration` when ELEVENLABS_API_KEY can reach the API to
-// replace these with real audio-aligned offsets):
-//    0.00– 7.37  Manimo enters; hook question
-//    7.37–18.60  Uniform circular motion: ball orbits, velocity vector keeps turning
-//   18.60–27.83  Acceleration points inward; reveal a_c = v²/r
-//   27.83–33.77  Substitute v = rω → a_c = rω²
-//   33.77–45.00  Takeaway — perpendicular to motion, does no work, just steers
+// Beats (timed to single-track narration in motion/audio/centripetal-acceleration/):
+//    0.00– 7.52  Manimo enters; hook question
+//    7.52–17.42  Uniform circular motion: ball orbits, velocity vector keeps turning
+//   17.42–25.62  Acceleration points inward; reveal a_c = v²/r
+//   25.62–31.92  Substitute v = rω → a_c = rω²
+//   31.92–42.00  Takeaway — perpendicular to motion, does no work, just steers
 //
 // Authoring notes:
 //   • All delays below are relative to the enclosing Sprite's start (localTime).
@@ -19,17 +17,23 @@
 //     screen because SVG y grows downward). Ball position, tangent v, and
 //     inward a_c are derived from that single angle.
 
-const SCENE_DURATION = 45;
+const SCENE_DURATION = 42;
 
 // Narration script (one sentence per beat — source of truth for TTS/subtitles).
 // NARRATION.length must equal the number of <Sprite> beats in Scene().
 const NARRATION = [
-  /*  0.00– 7.37 */ 'Whirl a ball around at constant speed — same speed, curved path, and it is still accelerating. How?',
-  /*  7.37–18.60 */ 'A ball moving in a circle keeps turning. Even at constant speed, the velocity vector keeps changing direction — and a change in velocity is acceleration.',
-  /* 18.60–27.83 */ 'That acceleration always points inward, toward the centre of the circle. Its size is the speed squared divided by the radius.',
-  /* 27.83–33.77 */ 'Substitute v equals r omega, and the same acceleration becomes r omega squared.',
-  /* 33.77–45.00 */ 'Centripetal acceleration sits perpendicular to the motion at every instant — so it does no work. It does not speed the ball up. It just steers.',
+  /*  0.00– 7.52 */ 'Whirl a ball around at constant speed — same speed, curved path, and it is still accelerating. How?',
+  /*  7.52–17.42 */ 'A ball moving in a circle keeps turning. Even at constant speed, the velocity vector keeps changing direction — and a change in velocity is acceleration.',
+  /* 17.42–25.62 */ 'That acceleration always points inward, toward the centre of the circle. Its size is the speed squared divided by the radius.',
+  /* 25.62–31.92 */ 'Substitute v equals r omega, and the same acceleration becomes r omega squared.',
+  /* 31.92–42.00 */ 'Centripetal acceleration sits perpendicular to the motion at every instant — so it does no work. It does not speed the ball up. It just steers.',
 ];
+
+// Single continuous narration track — one ElevenLabs render covering the
+// whole scene. Beat <Sprite start> values below match the audioStart
+// offsets in motion/audio/centripetal-acceleration/manifest.json so visuals
+// land on the corresponding sentence in the audio.
+const NARRATION_AUDIO = 'audio/centripetal-acceleration/scene.mp3';
 
 // HTML subscript helper. Unicode has no subscript-c, so we render it via
 // `<sub>` and tweak its font size to match the formulae's serif weight.
@@ -49,23 +53,25 @@ function Scene() {
       title="Centripetal Acceleration: Steering, Not Speeding"
       duration={SCENE_DURATION}
     >
-      <Sprite start={0} end={7.37}>
+      <SceneNarration src={NARRATION_AUDIO} />
+
+      <Sprite start={0} end={7.52}>
         <ManimoBubbleIntro />
       </Sprite>
 
-      <Sprite start={7.37} end={18.6}>
+      <Sprite start={7.52} end={17.42}>
         <CircularMotion />
       </Sprite>
 
-      <Sprite start={18.6} end={27.83}>
+      <Sprite start={17.42} end={25.62}>
         <CentripetalReveal />
       </Sprite>
 
-      <Sprite start={27.83} end={33.77}>
+      <Sprite start={25.62} end={31.92}>
         <AngularForm />
       </Sprite>
 
-      <Sprite start={33.77} end={SCENE_DURATION}>
+      <Sprite start={31.92} end={SCENE_DURATION}>
         <Takeaway />
       </Sprite>
     </SceneChrome>
@@ -433,7 +439,7 @@ window.sceneNarration = NARRATION;
 // ─── Mount ────────────────────────────────────────────────────────────────
 function App() {
   return (
-    <Stage width={1280} height={720} duration={SCENE_DURATION} background="#0c0a1f">
+    <Stage width={1280} height={720} duration={SCENE_DURATION} background="#0c0a1f" loop={false}>
       <Scene/>
     </Stage>
   );

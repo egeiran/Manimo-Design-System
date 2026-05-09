@@ -3,13 +3,12 @@
 // spring-oscillation: same Hooke restoring force, plus a velocity-proportional
 // drag term.
 //
-// Beats (estimated timings from the fallback audio manifest at 14 chars/sec;
-// Step 4c will overwrite these once the ElevenLabs API is reachable):
-//    0.00– 5.44   Manimo enters; hook question
-//    5.44–15.74   Spring + drag setup; m·ẍ + b·ẋ + k·x = 0
-//   15.74–26.04   Divide by m → ẍ + 2γẋ + ω₀²x = 0 → x(t) = A·e^(-γt)·sin(ωt+φ)
-//   26.04–37.41   Animated damped trace — value-driven curve with head marker
-//   37.41–49.00   Three regimes: under, critical, overdamped + closing takeaway
+// Beats (timed to single-track narration in motion/audio/damped-oscillation/):
+//    0.00– 6.54   Manimo enters; hook question
+//    6.54–17.69   Spring + drag setup; m·ẍ + b·ẋ + k·x = 0
+//   17.69–27.23   Divide by m → ẍ + 2γẋ + ω₀²x = 0 → x(t) = A·e^(-γt)·sin(ωt+φ)
+//   27.23–36.54   Animated damped trace — value-driven curve with head marker
+//   36.54–46.00   Three regimes: under, critical, overdamped + closing takeaway
 //
 // Authoring notes:
 //   • Delays are localTime relative to the enclosing Sprite.
@@ -17,17 +16,23 @@
 //   • Beat 4 (DampedTrace) is the genuine-animation beat: x(t) is sampled
 //     at the current localTime and a head marker tracks the live value.
 
-const SCENE_DURATION = 49;
+const SCENE_DURATION = 46;
 
 // Narration script — one sentence per beat, source of truth for TTS.
 // NARRATION.length must match the number of <Sprite> beats in Scene().
 const NARRATION = [
-  /*  0.00– 5.44 */ 'Pull a real spring, let it go — it bobs, then stops. What slows it down?',
-  /*  5.44–15.74 */ "Add air resistance — a drag force proportional to velocity. Newton's law gains a new term: m x double dot plus b x dot plus k x equals zero.",
-  /* 15.74–26.04 */ 'Divide by m, set gamma equal to b over two m, and the underdamped solution turns out to be a sine wave whose amplitude decays exponentially.',
-  /* 26.04–37.41 */ 'Watch each swing fall a little short of the last, while the dashed envelope curves squeeze in toward zero — the amplitude shrinks, but the rhythm survives.',
-  /* 37.41–49.00 */ 'Crank the drag higher and the oscillation disappears. Crank it just right and the spring returns home in the shortest time without overshooting.',
+  /*  0.00– 6.54 */ 'Pull a real spring, let it go — it bobs, then stops. What slows it down?',
+  /*  6.54–17.69 */ "Add air resistance — a drag force proportional to velocity. Newton's law gains a new term: m x double dot plus b x dot plus k x equals zero.",
+  /* 17.69–27.23 */ 'Divide by m, set gamma equal to b over two m, and the underdamped solution turns out to be a sine wave whose amplitude decays exponentially.',
+  /* 27.23–36.54 */ 'Watch each swing fall a little short of the last, while the dashed envelope curves squeeze in toward zero — the amplitude shrinks, but the rhythm survives.',
+  /* 36.54–46.00 */ 'Crank the drag higher and the oscillation disappears. Crank it just right and the spring returns home in the shortest time without overshooting.',
 ];
+
+// Single continuous narration track — one ElevenLabs render covering the
+// whole scene. Beat <Sprite start> values below match the audioStart
+// offsets in motion/audio/damped-oscillation/manifest.json so visuals
+// land on the corresponding sentence in the audio.
+const NARRATION_AUDIO = 'audio/damped-oscillation/scene.mp3';
 
 function Scene() {
   return (
@@ -36,22 +41,24 @@ function Scene() {
       title="Damped Oscillation: Why Real Springs Stop"
       duration={SCENE_DURATION}
       // Beat 1 owned by SceneChrome's JourneyManimo.
-      introEnd={5.44}
+      introEnd={6.54}
       introCaption="Pull a real spring, release — what makes it stop?"
     >
-      <Sprite start={5.44} end={15.74}>
+      <SceneNarration src={NARRATION_AUDIO} />
+
+      <Sprite start={6.54} end={17.69}>
         <DragSetup />
       </Sprite>
 
-      <Sprite start={15.74} end={26.04}>
+      <Sprite start={17.69} end={27.23}>
         <Solution />
       </Sprite>
 
-      <Sprite start={26.04} end={37.41}>
+      <Sprite start={27.23} end={36.54}>
         <DampedTrace />
       </Sprite>
 
-      <Sprite start={37.41} end={SCENE_DURATION}>
+      <Sprite start={36.54} end={SCENE_DURATION}>
         <Regimes />
       </Sprite>
     </SceneChrome>
@@ -560,7 +567,7 @@ window.sceneNarration = NARRATION;
 // ─── Mount ────────────────────────────────────────────────────────────────
 function App() {
   return (
-    <Stage width={1280} height={720} duration={SCENE_DURATION} background="#0c0a1f">
+    <Stage width={1280} height={720} duration={SCENE_DURATION} background="#0c0a1f" loop={false}>
       <Scene/>
     </Stage>
   );

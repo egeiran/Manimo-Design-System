@@ -6,11 +6,11 @@
       "file": "rc-scene.jsx",
       "html": "rc-scene.html",
       "spec": "rc-scene.spec.json",
-      "title": "Lading av en kondensator",
-      "eyebrow": "Scene 1 · introduksjon",
+      "title": "Charging a Capacitor",
+      "eyebrow": "Scene 1 · introduction",
       "topic": "RC circuits — charging curve, time constant τ = RC",
-      "duration": 20,
-      "language": "no",
+      "duration": 34,
+      "language": "en",
       "prerequisites": [],
       "concepts": ["RC circuit", "capacitor charging", "time constant", "exponential decay"]
     },
@@ -87,7 +87,7 @@
       "title": "Centripetal Acceleration: Steering, Not Speeding",
       "eyebrow": "Scene 7 · circular motion",
       "topic": "Centripetal acceleration — uniform circular motion gives a = v²/r = rω², always pointing toward the centre",
-      "duration": 45,
+      "duration": 42,
       "language": "en",
       "prerequisites": [],
       "concepts": ["centripetal acceleration", "uniform circular motion", "angular velocity", "radial acceleration", "no work done"]
@@ -113,7 +113,7 @@
       "title": "Damped Oscillation: Why Real Springs Stop",
       "eyebrow": "Scene 9 · damping",
       "topic": "Damped harmonic oscillator — adding velocity-proportional drag turns Hooke's law into m·ẍ + b·ẋ + k·x = 0; underdamped solution x(t) = A·e^(-γt)·sin(ωt+φ); regimes: underdamped, critically damped, overdamped",
-      "duration": 49,
+      "duration": 46,
       "language": "en",
       "prerequisites": ["spring-oscillation"],
       "concepts": ["damped oscillation", "viscous drag", "exponential decay", "underdamped", "critically damped", "overdamped"]
@@ -126,7 +126,7 @@
       "title": "Torque: Why Leverage Beats Force",
       "eyebrow": "Scene 10 · rotational mechanics",
       "topic": "Torque (Dreiemoment) — τ = rF sin θ; only the perpendicular component of a force creates rotation, peaking at θ = 90° and vanishing when force is parallel to the lever arm",
-      "duration": 47,
+      "duration": 45,
       "language": "en",
       "prerequisites": [],
       "concepts": ["torque", "lever arm", "cross product", "rotational mechanics", "moment of force"]
@@ -139,7 +139,7 @@
       "title": "Coulomb's Law: The Inverse-Square Tug",
       "eyebrow": "Scene 11 · electromagnetism",
       "topic": "Coulomb's law — F = k·q₁q₂/r²; force scales with the product of charges and the inverse square of distance; like repels, opposite attracts",
-      "duration": 49,
+      "duration": 46,
       "language": "en",
       "prerequisites": [],
       "concepts": ["Coulomb's law", "electric charge", "inverse-square law", "Coulomb's constant", "electrostatic force"]

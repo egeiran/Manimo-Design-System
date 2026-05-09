@@ -3,14 +3,14 @@
   "title": "Torque: Why Leverage Beats Force",
   "eyebrow": "Scene 10 · rotational mechanics",
   "language": "en",
-  "duration": 47,
+  "duration": 45,
   "topic": "Torque (Dreiemoment) — τ = rF sin θ, the rotational analogue of Newton's force; only the perpendicular component of a force creates rotation",
   "prerequisites": [],
   "beats": [
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 8.51,
+      "end": 7.93,
       "narration": "Push a door near the hinge — almost nothing happens. Push at the handle, and it swings open. What's the difference?",
       "visuals": {
         "layout": "center",
@@ -22,8 +22,8 @@
     },
     {
       "id": "leverArm",
-      "start": 8.51,
-      "end": 17.31,
+      "start": 7.93,
+      "end": 16.15,
       "narration": "Apply a force at distance r from the pivot. When the force is perpendicular to the arm, the torque is simply r times F.",
       "visuals": {
         "layout": "center",
@@ -41,8 +41,8 @@
     },
     {
       "id": "angleMatters",
-      "start": 17.31,
-      "end": 29.33,
+      "start": 16.15,
+      "end": 28.47,
       "narration": "Tilt the force at an angle theta to the arm. Only the perpendicular component, F sine theta, actually turns the lever — so the torque is r times F times sine theta.",
       "visuals": {
         "layout": "center",
@@ -63,8 +63,8 @@
     },
     {
       "id": "sweep",
-      "start": 29.33,
-      "end": 38.99,
+      "start": 28.47,
+      "end": 36.79,
       "narration": "Sweep the angle from zero to one hundred eighty degrees and watch the torque trace a sine curve — peak at ninety, zero at the ends.",
       "visuals": {
         "layout": "top-bottom",
@@ -81,8 +81,8 @@
     },
     {
       "id": "takeaway",
-      "start": 38.99,
-      "end": 47,
+      "start": 36.79,
+      "end": 45,
       "narration": "Maximum at right angles, zero when the force points along the arm. Leverage is geometry, not just force.",
       "visuals": {
         "layout": "center",

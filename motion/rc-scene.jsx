@@ -1,25 +1,31 @@
 // RC-circuit lesson — example Manimo scene.
-// 20-second teaching sequence that introduces τ = RC.
+// 34-second teaching sequence that introduces τ = RC.
 //
-// Beats:
-//   0.0– 3.0   Manimo enters, scene title writes on
-//   3.2– 6.5   Circuit diagram traces in
-//   6.5–10.5   Question appears below circuit
-//  10.8–11.4   Circuit wipes off (chalk wipe, last 0.6s of its sprite)
-//  11.5–20.0   Charging curve traces, axis labels, τ marker, formula reveal at 16.5
+// Beats (timed to single-track narration in motion/audio/rc-scene/):
+//   0.00– 4.10   Manimo enters, scene title writes on
+//   4.10–11.70   Circuit diagram traces in (chalk wipe, last 0.6s of its sprite)
+//  11.70–15.72   Question appears below circuit
+//  15.72–24.95   Charging curve traces, axis labels, τ marker
+//  24.95–34.00   Formula reveal τ = RC
 
 // Narration script (one sentence per beat — source of truth for TTS/subtitles)
 const NARRATION = [
-  /* 0.0– 3.0 */ 'La oss tegne en krets og se hva som skjer når vi lader en kondensator.',
-  /* 3.2– 6.5 */ 'Her er en enkel RC-krets: en spenningskilde, en motstand R, og en kondensator C.',
-  /* 6.5–10.5 */ 'Når du lukker bryteren — hvor raskt fylles kondensatoren?',
-  /* 11.5–16.5*/ 'Spenningen over kondensatoren stiger eksponentielt og nærmer seg V₀ asymptotisk.',
-  /* 16.5–20.0*/ 'Tidskonstanten τ = RC forteller oss at etter én τ har kondensatoren ladet seg til 63 % av V₀.',
+  /* 0.0– 3.0 */ "Let's draw a circuit and see what happens when we charge a capacitor.",
+  /* 3.2– 6.5 */ 'Here is a simple R C circuit: a voltage source V naught, a resistor R, and a capacitor C.',
+  /* 6.5–10.5 */ 'When you close the switch — how quickly does the capacitor fill up?',
+  /* 11.5–16.5*/ 'The voltage across the capacitor rises exponentially: V of t equals V naught times one minus e to the minus t over tau.',
+  /* 16.5–20.0*/ 'The time constant tau equals R C tells us that after one tau the capacitor has charged to sixty-three percent of V naught.',
 ];
 
 const { useState, useEffect } = React;
 
-const SCENE_DURATION = 20;
+const SCENE_DURATION = 34;
+
+// Single continuous narration track — one ElevenLabs render covering the
+// whole scene. Beat <Sprite start> values below match the audioStart
+// offsets in motion/audio/rc-scene/manifest.json so visuals
+// land on the corresponding sentence in the audio.
+const NARRATION_AUDIO = 'audio/rc-scene/scene.mp3';
 
 function Scene() {
   return (
@@ -31,43 +37,44 @@ function Scene() {
       overflow: 'hidden',
       fontFamily: 'Inter, sans-serif',
     }}>
+      <SceneNarration src={NARRATION_AUDIO} />
       <Background/>
       <Watermark/>
 
       {/* Beat 1: Manimo enters with greeting */}
-      <Sprite start={0.2} end={3.2}>
+      <Sprite start={0} end={4.1}>
         <ManimoBubbleIntro/>
       </Sprite>
 
-      {/* Beat 1.5: Title */}
-      <Sprite start={1.0} end={20}>
+      {/* Beat 1.5: Title — persists for the rest of the scene */}
+      <Sprite start={1.0} end={SCENE_DURATION}>
         <SceneTitle/>
       </Sprite>
 
-      {/* Beat 2: Circuit diagram (3.2–11.4) — wipes off in the last 0.6s, fully clear before graph appears */}
-      <Sprite start={3.2} end={11.4}>
+      {/* Beat 2: Circuit diagram — wipes off in the last 0.6s, fully clear before graph appears */}
+      <Sprite start={4.1} end={11.7}>
         <CircuitChalkWipeWrapper>
           <CircuitDiagram/>
         </CircuitChalkWipeWrapper>
       </Sprite>
 
-      {/* Beat 3: Question (6.5–10.5) — also wipes off */}
-      <Sprite start={6.5} end={10.5}>
+      {/* Beat 3: Question — appears below circuit */}
+      <Sprite start={11.7} end={15.72}>
         <Question/>
       </Sprite>
 
       {/* Beat 4: Graph + curve — starts after the circuit has fully wiped */}
-      <Sprite start={11.5} end={20}>
+      <Sprite start={15.72} end={SCENE_DURATION}>
         <ChargingGraph/>
       </Sprite>
 
       {/* Beat 5: τ = RC formula */}
-      <Sprite start={16.5} end={20}>
+      <Sprite start={24.95} end={SCENE_DURATION}>
         <FormulaReveal/>
       </Sprite>
 
       {/* Persistent Manimo, lower-left */}
-      <Sprite start={2.2} end={20}>
+      <Sprite start={2.2} end={SCENE_DURATION}>
         <ManimoCorner/>
       </Sprite>
     </div>
@@ -121,7 +128,7 @@ function ManimoBubbleIntro() {
           fontStyle: 'italic',
           color: 'var(--chalk-100)',
         }}>
-        La oss tegne en krets.
+        Let's draw a circuit.
       </FadeUp>
     </div>
   );
@@ -150,14 +157,14 @@ function SceneTitle() {
           fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--amber-300)',
           textTransform: 'uppercase', letterSpacing: '0.16em',
         }}>
-        Scene 1 · introduksjon
+        Scene 1 · introduction
       </FadeUp>
       <FadeUp duration={0.5} delay={0.2} distance={10}
         style={{
           fontFamily: 'var(--font-serif)', fontSize: 32, color: 'var(--chalk-100)',
           fontWeight: 500,
         }}>
-        Lading av en kondensator
+        Charging a Capacitor
       </FadeUp>
     </div>
   );
@@ -306,7 +313,7 @@ function Question() {
           textWrap: 'pretty',
           maxWidth: '60ch',
         }}>
-        Når du lukker bryteren — hvor raskt fylles kondensatoren?
+        When you close the switch — how quickly does the capacitor fill up?
       </FadeUp>
     </div>
   );
@@ -436,7 +443,7 @@ function FormulaReveal() {
           color: 'var(--chalk-300)',
           letterSpacing: '0.02em',
         }}>
-        tidskonstanten — produktet av motstand og kapasitans
+        the time constant — the product of resistance and capacitance
       </FadeUp>
     </div>
   );
@@ -448,7 +455,7 @@ window.sceneNarration = NARRATION;
 // ─── Mount ────────────────────────────────────────────────────────────────
 function App() {
   return (
-    <Stage width={1280} height={720} duration={SCENE_DURATION} background="#0c0a1f">
+    <Stage width={1280} height={720} duration={SCENE_DURATION} background="#0c0a1f" loop={false}>
       <Scene/>
     </Stage>
   );

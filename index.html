@@ -3,24 +3,160 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<meta http-equiv="refresh" content="0; url=ui_kits/studio/"/>
-<title>Manimo</title>
+<title>Manimo — Scenes</title>
 <link rel="icon" href="assets/manimo-mark.svg"/>
 <link rel="stylesheet" href="colors_and_type.css"/>
 <style>
   body {
     margin: 0;
     background: var(--bg-canvas);
-    color: var(--chalk-100);
+    color: var(--fg-1);
     font-family: var(--font-sans);
-    display: flex; align-items: center; justify-content: center;
     min-height: 100vh;
   }
-  a { color: var(--amber-400); text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 64px 32px 96px;
+  }
+  header { margin-bottom: 40px; }
+  h1 {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 12px;
+    color: var(--chalk-50);
+  }
+  .lede {
+    color: var(--fg-2);
+    font-size: var(--text-md);
+    line-height: 1.55;
+    margin: 0;
+    max-width: 56ch;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 14px;
+  }
+  a.card {
+    display: block;
+    padding: 20px 24px;
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    background: var(--bg-elevated);
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 120ms ease, transform 120ms ease, background-color 120ms ease;
+  }
+  a.card:hover {
+    border-color: var(--border-strong);
+    background: var(--bg-raised);
+    transform: translateY(-1px);
+  }
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+    margin: 0 0 6px;
+  }
+  .title {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    font-weight: 500;
+    margin: 0 0 8px;
+    color: var(--chalk-50);
+    line-height: 1.2;
+  }
+  .meta {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--fg-3);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .lang {
+    padding: 1px 7px;
+    border: 1px solid var(--border-soft);
+    border-radius: 4px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .empty, .err {
+    color: var(--fg-3);
+    font-size: var(--text-sm);
+  }
+  .err { color: var(--status-danger); }
+  footer {
+    margin-top: 56px;
+    color: var(--fg-4);
+    font-size: var(--text-xs);
+  }
+  footer a { color: var(--fg-3); }
 </style>
 </head>
 <body>
-<p>Going to <a href="ui_kits/studio/">Manimo Studio</a>…</p>
+<main>
+  <header>
+    <h1>Manimo</h1>
+    <p class="lede">
+      Chalkboard-style physics scenes — narrated, animated, rendered live in
+      your browser. Each scene is self-contained HTML.
+    </p>
+  </header>
+  <ul id="scenes" aria-busy="true"><li class="empty">Loading scenes…</li></ul>
+  <footer>
+    Brand and motion library: <a href="ui_kits/studio/">studio</a> ·
+    <a href="preview/">design system preview</a>
+  </footer>
+</main>
+<script>
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+    }[c]));
+  }
+  function fmtDuration(s) {
+    const m = Math.floor(s / 60);
+    const sec = Math.round(s - m * 60).toString().padStart(2, '0');
+    return m + ':' + sec;
+  }
+  fetch('motion/scene-manifest.json')
+    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(({ scenes }) => {
+      const ul = document.getElementById('scenes');
+      if (!scenes || scenes.length === 0) {
+        ul.innerHTML = '<li class="empty">No scenes published yet.</li>';
+        return;
+      }
+      ul.innerHTML = scenes.map(s => `
+        <li>
+          <a class="card" href="motion/${escapeHtml(s.html)}">
+            ${s.eyebrow ? `<p class="eyebrow">${escapeHtml(s.eyebrow)}</p>` : ''}
+            <h2 class="title">${escapeHtml(s.title)}</h2>
+            <p class="meta">
+              <span>${fmtDuration(s.duration)}</span>
+              <span class="lang">${escapeHtml(s.language)}</span>
+            </p>
+          </a>
+        </li>
+      `).join('');
+      ul.removeAttribute('aria-busy');
+    })
+    .catch(err => {
+      document.getElementById('scenes').innerHTML =
+        '<li class="err">Failed to load scene manifest: ' + escapeHtml(err.message) + '</li>';
+    });
+</script>
 </body>
 </html>

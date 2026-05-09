@@ -4,14 +4,12 @@
 // centripetal-acceleration). Establishes τ = r × F before scenes that build
 // on it (e.g. spinn / angular momentum, rigid-body equilibrium).
 //
-// Beats (timed to estimated narration durations — re-run `npm run audio
-// torque` once ELEVENLABS_API_KEY can reach the API to replace these with
-// real audio-aligned offsets):
-//    0.00– 8.51  Manimo enters; hook question (door + hinge)
-//    8.51–17.31  Lever arm: perpendicular force, τ = rF
-//   17.31–29.33  Tilted force: decomposition into ⊥ and ∥ components, τ = rF sin θ
-//   29.33–38.99  Sweep θ from 0° → 180°; τ traces a sine curve synchronously
-//   38.99–47.00  Takeaway — leverage is geometry, not just force
+// Beats (timed to single-track narration in motion/audio/torque/):
+//    0.00– 7.93  Manimo enters; hook question (door + hinge)
+//    7.93–16.15  Lever arm: perpendicular force, τ = rF
+//   16.15–28.47  Tilted force: decomposition into ⊥ and ∥ components, τ = rF sin θ
+//   28.47–36.79  Sweep θ from 0° → 180°; τ traces a sine curve synchronously
+//   36.79–45.00  Takeaway — leverage is geometry, not just force
 //
 // Authoring notes:
 //   • All delays below are relative to the enclosing Sprite's start (localTime).
@@ -22,17 +20,23 @@
 //     swept θ parameter, so the dot on the curve and the wrench's force
 //     direction are mathematically locked together.
 
-const SCENE_DURATION = 47;
+const SCENE_DURATION = 45;
 
 // Narration script (one sentence per beat — source of truth for TTS/subtitles).
 // NARRATION.length must equal the number of <Sprite> beats in Scene().
 const NARRATION = [
-  /*  0.00– 8.51 */ "Push a door near the hinge — almost nothing happens. Push at the handle, and it swings open. What's the difference?",
-  /*  8.51–17.31 */ 'Apply a force at distance r from the pivot. When the force is perpendicular to the arm, the torque is simply r times F.',
-  /* 17.31–29.33 */ 'Tilt the force at an angle theta to the arm. Only the perpendicular component, F sine theta, actually turns the lever — so the torque is r times F times sine theta.',
-  /* 29.33–38.99 */ 'Sweep the angle from zero to one hundred eighty degrees and watch the torque trace a sine curve — peak at ninety, zero at the ends.',
-  /* 38.99–47.00 */ 'Maximum at right angles, zero when the force points along the arm. Leverage is geometry, not just force.',
+  /*  0.00– 7.93 */ "Push a door near the hinge — almost nothing happens. Push at the handle, and it swings open. What's the difference?",
+  /*  7.93–16.15 */ 'Apply a force at distance r from the pivot. When the force is perpendicular to the arm, the torque is simply r times F.',
+  /* 16.15–28.47 */ 'Tilt the force at an angle theta to the arm. Only the perpendicular component, F sine theta, actually turns the lever — so the torque is r times F times sine theta.',
+  /* 28.47–36.79 */ 'Sweep the angle from zero to one hundred eighty degrees and watch the torque trace a sine curve — peak at ninety, zero at the ends.',
+  /* 36.79–45.00 */ 'Maximum at right angles, zero when the force points along the arm. Leverage is geometry, not just force.',
 ];
+
+// Single continuous narration track — one ElevenLabs render covering the
+// whole scene. Beat <Sprite start> values below match the audioStart
+// offsets in motion/audio/torque/manifest.json so visuals
+// land on the corresponding sentence in the audio.
+const NARRATION_AUDIO = 'audio/torque/scene.mp3';
 
 function Scene() {
   return (
@@ -41,22 +45,24 @@ function Scene() {
       title="Torque: Why Leverage Beats Force"
       duration={SCENE_DURATION}
       // Beat 1 is owned by SceneChrome's JourneyManimo.
-      introEnd={8.51}
+      introEnd={7.93}
       introCaption="Same push, different leverage — what turns the door?"
     >
-      <Sprite start={8.51} end={17.31}>
+      <SceneNarration src={NARRATION_AUDIO} />
+
+      <Sprite start={7.93} end={16.15}>
         <LeverArm />
       </Sprite>
 
-      <Sprite start={17.31} end={29.33}>
+      <Sprite start={16.15} end={28.47}>
         <AngleMatters />
       </Sprite>
 
-      <Sprite start={29.33} end={38.99}>
+      <Sprite start={28.47} end={36.79}>
         <SweepAngle />
       </Sprite>
 
-      <Sprite start={38.99} end={SCENE_DURATION}>
+      <Sprite start={36.79} end={SCENE_DURATION}>
         <Takeaway />
       </Sprite>
     </SceneChrome>
@@ -529,6 +535,7 @@ function App() {
       width={1280} height={720}
       duration={SCENE_DURATION}
       background="#0c0a1f"
+      loop={false}
     >
       <Scene/>
     </Stage>

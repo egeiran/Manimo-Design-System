@@ -29,16 +29,14 @@ and require your input. Total queue size is kept ≤ 12 items.
      `motion/<spec>.json`, `motion/scene-manifest.json` (just the
      `duration` field), and `ui_kits/studio/app.jsx`. The wire-up
      instructions are emitted at the end of the audio run.
-  3. `npm run render motion/<html> -- --landscape-only` — re-renders
-     `renders/<id>.mp4` so the new audio is muxed in. Skip portrait
-     (16:9 only is the new publish target — see CLAUDE.md "Publishing
-     scenes").
-  4. `npm run publish <id>` — uploads `<id>/video.mp4` + auto-extracted
-     `<id>/poster.jpg` to the Supabase `scenes` bucket and upserts the
-     row. Requires `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` in
-     `.env`. If those are missing on the sandbox, log it as a [HUMAN]
-     follow-up and skip step 4 — but still complete steps 1–3 so the
-     audio is committed and ready to publish on the next run with a
+  3. `npm run publish <id>` — upserts the scene row in Supabase with
+     `scene_url` set to the live GitHub Pages HTML
+     (`https://egeiran.github.io/Manimo-Design-System/motion/<html>?embed=1`).
+     Metadata-only; no MP4 upload, no Storage bucket. Requires
+     `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` in `.env`. If those
+     are missing on the sandbox, log it as a [HUMAN] follow-up and
+     skip — the audio + JSX are still committed and Pages will serve
+     them once the PR merges, ready to publish on the next run with a
      working key.
 
   Quality note: `say` and `espeak-ng` are noticeably more robotic than

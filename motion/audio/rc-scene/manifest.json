@@ -1,0 +1,35 @@
+{
+  "sceneId": "rc-scene",
+  "mode": "single-track",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/rc-scene/scene.mp3",
+  "durationSec": 32.88,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Let's draw a circuit and see what happens when we charge a capacitor."
+    },
+    {
+      "id": "circuitDiagram",
+      "audioStart": 4.1,
+      "narration": "Here is a simple R C circuit: a voltage source V naught, a resistor R, and a capacitor C."
+    },
+    {
+      "id": "question",
+      "audioStart": 11.7,
+      "narration": "When you close the switch — how quickly does the capacitor fill up?"
+    },
+    {
+      "id": "chargingCurve",
+      "audioStart": 15.72,
+      "narration": "The voltage across the capacitor rises exponentially: V of t equals V naught times one minus e to the minus t over tau."
+    },
+    {
+      "id": "formulaReveal",
+      "audioStart": 24.95,
+      "narration": "The time constant tau equals R C tells us that after one tau the capacitor has charged to sixty-three percent of V naught."
+    }
+  ]
+}
