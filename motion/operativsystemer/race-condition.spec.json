@@ -1,0 +1,84 @@
+{
+  "id": "race-condition",
+  "title": "Race Condition: When Two Threads Share a Counter",
+  "eyebrow": "concurrency",
+  "language": "en",
+  "duration": 49,
+  "topic": "Race condition — two threads incrementing a shared counter can interleave their load-add-store steps so an increment is silently lost; fixing it needs a critical section",
+  "subject_id": "operativsystemer",
+  "chapter_number": 6,
+  "prerequisites": ["fork-process"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.76,
+      "narration": "Two threads each add one to the same counter. We start at zero, add twice, finish at two — right? Sometimes.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "One plus one — but not always two.", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "happyPath",
+      "start": 7.76,
+      "end": 19.59,
+      "narration": "Each increment is really three steps: load the counter, add one, store it back. If thread one finishes all three before thread two starts, the counter goes from zero to one to two. Perfect.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "what we hope happens", "delay": 0.2, "color": "var(--chalk-300)", "position": "small mono eyebrow" },
+          { "type": "svg-path", "content": "Two thread lanes (T1 amber, T2 rose). T1 plays load/add/store, then T2 plays load/add/store. Counter ticks 0 → 1 → 2.", "delay": 0.6, "color": "var(--amber-400)" },
+          { "type": "text-formula", "content": "counter = 2", "delay": 7.5, "color": "var(--amber-300)", "position": "right of the lanes, mono" }
+        ]
+      }
+    },
+    {
+      "id": "interleave",
+      "start": 19.59,
+      "end": 30.47,
+      "narration": "But the scheduler can interrupt at any point. If thread two loads while thread one is still in the middle of its add, both threads write back the value one. One increment is silently lost.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "what really happens", "delay": 0.2, "color": "var(--rose-300)", "position": "small mono eyebrow" },
+          { "type": "svg-path", "content": "Same two thread lanes, but instructions interleave: T1.load → T2.load → T1.add → T2.add → T1.store → T2.store", "delay": 0.6, "color": "var(--rose-400)" },
+          { "type": "graph-marker", "content": "Each step lights up in turn; the counter readout updates per store", "delay": 1.0, "color": "var(--chalk-200)" },
+          { "type": "text-formula", "content": "counter = 1", "delay": 12.0, "color": "var(--rose-300)", "position": "right of the lanes, mono" },
+          { "type": "text-caption", "content": "an entire increment vanished", "delay": 13.5, "color": "var(--chalk-200)", "position": "below, sans 14" }
+        ]
+      }
+    },
+    {
+      "id": "criticalSection",
+      "start": 30.47,
+      "end": 39.7,
+      "narration": "The three steps need to happen atomically — no thread interrupts another mid-update. We mark them as a critical section: only one thread inside at a time.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "the fix", "delay": 0.2, "color": "var(--amber-300)", "position": "small mono eyebrow" },
+          { "type": "svg-path", "content": "Same code block, now bracketed by a glowing critical-section frame; T2 is greyed out while T1 is inside", "delay": 0.6, "color": "var(--amber-400)" },
+          { "type": "text-formula", "content": "lock → load · add · store → unlock", "delay": 4.0, "color": "var(--chalk-200)", "position": "below, mono" },
+          { "type": "text-caption", "content": "one thread inside at a time — mutual exclusion", "delay": 6.0, "color": "var(--chalk-300)", "position": "below, sans 14" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 39.7,
+      "end": 49,
+      "narration": "Concurrent code is unsafe by default. Wherever two threads touch the same data, you need a critical section — or the answer is sometimes wrong.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "shared state + interleaving = race condition", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic 26" },
+          { "type": "text-caption", "content": "(every lock is a fence around a critical section)", "delay": 1.6, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}

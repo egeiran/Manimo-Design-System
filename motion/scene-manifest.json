@@ -210,6 +210,51 @@
       "concepts": ["user mode", "kernel mode", "trap", "system call", "Limited Direct Execution"],
       "subject_id": "operativsystemer",
       "chapter_number": 3
+    },
+    {
+      "id": "round-robin-scheduling",
+      "file": "round-robin-scheduling.jsx",
+      "html": "round-robin-scheduling.html",
+      "spec": "round-robin-scheduling.spec.json",
+      "title": "Round-Robin Scheduling: Fairness by the Slice",
+      "eyebrow": "scheduling",
+      "topic": "Round-robin scheduling — give every ready job one fixed-length time slice in turn; short jobs respond fast, long jobs make steady progress",
+      "duration": 50,
+      "language": "en",
+      "prerequisites": ["virtualizing-cpu"],
+      "concepts": ["round-robin", "time quantum", "Gantt chart", "ready queue", "response time", "scheduling fairness"],
+      "subject_id": "operativsystemer",
+      "chapter_number": 3
+    },
+    {
+      "id": "address-translation",
+      "file": "address-translation.jsx",
+      "html": "address-translation.html",
+      "spec": "address-translation.spec.json",
+      "title": "Address Translation: How a Page Table Finds the Bytes",
+      "eyebrow": "paging",
+      "topic": "Paging address translation — a virtual address splits into VPN + offset; the VPN indexes a per-process page table to a physical frame number; the frame number plus the offset is the physical address",
+      "duration": 47,
+      "language": "en",
+      "prerequisites": ["virtualizing-cpu"],
+      "concepts": ["paging", "virtual address", "physical address", "VPN", "PFN", "page table", "address translation"],
+      "subject_id": "operativsystemer",
+      "chapter_number": 5
+    },
+    {
+      "id": "race-condition",
+      "file": "race-condition.jsx",
+      "html": "race-condition.html",
+      "spec": "race-condition.spec.json",
+      "title": "Race Condition: When Two Threads Share a Counter",
+      "eyebrow": "concurrency",
+      "topic": "Race condition — two threads incrementing a shared counter can interleave their load-add-store steps so an increment is silently lost; fixing it needs a critical section",
+      "duration": 49,
+      "language": "en",
+      "prerequisites": ["fork-process"],
+      "concepts": ["race condition", "critical section", "mutual exclusion", "interleaving", "atomic operation", "lock"],
+      "subject_id": "operativsystemer",
+      "chapter_number": 6
     }
   ]
 }

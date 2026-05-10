@@ -56,60 +56,34 @@ for the exact prompts.
   can reach the API; the wire-up shape is identical so swapping engines
   later only requires the audio call + re-render + republish.
 
-- **Snapshot tool path workaround.** The pre-cached chromium under
-  `/opt/pw-browsers/chromium_headless_shell-1194` doesn't match the
-  revision Playwright 1.59 expects (1217). Tonight the agent worked
-  around it with `mkdir -p /tmp/pw-browsers/chromium_headless_shell-1217
-  && ln -sfn /opt/pw-browsers/chromium_headless_shell-1194/chrome-linux
-  /tmp/pw-browsers/chromium_headless_shell-1217/chrome-headless-shell-linux64`
-  + a `chrome-headless-shell` symlink to `headless_shell`, then
-  `PLAYWRIGHT_BROWSERS_PATH=/tmp/pw-browsers` for the snapshot run. If
-  this keeps recurring, codify it: either pin Playwright in
-  `package.json` to the version that matches the cached browser revision,
-  or add a small `scripts/ensure-browsers.js` that lays down the symlinks
-  before the snapshot tool runs.
-- **Re-run `npm run audio centripetal-acceleration`,**
-  `npm run audio damped-oscillation`, `npm run audio torque`, and
-  `npm run audio coulombs-law` once `ELEVENLABS_API_KEY` can reach the
-  API. All four currently sit on `mode: fallback-estimated` manifests
-  because the ElevenLabs host is still off the sandbox allowlist
-  (HTTP 403 "Host not in allowlist" tonight too — third night in a row).
-  Re-running with a working key writes real MP3s + audio-aligned offsets
-  — then re-apply the printed wire-up to each scene's `.jsx`,
-  `.spec.json`, `scene-manifest.json`, and `ui_kits/studio/app.jsx`.
-  (Same applies to `rc-circuit` and `moment-of-inertia` if/once the
-  rename TODO below lands — those two still have no audio at all.)
-
-- **Codify the snapshot chromium symlink workaround.** Recurred again
-  tonight — third night in a row — so the "if this keeps recurring,
-  codify it" trigger has fired. Add `scripts/ensure-browsers.js` that
-  reads the expected revision from
-  `node_modules/playwright-core/browsers.json`, finds an installed
-  `chromium_headless_shell-*` under `/opt/pw-browsers/` (or wherever),
-  and lays down the
-  `/tmp/pw-browsers/chromium_headless_shell-<expected>/chrome-headless-shell-linux64`
-  symlink + a `chrome-headless-shell` → `headless_shell` symlink inside.
-  Have `scripts/snapshot-scene.js` import it at the top so the snapshot
-  workflow becomes one command again. Tonight's manual fix (in shell):
-  `mkdir -p /tmp/pw-browsers/chromium_headless_shell-1217 && ln -sfn
-  /opt/pw-browsers/chromium_headless_shell-1194/chrome-linux
-  /tmp/pw-browsers/chromium_headless_shell-1217/chrome-headless-shell-linux64
-  && ln -sfn headless_shell
-  /opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/chrome-headless-shell`
-  then `PLAYWRIGHT_BROWSERS_PATH=/tmp/pw-browsers ...`.
+- **Re-run `npm run audio` for fysikk + new OS scenes once
+  ElevenLabs is reachable.** Tonight ElevenLabs free-tier returned
+  401 `detected_unusual_activity` (sandbox proxy looks like a VPN to
+  them) so the new OS scenes shipped with `espeak-ng` placeholder
+  audio. Pending re-run with a working key, in priority order:
+  `round-robin-scheduling`, `address-translation`, `race-condition`
+  (this run's three), then `centripetal-acceleration`,
+  `damped-oscillation`, `torque`, `coulombs-law`, `virtualizing-cpu`,
+  `fork-process`, `user-kernel-mode` (also on `espeak` or
+  fallback-estimated). Re-applying the wire-up after each is mechanical
+  — copy the four-file edits the script prints.
 
 ### [HUMAN] — needs your input
 
+- **Espeak narration is robotic across the new OS scenes.** Tonight's
+  three scenes (`round-robin-scheduling`, `address-translation`,
+  `race-condition`) shipped with `espeak-ng` audio because ElevenLabs
+  was off the allowlist (401 `detected_unusual_activity`). The audio
+  is intelligible but flat — re-render with the [AGENT] item above
+  once a working `ELEVENLABS_API_KEY` reaches a host that can talk
+  to ElevenLabs.
+
 - **Visual review of `pendulum`.** Snapshot tool was unavailable on
-  the sandbox the night this scene shipped (chromium download blocked),
-  so beat 2 (the angled pendulum diagram with both gravity and
-  tangential restoring vectors) was shipped without a visual pass.
-  Tonight's snapshot workaround (see [AGENT] item above) means a
-  follow-up nightly could now re-snapshot; in the meantime, open
-  `motion/pendulum.html` manually and check: (a) the −mg sin θ label
-  is readable and not overlapping the bob, (b) the tangential arrowhead
-  points clearly back-toward-vertical, (c) the angle arc near the pivot
-  is large enough to read.
+  the sandbox the night this scene shipped (chromium download blocked).
+  Open `motion/pendulum.html` manually and check: (a) the −mg sin θ
+  label is readable and not overlapping the bob, (b) the tangential
+  arrowhead points clearly back-toward-vertical, (c) the angle arc
+  near the pivot is large enough to read.
 
 - **Rename `rc-scene.*` → `rc-circuit.*` and `derivation-scene.*` →
   `moment-of-inertia.*`** so the audio script (`npm run audio

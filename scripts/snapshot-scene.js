@@ -25,8 +25,17 @@
 import { resolve, dirname, basename, join, relative } from 'path';
 import { mkdirSync, existsSync, readFileSync, statSync, writeFileSync, unlinkSync } from 'fs';
 import { fileURLToPath } from 'url';
+import { ensureBrowsers } from './ensure-browsers.js';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+
+// If the cached chromium-headless-shell revision doesn't match what this
+// Playwright expects, lay down a /tmp shim and point Playwright at it.
+// No-op when the caches already match.
+const shimRoot = ensureBrowsers();
+if (shimRoot && !process.env.PLAYWRIGHT_BROWSERS_PATH) {
+  process.env.PLAYWRIGHT_BROWSERS_PATH = shimRoot;
+}
 
 // ─── CLI parsing ─────────────────────────────────────────────────────────
 const args = process.argv.slice(2);
