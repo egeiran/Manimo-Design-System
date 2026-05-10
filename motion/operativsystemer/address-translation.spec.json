@@ -1,0 +1,83 @@
+{
+  "id": "address-translation",
+  "title": "Address Translation: How a Page Table Finds the Bytes",
+  "eyebrow": "paging",
+  "language": "en",
+  "duration": 47,
+  "topic": "Paging address translation — a virtual address splits into VPN + offset; the VPN indexes a per-process page table to a physical frame number; the frame number plus the offset is the physical address",
+  "subject_id": "operativsystemer",
+  "chapter_number": 5,
+  "prerequisites": ["virtualizing-cpu"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.33,
+      "narration": "Your program asks for byte zero one zero zero. But where is byte zero one zero zero, really?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "Where does a virtual address live?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "splitAddress",
+      "start": 6.33,
+      "end": 17.47,
+      "narration": "Every virtual address is split into two parts. The top bits name a page — the virtual page number, or VPN. The bottom bits name a byte inside that page — the offset.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "16-bit virtual address", "delay": 0.2, "color": "var(--chalk-300)", "position": "small mono eyebrow" },
+          { "type": "text-formula", "content": "0100 0000 1100 0010", "delay": 0.8, "color": "var(--chalk-100)", "position": "centre, large mono" },
+          { "type": "svg-label", "content": "Bracket above the high bits labelled VPN; bracket below the low bits labelled offset", "delay": 2.2, "color": "var(--amber-300)" },
+          { "type": "text-caption", "content": "page number ▸ which page; offset ▸ which byte inside it", "delay": 5.5, "color": "var(--chalk-300)", "position": "below address, sans 14" }
+        ]
+      }
+    },
+    {
+      "id": "pageTableLookup",
+      "start": 17.47,
+      "end": 27.1,
+      "narration": "The VPN is an index into the process's page table. Walk to that row, read the physical frame number, and you know where in real memory the page actually lives.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "svg-path", "content": "Page-table column on left with rows VPN 0..7 and PFN values", "delay": 0.3, "color": "var(--chalk-200)" },
+          { "type": "svg-path", "content": "Physical-memory column on right with frame slots numbered 0..7", "delay": 0.6, "color": "var(--chalk-200)" },
+          { "type": "graph-marker", "content": "Glowing dot enters page table at VPN row, then arrows over to the matching PFN slot in physical memory", "delay": 1.6, "color": "var(--rose-400)" },
+          { "type": "text-caption", "content": "VPN 4 → PFN 6 → row 6 of physical memory", "delay": 6.5, "color": "var(--amber-300)", "position": "below diagram, mono" }
+        ]
+      }
+    },
+    {
+      "id": "concat",
+      "start": 27.1,
+      "end": 36.31,
+      "narration": "The physical address is just the frame number with the original offset glued on. The CPU does this on every memory access — and the page table makes it cheap.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-formula", "content": "PFN  ‖  offset  =  physical address", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, large mono with plus glyph" },
+          { "type": "svg-label", "content": "PFN bits slide in from the page-table side; offset bits slide in from the address side; they snap together", "delay": 2.0, "color": "var(--amber-300)" },
+          { "type": "text-caption", "content": "same offset, different page — that is the whole trick", "delay": 5.5, "color": "var(--chalk-300)", "position": "below, sans 14" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 36.31,
+      "end": 47,
+      "narration": "Each process has its own page table, so two programs can use the very same virtual address and never collide. Memory becomes private by translation, not by trust.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "VPN — a guess. PFN — the truth. The OS keeps the table.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic 26" },
+          { "type": "text-caption", "content": "(this is what we mean by virtual memory)", "delay": 1.6, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}

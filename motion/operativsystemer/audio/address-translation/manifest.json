@@ -1,0 +1,34 @@
+{
+  "sceneId": "address-translation",
+  "mode": "local-espeak-ng",
+  "voice": "en-us",
+  "audio": "audio/address-translation/scene.mp3",
+  "durationSec": 46.39,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Your program asks for byte zero one zero zero. But where is byte zero one zero zero, really?"
+    },
+    {
+      "id": "splitAddress",
+      "audioStart": 6.33,
+      "narration": "Every virtual address is split into two parts. The top bits name a page — the virtual page number, or VPN. The bottom bits name a byte inside that page — the offset."
+    },
+    {
+      "id": "pageTableLookup",
+      "audioStart": 17.47,
+      "narration": "The VPN is an index into the process's page table. Walk to that row, read the physical frame number, and you know where in real memory the page actually lives."
+    },
+    {
+      "id": "concat",
+      "audioStart": 27.1,
+      "narration": "The physical address is just the frame number with the original offset glued on. The CPU does this on every memory access — and the page table makes it cheap."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 36.31,
+      "narration": "Each process has its own page table, so two programs can use the very same virtual address and never collide. Memory becomes private by translation, not by trust."
+    }
+  ]
+}

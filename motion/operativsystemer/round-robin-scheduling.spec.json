@@ -1,0 +1,85 @@
+{
+  "id": "round-robin-scheduling",
+  "title": "Round-Robin Scheduling: Fairness by the Slice",
+  "eyebrow": "scheduling",
+  "language": "en",
+  "duration": 50,
+  "topic": "Round-robin scheduling — give every ready job one fixed-length time slice in turn; short jobs respond fast, long jobs make steady progress",
+  "subject_id": "operativsystemer",
+  "chapter_number": 3,
+  "prerequisites": ["virtualizing-cpu"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.03,
+      "narration": "Three programs are ready to run, but only one CPU. Who goes first — and for how long?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "Three jobs, one CPU — whose turn is it?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "fifoFails",
+      "start": 6.03,
+      "end": 17.8,
+      "narration": "First in, first out runs each job to completion. Job A is long, so jobs B and C wait — and a quick keystroke in C can sit idle for seconds. That is starvation by queue order.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "text-caption", "content": "first attempt: FIFO", "delay": 0.2, "color": "var(--chalk-300)", "position": "small mono eyebrow" },
+          { "type": "graph-axes", "content": "Gantt timeline with A taking the first eight units, then B for two, then C for two", "delay": 0.6, "color": "var(--amber-400)" },
+          { "type": "text-caption", "content": "C's average response time = 10 — the user waits forever", "delay": 4.5, "color": "var(--rose-300)", "position": "below the chart" }
+        ]
+      }
+    },
+    {
+      "id": "quantum",
+      "start": 17.8,
+      "end": 28.48,
+      "narration": "Round-robin fixes that. Pick a fixed time slice — say one unit — give it to the next ready job, then rotate. The queue keeps spinning while everyone makes progress.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "round-robin", "delay": 0.2, "color": "var(--amber-300)", "position": "small mono eyebrow" },
+          { "type": "svg-path", "content": "Circular ready queue with three jobs A, B, C; an arrow rotates around the queue", "delay": 0.8, "color": "var(--amber-400)" },
+          { "type": "text-formula", "content": "q = 1", "delay": 1.4, "color": "var(--chalk-100)", "position": "centre of queue, mono" },
+          { "type": "text-caption", "content": "every tick: head of the queue runs for q, then goes to the back", "delay": 4.0, "color": "var(--chalk-200)", "position": "below queue" }
+        ]
+      }
+    },
+    {
+      "id": "gantt",
+      "start": 28.48,
+      "end": 39.44,
+      "narration": "Watch the Gantt chart fill up. A, B, C, A, B, C — every job gets the CPU within one tick of being ready. Response time becomes predictable.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "graph-axes", "content": "Gantt chart that fills cell by cell as the playhead sweeps from left to right; cells coloured by job", "delay": 0.3, "color": "var(--chalk-200)" },
+          { "type": "graph-marker", "content": "Sweeping playhead synced to the rotation of the queue above", "delay": 0.4, "color": "var(--rose-400)" },
+          { "type": "text-caption", "content": "max wait per round = (n − 1) × q", "delay": 6.0, "color": "var(--amber-300)", "position": "below chart, mono" }
+        ]
+      }
+    },
+    {
+      "id": "tradeoff",
+      "start": 39.44,
+      "end": 50,
+      "narration": "A small slice feels snappy but spends time on context switches. A big slice runs efficiently but starts to look like FIFO. Picking the slice is the whole game.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "text-title", "content": "small q", "delay": 0.3, "color": "var(--chalk-300)", "position": "left column header" },
+          { "type": "text-caption", "content": "responsive, but switches eat the CPU", "delay": 0.6, "color": "var(--chalk-100)", "position": "left column body" },
+          { "type": "text-title", "content": "large q", "delay": 1.4, "color": "var(--chalk-300)", "position": "right column header" },
+          { "type": "text-caption", "content": "efficient, but jobs at the back wait", "delay": 1.7, "color": "var(--chalk-100)", "position": "right column body" },
+          { "type": "text-caption", "content": "pick q just long enough to amortize the switch", "delay": 3.0, "color": "var(--amber-300)", "position": "centre, mono" }
+        ]
+      }
+    }
+  ]
+}
