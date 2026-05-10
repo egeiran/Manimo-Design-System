@@ -63,6 +63,14 @@ for the exact prompts.
   identical across engines so swapping is just the audio call +
   re-render + republish.
 
+- **`scripts/generate-audio.js` doesn't read Mistral's `items` voices key.**
+  `pickFirstEnglishMistralVoice()` extracts the list as `json.data ||
+  json.voices || []`, but `GET /v1/audio/voices` actually returns
+  `{ items: [...], total, page, … }`. With neither env var nor flag, the
+  Voxtral path raises "returned no voices" and falls through. Workaround
+  for now: pass `--voice <id>` or set `MISTRAL_VOICE_ID`. Fix is a
+  one-line tweak to add `json.items` to the extraction sequence.
+
 ### [HUMAN] — needs your input
 
 - **Subject focus is now Operativsystemer (TDT4186).** Fysikk topics are

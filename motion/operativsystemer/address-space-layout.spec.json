@@ -1,0 +1,94 @@
+{
+  "id": "address-space-layout",
+  "title": "Address Space: Where Your Program Lives in Memory",
+  "eyebrow": "memory",
+  "language": "en",
+  "duration": 42,
+  "topic": "Address space layout — every process sees a virtual memory region with code at the bottom, static data above it, the heap growing up via malloc, and the stack growing down on each function call",
+  "subject_id": "operativsystemer",
+  "chapter_number": 4,
+  "prerequisites": ["virtualizing-cpu"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.43,
+      "narration": "Every program sees a clean slab of memory laid out the same way each time it runs.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "Where in memory does each part of your program live?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "layout",
+      "start": 5.43,
+      "end": 15.2,
+      "narration": "At the bottom sits your code, frozen and read-only. Above it, the static data the compiler set up. The stack lives at the top — and the heap is everything in between.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Vertical address-space rectangle with low addresses at the bottom, high at the top", "delay": 0.2, "color": "var(--chalk-300)" },
+          { "type": "svg-label", "content": "Code segment block at the bottom", "delay": 0.8, "color": "var(--violet-400)" },
+          { "type": "svg-label", "content": "Data segment block above code", "delay": 1.6, "color": "var(--teal-400)" },
+          { "type": "svg-label", "content": "Heap label at the bottom of the gap with an upward arrow", "delay": 2.6, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Stack label at the top of the gap with a downward arrow", "delay": 3.4, "color": "var(--rose-400)" },
+          { "type": "svg-label", "content": "Address axis labels: 0 at bottom, 2^n − 1 at top", "delay": 4.4, "color": "var(--chalk-300)" },
+          { "type": "text-caption", "content": "code · data · heap · stack — the four neighbourhoods of every process", "delay": 6.0, "color": "var(--chalk-200)", "position": "below the diagram" }
+        ]
+      }
+    },
+    {
+      "id": "heapGrows",
+      "start": 15.2,
+      "end": 23.77,
+      "narration": "Call malloc, and the heap creeps upward. Each new block sits wherever the allocator can find room.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "graph-marker", "content": "First malloc — small block appears at the bottom of the heap area", "delay": 0.6, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "malloc(32) label next to first block", "delay": 1.0, "color": "var(--amber-300)" },
+          { "type": "graph-marker", "content": "Second malloc — block stacks on top of the first", "delay": 2.4, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "malloc(64) label next to second block", "delay": 2.8, "color": "var(--amber-300)" },
+          { "type": "graph-marker", "content": "Third malloc — block stacks again, the heap-top arrow rises", "delay": 4.2, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "malloc(16) label next to third block", "delay": 4.6, "color": "var(--amber-300)" },
+          { "type": "text-caption", "content": "heap-top moves up — toward the stack", "delay": 6.4, "color": "var(--chalk-300)", "position": "below the diagram" }
+        ]
+      }
+    },
+    {
+      "id": "stackGrows",
+      "start": 23.77,
+      "end": 34.45,
+      "narration": "Call a function, and a new frame is pushed onto the stack — locals, return address, the works. Return, and the frame is gone.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "graph-marker", "content": "First call — main()'s frame appears at the top of the stack area", "delay": 0.4, "color": "var(--rose-400)" },
+          { "type": "svg-label", "content": "main() label inside frame 1", "delay": 0.8, "color": "var(--rose-300)" },
+          { "type": "graph-marker", "content": "Second call — work()'s frame stacks below", "delay": 2.2, "color": "var(--rose-400)" },
+          { "type": "svg-label", "content": "work() label inside frame 2", "delay": 2.6, "color": "var(--rose-300)" },
+          { "type": "graph-marker", "content": "Third call — helper()'s frame stacks below; stack-top arrow descends", "delay": 4.0, "color": "var(--rose-400)" },
+          { "type": "svg-label", "content": "helper() label inside frame 3", "delay": 4.4, "color": "var(--rose-300)" },
+          { "type": "graph-marker", "content": "helper() returns — frame 3 fades out and stack-top arrow rises back", "delay": 6.4, "color": "var(--chalk-300)" },
+          { "type": "text-caption", "content": "stack-top moves down — toward the heap", "delay": 7.6, "color": "var(--chalk-300)", "position": "below the diagram" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 34.45,
+      "end": 42,
+      "narration": "Two arrows, growing toward each other. As long as the gap holds, the program runs.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "Heap grows up. Stack grows down. They meet — that's out of memory.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic ~26px" },
+          { "type": "text-caption", "content": "(every process sees its own private copy)", "delay": 1.6, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}

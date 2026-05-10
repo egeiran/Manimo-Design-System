@@ -1,0 +1,36 @@
+{
+  "sceneId": "address-space-layout",
+  "mode": "mistral",
+  "engine": "mistral",
+  "voice": "e3596645-b1af-469e-b857-f18ddedc7652",
+  "model": "voxtral-mini-tts-2603",
+  "audio": "audio/address-space-layout/scene.mp3",
+  "durationSec": 40.96,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Every program sees a clean slab of memory laid out the same way each time it runs."
+    },
+    {
+      "id": "layout",
+      "audioStart": 5.43,
+      "narration": "At the bottom sits your code, frozen and read-only. Above it, the static data the compiler set up. The stack lives at the top — and the heap is everything in between."
+    },
+    {
+      "id": "heapGrows",
+      "audioStart": 15.2,
+      "narration": "Call malloc, and the heap creeps upward. Each new block sits wherever the allocator can find room."
+    },
+    {
+      "id": "stackGrows",
+      "audioStart": 23.77,
+      "narration": "Call a function, and a new frame is pushed onto the stack — locals, return address, the works. Return, and the frame is gone."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 34.45,
+      "narration": "Two arrows, growing toward each other. As long as the gap holds, the program runs."
+    }
+  ]
+}
