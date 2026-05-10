@@ -617,8 +617,14 @@ function SceneNarration({ src, tracks, volume = 1, playbackRate = 1 }) {
         if (audio.volume !== volume) audio.volume = volume;
         if (audio.playbackRate !== playbackRate) audio.playbackRate = playbackRate;
         const expectedAudio = time * playbackRate;
+        // Once a scene's audio is shorter than its visual duration, we have
+        // tail silence. Browsers reset currentTime to 0 when play() is
+        // called after `ended`, so the next effect tick would restart the
+        // intro audibly. Treat past-end as "stay quiet."
+        const audioEnd = isFinite(audio.duration) ? audio.duration : Infinity;
+        const pastAudioEnd = expectedAudio >= audioEnd - 0.05;
 
-        if (playing) {
+        if (playing && !pastAudioEnd) {
           // Only re-seek on scrubs / loop wraps / fresh play. During steady
           // playback, let the audio clock coast — forcing currentTime each
           // frame causes audible glitches even when the new value is
@@ -627,6 +633,8 @@ function SceneNarration({ src, tracks, volume = 1, playbackRate = 1 }) {
             try { audio.currentTime = Math.max(0, expectedAudio); } catch {}
           }
           if (audio.paused) audio.play().catch(() => { /* autoplay blocked, retries on next gesture */ });
+        } else if (playing && pastAudioEnd) {
+          if (!audio.paused) audio.pause();
         } else {
           if (!audio.paused) audio.pause();
           // While paused, keep audio aligned so scrubbing in the timeline
