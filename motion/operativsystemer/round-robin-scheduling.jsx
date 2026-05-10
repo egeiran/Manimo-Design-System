@@ -3,11 +3,11 @@
 // trades a little overhead for predictable response time.
 //
 // Beats (timed to single-track narration in motion/operativsystemer/audio/round-robin-scheduling/):
-//    0.00– 6.03  Manimo intro: three jobs, one CPU
-//    6.03–17.80  FIFO Gantt — A starves B and C
-//   17.80–28.48  Round-robin queue: rotate every q
-//   28.48–39.44  Gantt fills as RR runs (genuine motion: playhead + queue rotate)
-//   39.44–50.00  Trade-off: small q vs large q
+//    0.00– 6.34  Manimo intro: three jobs, one CPU
+//    6.34–18.72  FIFO Gantt — A starves B and C
+//   18.72–29.57  Round-robin queue: rotate every q
+//   29.57–41.38  Gantt fills as RR runs (genuine motion: playhead + queue rotate)
+//   41.38–53.00  Trade-off: small q vs large q
 //
 // Authoring notes:
 //   • Beat 4 carries the genuine animation: the Gantt strip fills cell by
@@ -15,14 +15,14 @@
 //     tick. Both share a single time variable so they stay locked.
 //   • SvgFadeIn for elements inside <svg>; FadeUp for HTML/DOM only.
 
-const SCENE_DURATION = 50;
+const SCENE_DURATION = 53;
 
 const NARRATION = [
-  /*  0.00– 6.03 */ 'Three programs are ready to run, but only one CPU. Who goes first — and for how long?',
-  /*  6.03–17.80 */ 'First in, first out runs each job to completion. Job A is long, so jobs B and C wait — and a quick keystroke in C can sit idle for seconds. That is starvation by queue order.',
-  /* 17.80–28.48 */ 'Round-robin fixes that. Pick a fixed time slice — say one unit — give it to the next ready job, then rotate. The queue keeps spinning while everyone makes progress.',
-  /* 28.48–39.44 */ 'Watch the Gantt chart fill up. A, B, C, A, B, C — every job gets the CPU within one tick of being ready. Response time becomes predictable.',
-  /* 39.44–50.00 */ 'A small slice feels snappy but spends time on context switches. A big slice runs efficiently but starts to look like FIFO. Picking the slice is the whole game.',
+  /*  0.00– 6.34 */ 'Three programs are ready to run, but only one CPU. Who goes first — and for how long?',
+  /*  6.34–18.72 */ 'First in, first out runs each job to completion. Job A is long, so jobs B and C wait — and a quick keystroke in C can sit idle for seconds. That is starvation by queue order.',
+  /* 18.72–29.57 */ 'Round-robin fixes that. Pick a fixed time slice — say one unit — give it to the next ready job, then rotate. The queue keeps spinning while everyone makes progress.',
+  /* 29.57–41.38 */ 'Watch the Gantt chart fill up. A, B, C, A, B, C — every job gets the CPU within one tick of being ready. Response time becomes predictable.',
+  /* 41.38–53.00 */ 'A small slice feels snappy but spends time on context switches. A big slice runs efficiently but starts to look like FIFO. Picking the slice is the whole game.',
 ];
 
 const NARRATION_AUDIO = 'audio/round-robin-scheduling/scene.mp3';
@@ -39,24 +39,24 @@ function Scene() {
       eyebrow="scheduling"
       title="Round-Robin: Fairness by the Slice"
       duration={SCENE_DURATION}
-      introEnd={6.03}
+      introEnd={6.34}
       introCaption="Three jobs, one CPU — whose turn is it?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={6.03} end={17.8}>
+      <Sprite start={6.34} end={18.72}>
         <FifoBeat />
       </Sprite>
 
-      <Sprite start={17.8} end={28.48}>
+      <Sprite start={18.72} end={29.57}>
         <QuantumBeat />
       </Sprite>
 
-      <Sprite start={28.48} end={39.44}>
+      <Sprite start={29.57} end={41.38}>
         <GanttBeat />
       </Sprite>
 
-      <Sprite start={39.44} end={SCENE_DURATION}>
+      <Sprite start={41.38} end={SCENE_DURATION}>
         <TradeoffBeat />
       </Sprite>
     </SceneChrome>

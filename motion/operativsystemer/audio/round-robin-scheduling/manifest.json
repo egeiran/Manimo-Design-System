@@ -1,9 +1,10 @@
 {
   "sceneId": "round-robin-scheduling",
-  "mode": "local-espeak-ng",
-  "voice": "en-us",
+  "mode": "single-track",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
   "audio": "audio/round-robin-scheduling/scene.mp3",
-  "durationSec": 49.37,
+  "durationSec": 52.11,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -12,22 +13,22 @@
     },
     {
       "id": "fifoFails",
-      "audioStart": 6.03,
+      "audioStart": 6.34,
       "narration": "First in, first out runs each job to completion. Job A is long, so jobs B and C wait — and a quick keystroke in C can sit idle for seconds. That is starvation by queue order."
     },
     {
       "id": "quantum",
-      "audioStart": 17.8,
+      "audioStart": 18.72,
       "narration": "Round-robin fixes that. Pick a fixed time slice — say one unit — give it to the next ready job, then rotate. The queue keeps spinning while everyone makes progress."
     },
     {
       "id": "gantt",
-      "audioStart": 28.48,
+      "audioStart": 29.57,
       "narration": "Watch the Gantt chart fill up. A, B, C, A, B, C — every job gets the CPU within one tick of being ready. Response time becomes predictable."
     },
     {
       "id": "tradeoff",
-      "audioStart": 39.44,
+      "audioStart": 41.38,
       "narration": "A small slice feels snappy but spends time on context switches. A big slice runs efficiently but starts to look like FIFO. Picking the slice is the whole game."
     }
   ]

@@ -3,7 +3,7 @@
   "title": "Race Condition: When Two Threads Share a Counter",
   "eyebrow": "concurrency",
   "language": "en",
-  "duration": 49,
+  "duration": 53,
   "topic": "Race condition — two threads incrementing a shared counter can interleave their load-add-store steps so an increment is silently lost; fixing it needs a critical section",
   "subject_id": "operativsystemer",
   "chapter_number": 6,
@@ -12,7 +12,7 @@
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 7.76,
+      "end": 8.21,
       "narration": "Two threads each add one to the same counter. We start at zero, add twice, finish at two — right? Sometimes.",
       "visuals": {
         "layout": "center",
@@ -24,8 +24,8 @@
     },
     {
       "id": "happyPath",
-      "start": 7.76,
-      "end": 19.59,
+      "start": 8.21,
+      "end": 21.17,
       "narration": "Each increment is really three steps: load the counter, add one, store it back. If thread one finishes all three before thread two starts, the counter goes from zero to one to two. Perfect.",
       "visuals": {
         "layout": "center",
@@ -38,8 +38,8 @@
     },
     {
       "id": "interleave",
-      "start": 19.59,
-      "end": 30.47,
+      "start": 21.17,
+      "end": 32.38,
       "narration": "But the scheduler can interrupt at any point. If thread two loads while thread one is still in the middle of its add, both threads write back the value one. One increment is silently lost.",
       "visuals": {
         "layout": "center",
@@ -54,8 +54,8 @@
     },
     {
       "id": "criticalSection",
-      "start": 30.47,
-      "end": 39.7,
+      "start": 32.38,
+      "end": 42.61,
       "narration": "The three steps need to happen atomically — no thread interrupts another mid-update. We mark them as a critical section: only one thread inside at a time.",
       "visuals": {
         "layout": "center",
@@ -69,8 +69,8 @@
     },
     {
       "id": "takeaway",
-      "start": 39.7,
-      "end": 49,
+      "start": 42.61,
+      "end": 53,
       "narration": "Concurrent code is unsafe by default. Wherever two threads touch the same data, you need a critical section — or the answer is sometimes wrong.",
       "visuals": {
         "layout": "center",

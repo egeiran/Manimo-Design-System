@@ -4,11 +4,11 @@
 // fixes.
 //
 // Beats (timed to single-track narration in motion/operativsystemer/audio/race-condition/):
-//    0.00– 7.76  Manimo intro: one plus one — but not always two
-//    7.76–19.59  Happy path: T1 finishes load/add/store, then T2 runs
-//   19.59–30.47  Interleaved: T1 and T2 alternate — final counter = 1
-//   30.47–39.70  Critical section: lock around load/add/store
-//   39.70–49.00  Takeaway: shared state + interleaving = race condition
+//    0.00– 8.21  Manimo intro: one plus one — but not always two
+//    8.21–21.17  Happy path: T1 finishes load/add/store, then T2 runs
+//   21.17–32.38  Interleaved: T1 and T2 alternate — final counter = 1
+//   32.38–42.61  Critical section: lock around load/add/store
+//   42.61–53.00  Takeaway: shared state + interleaving = race condition
 //
 // Authoring notes:
 //   • Beat 3 carries the genuine animation: two thread "lanes" play their
@@ -17,14 +17,14 @@
 //     ticks up only when a `store` step lights up.
 //   • SvgFadeIn for elements inside <svg>; FadeUp for HTML/DOM only.
 
-const SCENE_DURATION = 49;
+const SCENE_DURATION = 53;
 
 const NARRATION = [
-  /*  0.00– 7.76 */ 'Two threads each add one to the same counter. We start at zero, add twice, finish at two — right? Sometimes.',
-  /*  7.76–19.59 */ 'Each increment is really three steps: load the counter, add one, store it back. If thread one finishes all three before thread two starts, the counter goes from zero to one to two. Perfect.',
-  /* 19.59–30.47 */ 'But the scheduler can interrupt at any point. If thread two loads while thread one is still in the middle of its add, both threads write back the value one. One increment is silently lost.',
-  /* 30.47–39.70 */ 'The three steps need to happen atomically — no thread interrupts another mid-update. We mark them as a critical section: only one thread inside at a time.',
-  /* 39.70–49.00 */ 'Concurrent code is unsafe by default. Wherever two threads touch the same data, you need a critical section — or the answer is sometimes wrong.',
+  /*  0.00– 8.21 */ 'Two threads each add one to the same counter. We start at zero, add twice, finish at two — right? Sometimes.',
+  /*  8.21–21.17 */ 'Each increment is really three steps: load the counter, add one, store it back. If thread one finishes all three before thread two starts, the counter goes from zero to one to two. Perfect.',
+  /* 21.17–32.38 */ 'But the scheduler can interrupt at any point. If thread two loads while thread one is still in the middle of its add, both threads write back the value one. One increment is silently lost.',
+  /* 32.38–42.61 */ 'The three steps need to happen atomically — no thread interrupts another mid-update. We mark them as a critical section: only one thread inside at a time.',
+  /* 42.61–53.00 */ 'Concurrent code is unsafe by default. Wherever two threads touch the same data, you need a critical section — or the answer is sometimes wrong.',
 ];
 
 const NARRATION_AUDIO = 'audio/race-condition/scene.mp3';
@@ -40,24 +40,24 @@ function Scene() {
       eyebrow="concurrency"
       title="Race Condition"
       duration={SCENE_DURATION}
-      introEnd={7.76}
+      introEnd={8.21}
       introCaption="One plus one — but not always two."
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={7.76} end={19.59}>
+      <Sprite start={8.21} end={21.17}>
         <HappyPathBeat />
       </Sprite>
 
-      <Sprite start={19.59} end={30.47}>
+      <Sprite start={21.17} end={32.38}>
         <InterleaveBeat />
       </Sprite>
 
-      <Sprite start={30.47} end={39.7}>
+      <Sprite start={32.38} end={42.61}>
         <CriticalSectionBeat />
       </Sprite>
 
-      <Sprite start={39.7} end={SCENE_DURATION}>
+      <Sprite start={42.61} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>

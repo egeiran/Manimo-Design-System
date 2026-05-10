@@ -1,9 +1,10 @@
 {
   "sceneId": "race-condition",
-  "mode": "local-espeak-ng",
-  "voice": "en-us",
+  "mode": "single-track",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
   "audio": "audio/race-condition/scene.mp3",
-  "durationSec": 48.11,
+  "durationSec": 51.78,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -12,22 +13,22 @@
     },
     {
       "id": "happyPath",
-      "audioStart": 7.76,
+      "audioStart": 8.21,
       "narration": "Each increment is really three steps: load the counter, add one, store it back. If thread one finishes all three before thread two starts, the counter goes from zero to one to two. Perfect."
     },
     {
       "id": "interleave",
-      "audioStart": 19.59,
+      "audioStart": 21.17,
       "narration": "But the scheduler can interrupt at any point. If thread two loads while thread one is still in the middle of its add, both threads write back the value one. One increment is silently lost."
     },
     {
       "id": "criticalSection",
-      "audioStart": 30.47,
+      "audioStart": 32.38,
       "narration": "The three steps need to happen atomically — no thread interrupts another mid-update. We mark them as a critical section: only one thread inside at a time."
     },
     {
       "id": "takeaway",
-      "audioStart": 39.7,
+      "audioStart": 42.61,
       "narration": "Concurrent code is unsafe by default. Wherever two threads touch the same data, you need a critical section — or the answer is sometimes wrong."
     }
   ]

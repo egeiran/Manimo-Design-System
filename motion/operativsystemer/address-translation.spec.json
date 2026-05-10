@@ -3,7 +3,7 @@
   "title": "Address Translation: How a Page Table Finds the Bytes",
   "eyebrow": "paging",
   "language": "en",
-  "duration": 47,
+  "duration": 51,
   "topic": "Paging address translation — a virtual address splits into VPN + offset; the VPN indexes a per-process page table to a physical frame number; the frame number plus the offset is the physical address",
   "subject_id": "operativsystemer",
   "chapter_number": 5,
@@ -12,7 +12,7 @@
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 6.33,
+      "end": 7.0,
       "narration": "Your program asks for byte zero one zero zero. But where is byte zero one zero zero, really?",
       "visuals": {
         "layout": "center",
@@ -24,8 +24,8 @@
     },
     {
       "id": "splitAddress",
-      "start": 6.33,
-      "end": 17.47,
+      "start": 7.0,
+      "end": 19.01,
       "narration": "Every virtual address is split into two parts. The top bits name a page — the virtual page number, or VPN. The bottom bits name a byte inside that page — the offset.",
       "visuals": {
         "layout": "center",
@@ -39,8 +39,8 @@
     },
     {
       "id": "pageTableLookup",
-      "start": 17.47,
-      "end": 27.1,
+      "start": 19.01,
+      "end": 29.19,
       "narration": "The VPN is an index into the process's page table. Walk to that row, read the physical frame number, and you know where in real memory the page actually lives.",
       "visuals": {
         "layout": "left-right",
@@ -54,8 +54,8 @@
     },
     {
       "id": "concat",
-      "start": 27.1,
-      "end": 36.31,
+      "start": 29.19,
+      "end": 39.18,
       "narration": "The physical address is just the frame number with the original offset glued on. The CPU does this on every memory access — and the page table makes it cheap.",
       "visuals": {
         "layout": "center",
@@ -68,8 +68,8 @@
     },
     {
       "id": "takeaway",
-      "start": 36.31,
-      "end": 47,
+      "start": 39.18,
+      "end": 51,
       "narration": "Each process has its own page table, so two programs can use the very same virtual address and never collide. Memory becomes private by translation, not by trust.",
       "visuals": {
         "layout": "center",

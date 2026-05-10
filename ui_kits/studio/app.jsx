@@ -47,9 +47,9 @@ const initialScenes = [
   { id: 'live-damping',      kind: 'live', kindLabel: 'Live', cardTitle: 'Damped Oscillation',        duration: 46, html: '../../motion/fysikk/damped-oscillation.html' },
   { id: 'live-coulomb',      kind: 'live', kindLabel: 'Live', cardTitle: "Coulomb's Law",             duration: 46, html: '../../motion/fysikk/coulombs-law.html' },
   { id: 'live-torque',       kind: 'live', kindLabel: 'Live', cardTitle: 'Torque: Leverage Beats Force', duration: 45, html: '../../motion/fysikk/torque.html' },
-  { id: 'live-round-robin',  kind: 'live', kindLabel: 'Live', cardTitle: 'Round-Robin Scheduling',       duration: 50, html: '../../motion/operativsystemer/round-robin-scheduling.html' },
-  { id: 'live-addr-trans',   kind: 'live', kindLabel: 'Live', cardTitle: 'Address Translation',          duration: 47, html: '../../motion/operativsystemer/address-translation.html' },
-  { id: 'live-race',         kind: 'live', kindLabel: 'Live', cardTitle: 'Race Condition',               duration: 49, html: '../../motion/operativsystemer/race-condition.html' },
+  { id: 'live-round-robin',  kind: 'live', kindLabel: 'Live', cardTitle: 'Round-Robin Scheduling',       duration: 53, html: '../../motion/operativsystemer/round-robin-scheduling.html' },
+  { id: 'live-addr-trans',   kind: 'live', kindLabel: 'Live', cardTitle: 'Address Translation',          duration: 51, html: '../../motion/operativsystemer/address-translation.html' },
+  { id: 'live-race',         kind: 'live', kindLabel: 'Live', cardTitle: 'Race Condition',               duration: 53, html: '../../motion/operativsystemer/race-condition.html' },
 ];
 
 function loadJSON(key, fallback) {

@@ -3,7 +3,7 @@
   "title": "Round-Robin Scheduling: Fairness by the Slice",
   "eyebrow": "scheduling",
   "language": "en",
-  "duration": 50,
+  "duration": 53,
   "topic": "Round-robin scheduling — give every ready job one fixed-length time slice in turn; short jobs respond fast, long jobs make steady progress",
   "subject_id": "operativsystemer",
   "chapter_number": 3,
@@ -12,7 +12,7 @@
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 6.03,
+      "end": 6.34,
       "narration": "Three programs are ready to run, but only one CPU. Who goes first — and for how long?",
       "visuals": {
         "layout": "center",
@@ -24,8 +24,8 @@
     },
     {
       "id": "fifoFails",
-      "start": 6.03,
-      "end": 17.8,
+      "start": 6.34,
+      "end": 18.72,
       "narration": "First in, first out runs each job to completion. Job A is long, so jobs B and C wait — and a quick keystroke in C can sit idle for seconds. That is starvation by queue order.",
       "visuals": {
         "layout": "top-bottom",
@@ -38,8 +38,8 @@
     },
     {
       "id": "quantum",
-      "start": 17.8,
-      "end": 28.48,
+      "start": 18.72,
+      "end": 29.57,
       "narration": "Round-robin fixes that. Pick a fixed time slice — say one unit — give it to the next ready job, then rotate. The queue keeps spinning while everyone makes progress.",
       "visuals": {
         "layout": "center",
@@ -53,8 +53,8 @@
     },
     {
       "id": "gantt",
-      "start": 28.48,
-      "end": 39.44,
+      "start": 29.57,
+      "end": 41.38,
       "narration": "Watch the Gantt chart fill up. A, B, C, A, B, C — every job gets the CPU within one tick of being ready. Response time becomes predictable.",
       "visuals": {
         "layout": "top-bottom",
@@ -67,8 +67,8 @@
     },
     {
       "id": "tradeoff",
-      "start": 39.44,
-      "end": 50,
+      "start": 41.38,
+      "end": 53,
       "narration": "A small slice feels snappy but spends time on context switches. A big slice runs efficiently but starts to look like FIFO. Picking the slice is the whole game.",
       "visuals": {
         "layout": "left-right",

@@ -4,11 +4,11 @@
 // the offset.
 //
 // Beats (timed to single-track narration in motion/operativsystemer/audio/address-translation/):
-//    0.00– 6.33  Manimo intro: where is byte 0x40c2 really?
-//    6.33–17.47  A virtual address splits into VPN | offset
-//   17.47–27.10  Page-table lookup: a dot traces VPN row → PFN → frame
-//   27.10–36.31  PFN ‖ offset = physical address (genuine: bits slide and snap together)
-//   36.31–47.00  Takeaway: each process has its own table
+//    0.00– 7.00  Manimo intro: where is byte 0x40c2 really?
+//    7.00–19.01  A virtual address splits into VPN | offset
+//   19.01–29.19  Page-table lookup: a dot traces VPN row → PFN → frame
+//   29.19–39.18  PFN ‖ offset = physical address (genuine: bits slide and snap together)
+//   39.18–51.00  Takeaway: each process has its own table
 //
 // Authoring notes:
 //   • Beat 3 carries the genuine animation: a glowing dot follows the
@@ -17,14 +17,14 @@
 //   • Beat 4 reinforces with a snap-together motion (PFN bits slide left
 //     to meet offset bits sliding right).
 
-const SCENE_DURATION = 47;
+const SCENE_DURATION = 51;
 
 const NARRATION = [
-  /*  0.00– 6.33 */ 'Your program asks for byte zero one zero zero. But where is byte zero one zero zero, really?',
-  /*  6.33–17.47 */ 'Every virtual address is split into two parts. The top bits name a page — the virtual page number, or VPN. The bottom bits name a byte inside that page — the offset.',
-  /* 17.47–27.10 */ "The VPN is an index into the process's page table. Walk to that row, read the physical frame number, and you know where in real memory the page actually lives.",
-  /* 27.10–36.31 */ 'The physical address is just the frame number with the original offset glued on. The CPU does this on every memory access — and the page table makes it cheap.',
-  /* 36.31–47.00 */ 'Each process has its own page table, so two programs can use the very same virtual address and never collide. Memory becomes private by translation, not by trust.',
+  /*  0.00– 7.00 */ 'Your program asks for byte zero one zero zero. But where is byte zero one zero zero, really?',
+  /*  7.00–19.01 */ 'Every virtual address is split into two parts. The top bits name a page — the virtual page number, or VPN. The bottom bits name a byte inside that page — the offset.',
+  /* 19.01–29.19 */ "The VPN is an index into the process's page table. Walk to that row, read the physical frame number, and you know where in real memory the page actually lives.",
+  /* 29.19–39.18 */ 'The physical address is just the frame number with the original offset glued on. The CPU does this on every memory access — and the page table makes it cheap.',
+  /* 39.18–51.00 */ 'Each process has its own page table, so two programs can use the very same virtual address and never collide. Memory becomes private by translation, not by trust.',
 ];
 
 const NARRATION_AUDIO = 'audio/address-translation/scene.mp3';
@@ -55,24 +55,24 @@ function Scene() {
       eyebrow="paging"
       title="Address Translation"
       duration={SCENE_DURATION}
-      introEnd={6.33}
+      introEnd={7.0}
       introCaption="Where does a virtual address actually live?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={6.33} end={17.47}>
+      <Sprite start={7.0} end={19.01}>
         <SplitAddressBeat />
       </Sprite>
 
-      <Sprite start={17.47} end={27.1}>
+      <Sprite start={19.01} end={29.19}>
         <PageTableLookupBeat />
       </Sprite>
 
-      <Sprite start={27.1} end={36.31}>
+      <Sprite start={29.19} end={39.18}>
         <ConcatBeat />
       </Sprite>
 
-      <Sprite start={36.31} end={SCENE_DURATION}>
+      <Sprite start={39.18} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>
