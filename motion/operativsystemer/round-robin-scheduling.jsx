@@ -190,9 +190,9 @@ function QuantumBeat() {
   const pointerAngle = fromAngle + dAng * eased;
   const pointerRad = (pointerAngle * Math.PI) / 180;
   // The arrow tip rests just outside the active job circle. Start the
-  // shaft a comfortable distance out from the centre so the line never
-  // crosses the centre label.
-  const innerR = 50;
+  // shaft well outside the "q = 1" centre label so the rose line never
+  // cuts through the digit when pointing at slots B (30°) or C (150°).
+  const innerR = 64;
   const tipR = G.R - G.jobR - 6;
   const baseX = G.cx + innerR * Math.cos(pointerRad);
   const baseY = G.cy + innerR * Math.sin(pointerRad);
