@@ -63,6 +63,16 @@ for the exact prompts.
   identical across engines so swapping is just the audio call +
   re-render + republish.
 
+- **Three new OS scenes shipped with estimated-timing audio only**
+  (`test-and-set-lock`, `address-space-layout`, `inode-block-pointers`).
+  ElevenLabs returned `401 detected_unusual_activity` for this nightly
+  sandbox and Voxtral was unreachable (no `MISTRAL_API_KEY` + no
+  `ffmpeg`); they fell through to `fallback-estimated` (~14 chars/sec).
+  Re-running with a working cloud key on the next nightly will render
+  real MP3s and re-emit the wire-up — the existing Sprite/duration
+  timings only need to move slightly because TTS pacing differs from
+  the estimator.
+
 ### [HUMAN] — needs your input
 
 - **Subject focus is now Operativsystemer (TDT4186).** Fysikk topics are

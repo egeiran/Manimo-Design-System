@@ -1,0 +1,35 @@
+{
+  "sceneId": "address-space-layout",
+  "mode": "fallback-estimated",
+  "engine": "fallback-estimated",
+  "chars": 553,
+  "durationSec": 40.7,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Every program sees a clean slab of memory laid out the same way each time it runs."
+    },
+    {
+      "id": "layout",
+      "audioStart": 6.16,
+      "narration": "At the bottom sits your code, frozen and read-only. Above it, the static data the compiler set up. The stack lives at the top — and the heap is everything in between."
+    },
+    {
+      "id": "heapGrows",
+      "audioStart": 18.31,
+      "narration": "Call malloc, and the heap creeps upward. Each new block sits wherever the allocator can find room."
+    },
+    {
+      "id": "stackGrows",
+      "audioStart": 25.61,
+      "narration": "Call a function, and a new frame is pushed onto the stack — locals, return address, the works. Return, and the frame is gone."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 34.84,
+      "narration": "Two arrows, growing toward each other. As long as the gap holds, the program runs."
+    }
+  ],
+  "note": "Estimated at 14 chars/sec — no audio file. Re-run with ELEVENLABS_API_KEY or MISTRAL_API_KEY set, or with `say`/`espeak-ng` on PATH, to overwrite with real audio."
+}

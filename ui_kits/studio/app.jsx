@@ -50,6 +50,9 @@ const initialScenes = [
   { id: 'live-round-robin',  kind: 'live', kindLabel: 'Live', cardTitle: 'Round-Robin Scheduling',       duration: 53, html: '../../motion/operativsystemer/round-robin-scheduling.html' },
   { id: 'live-addr-trans',   kind: 'live', kindLabel: 'Live', cardTitle: 'Address Translation',          duration: 51, html: '../../motion/operativsystemer/address-translation.html' },
   { id: 'live-race',         kind: 'live', kindLabel: 'Live', cardTitle: 'Race Condition',               duration: 53, html: '../../motion/operativsystemer/race-condition.html' },
+  { id: 'live-tas-lock',     kind: 'live', kindLabel: 'Live', cardTitle: 'Test-and-Set Lock',            duration: 54, html: '../../motion/operativsystemer/test-and-set-lock.html' },
+  { id: 'live-addr-space',   kind: 'live', kindLabel: 'Live', cardTitle: 'Address Space Layout',         duration: 42, html: '../../motion/operativsystemer/address-space-layout.html' },
+  { id: 'live-inode',        kind: 'live', kindLabel: 'Live', cardTitle: 'The Inode',                    duration: 47, html: '../../motion/operativsystemer/inode-block-pointers.html' },
 ];
 
 function loadJSON(key, fallback) {

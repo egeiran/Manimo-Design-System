@@ -1,0 +1,89 @@
+{
+  "id": "test-and-set-lock",
+  "title": "Test-and-Set: Building a Lock with One Atomic Instruction",
+  "eyebrow": "locks",
+  "language": "en",
+  "duration": 54,
+  "topic": "Test-and-set lock — a single atomic hardware instruction reads a flag's old value and writes one in the same step; threads that read zero own the lock, threads that read one spin until it is released",
+  "subject_id": "operativsystemer",
+  "chapter_number": 7,
+  "prerequisites": ["race-condition"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.87,
+      "narration": "Two threads, one shared resource — and only one of them can have it at a time.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "How do two threads agree on whose turn it is?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "atomicOp",
+      "start": 5.87,
+      "end": 18.24,
+      "narration": "Test and set is one hardware instruction that does two things at once. It reads the lock's old value and writes one — atomically, so no other thread can slip in between.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "the instruction", "delay": 0, "color": "var(--amber-300)", "position": "small mono eyebrow above" },
+          { "type": "text-formula", "content": "TestAndSet(lock, 1):\n  old = *lock\n  *lock = 1\n  return old", "delay": 0.4, "color": "var(--chalk-100)", "position": "centred code block, mono" },
+          { "type": "svg-label", "content": "Brace marking the three lines as a single atomic step", "delay": 2.2, "color": "var(--rose-300)" },
+          { "type": "text-caption", "content": "the read and the write happen as one — nothing can slip between", "delay": 4.6, "color": "var(--chalk-300)", "position": "below the code" }
+        ]
+      }
+    },
+    {
+      "id": "contend",
+      "start": 18.24,
+      "end": 30.11,
+      "narration": "Two threads race for the lock. Thread one calls test and set first, gets back zero, and walks in. Thread two calls a moment later, gets back one, and has to wait.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "svg-path", "content": "Thread 1 panel on the left, amber", "delay": 0.2, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Thread 2 panel on the right, rose", "delay": 0.6, "color": "var(--rose-400)" },
+          { "type": "svg-path", "content": "Centre lock variable with value 0 turning to 1", "delay": 1.2, "color": "var(--chalk-200)" },
+          { "type": "svg-label", "content": "Arrow from T1 to lock labelled 'TestAndSet → 0'", "delay": 2.0, "color": "var(--amber-300)" },
+          { "type": "svg-label", "content": "Arrow from T2 to lock labelled 'TestAndSet → 1'", "delay": 4.4, "color": "var(--rose-300)" },
+          { "type": "svg-label", "content": "T1 state flip: READY → HOLDING", "delay": 3.0, "color": "var(--amber-300)" },
+          { "type": "svg-label", "content": "T2 state flip: READY → SPINNING", "delay": 5.4, "color": "var(--rose-300)" }
+        ]
+      }
+    },
+    {
+      "id": "spinAndRelease",
+      "start": 30.11,
+      "end": 44.63,
+      "narration": "Thread two keeps trying. Each loop reads one, sees the lock is taken, and spins. When thread one finishes its work and writes zero, the very next call returns zero — and now thread two is the holder.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "graph-axes", "content": "Timeline with axes — top row T1 status, middle row lock value, bottom row T2 status", "delay": 0.2, "color": "var(--chalk-300)" },
+          { "type": "graph-curve", "content": "T1 stays HOLDING for first half then RELEASES", "delay": 0.8, "color": "var(--amber-400)" },
+          { "type": "graph-curve", "content": "Lock value steps: 1 → 1 → 0 → 1 (T2 acquires)", "delay": 1.4, "color": "var(--chalk-100)" },
+          { "type": "graph-curve", "content": "T2 spins (pulsing arc), then becomes HOLDING", "delay": 2.0, "color": "var(--rose-400)" },
+          { "type": "graph-marker", "content": "Playhead sweeping left to right driven by sprite localTime", "delay": 0.6, "color": "var(--rose-400)" },
+          { "type": "text-caption", "content": "spin while busy — the moment the flag drops, the next test-and-set wins", "delay": 8.0, "color": "var(--chalk-300)", "position": "below timeline" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 44.63,
+      "end": 54,
+      "narration": "Spin while busy. One atomic step does the test and the set together — and that is the simplest lock in computing.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "One atomic step. Test, then set.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic ~28px" },
+          { "type": "text-caption", "content": "(this is the spin lock — the simplest mutex in the book)", "delay": 1.6, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}

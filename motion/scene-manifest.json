@@ -255,6 +255,51 @@
       "concepts": ["race condition", "critical section", "mutual exclusion", "interleaving", "atomic operation", "lock"],
       "subject_id": "operativsystemer",
       "chapter_number": 6
+    },
+    {
+      "id": "test-and-set-lock",
+      "file": "test-and-set-lock.jsx",
+      "html": "test-and-set-lock.html",
+      "spec": "test-and-set-lock.spec.json",
+      "title": "Test-and-Set: Building a Lock with One Atomic Instruction",
+      "eyebrow": "locks",
+      "topic": "Test-and-set lock — a single atomic hardware instruction reads a flag's old value and writes one in the same step; threads that read zero own the lock, threads that read one spin until it is released",
+      "duration": 54,
+      "language": "en",
+      "prerequisites": ["race-condition"],
+      "concepts": ["spin lock", "test-and-set", "atomic instruction", "mutual exclusion", "busy waiting"],
+      "subject_id": "operativsystemer",
+      "chapter_number": 7
+    },
+    {
+      "id": "address-space-layout",
+      "file": "address-space-layout.jsx",
+      "html": "address-space-layout.html",
+      "spec": "address-space-layout.spec.json",
+      "title": "Address Space: Where Your Program Lives in Memory",
+      "eyebrow": "memory",
+      "topic": "Address space layout — every process sees a virtual memory region with code at the bottom, static data above it, the heap growing up via malloc, and the stack growing down on each function call",
+      "duration": 42,
+      "language": "en",
+      "prerequisites": ["virtualizing-cpu"],
+      "concepts": ["address space", "virtual memory", "code segment", "data segment", "heap", "stack", "memory layout"],
+      "subject_id": "operativsystemer",
+      "chapter_number": 4
+    },
+    {
+      "id": "inode-block-pointers",
+      "file": "inode-block-pointers.jsx",
+      "html": "inode-block-pointers.html",
+      "spec": "inode-block-pointers.spec.json",
+      "title": "The Inode: A File's Map to Its Blocks",
+      "eyebrow": "file systems",
+      "topic": "Inodes — every file has a fixed-size record holding its metadata and a list of pointers to the disk blocks that contain its bytes; direct pointers handle small files in one hop, indirect pointers fan out to reach large files via a tree of block pointers",
+      "duration": 47,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": ["inode", "file system", "direct pointer", "indirect pointer", "metadata", "block addressing"],
+      "subject_id": "operativsystemer",
+      "chapter_number": 11
     }
   ]
 }

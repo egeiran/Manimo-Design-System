@@ -1,0 +1,88 @@
+{
+  "id": "inode-block-pointers",
+  "title": "The Inode: A File's Map to Its Blocks",
+  "eyebrow": "file systems",
+  "language": "en",
+  "duration": 47,
+  "topic": "Inodes — every file has a fixed-size record holding its metadata and a list of pointers to the disk blocks that contain its bytes; direct pointers handle small files in one hop, indirect pointers fan out to reach large files via a tree of block pointers",
+  "subject_id": "operativsystemer",
+  "chapter_number": 11,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.23,
+      "narration": "A file is bytes — but where on the disk do those bytes actually live?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "How does the file system find your bytes?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "inodeIntro",
+      "start": 5.23,
+      "end": 17.03,
+      "narration": "An inode answers that. It is a small record per file: who owns it, how big it is, when it changed — and a list of pointers to the disk blocks that hold the data.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Inode card on the left with metadata rows: mode, owner, size, mtime", "delay": 0.2, "color": "var(--teal-400)" },
+          { "type": "svg-label", "content": "Pointer list section beneath metadata: 12 direct slots + 1 indirect slot", "delay": 1.4, "color": "var(--chalk-200)" },
+          { "type": "text-caption", "content": "one fixed-size record per file", "delay": 8.0, "color": "var(--chalk-300)", "position": "below inode" }
+        ]
+      }
+    },
+    {
+      "id": "directLookup",
+      "start": 17.03,
+      "end": 27.61,
+      "narration": "Want byte one thousand? Divide by the block size, look up the right pointer, and follow it. Twelve direct pointers cover small files in one hop.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "graph-marker", "content": "Highlight pointer slot index 4", "delay": 0.6, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Arrow draws from pointer 4 across to data-block 4", "delay": 1.4, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Data block 4 lights up amber when the arrow tip arrives", "delay": 2.4, "color": "var(--amber-300)" },
+          { "type": "text-formula", "content": "byte 1000  →  block ⌊1000/4096⌋ = 0", "delay": 3.4, "color": "var(--chalk-100)", "position": "small mono caption above" },
+          { "type": "text-caption", "content": "twelve direct pointers — one inode lookup reaches the bytes", "delay": 7.6, "color": "var(--chalk-300)", "position": "below" }
+        ]
+      }
+    },
+    {
+      "id": "indirectLookup",
+      "start": 27.61,
+      "end": 39.06,
+      "narration": "Bigger files reach further. The thirteenth pointer is indirect — it points to a whole block of pointers. Now one inode lookup reaches thousands more blocks.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "graph-marker", "content": "Highlight the indirect-pointer slot at the bottom of the inode", "delay": 0.4, "color": "var(--rose-400)" },
+          { "type": "svg-path", "content": "Arrow draws from indirect slot to the indirect block", "delay": 1.0, "color": "var(--rose-400)" },
+          { "type": "svg-path", "content": "Indirect block of 1024 pointer cells fades in", "delay": 1.6, "color": "var(--chalk-200)" },
+          { "type": "graph-marker", "content": "Pick one cell inside the indirect block", "delay": 3.0, "color": "var(--rose-400)" },
+          { "type": "svg-path", "content": "Second arrow draws from the chosen cell to a far data block", "delay": 3.4, "color": "var(--rose-400)" },
+          { "type": "svg-label", "content": "Far data block lights up rose when the second arrow arrives", "delay": 4.4, "color": "var(--rose-300)" },
+          { "type": "text-formula", "content": "12 + 1024 = 1036 reachable blocks per inode", "delay": 6.0, "color": "var(--chalk-100)", "position": "small mono caption" },
+          { "type": "text-caption", "content": "two hops — one to the index, one to the data", "delay": 8.0, "color": "var(--chalk-300)", "position": "below" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 39.06,
+      "end": 47,
+      "narration": "Small files travel one hop. Big files take a tree. Same inode, same shape — only the depth changes.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "Small file: one hop. Big file: a tree.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic ~28px" },
+          { "type": "text-caption", "content": "(real systems also stack double- and triple-indirect pointers)", "delay": 1.6, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}
