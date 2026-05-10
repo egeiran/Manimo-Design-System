@@ -78,6 +78,8 @@ for the exact prompts.
   once a working `ELEVENLABS_API_KEY` reaches a host that can talk
   to ElevenLabs.
 
+- **[HUMAN] Re-run `npm run publish round-robin-scheduling address-translation race-condition`** once Supabase env vars are available on the nightly sandbox. Tonight's reviewer skipped publish because keys were missing. Reviewer flagged on 2026-05-10.
+
 - **Visual review of `pendulum`.** Snapshot tool was unavailable on
   the sandbox the night this scene shipped (chromium download blocked).
   Open `motion/pendulum.html` manually and check: (a) the −mg sin θ
