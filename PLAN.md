@@ -30,12 +30,16 @@ for the exact prompts.
   `motion/audio/<id>/scene.mp3` is missing OR whose
   `motion/audio/<id>/manifest.json` has `"mode": "fallback-estimated"`:
 
-  1. `npm run audio <id> -- --engine local --force` — uses macOS `say`
-     locally and `espeak-ng` on Linux sandboxes (no ElevenLabs key
-     needed; auto-picks). On Linux: `apt-get install espeak-ng` if it's
-     not already on PATH. The script now also resolves spec paths via
-     the manifest's `spec` field, so this works for `rc-circuit` and
-     `moment-of-inertia` even before the rename TODO below lands.
+  1. `npm run audio <id> -- --force` — runs the default engine chain
+     (elevenlabs → mistral → local → estimated). On a Linux sandbox where
+     ElevenLabs returns `401 detected_unusual_activity`, the chain falls
+     through to Voxtral (real cloud TTS, English-family languages) when
+     `MISTRAL_API_KEY` is set, then to `espeak-ng` (`apt-get install
+     espeak-ng`). For Norwegian scenes (`spec.language === 'no'`)
+     Voxtral is skipped from the chain — chain becomes elevenlabs →
+     local. Spec paths are resolved via the manifest's `spec` field, so
+     this works for `rc-circuit` and `moment-of-inertia` even before
+     the rename TODO below lands.
   2. Apply the printed wire-up to `motion/<file>.jsx`,
      `motion/<spec>.json`, `motion/scene-manifest.json` (just the
      `duration` field), and `ui_kits/studio/app.jsx`. The wire-up
@@ -50,11 +54,14 @@ for the exact prompts.
      them once the PR merges, ready to publish on the next run with a
      working key.
 
-  Quality note: `say` and `espeak-ng` are noticeably more robotic than
-  ElevenLabs (especially `espeak`). These audio tracks are placeholders
-  until the user can re-run with `--engine elevenlabs` from a host that
-  can reach the API; the wire-up shape is identical so swapping engines
-  later only requires the audio call + re-render + republish.
+  Quality note: the chain produces broadcast-quality audio in the
+  ElevenLabs and Voxtral branches, so most English scenes ship with
+  real cloud TTS even from sandboxes. Only when both cloud engines
+  fail does the chain fall to `say`/`espeak-ng`; those tracks (and
+  any Norwegian scene rendered locally) are placeholders worth
+  re-rendering once a cloud key is reachable. Wire-up shape is
+  identical across engines so swapping is just the audio call +
+  re-render + republish.
 
 ### [HUMAN] — needs your input
 
