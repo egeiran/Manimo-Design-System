@@ -2,13 +2,13 @@
 // Why a single hardware instruction that reads-and-writes in one step is enough
 // to build the simplest correct lock in computing.
 //
-// Beats (timed to estimated narration durations — re-run `npm run audio
-// test-and-set-lock` with a working ElevenLabs/Voxtral/local TTS to overwrite):
-//    0.00– 5.87  Manimo intro: two threads, one shared resource
-//    5.87–18.24  The atomic instruction — TestAndSet pseudocode, atomic brace
-//   18.24–30.11  Contention: T1 wins, T2 loses; lock flips 0 → 1
-//   30.11–44.63  Spin and release: timeline with T1, lock, T2 driven by playhead
-//   44.63–54.00  Takeaway
+// Beats (timed to single-track Voxtral narration in
+// motion/operativsystemer/audio/test-and-set-lock/):
+//    0.00– 7.40  Manimo intro: two threads, one shared resource
+//    7.40–18.43  The atomic instruction — TestAndSet pseudocode, atomic brace
+//   18.43–30.18  Contention: T1 wins, T2 loses; lock flips 0 → 1
+//   30.18–44.41  Spin and release: timeline with T1, lock, T2 driven by playhead
+//   44.41–54.00  Takeaway
 //
 // Authoring notes:
 //   • Beat 4 carries the genuine animation: a shared playhead drives three
@@ -20,12 +20,14 @@
 const SCENE_DURATION = 54;
 
 const NARRATION = [
-  /*  0.00– 5.87 */ 'Two threads, one shared resource — and only one of them can have it at a time.',
-  /*  5.87–18.24 */ "Test and set is one hardware instruction that does two things at once. It reads the lock's old value and writes one — atomically, so no other thread can slip in between.",
-  /* 18.24–30.11 */ 'Two threads race for the lock. Thread one calls test and set first, gets back zero, and walks in. Thread two calls a moment later, gets back one, and has to wait.',
-  /* 30.11–44.63 */ 'Thread two keeps trying. Each loop reads one, sees the lock is taken, and spins. When thread one finishes its work and writes zero, the very next call returns zero — and now thread two is the holder.',
-  /* 44.63–54.00 */ 'Spin while busy. One atomic step does the test and the set together — and that is the simplest lock in computing.',
+  /*  0.00– 7.40 */ 'Two threads, one shared resource — and only one of them can have it at a time.',
+  /*  7.40–18.43 */ "Test and set is one hardware instruction that does two things at once. It reads the lock's old value and writes one — atomically, so no other thread can slip in between.",
+  /* 18.43–30.18 */ 'Two threads race for the lock. Thread one calls test and set first, gets back zero, and walks in. Thread two calls a moment later, gets back one, and has to wait.',
+  /* 30.18–44.41 */ 'Thread two keeps trying. Each loop reads one, sees the lock is taken, and spins. When thread one finishes its work and writes zero, the very next call returns zero — and now thread two is the holder.',
+  /* 44.41–54.00 */ 'Spin while busy. One atomic step does the test and the set together — and that is the simplest lock in computing.',
 ];
+
+const NARRATION_AUDIO = 'audio/test-and-set-lock/scene.mp3';
 
 function Scene() {
   return (
@@ -33,22 +35,24 @@ function Scene() {
       eyebrow="locks"
       title="Test-and-Set: One Atomic Instruction"
       duration={SCENE_DURATION}
-      introEnd={5.87}
+      introEnd={7.4}
       introCaption="How do two threads agree on whose turn it is?"
     >
-      <Sprite start={5.87} end={18.24}>
+      <SceneNarration src={NARRATION_AUDIO} />
+
+      <Sprite start={7.4} end={18.43}>
         <AtomicOpBeat />
       </Sprite>
 
-      <Sprite start={18.24} end={30.11}>
+      <Sprite start={18.43} end={30.18}>
         <ContendBeat />
       </Sprite>
 
-      <Sprite start={30.11} end={44.63}>
+      <Sprite start={30.18} end={44.41}>
         <SpinAndReleaseBeat />
       </Sprite>
 
-      <Sprite start={44.63} end={SCENE_DURATION}>
+      <Sprite start={44.41} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>
@@ -649,6 +653,7 @@ function App() {
       width={1280} height={720}
       duration={SCENE_DURATION}
       background="#0c0a1f"
+      loop={false}
     >
       <Scene/>
     </Stage>

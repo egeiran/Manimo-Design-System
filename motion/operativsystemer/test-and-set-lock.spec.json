@@ -12,7 +12,7 @@
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 5.87,
+      "end": 7.4,
       "narration": "Two threads, one shared resource — and only one of them can have it at a time.",
       "visuals": {
         "layout": "center",
@@ -24,8 +24,8 @@
     },
     {
       "id": "atomicOp",
-      "start": 5.87,
-      "end": 18.24,
+      "start": 7.4,
+      "end": 18.43,
       "narration": "Test and set is one hardware instruction that does two things at once. It reads the lock's old value and writes one — atomically, so no other thread can slip in between.",
       "visuals": {
         "layout": "center",
@@ -39,8 +39,8 @@
     },
     {
       "id": "contend",
-      "start": 18.24,
-      "end": 30.11,
+      "start": 18.43,
+      "end": 30.18,
       "narration": "Two threads race for the lock. Thread one calls test and set first, gets back zero, and walks in. Thread two calls a moment later, gets back one, and has to wait.",
       "visuals": {
         "layout": "left-right",
@@ -57,8 +57,8 @@
     },
     {
       "id": "spinAndRelease",
-      "start": 30.11,
-      "end": 44.63,
+      "start": 30.18,
+      "end": 44.41,
       "narration": "Thread two keeps trying. Each loop reads one, sees the lock is taken, and spins. When thread one finishes its work and writes zero, the very next call returns zero — and now thread two is the holder.",
       "visuals": {
         "layout": "center",
@@ -74,7 +74,7 @@
     },
     {
       "id": "takeaway",
-      "start": 44.63,
+      "start": 44.41,
       "end": 54,
       "narration": "Spin while busy. One atomic step does the test and the set together — and that is the simplest lock in computing.",
       "visuals": {

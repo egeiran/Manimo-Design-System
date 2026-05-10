@@ -3,13 +3,13 @@
 // pointers to disk blocks. Direct pointers cover small files; an indirect
 // pointer fans out to reach large ones.
 //
-// Beats (timed to estimated narration durations — re-run `npm run audio
-// inode-block-pointers` with a working ElevenLabs/Voxtral/local TTS to overwrite):
-//    0.00– 5.23  Manimo intro: where do a file's bytes live?
-//    5.23–17.03  The inode card: metadata rows + pointer list
-//   17.03–27.61  Direct pointer lookup: pointer 4 → block 4 (genuine motion)
-//   27.61–39.06  Indirect pointer: inode → indirect block → far data block
-//   39.06–47.00  Takeaway
+// Beats (timed to single-track Voxtral narration in
+// motion/operativsystemer/audio/inode-block-pointers/):
+//    0.00– 5.44  Manimo intro: where do a file's bytes live?
+//    5.44–15.78  The inode card: metadata rows + pointer list
+//   15.78–25.13  Direct pointer lookup: pointer 4 → block 4 (genuine motion)
+//   25.13–35.63  Indirect pointer: inode → indirect block → far data block
+//   35.63–43.00  Takeaway
 //
 // Authoring notes:
 //   • Beats 3 and 4 carry the genuine animation: a dot drives a TraceIn arrow
@@ -17,15 +17,17 @@
 //     arrow tip arrives. The viewer literally watches the lookup happen.
 //   • SvgFadeIn for everything inside <svg>; FadeUp for HTML/DOM only.
 
-const SCENE_DURATION = 47;
+const SCENE_DURATION = 43;
 
 const NARRATION = [
-  /*  0.00– 5.23 */ 'A file is bytes — but where on the disk do those bytes actually live?',
-  /*  5.23–17.03 */ 'An inode answers that. It is a small record per file: who owns it, how big it is, when it changed — and a list of pointers to the disk blocks that hold the data.',
-  /* 17.03–27.61 */ 'Want byte one thousand? Divide by the block size, look up the right pointer, and follow it. Twelve direct pointers cover small files in one hop.',
-  /* 27.61–39.06 */ 'Bigger files reach further. The thirteenth pointer is indirect — it points to a whole block of pointers. Now one inode lookup reaches thousands more blocks.',
-  /* 39.06–47.00 */ 'Small files travel one hop. Big files take a tree. Same inode, same shape — only the depth changes.',
+  /*  0.00– 5.44 */ 'A file is bytes — but where on the disk do those bytes actually live?',
+  /*  5.44–15.78 */ 'An inode answers that. It is a small record per file: who owns it, how big it is, when it changed — and a list of pointers to the disk blocks that hold the data.',
+  /* 15.78–25.13 */ 'Want byte one thousand? Divide by the block size, look up the right pointer, and follow it. Twelve direct pointers cover small files in one hop.',
+  /* 25.13–35.63 */ 'Bigger files reach further. The thirteenth pointer is indirect — it points to a whole block of pointers. Now one inode lookup reaches thousands more blocks.',
+  /* 35.63–43.00 */ 'Small files travel one hop. Big files take a tree. Same inode, same shape — only the depth changes.',
 ];
+
+const NARRATION_AUDIO = 'audio/inode-block-pointers/scene.mp3';
 
 function Scene() {
   return (
@@ -33,22 +35,24 @@ function Scene() {
       eyebrow="file systems"
       title="The Inode: A File's Map to Its Blocks"
       duration={SCENE_DURATION}
-      introEnd={5.23}
+      introEnd={5.44}
       introCaption="How does the file system find your bytes?"
     >
-      <Sprite start={5.23} end={17.03}>
+      <SceneNarration src={NARRATION_AUDIO} />
+
+      <Sprite start={5.44} end={15.78}>
         <InodeIntroBeat />
       </Sprite>
 
-      <Sprite start={17.03} end={27.61}>
+      <Sprite start={15.78} end={25.13}>
         <DirectLookupBeat />
       </Sprite>
 
-      <Sprite start={27.61} end={39.06}>
+      <Sprite start={25.13} end={35.63}>
         <IndirectLookupBeat />
       </Sprite>
 
-      <Sprite start={39.06} end={SCENE_DURATION}>
+      <Sprite start={35.63} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>
@@ -590,6 +594,7 @@ function App() {
       width={1280} height={720}
       duration={SCENE_DURATION}
       background="#0c0a1f"
+      loop={false}
     >
       <Scene/>
     </Stage>

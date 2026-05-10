@@ -12,7 +12,7 @@
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 6.16,
+      "end": 5.43,
       "narration": "Every program sees a clean slab of memory laid out the same way each time it runs.",
       "visuals": {
         "layout": "center",
@@ -24,8 +24,8 @@
     },
     {
       "id": "layout",
-      "start": 6.16,
-      "end": 18.31,
+      "start": 5.43,
+      "end": 15.2,
       "narration": "At the bottom sits your code, frozen and read-only. Above it, the static data the compiler set up. The stack lives at the top — and the heap is everything in between.",
       "visuals": {
         "layout": "center",
@@ -42,8 +42,8 @@
     },
     {
       "id": "heapGrows",
-      "start": 18.31,
-      "end": 25.61,
+      "start": 15.2,
+      "end": 23.77,
       "narration": "Call malloc, and the heap creeps upward. Each new block sits wherever the allocator can find room.",
       "visuals": {
         "layout": "center",
@@ -60,8 +60,8 @@
     },
     {
       "id": "stackGrows",
-      "start": 25.61,
-      "end": 34.84,
+      "start": 23.77,
+      "end": 34.45,
       "narration": "Call a function, and a new frame is pushed onto the stack — locals, return address, the works. Return, and the frame is gone.",
       "visuals": {
         "layout": "center",
@@ -79,7 +79,7 @@
     },
     {
       "id": "takeaway",
-      "start": 34.84,
+      "start": 34.45,
       "end": 42,
       "narration": "Two arrows, growing toward each other. As long as the gap holds, the program runs.",
       "visuals": {

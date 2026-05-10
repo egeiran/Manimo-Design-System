@@ -294,7 +294,7 @@
       "title": "The Inode: A File's Map to Its Blocks",
       "eyebrow": "file systems",
       "topic": "Inodes — every file has a fixed-size record holding its metadata and a list of pointers to the disk blocks that contain its bytes; direct pointers handle small files in one hop, indirect pointers fan out to reach large files via a tree of block pointers",
-      "duration": 47,
+      "duration": 43,
       "language": "en",
       "prerequisites": [],
       "concepts": ["inode", "file system", "direct pointer", "indirect pointer", "metadata", "block addressing"],

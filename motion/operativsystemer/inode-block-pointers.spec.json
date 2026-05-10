@@ -3,7 +3,7 @@
   "title": "The Inode: A File's Map to Its Blocks",
   "eyebrow": "file systems",
   "language": "en",
-  "duration": 47,
+  "duration": 43,
   "topic": "Inodes — every file has a fixed-size record holding its metadata and a list of pointers to the disk blocks that contain its bytes; direct pointers handle small files in one hop, indirect pointers fan out to reach large files via a tree of block pointers",
   "subject_id": "operativsystemer",
   "chapter_number": 11,
@@ -12,7 +12,7 @@
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 5.23,
+      "end": 5.44,
       "narration": "A file is bytes — but where on the disk do those bytes actually live?",
       "visuals": {
         "layout": "center",
@@ -24,8 +24,8 @@
     },
     {
       "id": "inodeIntro",
-      "start": 5.23,
-      "end": 17.03,
+      "start": 5.44,
+      "end": 15.78,
       "narration": "An inode answers that. It is a small record per file: who owns it, how big it is, when it changed — and a list of pointers to the disk blocks that hold the data.",
       "visuals": {
         "layout": "center",
@@ -38,8 +38,8 @@
     },
     {
       "id": "directLookup",
-      "start": 17.03,
-      "end": 27.61,
+      "start": 15.78,
+      "end": 25.13,
       "narration": "Want byte one thousand? Divide by the block size, look up the right pointer, and follow it. Twelve direct pointers cover small files in one hop.",
       "visuals": {
         "layout": "left-right",
@@ -54,8 +54,8 @@
     },
     {
       "id": "indirectLookup",
-      "start": 27.61,
-      "end": 39.06,
+      "start": 25.13,
+      "end": 35.63,
       "narration": "Bigger files reach further. The thirteenth pointer is indirect — it points to a whole block of pointers. Now one inode lookup reaches thousands more blocks.",
       "visuals": {
         "layout": "left-right",
@@ -73,8 +73,8 @@
     },
     {
       "id": "takeaway",
-      "start": 39.06,
-      "end": 47,
+      "start": 35.63,
+      "end": 43,
       "narration": "Small files travel one hop. Big files take a tree. Same inode, same shape — only the depth changes.",
       "visuals": {
         "layout": "center",

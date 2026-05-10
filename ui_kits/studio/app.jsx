@@ -52,7 +52,7 @@ const initialScenes = [
   { id: 'live-race',         kind: 'live', kindLabel: 'Live', cardTitle: 'Race Condition',               duration: 53, html: '../../motion/operativsystemer/race-condition.html' },
   { id: 'live-tas-lock',     kind: 'live', kindLabel: 'Live', cardTitle: 'Test-and-Set Lock',            duration: 54, html: '../../motion/operativsystemer/test-and-set-lock.html' },
   { id: 'live-addr-space',   kind: 'live', kindLabel: 'Live', cardTitle: 'Address Space Layout',         duration: 42, html: '../../motion/operativsystemer/address-space-layout.html' },
-  { id: 'live-inode',        kind: 'live', kindLabel: 'Live', cardTitle: 'The Inode',                    duration: 47, html: '../../motion/operativsystemer/inode-block-pointers.html' },
+  { id: 'live-inode',        kind: 'live', kindLabel: 'Live', cardTitle: 'The Inode',                    duration: 43, html: '../../motion/operativsystemer/inode-block-pointers.html' },
 ];
 
 function loadJSON(key, fallback) {

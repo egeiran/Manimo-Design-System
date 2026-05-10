@@ -2,13 +2,13 @@
 // The four neighbourhoods of a virtual address space (code, data, heap, stack)
 // and how the heap and stack grow toward each other at run time.
 //
-// Beats (timed to estimated narration durations — re-run `npm run audio
-// address-space-layout` with a working ElevenLabs/Voxtral/local TTS to overwrite):
-//    0.00– 6.16  Manimo intro: every program sees the same shape of memory
-//    6.16–18.31  The static layout: code · data · heap · stack
-//   18.31–25.61  Heap grows up: three mallocs stack on each other
-//   25.61–34.84  Stack grows down: three function calls; one returns
-//   34.84–42.00  Takeaway
+// Beats (timed to single-track Voxtral narration in
+// motion/operativsystemer/audio/address-space-layout/):
+//    0.00– 5.43  Manimo intro: every program sees the same shape of memory
+//    5.43–15.20  The static layout: code · data · heap · stack
+//   15.20–23.77  Heap grows up: three mallocs stack on each other
+//   23.77–34.45  Stack grows down: three function calls; one returns
+//   34.45–42.00  Takeaway
 //
 // Authoring notes:
 //   • Beats 3 and 4 carry the genuine animation: heap blocks materialise from
@@ -20,12 +20,14 @@
 const SCENE_DURATION = 42;
 
 const NARRATION = [
-  /*  0.00– 6.16 */ 'Every program sees a clean slab of memory laid out the same way each time it runs.',
-  /*  6.16–18.31 */ 'At the bottom sits your code, frozen and read-only. Above it, the static data the compiler set up. The stack lives at the top — and the heap is everything in between.',
-  /* 18.31–25.61 */ 'Call malloc, and the heap creeps upward. Each new block sits wherever the allocator can find room.',
-  /* 25.61–34.84 */ 'Call a function, and a new frame is pushed onto the stack — locals, return address, the works. Return, and the frame is gone.',
-  /* 34.84–42.00 */ 'Two arrows, growing toward each other. As long as the gap holds, the program runs.',
+  /*  0.00– 5.43 */ 'Every program sees a clean slab of memory laid out the same way each time it runs.',
+  /*  5.43–15.20 */ 'At the bottom sits your code, frozen and read-only. Above it, the static data the compiler set up. The stack lives at the top — and the heap is everything in between.',
+  /* 15.20–23.77 */ 'Call malloc, and the heap creeps upward. Each new block sits wherever the allocator can find room.',
+  /* 23.77–34.45 */ 'Call a function, and a new frame is pushed onto the stack — locals, return address, the works. Return, and the frame is gone.',
+  /* 34.45–42.00 */ 'Two arrows, growing toward each other. As long as the gap holds, the program runs.',
 ];
+
+const NARRATION_AUDIO = 'audio/address-space-layout/scene.mp3';
 
 // Shared geometry — the address-space rectangle is the visual anchor for
 // beats 2-4 and we want it to live in the same place in all three.
@@ -54,22 +56,24 @@ function Scene() {
       eyebrow="memory"
       title="Address Space: Where Your Program Lives"
       duration={SCENE_DURATION}
-      introEnd={6.16}
+      introEnd={5.43}
       introCaption="Where in memory does each part of your program live?"
     >
-      <Sprite start={6.16} end={18.31}>
+      <SceneNarration src={NARRATION_AUDIO} />
+
+      <Sprite start={5.43} end={15.2}>
         <LayoutBeat />
       </Sprite>
 
-      <Sprite start={18.31} end={25.61}>
+      <Sprite start={15.2} end={23.77}>
         <HeapGrowsBeat />
       </Sprite>
 
-      <Sprite start={25.61} end={34.84}>
+      <Sprite start={23.77} end={34.45}>
         <StackGrowsBeat />
       </Sprite>
 
-      <Sprite start={34.84} end={SCENE_DURATION}>
+      <Sprite start={34.45} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>
@@ -587,6 +591,7 @@ function App() {
       width={1280} height={720}
       duration={SCENE_DURATION}
       background="#0c0a1f"
+      loop={false}
     >
       <Scene/>
     </Stage>

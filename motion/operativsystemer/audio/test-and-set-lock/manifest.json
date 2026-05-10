@@ -1,9 +1,11 @@
 {
   "sceneId": "test-and-set-lock",
-  "mode": "fallback-estimated",
-  "engine": "fallback-estimated",
-  "chars": 721,
-  "durationSec": 52.7,
+  "mode": "mistral",
+  "engine": "mistral",
+  "voice": "e3596645-b1af-469e-b857-f18ddedc7652",
+  "model": "voxtral-mini-tts-2603",
+  "audio": "audio/test-and-set-lock/scene.mp3",
+  "durationSec": 53.38,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -12,24 +14,23 @@
     },
     {
       "id": "atomicOp",
-      "audioStart": 5.87,
+      "audioStart": 7.4,
       "narration": "Test and set is one hardware instruction that does two things at once. It reads the lock's old value and writes one — atomically, so no other thread can slip in between."
     },
     {
       "id": "contend",
-      "audioStart": 18.24,
+      "audioStart": 18.43,
       "narration": "Two threads race for the lock. Thread one calls test and set first, gets back zero, and walks in. Thread two calls a moment later, gets back one, and has to wait."
     },
     {
       "id": "spinAndRelease",
-      "audioStart": 30.11,
+      "audioStart": 30.18,
       "narration": "Thread two keeps trying. Each loop reads one, sees the lock is taken, and spins. When thread one finishes its work and writes zero, the very next call returns zero — and now thread two is the holder."
     },
     {
       "id": "takeaway",
-      "audioStart": 44.63,
+      "audioStart": 44.41,
       "narration": "Spin while busy. One atomic step does the test and the set together — and that is the simplest lock in computing."
     }
-  ],
-  "note": "Estimated at 14 chars/sec — no audio file. Re-run with ELEVENLABS_API_KEY or MISTRAL_API_KEY set, or with `say`/`espeak-ng` on PATH, to overwrite with real audio."
+  ]
 }
