@@ -412,7 +412,7 @@ function IndirectLookupBeat() {
 
   // Far data block — placed off to the right/bottom.
   const farBlock = portrait
-    ? { x: 200, y: 460, w: 200, h: 56 }
+    ? { x: 320, y: 320, w: 220, h: 60 }
     : { x: 800, y: 320, w: 240, h: 80 };
 
   // Source: indirect slot in inode. Picked indirect-cell index 27.

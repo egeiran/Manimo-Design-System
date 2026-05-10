@@ -159,8 +159,8 @@ function LayoutBeat() {
 
         {/* HEAP label + upward arrow */}
         <SvgFadeIn duration={0.4} delay={2.6}>
-          <text x={G.asX + G.asW / 2} y={dataTop - 18}
-            textAnchor="middle"
+          <text x={G.asX + G.asW / 2 + 14} y={dataTop - 18}
+            textAnchor="start"
             fill="var(--amber-300)"
             fontFamily="var(--font-mono)" fontSize={13}
             letterSpacing="0.18em">HEAP</text>
@@ -187,8 +187,8 @@ function LayoutBeat() {
 
         {/* STACK label + downward arrow */}
         <SvgFadeIn duration={0.4} delay={3.4}>
-          <text x={G.asX + G.asW / 2} y={stackBot + 32}
-            textAnchor="middle"
+          <text x={G.asX + G.asW / 2 + 14} y={stackBot + 32}
+            textAnchor="start"
             fill="var(--rose-300)"
             fontFamily="var(--font-mono)" fontSize={13}
             letterSpacing="0.18em">STACK</text>
