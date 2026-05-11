@@ -478,7 +478,7 @@ function MissBeat() {
         {/* The branch line: draws from TLB downward to the page-table box */}
         {branchOn && (
           <path d={branchD}
-            stroke="var(--chalk-200)" strokeWidth={1.6} fill="none"
+            stroke="var(--chalk-200)" strokeWidth={2} fill="none"
             strokeDasharray={`${branchPathLen}`}
             strokeDashoffset={`${branchPathLen * (1 - Easing.easeOutCubic(branchProg))}`}
             opacity={0.85}/>
