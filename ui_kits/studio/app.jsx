@@ -56,6 +56,9 @@ const initialScenes = [
   { id: 'live-sjf',          kind: 'live', kindLabel: 'Live', cardTitle: 'Shortest Job First',            duration: 46, html: '../../motion/operativsystemer/sjf-scheduling.html' },
   { id: 'live-prod-cons',    kind: 'live', kindLabel: 'Live', cardTitle: 'Producer–Consumer',             duration: 44, html: '../../motion/operativsystemer/producer-consumer.html' },
   { id: 'live-tlb',          kind: 'live', kindLabel: 'Live', cardTitle: 'TLB Hits and Misses',           duration: 48, html: '../../motion/operativsystemer/tlb-hit-miss.html' },
+  { id: 'live-semaphore',    kind: 'live', kindLabel: 'Live', cardTitle: 'Semaphores: A Counter Threads Wait On', duration: 45, html: '../../motion/operativsystemer/semaphore-counter.html' },
+  { id: 'live-proc-states',  kind: 'live', kindLabel: 'Live', cardTitle: 'Process States: Running, Ready, Blocked', duration: 59, html: '../../motion/operativsystemer/process-states.html' },
+  { id: 'live-poll-irq',     kind: 'live', kindLabel: 'Live', cardTitle: 'Polling vs Interrupts',                  duration: 42, html: '../../motion/operativsystemer/polling-vs-interrupt.html' },
 ];
 
 function loadJSON(key, fallback) {

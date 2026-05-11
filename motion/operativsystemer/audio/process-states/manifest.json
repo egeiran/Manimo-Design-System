@@ -1,0 +1,36 @@
+{
+  "sceneId": "process-states",
+  "mode": "mistral",
+  "engine": "mistral",
+  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
+  "model": "voxtral-mini-tts-2603",
+  "audio": "audio/process-states/scene.mp3",
+  "durationSec": 57.65,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Where is your program right this second — on the CPU, waiting in line, or stuck on a disk read?"
+    },
+    {
+      "id": "threeBoxes",
+      "audioStart": 8.76,
+      "narration": "RUNNING — currently on the CPU. READY — eligible to run, but the CPU is busy. BLOCKED — waiting on something else, like a disk to finish."
+    },
+    {
+      "id": "schedulerTransitions",
+      "audioStart": 18.24,
+      "narration": "When the scheduler's time slice expires, the running process is descheduled to ready, and a ready process is scheduled to running."
+    },
+    {
+      "id": "blockedTransitions",
+      "audioStart": 28.99,
+      "narration": "If the running process asks for I/O, it leaves the CPU and enters the blocked state. When the disk finishes, the process moves back to ready, eligible to run again."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 45.25,
+      "narration": "Three states — running, ready, blocked. Two drivers of motion — the scheduler and the I/O subsystem. That's how every process moves through the OS."
+    }
+  ]
+}

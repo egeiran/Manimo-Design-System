@@ -345,6 +345,51 @@
       "concepts": ["TLB", "translation lookaside buffer", "cache hit", "cache miss", "locality of reference", "page table walk"],
       "subject_id": "operativsystemer",
       "chapter_number": 5
+    },
+    {
+      "id": "semaphore-counter",
+      "file": "semaphore-counter.jsx",
+      "html": "semaphore-counter.html",
+      "spec": "semaphore-counter.spec.json",
+      "title": "Semaphores: A Counter Threads Wait On",
+      "eyebrow": "semaphores",
+      "topic": "Semaphores — a single integer plus a queue: P() decrements and blocks if the value would go negative, V() increments and wakes a waiter; a semaphore with initial value 1 acts as a lock",
+      "duration": 45,
+      "language": "en",
+      "prerequisites": ["race-condition"],
+      "concepts": ["semaphore", "P and V", "mutex", "counting semaphore", "wait queue", "mutual exclusion"],
+      "subject_id": "operativsystemer",
+      "chapter_number": 9
+    },
+    {
+      "id": "process-states",
+      "file": "process-states.jsx",
+      "html": "process-states.html",
+      "spec": "process-states.spec.json",
+      "title": "Process States: Running, Ready, Blocked",
+      "eyebrow": "process lifecycle",
+      "topic": "Process states — a process is always in one of three states: RUNNING on the CPU, READY waiting for the CPU, or BLOCKED waiting on an I/O completion; the scheduler and I/O events drive every transition",
+      "duration": 59,
+      "language": "en",
+      "prerequisites": ["fork-process"],
+      "concepts": ["process state", "running", "ready", "blocked", "state transition", "I/O", "scheduler"],
+      "subject_id": "operativsystemer",
+      "chapter_number": 2
+    },
+    {
+      "id": "polling-vs-interrupt",
+      "file": "polling-vs-interrupt.jsx",
+      "html": "polling-vs-interrupt.html",
+      "spec": "polling-vs-interrupt.spec.json",
+      "title": "Polling vs Interrupts: How the CPU Talks to a Slow Disk",
+      "eyebrow": "I/O devices",
+      "topic": "Polling vs interrupts — polling spins the CPU on a device status register until the device is ready; an interrupt lets the CPU run other work and be woken when the device is done. For a slow device the difference is most of the CPU's time.",
+      "duration": 44,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": ["polling", "interrupt", "I/O device", "device driver", "CPU utilisation", "busy-wait"],
+      "subject_id": "operativsystemer",
+      "chapter_number": 10
     }
   ]
 }

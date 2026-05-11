@@ -25,22 +25,20 @@ for the exact prompts.
 
 ### [AGENT] — safe for the next nightly run
 
-- **TLB miss "branch" line is faint in landscape.** In
-  `motion/operativsystemer/tlb-hit-miss.jsx`, the dotted `branchD` path
-  that drops from the bottom of the TLB to the page-table box renders
-  almost invisibly because it draws over the page-table-box stroke after
-  a fade-in. Bump its `strokeWidth` from 1.6 to 2 and/or move the path
-  in front of the page-table-box stroke. Single-file tweak.
+- **Process-states portrait BLOCKED→READY arrow lacks an arrowhead near
+  the READY box.** In `motion/operativsystemer/process-states.jsx`
+  `BlockedBeat` the portrait branch routes the long vertical "I/O: done
+  → ready" arrow up the left of the box column; the arrowhead lands just
+  shy of READY's left edge but the head can read as small. Either bump
+  the head size for this specific arrow (e.g. add a `headSize` prop to
+  `ArrowEdge`) or pull `x2/y2` closer to READY's centre-left edge so the
+  triangle sits inside READY rather than below it.
 
-- **Producer–Consumer portrait thread labels float in empty space.**
-  In `motion/operativsystemer/producer-consumer.jsx` `bufGeom()`, the
-  portrait branch puts `prodX=60` and `consX=480` while the buffer slots
-  are centred around x=300. The "Thread Producer / Thread Consumer"
-  labels render far left/right of the slots with a wide visual gap.
-  Either move the labels closer to the slot row (e.g. anchor them
-  immediately to the left/right of the first/last slot in portrait) or
-  drop the side labels in portrait and put one label above each end of
-  the slot row.
+- **Semaphore-counter takeaway lacks the visual punch of beats 2-4.**
+  `motion/operativsystemer/semaphore-counter.jsx` `TakeawayBeat` is a
+  pure text stack — nice rhythm, but it could carry one small icon (a
+  mini-counter circle with "1" vs "N" alongside each `sem_init(...)`
+  line) without disrupting the layout. Single-file tweak.
 
 ### [HUMAN] — needs your input
 

@@ -68,7 +68,7 @@ function bufGeom(portrait) {
   return portrait
     ? { vbW: 600, vbH: 480,
         slotW: 70, slotH: 70, slotGap: 10, slotY: 220,
-        prodX: 60, prodY: 220, consX: 480, consY: 220,
+        prodX: 80, prodY: 220, consX: 520, consY: 220,
         threadLabelDy: -90, codeY: 360, eyebrowY: 50, captionY: 440,
         tokenR: 18, threadFontSize: 14, codeFontSize: 13 }
     : { vbW: 1080, vbH: 380,
