@@ -445,6 +445,22 @@ function TakeawayBeat() {
     fontSize: portrait ? 22 : 28,
     letterSpacing: '0.02em',
   };
+  // Small mini-counter icon — a stroked circle with the initial value
+  // ("1" or "N") inside, matching the colour of the sem_init line it sits
+  // next to. Aligns with the mono line vertically.
+  const iconSize = portrait ? 28 : 34;
+  function CounterIcon({ value, color }) {
+    return (
+      <svg width={iconSize} height={iconSize} viewBox="0 0 34 34"
+           style={{ overflow: 'visible', flex: '0 0 auto' }}>
+        <circle cx={17} cy={17} r={14} fill="none" stroke={color} strokeWidth={1.8}/>
+        <text x={17} y={22} textAnchor="middle"
+              fill={color} fontFamily="var(--font-mono)" fontSize={16}>
+          {value}
+        </text>
+      </svg>
+    );
+  }
   return (
     <div style={{
       position: 'absolute', left: '50%', top: '50%',
@@ -462,8 +478,10 @@ function TakeawayBeat() {
       </FadeUp>
 
       <FadeUp duration={0.55} delay={0.3} distance={12}
-        style={{ ...lineStyle, color: 'var(--amber-300)' }}>
-        sem_init(s, 1)
+        style={{ ...lineStyle, color: 'var(--amber-300)',
+                 display: 'flex', alignItems: 'center', gap: 12 }}>
+        <CounterIcon value="1" color="var(--amber-300)"/>
+        <span>sem_init(s, 1)</span>
       </FadeUp>
       <FadeUp duration={0.45} delay={0.7} distance={8}
         style={{
@@ -475,8 +493,10 @@ function TakeawayBeat() {
       </FadeUp>
 
       <FadeUp duration={0.55} delay={1.6} distance={12}
-        style={{ ...lineStyle, color: 'var(--chalk-100)', marginTop: 14 }}>
-        sem_init(s, N)
+        style={{ ...lineStyle, color: 'var(--chalk-100)', marginTop: 14,
+                 display: 'flex', alignItems: 'center', gap: 12 }}>
+        <CounterIcon value="N" color="var(--chalk-100)"/>
+        <span>sem_init(s, N)</span>
       </FadeUp>
       <FadeUp duration={0.45} delay={2.0} distance={8}
         style={{

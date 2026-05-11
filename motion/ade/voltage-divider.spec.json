@@ -1,0 +1,92 @@
+{
+  "id": "voltage-divider",
+  "title": "Voltage Divider: Why Two Resistors Split the Voltage",
+  "eyebrow": "circuit analysis",
+  "language": "en",
+  "duration": 39,
+  "topic": "Voltage divider — two resistors in series across a source put V_out = V_in · R2/(R1+R2) at the midpoint; sweeping R2 sweeps V_out proportionally",
+  "subject_id": "ade",
+  "chapter_number": 2,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.51,
+      "narration": "Two resistors stacked across a voltage source — what voltage shows up between them?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "Two resistors, one input — where does V out land?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "circuit",
+      "start": 7.51,
+      "end": 13.74,
+      "narration": "Send V in across R one and R two in series — Kirchhoff says the two drops have to add up to V in.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Battery on left with + and − terminal lines", "delay": 0.0, "color": "var(--chalk-200)" },
+          { "type": "svg-path", "content": "Top wire from battery + to top of R1, bottom wire from R2 bottom back to battery −", "delay": 0.4, "color": "var(--chalk-200)" },
+          { "type": "svg-path", "content": "R1 zigzag (upper resistor)", "delay": 1.0, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "R2 zigzag (lower resistor)", "delay": 1.6, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "V_in label on the battery", "delay": 0.2, "color": "var(--chalk-200)" },
+          { "type": "svg-label", "content": "R1 and R2 labels next to each resistor", "delay": 2.0, "color": "var(--chalk-200)" },
+          { "type": "svg-path", "content": "V_out probe tapping the midpoint between R1 and R2", "delay": 2.6, "color": "var(--amber-300)" },
+          { "type": "svg-circle", "content": "Charge dots travelling clockwise around the loop — the same current through R1 and R2", "delay": 3.4, "color": "var(--amber-300)" },
+          { "type": "text-caption", "content": "the same current threads both resistors", "delay": 7.5, "color": "var(--chalk-300)", "position": "below the circuit" }
+        ]
+      }
+    },
+    {
+      "id": "formula",
+      "start": 13.74,
+      "end": 21.89,
+      "narration": "The same current flows through both, so V out equals V in times R two divided by R one plus R two.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "text-formula", "content": "V_in = V_R1 + V_R2", "delay": 0.3, "color": "var(--chalk-200)", "position": "top — KVL" },
+          { "type": "text-formula", "content": "I = V_in / (R1 + R2)", "delay": 1.6, "color": "var(--chalk-200)", "position": "middle — series current" },
+          { "type": "text-formula", "content": "V_out = I · R2", "delay": 2.8, "color": "var(--chalk-200)", "position": "below current" },
+          { "type": "text-formula", "content": "V_out = V_in · R2/(R1+R2)", "delay": 4.4, "color": "var(--amber-300)", "position": "centre — payoff" },
+          { "type": "text-caption", "content": "V out is V in scaled by R2's share of the total", "delay": 6.0, "color": "var(--chalk-300)", "position": "small sans caption" }
+        ]
+      }
+    },
+    {
+      "id": "sweep",
+      "start": 21.89,
+      "end": 31.15,
+      "narration": "Scrub R two. As it grows from small to large, V out climbs from near zero up toward V in — proportionally.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Same circuit, simplified — battery, R1 zigzag, R2 zigzag", "delay": 0.0, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Two side-by-side vertical bars on the right — V_in (full height, dim) and V_out (bright amber, height ∝ R2/(R1+R2))", "delay": 0.4, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Live R2 value readout (R2 = X kΩ)", "delay": 0.8, "color": "var(--chalk-200)" },
+          { "type": "svg-label", "content": "Live V_out / V_in percentage", "delay": 1.0, "color": "var(--amber-300)" },
+          { "type": "svg-path", "content": "Animation: R2 sweeps from 0.2·R1 → 4·R1, bar and percentage update in sync", "delay": 1.4, "color": "var(--amber-300)", "note": "the genuine motion of this scene" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 31.15,
+      "end": 39,
+      "narration": "The output is V in scaled by R two's share of the total resistance — that's the voltage divider.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-formula", "content": "V_out = V_in · R2 / (R1 + R2)", "delay": 0.3, "color": "var(--amber-300)", "position": "centre, large serif italic amber" },
+          { "type": "text-caption", "content": "R1 = R2 → half. R2 ≫ R1 → almost V_in. R2 ≪ R1 → almost zero.", "delay": 1.6, "color": "var(--chalk-200)", "position": "three intuition rules" },
+          { "type": "text-caption", "content": "the same idea drives sensors, op-amp gains, and bias networks", "delay": 3.4, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}

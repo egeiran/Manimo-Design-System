@@ -368,7 +368,7 @@ function DemotionBeat() {
             A burned through slice after slice — it's CPU bound, drop it down.
           </text>
         </SvgFadeIn>
-        <SvgFadeIn duration={0.5} delay={10.4}>
+        <SvgFadeIn duration={0.5} delay={9.6}>
           <text x={G.vbW / 2} y={G.captionY + (portrait ? 22 : 26)}
             textAnchor="middle"
             fill="var(--chalk-300)"

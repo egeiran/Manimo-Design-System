@@ -465,6 +465,51 @@
       "concepts": ["RAID", "striping", "mirroring", "parity", "xor reconstruction", "redundancy", "throughput"],
       "subject_id": "operativsystemer",
       "chapter_number": 11
+    },
+    {
+      "id": "voltage-divider",
+      "file": "voltage-divider.jsx",
+      "html": "voltage-divider.html",
+      "spec": "voltage-divider.spec.json",
+      "title": "Voltage Divider: Why Two Resistors Split the Voltage",
+      "eyebrow": "circuit analysis",
+      "topic": "Voltage divider — two resistors in series across a source put V_out = V_in · R2/(R1+R2) at the midpoint; sweeping R2 sweeps V_out proportionally",
+      "duration": 39,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": ["voltage divider", "series resistors", "Ohm's law", "Kirchhoff voltage law", "circuit analysis"],
+      "subject_id": "ade",
+      "chapter_number": 2
+    },
+    {
+      "id": "half-wave-rectifier",
+      "file": "half-wave-rectifier.jsx",
+      "html": "half-wave-rectifier.html",
+      "spec": "half-wave-rectifier.spec.json",
+      "title": "Half-Wave Rectifier: How a Diode Turns AC into Pulses",
+      "eyebrow": "diodes",
+      "topic": "Half-wave rectifier — a diode in series with a load conducts on positive half-cycles and blocks on negative, turning an AC sinusoid into a one-sided pulse train",
+      "duration": 41,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": ["diode", "rectifier", "forward bias", "reverse bias", "half-wave", "AC to DC"],
+      "subject_id": "ade",
+      "chapter_number": 6
+    },
+    {
+      "id": "d-flip-flop",
+      "file": "d-flip-flop.jsx",
+      "html": "d-flip-flop.html",
+      "spec": "d-flip-flop.spec.json",
+      "title": "D Flip-Flop: One Bit of Memory at the Clock Edge",
+      "eyebrow": "sequential logic",
+      "topic": "D flip-flop — an edge-triggered storage cell whose output Q samples the input D at every rising edge of the clock; the cell behind every register and counter",
+      "duration": 38,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": ["D flip-flop", "edge-triggered", "rising edge", "clock", "sequential logic", "register"],
+      "subject_id": "ade",
+      "chapter_number": 13
     }
   ]
 }

@@ -64,6 +64,9 @@ const initialScenes = [
   { id: 'live-demand-paging',kind: 'live', kindLabel: 'Live', cardTitle: 'Demand Paging',                          duration: 54, html: '../../motion/operativsystemer/demand-paging.html' },
   { id: 'live-journaling',   kind: 'live', kindLabel: 'Live', cardTitle: 'Journaling',                             duration: 62, html: '../../motion/operativsystemer/journaling-fs.html' },
   { id: 'live-raid',         kind: 'live', kindLabel: 'Live', cardTitle: 'RAID',                                   duration: 56, html: '../../motion/operativsystemer/raid.html' },
+  { id: 'live-voltage-divider', kind: 'live', kindLabel: 'Live', cardTitle: 'Voltage Divider',                     duration: 39, html: '../../motion/ade/voltage-divider.html' },
+  { id: 'live-half-wave',       kind: 'live', kindLabel: 'Live', cardTitle: 'Half-Wave Rectifier',                 duration: 41, html: '../../motion/ade/half-wave-rectifier.html' },
+  { id: 'live-d-flip-flop',     kind: 'live', kindLabel: 'Live', cardTitle: 'D Flip-Flop',                         duration: 38, html: '../../motion/ade/d-flip-flop.html' },
 ];
 
 function loadJSON(key, fallback) {

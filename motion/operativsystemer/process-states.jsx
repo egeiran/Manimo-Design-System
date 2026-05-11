@@ -148,15 +148,16 @@ function Token({ G, cx, cy, label, color, opacity = 1 }) {
 
 // Draw a labelled arrow between two centres. Renders only after `delay`.
 // `bend` lets us route around the centre box for far-apart transitions.
-function ArrowEdge({ x1, y1, x2, y2, color, label, labelOffset = 18, delay = 0 }) {
+function ArrowEdge({ x1, y1, x2, y2, color, label, labelOffset = 18, delay = 0, headScale = 1 }) {
   const dx = x2 - x1, dy = y2 - y1;
   const len = Math.hypot(dx, dy) || 1;
   const ux = dx / len, uy = dy / len;
   // Shorten by 4px on each end so the arrow doesn't poke into the boxes.
   const sx = x1 + ux * 4, sy = y1 + uy * 4;
   const ex = x2 - ux * 4, ey = y2 - uy * 4;
-  // Head
-  const headBack = 9, headSide = 5;
+  // Head — headScale lets long routed arrows bump up the head so it
+  // still reads at the canvas edge.
+  const headBack = 9 * headScale, headSide = 5 * headScale;
   const px = -uy, py = ux;
   const baseX = ex - ux * headBack;
   const baseY = ey - uy * headBack;
@@ -492,13 +493,16 @@ function BlockedBeat() {
             sends you to ready, not straight back to the CPU. */}
         {portrait ? (
           // Route well outside the box column (boxes span x=140..460).
+          // headScale bumps the triangle so it reads at READY's left edge
+          // rather than appearing tiny next to the long vertical arrow.
           <ArrowEdge
             x1={G.blockedX - 24} y1={G.blockedY + G.boxH / 2}
             x2={G.readyX - 24} y2={G.readyY + G.boxH / 2}
             color="var(--amber-300)"
             label="I/O: done → ready"
             labelOffset={-32}
-            delay={1.0}/>
+            delay={1.0}
+            headScale={1.7}/>
         ) : (
           <ArrowEdge
             x1={G.blockedX + G.boxW / 2} y1={G.blockedY + G.boxH}

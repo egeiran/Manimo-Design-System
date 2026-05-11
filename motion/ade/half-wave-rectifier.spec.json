@@ -1,0 +1,87 @@
+{
+  "id": "half-wave-rectifier",
+  "title": "Half-Wave Rectifier: How a Diode Turns AC into Pulses",
+  "eyebrow": "diodes",
+  "language": "en",
+  "duration": 41,
+  "topic": "Half-wave rectifier — a diode in series with a load conducts on positive half-cycles and blocks on negative, turning an AC sinusoid into a one-sided pulse train",
+  "subject_id": "ade",
+  "chapter_number": 6,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.55,
+      "narration": "An AC source plus a diode — what shape comes out across the load?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "AC in — what waveform comes out the other side?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "circuit",
+      "start": 4.55,
+      "end": 10.08,
+      "narration": "Put a diode in series with a resistor. The diode passes current one way, blocks it the other.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "AC source symbol on the left (sine inside a circle)", "delay": 0.0, "color": "var(--chalk-200)" },
+          { "type": "svg-path", "content": "Diode in series — triangle + bar with arrow pointing right (anode → cathode)", "delay": 0.8, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Resistor (load) on the right of the diode", "delay": 1.4, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Return wire closing the loop along the bottom", "delay": 1.8, "color": "var(--chalk-200)" },
+          { "type": "svg-label", "content": "V_in label on the source, V_out label across the resistor", "delay": 2.4, "color": "var(--chalk-100)" },
+          { "type": "text-caption", "content": "current can only flow one way — anode → cathode", "delay": 6.0, "color": "var(--chalk-300)", "position": "below the circuit" }
+        ]
+      }
+    },
+    {
+      "id": "states",
+      "start": 10.08,
+      "end": 25.55,
+      "narration": "When V in goes positive, the diode is forward biased and current flows. When V in swings negative, the diode reverse biases and the current stops.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "svg-path", "content": "Two-panel split: 'forward bias' on the left (diode bright, current arrow flowing through load)", "delay": 0.3, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "'reverse bias' on the right (diode dim with X, no current arrow)", "delay": 1.6, "color": "var(--rose-400)" },
+          { "type": "text-caption", "content": "ON when V_in > 0  ·  OFF when V_in < 0", "delay": 3.6, "color": "var(--chalk-200)", "position": "below both panels" }
+        ]
+      }
+    },
+    {
+      "id": "waveform",
+      "start": 25.55,
+      "end": 34.71,
+      "narration": "Watch V in trace as a smooth sinusoid, while V out keeps only the positive humps — the negative half is clipped to zero.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "graph-axes", "content": "Two stacked scope panels — V_in on top, V_out below; shared time axis", "delay": 0.2, "color": "var(--chalk-300)" },
+          { "type": "graph-curve", "content": "V_in: a smooth sinusoid drawn left-to-right via TraceIn over the scope window", "delay": 0.8, "color": "var(--chalk-200)", "note": "two full cycles" },
+          { "type": "graph-curve", "content": "V_out: clipped sinusoid (positive humps only, flat zero on negative half) drawn synchronously with V_in", "delay": 0.8, "color": "var(--amber-300)", "note": "the genuine motion of this scene" },
+          { "type": "svg-path", "content": "Live diode-state badge that toggles between 'ON' (amber) and 'OFF' (rose) as the cursor crosses each half-cycle", "delay": 0.8, "color": "var(--amber-300)" },
+          { "type": "text-caption", "content": "the negative half is cut to zero", "delay": 10.5, "color": "var(--chalk-300)", "position": "below the V_out scope" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 34.71,
+      "end": 41,
+      "narration": "That's half wave rectification — a single diode turning AC into a pulsing one-sided signal.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-formula", "content": "AC  →  half-wave  →  pulses", "delay": 0.3, "color": "var(--amber-300)", "position": "centre, large serif italic" },
+          { "type": "text-caption", "content": "one diode is the first step of every DC power supply", "delay": 1.6, "color": "var(--chalk-200)", "position": "centre, sans" },
+          { "type": "text-caption", "content": "smoothing comes next — add a capacitor and you get nearly DC", "delay": 3.0, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}
