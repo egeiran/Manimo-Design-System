@@ -267,7 +267,7 @@ function InterruptBeat() {
   const G = barGeom(portrait);
   const { localTime } = useSprite();
 
-  const SWEEP_START = 1.0, SWEEP_DUR = 9.0;
+  const SWEEP_START = 1.0, SWEEP_DUR = 5.0;
   const t = clamp((localTime - SWEEP_START) / SWEEP_DUR, 0, 1);
   const slotsReached = Math.floor(t * G.slots);
 
