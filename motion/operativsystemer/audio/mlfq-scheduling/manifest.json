@@ -1,0 +1,36 @@
+{
+  "sceneId": "mlfq-scheduling",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/mlfq-scheduling/scene.mp3",
+  "durationSec": 42.59,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Schedulers usually don't know how long a job will run. MLFQ figures it out by watching what the job does."
+    },
+    {
+      "id": "queues",
+      "audioStart": 6.91,
+      "narration": "Three queues stacked by priority. A new job always starts at the very top. The CPU only runs jobs from the highest non-empty queue."
+    },
+    {
+      "id": "demotion",
+      "audioStart": 15.91,
+      "narration": "If a job uses its whole time slice, it must be CPU-bound. MLFQ demotes it to the next queue down. A short job that gives up the CPU stays high."
+    },
+    {
+      "id": "boost",
+      "audioStart": 26.25,
+      "narration": "Without help, a CPU-heavy job could starve forever at the bottom. So every so often, MLFQ lifts every job back to the top queue."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 34.73,
+      "narration": "Short interactive jobs stay fast. Long jobs get their fair share. And the scheduler never had to ask how long anything would run."
+    }
+  ]
+}

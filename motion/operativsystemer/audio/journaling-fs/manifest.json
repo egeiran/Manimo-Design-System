@@ -1,0 +1,36 @@
+{
+  "sceneId": "journaling-fs",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/journaling-fs/scene.mp3",
+  "durationSec": 60.74,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "A single file write actually touches three different disk regions. If the power dies between any two of them, the filesystem is corrupt."
+    },
+    {
+      "id": "threeWrites",
+      "audioStart": 8.8,
+      "narration": "One write to the data block. One to the inode, to record the new block pointer and size. One to the bitmap, to mark the block as used. Three updates, one disk."
+    },
+    {
+      "id": "naiveCrash",
+      "audioStart": 20.41,
+      "narration": "Suppose the data lands first, then a crash before the inode and bitmap reach disk. On reboot, the block holds your new bytes — but the inode still says the file is empty, and the bitmap still says the block is free. The next file you create will overwrite it."
+    },
+    {
+      "id": "journal",
+      "audioStart": 36.93,
+      "narration": "Journaling writes intent first. A transaction record listing all three updates goes into a log region of the disk and is committed atomically. Only then do the changes go to their real homes. If a crash happens, the next boot replays the log."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 52.18,
+      "narration": "Same updates either way. But a committed journal turns a crash from corruption into a redo — the filesystem always comes back clean."
+    }
+  ]
+}

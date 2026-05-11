@@ -1,0 +1,36 @@
+{
+  "sceneId": "demand-paging",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/demand-paging/scene.mp3",
+  "durationSec": 53.17,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Your program thinks it owns gigabytes of memory. In reality, only the pages you actively touch live in RAM. The rest sit on disk until you need them."
+    },
+    {
+      "id": "twoStores",
+      "audioStart": 10.09,
+      "narration": "Physical memory holds a handful of page frames. The disk swap area holds many more. The present bit in each page-table entry says which store to look in."
+    },
+    {
+      "id": "fault",
+      "audioStart": 20.28,
+      "narration": "When the CPU reads a virtual page whose present bit is zero, the hardware traps into the kernel. The page-fault handler finds the page on disk and copies it into a free frame. Then the access can be retried."
+    },
+    {
+      "id": "eviction",
+      "audioStart": 34.18,
+      "narration": "If RAM is already full, one of the resident pages has to leave first. The replacement policy picks a victim, writes it back if dirty, and only then the new page can land."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 45.13,
+      "narration": "Hit in RAM, it's nanoseconds. Miss to disk, it's milliseconds. Demand paging only pays that price for what you actually use."
+    }
+  ]
+}

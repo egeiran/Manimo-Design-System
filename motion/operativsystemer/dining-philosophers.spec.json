@@ -1,0 +1,78 @@
+{
+  "id": "dining-philosophers",
+  "title": "Dining Philosophers: A Deadlock by Symmetry",
+  "eyebrow": "concurrency",
+  "language": "en",
+  "duration": 53,
+  "topic": "Dining philosophers — five threads each need two shared chopsticks; if every philosopher grabs the left one first they all wait forever for the right. The four Coffman conditions for deadlock and how breaking symmetry breaks the cycle.",
+  "subject_id": "operativsystemer",
+  "chapter_number": 8,
+  "prerequisites": ["test-and-set-lock", "semaphore-counter"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 9.11,
+      "narration": "Five philosophers, five chopsticks, one round table. They take turns thinking and eating — but their lock pattern can stop them all at once.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "Five threads, five locks — a textbook deadlock waiting to happen.", "delay": 0.7, "color": "var(--chalk-100)", "position": "below Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "setup",
+      "start": 9.11,
+      "end": 17.77,
+      "narration": "Each philosopher needs the chopstick on their left and the one on their right at the same time. To pick one up they must grab a lock that no neighbour holds.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "rule — eat needs both adjacent chopsticks", "delay": 0, "color": "var(--amber-300)", "position": "small mono eyebrow" },
+          { "type": "svg-circle", "content": "Five philosopher nodes evenly spaced around a circle with a chopstick (locked resource) between each pair", "delay": 0.4, "color": "var(--chalk-200)" }
+        ]
+      }
+    },
+    {
+      "id": "deadlock",
+      "start": 17.77,
+      "end": 32,
+      "narration": "Suppose every philosopher reaches for the left chopstick first, at the same moment. They all succeed. Then each turns to grab the right — and finds a neighbour holding it. Nobody can finish. Nobody lets go. Deadlock.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "step one — all grab left", "delay": 0, "color": "var(--rose-300)", "position": "small mono eyebrow" },
+          { "type": "svg-path", "content": "Each philosopher's left arm extends out to grab its left chopstick; chopsticks become rose; then right arms reach but stop short — frozen mid-reach", "delay": 0.5, "color": "var(--rose-400)" }
+        ]
+      }
+    },
+    {
+      "id": "fourConditions",
+      "start": 32,
+      "end": 41.48,
+      "narration": "Coffman's four conditions name what just happened. Mutual exclusion. Hold and wait. No preemption. And a circular wait around the table.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "four conditions all hold", "delay": 0, "color": "var(--chalk-100)", "position": "small mono eyebrow" },
+          { "type": "svg-path", "content": "The five hold-arrows redrawn as a directed cycle around the table; four labels appear pointing at corresponding visual features", "delay": 0.5, "color": "var(--rose-300)" }
+        ]
+      }
+    },
+    {
+      "id": "fix",
+      "start": 41.48,
+      "end": 53,
+      "narration": "Break any one and the gridlock dissolves. One classic fix: number the chopsticks and always pick the lower-numbered one first. One philosopher reverses, and the cycle never closes.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "always pick the lower-numbered chopstick first", "delay": 0.2, "color": "var(--teal-400)", "position": "above table" },
+          { "type": "svg-path", "content": "One philosopher's reach order swaps — instead of left first they go right first; the cycle visibly breaks at that link, others can complete", "delay": 0.6, "color": "var(--teal-400)" }
+        ]
+      }
+    }
+  ]
+}
