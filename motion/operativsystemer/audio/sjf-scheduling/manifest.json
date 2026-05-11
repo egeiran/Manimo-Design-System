@@ -1,0 +1,36 @@
+{
+  "sceneId": "sjf-scheduling",
+  "mode": "mistral",
+  "engine": "mistral",
+  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
+  "model": "voxtral-mini-tts-2603",
+  "audio": "audio/sjf-scheduling/scene.mp3",
+  "durationSec": 44.53,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Three jobs land at the scheduler at the same time. Same work — but the order you pick changes how long everyone waits."
+    },
+    {
+      "id": "jobsArrive",
+      "audioStart": 8.13,
+      "narration": "Job A needs ten units of CPU time, job B needs two, job C needs two. All three are ready at time zero."
+    },
+    {
+      "id": "fifoGantt",
+      "audioStart": 16.6,
+      "narration": "First-in first-out runs them in arrival order. A finishes at ten, B at twelve, C at fourteen. Average turnaround: twelve."
+    },
+    {
+      "id": "sjfGantt",
+      "audioStart": 24.57,
+      "narration": "Shortest job first runs the small ones up front. B finishes at two, C at four, A at fourteen. Average turnaround drops to six and two thirds."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 34.83,
+      "narration": "Same jobs, same total work — but the convoy of one big job behind two small ones is what hurts. Run short first, and everyone waits less."
+    }
+  ]
+}

@@ -53,6 +53,9 @@ const initialScenes = [
   { id: 'live-tas-lock',     kind: 'live', kindLabel: 'Live', cardTitle: 'Test-and-Set Lock',            duration: 54, html: '../../motion/operativsystemer/test-and-set-lock.html' },
   { id: 'live-addr-space',   kind: 'live', kindLabel: 'Live', cardTitle: 'Address Space Layout',         duration: 42, html: '../../motion/operativsystemer/address-space-layout.html' },
   { id: 'live-inode',        kind: 'live', kindLabel: 'Live', cardTitle: 'The Inode',                    duration: 43, html: '../../motion/operativsystemer/inode-block-pointers.html' },
+  { id: 'live-sjf',          kind: 'live', kindLabel: 'Live', cardTitle: 'Shortest Job First',            duration: 46, html: '../../motion/operativsystemer/sjf-scheduling.html' },
+  { id: 'live-prod-cons',    kind: 'live', kindLabel: 'Live', cardTitle: 'Producer–Consumer',             duration: 44, html: '../../motion/operativsystemer/producer-consumer.html' },
+  { id: 'live-tlb',          kind: 'live', kindLabel: 'Live', cardTitle: 'TLB Hits and Misses',           duration: 48, html: '../../motion/operativsystemer/tlb-hit-miss.html' },
 ];
 
 function loadJSON(key, fallback) {

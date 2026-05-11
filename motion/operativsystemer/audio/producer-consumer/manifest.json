@@ -1,0 +1,36 @@
+{
+  "sceneId": "producer-consumer",
+  "mode": "mistral",
+  "engine": "mistral",
+  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
+  "model": "voxtral-mini-tts-2603",
+  "audio": "audio/producer-consumer/scene.mp3",
+  "durationSec": 43.4,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "A producer is filling a small buffer. A consumer is draining it. What happens when one runs ahead of the other?"
+    },
+    {
+      "id": "buffer",
+      "audioStart": 6.72,
+      "narration": "The shared buffer holds at most four items. The producer puts items in; the consumer takes them out. Both run as their own threads."
+    },
+    {
+      "id": "fullWait",
+      "audioStart": 15.8,
+      "narration": "Now the producer wants to add a fifth item. The buffer is full — there is nowhere to put it. So the producer waits on the not-full condition."
+    },
+    {
+      "id": "signal",
+      "audioStart": 24.51,
+      "narration": "The consumer takes an item, freeing a slot — and signals the not-full condition. The producer wakes up, drops its item in, and life goes on."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 33.4,
+      "narration": "Two conditions, two waits, two signals — the buffer fills, drains, fills again, and neither thread ever has to spin checking a flag."
+    }
+  ]
+}
