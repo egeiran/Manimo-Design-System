@@ -12,9 +12,10 @@ them from this list when done (git history is the audit trail), and appends
 new items found during the run. Items tagged [HUMAN] are skipped by the agent
 and require your input. Total queue size is kept ≤ 12 items.
 
-**Current defaults (set 2026-05-09):** the nightly authoring agent now
-ships **three OS scenes per run**, sourcing topics from
-`uploads/operativsystemer/` (TDT4186 — Operativsystemer). The reviewer
+**Current defaults (set 2026-05-09):** the nightly authoring agent
+ships OS scenes per run (three by default, five on request),
+sourcing topics from `uploads/operativsystemer/`
+(TDT4186 — Operativsystemer). The reviewer
 **merges by default** unless the PR is genuinely broken (page crash,
 render failure, missing file, build error); quality concerns are logged
 back into this queue as [HUMAN] items rather than blocking the merge.
@@ -40,7 +41,17 @@ for the exact prompts.
   mini-counter circle with "1" vs "N" alongside each `sem_init(...)`
   line) without disrupting the layout. Single-file tweak.
 
+- **MLFQ demotion-beat second caption ("B yielded early — interactive,
+  keep it high.") is timed to appear at sprite-local 10.4s but the
+  beat is only 10.34s long after audio alignment.** It clips by ~0.06s
+  which is invisible to a viewer but technically the caption never
+  fully fades in. Move its `delay` to 9.6s (still after the main
+  caption at 9.4) in `motion/operativsystemer/mlfq-scheduling.jsx`
+  `DemotionBeat`. Single-file tweak.
+
 ### [HUMAN] — needs your input
+
+- **[HUMAN] Dining-philosophers fourConditions beat — portrait labels overlap philosophers.** In `motion/operativsystemer/dining-philosophers.jsx` `FourConditionsBeat`, the portrait branch parks the four Coffman-condition labels at `y=100/120/480/500`, but at portrait geometry P0 sits at `y=100` and P2/P3 sit near `y=462`. The labels overprint the philosopher nodes. Needs a real layout rethink for portrait (e.g. compress the table radius, stack the labels as a list below the table, or relocate to a side column) — not a one-coordinate move. Reviewer flagged on 2026-05-11.
 
 - **Subject focus is now Operativsystemer (TDT4186).** Fysikk topics are
   paused — the nightly author picks three OS topics per run from

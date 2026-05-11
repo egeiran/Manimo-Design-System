@@ -1,0 +1,78 @@
+{
+  "id": "mlfq-scheduling",
+  "title": "Multi-Level Feedback Queue: A Scheduler That Learns",
+  "eyebrow": "scheduling",
+  "language": "en",
+  "duration": 44,
+  "topic": "MLFQ — three priority queues, jobs start at the top and get demoted when they use a whole time slice; a periodic priority boost lifts everyone back to the top to avoid starvation. Learns short vs long without knowing job lengths up front.",
+  "subject_id": "operativsystemer",
+  "chapter_number": 3,
+  "prerequisites": ["sjf-scheduling", "round-robin-scheduling"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.91,
+      "narration": "Schedulers usually don't know how long a job will run. MLFQ figures it out by watching what the job does.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "A scheduler that learns by watching — no job lengths required.", "delay": 0.7, "color": "var(--chalk-100)", "position": "below Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "queues",
+      "start": 6.91,
+      "end": 15.91,
+      "narration": "Three queues stacked by priority. A new job always starts at the very top. The CPU only runs jobs from the highest non-empty queue.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "priority queues — top runs first", "delay": 0, "color": "var(--amber-300)", "position": "small mono eyebrow" },
+          { "type": "svg-path", "content": "Three horizontal queue tracks labelled Q2, Q1, Q0, with a single job tile entering Q2", "delay": 0.4, "color": "var(--chalk-200)" }
+        ]
+      }
+    },
+    {
+      "id": "demotion",
+      "start": 15.91,
+      "end": 26.25,
+      "narration": "If a job uses its whole time slice, it must be CPU-bound. MLFQ demotes it to the next queue down. A short job that gives up the CPU stays high.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "rule: full slice used → demote", "delay": 0, "color": "var(--rose-300)", "position": "above queues" },
+          { "type": "svg-path", "content": "Long job A (amber) drops Q2→Q1→Q0 as slice-meter fills repeatedly; short job B (teal) yields early and stays in Q2", "delay": 0.5, "color": "var(--amber-400)" }
+        ]
+      }
+    },
+    {
+      "id": "boost",
+      "start": 26.25,
+      "end": 34.73,
+      "narration": "Without help, a CPU-heavy job could starve forever at the bottom. So every so often, MLFQ lifts every job back to the top queue.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "priority boost — every S seconds", "delay": 0, "color": "var(--teal-400)", "position": "above queues" },
+          { "type": "svg-path", "content": "Two jobs sitting in Q0/Q1 rise back to Q2 in a single coordinated jump triggered by a tick", "delay": 0.5, "color": "var(--teal-400)" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 34.73,
+      "end": 44,
+      "narration": "Short interactive jobs stay fast. Long jobs get their fair share. And the scheduler never had to ask how long anything would run.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "no length predictions needed", "delay": 0.2, "color": "var(--chalk-100)", "position": "centre, big serif" },
+          { "type": "text-caption", "content": "behaviour over time tells the scheduler what kind of job it is", "delay": 1.2, "color": "var(--chalk-200)", "position": "below, serif italic" }
+        ]
+      }
+    }
+  ]
+}

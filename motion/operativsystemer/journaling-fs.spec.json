@@ -1,0 +1,78 @@
+{
+  "id": "journaling-fs",
+  "title": "Journaling: Crash Consistency by Write-Ahead Log",
+  "eyebrow": "file systems",
+  "language": "en",
+  "duration": 62,
+  "topic": "Crash consistency — a single file write touches data, inode, and bitmap; a crash partway through leaves the filesystem corrupt. A write-ahead journal records the intent first, then replays it on reboot so partial writes never become permanent.",
+  "subject_id": "operativsystemer",
+  "chapter_number": 11,
+  "prerequisites": ["inode-block-pointers"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 8.8,
+      "narration": "A single file write actually touches three different disk regions. If the power dies between any two of them, the filesystem is corrupt.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "Crashes are the disk's enemy — keep the filesystem honest.", "delay": 0.7, "color": "var(--chalk-100)", "position": "below Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "threeWrites",
+      "start": 8.8,
+      "end": 20.41,
+      "narration": "One write to the data block. One to the inode, to record the new block pointer and size. One to the bitmap, to mark the block as used. Three updates, one disk.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "text-caption", "content": "one file write — three on-disk updates", "delay": 0, "color": "var(--amber-300)", "position": "small mono eyebrow" },
+          { "type": "svg-path", "content": "Disk strip with three labelled regions BITMAP / INODE TABLE / DATA BLOCKS; three write tokens labelled B, I, D queued in memory waiting to flush", "delay": 0.4, "color": "var(--chalk-200)" }
+        ]
+      }
+    },
+    {
+      "id": "naiveCrash",
+      "start": 20.41,
+      "end": 36.93,
+      "narration": "Suppose the data lands first, then a crash before the inode and bitmap reach disk. On reboot, the block holds your new bytes — but the inode still says the file is empty, and the bitmap still says the block is free. The next file you create will overwrite it.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "text-caption", "content": "naive — write straight to disk", "delay": 0, "color": "var(--rose-300)", "position": "above" },
+          { "type": "svg-path", "content": "Tokens travel one by one to their disk regions; lightning bolt mid-stream after only D arrived; remaining tokens evaporate; disk shows D landed but I and B did not; INCONSISTENT stamp", "delay": 0.5, "color": "var(--rose-400)" }
+        ]
+      }
+    },
+    {
+      "id": "journal",
+      "start": 36.93,
+      "end": 52.18,
+      "narration": "Journaling writes intent first. A transaction record listing all three updates goes into a log region of the disk and is committed atomically. Only then do the changes go to their real homes. If a crash happens, the next boot replays the log.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "text-caption", "content": "write-ahead log — intent before action", "delay": 0, "color": "var(--teal-400)", "position": "above" },
+          { "type": "svg-path", "content": "Tokens collected into a single TX record that lands in the JOURNAL region first; commit bar flips green; then the same three updates flow to their real regions; if crash mid-flow, the journal replays on reboot", "delay": 0.5, "color": "var(--teal-400)" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 52.18,
+      "end": 62,
+      "narration": "Same updates either way. But a committed journal turns a crash from corruption into a redo — the filesystem always comes back clean.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "log it · commit it · then do it", "delay": 0.2, "color": "var(--chalk-100)", "position": "centre, big serif" },
+          { "type": "text-caption", "content": "a crash becomes a replay, not a corruption", "delay": 1.2, "color": "var(--chalk-200)", "position": "below, serif italic" }
+        ]
+      }
+    }
+  ]
+}

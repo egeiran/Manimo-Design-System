@@ -1,0 +1,36 @@
+{
+  "sceneId": "dining-philosophers",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/dining-philosophers/scene.mp3",
+  "durationSec": 52.11,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Five philosophers, five chopsticks, one round table. They take turns thinking and eating — but their lock pattern can stop them all at once."
+    },
+    {
+      "id": "setup",
+      "audioStart": 9.11,
+      "narration": "Each philosopher needs the chopstick on their left and the one on their right at the same time. To pick one up they must grab a lock that no neighbour holds."
+    },
+    {
+      "id": "deadlock",
+      "audioStart": 17.77,
+      "narration": "Suppose every philosopher reaches for the left chopstick first, at the same moment. They all succeed. Then each turns to grab the right — and finds a neighbour holding it. Nobody can finish. Nobody lets go. Deadlock."
+    },
+    {
+      "id": "fourConditions",
+      "audioStart": 32,
+      "narration": "Coffman's four conditions name what just happened. Mutual exclusion. Hold and wait. No preemption. And a circular wait around the table."
+    },
+    {
+      "id": "fix",
+      "audioStart": 41.48,
+      "narration": "Break any one and the gridlock dissolves. One classic fix: number the chopsticks and always pick the lower-numbered one first. One philosopher reverses, and the cycle never closes."
+    }
+  ]
+}

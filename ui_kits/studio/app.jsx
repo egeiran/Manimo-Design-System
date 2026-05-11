@@ -59,6 +59,11 @@ const initialScenes = [
   { id: 'live-semaphore',    kind: 'live', kindLabel: 'Live', cardTitle: 'Semaphores: A Counter Threads Wait On', duration: 45, html: '../../motion/operativsystemer/semaphore-counter.html' },
   { id: 'live-proc-states',  kind: 'live', kindLabel: 'Live', cardTitle: 'Process States: Running, Ready, Blocked', duration: 59, html: '../../motion/operativsystemer/process-states.html' },
   { id: 'live-poll-irq',     kind: 'live', kindLabel: 'Live', cardTitle: 'Polling vs Interrupts',                  duration: 42, html: '../../motion/operativsystemer/polling-vs-interrupt.html' },
+  { id: 'live-mlfq',         kind: 'live', kindLabel: 'Live', cardTitle: 'Multi-Level Feedback Queue',             duration: 44, html: '../../motion/operativsystemer/mlfq-scheduling.html' },
+  { id: 'live-philosophers', kind: 'live', kindLabel: 'Live', cardTitle: 'Dining Philosophers',                    duration: 53, html: '../../motion/operativsystemer/dining-philosophers.html' },
+  { id: 'live-demand-paging',kind: 'live', kindLabel: 'Live', cardTitle: 'Demand Paging',                          duration: 54, html: '../../motion/operativsystemer/demand-paging.html' },
+  { id: 'live-journaling',   kind: 'live', kindLabel: 'Live', cardTitle: 'Journaling',                             duration: 62, html: '../../motion/operativsystemer/journaling-fs.html' },
+  { id: 'live-raid',         kind: 'live', kindLabel: 'Live', cardTitle: 'RAID',                                   duration: 56, html: '../../motion/operativsystemer/raid.html' },
 ];
 
 function loadJSON(key, fallback) {

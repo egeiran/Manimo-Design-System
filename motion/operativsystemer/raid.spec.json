@@ -1,0 +1,78 @@
+{
+  "id": "raid",
+  "title": "RAID: Many Disks, One Logical Drive",
+  "eyebrow": "storage",
+  "language": "en",
+  "duration": 56,
+  "topic": "RAID — combining several disks to trade capacity for speed (striping, RAID-0), redundancy (mirroring, RAID-1), or both (parity, RAID-5). Visualises a block landing across multiple disks and what happens when one disk dies.",
+  "subject_id": "operativsystemer",
+  "chapter_number": 11,
+  "prerequisites": ["inode-block-pointers"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 9.78,
+      "narration": "A single disk gives you one shot at not failing. RAID groups several disks behind one logical drive and trades off speed, capacity, and survival.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "Three layouts. Same disks. Different tradeoffs.", "delay": 0.7, "color": "var(--chalk-100)", "position": "below Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "raid0",
+      "start": 9.78,
+      "end": 21.59,
+      "narration": "RAID zero splits each block across all the disks. Reads and writes go in parallel, so throughput multiplies. But one disk dies and the whole array is lost.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "text-caption", "content": "RAID 0 — striping", "delay": 0, "color": "var(--amber-300)", "position": "small mono eyebrow" },
+          { "type": "svg-path", "content": "A block A splits into stripes A0, A1, A2, A3 and slides into four disks D0..D3 in parallel; later one disk is crossed out — all of A is gone", "delay": 0.4, "color": "var(--rose-400)" }
+        ]
+      }
+    },
+    {
+      "id": "raid1",
+      "start": 21.59,
+      "end": 32.65,
+      "narration": "RAID one mirrors every block onto two disks. You lose half your capacity, but a single disk failure leaves a complete copy behind.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "text-caption", "content": "RAID 1 — mirroring", "delay": 0, "color": "var(--teal-400)", "position": "small mono eyebrow" },
+          { "type": "svg-path", "content": "Block A duplicates into two disks D0 and D1 along parallel arrows; one disk fails — block still readable from the other", "delay": 0.4, "color": "var(--teal-400)" }
+        ]
+      }
+    },
+    {
+      "id": "raid5",
+      "start": 32.65,
+      "end": 43.92,
+      "narration": "RAID five stripes data across all the disks plus one parity stripe — the bitwise xor of the others. Lose any single disk, and the missing stripe can be xor'd back from what's left.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "text-caption", "content": "RAID 5 — striping with parity", "delay": 0, "color": "var(--violet-400)", "position": "small mono eyebrow" },
+          { "type": "svg-path", "content": "Four disks. Row shows stripes A0, A1, A2 plus parity Ap = A0 ⊕ A1 ⊕ A2; one disk crossed out and the lost stripe gets reconstructed by xor-ing the others; arrows show the recompute", "delay": 0.4, "color": "var(--violet-400)" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 43.92,
+      "end": 56,
+      "narration": "RAID zero buys speed and gambles. RAID one buys safety and pays half. RAID five buys both and pays one disk out of however many you have.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "speed · capacity · survival — pick two", "delay": 0.2, "color": "var(--chalk-100)", "position": "centre, big serif" },
+          { "type": "text-caption", "content": "RAID 5 is the everyday compromise", "delay": 1.4, "color": "var(--chalk-200)", "position": "below, serif italic" }
+        ]
+      }
+    }
+  ]
+}
