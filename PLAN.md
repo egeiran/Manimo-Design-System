@@ -51,6 +51,8 @@ for the exact prompts.
 
 ### [HUMAN] — needs your input
 
+- **[HUMAN] Dining-philosophers fourConditions beat — portrait labels overlap philosophers.** In `motion/operativsystemer/dining-philosophers.jsx` `FourConditionsBeat`, the portrait branch parks the four Coffman-condition labels at `y=100/120/480/500`, but at portrait geometry P0 sits at `y=100` and P2/P3 sit near `y=462`. The labels overprint the philosopher nodes. Needs a real layout rethink for portrait (e.g. compress the table radius, stack the labels as a list below the table, or relocate to a side column) — not a one-coordinate move. Reviewer flagged on 2026-05-11.
+
 - **Subject focus is now Operativsystemer (TDT4186).** Fysikk topics are
   paused — the nightly author picks three OS topics per run from
   `uploads/operativsystemer/`. If you want a specific OS topic prioritised

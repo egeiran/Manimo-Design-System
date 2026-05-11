@@ -185,9 +185,9 @@ function ThreeWritesBeat() {
 
   // Tokens just sit in memory, fading in.
   const tokens = [
-    { id: 'B', label: 'B', color: 'var(--rose-400)',  blurb: 'bitmap update' },
-    { id: 'I', label: 'I', color: 'var(--amber-400)', blurb: 'inode update' },
-    { id: 'D', label: 'D', color: 'var(--teal-400)',  blurb: 'data block' },
+    { id: 'B', label: 'B', color: 'var(--rose-400)',  blurb: 'bitmap update', shortBlurb: 'bitmap' },
+    { id: 'I', label: 'I', color: 'var(--amber-400)', blurb: 'inode update',  shortBlurb: 'inode' },
+    { id: 'D', label: 'D', color: 'var(--teal-400)',  blurb: 'data block',    shortBlurb: 'data' },
   ];
 
   return (
@@ -215,7 +215,7 @@ function ThreeWritesBeat() {
                 textAnchor="middle"
                 fill="var(--chalk-300)"
                 fontFamily="var(--font-sans)" fontSize={portrait ? 11 : 12}>
-                {tok.blurb}
+                {portrait ? tok.shortBlurb : tok.blurb}
               </text>
             </SvgFadeIn>
           );

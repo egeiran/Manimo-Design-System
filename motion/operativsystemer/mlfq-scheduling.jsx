@@ -104,15 +104,22 @@ function QueueStack({ G, jobsOnTrack, highlightCpuTrack, showSliceMeter, sliceFr
       {/* Optional CPU-side slice meter, tied to whichever track is running. */}
       {showSliceMeter && highlightCpuTrack != null && (() => {
         const y = trackY[highlightCpuTrack] + G.trackH / 2;
-        const mx = G.trackX + G.trackW + 60;
+        // Portrait viewBox is too narrow to fit the meter outside the
+        // right edge of the lane, so park it just inside the right end
+        // of the active lane instead.
+        const portraitMeter = G.vbW < 700;
+        const meterW = portraitMeter ? 70 : 80;
+        const mx = portraitMeter
+          ? G.trackX + G.trackW - meterW - 6
+          : G.trackX + G.trackW + 60;
         return (
           <g>
-            <rect x={mx} y={y - 7} width={80} height={14} rx={4}
+            <rect x={mx} y={y - 7} width={meterW} height={14} rx={4}
               fill="var(--chalk-200)" fillOpacity={0.05}
               stroke="var(--chalk-300)" strokeWidth={1}/>
-            <rect x={mx} y={y - 7} width={80 * clamp(sliceFrac, 0, 1)} height={14} rx={4}
+            <rect x={mx} y={y - 7} width={meterW * clamp(sliceFrac, 0, 1)} height={14} rx={4}
               fill="var(--rose-400)" opacity={0.55}/>
-            <text x={mx + 40} y={y + 30}
+            <text x={mx + meterW / 2} y={y + 30}
               textAnchor="middle"
               fill="var(--chalk-300)"
               fontFamily="var(--font-mono)" fontSize={9}

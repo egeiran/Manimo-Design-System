@@ -541,7 +541,8 @@ function EvictionBeat() {
           </text>
         )}
         {installFrac > 0 && installFrac < 1 && (
-          <text x={(v5Start.x + v5End.x) / 2 + 70} y={(v5Start.y + v5End.y) / 2}
+          <text x={(v5Start.x + v5End.x) / 2 + 70}
+            y={portrait ? G.diskY - 10 : (v5Start.y + v5End.y) / 2}
             fill="var(--teal-400)"
             fontFamily="var(--font-mono)" fontSize={11}
             letterSpacing="0.14em">
