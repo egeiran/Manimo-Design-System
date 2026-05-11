@@ -1,0 +1,85 @@
+{
+  "id": "tlb-hit-miss",
+  "title": "TLB Hits and Misses: The Cost of a Page Table Lookup",
+  "eyebrow": "paging",
+  "language": "en",
+  "duration": 48,
+  "topic": "Translation Lookaside Buffer — a tiny on-chip cache of recent virtual-to-physical translations; a hit returns the frame number in a single cycle, a miss walks the page table and then fills the cache, dramatically slower",
+  "subject_id": "operativsystemer",
+  "chapter_number": 5,
+  "prerequisites": ["address-translation"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 8.36,
+      "narration": "Every memory access has to be translated. Doing that walk on every load would be ruinously slow — so the hardware keeps a tiny cheat sheet.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "How do we make a page-table lookup cheap?", "delay": 0.7, "color": "var(--chalk-100)", "position": "below Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "tlbCard",
+      "start": 8.36,
+      "end": 17.92,
+      "narration": "The translation lookaside buffer is a small on-chip cache. Each entry maps a virtual page number to a physical frame number, with a valid bit on the side.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "TLB · translation lookaside buffer", "delay": 0, "color": "var(--amber-300)", "position": "small mono eyebrow" },
+          { "type": "svg-path", "content": "Four-row table with columns: VPN, PFN, valid", "delay": 0.4, "color": "var(--chalk-200)" },
+          { "type": "svg-label", "content": "Three rows pre-populated with VPN→PFN entries; one row empty", "delay": 1.2, "color": "var(--amber-400)" }
+        ]
+      }
+    },
+    {
+      "id": "hit",
+      "start": 17.92,
+      "end": 27.32,
+      "narration": "A load asks for virtual page seven. The TLB has it, and answers in one cycle: frame ninety-two. Fast path — about ten nanoseconds.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "text-caption", "content": "TLB HIT", "delay": 0, "color": "var(--teal-400)", "position": "small mono eyebrow" },
+          { "type": "svg-path", "content": "Virtual address tile glides toward the TLB; matching row lights up", "delay": 0.6, "color": "var(--teal-400)" },
+          { "type": "svg-label", "content": "Frame number leaves the TLB to a 'physical address' box on the right", "delay": 2.6, "color": "var(--teal-400)" },
+          { "type": "text-formula", "content": "≈ 10 ns · one memory cycle", "delay": 4.0, "color": "var(--chalk-100)", "position": "below path, mono" }
+        ]
+      }
+    },
+    {
+      "id": "miss",
+      "start": 27.32,
+      "end": 39.14,
+      "narration": "A load asks for virtual page nineteen. Not in the TLB. The hardware walks the page table in memory, finds frame thirty-four, fills a TLB slot, and only then completes the access.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "text-caption", "content": "TLB MISS", "delay": 0, "color": "var(--rose-400)", "position": "small mono eyebrow" },
+          { "type": "svg-path", "content": "Address tile arrives at TLB, no row lights up", "delay": 0.6, "color": "var(--rose-300)" },
+          { "type": "svg-path", "content": "Dotted path branches down to a page-table box; lookup returns PFN", "delay": 2.0, "color": "var(--chalk-200)" },
+          { "type": "svg-path", "content": "PFN travels up, fills empty TLB row, then continues to physical-address box", "delay": 4.5, "color": "var(--amber-400)" },
+          { "type": "text-formula", "content": "≈ 100 ns · table walk + fill", "delay": 6.5, "color": "var(--chalk-100)", "position": "below path, mono" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 39.14,
+      "end": 48,
+      "narration": "Programs reuse a small set of pages, so most lookups hit the TLB — and a few cheap misses end up paying for themselves many times over.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "hit ≈ 10 ns · miss ≈ 100 ns", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, mono row" },
+          { "type": "text-caption", "content": "locality of reference is why this works", "delay": 1.4, "color": "var(--chalk-200)", "position": "serif italic caption" },
+          { "type": "text-caption", "content": "(hit rates of 95–99% are typical)", "delay": 2.8, "color": "var(--chalk-300)", "position": "small mono footnote" }
+        ]
+      }
+    }
+  ]
+}

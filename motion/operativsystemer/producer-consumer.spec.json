@@ -1,0 +1,83 @@
+{
+  "id": "producer-consumer",
+  "title": "Producer–Consumer: When a Thread Needs to Wait",
+  "eyebrow": "condition variables",
+  "language": "en",
+  "duration": 44,
+  "topic": "Producer–consumer with condition variables — a bounded buffer fills and drains; a producer that finds the buffer full waits on a condition; a consumer that finds it empty waits on the other; signal wakes one waiter",
+  "subject_id": "operativsystemer",
+  "chapter_number": 8,
+  "prerequisites": ["race-condition"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.72,
+      "narration": "A producer is filling a small buffer. A consumer is draining it. What happens when one runs ahead of the other?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "One fills, one empties — when do they wait?", "delay": 0.7, "color": "var(--chalk-100)", "position": "below Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "buffer",
+      "start": 6.72,
+      "end": 15.80,
+      "narration": "The shared buffer holds at most four items. The producer puts items in; the consumer takes them out. Both run as their own threads.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "shared bounded buffer · capacity 4", "delay": 0, "color": "var(--amber-300)", "position": "small mono eyebrow" },
+          { "type": "svg-path", "content": "Four empty slots in a row, producer label on left, consumer on right", "delay": 0.4, "color": "var(--chalk-200)" },
+          { "type": "svg-path", "content": "Producer thread (left) drops tokens into slots one by one — slots 1..4 fill up", "delay": 2.0, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Consumer thread (right) pulls a token out — front slot empties", "delay": 5.0, "color": "var(--teal-400)" }
+        ]
+      }
+    },
+    {
+      "id": "fullWait",
+      "start": 15.80,
+      "end": 24.51,
+      "narration": "Now the producer wants to add a fifth item. The buffer is full — there is nowhere to put it. So the producer waits on the not-full condition.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "svg-path", "content": "Buffer shown full (4 of 4); producer holds a fifth token; arrow blocked", "delay": 0.3, "color": "var(--amber-400)" },
+          { "type": "text-formula", "content": "while (count == MAX) wait(notFull)", "delay": 1.8, "color": "var(--chalk-100)", "position": "below buffer, mono" },
+          { "type": "text-caption", "content": "the producer parks itself — no busy wait, no spin", "delay": 4.0, "color": "var(--chalk-300)", "position": "small sans caption" }
+        ]
+      }
+    },
+    {
+      "id": "signal",
+      "start": 24.51,
+      "end": 33.40,
+      "narration": "The consumer takes an item, freeing a slot — and signals the not-full condition. The producer wakes up, drops its item in, and life goes on.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "svg-path", "content": "Consumer pulls token from front; buffer goes from 4 down to 3; arrow back to producer labeled 'signal'", "delay": 0.3, "color": "var(--teal-400)" },
+          { "type": "text-formula", "content": "count-- ; signal(notFull)", "delay": 2.0, "color": "var(--chalk-100)", "position": "consumer side, mono" },
+          { "type": "svg-path", "content": "Producer wakes, drops its held token into the free slot — buffer back to 4", "delay": 4.5, "color": "var(--amber-400)" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 33.40,
+      "end": 44,
+      "narration": "Two conditions, two waits, two signals — the buffer fills, drains, fills again, and neither thread ever has to spin checking a flag.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "wait(notFull) · signal(notEmpty)", "delay": 0.2, "color": "var(--amber-300)", "position": "mono row, two paired pieces" },
+          { "type": "text-caption", "content": "wait(notEmpty) · signal(notFull)", "delay": 0.9, "color": "var(--teal-400)", "position": "mono row below" },
+          { "type": "text-caption", "content": "threads sleep when they can't progress, and wake when they can", "delay": 2.2, "color": "var(--chalk-200)", "position": "serif italic caption" }
+        ]
+      }
+    }
+  ]
+}

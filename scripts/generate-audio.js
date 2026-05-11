@@ -530,7 +530,7 @@ async function pickFirstEnglishMistralVoice() {
   }
   const json = await res.json();
   // Response shape varies — try a few likely keys.
-  const list = Array.isArray(json) ? json : (json.data || json.voices || []);
+  const list = Array.isArray(json) ? json : (json.data || json.voices || json.items || []);
   if (!list.length) {
     throw new Error('Mistral /audio/voices returned no voices — set MISTRAL_VOICE_ID or pass --voice');
   }

@@ -300,6 +300,51 @@
       "concepts": ["inode", "file system", "direct pointer", "indirect pointer", "metadata", "block addressing"],
       "subject_id": "operativsystemer",
       "chapter_number": 11
+    },
+    {
+      "id": "sjf-scheduling",
+      "file": "sjf-scheduling.jsx",
+      "html": "sjf-scheduling.html",
+      "spec": "sjf-scheduling.spec.json",
+      "title": "Shortest Job First: Why Order Changes Wait Time",
+      "eyebrow": "scheduling",
+      "topic": "Shortest Job First scheduling — three jobs arrive together; running them in arrival order versus shortest-first changes the average turnaround time even though the total work is identical",
+      "duration": 46,
+      "language": "en",
+      "prerequisites": ["virtualizing-cpu"],
+      "concepts": ["shortest job first", "FIFO scheduling", "turnaround time", "Gantt chart", "convoy effect", "non-preemptive scheduling"],
+      "subject_id": "operativsystemer",
+      "chapter_number": 3
+    },
+    {
+      "id": "producer-consumer",
+      "file": "producer-consumer.jsx",
+      "html": "producer-consumer.html",
+      "spec": "producer-consumer.spec.json",
+      "title": "Producer–Consumer: When a Thread Needs to Wait",
+      "eyebrow": "condition variables",
+      "topic": "Producer–consumer with condition variables — a bounded buffer fills and drains; a producer that finds the buffer full waits on a condition; a consumer that finds it empty waits on the other; signal wakes one waiter",
+      "duration": 44,
+      "language": "en",
+      "prerequisites": ["race-condition"],
+      "concepts": ["producer-consumer", "condition variable", "bounded buffer", "wait and signal", "monitor", "thread synchronization"],
+      "subject_id": "operativsystemer",
+      "chapter_number": 8
+    },
+    {
+      "id": "tlb-hit-miss",
+      "file": "tlb-hit-miss.jsx",
+      "html": "tlb-hit-miss.html",
+      "spec": "tlb-hit-miss.spec.json",
+      "title": "TLB Hits and Misses: The Cost of a Page Table Lookup",
+      "eyebrow": "paging",
+      "topic": "Translation Lookaside Buffer — a tiny on-chip cache of recent virtual-to-physical translations; a hit returns the frame number in a single cycle, a miss walks the page table and then fills the cache, dramatically slower",
+      "duration": 48,
+      "language": "en",
+      "prerequisites": ["address-translation"],
+      "concepts": ["TLB", "translation lookaside buffer", "cache hit", "cache miss", "locality of reference", "page table walk"],
+      "subject_id": "operativsystemer",
+      "chapter_number": 5
     }
   ]
 }
