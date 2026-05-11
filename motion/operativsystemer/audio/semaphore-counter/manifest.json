@@ -1,0 +1,36 @@
+{
+  "sceneId": "semaphore-counter",
+  "mode": "mistral",
+  "engine": "mistral",
+  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
+  "model": "voxtral-mini-tts-2603",
+  "audio": "audio/semaphore-counter/scene.mp3",
+  "durationSec": 43.88,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "How do you let many threads share a resource at once, but only up to a fixed limit?"
+    },
+    {
+      "id": "shape",
+      "audioStart": 6.83,
+      "narration": "A semaphore is just two things — an integer and a queue. The integer counts how many more threads may pass; the queue holds threads that have to wait."
+    },
+    {
+      "id": "pCallsConsume",
+      "audioStart": 15.92,
+      "narration": "When a thread calls P of s, the counter drops by one. If it would drop below zero, that thread goes to sleep in the queue."
+    },
+    {
+      "id": "vCallsRelease",
+      "audioStart": 28.45,
+      "narration": "When a thread finishes and calls V of s, the counter goes back up. If anyone was waiting, the semaphore wakes one of them."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 36.5,
+      "narration": "Set S to one and a semaphore behaves like a lock. Set it to N and you have an N-way capacity gate."
+    }
+  ]
+}

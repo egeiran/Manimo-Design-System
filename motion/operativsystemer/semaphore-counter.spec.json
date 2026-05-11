@@ -1,0 +1,83 @@
+{
+  "id": "semaphore-counter",
+  "title": "Semaphores: A Counter Threads Wait On",
+  "eyebrow": "semaphores",
+  "language": "en",
+  "duration": 45,
+  "topic": "Semaphores — a single integer plus a queue: P() decrements and blocks if the value would go negative, V() increments and wakes a waiter; a semaphore with initial value 1 acts as a lock",
+  "subject_id": "operativsystemer",
+  "chapter_number": 9,
+  "prerequisites": ["race-condition"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.83,
+      "narration": "How do you let many threads share a resource at once, but only up to a fixed limit?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "Many threads, one shared resource — with a cap.", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "shape",
+      "start": 6.83,
+      "end": 15.92,
+      "narration": "A semaphore is just two things — an integer and a queue. The integer counts how many more threads may pass; the queue holds threads that have to wait.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-circle", "content": "Big rounded circle labelled 'S' with the integer value 3 inside", "delay": 0.4, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Empty queue: 4 dashed slots below the counter", "delay": 1.4, "color": "var(--chalk-300)" },
+          { "type": "text-caption", "content": "S = counter + wait queue", "delay": 2.8, "color": "var(--chalk-200)" }
+        ]
+      }
+    },
+    {
+      "id": "pCallsConsume",
+      "start": 15.92,
+      "end": 28.45,
+      "narration": "When a thread calls P of s, the counter drops by one. If it would drop below zero, that thread goes to sleep in the queue.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Four thread tokens arrive from the left, one by one", "delay": 0.3, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Counter ticks 3 → 2 → 1 → 0 → -1 as threads call P()", "delay": 0.5, "color": "var(--chalk-100)" },
+          { "type": "svg-path", "content": "T1, T2, T3 pass through the gate; T4 finds counter < 0 and slides into queue slot 0", "delay": 4.0, "color": "var(--rose-400)" },
+          { "type": "text-caption", "content": "negative value means: this many threads are waiting", "delay": 9.0, "color": "var(--chalk-300)" }
+        ]
+      }
+    },
+    {
+      "id": "vCallsRelease",
+      "start": 28.45,
+      "end": 36.5,
+      "narration": "When a thread finishes and calls V of s, the counter goes back up. If anyone was waiting, the semaphore wakes one of them.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-label", "content": "T1 leaves the critical section, calls V() — counter -1 → 0", "delay": 0.4, "color": "var(--chalk-100)" },
+          { "type": "svg-path", "content": "Queued T4 wakes, slides out of the queue toward the gate", "delay": 2.0, "color": "var(--amber-400)" },
+          { "type": "text-caption", "content": "P decrements + maybe sleeps · V increments + maybe wakes", "delay": 5.4, "color": "var(--chalk-200)" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 36.5,
+      "end": 45,
+      "narration": "Set S to one and a semaphore behaves like a lock. Set it to N and you have an N-way capacity gate.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-formula", "content": "sem_init(s, 1) — mutex", "delay": 0.3, "color": "var(--amber-300)" },
+          { "type": "text-formula", "content": "sem_init(s, N) — N-way concurrency", "delay": 1.6, "color": "var(--chalk-100)" },
+          { "type": "text-caption", "content": "one primitive — many shapes of mutual exclusion", "delay": 3.0, "color": "var(--chalk-300)" }
+        ]
+      }
+    }
+  ]
+}
