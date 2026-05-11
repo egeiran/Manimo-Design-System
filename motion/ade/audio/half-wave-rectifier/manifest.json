@@ -1,0 +1,36 @@
+{
+  "sceneId": "half-wave-rectifier",
+  "mode": "mistral",
+  "engine": "mistral",
+  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
+  "model": "voxtral-mini-tts-2603",
+  "audio": "audio/half-wave-rectifier/scene.mp3",
+  "durationSec": 40.09,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "An AC source plus a diode — what shape comes out across the load?"
+    },
+    {
+      "id": "circuit",
+      "audioStart": 4.55,
+      "narration": "Put a diode in series with a resistor. The diode passes current one way, blocks it the other."
+    },
+    {
+      "id": "states",
+      "audioStart": 10.08,
+      "narration": "When V in goes positive, the diode is forward biased and current flows. When V in swings negative, the diode reverse biases and the current stops."
+    },
+    {
+      "id": "waveform",
+      "audioStart": 25.55,
+      "narration": "Watch V in trace as a smooth sinusoid, while V out keeps only the positive humps — the negative half is clipped to zero."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 34.71,
+      "narration": "That's half wave rectification — a single diode turning AC into a pulsing one-sided signal."
+    }
+  ]
+}

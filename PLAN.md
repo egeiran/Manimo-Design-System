@@ -12,55 +12,41 @@ them from this list when done (git history is the audit trail), and appends
 new items found during the run. Items tagged [HUMAN] are skipped by the agent
 and require your input. Total queue size is kept ≤ 12 items.
 
-**Current defaults (set 2026-05-09):** the nightly authoring agent
-ships OS scenes per run (three by default, five on request),
-sourcing topics from `uploads/operativsystemer/`
-(TDT4186 — Operativsystemer). The reviewer
-**merges by default** unless the PR is genuinely broken (page crash,
-render failure, missing file, build error); quality concerns are logged
-back into this queue as [HUMAN] items rather than blocking the merge.
-The reviewer also **publishes each merged scene to Supabase** via
+**Current defaults (set 2026-05-11):** the nightly authoring agent
+now ships **ADE scenes** per run (three by default), sourcing topics
+from `uploads/ade/` (TTT4203 — Innføring i analog og digital
+elektronikk). Both halves of the course are in scope — analog (circuit
+theory, diodes, op-amps, transistors) and digital (Boolean algebra,
+combinational logic, flip-flops, FSMs). The reviewer **merges by
+default** unless the PR is genuinely broken (page crash, render
+failure, missing file, build error); quality concerns are logged back
+into this queue as [HUMAN] items rather than blocking the merge. The
+reviewer also **publishes each merged scene to Supabase** via
 `npm run publish <id>`. See `trig_01W4V9M7fWvGN7J989JBeQsh` (author,
 midnight UTC) and `trig_01QXiioNfPwJnDgThdsmQfXt` (reviewer, 03:00 UTC)
 for the exact prompts.
 
 ### [AGENT] — safe for the next nightly run
 
-- **Process-states portrait BLOCKED→READY arrow lacks an arrowhead near
-  the READY box.** In `motion/operativsystemer/process-states.jsx`
-  `BlockedBeat` the portrait branch routes the long vertical "I/O: done
-  → ready" arrow up the left of the box column; the arrowhead lands just
-  shy of READY's left edge but the head can read as small. Either bump
-  the head size for this specific arrow (e.g. add a `headSize` prop to
-  `ArrowEdge`) or pull `x2/y2` closer to READY's centre-left edge so the
-  triangle sits inside READY rather than below it.
-
-- **Semaphore-counter takeaway lacks the visual punch of beats 2-4.**
-  `motion/operativsystemer/semaphore-counter.jsx` `TakeawayBeat` is a
-  pure text stack — nice rhythm, but it could carry one small icon (a
-  mini-counter circle with "1" vs "N" alongside each `sem_init(...)`
-  line) without disrupting the layout. Single-file tweak.
-
-- **MLFQ demotion-beat second caption ("B yielded early — interactive,
-  keep it high.") is timed to appear at sprite-local 10.4s but the
-  beat is only 10.34s long after audio alignment.** It clips by ~0.06s
-  which is invisible to a viewer but technically the caption never
-  fully fades in. Move its `delay` to 9.6s (still after the main
-  caption at 9.4) in `motion/operativsystemer/mlfq-scheduling.jsx`
-  `DemotionBeat`. Single-file tweak.
+- **Half-wave-rectifier panel captions show `V_in` literal instead of
+  V<sub>in</sub>.** In `motion/ade/half-wave-rectifier.jsx`
+  `StatesBeat`, the two panel captions pass plain strings ("V_in > 0
+  — diode conducts" / "V_in < 0 — diode blocks") to the `caption` prop
+  of `Panel`. The underscore reads as a literal because the prop is
+  rendered as text, not JSX. Either accept JSX as the caption
+  (`caption={<>V<sub>in</sub> &gt; 0 — diode conducts</>}`) or use
+  unicode subscript characters ("Vᵢₙ > 0 — diode conducts"). Single-file
+  tweak.
 
 ### [HUMAN] — needs your input
 
 - **[HUMAN] Dining-philosophers fourConditions beat — portrait labels overlap philosophers.** In `motion/operativsystemer/dining-philosophers.jsx` `FourConditionsBeat`, the portrait branch parks the four Coffman-condition labels at `y=100/120/480/500`, but at portrait geometry P0 sits at `y=100` and P2/P3 sit near `y=462`. The labels overprint the philosopher nodes. Needs a real layout rethink for portrait (e.g. compress the table radius, stack the labels as a list below the table, or relocate to a side column) — not a one-coordinate move. Reviewer flagged on 2026-05-11.
 
-- **Subject focus is now Operativsystemer (TDT4186).** Fysikk topics are
-  paused — the nightly author picks three OS topics per run from
-  `uploads/operativsystemer/`. If you want a specific OS topic prioritised
-  (e.g. "do scheduling next, then page tables, then locks"), reply in
-  chat. Otherwise the agent picks based on coverage gaps in the manifest.
-  To reopen fysikk later, edit the author trigger
-  (`trig_01W4V9M7fWvGN7J989JBeQsh`) and swap the `uploads/...` source
-  pointer + chapter list back.
+- **[HUMAN] Voltage-divider portrait sweep — R1/R2 numeric labels sit close to the resistor zigzags.** In `motion/ade/voltage-divider.jsx` `SweepBeat` portrait branch, the R1/R2 labels at `G.rightX + G.zigAmp + 18` (= 358) end up ~18 px from the zigzag tips (which extend to ~340 with `zigAmp=20`). Legible but tight; bumping the offset to 28-32 px or relocating the labels to the left of the zigzags would breathe better. Reviewer flagged on 2026-05-11.
+
+- **[HUMAN] Pick next ADE topics for tonight's run if you want priorities.** Tonight covered: voltage-divider (chapter 2), half-wave-rectifier (chapter 6), d-flip-flop (chapter 13). Strong candidates for next time: Kirchhoff's voltage law walking around a mesh (ch 1), Thévenin equivalent collapse (ch 2), RC charging curve in the ADE context (ch 3 — note `rc-circuit` exists under fysikk but the analog-electronics framing is different), inverting op-amp + virtual short (ch 7), two's complement bit flip + add 1 (ch 9), K-map grouping (ch 12). If you want a specific topic prioritised, reply in chat — otherwise the author picks based on coverage gaps.
+
+- **Subject focus is now Innføring i analog og digital elektronikk (TTT4203).** Fysikk and Operativsystemer topics are paused — the nightly author picks three ADE topics per run from `uploads/ade/`. To reopen fysikk or OS later, edit the author trigger (`trig_01W4V9M7fWvGN7J989JBeQsh`) and swap the `uploads/...` source pointer + chapter list back.
 
 ---
 

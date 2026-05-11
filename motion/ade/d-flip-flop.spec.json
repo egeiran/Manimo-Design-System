@@ -1,0 +1,89 @@
+{
+  "id": "d-flip-flop",
+  "title": "D Flip-Flop: One Bit of Memory at the Clock Edge",
+  "eyebrow": "sequential logic",
+  "language": "en",
+  "duration": 38,
+  "topic": "D flip-flop — an edge-triggered storage cell whose output Q samples the input D at every rising edge of the clock; the cell behind every register and counter",
+  "subject_id": "ade",
+  "chapter_number": 13,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.64,
+      "narration": "A flip-flop remembers one bit — but only on command. What makes it latch?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "One bit of memory — but when does it remember?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "symbol",
+      "start": 5.64,
+      "end": 14.87,
+      "narration": "Here's a D flip-flop — data in, clock in, and Q out. The triangle on the clock input means it's edge triggered.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "D flip-flop body — large rectangle", "delay": 0.0, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "D label inside, left-aligned, near top input pin", "delay": 0.6, "color": "var(--chalk-100)" },
+          { "type": "svg-label", "content": "Q label inside, right-aligned, near top output pin", "delay": 0.8, "color": "var(--chalk-100)" },
+          { "type": "svg-path", "content": "CLK input pin (bottom-left) with a small triangle 'edge-triggered' marker inside the box", "delay": 1.2, "color": "var(--chalk-200)" },
+          { "type": "svg-label", "content": "CLK label outside next to the clock pin", "delay": 1.6, "color": "var(--chalk-200)" },
+          { "type": "svg-path", "content": "Three input/output stubs extending out from the rectangle", "delay": 1.0, "color": "var(--chalk-200)" },
+          { "type": "text-caption", "content": "the triangle ▷ marks an edge-triggered input", "delay": 5.0, "color": "var(--chalk-300)", "position": "below the symbol" }
+        ]
+      }
+    },
+    {
+      "id": "setup",
+      "start": 14.87,
+      "end": 20.79,
+      "narration": "Set up a clock signal toggling steadily, and a data signal moving in its own rhythm.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "graph-axes", "content": "Two stacked timing rows — CLK on top, D below", "delay": 0.2, "color": "var(--chalk-300)" },
+          { "type": "graph-curve", "content": "CLK: square wave with 4 cycles, traced in left-to-right", "delay": 0.8, "color": "var(--chalk-100)" },
+          { "type": "graph-curve", "content": "D: step pattern that changes at irregular intervals, traced in synchronously", "delay": 0.8, "color": "var(--chalk-200)" },
+          { "type": "text-caption", "content": "the clock ticks. data wanders.", "delay": 4.0, "color": "var(--chalk-300)", "position": "below the two rows" }
+        ]
+      }
+    },
+    {
+      "id": "sampling",
+      "start": 20.79,
+      "end": 30.01,
+      "narration": "On every rising edge of the clock, Q samples whatever D is right then. Between edges, D can dance around freely and Q ignores it.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "graph-axes", "content": "Three stacked timing rows — CLK, D, Q — same time axis", "delay": 0.2, "color": "var(--chalk-300)" },
+          { "type": "graph-curve", "content": "CLK and D pre-shown; Q traces in as the time cursor sweeps left-to-right", "delay": 0.6, "color": "var(--amber-300)" },
+          { "type": "svg-circle", "content": "Sample pulses at each rising clock edge — amber spark on CLK row, dashed verticals down to D and Q", "delay": 0.8, "color": "var(--amber-400)", "note": "the genuine motion of this scene" },
+          { "type": "svg-path", "content": "Live time cursor sweeping right; Q value step-updates each time it crosses a rising CLK edge to match D at that instant", "delay": 0.8, "color": "var(--amber-300)" },
+          { "type": "text-caption", "content": "Q catches D — but only on the clock's rising edge", "delay": 9.0, "color": "var(--chalk-200)", "position": "below Q row" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 30.01,
+      "end": 38,
+      "narration": "Q catches D on the rising edge — that one bit of memory is the cell behind every register and counter.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-formula", "content": "Q := D  on the rising edge of CLK", "delay": 0.3, "color": "var(--amber-300)", "position": "centre, large serif italic amber" },
+          { "type": "text-caption", "content": "one bit, one edge — line up N of them and you have a register", "delay": 1.6, "color": "var(--chalk-200)", "position": "centre, sans" },
+          { "type": "text-caption", "content": "stack registers on a shared clock and you have synchronous digital logic", "delay": 3.0, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}
