@@ -328,10 +328,10 @@ function StatesBeat() {
     }}>
       <Panel delay={0.3} active={true}
              eyebrow="forward bias"
-             caption="V_in > 0 — diode conducts"/>
+             caption={<>V<sub>in</sub> &gt; 0 — diode conducts</>}/>
       <Panel delay={1.6} active={false}
              eyebrow="reverse bias"
-             caption="V_in < 0 — diode blocks"/>
+             caption={<>V<sub>in</sub> &lt; 0 — diode blocks</>}/>
       {!portrait && (
         <FadeUp duration={0.4} delay={3.6} distance={8}
           style={{

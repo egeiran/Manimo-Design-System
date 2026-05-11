@@ -438,7 +438,7 @@ function TakeawayBeat() {
       <FadeUp duration={0.6} delay={0.3} distance={14}
         style={{
           fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-          fontSize: portrait ? 26 : 38, color: 'var(--amber-300)',
+          fontSize: portrait ? 22 : 38, color: 'var(--amber-300)',
           letterSpacing: '0.02em',
         }}>
         Q := D  on the rising edge of CLK

@@ -304,7 +304,7 @@ function FormulaBeat() {
       <FadeUp duration={0.6} delay={3.5} distance={14}
         style={{
           fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-          fontSize: portrait ? 38 : 46, color: 'var(--amber-300)',
+          fontSize: portrait ? 30 : 46, color: 'var(--amber-300)',
           letterSpacing: '0.02em', marginTop: 2,
         }}>
         V<sub>out</sub> = V<sub>in</sub> · R<sub>2</sub> / (R<sub>1</sub> + R<sub>2</sub>)
