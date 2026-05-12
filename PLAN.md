@@ -28,15 +28,7 @@ for the exact prompts.
 
 ### [AGENT] — safe for the next nightly run
 
-- **Half-wave-rectifier panel captions show `V_in` literal instead of
-  V<sub>in</sub>.** In `motion/ade/half-wave-rectifier.jsx`
-  `StatesBeat`, the two panel captions pass plain strings ("V_in > 0
-  — diode conducts" / "V_in < 0 — diode blocks") to the `caption` prop
-  of `Panel`. The underscore reads as a literal because the prop is
-  rendered as text, not JSX. Either accept JSX as the caption
-  (`caption={<>V<sub>in</sub> &gt; 0 — diode conducts</>}`) or use
-  unicode subscript characters ("Vᵢₙ > 0 — diode conducts"). Single-file
-  tweak.
+- **Phasor-rotation Beat 4 portrait — V₁/V₂ tip labels can collide with the 90° arc when both arrows are near the +Re axis.** In `motion/ade/phasor-rotation.jsx` `PhaseDifferenceBeat`, the V₁ and V₂ glyphs are placed via `tipX + 14·cos(θ)` / `tipY − 14·sin(θ)` so they always sit "outside" the arrow tip. When θ wraps near 0 (rotProg ≈ 1), V₁ overlaps the small "90°" angle text near the origin in portrait. Cheap fix: nudge the tip-label offset to 18-20 px, or center-anchor the 90° text on the arc's outer edge instead of midpoint. Single-file tweak.
 
 ### [HUMAN] — needs your input
 
@@ -44,7 +36,9 @@ for the exact prompts.
 
 - **[HUMAN] Voltage-divider portrait sweep — R1/R2 numeric labels sit close to the resistor zigzags.** In `motion/ade/voltage-divider.jsx` `SweepBeat` portrait branch, the R1/R2 labels at `G.rightX + G.zigAmp + 18` (= 358) end up ~18 px from the zigzag tips (which extend to ~340 with `zigAmp=20`). Legible but tight; bumping the offset to 28-32 px or relocating the labels to the left of the zigzags would breathe better. Reviewer flagged on 2026-05-11.
 
-- **[HUMAN] Pick next ADE topics for tonight's run if you want priorities.** Tonight covered: voltage-divider (chapter 2), half-wave-rectifier (chapter 6), d-flip-flop (chapter 13). Strong candidates for next time: Kirchhoff's voltage law walking around a mesh (ch 1), Thévenin equivalent collapse (ch 2), RC charging curve in the ADE context (ch 3 — note `rc-circuit` exists under fysikk but the analog-electronics framing is different), inverting op-amp + virtual short (ch 7), two's complement bit flip + add 1 (ch 9), K-map grouping (ch 12). If you want a specific topic prioritised, reply in chat — otherwise the author picks based on coverage gaps.
+- **[HUMAN] Karnaugh-map portrait — function-beat formula wraps awkwardly mid-summation.** In `motion/ade/karnaugh-map.jsx` `FunctionBeat`, the headline `F(A, B, C) = Σ m(2, 3, 4, 5, 6, 7)` wraps after "3," in portrait because the FadeUp container has no explicit max-width and the 36 px serif overflows 720 px. Reads, but breaks on a comma rather than at a logical seam. Either tighten the font size in portrait, or break the line manually before the Σ.
+
+- **[HUMAN] Pick next ADE topics for the next run if you want priorities.** This run covered: kirchhoff-voltage-law (ch 1), phasor-rotation (ch 4), karnaugh-map (ch 12). The full ADE library now spans ch 1, 2, 4, 6, 12, 13. Strong candidates for next time: Thévenin equivalent collapse (ch 2), RC charging curve in the ADE framing (ch 3), low-pass RC Bode plot (ch 5), inverting op-amp with virtual short (ch 7), BJT load-line (ch 8), two's complement bit flip + add 1 (ch 9), full adder ripple (ch 11), finite state machine glow (ch 14). If you want a specific topic prioritised, reply in chat.
 
 - **Subject focus is now Innføring i analog og digital elektronikk (TTT4203).** Fysikk and Operativsystemer topics are paused — the nightly author picks three ADE topics per run from `uploads/ade/`. To reopen fysikk or OS later, edit the author trigger (`trig_01W4V9M7fWvGN7J989JBeQsh`) and swap the `uploads/...` source pointer + chapter list back.
 

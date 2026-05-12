@@ -1,0 +1,90 @@
+{
+  "id": "kirchhoff-voltage-law",
+  "title": "Kirchhoff's Voltage Law: Why a Loop Sums to Zero",
+  "eyebrow": "circuit analysis",
+  "language": "en",
+  "duration": 40,
+  "topic": "Kirchhoff's voltage law — walking around any closed loop, the sum of every voltage rise and drop equals zero; this is just energy conservation for charges returning to the same potential",
+  "subject_id": "ade",
+  "chapter_number": 1,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.38,
+      "narration": "Walk all the way around a circuit loop — what's the total voltage you've gained?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "Walk a loop, add up every voltage — what do you get?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "loopSetup",
+      "start": 5.38,
+      "end": 13.12,
+      "narration": "Here's a single mesh: a battery on the left, two resistors on the right. Pick a direction and start walking.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Rectangular loop wire", "delay": 0.0, "color": "var(--chalk-200)" },
+          { "type": "svg-path", "content": "Battery cell on the left side, vertical orientation", "delay": 0.3, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Resistor R1 on the top wire (zigzag)", "delay": 0.8, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Resistor R2 on the right wire (zigzag)", "delay": 1.2, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Battery label V = 12 V", "delay": 1.6, "color": "var(--amber-300)" },
+          { "type": "svg-label", "content": "R1 = 4Ω drop label 8V", "delay": 1.9, "color": "var(--chalk-200)" },
+          { "type": "svg-label", "content": "R2 = 2Ω drop label 4V", "delay": 2.2, "color": "var(--chalk-200)" },
+          { "type": "svg-path", "content": "Curved arrow showing chosen traversal direction (clockwise from bottom-left)", "delay": 3.0, "color": "var(--rose-300)" },
+          { "type": "text-caption", "content": "we'll walk clockwise from this corner", "delay": 4.0, "color": "var(--chalk-300)", "position": "below loop, sans 14" }
+        ]
+      }
+    },
+    {
+      "id": "walkAndSum",
+      "start": 13.12,
+      "end": 22.24,
+      "narration": "A test charge walks the loop. Going up through the battery, plus twelve volts. Across R one, minus eight. Down through R two, minus four. Back to the start — zero.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Walker dot moving clockwise around the loop, starting at bottom-left", "delay": 0.0, "color": "var(--rose-400)" },
+          { "type": "svg-label", "content": "Voltage tag '+12 V' appears as walker crosses battery", "delay": 1.5, "color": "var(--amber-300)" },
+          { "type": "svg-label", "content": "Voltage tag '−8 V' appears as walker crosses R1", "delay": 4.5, "color": "var(--rose-300)" },
+          { "type": "svg-label", "content": "Voltage tag '−4 V' appears as walker crosses R2", "delay": 7.5, "color": "var(--rose-300)" },
+          { "type": "svg-label", "content": "Running sum readout in the centre of the loop: 0 → +12 → +4 → 0", "delay": 0.0, "color": "var(--chalk-100)", "note": "JetBrains Mono, big" },
+          { "type": "text-caption", "content": "the charge ends right where it started — same potential", "delay": 12.0, "color": "var(--chalk-300)", "position": "below the loop" }
+        ]
+      }
+    },
+    {
+      "id": "kvlFormula",
+      "start": 22.24,
+      "end": 30.48,
+      "narration": "Around any closed loop, the sum of all voltage rises and drops equals zero. That's Kirchhoff's voltage law.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-formula", "content": "∑ V around loop = 0", "delay": 0.3, "color": "var(--amber-300)", "position": "centre, large amber payoff" },
+          { "type": "text-formula", "content": "+12 − 8 − 4 = 0", "delay": 1.6, "color": "var(--chalk-100)", "position": "below the formula, JetBrains Mono" },
+          { "type": "text-caption", "content": "energy in equals energy out — every charge that leaves the battery returns its boost", "delay": 3.0, "color": "var(--chalk-300)", "position": "small caption" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 30.48,
+      "end": 40,
+      "narration": "It's just energy conservation: the boost a battery gives a charge is exactly what the resistors take back.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "rises = drops, every closed loop, every time", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic ~26px" },
+          { "type": "text-caption", "content": "the foundation of mesh analysis", "delay": 1.8, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}

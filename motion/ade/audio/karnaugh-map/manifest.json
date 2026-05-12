@@ -1,0 +1,36 @@
+{
+  "sceneId": "karnaugh-map",
+  "mode": "mistral",
+  "engine": "mistral",
+  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
+  "model": "voxtral-mini-tts-2603",
+  "audio": "audio/karnaugh-map/scene.mp3",
+  "durationSec": 38.19,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "There's a way to minimize a Boolean function by drawing — not algebra. Karnaugh maps."
+    },
+    {
+      "id": "function",
+      "audioStart": 7.53,
+      "narration": "Take a function of three variables — A, B, C — and assume it's one for these six minterms."
+    },
+    {
+      "id": "fillMap",
+      "audioStart": 14.54,
+      "narration": "Lay out a Karnaugh map: A B down the side in Gray code, C across the top. Drop in a one wherever the function equals one."
+    },
+    {
+      "id": "groupCells",
+      "audioStart": 22.9,
+      "narration": "Now the magic. Two rectangles cover all six ones. The vertical block is A. The horizontal block is B. Together — A or B."
+    },
+    {
+      "id": "result",
+      "audioStart": 32.43,
+      "narration": "F equals A or B. Two terms instead of three — and you didn't have to factor anything."
+    }
+  ]
+}

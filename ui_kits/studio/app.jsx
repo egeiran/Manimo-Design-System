@@ -67,6 +67,9 @@ const initialScenes = [
   { id: 'live-voltage-divider', kind: 'live', kindLabel: 'Live', cardTitle: 'Voltage Divider',                     duration: 39, html: '../../motion/ade/voltage-divider.html' },
   { id: 'live-half-wave',       kind: 'live', kindLabel: 'Live', cardTitle: 'Half-Wave Rectifier',                 duration: 41, html: '../../motion/ade/half-wave-rectifier.html' },
   { id: 'live-d-flip-flop',     kind: 'live', kindLabel: 'Live', cardTitle: 'D Flip-Flop',                         duration: 38, html: '../../motion/ade/d-flip-flop.html' },
+  { id: 'live-kvl',             kind: 'live', kindLabel: 'Live', cardTitle: "Kirchhoff's Voltage Law",              duration: 40, html: '../../motion/ade/kirchhoff-voltage-law.html' },
+  { id: 'live-phasor',          kind: 'live', kindLabel: 'Live', cardTitle: 'Phasors: Rotating Arrows',             duration: 40, html: '../../motion/ade/phasor-rotation.html' },
+  { id: 'live-kmap',            kind: 'live', kindLabel: 'Live', cardTitle: 'Karnaugh Maps',                        duration: 39, html: '../../motion/ade/karnaugh-map.html' },
 ];
 
 function loadJSON(key, fallback) {

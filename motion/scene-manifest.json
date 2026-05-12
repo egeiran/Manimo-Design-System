@@ -510,6 +510,51 @@
       "concepts": ["D flip-flop", "edge-triggered", "rising edge", "clock", "sequential logic", "register"],
       "subject_id": "ade",
       "chapter_number": 13
+    },
+    {
+      "id": "kirchhoff-voltage-law",
+      "file": "kirchhoff-voltage-law.jsx",
+      "html": "kirchhoff-voltage-law.html",
+      "spec": "kirchhoff-voltage-law.spec.json",
+      "title": "Kirchhoff's Voltage Law: Why a Loop Sums to Zero",
+      "eyebrow": "circuit analysis",
+      "topic": "Kirchhoff's voltage law — walking around any closed loop, the sum of every voltage rise and drop equals zero; this is just energy conservation for charges returning to the same potential",
+      "duration": 40,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": ["Kirchhoff voltage law", "KVL", "loop analysis", "voltage", "energy conservation", "mesh"],
+      "subject_id": "ade",
+      "chapter_number": 1
+    },
+    {
+      "id": "phasor-rotation",
+      "file": "phasor-rotation.jsx",
+      "html": "phasor-rotation.html",
+      "spec": "phasor-rotation.spec.json",
+      "title": "Phasors: A Rotating Arrow Becomes a Sinusoid",
+      "eyebrow": "AC analysis",
+      "topic": "Phasor representation of an AC voltage — a vector of length V_m rotating at angular frequency ω; its real-axis projection traces v(t) = V_m cos(ωt + φ); two phasors at a fixed phase difference give two locked sinusoids",
+      "duration": 40,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": ["phasor", "AC analysis", "complex plane", "sinusoid", "phase difference", "angular frequency"],
+      "subject_id": "ade",
+      "chapter_number": 4
+    },
+    {
+      "id": "karnaugh-map",
+      "file": "karnaugh-map.jsx",
+      "html": "karnaugh-map.html",
+      "spec": "karnaugh-map.spec.json",
+      "title": "Karnaugh Maps: Grouping Adjacent Ones",
+      "eyebrow": "Boolean minimization",
+      "topic": "Karnaugh map minimization — a 3-variable function laid out on a Gray-coded grid; adjacent ones grouped into power-of-two rectangles collapse to the simplest sum-of-products form, beating algebra at its own game",
+      "duration": 39,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": ["Karnaugh map", "Boolean minimization", "Gray code", "sum of products", "logic simplification", "minterm"],
+      "subject_id": "ade",
+      "chapter_number": 12
     }
   ]
 }
