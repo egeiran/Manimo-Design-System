@@ -1,0 +1,36 @@
+{
+  "sceneId": "phasor-rotation",
+  "mode": "mistral",
+  "engine": "mistral",
+  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
+  "model": "voxtral-mini-tts-2603",
+  "audio": "audio/phasor-rotation/scene.mp3",
+  "durationSec": 39.19,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "An AC voltage swings sinusoidally — but there's a clearer way to picture it: a rotating arrow."
+    },
+    {
+      "id": "complexPlane",
+      "audioStart": 7.97,
+      "narration": "Set up the complex plane. The voltage is an arrow of length V m, sitting at angle phi to the real axis."
+    },
+    {
+      "id": "rotateAndTrace",
+      "audioStart": 14.66,
+      "narration": "Now spin it. As the arrow rotates at omega, its projection on the real axis traces the cosine wave you see on the right."
+    },
+    {
+      "id": "phaseDifference",
+      "audioStart": 22.96,
+      "narration": "Add a second phasor lagging by ninety degrees. Both rotate together — and their two waves stay locked in phase difference."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 30.26,
+      "narration": "Each AC voltage becomes one number — magnitude and angle — that you can add like a vector. No more integrating sines."
+    }
+  ]
+}

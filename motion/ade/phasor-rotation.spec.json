@@ -1,0 +1,88 @@
+{
+  "id": "phasor-rotation",
+  "title": "Phasors: A Rotating Arrow Becomes a Sinusoid",
+  "eyebrow": "AC analysis",
+  "language": "en",
+  "duration": 40,
+  "topic": "Phasor representation of an AC voltage — a vector of length V_m rotating at angular frequency ω; its projection on the real axis traces v(t) = V_m cos(ωt + φ); two phasors at a fixed phase difference produce two sinusoids in lock-step",
+  "subject_id": "ade",
+  "chapter_number": 4,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.97,
+      "narration": "An AC voltage swings sinusoidally — but there's a clearer way to picture it: a rotating arrow.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "How do you draw an AC voltage that's always changing?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "complexPlane",
+      "start": 7.97,
+      "end": 14.66,
+      "narration": "Set up the complex plane. The voltage is an arrow of length V m, sitting at angle phi to the real axis.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "graph-axes", "content": "Re/Im axes centred", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "svg-arc", "content": "Reference circle radius V_m", "delay": 0.7, "color": "var(--chalk-300)" },
+          { "type": "svg-path", "content": "Static phasor arrow at angle phi", "delay": 1.4, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "V_m magnitude label along arrow", "delay": 2.0, "color": "var(--amber-300)" },
+          { "type": "svg-label", "content": "phi angle label between arrow and real axis", "delay": 2.4, "color": "var(--rose-300)" },
+          { "type": "text-caption", "content": "magnitude is the amplitude, angle is the phase", "delay": 3.4, "color": "var(--chalk-300)", "position": "below diagram, sans 14" }
+        ]
+      }
+    },
+    {
+      "id": "rotateAndTrace",
+      "start": 14.66,
+      "end": 22.96,
+      "narration": "Now spin it. As the arrow rotates at omega, its projection on the real axis traces the cosine wave you see on the right.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "graph-axes", "content": "Complex plane on the left, sinusoid scope on the right", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "svg-path", "content": "Phasor arrow rotating CCW at constant angular velocity", "delay": 0.0, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Projection drop-line from arrow tip down to the real axis", "delay": 0.0, "color": "var(--rose-300)" },
+          { "type": "svg-path", "content": "Sinusoid trace on the right plotting Re(arrow) vs time, drawn synchronously", "delay": 0.0, "color": "var(--amber-300)" },
+          { "type": "svg-path", "content": "Horizontal connector line from arrow projection to scope cursor", "delay": 0.0, "color": "var(--rose-300)" },
+          { "type": "svg-label", "content": "v(t) = V_m cos(ωt + φ) caption above scope", "delay": 1.0, "color": "var(--chalk-200)" }
+        ]
+      }
+    },
+    {
+      "id": "phaseDifference",
+      "start": 22.96,
+      "end": 30.26,
+      "narration": "Add a second phasor lagging by ninety degrees. Both rotate together — and their two waves stay locked in phase difference.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "svg-path", "content": "Two phasors at 90° apart, rotating together", "delay": 0.0, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Two sinusoid traces, one cosine one sine (90° lag)", "delay": 0.0, "color": "var(--amber-300)" },
+          { "type": "svg-label", "content": "V₁ and V₂ labels on each phasor", "delay": 0.5, "color": "var(--chalk-200)" },
+          { "type": "text-caption", "content": "phase difference stays constant — algebra replaces calculus", "delay": 4.0, "color": "var(--chalk-300)", "position": "below scope, sans 14" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 30.26,
+      "end": 40,
+      "narration": "Each AC voltage becomes one number — magnitude and angle — that you can add like a vector. No more integrating sines.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "magnitude · angle  →  add like vectors", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic ~28px" },
+          { "type": "text-caption", "content": "the trick that makes AC analysis tractable", "delay": 1.8, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}
