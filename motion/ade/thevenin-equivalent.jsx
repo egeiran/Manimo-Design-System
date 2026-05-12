@@ -342,8 +342,9 @@ function OpenCircuitBeat() {
                 fontSize={G.fontLabel} letterSpacing="0.1em">b</text>
         </SvgFadeIn>
 
-        {/* Load (R_L) — translated away as it disconnects */}
-        <g style={{ transform: `translateX(${slideDx}px)`, opacity: 1 - slideT * 0.7 }}>
+        {/* Load (R_L) — translated away as it disconnects, then fully fades
+            so the rose zigzag doesn't bleed over the voltmeter symbol. */}
+        <g style={{ transform: `translateX(${slideDx}px)`, opacity: 1 - slideT }}>
           <path d={zigzag(G.loadX, G.midY + 8, G.botY - 8, G.zig)}
                 stroke="var(--rose-400)" strokeWidth={2.2} fill="none"
                 strokeLinecap="round" strokeLinejoin="round"/>
