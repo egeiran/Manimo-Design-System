@@ -221,10 +221,10 @@ function LoopSetupBeat() {
                 fontSize={12}>12 V</text>
         </SvgFadeIn>
         <SvgFadeIn duration={0.35} delay={1.9}>
-          <text x={G.r1X} y={G.y0 - 30} textAnchor="middle"
+          <text x={G.r1X} y={G.y0 - 36} textAnchor="middle"
                 fill="var(--chalk-100)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={portrait ? 18 : 20}>R₁</text>
-          <text x={G.r1X} y={G.y0 - 14} textAnchor="middle"
+          <text x={G.r1X} y={G.y0 - 20} textAnchor="middle"
                 fill="var(--chalk-300)" fontFamily="var(--font-mono)"
                 fontSize={11}>drops 8 V</text>
         </SvgFadeIn>

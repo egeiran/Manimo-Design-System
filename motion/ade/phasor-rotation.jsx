@@ -164,7 +164,7 @@ function ComplexPlaneBeat() {
           <path d={`M ${G.cx + 56} ${G.cy}
                     A 56 56 0 0 1 ${G.cx + 56 * Math.cos(phiRad)} ${G.cy + 56 * Math.sin(phiRad)}`}
                 fill="none" stroke="var(--rose-400)" strokeWidth={1.6}/>
-          <text x={G.cx + 70} y={G.cy + 22}
+          <text x={G.cx + 36} y={G.cy - 14}
                 fill="var(--rose-300)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={20}>φ</text>
         </SvgFadeIn>
