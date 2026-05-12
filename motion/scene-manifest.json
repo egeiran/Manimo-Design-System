@@ -555,6 +555,51 @@
       "concepts": ["Karnaugh map", "Boolean minimization", "Gray code", "sum of products", "logic simplification", "minterm"],
       "subject_id": "ade",
       "chapter_number": 12
+    },
+    {
+      "id": "thevenin-equivalent",
+      "file": "thevenin-equivalent.jsx",
+      "html": "thevenin-equivalent.html",
+      "spec": "thevenin-equivalent.spec.json",
+      "title": "Thévenin's Theorem: Any Linear Circuit Becomes One Source",
+      "eyebrow": "circuit analysis",
+      "topic": "Thévenin's theorem — any linear two-terminal network can be replaced by an open-circuit voltage V_th in series with an equivalent resistance R_th; the load sees the same current and voltage either way",
+      "duration": 44,
+      "language": "en",
+      "prerequisites": ["voltage-divider", "kirchhoff-voltage-law"],
+      "concepts": ["Thévenin's theorem", "equivalent circuit", "open-circuit voltage", "equivalent resistance", "linear network", "circuit reduction"],
+      "subject_id": "ade",
+      "chapter_number": 2
+    },
+    {
+      "id": "low-pass-bode",
+      "file": "low-pass-bode.jsx",
+      "html": "low-pass-bode.html",
+      "spec": "low-pass-bode.spec.json",
+      "title": "RC Low-Pass Filter: Why Gain Rolls Off at the Cutoff",
+      "eyebrow": "frequency response",
+      "topic": "RC low-pass filter — transfer function H(jω) = 1/(1 + jωRC); gain stays flat below the cutoff ω_c = 1/RC and rolls off at −20 dB/decade above; Bode magnitude and phase together describe the filter at every frequency",
+      "duration": 48,
+      "language": "en",
+      "prerequisites": ["voltage-divider", "phasor-rotation"],
+      "concepts": ["low-pass filter", "Bode plot", "cutoff frequency", "transfer function", "frequency response", "decibels", "RC filter"],
+      "subject_id": "ade",
+      "chapter_number": 5
+    },
+    {
+      "id": "finite-state-machine",
+      "file": "finite-state-machine.jsx",
+      "html": "finite-state-machine.html",
+      "spec": "finite-state-machine.spec.json",
+      "title": "Finite State Machines: A Circuit That Remembers Where It Was",
+      "eyebrow": "sequential logic",
+      "topic": "Finite state machines — a graph of states and labelled transitions models any sequential circuit; a Moore-style 11-detector with three states walks an input bit-stream and asserts its output whenever the last two bits were ones",
+      "duration": 39,
+      "language": "en",
+      "prerequisites": ["d-flip-flop"],
+      "concepts": ["finite state machine", "Moore machine", "state diagram", "sequential logic", "state transition", "pattern detector"],
+      "subject_id": "ade",
+      "chapter_number": 14
     }
   ]
 }

@@ -70,6 +70,9 @@ const initialScenes = [
   { id: 'live-kvl',             kind: 'live', kindLabel: 'Live', cardTitle: "Kirchhoff's Voltage Law",              duration: 40, html: '../../motion/ade/kirchhoff-voltage-law.html' },
   { id: 'live-phasor',          kind: 'live', kindLabel: 'Live', cardTitle: 'Phasors: Rotating Arrows',             duration: 40, html: '../../motion/ade/phasor-rotation.html' },
   { id: 'live-kmap',            kind: 'live', kindLabel: 'Live', cardTitle: 'Karnaugh Maps',                        duration: 39, html: '../../motion/ade/karnaugh-map.html' },
+  { id: 'live-thevenin',        kind: 'live', kindLabel: 'Live', cardTitle: "Thévenin's Theorem",                   duration: 44, html: '../../motion/ade/thevenin-equivalent.html' },
+  { id: 'live-low-pass-bode',   kind: 'live', kindLabel: 'Live', cardTitle: 'RC Low-Pass Filter',                   duration: 48, html: '../../motion/ade/low-pass-bode.html' },
+  { id: 'live-fsm',             kind: 'live', kindLabel: 'Live', cardTitle: 'Finite State Machines',                duration: 39, html: '../../motion/ade/finite-state-machine.html' },
 ];
 
 function loadJSON(key, fallback) {

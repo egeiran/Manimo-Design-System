@@ -438,8 +438,8 @@ function PhaseDifferenceBeat() {
         <Arrow x0={L.pcx} y0={L.pcy} x1={tip1X} y1={tip1Y}
                color="var(--amber-400)" width={3}/>
         <SvgFadeIn duration={0.3} delay={0.4}>
-          <text x={tip1X + 14 * Math.cos(theta)}
-                y={tip1Y - 14 * Math.sin(theta)}
+          <text x={tip1X + 20 * Math.cos(theta)}
+                y={tip1Y - 20 * Math.sin(theta)}
                 textAnchor="middle"
                 fill="var(--amber-300)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={18}>V₁</text>
@@ -449,8 +449,8 @@ function PhaseDifferenceBeat() {
         <Arrow x0={L.pcx} y0={L.pcy} x1={tip2X} y1={tip2Y}
                color="var(--rose-400)" width={2.6}/>
         <SvgFadeIn duration={0.3} delay={0.4}>
-          <text x={tip2X + 14 * Math.cos(theta2)}
-                y={tip2Y - 14 * Math.sin(theta2)}
+          <text x={tip2X + 20 * Math.cos(theta2)}
+                y={tip2Y - 20 * Math.sin(theta2)}
                 textAnchor="middle"
                 fill="var(--rose-300)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={18}>V₂</text>

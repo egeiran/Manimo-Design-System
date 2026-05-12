@@ -28,7 +28,7 @@ for the exact prompts.
 
 ### [AGENT] — safe for the next nightly run
 
-- **Phasor-rotation Beat 4 portrait — V₁/V₂ tip labels can collide with the 90° arc when both arrows are near the +Re axis.** In `motion/ade/phasor-rotation.jsx` `PhaseDifferenceBeat`, the V₁ and V₂ glyphs are placed via `tipX + 14·cos(θ)` / `tipY − 14·sin(θ)` so they always sit "outside" the arrow tip. When θ wraps near 0 (rotProg ≈ 1), V₁ overlaps the small "90°" angle text near the origin in portrait. Cheap fix: nudge the tip-label offset to 18-20 px, or center-anchor the 90° text on the arc's outer edge instead of midpoint. Single-file tweak.
+- **Thévenin Beat 5 landscape — "SAME I_L" connector and original-panel R_L crowd the Thévenin panel's V_th battery.** In `motion/ade/thevenin-equivalent.jsx` `EquivalentBeat`, the landscape panels sit at `ox=50, ow=480` and `ex=580, ew=480` with the connector line in the 50px gap between them. The original's R_L label (around x=494) and the Thévenin's V_th label (around x=618) sandwich the "SAME I_L" line + caption. Readable but tight. Either widen the inter-panel gap (push ex right, narrow each panel), or move "SAME I_L" above the two panels (between the title row), or shrink the rose-colored R_L label so it doesn't compete visually. Single-file tweak.
 
 ### [HUMAN] — needs your input
 
@@ -38,9 +38,9 @@ for the exact prompts.
 
 - **[HUMAN] Karnaugh-map portrait — function-beat formula wraps awkwardly mid-summation.** In `motion/ade/karnaugh-map.jsx` `FunctionBeat`, the headline `F(A, B, C) = Σ m(2, 3, 4, 5, 6, 7)` wraps after "3," in portrait because the FadeUp container has no explicit max-width and the 36 px serif overflows 720 px. Reads, but breaks on a comma rather than at a logical seam. Either tighten the font size in portrait, or break the line manually before the Σ.
 
-- **[HUMAN] Re-run `npm run publish kirchhoff-voltage-law phasor-rotation karnaugh-map`** once Supabase env vars are available on the nightly sandbox. Tonight's reviewer skipped publish because keys were missing (`.env` not present in the sandbox). PR #18 merged cleanly; the live HTML is already on Pages, only the Supabase `public.scenes` row insert is pending. Reviewer flagged on 2026-05-12.
+- **[HUMAN] Re-run `npm run publish kirchhoff-voltage-law phasor-rotation karnaugh-map thevenin-equivalent low-pass-bode finite-state-machine`** once Supabase env vars are available on the nightly sandbox. Tonight's reviewer plus the previous one skipped publish because keys were missing (`.env` not present in the sandbox). Live HTML for all six is already on Pages; only the Supabase `public.scenes` row inserts are pending.
 
-- **[HUMAN] Pick next ADE topics for the next run if you want priorities.** This run covered: kirchhoff-voltage-law (ch 1), phasor-rotation (ch 4), karnaugh-map (ch 12). The full ADE library now spans ch 1, 2, 4, 6, 12, 13. Strong candidates for next time: Thévenin equivalent collapse (ch 2), RC charging curve in the ADE framing (ch 3), low-pass RC Bode plot (ch 5), inverting op-amp with virtual short (ch 7), BJT load-line (ch 8), two's complement bit flip + add 1 (ch 9), full adder ripple (ch 11), finite state machine glow (ch 14). If you want a specific topic prioritised, reply in chat.
+- **[HUMAN] Pick next ADE topics for the next run if you want priorities.** Tonight's run covered: thevenin-equivalent (ch 2), low-pass-bode (ch 5), finite-state-machine (ch 14). The full ADE library now spans ch 1, 2, 4, 5, 6, 12, 13, 14. Strong candidates for next time: RC charging curve in the ADE framing (ch 3), inverting op-amp with virtual short (ch 7), BJT load-line (ch 8), two's complement bit flip + add 1 (ch 9), NAND universality (ch 10), full adder ripple (ch 11). If you want a specific topic prioritised, reply in chat.
 
 - **Subject focus is now Innføring i analog og digital elektronikk (TTT4203).** Fysikk and Operativsystemer topics are paused — the nightly author picks three ADE topics per run from `uploads/ade/`. To reopen fysikk or OS later, edit the author trigger (`trig_01W4V9M7fWvGN7J989JBeQsh`) and swap the `uploads/...` source pointer + chapter list back.
 
