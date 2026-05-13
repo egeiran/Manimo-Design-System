@@ -12,6 +12,7 @@
     "audio": "node scripts/generate-audio.js",
     "render": "node scripts/render-scene.js",
     "publish": "node scripts/publish-scene.js",
+    "coverage": "node scripts/chapter-coverage.js",
     "postinstall": "playwright install chromium --with-deps"
   },
   "devDependencies": {

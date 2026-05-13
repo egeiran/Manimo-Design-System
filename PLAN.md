@@ -12,19 +12,76 @@ them from this list when done (git history is the audit trail), and appends
 new items found during the run. Items tagged [HUMAN] are skipped by the agent
 and require your input. Total queue size is kept ≤ 12 items.
 
-**Current defaults (set 2026-05-11):** the nightly authoring agent
-now ships **ADE scenes** per run (three by default), sourcing topics
-from `uploads/ade/` (TTT4203 — Innføring i analog og digital
-elektronikk). Both halves of the course are in scope — analog (circuit
-theory, diodes, op-amps, transistors) and digital (Boolean algebra,
-combinational logic, flip-flops, FSMs). The reviewer **merges by
-default** unless the PR is genuinely broken (page crash, render
-failure, missing file, build error); quality concerns are logged back
-into this queue as [HUMAN] items rather than blocking the merge. The
-reviewer also **publishes each merged scene to Supabase** via
-`npm run publish <id>`. See `trig_01W4V9M7fWvGN7J989JBeQsh` (author,
-midnight UTC) and `trig_01QXiioNfPwJnDgThdsmQfXt` (reviewer, 03:00 UTC)
-for the exact prompts.
+**Current defaults (set 2026-05-13):** the nightly authoring agent
+fills **one ADE chapter at a time**, sourcing topics from `uploads/ade/`
+(TTT4203 — Innføring i analog og digital elektronikk). Both halves of
+the course are in scope — analog (circuit theory, diodes, op-amps,
+transistors) and digital (Boolean algebra, combinational logic,
+flip-flops, FSMs). The reviewer **merges by default** unless the PR is
+genuinely broken (page crash, render failure, missing file, build
+error); quality concerns are logged back into this queue as [HUMAN]
+items rather than blocking the merge. The reviewer also **publishes
+each merged scene to Supabase** via `npm run publish <id>`. See
+`trig_01W4V9M7fWvGN7J989JBeQsh` (author, midnight UTC) and
+`trig_01QXiioNfPwJnDgThdsmQfXt` (reviewer, 03:00 UTC) for the exact
+prompts.
+
+### How the author picks a chapter (and how scenes get attached)
+
+The canonical chapter list for `subject_id="ade"` lives in
+kort-forklart's `public.chapters` table in Supabase — **not** in this
+repo. Do not hard-code a chapter list anywhere; query Supabase at the
+start of every run.
+
+1. Run `npm run coverage ade` (alias for `node scripts/chapter-coverage.js
+   ade`) before picking topics. It prints every chapter Supabase knows
+   about, how many scenes each one already has (both published rows and
+   local-only manifest entries), and which chapter is most
+   under-served.
+2. Pick the focus chapter for the run — usually the most under-served
+   one. Override only when the next-most-empty chapter is clearly a
+   better topic fit for what's in `uploads/ade/`, or when "most empty"
+   is a chapter that needs fewer scenes anyway (some chapters need
+   more videos than others; let the chapter title and exam-PDF weight
+   guide you).
+3. Generate scenes for **all** missing topics in that chapter. The
+   target is "this chapter feels complete to a student," not a fixed
+   count — small chapters might be done in 2 scenes, large ones might
+   want 5–6. Cap a single run at 6 scenes to keep PRs reviewable; if
+   more are needed, leave a [AGENT] queue item for the next run.
+4. When writing each scene's spec, set `chapter_number` to the
+   Supabase chapter whose title and topics actually match the scene —
+   **never invent a chapter number**. If no chapter is a clean fit,
+   that's a signal to either reshape the scene topic or surface a
+   [HUMAN] item asking whether `public.chapters` needs a new row.
+5. If `SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` are missing from
+   `.env`, `chapter-coverage.js` falls back to local-manifest counts
+   without titles — better than nothing, but log a [HUMAN] item asking
+   for the keys so the next run gets the real chapter list.
+
+### Audit-and-backfill (run before generating new scenes)
+
+`chapter-coverage.js` also prints two backfill sections when Supabase
+is reachable:
+
+- **Unattached scenes** — rows in `public.scenes` where
+  `chapter_number IS NULL`. This is usually the result of the
+  `scenes_chapter_fk` composite FK nulling the link because the
+  `(subject_id, chapter_number)` row was missing from
+  `public.chapters` at publish time. If the local manifest already has
+  the right chapter, seed the missing chapter row in Supabase
+  (`[HUMAN]` item) and re-publish; otherwise pick the best-fitting
+  chapter, update the spec + manifest, and re-publish.
+- **Mismatches** — scenes where the manifest and Supabase disagree on
+  `chapter_number`. Resolve by aligning the spec/manifest to the right
+  chapter (the one whose Supabase title actually matches the topic),
+  then `npm run publish <id>` to overwrite the remote row.
+
+Every scene in `public.scenes` should end up with a non-null
+`chapter_number` pointing at an existing chapter row — fix any
+backfill item before generating new content. If the right chapter
+doesn't exist in `public.chapters`, that's a [HUMAN] item; don't
+invent a chapter number to make the FK happy.
 
 ### [AGENT] — safe for the next nightly run
 
