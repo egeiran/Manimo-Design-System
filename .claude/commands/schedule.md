@@ -14,6 +14,26 @@ once. Don't guess. If the routine isn't about scene generation at all
 (e.g. a dependency audit), fall back to the generic `/schedule` flow but
 keep the "self-contained prompt" discipline from Step 2.
 
+For ADE nightly runs (subject_id="ade"), the topic-picking step is
+prescribed and does NOT need to be asked of the user:
+
+1. Run `npm run coverage ade` first. It prints every chapter in
+   Supabase `public.chapters` for `ade`, the number of scenes already
+   in each, any unattached rows (`chapter_number IS NULL`), and any
+   local/remote mismatches.
+2. Pick the **focus chapter** = the most under-served one, unless a
+   different chapter is a clearly better fit for the topics available
+   in `uploads/ade/`. Some chapters need more videos than others —
+   chapter title + exam-PDF weight is the tiebreaker, not raw count.
+3. Generate scenes for **all missing topics** in the focus chapter
+   (cap at 6 per run for reviewability). The routine ends when the
+   chapter feels complete to a student, not when a quota is hit.
+4. Before generating new content, resolve any backfill items the
+   coverage script printed: unattached scenes, mismatches, or scenes
+   whose `chapter_number` points at a row that's missing from
+   `public.chapters`. Every scene in `public.scenes` should end up
+   with a non-null `chapter_number` referencing an existing chapter.
+
 ## 2. Draft the task prompt
 
 Future runs will not have access to this conversation. The prompt must be

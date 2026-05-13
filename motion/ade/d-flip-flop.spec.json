@@ -6,7 +6,7 @@
   "duration": 38,
   "topic": "D flip-flop — an edge-triggered storage cell whose output Q samples the input D at every rising edge of the clock; the cell behind every register and counter",
   "subject_id": "ade",
-  "chapter_number": 13,
+  "chapter_number": 7,
   "prerequisites": [],
   "beats": [
     {

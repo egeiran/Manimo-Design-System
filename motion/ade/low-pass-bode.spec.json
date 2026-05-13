@@ -6,7 +6,7 @@
   "duration": 48,
   "topic": "RC low-pass filter — transfer function H(jω) = 1/(1 + jωRC); gain stays flat below the cutoff ω_c = 1/RC and rolls off at −20 dB/decade above; Bode magnitude and phase plots together describe the filter at every frequency",
   "subject_id": "ade",
-  "chapter_number": 5,
+  "chapter_number": 8,
   "prerequisites": ["voltage-divider", "phasor-rotation"],
   "beats": [
     {

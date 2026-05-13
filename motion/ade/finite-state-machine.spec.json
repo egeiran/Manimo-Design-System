@@ -6,7 +6,7 @@
   "duration": 39,
   "topic": "Finite state machines — model sequential logic as a graph of states and labelled transitions; a Moore-style 11-detector with three states (S0, S1, S2) walks an input bit-stream and asserts its output whenever it has just seen two ones in a row",
   "subject_id": "ade",
-  "chapter_number": 14,
+  "chapter_number": 10,
   "prerequisites": ["d-flip-flop"],
   "beats": [
     {

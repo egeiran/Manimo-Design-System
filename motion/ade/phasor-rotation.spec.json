@@ -6,7 +6,7 @@
   "duration": 40,
   "topic": "Phasor representation of an AC voltage — a vector of length V_m rotating at angular frequency ω; its projection on the real axis traces v(t) = V_m cos(ωt + φ); two phasors at a fixed phase difference produce two sinusoids in lock-step",
   "subject_id": "ade",
-  "chapter_number": 4,
+  "chapter_number": 8,
   "prerequisites": [],
   "beats": [
     {

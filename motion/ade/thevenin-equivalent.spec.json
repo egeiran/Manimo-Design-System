@@ -6,7 +6,7 @@
   "duration": 44,
   "topic": "Thévenin's theorem — any linear two-terminal network can be replaced by an open-circuit voltage V_th in series with an equivalent resistance R_th; the load sees the same current and voltage either way",
   "subject_id": "ade",
-  "chapter_number": 2,
+  "chapter_number": 3,
   "prerequisites": ["voltage-divider", "kirchhoff-voltage-law"],
   "beats": [
     {

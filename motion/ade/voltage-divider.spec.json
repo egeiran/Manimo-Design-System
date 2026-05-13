@@ -6,7 +6,7 @@
   "duration": 39,
   "topic": "Voltage divider — two resistors in series across a source put V_out = V_in · R2/(R1+R2) at the midpoint; sweeping R2 sweeps V_out proportionally",
   "subject_id": "ade",
-  "chapter_number": 2,
+  "chapter_number": 1,
   "prerequisites": [],
   "beats": [
     {
