@@ -1,0 +1,101 @@
+{
+  "id": "full-adder",
+  "title": "The Full Adder: How a Carry Ripples Through a Chain",
+  "eyebrow": "combinational logic",
+  "language": "en",
+  "duration": 70,
+  "topic": "Full adder — three inputs A, B, C_in and two outputs Sum, C_out; built from two half-adders and an OR gate; chained N times to add two N-bit numbers, with the carry rippling from least to most significant bit",
+  "subject_id": "ade",
+  "chapter_number": 11,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.42,
+      "narration": "Adding two bits is easy — but a carry can spread through every column. How does it actually move?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "One bit per column — but where does the carry go?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "halfAdder",
+      "start": 5.42,
+      "end": 17.27,
+      "narration": "A half adder takes two bits A and B and produces a sum bit, X O R, and a carry bit, A N D. Good for one column, but it can't accept an incoming carry from the column below.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "svg-path", "content": "XOR gate (shield shape) on top with A and B inputs, sum output", "delay": 0.4, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "AND gate (D shape) below with same A and B inputs, carry output", "delay": 1.0, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Inputs A, B labelled on the left", "delay": 1.4, "color": "var(--chalk-200)" },
+          { "type": "svg-label", "content": "Outputs sum and carry labelled on the right", "delay": 1.8, "color": "var(--chalk-200)" },
+          { "type": "text-caption", "content": "sum = A ⊕ B, carry = A · B", "delay": 3.0, "color": "var(--amber-300)", "position": "below diagram, large serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "fullAdderStructure",
+      "start": 17.27,
+      "end": 27.36,
+      "narration": "Stack two half adders. The first takes A and B; the second adds C in to that partial sum. An O R gate merges the two carry signals into C out.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Two stacked XOR gates and two AND gates, plus an OR gate at the bottom merging carries", "delay": 0.4, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Three inputs A, B, C_in on the left", "delay": 1.0, "color": "var(--chalk-200)" },
+          { "type": "svg-label", "content": "Two outputs Sum, C_out on the right", "delay": 1.4, "color": "var(--chalk-200)" },
+          { "type": "text-caption", "content": "two half adders + one OR — that's a full adder", "delay": 4.0, "color": "var(--chalk-200)", "position": "below diagram, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "propagation",
+      "start": 27.36,
+      "end": 46.91,
+      "narration": "Set A and B to one, and C in to one. The first X O R fires, then the second X O R fires, and finally the O R gate raises C out. Sum lands at one, C out lands at one — one plus one plus one equals binary one one.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Full-adder diagram from beat 3, with signals propagating left to right", "delay": 0.0, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Input values 1, 1, 1 flash in over the input wires", "delay": 0.5, "color": "var(--rose-300)" },
+          { "type": "svg-label", "content": "Each gate glows briefly as its inputs settle", "delay": 1.2, "color": "var(--amber-300)" },
+          { "type": "text-caption", "content": "1 + 1 + 1 = 11₂ — sum 1, carry 1", "delay": 6.0, "color": "var(--amber-300)", "position": "below diagram, serif italic large" }
+        ]
+      }
+    },
+    {
+      "id": "ripple",
+      "start": 46.91,
+      "end": 59.64,
+      "narration": "Chain four of them and you add two four-bit numbers. The carry from each column has to settle before the next column can finish — that's why the rightmost adder fires first, then the next, and so on.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "svg-path", "content": "Four full-adder blocks in a row, labelled 0 through 3, carry-out of one feeding carry-in of the next", "delay": 0.3, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Top: A_3..A_0 = 0111, B_3..B_0 = 0011", "delay": 0.8, "color": "var(--chalk-200)" },
+          { "type": "graph-marker", "content": "Pulse marks travel left through the carry chain, illuminating each adder in turn", "delay": 1.2, "color": "var(--rose-300)" },
+          { "type": "svg-label", "content": "Bottom result: S = 1010 (=10₁₀), final C_out = 0", "delay": 4.5, "color": "var(--amber-300)" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 59.64,
+      "end": 70,
+      "narration": "Each column is local. The carry chain is global — and that is what makes ripple-carry addition slow for wide numbers.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-formula", "content": "Sum = A ⊕ B ⊕ C_in", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre top" },
+          { "type": "text-formula", "content": "C_out = AB + C_in(A ⊕ B)", "delay": 1.0, "color": "var(--chalk-100)", "position": "centre" },
+          { "type": "text-caption", "content": "local sum, global carry — the bottleneck of ripple-carry adders", "delay": 2.0, "color": "var(--amber-300)", "position": "below, serif italic" }
+        ]
+      }
+    }
+  ]
+}

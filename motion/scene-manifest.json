@@ -600,6 +600,51 @@
       "concepts": ["finite state machine", "Moore machine", "state diagram", "sequential logic", "state transition", "pattern detector"],
       "subject_id": "ade",
       "chapter_number": 14
+    },
+    {
+      "id": "inverting-op-amp",
+      "file": "inverting-op-amp.jsx",
+      "html": "inverting-op-amp.html",
+      "spec": "inverting-op-amp.spec.json",
+      "title": "Inverting Op-Amp: Why the Gain Is a Ratio of Resistors",
+      "eyebrow": "operational amplifiers",
+      "topic": "Inverting amplifier — V_in through R1 into the V- node, feedback through Rf to the output; negative feedback drives V- to V+ (ground) so V- is a virtual ground; the same current through R1 and Rf gives V_out = -(Rf/R1) · V_in",
+      "duration": 62,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": ["operational amplifier", "inverting amplifier", "virtual ground", "negative feedback", "gain", "Ohm's law"],
+      "subject_id": "ade",
+      "chapter_number": 7
+    },
+    {
+      "id": "full-adder",
+      "file": "full-adder.jsx",
+      "html": "full-adder.html",
+      "spec": "full-adder.spec.json",
+      "title": "The Full Adder: How a Carry Ripples Through a Chain",
+      "eyebrow": "combinational logic",
+      "topic": "Full adder — three inputs A, B, C_in and two outputs Sum, C_out; built from two half-adders and an OR gate; chained N times to add two N-bit numbers, with the carry rippling from least to most significant bit",
+      "duration": 70,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": ["full adder", "half adder", "XOR", "AND", "OR", "carry", "ripple carry", "combinational logic"],
+      "subject_id": "ade",
+      "chapter_number": 11
+    },
+    {
+      "id": "twos-complement",
+      "file": "twos-complement.jsx",
+      "html": "twos-complement.html",
+      "spec": "twos-complement.spec.json",
+      "title": "Two's Complement: Flip the Bits, Add One",
+      "eyebrow": "number systems",
+      "topic": "Two's complement — to represent the negative of an N-bit number, invert every bit and add one; the same adder hardware then does subtraction, and the leading bit acts as the sign",
+      "duration": 65,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": ["two's complement", "binary representation", "signed integer", "bit inversion", "sign bit", "number wheel"],
+      "subject_id": "ade",
+      "chapter_number": 9
     }
   ]
 }

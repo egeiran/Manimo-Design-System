@@ -1,0 +1,103 @@
+{
+  "id": "inverting-op-amp",
+  "title": "Inverting Op-Amp: Why the Gain Is a Ratio of Resistors",
+  "eyebrow": "operational amplifiers",
+  "language": "en",
+  "duration": 62,
+  "topic": "Inverting amplifier — V_in through R1 into the V- node, feedback through Rf to the output; negative feedback drives V- to the V+ (ground) voltage so V- is a virtual ground; the same current through R1 and Rf gives V_out = -(Rf/R1) · V_in",
+  "subject_id": "ade",
+  "chapter_number": 7,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.78,
+      "narration": "An op-amp with one resistor in, one resistor in the feedback — what does that do to a signal?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "Two resistors, one op-amp — where does V_out land?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "circuitDiagram",
+      "start": 6.78,
+      "end": 17.21,
+      "narration": "Send V in through R one into the inverting input. Tie a feedback resistor R f from the output back to the same node. The non-inverting input is grounded.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Op-amp triangle body, point right", "delay": 0.2, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Minus on V- input, plus on V+ input", "delay": 0.6, "color": "var(--chalk-200)" },
+          { "type": "svg-path", "content": "R1 zigzag, horizontal, from V_in to V- node", "delay": 1.0, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "V_in label at left, R1 label above zigzag", "delay": 1.4, "color": "var(--chalk-200)" },
+          { "type": "svg-path", "content": "Feedback loop from output up, left, down to V- node, Rf zigzag along the top", "delay": 2.0, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Rf label above feedback zigzag", "delay": 2.6, "color": "var(--chalk-200)" },
+          { "type": "svg-path", "content": "V+ tied to ground (ground triangle below)", "delay": 3.0, "color": "var(--chalk-300)" },
+          { "type": "svg-path", "content": "Output wire to the right with V_out label", "delay": 3.4, "color": "var(--chalk-200)" }
+        ]
+      }
+    },
+    {
+      "id": "virtualShort",
+      "start": 17.21,
+      "end": 29.44,
+      "narration": "The op-amp drives its output until V minus equals V plus. V plus sits at ground, so V minus is forced to zero volts — a virtual ground that the wire never actually touches.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Same diagram but reduced opacity; V- node highlighted with a pulsing ring", "delay": 0.3, "color": "var(--rose-400)" },
+          { "type": "svg-label", "content": "V- = 0 V (virtual ground) annotation pointing at the V- node", "delay": 1.0, "color": "var(--rose-300)" },
+          { "type": "text-caption", "content": "negative feedback locks V- to V+ — and V+ is ground", "delay": 2.6, "color": "var(--chalk-200)", "position": "below diagram, serif italic" },
+          { "type": "text-formula", "content": "V- = V+ = 0", "delay": 4.0, "color": "var(--amber-300)", "position": "centre, large serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "currentFormula",
+      "start": 29.44,
+      "end": 44.08,
+      "narration": "The same current flows through R one and R f, so V out equals minus R f over R one times V in. Push V in up by one volt, output drops by R f over R one volts.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-formula", "content": "I = V_in / R1", "delay": 0.3, "color": "var(--chalk-200)", "position": "left of chain" },
+          { "type": "text-formula", "content": "V_out = -I · Rf", "delay": 1.2, "color": "var(--chalk-200)", "position": "centre of chain" },
+          { "type": "text-formula", "content": "V_out = -(Rf/R1) · V_in", "delay": 2.4, "color": "var(--amber-300)", "position": "centre, large amber payoff" },
+          { "type": "text-caption", "content": "the gain is just the ratio of two resistors", "delay": 4.2, "color": "var(--chalk-300)", "position": "below the payoff, sans 14" }
+        ]
+      }
+    },
+    {
+      "id": "ioSweep",
+      "start": 44.08,
+      "end": 53,
+      "narration": "Sweep V in as a slow sine. V out is the same sine, flipped upside down and scaled by the resistor ratio.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "graph-axes", "content": "Time-axis scope, two horizontal lanes — V_in on top, V_out on bottom", "delay": 0.3, "color": "var(--chalk-300)" },
+          { "type": "graph-curve", "content": "V_in sine traces left-to-right, modest amplitude", "delay": 0.8, "color": "var(--chalk-100)" },
+          { "type": "graph-curve", "content": "V_out sine traces synchronously, inverted and larger amplitude", "delay": 0.8, "color": "var(--amber-300)" },
+          { "type": "graph-marker", "content": "Vertical time cursor sweeps with the traces", "delay": 0.8, "color": "var(--amber-300)" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 53,
+      "end": 62,
+      "narration": "Negative feedback locks the inverting input to ground. The gain is the resistor ratio, and the sign is flipped.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-formula", "content": "V_out = -(Rf/R1) · V_in", "delay": 0.3, "color": "var(--amber-300)", "position": "centre, large serif italic amber" },
+          { "type": "text-caption", "content": "two resistors set the gain. the minus sign is the inversion.", "delay": 1.6, "color": "var(--chalk-100)", "position": "below, serif italic" }
+        ]
+      }
+    }
+  ]
+}

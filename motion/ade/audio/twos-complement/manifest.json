@@ -1,0 +1,36 @@
+{
+  "sceneId": "twos-complement",
+  "mode": "mistral",
+  "engine": "mistral",
+  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
+  "model": "voxtral-mini-tts-2603",
+  "audio": "audio/twos-complement/scene.mp3",
+  "durationSec": 64.01,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "How do you write a negative number in a fixed-width register, without a separate minus-sign wire?"
+    },
+    {
+      "id": "unsigned",
+      "audioStart": 7.86,
+      "narration": "Start with unsigned: four bits, weights eight, four, two, one. 0 1 0 1 is four plus one, which is five."
+    },
+    {
+      "id": "flipAndAdd",
+      "audioStart": 16.64,
+      "narration": "To negate the number, first flip every bit — 0 1 0 1 becomes 1 0 1 0. Then add one. The plus one ripples through the low bit, landing at 1 0 1 1. That bit pattern is the two's complement of five: it represents minus five."
+    },
+    {
+      "id": "counter",
+      "audioStart": 35.38,
+      "narration": "Tick a four-bit counter from zero up through fifteen. Read each pattern two ways — the same bits mean a different decimal under signed and unsigned interpretations. After binary 0 1 1 1 — that is plus seven — the next pattern 1 0 0 0 is minus eight in two's complement, and the counter has rolled all the way around."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 56.31,
+      "narration": "Flip the bits, add one. The leading bit becomes the sign — and the same adder hardware now does subtraction for free."
+    }
+  ]
+}

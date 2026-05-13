@@ -1,0 +1,83 @@
+{
+  "id": "twos-complement",
+  "title": "Two's Complement: Flip the Bits, Add One",
+  "eyebrow": "number systems",
+  "language": "en",
+  "duration": 65,
+  "topic": "Two's complement — to represent the negative of an N-bit number, invert every bit and add one; the same adder hardware then does subtraction, and the leading bit acts as the sign",
+  "subject_id": "ade",
+  "chapter_number": 9,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.86,
+      "narration": "How do you write a negative number in a fixed-width register, without a separate minus-sign wire?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "Four bits, one register — where does the minus sign go?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "unsigned",
+      "start": 7.86,
+      "end": 16.64,
+      "narration": "Start with unsigned: four bits, weights eight, four, two, one. 0 1 0 1 is four plus one, which is five.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Row of four bit boxes showing 0101 with weights 8, 4, 2, 1 above", "delay": 0.3, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Highlight the two bits set to 1, sum to 5", "delay": 1.5, "color": "var(--rose-300)" },
+          { "type": "text-formula", "content": "0101 = 4 + 1 = 5", "delay": 3.0, "color": "var(--amber-300)", "position": "below the row, serif italic large" }
+        ]
+      }
+    },
+    {
+      "id": "flipAndAdd",
+      "start": 16.64,
+      "end": 35.38,
+      "narration": "To negate the number, first flip every bit — 0 1 0 1 becomes 1 0 1 0. Then add one. The plus one ripples through the low bit, landing at 1 0 1 1. That bit pattern is the two's complement of five: it represents minus five.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "svg-path", "content": "Bit row, each bit flipping individually with a small toggle animation", "delay": 0.3, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Mid-step caption: ones' complement (not quite there)", "delay": 2.5, "color": "var(--chalk-300)" },
+          { "type": "svg-path", "content": "+1 token slides in from the right, ripples through the LSB", "delay": 4.5, "color": "var(--rose-400)" },
+          { "type": "svg-label", "content": "Final bit row 1011 with carry shown briefly", "delay": 6.5, "color": "var(--amber-300)" },
+          { "type": "text-formula", "content": "1011 = -5", "delay": 8.5, "color": "var(--amber-300)", "position": "below, large serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "counter",
+      "start": 35.38,
+      "end": 56.31,
+      "narration": "Tick a four-bit counter from zero up through fifteen. Read each pattern two ways — the same bits mean a different decimal under signed and unsigned interpretations. After binary 0 1 1 1 — that is plus seven — the next pattern 1 0 0 0 is minus eight in two's complement, and the counter has rolled all the way around.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Big bit display, decimal columns to the right: signed and unsigned", "delay": 0.3, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Counter increments through every value 0000..1111", "delay": 0.8, "color": "var(--chalk-100)" },
+          { "type": "graph-marker", "content": "Highlight the wrap point between 0111 and 1000 with a rose-coloured tick", "delay": 6.0, "color": "var(--rose-300)" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 56.31,
+      "end": 65,
+      "narration": "Flip the bits, add one. The leading bit becomes the sign — and the same adder hardware now does subtraction for free.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-formula", "content": "−x = ¬x + 1", "delay": 0.3, "color": "var(--amber-300)", "position": "centre, large serif italic" },
+          { "type": "text-caption", "content": "subtraction becomes addition with the same hardware", "delay": 1.6, "color": "var(--chalk-100)", "position": "below, serif italic" }
+        ]
+      }
+    }
+  ]
+}

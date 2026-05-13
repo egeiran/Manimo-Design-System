@@ -73,6 +73,9 @@ const initialScenes = [
   { id: 'live-thevenin',        kind: 'live', kindLabel: 'Live', cardTitle: "Thévenin's Theorem",                   duration: 44, html: '../../motion/ade/thevenin-equivalent.html' },
   { id: 'live-low-pass-bode',   kind: 'live', kindLabel: 'Live', cardTitle: 'RC Low-Pass Filter',                   duration: 48, html: '../../motion/ade/low-pass-bode.html' },
   { id: 'live-fsm',             kind: 'live', kindLabel: 'Live', cardTitle: 'Finite State Machines',                duration: 39, html: '../../motion/ade/finite-state-machine.html' },
+  { id: 'live-inv-opamp',       kind: 'live', kindLabel: 'Live', cardTitle: 'Inverting Op-Amp',                     duration: 62, html: '../../motion/ade/inverting-op-amp.html' },
+  { id: 'live-full-adder',      kind: 'live', kindLabel: 'Live', cardTitle: 'The Full Adder',                       duration: 70, html: '../../motion/ade/full-adder.html' },
+  { id: 'live-twos-complement', kind: 'live', kindLabel: 'Live', cardTitle: "Two's Complement",                     duration: 65, html: '../../motion/ade/twos-complement.html' },
 ];
 
 function loadJSON(key, fallback) {

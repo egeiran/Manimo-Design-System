@@ -1,0 +1,41 @@
+{
+  "sceneId": "full-adder",
+  "mode": "mistral",
+  "engine": "mistral",
+  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
+  "model": "voxtral-mini-tts-2603",
+  "audio": "audio/full-adder/scene.mp3",
+  "durationSec": 69.13,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Adding two bits is easy — but a carry can spread through every column. How does it actually move?"
+    },
+    {
+      "id": "halfAdder",
+      "audioStart": 5.42,
+      "narration": "A half adder takes two bits A and B and produces a sum bit, X O R, and a carry bit, A N D. Good for one column, but it can't accept an incoming carry from the column below."
+    },
+    {
+      "id": "fullAdderStructure",
+      "audioStart": 17.27,
+      "narration": "Stack two half adders. The first takes A and B; the second adds C in to that partial sum. An O R gate merges the two carry signals into C out."
+    },
+    {
+      "id": "propagation",
+      "audioStart": 27.36,
+      "narration": "Set A and B to one, and C in to one. The first X O R fires, then the second X O R fires, and finally the O R gate raises C out. Sum lands at one, C out lands at one — one plus one plus one equals binary one one."
+    },
+    {
+      "id": "ripple",
+      "audioStart": 46.91,
+      "narration": "Chain four of them and you add two four-bit numbers. The carry from each column has to settle before the next column can finish — that's why the rightmost adder fires first, then the next, and so on."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 59.64,
+      "narration": "Each column is local. The carry chain is global — and that is what makes ripple-carry addition slow for wide numbers."
+    }
+  ]
+}

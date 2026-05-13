@@ -1,0 +1,41 @@
+{
+  "sceneId": "inverting-op-amp",
+  "mode": "mistral",
+  "engine": "mistral",
+  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
+  "model": "voxtral-mini-tts-2603",
+  "audio": "audio/inverting-op-amp/scene.mp3",
+  "durationSec": 61.01,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "An op-amp with one resistor in, one resistor in the feedback — what does that do to a signal?"
+    },
+    {
+      "id": "circuitDiagram",
+      "audioStart": 6.78,
+      "narration": "Send V in through R one into the inverting input. Tie a feedback resistor R f from the output back to the same node. The non-inverting input is grounded."
+    },
+    {
+      "id": "virtualShort",
+      "audioStart": 17.21,
+      "narration": "The op-amp drives its output until V minus equals V plus. V plus sits at ground, so V minus is forced to zero volts — a virtual ground that the wire never actually touches."
+    },
+    {
+      "id": "currentFormula",
+      "audioStart": 29.44,
+      "narration": "The same current flows through R one and R f, so V out equals minus R f over R one times V in. Push V in up by one volt, output drops by R f over R one volts."
+    },
+    {
+      "id": "ioSweep",
+      "audioStart": 44.08,
+      "narration": "Sweep V in as a slow sine. V out is the same sine, flipped upside down and scaled by the resistor ratio."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 53,
+      "narration": "Negative feedback locks the inverting input to ground. The gain is the resistor ratio, and the sign is flipped."
+    }
+  ]
+}
