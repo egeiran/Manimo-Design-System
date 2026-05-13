@@ -479,7 +479,7 @@
       "prerequisites": [],
       "concepts": ["voltage divider", "series resistors", "Ohm's law", "Kirchhoff voltage law", "circuit analysis"],
       "subject_id": "ade",
-      "chapter_number": 2
+      "chapter_number": 1
     },
     {
       "id": "half-wave-rectifier",
@@ -494,7 +494,7 @@
       "prerequisites": [],
       "concepts": ["diode", "rectifier", "forward bias", "reverse bias", "half-wave", "AC to DC"],
       "subject_id": "ade",
-      "chapter_number": 6
+      "chapter_number": 4
     },
     {
       "id": "d-flip-flop",
@@ -509,7 +509,7 @@
       "prerequisites": [],
       "concepts": ["D flip-flop", "edge-triggered", "rising edge", "clock", "sequential logic", "register"],
       "subject_id": "ade",
-      "chapter_number": 13
+      "chapter_number": 7
     },
     {
       "id": "kirchhoff-voltage-law",
@@ -539,7 +539,7 @@
       "prerequisites": [],
       "concepts": ["phasor", "AC analysis", "complex plane", "sinusoid", "phase difference", "angular frequency"],
       "subject_id": "ade",
-      "chapter_number": 4
+      "chapter_number": 8
     },
     {
       "id": "karnaugh-map",
@@ -554,7 +554,7 @@
       "prerequisites": [],
       "concepts": ["Karnaugh map", "Boolean minimization", "Gray code", "sum of products", "logic simplification", "minterm"],
       "subject_id": "ade",
-      "chapter_number": 12
+      "chapter_number": 10
     },
     {
       "id": "thevenin-equivalent",
@@ -569,7 +569,7 @@
       "prerequisites": ["voltage-divider", "kirchhoff-voltage-law"],
       "concepts": ["Thévenin's theorem", "equivalent circuit", "open-circuit voltage", "equivalent resistance", "linear network", "circuit reduction"],
       "subject_id": "ade",
-      "chapter_number": 2
+      "chapter_number": 3
     },
     {
       "id": "low-pass-bode",
@@ -584,7 +584,7 @@
       "prerequisites": ["voltage-divider", "phasor-rotation"],
       "concepts": ["low-pass filter", "Bode plot", "cutoff frequency", "transfer function", "frequency response", "decibels", "RC filter"],
       "subject_id": "ade",
-      "chapter_number": 5
+      "chapter_number": 8
     },
     {
       "id": "finite-state-machine",
@@ -599,7 +599,7 @@
       "prerequisites": ["d-flip-flop"],
       "concepts": ["finite state machine", "Moore machine", "state diagram", "sequential logic", "state transition", "pattern detector"],
       "subject_id": "ade",
-      "chapter_number": 14
+      "chapter_number": 10
     }
   ]
 }

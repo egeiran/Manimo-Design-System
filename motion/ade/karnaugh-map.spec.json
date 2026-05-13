@@ -6,7 +6,7 @@
   "duration": 39,
   "topic": "Karnaugh map minimization — a 3-variable function laid out on a 2x4 grid in Gray-code order; adjacent ones grouped into power-of-two rectangles collapse to the simplest sum-of-products form, beating algebra at its own game",
   "subject_id": "ade",
-  "chapter_number": 12,
+  "chapter_number": 10,
   "prerequisites": [],
   "beats": [
     {
