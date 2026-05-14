@@ -600,6 +600,51 @@
       "concepts": ["finite state machine", "Moore machine", "state diagram", "sequential logic", "state transition", "pattern detector"],
       "subject_id": "ade",
       "chapter_number": 10
+    },
+    {
+      "id": "capacitor-energy",
+      "file": "capacitor-energy.jsx",
+      "html": "capacitor-energy.html",
+      "spec": "capacitor-energy.spec.json",
+      "title": "Energy in a Capacitor: Why It's One Half C V Squared",
+      "eyebrow": "energy and power",
+      "topic": "Energy stored in a capacitor — pushing charge against a rising voltage; the work integral ∫V dq from 0 to Q traces a triangle of area ½QV, giving the three equivalent forms ½CV², ½QV and Q²/(2C)",
+      "duration": 48,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": ["capacitor", "energy storage", "electric field", "work integral", "½CV²"],
+      "subject_id": "ade",
+      "chapter_number": 2
+    },
+    {
+      "id": "nand-universality",
+      "file": "nand-universality.jsx",
+      "html": "nand-universality.html",
+      "spec": "nand-universality.spec.json",
+      "title": "NAND is Universal: One Gate Builds Them All",
+      "eyebrow": "digital logic",
+      "topic": "NAND universality — NOT, AND, and every Boolean function can be built from NAND gates alone; tying inputs together makes a NOT, chaining a NAND into a NOT makes an AND, signals propagate through the cascade with the truth table updating in real time",
+      "duration": 42,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": ["NAND gate", "functional completeness", "Boolean algebra", "De Morgan", "logic gate", "universal gate"],
+      "subject_id": "ade",
+      "chapter_number": 5
+    },
+    {
+      "id": "inverting-op-amp",
+      "file": "inverting-op-amp.jsx",
+      "html": "inverting-op-amp.html",
+      "spec": "inverting-op-amp.spec.json",
+      "title": "Inverting Op-Amp: The Virtual Short Does the Algebra",
+      "eyebrow": "operational amplifiers",
+      "topic": "Inverting op-amp — V+ grounded, V− driven to a virtual ground by feedback, KCL at the summing junction gives V_out = −(R_f/R_in)·V_in; the op-amp's own gain never enters the answer because the feedback loop forces V− to match V+",
+      "duration": 56,
+      "language": "en",
+      "prerequisites": ["voltage-divider", "kirchhoff-voltage-law"],
+      "concepts": ["operational amplifier", "inverting amplifier", "virtual short", "virtual ground", "feedback", "Kirchhoff current law"],
+      "subject_id": "ade",
+      "chapter_number": 9
     }
   ]
 }

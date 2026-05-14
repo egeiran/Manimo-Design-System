@@ -1,0 +1,88 @@
+{
+  "id": "inverting-op-amp",
+  "title": "Inverting Op-Amp: The Virtual Short Does the Algebra",
+  "eyebrow": "operational amplifiers",
+  "language": "en",
+  "duration": 56,
+  "topic": "Inverting op-amp — V+ grounded, V− driven to a virtual ground by feedback, KCL at the summing junction gives V_out = −(R_f/R_in)·V_in; the op-amp's own gain never enters the answer because the feedback loop forces V− to match V+",
+  "subject_id": "ade",
+  "chapter_number": 9,
+  "prerequisites": ["voltage-divider", "kirchhoff-voltage-law"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.65,
+      "narration": "An op-amp gain is enormous and not well controlled — yet you can build a precise amplifier from one. How?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "Sloppy gain, precise amplifier — how?", "delay": 0.7, "color": "var(--chalk-100)", "position": "next to Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "configuration",
+      "start": 7.65,
+      "end": 20.12,
+      "narration": "Here's the inverting configuration. V plus sits at ground. The input drives V minus through R in, and R f closes a loop from the output back to V minus.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Op-amp triangle with V−, V+, V_out pins", "delay": 0.0, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "V+ pin tied to ground symbol", "delay": 0.6, "color": "var(--chalk-200)" },
+          { "type": "svg-path", "content": "V_in source on the left going through R_in into V−", "delay": 1.2, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "R_f feedback resistor from V_out back to V−", "delay": 1.8, "color": "var(--rose-400)" },
+          { "type": "svg-label", "content": "Pin labels: V−, V+, V_out, R_in, R_f, V_in", "delay": 2.4, "color": "var(--chalk-100)" },
+          { "type": "text-caption", "content": "input through R_in, feedback through R_f — that's the whole story", "delay": 6.6, "color": "var(--chalk-300)", "position": "below the diagram" }
+        ]
+      }
+    },
+    {
+      "id": "virtualShort",
+      "start": 20.12,
+      "end": 34.25,
+      "narration": "Because the gain is huge, the op-amp will adjust V out by whatever amount it takes to drag V minus back to the same voltage as V plus — which is ground. V minus is a virtual ground.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-formula", "content": "V+ = 0", "delay": 0.2, "color": "var(--chalk-200)", "position": "top label on diagram" },
+          { "type": "svg-label", "content": "Glowing pulse on V− showing feedback driving it to 0", "delay": 0.8, "color": "var(--amber-300)" },
+          { "type": "text-formula", "content": "V− ≈ V+ = 0  (virtual ground)", "delay": 1.6, "color": "var(--amber-300)", "position": "centre, large amber payoff" },
+          { "type": "text-caption", "content": "feedback drags V_minus to V_plus — no current goes into the op-amp itself", "delay": 4.6, "color": "var(--chalk-300)", "position": "below formula" }
+        ]
+      }
+    },
+    {
+      "id": "kclResult",
+      "start": 34.25,
+      "end": 49.18,
+      "narration": "Apply Kirchhoff's current law at V minus. The current arriving from V in equals the current leaving towards V out. Solve, and the output is minus R f over R in times the input.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Flowing current dots through R_in (into V−) and R_f (out to V_out)", "delay": 0.4, "color": "var(--rose-400)" },
+          { "type": "text-formula", "content": "V_in / R_in = −V_out / R_f", "delay": 2.4, "color": "var(--chalk-100)", "position": "centre" },
+          { "type": "text-formula", "content": "V_out = −(R_f / R_in) · V_in", "delay": 4.0, "color": "var(--amber-300)", "position": "centre, large amber payoff" },
+          { "type": "text-caption", "content": "two resistors set the gain — the op-amp itself doesn't appear", "delay": 8.0, "color": "var(--chalk-300)", "position": "below formula" }
+        ]
+      }
+    },
+    {
+      "id": "sweepDemo",
+      "start": 49.18,
+      "end": 56,
+      "narration": "Sweep the input — the output moves opposite, scaled by the resistor ratio.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "graph-axes", "content": "Time axis showing V_in (top trace) and V_out (bottom trace, inverted and scaled)", "delay": 0.0, "color": "var(--chalk-200)" },
+          { "type": "graph-curve", "content": "V_in sinusoidal in chalk; V_out a mirror of V_in scaled by R_f/R_in in amber", "delay": 0.4, "color": "var(--amber-400)" },
+          { "type": "text-formula", "content": "gain = −R_f / R_in", "delay": 4.0, "color": "var(--amber-300)", "position": "right of graph" },
+          { "type": "text-caption", "content": "flip the sign, scale by the ratio — and the op-amp's huge gain never appears", "delay": 6.0, "color": "var(--chalk-300)", "position": "below graph" }
+        ]
+      }
+    }
+  ]
+}

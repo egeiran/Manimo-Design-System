@@ -1,0 +1,87 @@
+{
+  "id": "nand-universality",
+  "title": "NAND is Universal: One Gate Builds Them All",
+  "eyebrow": "digital logic",
+  "language": "en",
+  "duration": 42,
+  "topic": "NAND universality — NOT, AND, and every Boolean function can be built from NAND gates alone; tying inputs together makes a NOT, chaining a NAND into a NOT makes an AND, signals propagate through the cascade with the truth table updating in real time",
+  "subject_id": "ade",
+  "chapter_number": 5,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.65,
+      "narration": "Of all the gates, just one is enough to build every digital circuit you'll ever see — which one, and why?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "One gate to build them all — but which?", "delay": 0.7, "color": "var(--chalk-100)", "position": "next to Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "nandSymbol",
+      "start": 6.65,
+      "end": 14.69,
+      "narration": "The NAND gate. Output is one — except when both inputs are one, in which case it drops to zero.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "NAND gate symbol — AND body with output bubble", "delay": 0.0, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Input pin labels A, B and output pin Y", "delay": 0.8, "color": "var(--chalk-100)" },
+          { "type": "text-formula", "content": "Y = NOT (A AND B)", "delay": 1.6, "color": "var(--chalk-200)", "position": "below gate" },
+          { "type": "graph-axes", "content": "Truth table grid — four rows: 00→1, 01→1, 10→1, 11→0", "delay": 2.4, "color": "var(--chalk-200)" },
+          { "type": "text-caption", "content": "all ones — until both inputs are one", "delay": 6.6, "color": "var(--chalk-300)", "position": "below table, sans 14" }
+        ]
+      }
+    },
+    {
+      "id": "notFromNand",
+      "start": 14.69,
+      "end": 24.08,
+      "narration": "Tie both inputs together. Now A NAND A is the same as not A — and just like that, you have an inverter.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "NAND with both inputs shorted to a single A wire", "delay": 0.0, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "A signal toggling 0 → 1 → 0 → 1 with Y inverting in sync", "delay": 1.4, "color": "var(--rose-400)" },
+          { "type": "text-formula", "content": "A · A = A → Y = NOT A", "delay": 4.0, "color": "var(--amber-300)", "position": "below cascade" },
+          { "type": "text-caption", "content": "one gate, a wire — that's a NOT", "delay": 6.4, "color": "var(--chalk-300)", "position": "below formula" }
+        ]
+      }
+    },
+    {
+      "id": "andFromNand",
+      "start": 24.08,
+      "end": 34.03,
+      "narration": "Feed a NAND into a NOT — also built from a NAND — and the two negations cancel. The result is plain AND. Watch the inputs cycle through every combination.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "First NAND on A,B feeds a second NAND with shorted inputs (the inverter)", "delay": 0.0, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Animated A, B inputs cycling 00, 01, 10, 11 every ~2 s", "delay": 1.0, "color": "var(--rose-400)" },
+          { "type": "graph-axes", "content": "Live truth table — row matching the current (A, B) glows", "delay": 1.0, "color": "var(--chalk-200)" },
+          { "type": "text-formula", "content": "NOT (A NAND B) = A AND B", "delay": 4.0, "color": "var(--amber-300)", "position": "below the cascade" },
+          { "type": "text-caption", "content": "two NANDs in series — AND falls out", "delay": 8.0, "color": "var(--chalk-300)", "position": "below the formula" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 34.03,
+      "end": 42,
+      "narration": "OR follows by De Morgan, and from NOT, AND, and OR you can build any Boolean expression. NAND on its own is functionally complete.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-formula", "content": "A + B = NOT (NOT A · NOT B)", "delay": 0.3, "color": "var(--chalk-200)", "position": "centre, serif italic" },
+          { "type": "text-caption", "content": "NOT, AND, OR — every Boolean function — from NAND alone.", "delay": 1.6, "color": "var(--chalk-100)", "position": "below the formula" },
+          { "type": "text-caption", "content": "(it's why a single transistor cell can build a whole CPU)", "delay": 3.2, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}
