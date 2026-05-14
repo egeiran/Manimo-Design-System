@@ -1,0 +1,36 @@
+{
+  "sceneId": "nand-universality",
+  "mode": "mistral",
+  "engine": "mistral",
+  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
+  "model": "voxtral-mini-tts-2603",
+  "audio": "audio/nand-universality/scene.mp3",
+  "durationSec": 41.01,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Of all the gates, just one is enough to build every digital circuit you'll ever see — which one, and why?"
+    },
+    {
+      "id": "nandSymbol",
+      "audioStart": 6.65,
+      "narration": "The NAND gate. Output is one — except when both inputs are one, in which case it drops to zero."
+    },
+    {
+      "id": "notFromNand",
+      "audioStart": 14.69,
+      "narration": "Tie both inputs together. Now A NAND A is the same as not A — and just like that, you have an inverter."
+    },
+    {
+      "id": "andFromNand",
+      "audioStart": 24.08,
+      "narration": "Feed a NAND into a NOT — also built from a NAND — and the two negations cancel. The result is plain AND. Watch the inputs cycle through every combination."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 34.03,
+      "narration": "OR follows by De Morgan, and from NOT, AND, and OR you can build any Boolean expression. NAND on its own is functionally complete."
+    }
+  ]
+}

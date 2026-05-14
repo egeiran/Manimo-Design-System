@@ -524,8 +524,8 @@ function EquivalentBeat() {
         ex: 60, ey: 420, ew: 500, eh: 320,
         fontMain: 18 }
     : { vbW: 1100, vbH: 480,
-        ox: 50, oy: 30, ow: 480, oh: 420,
-        ex: 580, ey: 30, ew: 480, eh: 420,
+        ox: 30, oy: 30, ow: 440, oh: 420,
+        ex: 630, ey: 30, ew: 440, eh: 420,
         fontMain: 18 };
 
   // Shared phase for both loops — locked I_L animation.

@@ -1,0 +1,36 @@
+{
+  "sceneId": "capacitor-energy",
+  "mode": "mistral",
+  "engine": "mistral",
+  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
+  "model": "voxtral-mini-tts-2603",
+  "audio": "audio/capacitor-energy/scene.mp3",
+  "durationSec": 47.39,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "You push charge onto a capacitor — where does the energy actually go?"
+    },
+    {
+      "id": "pushingCharge",
+      "audioStart": 6.86,
+      "narration": "Adding charge raises the voltage. The next little bit of charge has to be pushed against an already higher voltage — so the work piles up."
+    },
+    {
+      "id": "triangleIntegral",
+      "audioStart": 13.54,
+      "narration": "Plot voltage against charge — a straight line from zero up to V. The total work is the area under that line, a triangle with area one half Q V."
+    },
+    {
+      "id": "threeForms",
+      "audioStart": 23.44,
+      "narration": "Substitute Q equals C V and you get one half C V squared. Substitute V equals Q over C and you get Q squared over two C. Same energy, three shapes."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 38.37,
+      "narration": "The energy lives in the electric field between the plates — it stays there until something gives it somewhere to go."
+    }
+  ]
+}

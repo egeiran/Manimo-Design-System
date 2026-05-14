@@ -73,6 +73,9 @@ const initialScenes = [
   { id: 'live-thevenin',        kind: 'live', kindLabel: 'Live', cardTitle: "Thévenin's Theorem",                   duration: 44, html: '../../motion/ade/thevenin-equivalent.html' },
   { id: 'live-low-pass-bode',   kind: 'live', kindLabel: 'Live', cardTitle: 'RC Low-Pass Filter',                   duration: 48, html: '../../motion/ade/low-pass-bode.html' },
   { id: 'live-fsm',             kind: 'live', kindLabel: 'Live', cardTitle: 'Finite State Machines',                duration: 39, html: '../../motion/ade/finite-state-machine.html' },
+  { id: 'live-cap-energy',      kind: 'live', kindLabel: 'Live', cardTitle: 'Energy in a Capacitor',                duration: 48, html: '../../motion/ade/capacitor-energy.html' },
+  { id: 'live-nand-universal',  kind: 'live', kindLabel: 'Live', cardTitle: 'NAND is Universal',                    duration: 42, html: '../../motion/ade/nand-universality.html' },
+  { id: 'live-inv-opamp',       kind: 'live', kindLabel: 'Live', cardTitle: 'Inverting Op-Amp',                     duration: 56, html: '../../motion/ade/inverting-op-amp.html' },
 ];
 
 function loadJSON(key, fallback) {
