@@ -1,0 +1,36 @@
+{
+  "sceneId": "multivariable-limit-paths",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/multivariable-limit-paths/scene.mp3",
+  "durationSec": 56.01,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "In one variable, a limit just has to agree from the left and from the right. In two variables, every direction has a vote."
+    },
+    {
+      "id": "introduceF",
+      "audioStart": 8.08,
+      "narration": "Consider f of x comma y, equal to x y plus y cubed, divided by x squared plus y squared. The denominator goes to zero at the origin. Does f have a limit there?"
+    },
+    {
+      "id": "pathXAxis",
+      "audioStart": 20.48,
+      "narration": "Walk in along the x-axis. Set y to zero. Then f reduces to x times zero plus zero, divided by x squared. That is zero. The limit along this path is zero."
+    },
+    {
+      "id": "pathDiagonal",
+      "audioStart": 33.26,
+      "narration": "Now walk in along the diagonal where y equals x. Substitute: the numerator becomes x squared plus x cubed; the denominator is two x squared. As x goes to zero, the ratio approaches one half. The limit along this path is one half."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 50.06,
+      "narration": "Two different answers along two different paths. So the two variable limit at the origin does not exist."
+    }
+  ]
+}

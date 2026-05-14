@@ -1,0 +1,80 @@
+{
+  "id": "best-approximation",
+  "subject_id": "mat2b",
+  "chapter_number": 3,
+  "week": 7,
+  "title": "Best Approximation: The Perpendicular Wins",
+  "eyebrow": "projection · approximation",
+  "language": "en",
+  "duration": 35,
+  "topic": "Best approximation theorem — the closest point in a subspace to a given vector is its orthogonal projection. We illustrate with a point above a line: dropping a perpendicular hits the foot uniquely, and any other candidate on the line is strictly farther by the Pythagorean inequality.",
+  "concepts": [
+    "best approximation",
+    "orthogonal projection",
+    "subspace",
+    "Pythagoras",
+    "minimum distance"
+  ],
+  "pairs_with": [
+    "chapter_concepts: beste approksimasjon",
+    "chapter_concepts: projeksjon"
+  ],
+  "prerequisites": ["projection-onto-line", "gram-schmidt-2d-then-3d"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.45,
+      "narration": "What point on a line is closest to a point off the line? Find out.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "manimo-enter", "content": "Manimo bobs centre", "delay": 0 },
+        { "type": "text-caption", "content": "Hook caption", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo" }
+      ]}
+    },
+    {
+      "id": "setup",
+      "start": 4.45,
+      "end": 9.45,
+      "narration": "Here's a point u sitting off a line L. We want the closest point on L to u.",
+      "visuals": { "layout": "left-diagram + right-panel", "elements": [
+        { "type": "svg-line", "content": "Line L in chalk-200", "delay": 0.0, "color": "var(--chalk-200)" },
+        { "type": "svg-point", "content": "Point u rose, above the line", "delay": 0.6, "color": "var(--rose-400)" },
+        { "type": "text-caption", "content": "Find the closest point on L to u.", "delay": 2.0, "color": "var(--chalk-100)", "position": "right" }
+      ]}
+    },
+    {
+      "id": "candidates",
+      "start": 9.45,
+      "end": 17.87,
+      "narration": "Try any other point on L — measure the distance. As we slide along the line, the distance changes, but it never beats the perpendicular drop.",
+      "visuals": { "layout": "left-diagram + right-panel", "elements": [
+        { "type": "svg-point-moving", "content": "Candidate point sliding along L in teal", "delay": 0.0, "color": "var(--teal-400)" },
+        { "type": "svg-line", "content": "Distance line from u to candidate", "delay": 0.3, "color": "var(--teal-400)" },
+        { "type": "text-readout", "content": "live distance reading", "delay": 1.0, "color": "var(--teal-400)", "position": "right" }
+      ]}
+    },
+    {
+      "id": "perpendicular",
+      "start": 17.87,
+      "end": 25.86,
+      "narration": "Drop a perpendicular from u straight down onto L. That foot, p, is the projection — and it is the unique closest point.",
+      "visuals": { "layout": "left-diagram + right-panel", "elements": [
+        { "type": "svg-path", "content": "Perpendicular drop from u to foot p", "delay": 0.4, "color": "var(--amber-400)" },
+        { "type": "svg-point", "content": "Foot p emerald", "delay": 1.0, "color": "var(--emerald-400)" },
+        { "type": "svg-mark", "content": "Right-angle marker at p", "delay": 1.6, "color": "var(--emerald-400)" },
+        { "type": "text-formula", "content": "‖u − p‖ ≤ ‖u − q‖ for every q on L", "delay": 2.4, "color": "var(--chalk-100)", "position": "right" }
+      ]}
+    },
+    {
+      "id": "heroOutro",
+      "start": 25.86,
+      "end": 35.0,
+      "narration": "The closest point in any subspace to a vector outside it is the orthogonal projection. That's the best approximation theorem.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "text-eyebrow", "content": "'BEST APPROXIMATION'", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
+        { "type": "text-hero", "content": "'Closest = perpendicular.'", "delay": 0.35, "color": "var(--chalk-100)", "position": "centre" },
+        { "type": "text-caption", "content": "The projection is uniquely optimal.", "delay": 1.4, "color": "var(--chalk-200)", "position": "below hero" }
+      ]}
+    }
+  ]
+}

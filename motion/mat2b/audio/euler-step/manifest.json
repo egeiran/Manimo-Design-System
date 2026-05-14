@@ -1,0 +1,36 @@
+{
+  "sceneId": "euler-step",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/euler-step/scene.mp3",
+  "durationSec": 39.24,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "How do you draw a curve when you only know its slope at every point? Walk it."
+    },
+    {
+      "id": "slopeField",
+      "audioStart": 4.8,
+      "narration": "Here is a slope field for y prime equals f of t comma y. At every grid point a little tangent shows which way the solution heads."
+    },
+    {
+      "id": "smallStep",
+      "audioStart": 13.67,
+      "narration": "Pick a starting point. Step forward by a small amount h, following the tangent. From the new spot, read the new tangent, and step again."
+    },
+    {
+      "id": "bigStep",
+      "audioStart": 23.05,
+      "narration": "Make h bigger and the polyline starts to drift away from the true curve. The error fan opens because each tangent only knows the starting point of its step."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 32.43,
+      "narration": "Euler's method trades exact for explicit. Smaller steps follow truer curves — at the cost of doing more work."
+    }
+  ]
+}

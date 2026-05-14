@@ -1,0 +1,94 @@
+{
+  "id": "diagonalisation-eigenaxes",
+  "subject_id": "mat2b",
+  "chapter_number": 4,
+  "week": 8,
+  "title": "Diagonalisation: Eigenvectors as Natural Axes",
+  "eyebrow": "diagonalisation",
+  "language": "en",
+  "duration": 39,
+  "topic": "A 2×2 matrix maps the unit circle to an ellipse. The two directions that stretch without rotating are the eigenvectors; their stretch factors are the eigenvalues. In the eigenbasis A is diagonal: A = P D P⁻¹.",
+  "concepts": [
+    "eigenvalue",
+    "eigenvector",
+    "diagonalisation",
+    "change of basis",
+    "ellipse",
+    "natural axes"
+  ],
+  "pairs_with": [
+    "chapter_concepts: diagonalisering",
+    "chapter_concepts: egenverdi",
+    "chapter_concepts: egenvektor",
+    "chapter_formulas: Diagonalisering A = PDP⁻¹"
+  ],
+  "prerequisites": ["linear-transformation-grid", "basis-change-grid"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.63,
+      "narration": "Apply a matrix to every point on the unit circle. What comes out?",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "manimo-enter", "content": "Manimo bobs in centre", "delay": 0 },
+        { "type": "text-caption", "content": "A circle, a matrix, an ellipse — and two stubborn axes.", "delay": 0.7, "color": "var(--chalk-100)" }
+      ]}
+    },
+    {
+      "id": "setupCircle",
+      "start": 4.63,
+      "end": 11.34,
+      "narration": "Start with the unit circle, and pick a matrix — say A equals two, one, one, two.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "svg-grid", "content": "Reference grid + axes, vignette-masked", "delay": 0.0, "color": "var(--chalk-300)" },
+        { "type": "svg-circle", "content": "Unit circle radius 1 in amber, persistent", "delay": 1.0, "color": "var(--amber-400)" },
+        { "type": "svg-points", "content": "12-24 sample points on the unit circle in amber-400", "delay": 1.4, "color": "var(--amber-300)" },
+        { "type": "text-formula", "content": "Matrix card 'A = [[2,1],[1,2]]' violet/teal columns, on backdrop panel", "delay": 3.0, "color": "var(--chalk-100)", "position": "right panel" }
+      ]}
+    },
+    {
+      "id": "applyMorph",
+      "start": 11.34,
+      "end": 17.87,
+      "narration": "Send every point through A. The circle becomes an ellipse. Most directions tilt as they stretch.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "svg-morph", "content": "Animated morph: each sample point moves from unit-circle position p to Ap, tracing the deformation in ~2-3s", "delay": 0.6, "color": "var(--amber-400)" },
+        { "type": "svg-shape", "content": "Resulting ellipse, semi-major 3 along (1,1)/√2, semi-minor 1 along (1,-1)/√2, dashed amber-300 outline", "delay": 3.4, "color": "var(--amber-300)" },
+        { "type": "text-caption", "content": "'circle → ellipse' caption", "delay": 4.5, "color": "var(--chalk-200)", "position": "right panel" }
+      ]}
+    },
+    {
+      "id": "revealEigen",
+      "start": 17.87,
+      "end": 28.38,
+      "narration": "But two directions are stubborn — they only stretch, they don't rotate. These are the eigenvectors, and their stretch factors are the eigenvalues lambda one and lambda two.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "svg-vector", "content": "Eigenvector v₁ = (1,1)/√2 violet, with shadow showing where (1,1) lands after A: at λ₁·(1,1)/√2 = 3 × that direction", "delay": 0.4, "color": "var(--violet-400)" },
+        { "type": "svg-vector", "content": "Eigenvector v₂ = (1,-1)/√2 teal — fixed (λ₂ = 1, vector unchanged)", "delay": 1.4, "color": "var(--teal-400)" },
+        { "type": "svg-line", "content": "Two long dashed lines along the eigenvector directions — the natural axes", "delay": 2.4, "color": "var(--amber-300)" },
+        { "type": "text-formula", "content": "Eigenvalue panel: 'λ₁ = 3 (violet) · λ₂ = 1 (teal)' on backdrop", "delay": 3.6, "color": "var(--chalk-100)", "position": "right panel" }
+      ]}
+    },
+    {
+      "id": "diagonalise",
+      "start": 28.38,
+      "end": 35.43,
+      "narration": "Use them as a new basis. In those coordinates, A is just diagonal — pure stretching along the axes.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "text-hero-formula", "content": "Centred 'A = P D P⁻¹' decomposition with P, D = diag(3,1), P⁻¹ panels — D in violet/teal columns", "delay": 0.3, "color": "var(--chalk-100)" },
+        { "type": "text-caption", "content": "'change basis → stretch → change back' subtitle", "delay": 2.4, "color": "var(--chalk-200)" }
+      ]}
+    },
+    {
+      "id": "heroOutro",
+      "start": 35.43,
+      "end": 39,
+      "narration": "Hard problems become easy in the right basis.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "text-eyebrow", "content": "'the takeaway' mono eyebrow", "delay": 0.0, "color": "var(--amber-300)" },
+        { "type": "text-hero", "content": "'Eigenvectors are the natural axes.' huge serif italic, 'natural axes' in amber-300", "delay": 0.35, "color": "var(--chalk-100)" },
+        { "type": "text-caption", "content": "'A acts diagonally in its own coordinates.' subtitle", "delay": 1.4, "color": "var(--chalk-200)" }
+      ]}
+    }
+  ]
+}

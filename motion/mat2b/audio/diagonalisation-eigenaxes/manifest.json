@@ -1,0 +1,41 @@
+{
+  "sceneId": "diagonalisation-eigenaxes",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/diagonalisation-eigenaxes/scene.mp3",
+  "durationSec": 38.08,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Apply a matrix to every point on the unit circle. What comes out?"
+    },
+    {
+      "id": "setupCircle",
+      "audioStart": 4.63,
+      "narration": "Start with the unit circle, and pick a matrix — say A equals two, one, one, two."
+    },
+    {
+      "id": "applyMorph",
+      "audioStart": 11.34,
+      "narration": "Send every point through A. The circle becomes an ellipse. Most directions tilt as they stretch."
+    },
+    {
+      "id": "revealEigen",
+      "audioStart": 17.87,
+      "narration": "But two directions are stubborn — they only stretch, they don't rotate. These are the eigenvectors, and their stretch factors are the eigenvalues lambda one and lambda two."
+    },
+    {
+      "id": "diagonalise",
+      "audioStart": 28.38,
+      "narration": "Use them as a new basis. In those coordinates, A is just diagonal — pure stretching along the axes."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 35.43,
+      "narration": "Hard problems become easy in the right basis."
+    }
+  ]
+}

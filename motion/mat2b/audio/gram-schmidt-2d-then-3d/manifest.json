@@ -1,0 +1,46 @@
+{
+  "sceneId": "gram-schmidt-2d-then-3d",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/gram-schmidt-2d-then-3d/scene.mp3",
+  "durationSec": 48.95,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Two vectors that aren't perpendicular. Can we straighten them out?"
+    },
+    {
+      "id": "setup",
+      "audioStart": 3.8,
+      "narration": "Start with two vectors, v one and v two. They span a plane, but they aren't at right angles. Gram-Schmidt fixes that."
+    },
+    {
+      "id": "keepFirst",
+      "audioStart": 12.13,
+      "narration": "Keep the first one as the new direction u one. We will measure everything else against it."
+    },
+    {
+      "id": "subtractProjection",
+      "audioStart": 17.46,
+      "narration": "Project v two onto u one. Subtract that shadow from v two. What's left points exactly perpendicular to u one — call it u two."
+    },
+    {
+      "id": "normalise",
+      "audioStart": 27.25,
+      "narration": "Now scale each one to unit length. The result is an orthonormal pair — perpendicular and length one."
+    },
+    {
+      "id": "extend3D",
+      "audioStart": 34.27,
+      "narration": "Same recipe in three dimensions. Take a third vector, subtract its projection onto each of the first two, normalise, and you have an orthonormal triple."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 44.57,
+      "narration": "Gram-Schmidt in one line: keep what's new, subtract what's already there."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "sceneId": "hesse-eigenvalues",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/hesse-eigenvalues/scene.mp3",
+  "durationSec": 50.57,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "The Hesse matrix is symmetric, so it has a hidden pair of perpendicular axes. Those are where the curvature really lives."
+    },
+    {
+      "id": "principalAxes",
+      "audioStart": 7.81,
+      "narration": "Take a tilted bowl. Its contours are tilted ellipses. Find the two perpendicular directions whose principal axes match the ellipse. Those are the eigenvectors of the Hesse matrix."
+    },
+    {
+      "id": "diagonalForm",
+      "audioStart": 20.4,
+      "narration": "Rotate into that frame, and the Hesse matrix becomes diagonal — its two eigenvalues sitting on the diagonal. Those are the curvatures along the principal axes."
+    },
+    {
+      "id": "classify",
+      "audioStart": 31.14,
+      "narration": "The signs of the eigenvalues classify the point. Both positive — bowl. Both negative — dome. One of each — saddle. The discriminant just tracks the product, lambda one times lambda two."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 44.7,
+      "narration": "Same algebra as chapter four — diagonalise the matrix and let its eigenvalues do the talking."
+    }
+  ]
+}

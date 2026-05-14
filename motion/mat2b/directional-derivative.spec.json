@@ -1,0 +1,101 @@
+{
+  "id": "directional-derivative",
+  "subject_id": "mat2b",
+  "chapter_number": 5,
+  "week": 12,
+  "title": "Directional Derivative: A Tilted Slice",
+  "eyebrow": "directional derivatives",
+  "language": "en",
+  "duration": 48,
+  "topic": "Directional derivative as the slope of a vertical slice. Pick a point on a surface z = f(x, y) and a unit direction u; the plane through that point parallel to u cuts the surface along a curve whose slope at the point is the directional derivative. Algebraically it equals the dot product of the gradient with u.",
+  "concepts": [
+    "directional derivative",
+    "gradient",
+    "unit direction",
+    "partial derivative",
+    "level curves",
+    "dot product"
+  ],
+  "pairs_with": [
+    "chapter_concepts: retningsderivert",
+    "chapter_concepts: gradient",
+    "chapter_formulas: D_u f"
+  ],
+  "prerequisites": ["gradient-and-level-curves"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.43,
+      "narration": "How fast does a hill climb if you walk it not east, not north, but at an angle? That's the directional derivative.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs centre with caption 'A tilted slope.'", "delay": 0, "color": "var(--chalk-100)" }
+        ]
+      }
+    },
+    {
+      "id": "surface",
+      "start": 7.43,
+      "end": 19.54,
+      "narration": "Here is a surface, z equals f of x comma y. At any point we already know two slopes — the partial derivatives — one along the x axis, one along the y axis.",
+      "visuals": {
+        "layout": "left",
+        "elements": [
+          { "type": "svg-contours", "content": "Contour plot of a bowl-shaped surface in chalk-300, mild paraboloid centred near origin", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "svg-axes", "content": "Axes in chalk-200 through the contour origin", "delay": 0.2, "color": "var(--chalk-200)" },
+          { "type": "svg-vector", "content": "x-axis partial-derivative arrow at point P, short, violet-400", "delay": 4.0, "color": "var(--violet-400)" },
+          { "type": "svg-vector", "content": "y-axis partial-derivative arrow at point P, short, teal-400", "delay": 5.5, "color": "var(--teal-400)" },
+          { "type": "text-formula", "content": "Right panel: 'partial derivatives' eyebrow + f sub x + f sub y annotations on backdrop", "delay": 1.5, "color": "var(--chalk-100)", "position": "right panel" }
+        ]
+      }
+    },
+    {
+      "id": "direction",
+      "start": 19.54,
+      "end": 29.54,
+      "narration": "Now pick any unit direction u. Walk a tiny step from the point in direction u. The slope of the surface along that step is the directional derivative.",
+      "visuals": {
+        "layout": "left",
+        "elements": [
+          { "type": "svg-contours", "content": "Same contour plot remains", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "svg-vector", "content": "Faint partials remain in background, opacity 0.3", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "svg-vector", "content": "Unit vector u at point P, amber-400, longer arrow, labelled u", "delay": 0.4, "color": "var(--amber-400)" },
+          { "type": "svg-tangent-line", "content": "Dashed line through P along u — the slice trace on the contour plot", "delay": 2.0, "color": "var(--amber-400)" },
+          { "type": "text-formula", "content": "Right panel: 'a slice along u' eyebrow + 'the slope of the cut' caption on backdrop", "delay": 1.0, "color": "var(--chalk-100)", "position": "right panel" }
+        ]
+      }
+    },
+    {
+      "id": "formula",
+      "start": 29.54,
+      "end": 40.71,
+      "narration": "The shortcut: take the gradient of f at the point, then dot it with u. The directional derivative of f in direction u equals the gradient of f dotted with u.",
+      "visuals": {
+        "layout": "left",
+        "elements": [
+          { "type": "svg-contours", "content": "Same contour plot remains, faded", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "svg-vector", "content": "Gradient arrow at P, perpendicular to contours, rose-400, labelled grad f", "delay": 0.4, "color": "var(--rose-400)" },
+          { "type": "svg-vector", "content": "Unit vector u remains in amber-400", "delay": 0.0, "color": "var(--amber-400)" },
+          { "type": "svg-angle-arc", "content": "Small angle arc between grad f and u in chalk-200", "delay": 1.5, "color": "var(--chalk-200)" },
+          { "type": "text-formula", "content": "Right panel: 'D u f = grad f dot u' eyebrow + big serif formula + footnote 'project the gradient onto the direction'", "delay": 1.0, "color": "var(--chalk-100)", "position": "right panel" }
+        ]
+      }
+    },
+    {
+      "id": "heroOutro",
+      "start": 40.71,
+      "end": 48,
+      "narration": "So every direction has its own slope, and the gradient is the one direction where that slope is largest.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-eyebrow", "content": "'THE TAKEAWAY' mono eyebrow", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
+          { "type": "text-hero", "content": "'One gradient, every direction.' — serif italic 56px, 'every direction' in amber-300", "delay": 0.35, "color": "var(--chalk-100)", "position": "centre" },
+          { "type": "text-caption", "content": "'D u f equals grad f dot u — the slope along u.' — serif italic 26px", "delay": 1.4, "color": "var(--chalk-200)", "position": "centre, below hero" }
+        ]
+      }
+    }
+  ]
+}

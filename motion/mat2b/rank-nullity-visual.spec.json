@@ -1,0 +1,90 @@
+{
+  "id": "rank-nullity-visual",
+  "subject_id": "mat2b",
+  "chapter_number": 2,
+  "week": 4,
+  "title": "Rank, Nullity, and a Squashed Plane",
+  "eyebrow": "linear transformations",
+  "language": "en",
+  "duration": 39,
+  "topic": "Rank-nullity by example — a singular 2×2 matrix squashes the whole plane down to a line. The image is that surviving line (rank one); the kernel is the direction that collapsed onto the origin (nullity one). Their dimensions add up to the dimension of the domain.",
+  "concepts": [
+    "rank",
+    "nullity",
+    "kernel",
+    "image",
+    "rank-nullity theorem",
+    "singular matrix"
+  ],
+  "pairs_with": [
+    "chapter_concepts: kjerne",
+    "chapter_concepts: rang",
+    "chapter_concepts: rangteorem"
+  ],
+  "prerequisites": ["linear-transformation-grid"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.54,
+      "narration": "What happens when a matrix has nowhere to go? Watch the plane collapse.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "manimo-enter", "content": "Manimo bobs centre-screen", "delay": 0 },
+        { "type": "text-caption", "content": "Hook caption serif italic", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo" }
+      ]}
+    },
+    {
+      "id": "setup",
+      "start": 4.54,
+      "end": 13.08,
+      "narration": "Here is the standard grid, the basis vectors e one and e two, and a singular matrix A whose two columns point the same way.",
+      "visuals": { "layout": "left-grid + right-panel", "elements": [
+        { "type": "svg-grid", "content": "Identity grid in chalk-300", "delay": 0.0, "color": "var(--chalk-300)" },
+        { "type": "svg-axes", "content": "Axes in chalk-200", "delay": 0.2, "color": "var(--chalk-200)" },
+        { "type": "svg-vector", "content": "e₁ violet", "delay": 0.6, "color": "var(--violet-400)" },
+        { "type": "svg-vector", "content": "e₂ teal", "delay": 0.9, "color": "var(--teal-400)" },
+        { "type": "matrix-panel", "content": "A = [[2, 1],[2, 1]] eyebrow 'singular A'", "delay": 1.6, "color": "var(--chalk-100)", "position": "right" }
+      ]}
+    },
+    {
+      "id": "collapse",
+      "start": 13.08,
+      "end": 21.29,
+      "narration": "Apply A. The whole grid squashes down onto one line — the image of A. That single line is its rank one range.",
+      "visuals": { "layout": "left-grid + right-panel", "elements": [
+        { "type": "svg-grid", "content": "Identity grid in chalk-300 faint", "delay": 0.0, "color": "var(--chalk-300)" },
+        { "type": "svg-axes", "content": "Axes in chalk-200", "delay": 0.0, "color": "var(--chalk-200)" },
+        { "type": "svg-grid-morph", "content": "Transformed grid morphs from identity to rank-1 line collage in amber-400", "delay": 0.3, "color": "var(--amber-400)" },
+        { "type": "svg-vector", "content": "A·e₁ violet lands on the image line", "delay": 1.0, "color": "var(--violet-400)" },
+        { "type": "svg-vector", "content": "A·e₂ teal lands on the same line", "delay": 1.0, "color": "var(--teal-400)" },
+        { "type": "svg-path", "content": "Emerald glow line: the image of A", "delay": 3.6, "color": "var(--emerald-400)" },
+        { "type": "text-caption", "content": "IMAGE — dim 1", "delay": 4.4, "color": "var(--emerald-400)", "position": "right panel" }
+      ]}
+    },
+    {
+      "id": "kernel",
+      "start": 21.29,
+      "end": 29.39,
+      "narration": "Some non-zero vectors land exactly on the origin. Those make up the kernel — a one-dimensional line collapsed away by A.",
+      "visuals": { "layout": "left-grid + right-panel", "elements": [
+        { "type": "svg-grid", "content": "Identity grid faint chalk-300", "delay": 0.0, "color": "var(--chalk-300)" },
+        { "type": "svg-axes", "content": "Axes chalk-200", "delay": 0.0, "color": "var(--chalk-200)" },
+        { "type": "svg-grid-collapsed", "content": "Final amber line image still showing", "delay": 0.0, "color": "var(--amber-400)" },
+        { "type": "svg-path", "content": "Rose-coloured dashed line: the kernel direction in input space", "delay": 0.5, "color": "var(--rose-400)" },
+        { "type": "svg-vector", "content": "A kernel vector v_k shown rose", "delay": 1.0, "color": "var(--rose-400)" },
+        { "type": "text-caption", "content": "KERNEL — dim 1", "delay": 2.0, "color": "var(--rose-400)", "position": "right panel" }
+      ]}
+    },
+    {
+      "id": "heroOutro",
+      "start": 29.39,
+      "end": 39.0,
+      "narration": "Rank plus nullity equals the dimension of the input. One direction survives, one direction dies — together they account for the whole plane.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "text-eyebrow", "content": "'THE RANK-NULLITY THEOREM'", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
+        { "type": "text-hero", "content": "'rank + nullity = dim(domain)'", "delay": 0.35, "color": "var(--chalk-100)", "position": "centre" },
+        { "type": "text-caption", "content": "1 + 1 = 2 — one survives, one dies", "delay": 1.4, "color": "var(--chalk-200)", "position": "below hero" }
+      ]}
+    }
+  ]
+}

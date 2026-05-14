@@ -1,0 +1,78 @@
+{
+  "id": "gradient-and-level-curves",
+  "subject_id": "mat2b",
+  "chapter_number": 5,
+  "week": 12,
+  "title": "Gradient and Level Curves: Perpendicular by Design",
+  "eyebrow": "gradient · directional derivative",
+  "language": "en",
+  "duration": 49,
+  "topic": "On a contour plot of a function of two variables, the gradient arrow at every point is perpendicular to the level curve through that point. The gradient points in the direction of steepest ascent; its length is the rate of steepest ascent.",
+  "concepts": [
+    "gradient",
+    "level curve",
+    "contour plot",
+    "directional derivative",
+    "steepest ascent"
+  ],
+  "pairs_with": [
+    "chapter_concepts: gradient",
+    "chapter_concepts: nivåkurve",
+    "chapter_concepts: retningsderiverte"
+  ],
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.97,
+      "narration": "If a hill is drawn as a map of level curves, which way is straight uphill? The gradient knows.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "manimo-enter", "content": "Manimo bobs centre", "delay": 0 },
+        { "type": "text-caption", "content": "Hook caption: which way is uphill?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo" }
+      ]}
+    },
+    {
+      "id": "contourPlot",
+      "start": 5.97,
+      "end": 15.06,
+      "narration": "Here are the level curves of f. Each ring connects all points where f has the same value. Tight rings mean the function is climbing fast.",
+      "visuals": { "layout": "diagram + side panel", "elements": [
+        { "type": "svg-curve", "content": "Concentric level curves of a saddle-shaped function in chalk-300", "delay": 0.3, "color": "var(--chalk-300)" },
+        { "type": "text-caption", "content": "Tight contours, steep climb.", "delay": 2.6, "color": "var(--chalk-100)", "position": "right" }
+      ]}
+    },
+    {
+      "id": "gradientArrows",
+      "start": 15.06,
+      "end": 26.99,
+      "narration": "At every chosen point, plant the gradient — the vector of partial derivatives. Watch: each arrow crosses its level curve at a right angle. The gradient points in the direction of steepest ascent.",
+      "visuals": { "layout": "diagram + side panel", "elements": [
+        { "type": "svg-arrow", "content": "Gradient arrows at several sample points in amber, each perpendicular to its contour", "delay": 0.4, "color": "var(--amber-400)" },
+        { "type": "text-formula", "content": "∇f = (f_x, f_y)", "delay": 2.4, "color": "var(--chalk-100)", "position": "right" },
+        { "type": "text-caption", "content": "Right-angle crossings — steepest ascent.", "delay": 4.0, "color": "var(--chalk-200)", "position": "right" }
+      ]}
+    },
+    {
+      "id": "directionalDeriv",
+      "start": 26.99,
+      "end": 39.62,
+      "narration": "The slope you feel in any direction u is the gradient dotted with u. Walk perpendicular to the gradient — along the level curve — and the slope is zero. The function is locally flat in that direction.",
+      "visuals": { "layout": "diagram + side panel", "elements": [
+        { "type": "svg-arrow", "content": "Gradient + tangent-to-level-curve at one point", "delay": 0.4, "color": "var(--amber-400)" },
+        { "type": "text-formula", "content": "D_u f = ∇f · u", "delay": 2.0, "color": "var(--chalk-100)", "position": "right" }
+      ]}
+    },
+    {
+      "id": "heroOutro",
+      "start": 39.62,
+      "end": 49,
+      "narration": "Gradient perpendicular to level set. Length equals the rate of steepest ascent. One vector, three pieces of information.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "text-eyebrow", "content": "'THE GRADIENT'", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
+        { "type": "text-hero", "content": "'Perpendicular to the level set. Steepest ascent.'", "delay": 0.35, "color": "var(--chalk-100)", "position": "centre" },
+        { "type": "text-caption", "content": "Direction and magnitude in one arrow.", "delay": 1.4, "color": "var(--chalk-200)", "position": "below hero" }
+      ]}
+    }
+  ]
+}

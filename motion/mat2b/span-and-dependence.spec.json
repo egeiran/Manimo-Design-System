@@ -1,0 +1,85 @@
+{
+  "id": "span-and-dependence",
+  "subject_id": "mat2b",
+  "chapter_number": 1,
+  "week": 2,
+  "title": "Span and Linear Dependence",
+  "eyebrow": "vector spaces",
+  "language": "en",
+  "duration": 39,
+  "topic": "Span and linear dependence — two arrows fill a parallelogram (their span); a third coplanar arrow is dependent and adds nothing; an off-plane arrow lifts the span into all of R³, which is linear independence.",
+  "concepts": [
+    "span",
+    "linear combination",
+    "linear dependence",
+    "linear independence",
+    "parallelogram",
+    "R^n"
+  ],
+  "pairs_with": [
+    "chapter_concepts: spenn",
+    "chapter_concepts: lineær uavhengighet",
+    "chapter_formulas: Spenn"
+  ],
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 2.58,
+      "narration": "How much space do a few arrows give you?",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+        { "type": "text-caption", "content": "Hook caption next to Manimo", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo" }
+      ]}
+    },
+    {
+      "id": "spanTwo",
+      "start": 2.58,
+      "end": 13.18,
+      "narration": "Two arrows, v one and v two. Every combination of them — every a v one plus b v two — fills this whole parallelogram. We call that the span.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "svg-grid", "content": "Identity grid + axes", "delay": 0.0, "color": "var(--chalk-300)" },
+        { "type": "svg-vector", "content": "v₁ violet", "delay": 0.6, "color": "var(--violet-400)" },
+        { "type": "svg-vector", "content": "v₂ teal", "delay": 1.4, "color": "var(--teal-400)" },
+        { "type": "svg-polygon", "content": "Parallelogram fills with amber + dashed completion edges", "delay": 3.0, "color": "var(--amber-400)" },
+        { "type": "text-formula", "content": "'span(v₁, v₂) = { a v₁ + b v₂ }' on right panel", "delay": 4.5, "color": "var(--chalk-100)", "position": "right panel, backdrop" }
+      ]}
+    },
+    {
+      "id": "depThird",
+      "start": 13.18,
+      "end": 22.95,
+      "narration": "Now drop in a third arrow that lies flat inside the parallelogram. It's just a combination of the first two — linearly dependent. The span doesn't grow at all.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "svg-vector", "content": "v₃ rose appears inside parallelogram", "delay": 0.5, "color": "var(--rose-400)" },
+        { "type": "svg-path", "content": "Decomposition guides showing v₃ = c₁ v₁ + c₂ v₂", "delay": 2.5, "color": "var(--chalk-300)" },
+        { "type": "text-formula", "content": "Equation 'v₃ = 0.8 v₁ + 0.65 v₂' panel", "delay": 4.0, "color": "var(--chalk-100)", "position": "right panel, backdrop" },
+        { "type": "text-caption", "content": "'linearly dependent — span unchanged' tag", "delay": 7.0, "color": "var(--rose-300)", "position": "centre-bottom" }
+      ]}
+    },
+    {
+      "id": "independentEscape",
+      "start": 22.95,
+      "end": 32.57,
+      "narration": "But swap in an arrow that lifts off the plane. Suddenly the span isn't a patch anymore — it fills the whole three dimensional space. That's linear independence.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "svg-projection", "content": "Switch to oblique-projection axes (x right, z back/up-right, y up). Floor parallelogram (v₁, v₂) tilts into perspective.", "delay": 0.0, "color": "var(--chalk-200)" },
+        { "type": "svg-vector", "content": "v₃ rises vertically out of plane (rose → amber-300 emphasis)", "delay": 2.0, "color": "var(--amber-300)" },
+        { "type": "svg-polygon", "content": "Parallelepiped wireframe emerges from sweep of floor along v₃", "delay": 3.5, "color": "var(--amber-400)" },
+        { "type": "text-caption", "content": "'linearly independent — span fills space' panel", "delay": 5.5, "color": "var(--chalk-100)", "position": "right panel, backdrop" }
+      ]}
+    },
+    {
+      "id": "heroOutro",
+      "start": 32.57,
+      "end": 39,
+      "narration": "Span is your reach. Dependent vectors don't add to it. Independent ones do.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "text-eyebrow", "content": "'THE TAKEAWAY' mono eyebrow", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
+        { "type": "text-hero", "content": "'Span is your reach.' — huge serif italic", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre" },
+        { "type": "text-caption", "content": "Two-line subtext on dependence vs independence", "delay": 1.4, "color": "var(--chalk-200)", "position": "below hero" }
+      ]}
+    }
+  ]
+}

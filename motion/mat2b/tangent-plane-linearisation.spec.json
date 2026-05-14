@@ -1,0 +1,95 @@
+{
+  "id": "tangent-plane-linearisation",
+  "subject_id": "mat2b",
+  "chapter_number": 5,
+  "week": 13,
+  "title": "Linearisation: The Tangent Plane Snaps On",
+  "eyebrow": "linearisation",
+  "language": "en",
+  "duration": 42,
+  "topic": "Linear approximation of a surface near a point. Around a point (a, b) the surface z = f(x, y) is well-approximated by the tangent plane L(x, y) = f(a, b) + f_x(a, b)(x - a) + f_y(a, b)(y - b). Up close the plane and the surface become indistinguishable — that's what differentiability means.",
+  "concepts": [
+    "linearisation",
+    "tangent plane",
+    "differentiability",
+    "partial derivative",
+    "local approximation"
+  ],
+  "pairs_with": [
+    "chapter_concepts: linearisering",
+    "chapter_concepts: tangentplan",
+    "chapter_formulas: Linearisering"
+  ],
+  "prerequisites": ["directional-derivative"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.36,
+      "narration": "Up close, every smooth surface looks flat. Linearisation is the rule that turns that picture into a formula.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs centre, caption 'Up close, flat.'", "delay": 0, "color": "var(--chalk-100)" }
+        ]
+      }
+    },
+    {
+      "id": "curveAndTangent",
+      "start": 7.36,
+      "end": 16.77,
+      "narration": "Take a single variable picture first. A curve, and a point on it. The tangent line at that point matches both the value and the slope of the curve.",
+      "visuals": {
+        "layout": "left",
+        "elements": [
+          { "type": "svg-curve", "content": "Smooth curve y = f(x), violet-400, drawn on chalk-300 axes", "delay": 0.0, "color": "var(--violet-400)" },
+          { "type": "svg-point", "content": "Marked point P = (a, f(a)) on the curve, chalk-100 dot", "delay": 2.5, "color": "var(--chalk-100)" },
+          { "type": "svg-tangent", "content": "Tangent line at P, amber-400, drawn through the marked point", "delay": 4.0, "color": "var(--amber-400)" },
+          { "type": "text-formula", "content": "Right panel: 'one-variable case' eyebrow + L(x) = f(a) + f'(a)(x - a) + caption 'value and slope match at P'", "delay": 1.0, "color": "var(--chalk-100)", "position": "right panel" }
+        ]
+      }
+    },
+    {
+      "id": "zoom",
+      "start": 16.77,
+      "end": 26.31,
+      "narration": "Zoom in on the point. The curve and the tangent line drift apart only at second order, so for any small step they trace nearly the same height.",
+      "visuals": {
+        "layout": "left",
+        "elements": [
+          { "type": "svg-curve", "content": "Same curve and tangent — now drawn on a zoomed window around P, gap between them shrinks to nothing", "delay": 0.0, "color": "var(--violet-400)" },
+          { "type": "svg-zoom-frame", "content": "A faint rose-400 bracket marks the local window", "delay": 0.5, "color": "var(--rose-400)" },
+          { "type": "text-formula", "content": "Right panel: 'zoom in' eyebrow + 'they share value, slope — they disagree only at the second order' caption", "delay": 0.8, "color": "var(--chalk-100)", "position": "right panel" }
+        ]
+      }
+    },
+    {
+      "id": "twoVariable",
+      "start": 26.31,
+      "end": 35.68,
+      "narration": "The two variable version reads the same. Match the value, match the x slope, match the y slope. That's the equation of the tangent plane.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-eyebrow", "content": "'two variables — same idea' mono eyebrow centred top", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
+          { "type": "text-formula", "content": "Big serif formula: L(x, y) = f(a, b) + f_x(a, b)(x - a) + f_y(a, b)(y - b) with f_x in violet, f_y in teal, f(a,b) in chalk-100", "delay": 0.4, "color": "var(--chalk-100)", "position": "centre" },
+          { "type": "text-caption", "content": "Footnote 'value, x-slope, y-slope — all three locked in.'", "delay": 2.4, "color": "var(--chalk-200)", "position": "centre, below formula" }
+        ]
+      }
+    },
+    {
+      "id": "heroOutro",
+      "start": 35.68,
+      "end": 42,
+      "narration": "Differentiability, in one sentence: the surface is well approximated by a plane.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-eyebrow", "content": "'THE TAKEAWAY' mono eyebrow", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
+          { "type": "text-hero", "content": "'Smooth means flat at the point.' — serif italic 54px, 'flat' in amber-300", "delay": 0.35, "color": "var(--chalk-100)", "position": "centre" },
+          { "type": "text-caption", "content": "'The tangent plane is the surface's best linear copy.' — serif italic 26px", "delay": 1.4, "color": "var(--chalk-200)", "position": "centre, below hero" }
+        ]
+      }
+    }
+  ]
+}

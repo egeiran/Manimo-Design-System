@@ -1,0 +1,126 @@
+{
+  "id": "global-extrema-triangle",
+  "subject_id": "mat2b",
+  "chapter_number": 6,
+  "week": 16,
+  "title": "Global Extrema on a Triangle",
+  "eyebrow": "extrema · closed region",
+  "language": "en",
+  "duration": 52,
+  "topic": "Finding the global minimum and maximum of f(x, y) = x² + y² − xy + x + y on the triangular region x ≤ 0, y ≤ 0, x + y ≥ −3. The extreme-value theorem guarantees both extrema exist; they live among three kinds of candidate points: interior critical points (one at (-1, -1)), points where the gradient is parallel to a boundary edge (one per edge), and corners. Compare all seven candidates and the smallest and largest values are the answers. Plenum 6 problem 3 — the highest-leverage exam workout in chapter 6.",
+  "concepts": [
+    "global extrema",
+    "extreme value theorem",
+    "closed bounded region",
+    "critical point",
+    "boundary search",
+    "candidate comparison"
+  ],
+  "pairs_with": [
+    "chapter_concepts: ekstremalpunkter",
+    "chapter_concepts: ekstremalverdisetningen",
+    "quiz_pool: plenum-6-3"
+  ],
+  "prerequisites": ["hessian-test"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.5,
+      "narration": "A continuous function on a closed bounded region always has a global minimum and a global maximum. The trick is finding them — and there are only three places they can hide.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs centre, caption 'Interior. Edges. Corners.'", "delay": 0, "color": "var(--chalk-100)" }
+        ]
+      }
+    },
+    {
+      "id": "setup",
+      "start": 4.5,
+      "end": 13.0,
+      "narration": "Here's the region: the triangle with x at most zero, y at most zero, and x plus y at least minus three. Inside that triangle we want the smallest and largest values of f of x comma y equals x squared plus y squared minus x y plus x plus y.",
+      "visuals": {
+        "layout": "left",
+        "elements": [
+          { "type": "svg-axes", "content": "x and y axes in chalk-200", "delay": 0.0, "color": "var(--chalk-200)" },
+          { "type": "svg-triangle", "content": "Filled triangle with vertices (0,0), (-3,0), (0,-3) — chalk-300 stroke + amber-400 low-opacity fill", "delay": 0.5, "color": "var(--amber-400)" },
+          { "type": "svg-contours", "content": "Faint contour lines of f over the triangular region", "delay": 2.5, "color": "var(--chalk-300)" },
+          { "type": "text-formula", "content": "Right panel: 'the function' eyebrow + 'f = x² + y² − xy + x + y' + 'three boundary inequalities' caption", "delay": 1.0, "color": "var(--chalk-100)", "position": "right panel" }
+        ]
+      }
+    },
+    {
+      "id": "interior",
+      "start": 13.0,
+      "end": 22.5,
+      "narration": "First place to look — interior critical points. Set the gradient to zero. That gives x equals y equals minus one, and f equals minus one. Already a strong candidate for the minimum.",
+      "visuals": {
+        "layout": "left",
+        "elements": [
+          { "type": "svg-axes", "content": "Same axes + triangle stay", "delay": 0.0, "color": "var(--chalk-200)" },
+          { "type": "svg-dot", "content": "Big emerald-400 dot at (-1, -1) labelled with f = -1", "delay": 0.8, "color": "var(--emerald-400)" },
+          { "type": "text-formula", "content": "Right panel: 'interior critical point' eyebrow + 'grad f = 0 → (-1, -1)' + 'f(-1, -1) = -1' verdict", "delay": 0.5, "color": "var(--chalk-100)", "position": "right panel" }
+        ]
+      }
+    },
+    {
+      "id": "edges",
+      "start": 22.5,
+      "end": 33.5,
+      "narration": "Second place to look — the three edges. On each edge, restrict f to a single variable function and minimise. You get three more candidate points, with values of minus a quarter, minus a quarter, and minus three quarters.",
+      "visuals": {
+        "layout": "left",
+        "elements": [
+          { "type": "svg-axes", "content": "Same axes + triangle stay", "delay": 0.0, "color": "var(--chalk-200)" },
+          { "type": "svg-dot", "content": "Dot on edge x = 0 at (0, -0.5) labelled f = -1/4 in rose-400", "delay": 0.4, "color": "var(--rose-400)" },
+          { "type": "svg-dot", "content": "Dot on edge y = 0 at (-0.5, 0) labelled f = -1/4 in rose-400", "delay": 1.8, "color": "var(--rose-400)" },
+          { "type": "svg-dot", "content": "Dot on edge x + y = -3 at (-1.5, -1.5) labelled f = -3/4 in rose-400", "delay": 3.2, "color": "var(--rose-400)" },
+          { "type": "text-formula", "content": "Right panel: 'edge minimisers' eyebrow + three sub-points + 'restrict, take one-variable derivative' caption", "delay": 0.4, "color": "var(--chalk-100)", "position": "right panel" }
+        ]
+      }
+    },
+    {
+      "id": "corners",
+      "start": 33.5,
+      "end": 43.0,
+      "narration": "Third place to look — the corners. f at the origin is zero. f at the other two corners is six and six. Big numbers — the maximum is going to live here.",
+      "visuals": {
+        "layout": "left",
+        "elements": [
+          { "type": "svg-axes", "content": "Same axes + triangle stay", "delay": 0.0, "color": "var(--chalk-200)" },
+          { "type": "svg-dot", "content": "Dot at (0, 0) labelled f = 0 in chalk-100", "delay": 0.4, "color": "var(--chalk-100)" },
+          { "type": "svg-dot", "content": "Big amber-400 dot at (-3, 0) labelled f = 6", "delay": 1.6, "color": "var(--amber-400)" },
+          { "type": "svg-dot", "content": "Big amber-400 dot at (0, -3) labelled f = 6", "delay": 3.0, "color": "var(--amber-400)" },
+          { "type": "text-formula", "content": "Right panel: 'corners' eyebrow + f values list (0, 6, 6)", "delay": 0.4, "color": "var(--chalk-100)", "position": "right panel" }
+        ]
+      }
+    },
+    {
+      "id": "compare",
+      "start": 43.0,
+      "end": 49.0,
+      "narration": "Compare the seven candidates. The smallest value is minus one at the interior critical point — that's the global minimum. The largest is six, hit at two of the corners — that's the global maximum.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-eyebrow", "content": "'compare candidates' mono eyebrow", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
+          { "type": "text-formula", "content": "Two big result cards centred: 'GLOBAL MIN  f = -1  at (-1, -1)' in emerald-400, 'GLOBAL MAX  f = 6  at (-3, 0) and (0, -3)' in amber-400", "delay": 0.4, "color": "var(--chalk-100)", "position": "centre" }
+        ]
+      }
+    },
+    {
+      "id": "heroOutro",
+      "start": 49.0,
+      "end": 52,
+      "narration": "Three places, three checks, one comparison. That's the whole recipe.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-eyebrow", "content": "'THE TAKEAWAY' mono eyebrow", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
+          { "type": "text-hero", "content": "'Interior, edges, corners.' — serif italic 48px, 'corners' in amber-300", "delay": 0.2, "color": "var(--chalk-100)", "position": "centre" }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "sceneId": "basis-change-grid",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/basis-change-grid/scene.mp3",
+  "durationSec": 34.37,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "A vector is just an arrow. The numbers we attach to it depend on the grid we measure with."
+    },
+    {
+      "id": "standardCoords",
+      "audioStart": 5.46,
+      "narration": "Set down the standard grid. Our arrow lives at coordinates one, three — one step right, three steps up."
+    },
+    {
+      "id": "overlayBasis",
+      "audioStart": 12.84,
+      "narration": "Now overlay a tilted basis — b one going up and right, b two going up and left. Same arrow, but a brand new grid to measure against."
+    },
+    {
+      "id": "newCoords",
+      "audioStart": 22.21,
+      "narration": "Solve the match up: the arrow equals two of b one plus one of b two. In the B basis, the same arrow is the column two, one."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 31.25,
+      "narration": "Same arrow. New basis. New coordinates."
+    }
+  ]
+}

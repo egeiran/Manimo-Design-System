@@ -1,0 +1,96 @@
+{
+  "id": "hessian-test",
+  "subject_id": "mat2b",
+  "chapter_number": 6,
+  "week": 15,
+  "title": "The Second-Derivative Test: A Discriminant Decides",
+  "eyebrow": "extrema · second-derivative test",
+  "language": "en",
+  "duration": 49,
+  "topic": "Classifying a critical point with the Hesse matrix. At a stationary point the first-order term vanishes, so the second-order term decides the shape: bowl, dome, or saddle. The discriminant D = f_xx · f_yy − f_xy² and the sign of f_xx read the verdict off the Hesse matrix.",
+  "concepts": [
+    "Hesse matrix",
+    "discriminant",
+    "second-derivative test",
+    "critical point",
+    "local minimum",
+    "local maximum",
+    "saddle point"
+  ],
+  "pairs_with": [
+    "chapter_concepts: Hessematrise",
+    "chapter_concepts: andrederiverttesten",
+    "chapter_formulas: Diskriminant"
+  ],
+  "prerequisites": ["tangent-plane-linearisation"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.99,
+      "narration": "When the gradient vanishes, the first order story is over. The Hesse matrix takes over and decides the shape.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs centre, caption 'Three shapes, three verdicts.'", "delay": 0, "color": "var(--chalk-100)" }
+        ]
+      }
+    },
+    {
+      "id": "bowl",
+      "start": 6.99,
+      "end": 20.32,
+      "narration": "First case. Both eigenvalues of the Hesse matrix are positive — equivalently, the discriminant is positive and f sub x x is positive. The point sits at the bottom of a bowl. A local minimum.",
+      "visuals": {
+        "layout": "left-card",
+        "elements": [
+          { "type": "svg-contours", "content": "Concentric closed elliptical contours around origin, chalk-300, drawn left of centre", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "svg-dot", "content": "Central critical point in emerald-400", "delay": 1.5, "color": "var(--emerald-400)" },
+          { "type": "matrix-panel", "content": "Right panel: 'local minimum' eyebrow (emerald-400) + Hesse matrix with f_xx, f_xy, f_xy, f_yy + 'D > 0, f_xx > 0' footnote", "delay": 1.0, "color": "var(--emerald-400)", "position": "right panel" }
+        ]
+      }
+    },
+    {
+      "id": "dome",
+      "start": 20.32,
+      "end": 31.54,
+      "narration": "Flip the signs. Both eigenvalues negative, discriminant still positive but f sub x x is negative. Now the contours close around a hilltop — a local maximum.",
+      "visuals": {
+        "layout": "left-card",
+        "elements": [
+          { "type": "svg-contours", "content": "Same elliptical contours, this time with hottest level at centre (drawn rose-400 with subtle warmth gradient)", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "svg-dot", "content": "Central critical point in rose-400", "delay": 1.5, "color": "var(--rose-400)" },
+          { "type": "matrix-panel", "content": "Right panel: 'local maximum' eyebrow (rose-400) + Hesse matrix with negative diagonal + 'D > 0, f_xx < 0' footnote", "delay": 1.0, "color": "var(--rose-400)", "position": "right panel" }
+        ]
+      }
+    },
+    {
+      "id": "saddle",
+      "start": 31.54,
+      "end": 40.22,
+      "narration": "Now mix the signs. Eigenvalues have opposite signs, so the discriminant is negative. The contours cross through the point — it's a saddle.",
+      "visuals": {
+        "layout": "left-card",
+        "elements": [
+          { "type": "svg-contours", "content": "Hyperbolic contours through origin — both axes meet at the saddle, drawn amber-400 with chalk-300 hyperbolae", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "svg-dot", "content": "Central critical point in amber-400", "delay": 1.5, "color": "var(--amber-400)" },
+          { "type": "matrix-panel", "content": "Right panel: 'saddle point' eyebrow (amber-400) + Hesse matrix with mixed signs + 'D < 0' footnote", "delay": 1.0, "color": "var(--amber-400)", "position": "right panel" }
+        ]
+      }
+    },
+    {
+      "id": "heroOutro",
+      "start": 40.22,
+      "end": 49,
+      "narration": "Two numbers read the geometry. The discriminant tells you closed or crossed; the diagonal tells you up or down.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-eyebrow", "content": "'THE TAKEAWAY' mono eyebrow", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
+          { "type": "text-hero", "content": "'Two numbers, three verdicts.' — serif italic 54px, 'three verdicts' in amber-300", "delay": 0.35, "color": "var(--chalk-100)", "position": "centre" },
+          { "type": "text-caption", "content": "'D = f_xx f_yy − f_xy²; sign of D, sign of f_xx — done.' — serif italic 24px", "delay": 1.4, "color": "var(--chalk-200)", "position": "centre, below hero" }
+        ]
+      }
+    }
+  ]
+}

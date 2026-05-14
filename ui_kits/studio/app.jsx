@@ -3,7 +3,7 @@ const { useState, useEffect, useMemo } = React;
 
 const LS_TITLE = 'manimo.studio.title';
 const LS_INDEX = 'manimo.studio.selectedIdx';
-const LS_CHAT  = 'manimo.studio.chat';
+const LS_CHAT = 'manimo.studio.chat';
 const LS_ASPECT = 'manimo.studio.aspect';
 
 // Demo conversation. Persists once the user starts editing it; until then we
@@ -36,46 +36,52 @@ const seedMessages = [
 // All scenes are live — each entry renders the real motion/*.html in an
 // iframe via PreviewCanvas. duration is seconds (matches scene-manifest.json).
 const initialScenes = [
-  { id: 'live-rc',           kind: 'live', kindLabel: 'Live', cardTitle: 'Charging a Capacitor', duration: 34, html: '../../motion/fysikk/rc-scene.html' },
-  { id: 'live-derivation',   kind: 'live', kindLabel: 'Live', cardTitle: 'Moment of Inertia',         duration: 43, html: '../../motion/fysikk/derivation-scene.html' },
-  { id: 'live-hoop-disk',    kind: 'live', kindLabel: 'Live', cardTitle: 'Hoop vs Disk',              duration: 48, html: '../../motion/fysikk/hoop-disk.html' },
-  { id: 'live-spring',       kind: 'live', kindLabel: 'Live', cardTitle: "Hooke's Law: Spring Bobs",  duration: 41, html: '../../motion/fysikk/spring-oscillation.html' },
-  { id: 'live-pendulum',     kind: 'live', kindLabel: 'Live', cardTitle: 'The Simple Pendulum',       duration: 50, html: '../../motion/fysikk/pendulum.html' },
-  { id: 'live-rlc-pendulum', kind: 'live', kindLabel: 'Live', cardTitle: 'RLC ↔ Pendulum Analogy',    duration: 48, html: '../../motion/fysikk/rlc-pendulum.html' },
-  { id: 'live-centripetal',  kind: 'live', kindLabel: 'Live', cardTitle: 'Centripetal Acceleration',  duration: 42, html: '../../motion/fysikk/centripetal-acceleration.html' },
-  { id: 'live-steiners',     kind: 'live', kindLabel: 'Live', cardTitle: "Steiner's Theorem",         duration: 55, html: '../../motion/fysikk/steiners-theorem.html' },
-  { id: 'live-damping',      kind: 'live', kindLabel: 'Live', cardTitle: 'Damped Oscillation',        duration: 46, html: '../../motion/fysikk/damped-oscillation.html' },
-  { id: 'live-coulomb',      kind: 'live', kindLabel: 'Live', cardTitle: "Coulomb's Law",             duration: 46, html: '../../motion/fysikk/coulombs-law.html' },
-  { id: 'live-torque',       kind: 'live', kindLabel: 'Live', cardTitle: 'Torque: Leverage Beats Force', duration: 45, html: '../../motion/fysikk/torque.html' },
-  { id: 'live-round-robin',  kind: 'live', kindLabel: 'Live', cardTitle: 'Round-Robin Scheduling',       duration: 53, html: '../../motion/operativsystemer/round-robin-scheduling.html' },
-  { id: 'live-addr-trans',   kind: 'live', kindLabel: 'Live', cardTitle: 'Address Translation',          duration: 51, html: '../../motion/operativsystemer/address-translation.html' },
-  { id: 'live-race',         kind: 'live', kindLabel: 'Live', cardTitle: 'Race Condition',               duration: 53, html: '../../motion/operativsystemer/race-condition.html' },
-  { id: 'live-tas-lock',     kind: 'live', kindLabel: 'Live', cardTitle: 'Test-and-Set Lock',            duration: 54, html: '../../motion/operativsystemer/test-and-set-lock.html' },
-  { id: 'live-addr-space',   kind: 'live', kindLabel: 'Live', cardTitle: 'Address Space Layout',         duration: 42, html: '../../motion/operativsystemer/address-space-layout.html' },
-  { id: 'live-inode',        kind: 'live', kindLabel: 'Live', cardTitle: 'The Inode',                    duration: 43, html: '../../motion/operativsystemer/inode-block-pointers.html' },
-  { id: 'live-sjf',          kind: 'live', kindLabel: 'Live', cardTitle: 'Shortest Job First',            duration: 46, html: '../../motion/operativsystemer/sjf-scheduling.html' },
-  { id: 'live-prod-cons',    kind: 'live', kindLabel: 'Live', cardTitle: 'Producer–Consumer',             duration: 44, html: '../../motion/operativsystemer/producer-consumer.html' },
-  { id: 'live-tlb',          kind: 'live', kindLabel: 'Live', cardTitle: 'TLB Hits and Misses',           duration: 48, html: '../../motion/operativsystemer/tlb-hit-miss.html' },
-  { id: 'live-semaphore',    kind: 'live', kindLabel: 'Live', cardTitle: 'Semaphores: A Counter Threads Wait On', duration: 45, html: '../../motion/operativsystemer/semaphore-counter.html' },
-  { id: 'live-proc-states',  kind: 'live', kindLabel: 'Live', cardTitle: 'Process States: Running, Ready, Blocked', duration: 59, html: '../../motion/operativsystemer/process-states.html' },
-  { id: 'live-poll-irq',     kind: 'live', kindLabel: 'Live', cardTitle: 'Polling vs Interrupts',                  duration: 42, html: '../../motion/operativsystemer/polling-vs-interrupt.html' },
-  { id: 'live-mlfq',         kind: 'live', kindLabel: 'Live', cardTitle: 'Multi-Level Feedback Queue',             duration: 44, html: '../../motion/operativsystemer/mlfq-scheduling.html' },
-  { id: 'live-philosophers', kind: 'live', kindLabel: 'Live', cardTitle: 'Dining Philosophers',                    duration: 53, html: '../../motion/operativsystemer/dining-philosophers.html' },
-  { id: 'live-demand-paging',kind: 'live', kindLabel: 'Live', cardTitle: 'Demand Paging',                          duration: 54, html: '../../motion/operativsystemer/demand-paging.html' },
-  { id: 'live-journaling',   kind: 'live', kindLabel: 'Live', cardTitle: 'Journaling',                             duration: 62, html: '../../motion/operativsystemer/journaling-fs.html' },
-  { id: 'live-raid',         kind: 'live', kindLabel: 'Live', cardTitle: 'RAID',                                   duration: 56, html: '../../motion/operativsystemer/raid.html' },
-  { id: 'live-voltage-divider', kind: 'live', kindLabel: 'Live', cardTitle: 'Voltage Divider',                     duration: 39, html: '../../motion/ade/voltage-divider.html' },
-  { id: 'live-half-wave',       kind: 'live', kindLabel: 'Live', cardTitle: 'Half-Wave Rectifier',                 duration: 41, html: '../../motion/ade/half-wave-rectifier.html' },
-  { id: 'live-d-flip-flop',     kind: 'live', kindLabel: 'Live', cardTitle: 'D Flip-Flop',                         duration: 38, html: '../../motion/ade/d-flip-flop.html' },
-  { id: 'live-kvl',             kind: 'live', kindLabel: 'Live', cardTitle: "Kirchhoff's Voltage Law",              duration: 40, html: '../../motion/ade/kirchhoff-voltage-law.html' },
-  { id: 'live-phasor',          kind: 'live', kindLabel: 'Live', cardTitle: 'Phasors: Rotating Arrows',             duration: 40, html: '../../motion/ade/phasor-rotation.html' },
-  { id: 'live-kmap',            kind: 'live', kindLabel: 'Live', cardTitle: 'Karnaugh Maps',                        duration: 39, html: '../../motion/ade/karnaugh-map.html' },
-  { id: 'live-thevenin',        kind: 'live', kindLabel: 'Live', cardTitle: "Thévenin's Theorem",                   duration: 44, html: '../../motion/ade/thevenin-equivalent.html' },
-  { id: 'live-low-pass-bode',   kind: 'live', kindLabel: 'Live', cardTitle: 'RC Low-Pass Filter',                   duration: 48, html: '../../motion/ade/low-pass-bode.html' },
-  { id: 'live-fsm',             kind: 'live', kindLabel: 'Live', cardTitle: 'Finite State Machines',                duration: 39, html: '../../motion/ade/finite-state-machine.html' },
-  { id: 'live-cap-energy',      kind: 'live', kindLabel: 'Live', cardTitle: 'Energy in a Capacitor',                duration: 48, html: '../../motion/ade/capacitor-energy.html' },
-  { id: 'live-nand-universal',  kind: 'live', kindLabel: 'Live', cardTitle: 'NAND is Universal',                    duration: 42, html: '../../motion/ade/nand-universality.html' },
-  { id: 'live-inv-opamp',       kind: 'live', kindLabel: 'Live', cardTitle: 'Inverting Op-Amp',                     duration: 56, html: '../../motion/ade/inverting-op-amp.html' },
+  { id: 'live-rc', kind: 'live', kindLabel: 'Live', cardTitle: 'Charging a Capacitor', duration: 34, html: '../../motion/fysikk/rc-scene.html' },
+  { id: 'live-derivation', kind: 'live', kindLabel: 'Live', cardTitle: 'Moment of Inertia', duration: 43, html: '../../motion/fysikk/derivation-scene.html' },
+  { id: 'live-hoop-disk', kind: 'live', kindLabel: 'Live', cardTitle: 'Hoop vs Disk', duration: 48, html: '../../motion/fysikk/hoop-disk.html' },
+  { id: 'live-spring', kind: 'live', kindLabel: 'Live', cardTitle: "Hooke's Law: Spring Bobs", duration: 41, html: '../../motion/fysikk/spring-oscillation.html' },
+  { id: 'live-pendulum', kind: 'live', kindLabel: 'Live', cardTitle: 'The Simple Pendulum', duration: 50, html: '../../motion/fysikk/pendulum.html' },
+  { id: 'live-rlc-pendulum', kind: 'live', kindLabel: 'Live', cardTitle: 'RLC ↔ Pendulum Analogy', duration: 48, html: '../../motion/fysikk/rlc-pendulum.html' },
+  { id: 'live-centripetal', kind: 'live', kindLabel: 'Live', cardTitle: 'Centripetal Acceleration', duration: 42, html: '../../motion/fysikk/centripetal-acceleration.html' },
+  { id: 'live-steiners', kind: 'live', kindLabel: 'Live', cardTitle: "Steiner's Theorem", duration: 55, html: '../../motion/fysikk/steiners-theorem.html' },
+  { id: 'live-damping', kind: 'live', kindLabel: 'Live', cardTitle: 'Damped Oscillation', duration: 46, html: '../../motion/fysikk/damped-oscillation.html' },
+  { id: 'live-coulomb', kind: 'live', kindLabel: 'Live', cardTitle: "Coulomb's Law", duration: 46, html: '../../motion/fysikk/coulombs-law.html' },
+  { id: 'live-torque', kind: 'live', kindLabel: 'Live', cardTitle: 'Torque: Leverage Beats Force', duration: 45, html: '../../motion/fysikk/torque.html' },
+  { id: 'live-round-robin', kind: 'live', kindLabel: 'Live', cardTitle: 'Round-Robin Scheduling', duration: 53, html: '../../motion/operativsystemer/round-robin-scheduling.html' },
+  { id: 'live-addr-trans', kind: 'live', kindLabel: 'Live', cardTitle: 'Address Translation', duration: 51, html: '../../motion/operativsystemer/address-translation.html' },
+  { id: 'live-race', kind: 'live', kindLabel: 'Live', cardTitle: 'Race Condition', duration: 53, html: '../../motion/operativsystemer/race-condition.html' },
+  { id: 'live-tas-lock', kind: 'live', kindLabel: 'Live', cardTitle: 'Test-and-Set Lock', duration: 54, html: '../../motion/operativsystemer/test-and-set-lock.html' },
+  { id: 'live-addr-space', kind: 'live', kindLabel: 'Live', cardTitle: 'Address Space Layout', duration: 42, html: '../../motion/operativsystemer/address-space-layout.html' },
+  { id: 'live-inode', kind: 'live', kindLabel: 'Live', cardTitle: 'The Inode', duration: 43, html: '../../motion/operativsystemer/inode-block-pointers.html' },
+  { id: 'live-sjf', kind: 'live', kindLabel: 'Live', cardTitle: 'Shortest Job First', duration: 46, html: '../../motion/operativsystemer/sjf-scheduling.html' },
+  { id: 'live-prod-cons', kind: 'live', kindLabel: 'Live', cardTitle: 'Producer–Consumer', duration: 44, html: '../../motion/operativsystemer/producer-consumer.html' },
+  { id: 'live-tlb', kind: 'live', kindLabel: 'Live', cardTitle: 'TLB Hits and Misses', duration: 48, html: '../../motion/operativsystemer/tlb-hit-miss.html' },
+  { id: 'live-semaphore', kind: 'live', kindLabel: 'Live', cardTitle: 'Semaphores: A Counter Threads Wait On', duration: 45, html: '../../motion/operativsystemer/semaphore-counter.html' },
+  { id: 'live-proc-states', kind: 'live', kindLabel: 'Live', cardTitle: 'Process States: Running, Ready, Blocked', duration: 59, html: '../../motion/operativsystemer/process-states.html' },
+  { id: 'live-poll-irq', kind: 'live', kindLabel: 'Live', cardTitle: 'Polling vs Interrupts', duration: 42, html: '../../motion/operativsystemer/polling-vs-interrupt.html' },
+  { id: 'live-mlfq', kind: 'live', kindLabel: 'Live', cardTitle: 'Multi-Level Feedback Queue', duration: 44, html: '../../motion/operativsystemer/mlfq-scheduling.html' },
+  { id: 'live-philosophers', kind: 'live', kindLabel: 'Live', cardTitle: 'Dining Philosophers', duration: 53, html: '../../motion/operativsystemer/dining-philosophers.html' },
+  { id: 'live-demand-paging', kind: 'live', kindLabel: 'Live', cardTitle: 'Demand Paging', duration: 54, html: '../../motion/operativsystemer/demand-paging.html' },
+  { id: 'live-journaling', kind: 'live', kindLabel: 'Live', cardTitle: 'Journaling', duration: 62, html: '../../motion/operativsystemer/journaling-fs.html' },
+  { id: 'live-raid', kind: 'live', kindLabel: 'Live', cardTitle: 'RAID', duration: 56, html: '../../motion/operativsystemer/raid.html' },
+  { id: 'live-voltage-divider', kind: 'live', kindLabel: 'Live', cardTitle: 'Voltage Divider', duration: 39, html: '../../motion/ade/voltage-divider.html' },
+  { id: 'live-half-wave', kind: 'live', kindLabel: 'Live', cardTitle: 'Half-Wave Rectifier', duration: 41, html: '../../motion/ade/half-wave-rectifier.html' },
+  { id: 'live-d-flip-flop', kind: 'live', kindLabel: 'Live', cardTitle: 'D Flip-Flop', duration: 38, html: '../../motion/ade/d-flip-flop.html' },
+  { id: 'live-kvl', kind: 'live', kindLabel: 'Live', cardTitle: "Kirchhoff's Voltage Law", duration: 40, html: '../../motion/ade/kirchhoff-voltage-law.html' },
+  { id: 'live-phasor', kind: 'live', kindLabel: 'Live', cardTitle: 'Phasors: Rotating Arrows', duration: 40, html: '../../motion/ade/phasor-rotation.html' },
+  { id: 'live-kmap', kind: 'live', kindLabel: 'Live', cardTitle: 'Karnaugh Maps', duration: 39, html: '../../motion/ade/karnaugh-map.html' },
+  { id: 'live-thevenin', kind: 'live', kindLabel: 'Live', cardTitle: "Thévenin's Theorem", duration: 44, html: '../../motion/ade/thevenin-equivalent.html' },
+  { id: 'live-low-pass-bode', kind: 'live', kindLabel: 'Live', cardTitle: 'RC Low-Pass Filter', duration: 48, html: '../../motion/ade/low-pass-bode.html' },
+  { id: 'live-fsm', kind: 'live', kindLabel: 'Live', cardTitle: 'Finite State Machines', duration: 39, html: '../../motion/ade/finite-state-machine.html' },
+  { id: 'live-cap-energy', kind: 'live', kindLabel: 'Live', cardTitle: 'Energy in a Capacitor', duration: 48, html: '../../motion/ade/capacitor-energy.html' },
+  { id: 'live-nand-universal', kind: 'live', kindLabel: 'Live', cardTitle: 'NAND is Universal', duration: 42, html: '../../motion/ade/nand-universality.html' },
+  { id: 'live-inv-opamp', kind: 'live', kindLabel: 'Live', cardTitle: 'Inverting Op-Amp', duration: 56, html: '../../motion/ade/inverting-op-amp.html' },
+  { id: 'live-lin-transform', kind: 'live', kindLabel: 'Live', cardTitle: 'Linear Transformations', duration: 62, html: '../../motion/mat2b/linear-transformation-grid.html' },
+  { id: 'live-span-dep', kind: 'live', kindLabel: 'Live', cardTitle: 'Span and Linear Dependence', duration: 39, html: '../../motion/mat2b/span-and-dependence.html' },
+  { id: 'live-basis-grid', kind: 'live', kindLabel: 'Live', cardTitle: 'Same Vector, Two Grids', duration: 35, html: '../../motion/mat2b/basis-change-grid.html' },
+  { id: 'live-matrix-fn', kind: 'live', kindLabel: 'Live', cardTitle: 'A Matrix Is a Function', duration: 37, html: '../../motion/mat2b/matrix-as-function.html' },
+  { id: 'live-projection', kind: 'live', kindLabel: 'Live', cardTitle: 'Projection onto a Line', duration: 31, html: '../../motion/mat2b/projection-onto-line.html' },
+  { id: 'live-diagonal', kind: 'live', kindLabel: 'Live', cardTitle: 'Diagonalisation: Eigenaxes', duration: 39, html: '../../motion/mat2b/diagonalisation-eigenaxes.html' },
 ];
 
 function loadJSON(key, fallback) {
@@ -83,16 +89,16 @@ function loadJSON(key, fallback) {
   catch { return fallback; }
 }
 function saveJSON(key, value) {
-  try { localStorage.setItem(key, JSON.stringify(value)); } catch {}
+  try { localStorage.setItem(key, JSON.stringify(value)); } catch { }
 }
 
 // Fake-but-believable Manimo reply. Only used in this preview kit.
 function demoReply(userText) {
   const lower = userText.toLowerCase();
-  if (/slow|pace|rhythm/.test(lower))   return 'Slowing scene 2 to give the integral room to breathe — the substitution beat now lands at 14s.';
+  if (/slow|pace|rhythm/.test(lower)) return 'Slowing scene 2 to give the integral room to breathe — the substitution beat now lands at 14s.';
   if (/add|insert|include/.test(lower)) return "Drafted a new scene. It slots in after the comparison and runs about twelve seconds — want me to mount it?";
-  if (/shorten|trim|cut/.test(lower))   return 'Tightened the scene by trimming the lead-in chalk strokes; total is six seconds shorter.';
-  if (/change|swap|replace/.test(lower))return 'Swapping in a fresh take. Reload the preview when the new build mounts.';
+  if (/shorten|trim|cut/.test(lower)) return 'Tightened the scene by trimming the lead-in chalk strokes; total is six seconds shorter.';
+  if (/change|swap|replace/.test(lower)) return 'Swapping in a fresh take. Reload the preview when the new build mounts.';
   return 'Working through it — a couple of options on the way. Connect a real Manimo backend to see them stream in.';
 }
 
@@ -176,4 +182,4 @@ function App() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);

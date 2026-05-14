@@ -1,0 +1,36 @@
+{
+  "sceneId": "change-of-basis-matrix",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/change-of-basis-matrix/scene.mp3",
+  "durationSec": 37.38,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Same arrow, two readings. How do you convert between them?"
+    },
+    {
+      "id": "twoFrames",
+      "audioStart": 4.18,
+      "narration": "Here is a vector v. The standard basis reads it as one across and two up. A tilted basis B with two slanted axes reads the same arrow as one of b one plus one of b two."
+    },
+    {
+      "id": "matrixP",
+      "audioStart": 16.51,
+      "narration": "Stack the new basis vectors as columns of a matrix P. Multiplying P by the B-coordinates of v gives back its standard coordinates."
+    },
+    {
+      "id": "verify",
+      "audioStart": 25.29,
+      "narration": "Plug in the numbers. P times one comma one gives one comma two — exactly the standard reading."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 31.56,
+      "narration": "The change-of-basis matrix is just the new basis, written as columns. Stack and multiply."
+    }
+  ]
+}

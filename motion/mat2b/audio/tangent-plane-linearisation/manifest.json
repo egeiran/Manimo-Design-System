@@ -1,0 +1,36 @@
+{
+  "sceneId": "tangent-plane-linearisation",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/tangent-plane-linearisation/scene.mp3",
+  "durationSec": 40.59,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Up close, every smooth surface looks flat. Linearisation is the rule that turns that picture into a formula."
+    },
+    {
+      "id": "curveAndTangent",
+      "audioStart": 7.36,
+      "narration": "Take a single variable picture first. A curve, and a point on it. The tangent line at that point matches both the value and the slope of the curve."
+    },
+    {
+      "id": "zoom",
+      "audioStart": 16.77,
+      "narration": "Zoom in on the point. The curve and the tangent line drift apart only at second order, so for any small step they trace nearly the same height."
+    },
+    {
+      "id": "twoVariable",
+      "audioStart": 26.31,
+      "narration": "The two variable version reads the same. Match the value, match the x slope, match the y slope. That's the equation of the tangent plane."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 35.68,
+      "narration": "Differentiability, in one sentence: the surface is well approximated by a plane."
+    }
+  ]
+}

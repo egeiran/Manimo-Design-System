@@ -1,0 +1,36 @@
+{
+  "sceneId": "hessian-test",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/hessian-test/scene.mp3",
+  "durationSec": 47.65,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "When the gradient vanishes, the first order story is over. The Hesse matrix takes over and decides the shape."
+    },
+    {
+      "id": "bowl",
+      "audioStart": 6.99,
+      "narration": "First case. Both eigenvalues of the Hesse matrix are positive — equivalently, the discriminant is positive and f sub x x is positive. The point sits at the bottom of a bowl. A local minimum."
+    },
+    {
+      "id": "dome",
+      "audioStart": 20.32,
+      "narration": "Flip the signs. Both eigenvalues negative, discriminant still positive but f sub x x is negative. Now the contours close around a hilltop — a local maximum."
+    },
+    {
+      "id": "saddle",
+      "audioStart": 31.54,
+      "narration": "Now mix the signs. Eigenvalues have opposite signs, so the discriminant is negative. The contours cross through the point — it's a saddle."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 40.22,
+      "narration": "Two numbers read the geometry. The discriminant tells you closed or crossed; the diagonal tells you up or down."
+    }
+  ]
+}

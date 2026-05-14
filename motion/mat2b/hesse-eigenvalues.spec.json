@@ -1,0 +1,96 @@
+{
+  "id": "hesse-eigenvalues",
+  "subject_id": "mat2b",
+  "chapter_number": 6,
+  "week": 15,
+  "title": "Hesse Eigenvalues: Curvature Along the Principal Axes",
+  "eyebrow": "Hesse · eigenvalues",
+  "language": "en",
+  "duration": 40,
+  "topic": "The Hesse matrix is symmetric, so it diagonalises in an orthonormal basis: its eigenvectors are the principal directions of curvature and its eigenvalues are the curvatures along them. Both eigenvalues positive — local minimum. Both negative — local maximum. Mixed signs — saddle. Connects the second-derivative test back to chapter 4 diagonalisation.",
+  "concepts": [
+    "Hesse matrix",
+    "eigenvalues",
+    "eigenvectors",
+    "principal curvature",
+    "diagonalisation",
+    "spectral theorem"
+  ],
+  "pairs_with": [
+    "chapter_concepts: Hessematrise",
+    "chapter_concepts: diagonalisering",
+    "chapter_formulas: Hesse eigenverdier"
+  ],
+  "prerequisites": ["hessian-test", "diagonalisation-eigenaxes"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.2,
+      "narration": "The Hesse matrix is symmetric, so it has a hidden pair of perpendicular axes. Those are where the curvature really lives.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs centre, caption 'Two axes of curvature.'", "delay": 0, "color": "var(--chalk-100)" }
+        ]
+      }
+    },
+    {
+      "id": "principalAxes",
+      "start": 4.2,
+      "end": 16.0,
+      "narration": "Take a tilted bowl. Its contours are tilted ellipses. Find the two perpendicular directions whose principal axes match the ellipse. Those are the eigenvectors of the Hesse matrix.",
+      "visuals": {
+        "layout": "left-card",
+        "elements": [
+          { "type": "svg-contours", "content": "Tilted elliptical contours (rotated by 25°) on chalk-300 axes", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "svg-vector", "content": "Eigenvector v₁ along the long principal axis, violet-400, labelled", "delay": 4.0, "color": "var(--violet-400)" },
+          { "type": "svg-vector", "content": "Eigenvector v₂ along the short principal axis, teal-400, labelled, perpendicular to v₁", "delay": 5.5, "color": "var(--teal-400)" },
+          { "type": "svg-dot", "content": "Central critical point in emerald-400", "delay": 1.0, "color": "var(--emerald-400)" },
+          { "type": "matrix-panel", "content": "Right panel: 'principal axes' eyebrow + 'H v_i = lambda_i v_i' formula + footnote 'the curvature axes that the matrix itself picks out'", "delay": 1.0, "color": "var(--chalk-100)", "position": "right panel" }
+        ]
+      }
+    },
+    {
+      "id": "diagonalForm",
+      "start": 16.0,
+      "end": 25.0,
+      "narration": "Rotate into that frame, and the Hesse matrix becomes diagonal — its two eigenvalues sitting on the diagonal. Those are the curvatures along the principal axes.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-eyebrow", "content": "'spectral theorem' mono eyebrow centred", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
+          { "type": "text-formula", "content": "Big serif formula: H = P D P^T with D = diag(lambda_1, lambda_2), columns of P highlighted violet and teal", "delay": 0.4, "color": "var(--chalk-100)", "position": "centre" },
+          { "type": "text-caption", "content": "Footnote 'eigenvalues = principal curvatures.'", "delay": 1.8, "color": "var(--chalk-200)", "position": "centre, below formula" }
+        ]
+      }
+    },
+    {
+      "id": "classify",
+      "start": 25.0,
+      "end": 34.5,
+      "narration": "The signs of the eigenvalues classify the point. Both positive — bowl. Both negative — dome. One of each — saddle. The discriminant just tracks the product, lambda one times lambda two.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-grid", "content": "Three small cards side by side: BOTH POSITIVE → MIN (emerald), BOTH NEGATIVE → MAX (rose), MIXED SIGNS → SADDLE (amber). Each card shows two stacked eigenvalue badges and a tiny verdict line.", "delay": 0.0, "color": "var(--chalk-100)", "position": "centre row" },
+          { "type": "text-caption", "content": "Bottom caption 'sign of det H = sign of lambda_1 lambda_2 = D'", "delay": 3.0, "color": "var(--chalk-200)", "position": "centre below cards" }
+        ]
+      }
+    },
+    {
+      "id": "heroOutro",
+      "start": 34.5,
+      "end": 40,
+      "narration": "Same algebra as chapter four — diagonalise the matrix and let its eigenvalues do the talking.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-eyebrow", "content": "'THE TAKEAWAY' mono eyebrow", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
+          { "type": "text-hero", "content": "'Curvature lives on the eigenaxes.' — serif italic 50px, 'eigenaxes' in amber-300", "delay": 0.35, "color": "var(--chalk-100)", "position": "centre" },
+          { "type": "text-caption", "content": "'Diagonalise the Hesse matrix; its eigenvalues tell you the shape.' — serif italic 24px", "delay": 1.4, "color": "var(--chalk-200)", "position": "centre, below hero" }
+        ]
+      }
+    }
+  ]
+}

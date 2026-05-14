@@ -1,0 +1,137 @@
+{
+  "id": "linear-transformation-grid",
+  "subject_id": "mat2b",
+  "chapter_number": 2,
+  "week": 4,
+  "title": "Linear Transformations: A Matrix Moves the Grid",
+  "eyebrow": "linear transformations",
+  "language": "en",
+  "duration": 62,
+  "topic": "Linear transformation of the plane — every 2×2 matrix bends the standard grid in exactly one way, and its two columns are the images of the basis vectors e₁ and e₂. Rotation, scaling and shear are special cases of the same machine. Closes on a hero line: a matrix is a verb.",
+  "concepts": [
+    "linear transformation",
+    "matrix representation",
+    "standard basis",
+    "rotation",
+    "scaling",
+    "shear",
+    "columns of a matrix"
+  ],
+  "pairs_with": [
+    "chapter_concepts: lineærtransformasjon",
+    "chapter_concepts: matriserepresentasjon",
+    "chapter_formulas: Linearitet"
+  ],
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.23,
+      "narration": "What does a matrix actually do to space? Let's look.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "A matrix moves the grid.", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "setup",
+      "start": 4.23,
+      "end": 15.67,
+      "narration": "Here is the standard grid, and two unit basis vectors — e one along the x-axis, and e two along the y-axis. Every other vector is built from these two.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-grid", "content": "Identity reference grid in chalk-300, full plane coverage, masked by radial vignette so chrome corners stay clean", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "svg-axes", "content": "x and y axes drawn through origin, chalk-200, thicker", "delay": 0.2, "color": "var(--chalk-200)" },
+          { "type": "svg-vector", "content": "e₁ basis vector from origin to (1,0), violet-400, labelled", "delay": 4.4, "color": "var(--violet-400)" },
+          { "type": "svg-vector", "content": "e₂ basis vector from origin to (0,1), teal-400, labelled", "delay": 6.4, "color": "var(--teal-400)" },
+          { "type": "svg-polygon", "content": "Unit square (corners 0,0 / 1,0 / 1,1 / 0,1) filled amber-400 at low opacity", "delay": 8.5, "color": "var(--amber-400)" },
+          { "type": "text-caption", "content": "Right-panel HTML card with STANDARD BASIS eyebrow + 'e₁ along x, e₂ along y' + 'Every vector in the plane is a combination of these two'. Card has a soft dark backdrop for legibility.", "delay": 3.2, "color": "var(--chalk-100)", "position": "right panel, serif italic, on backdrop" }
+        ]
+      }
+    },
+    {
+      "id": "rotation",
+      "start": 15.67,
+      "end": 26.7,
+      "narration": "First, rotation. Spin the whole grid by an angle theta. Watch where e one and e two land — those landing spots become the two columns of the rotation matrix.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-grid", "content": "Identity reference grid stays in chalk-300 background", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "svg-grid", "content": "Transformed amber grid morphs identity → R(35°) over ~3.4s, holds, then returns to identity over 0.7s before next beat mounts", "delay": 0.0, "color": "var(--amber-400)" },
+          { "type": "svg-vector", "content": "e₁ rotates from (1,0) to (cos35°, sin35°), violet-400", "delay": 0.2, "color": "var(--violet-400)" },
+          { "type": "svg-vector", "content": "e₂ rotates from (0,1) to (-sin35°, cos35°), teal-400", "delay": 0.3, "color": "var(--teal-400)" },
+          { "type": "text-formula", "content": "Rotation matrix R(θ) with cos θ, -sin θ / sin θ, cos θ — column 1 violet, column 2 teal — on backdrop panel", "delay": 2.2, "color": "var(--chalk-100)", "position": "right of grid, panel" }
+        ]
+      }
+    },
+    {
+      "id": "scaling",
+      "start": 26.7,
+      "end": 38.49,
+      "narration": "Next, scaling. Stretch along x, squeeze along y. The basis vectors stay on their own axes, but their lengths change — and that change sits on the diagonal of the matrix.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-grid", "content": "Identity reference grid in chalk-300", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "svg-grid", "content": "Transformed grid morphs identity → diag(1.8, 0.55), amber-400", "delay": 0.0, "color": "var(--amber-400)" },
+          { "type": "svg-vector", "content": "e₁ stretches from (1,0) to (1.8, 0), violet-400", "delay": 0.2, "color": "var(--violet-400)" },
+          { "type": "svg-vector", "content": "e₂ shrinks from (0,1) to (0, 0.55), teal-400", "delay": 0.3, "color": "var(--teal-400)" },
+          { "type": "text-formula", "content": "Diagonal matrix diag(1.8, 0.55) — column 1 violet, column 2 teal — on backdrop panel", "delay": 2.2, "color": "var(--chalk-100)", "position": "right of grid, panel" }
+        ]
+      }
+    },
+    {
+      "id": "shear",
+      "start": 38.49,
+      "end": 47.07,
+      "narration": "Now shear. Hold e one in place, but slide e two sideways. Vertical lines tilt; horizontal lines stay flat.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-grid", "content": "Identity reference grid in chalk-300", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "svg-grid", "content": "Transformed grid morphs identity → [[1, 0.8],[0, 1]], amber-400", "delay": 0.0, "color": "var(--amber-400)" },
+          { "type": "svg-vector", "content": "e₁ stays at (1, 0), violet-400", "delay": 0.2, "color": "var(--violet-400)" },
+          { "type": "svg-vector", "content": "e₂ slides from (0,1) to (0.8, 1), teal-400", "delay": 0.3, "color": "var(--teal-400)" },
+          { "type": "text-formula", "content": "Shear matrix [[1, 0.8],[0, 1]] — column 1 violet, column 2 teal — on backdrop panel", "delay": 2.2, "color": "var(--chalk-100)", "position": "right of grid, panel" }
+        ]
+      }
+    },
+    {
+      "id": "general",
+      "start": 47.07,
+      "end": 56.47,
+      "narration": "Every two by two matrix works the same way. Wherever e one lands becomes column one. Wherever e two lands becomes column two.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-grid", "content": "Identity reference grid in chalk-300", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "svg-grid", "content": "Transformed grid morphs identity → [[1.1, 0.45],[-0.25, 1.05]] then holds (no return)", "delay": 0.0, "color": "var(--amber-400)" },
+          { "type": "svg-vector", "content": "T(e₁) lands at (1.1, -0.25), violet-400, glow at end", "delay": 0.2, "color": "var(--violet-400)" },
+          { "type": "svg-vector", "content": "T(e₂) lands at (0.45, 1.05), teal-400, glow at end", "delay": 0.3, "color": "var(--teal-400)" },
+          { "type": "text-formula", "content": "General matrix A with columns highlighted violet / teal + footnote 'column 1 = T(e₁) · column 2 = T(e₂)'", "delay": 2.2, "color": "var(--chalk-100)", "position": "right of grid, panel" }
+        ]
+      }
+    },
+    {
+      "id": "heroOutro",
+      "start": 56.47,
+      "end": 62,
+      "narration": "So a matrix is a verb — it does not describe space, it moves space.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-eyebrow", "content": "'THE TAKEAWAY' mono eyebrow", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
+          { "type": "text-hero", "content": "'A matrix is a verb.' — huge serif italic, 'a verb' in amber-300", "delay": 0.35, "color": "var(--chalk-100)", "position": "centre, 62px" },
+          { "type": "text-caption", "content": "'It doesn't describe space — it moves space.' — serif italic 28px", "delay": 1.4, "color": "var(--chalk-200)", "position": "centre, below hero" },
+          { "type": "text-caption", "content": "'A = [ T(e₁) | T(e₂) ]' — small mono caption with violet / teal column labels", "delay": 2.6, "color": "var(--chalk-300)", "position": "centre, footer" }
+        ]
+      }
+    }
+  ]
+}

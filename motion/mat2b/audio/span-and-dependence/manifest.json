@@ -1,0 +1,36 @@
+{
+  "sceneId": "span-and-dependence",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/span-and-dependence/scene.mp3",
+  "durationSec": 37.62,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "How much space do a few arrows give you?"
+    },
+    {
+      "id": "spanTwo",
+      "audioStart": 2.58,
+      "narration": "Two arrows, v one and v two. Every combination of them — every a v one plus b v two — fills this whole parallelogram. We call that the span."
+    },
+    {
+      "id": "depThird",
+      "audioStart": 13.18,
+      "narration": "Now drop in a third arrow that lies flat inside the parallelogram. It's just a combination of the first two — linearly dependent. The span doesn't grow at all."
+    },
+    {
+      "id": "independentEscape",
+      "audioStart": 22.95,
+      "narration": "But swap in an arrow that lifts off the plane. Suddenly the span isn't a patch anymore — it fills the whole three dimensional space. That's linear independence."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 32.57,
+      "narration": "Span is your reach. Dependent vectors don't add to it. Independent ones do."
+    }
+  ]
+}

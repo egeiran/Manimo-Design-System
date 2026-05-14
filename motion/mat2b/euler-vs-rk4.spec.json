@@ -1,0 +1,80 @@
+{
+  "id": "euler-vs-rk4",
+  "subject_id": "mat2b",
+  "chapter_number": 4,
+  "week": 10,
+  "title": "Euler vs RK4: Same Step Size, Different Curves",
+  "eyebrow": "numerical ODEs",
+  "language": "en",
+  "duration": 53,
+  "topic": "Same ODE, same step size, two methods. Euler uses one tangent per step and drifts; classical Runge-Kutta samples four slopes per step, averages them, and hugs the true curve. A log-log error plot lays the order claim bare: slope 1 for Euler, slope 4 for RK4.",
+  "concepts": [
+    "Runge-Kutta method",
+    "RK4",
+    "order of accuracy",
+    "global error",
+    "log-log error plot",
+    "Euler's method"
+  ],
+  "pairs_with": [
+    "chapter_concepts: Runge-Kutta",
+    "chapter_concepts: orden",
+    "chapter_concepts: feilanalyse"
+  ],
+  "prerequisites": ["euler-step"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.1,
+      "narration": "Same problem. Same step size. Why does one method hug the curve while the other drifts?",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "manimo-enter", "content": "Manimo bobs centre", "delay": 0 },
+        { "type": "text-caption", "content": "Hook caption: same h, two methods.", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo" }
+      ]}
+    },
+    {
+      "id": "twoMarches",
+      "start": 6.1,
+      "end": 18.82,
+      "narration": "On the left, Euler walks one tangent per step. On the right, R K four samples four slopes per step and averages them. With the same step size, R K four lands almost on the true curve.",
+      "visuals": { "layout": "two-panel diagrams", "elements": [
+        { "type": "svg-curve", "content": "True solution in violet, both panels", "delay": 0.0, "color": "var(--violet-400)" },
+        { "type": "svg-points", "content": "Euler polyline in rose drifting off (left panel)", "delay": 0.6, "color": "var(--rose-400)" },
+        { "type": "svg-points", "content": "RK4 polyline in emerald hugging the truth (right panel)", "delay": 1.4, "color": "var(--emerald-400)" }
+      ]}
+    },
+    {
+      "id": "rk4Sampling",
+      "start": 18.82,
+      "end": 30.99,
+      "narration": "Inside one R K four step: sample the slope at the start, twice in the middle, and once at the end. The next point is the start plus h times a weighted average of these four slopes.",
+      "visuals": { "layout": "single-step zoom", "elements": [
+        { "type": "svg-arrow", "content": "Four slope samples k1..k4 at one step", "delay": 0.4, "color": "var(--amber-400)" },
+        { "type": "text-formula", "content": "y_{n+1} = y_n + h/6 · (k1 + 2k2 + 2k3 + k4)", "delay": 2.4, "color": "var(--chalk-100)", "position": "right" }
+      ]}
+    },
+    {
+      "id": "logLogError",
+      "start": 30.99,
+      "end": 44.3,
+      "narration": "Halve the step size. Euler's error halves. R K four's error drops by a factor of sixteen. On a log log plot of error against step size, the slopes are one and four — the orders of the two methods.",
+      "visuals": { "layout": "log-log plot", "elements": [
+        { "type": "svg-curve", "content": "Euler error line, slope 1, rose", "delay": 0.4, "color": "var(--rose-400)" },
+        { "type": "svg-curve", "content": "RK4 error line, slope 4, emerald", "delay": 1.4, "color": "var(--emerald-400)" },
+        { "type": "text-caption", "content": "Slopes are the orders.", "delay": 2.4, "color": "var(--chalk-200)", "position": "right" }
+      ]}
+    },
+    {
+      "id": "heroOutro",
+      "start": 44.3,
+      "end": 53,
+      "narration": "More work per step buys you a much faster fall in error. For the same accuracy, higher order means fewer steps.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "text-eyebrow", "content": "'ORDER OF ACCURACY'", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
+        { "type": "text-hero", "content": "'Error of order p falls as h to the p.'", "delay": 0.35, "color": "var(--chalk-100)", "position": "centre" },
+        { "type": "text-caption", "content": "Euler: p = 1. RK4: p = 4.", "delay": 1.4, "color": "var(--chalk-200)", "position": "below hero" }
+      ]}
+    }
+  ]
+}

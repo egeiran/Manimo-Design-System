@@ -1,0 +1,83 @@
+{
+  "id": "projection-onto-line",
+  "subject_id": "mat2b",
+  "chapter_number": 3,
+  "week": 6,
+  "title": "Projection: Closest Is Perpendicular",
+  "eyebrow": "inner product spaces",
+  "language": "en",
+  "duration": 31,
+  "topic": "Project a vector u onto the line spanned by v. The foot of the perpendicular is proj_v(u) — the closest point on the line. The leftover u minus its projection is orthogonal to v. Algebraically, proj_v(u) = (u·v / v·v) v.",
+  "concepts": [
+    "projection onto a line",
+    "orthogonal decomposition",
+    "inner product",
+    "residual",
+    "closest point"
+  ],
+  "pairs_with": [
+    "chapter_concepts: projeksjon",
+    "chapter_concepts: indreprodukt",
+    "chapter_formulas: Projeksjon på en linje"
+  ],
+  "prerequisites": ["span-and-dependence"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.41,
+      "narration": "Project a vector onto a line — what is the closest point?",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "manimo-enter", "content": "Manimo bobs in centre", "delay": 0 },
+        { "type": "text-caption", "content": "Drop a perpendicular. That's the answer.", "delay": 0.7, "color": "var(--chalk-100)" }
+      ]}
+    },
+    {
+      "id": "setupVectors",
+      "start": 4.41,
+      "end": 12.13,
+      "narration": "Here is a vector u, and a line through the origin spanning some direction v. We want the shadow u casts on the line.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "svg-grid", "content": "Reference grid + axes, vignette-masked", "delay": 0.0, "color": "var(--chalk-300)" },
+        { "type": "svg-line", "content": "Long dashed amber line through origin along v=(3,1)", "delay": 0.6, "color": "var(--amber-400)" },
+        { "type": "svg-vector", "content": "v teal at (3, 1)", "delay": 1.4, "color": "var(--teal-400)" },
+        { "type": "svg-vector", "content": "u violet at (1, 3)", "delay": 2.4, "color": "var(--violet-400)" },
+        { "type": "text-caption", "content": "'u — projected onto span(v)' panel on the right with violet/teal callouts", "delay": 4.0, "color": "var(--chalk-100)", "position": "right panel" }
+      ]}
+    },
+    {
+      "id": "dropPerpendicular",
+      "start": 12.13,
+      "end": 21.13,
+      "narration": "Drop a perpendicular from u down to the line. Where it lands is the projection — the closest point. Everything left over is orthogonal to v.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "svg-vector", "content": "proj_v(u) on the line, drawn in amber-300, length |u·v/v·v|·|v|", "delay": 0.5, "color": "var(--amber-300)" },
+        { "type": "svg-path", "content": "Dashed perpendicular drop from tip of u to tip of projection", "delay": 1.4, "color": "var(--chalk-200)" },
+        { "type": "svg-vector", "content": "Residual (u − proj_v u) in rose, drawn from tip of projection up to tip of u, orthogonal to v", "delay": 2.2, "color": "var(--rose-400)" },
+        { "type": "svg-mark", "content": "Right-angle marker where the perpendicular meets the line", "delay": 2.8, "color": "var(--chalk-200)" },
+        { "type": "text-caption", "content": "'proj_v(u): closest point · residual: perpendicular' callouts in panel", "delay": 4.0, "color": "var(--chalk-100)", "position": "right panel" }
+      ]}
+    },
+    {
+      "id": "formula",
+      "start": 21.13,
+      "end": 27.18,
+      "narration": "Algebraically, the projection scales v by u dot v over v dot v.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "text-hero-formula", "content": "Centred formula 'proj_v(u) = (u · v / v · v) v' with colour-coded numerator/denominator", "delay": 0.4, "color": "var(--chalk-100)" },
+        { "type": "text-caption", "content": "Worked numbers: '6 / 10 = 0.6 → proj = (1.8, 0.6)' caption", "delay": 2.0, "color": "var(--amber-300)" }
+      ]}
+    },
+    {
+      "id": "heroOutro",
+      "start": 27.18,
+      "end": 31,
+      "narration": "Closest point is always the perpendicular drop.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "text-eyebrow", "content": "'the takeaway' mono eyebrow", "delay": 0.0, "color": "var(--amber-300)" },
+        { "type": "text-hero", "content": "'Closest is perpendicular.' huge serif italic, 'perpendicular' in amber-300", "delay": 0.35, "color": "var(--chalk-100)" },
+        { "type": "text-caption", "content": "'u = proj_v(u) + residual.' subtitle", "delay": 1.4, "color": "var(--chalk-200)" }
+      ]}
+    }
+  ]
+}

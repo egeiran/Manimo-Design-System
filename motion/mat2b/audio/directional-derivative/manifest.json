@@ -1,0 +1,36 @@
+{
+  "sceneId": "directional-derivative",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/directional-derivative/scene.mp3",
+  "durationSec": 46.67,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "How fast does a hill climb if you walk it not east, not north, but at an angle? That's the directional derivative."
+    },
+    {
+      "id": "surface",
+      "audioStart": 7.43,
+      "narration": "Here is a surface, z equals f of x comma y. At any point we already know two slopes — the partial derivatives — one along the x axis, one along the y axis."
+    },
+    {
+      "id": "direction",
+      "audioStart": 19.54,
+      "narration": "Now pick any unit direction u. Walk a tiny step from the point in direction u. The slope of the surface along that step is the directional derivative."
+    },
+    {
+      "id": "formula",
+      "audioStart": 29.54,
+      "narration": "The shortcut: take the gradient of f at the point, then dot it with u. The directional derivative of f in direction u equals the gradient of f dotted with u."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 40.71,
+      "narration": "So every direction has its own slope, and the gradient is the one direction where that slope is largest."
+    }
+  ]
+}

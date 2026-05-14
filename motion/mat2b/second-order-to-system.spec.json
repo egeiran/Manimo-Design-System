@@ -1,0 +1,76 @@
+{
+  "id": "second-order-to-system",
+  "subject_id": "mat2b",
+  "chapter_number": 4,
+  "week": 9,
+  "title": "Second-Order ODE as a First-Order System",
+  "eyebrow": "ODE systems",
+  "language": "en",
+  "duration": 59,
+  "topic": "A linear second-order ODE y'' + p y' + q y = 0 becomes a first-order system in two unknowns by introducing v = y'. The state vector (y, v) evolves under a single 2×2 matrix, so every method built for first-order systems — Euler, RK4, eigenvector analysis — applies unchanged.",
+  "concepts": [
+    "second-order ODE",
+    "first-order system",
+    "state vector",
+    "companion matrix",
+    "phase plane"
+  ],
+  "pairs_with": [
+    "chapter_concepts: system av differensialligninger",
+    "chapter_concepts: tilstandsvektor"
+  ],
+  "prerequisites": ["euler-step"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 9.66,
+      "narration": "Why do we keep rewriting second-order equations as first-order systems? Because every numerical method, every matrix tool, is built for first order.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "manimo-enter", "content": "Manimo bobs centre", "delay": 0 },
+        { "type": "text-caption", "content": "Hook caption.", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo" }
+      ]}
+    },
+    {
+      "id": "secondOrder",
+      "start": 9.66,
+      "end": 21.83,
+      "narration": "Start with a linear second-order equation. y double prime plus p times y prime plus q times y equals zero. One unknown function, two derivatives in play.",
+      "visuals": { "layout": "centered formula", "elements": [
+        { "type": "text-formula", "content": "y'' + p y' + q y = 0", "delay": 0.4, "color": "var(--chalk-100)", "position": "centre" },
+        { "type": "text-caption", "content": "Linear, homogeneous, constant coefficients.", "delay": 1.8, "color": "var(--chalk-300)", "position": "below formula" }
+      ]}
+    },
+    {
+      "id": "introduceV",
+      "start": 21.83,
+      "end": 33.91,
+      "narration": "Introduce a second unknown — call it v, and define it to be y prime. Then v prime is y double prime, which the equation tells us equals minus p v minus q y.",
+      "visuals": { "layout": "two-line derivation", "elements": [
+        { "type": "text-formula", "content": "v = y'  ⇒  v' = y''", "delay": 0.4, "color": "var(--violet-400)", "position": "centre" },
+        { "type": "text-formula", "content": "v' = −p v − q y", "delay": 2.0, "color": "var(--amber-400)", "position": "below" }
+      ]}
+    },
+    {
+      "id": "matrixForm",
+      "start": 33.91,
+      "end": 50.09,
+      "narration": "Stack y and v into a state vector. Its time derivative is a two by two matrix times itself. A second-order scalar equation has become a first-order vector equation — ready for Euler, R K four, or eigenvector analysis.",
+      "visuals": { "layout": "matrix display", "elements": [
+        { "type": "text-formula", "content": "(y, v)' = A · (y, v) with A = [[0,1],[-q,-p]]", "delay": 0.4, "color": "var(--chalk-100)", "position": "centre" },
+        { "type": "text-caption", "content": "Companion matrix.", "delay": 2.2, "color": "var(--chalk-200)", "position": "right" }
+      ]}
+    },
+    {
+      "id": "heroOutro",
+      "start": 50.09,
+      "end": 59,
+      "narration": "One scalar second-order equation becomes a first-order system in twice as many unknowns. Same dynamics — friendlier toolbox.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "text-eyebrow", "content": "'COMPANION FORM'", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
+        { "type": "text-hero", "content": "'Order n scalar = order one system in n unknowns.'", "delay": 0.35, "color": "var(--chalk-100)", "position": "centre" },
+        { "type": "text-caption", "content": "One trick — every method opens up.", "delay": 1.4, "color": "var(--chalk-200)", "position": "below hero" }
+      ]}
+    }
+  ]
+}

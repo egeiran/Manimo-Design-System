@@ -1,0 +1,36 @@
+{
+  "sceneId": "second-order-to-system",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/second-order-to-system/scene.mp3",
+  "durationSec": 58.47,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Why do we keep rewriting second-order equations as first-order systems? Because every numerical method, every matrix tool, is built for first order."
+    },
+    {
+      "id": "secondOrder",
+      "audioStart": 9.66,
+      "narration": "Start with a linear second-order equation. y double prime plus p times y prime plus q times y equals zero. One unknown function, two derivatives in play."
+    },
+    {
+      "id": "introduceV",
+      "audioStart": 21.83,
+      "narration": "Introduce a second unknown — call it v, and define it to be y prime. Then v prime is y double prime, which the equation tells us equals minus p v minus q y."
+    },
+    {
+      "id": "matrixForm",
+      "audioStart": 33.91,
+      "narration": "Stack y and v into a state vector. Its time derivative is a two by two matrix times itself. A second-order scalar equation has become a first-order vector equation — ready for Euler, R K four, or eigenvector analysis."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 50.09,
+      "narration": "One scalar second-order equation becomes a first-order system in twice as many unknowns. Same dynamics — friendlier toolbox."
+    }
+  ]
+}

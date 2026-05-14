@@ -1,0 +1,104 @@
+{
+  "id": "gram-schmidt-2d-then-3d",
+  "subject_id": "mat2b",
+  "chapter_number": 3,
+  "week": 6,
+  "title": "Gram-Schmidt: Subtract the Projection",
+  "eyebrow": "orthonormal bases",
+  "language": "en",
+  "duration": 50,
+  "topic": "Gram-Schmidt orthogonalisation — given two non-orthogonal vectors, the first becomes u₁; the second is corrected by subtracting its projection onto u₁ so that what's left is perpendicular. Normalise each to get an orthonormal pair. The same recipe extends to a third vector by subtracting its projections onto u₁ and u₂.",
+  "concepts": [
+    "Gram-Schmidt",
+    "orthogonal basis",
+    "orthonormal basis",
+    "projection",
+    "inner product"
+  ],
+  "pairs_with": [
+    "chapter_concepts: Gram-Schmidt",
+    "chapter_concepts: ortonormal basis",
+    "chapter_concepts: projeksjon"
+  ],
+  "prerequisites": ["projection-onto-line"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 3.8,
+      "narration": "Two vectors that aren't perpendicular. Can we straighten them out?",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "manimo-enter", "content": "Manimo bobs centre-screen", "delay": 0 },
+        { "type": "text-caption", "content": "Hook caption", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo" }
+      ]}
+    },
+    {
+      "id": "setup",
+      "start": 3.8,
+      "end": 12.13,
+      "narration": "Start with two vectors, v one and v two. They span a plane, but they aren't at right angles. Gram-Schmidt fixes that.",
+      "visuals": { "layout": "left-diagram + right-panel", "elements": [
+        { "type": "svg-axes", "content": "Axes chalk-200", "delay": 0.0, "color": "var(--chalk-200)" },
+        { "type": "svg-vector", "content": "v₁ violet", "delay": 0.4, "color": "var(--violet-400)" },
+        { "type": "svg-vector", "content": "v₂ teal", "delay": 1.0, "color": "var(--teal-400)" },
+        { "type": "text-caption", "content": "Two vectors. Not perpendicular.", "delay": 2.4, "color": "var(--chalk-100)", "position": "right" }
+      ]}
+    },
+    {
+      "id": "keepFirst",
+      "start": 12.13,
+      "end": 17.46,
+      "narration": "Keep the first one as the new direction u one. We will measure everything else against it.",
+      "visuals": { "layout": "left-diagram + right-panel", "elements": [
+        { "type": "svg-vector", "content": "u₁ = v₁ stays violet, gets a halo", "delay": 0.4, "color": "var(--violet-400)" },
+        { "type": "text-formula", "content": "u₁ = v₁", "delay": 1.0, "color": "var(--chalk-100)", "position": "right" }
+      ]}
+    },
+    {
+      "id": "subtractProjection",
+      "start": 17.46,
+      "end": 27.25,
+      "narration": "Project v two onto u one. Subtract that shadow from v two. What's left points exactly perpendicular to u one — call it u two.",
+      "visuals": { "layout": "left-diagram + right-panel", "elements": [
+        { "type": "svg-vector", "content": "v₂ teal still visible", "delay": 0.0, "color": "var(--teal-400)" },
+        { "type": "svg-vector", "content": "proj_{u₁}(v₂) — dashed teal along u₁", "delay": 0.4, "color": "var(--teal-400)" },
+        { "type": "svg-path", "content": "Dashed perpendicular drop from v₂ tip to projection", "delay": 1.2, "color": "var(--chalk-300)" },
+        { "type": "svg-vector", "content": "u₂ = v₂ − proj — rose, perpendicular to u₁", "delay": 2.4, "color": "var(--rose-400)" },
+        { "type": "text-formula", "content": "u₂ = v₂ − proj_{u₁}(v₂)", "delay": 3.6, "color": "var(--chalk-100)", "position": "right" },
+        { "type": "svg-mark", "content": "Right-angle square between u₁ and u₂", "delay": 5.0, "color": "var(--emerald-400)" }
+      ]}
+    },
+    {
+      "id": "normalise",
+      "start": 27.25,
+      "end": 34.27,
+      "narration": "Now scale each one to unit length. The result is an orthonormal pair — perpendicular and length one.",
+      "visuals": { "layout": "left-diagram + right-panel", "elements": [
+        { "type": "svg-vector", "content": "ê₁ unit vector along u₁", "delay": 0.3, "color": "var(--violet-400)" },
+        { "type": "svg-vector", "content": "ê₂ unit vector along u₂ ", "delay": 0.6, "color": "var(--rose-400)" },
+        { "type": "text-formula", "content": "ê_k = u_k / ‖u_k‖", "delay": 1.2, "color": "var(--chalk-100)", "position": "right" }
+      ]}
+    },
+    {
+      "id": "extend3D",
+      "start": 34.27,
+      "end": 44.57,
+      "narration": "Same recipe in three dimensions. Take a third vector, subtract its projection onto each of the first two, normalise, and you have an orthonormal triple.",
+      "visuals": { "layout": "left-diagram + right-panel", "elements": [
+        { "type": "text-formula", "content": "u₃ = v₃ − proj_{u₁}(v₃) − proj_{u₂}(v₃)", "delay": 0.4, "color": "var(--chalk-100)", "position": "right" },
+        { "type": "text-caption", "content": "Three perpendicular axes — built from scratch", "delay": 2.0, "color": "var(--chalk-200)", "position": "right" }
+      ]}
+    },
+    {
+      "id": "heroOutro",
+      "start": 44.57,
+      "end": 50.0,
+      "narration": "Gram-Schmidt in one line: keep what's new, subtract what's already there.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "text-eyebrow", "content": "'GRAM-SCHMIDT'", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
+        { "type": "text-hero", "content": "'Subtract the projection.'", "delay": 0.35, "color": "var(--chalk-100)", "position": "centre" },
+        { "type": "text-caption", "content": "Every new direction is orthogonal by construction.", "delay": 1.4, "color": "var(--chalk-200)", "position": "below hero" }
+      ]}
+    }
+  ]
+}

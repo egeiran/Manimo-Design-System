@@ -1,0 +1,36 @@
+{
+  "sceneId": "gradient-and-level-curves",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/gradient-and-level-curves/scene.mp3",
+  "durationSec": 47.65,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "If a hill is drawn as a map of level curves, which way is straight uphill? The gradient knows."
+    },
+    {
+      "id": "contourPlot",
+      "audioStart": 5.97,
+      "narration": "Here are the level curves of f. Each ring connects all points where f has the same value. Tight rings mean the function is climbing fast."
+    },
+    {
+      "id": "gradientArrows",
+      "audioStart": 15.06,
+      "narration": "At every chosen point, plant the gradient — the vector of partial derivatives. Watch: each arrow crosses its level curve at a right angle. The gradient points in the direction of steepest ascent."
+    },
+    {
+      "id": "directionalDeriv",
+      "audioStart": 26.99,
+      "narration": "The slope you feel in any direction u is the gradient dotted with u. Walk perpendicular to the gradient — along the level curve — and the slope is zero. The function is locally flat in that direction."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 39.62,
+      "narration": "Gradient perpendicular to level set. Length equals the rate of steepest ascent. One vector, three pieces of information."
+    }
+  ]
+}

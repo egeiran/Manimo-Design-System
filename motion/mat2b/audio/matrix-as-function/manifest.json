@@ -1,0 +1,36 @@
+{
+  "sceneId": "matrix-as-function",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/matrix-as-function/scene.mp3",
+  "durationSec": 36.13,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "What does a matrix actually do to a vector? Let's compute."
+    },
+    {
+      "id": "machineLayout",
+      "audioStart": 4.37,
+      "narration": "Send in a vector. The matrix is the rule. The output is another vector — same dimension, new direction."
+    },
+    {
+      "id": "rowByColumn",
+      "audioStart": 11.51,
+      "narration": "Multiply row by column. One times one plus two times two gives five. Three times one minus one times two gives one. So A v equals the column five, one."
+    },
+    {
+      "id": "collapse",
+      "audioStart": 23.2,
+      "narration": "That's it. Every linear function from the plane to the plane is just multiplication by some matrix, written T of v equals A v."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 31.84,
+      "narration": "Pick a matrix. Pick a vector. Multiply. Get a new vector."
+    }
+  ]
+}

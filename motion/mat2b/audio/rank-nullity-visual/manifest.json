@@ -1,0 +1,36 @@
+{
+  "sceneId": "rank-nullity-visual",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/rank-nullity-visual/scene.mp3",
+  "durationSec": 38.03,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "What happens when a matrix has nowhere to go? Watch the plane collapse."
+    },
+    {
+      "id": "setup",
+      "audioStart": 4.54,
+      "narration": "Here is the standard grid, the basis vectors e one and e two, and a singular matrix A whose two columns point the same way."
+    },
+    {
+      "id": "collapse",
+      "audioStart": 13.08,
+      "narration": "Apply A. The whole grid squashes down onto one line — the image of A. That single line is its rank one range."
+    },
+    {
+      "id": "kernel",
+      "audioStart": 21.29,
+      "narration": "Some non-zero vectors land exactly on the origin. Those make up the kernel — a one-dimensional line collapsed away by A."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 29.39,
+      "narration": "Rank plus nullity equals the dimension of the input. One direction survives, one direction dies — together they account for the whole plane."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "sceneId": "dimension-intuition",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/dimension-intuition/scene.mp3",
+  "durationSec": 28.28,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "How many free directions does a space really have? Count them."
+    },
+    {
+      "id": "dimOne",
+      "audioStart": 4.03,
+      "narration": "One arrow through the origin. Every scaling of it lives on the same line — one direction, dimension one."
+    },
+    {
+      "id": "dimTwo",
+      "audioStart": 10.79,
+      "narration": "Now add a second arrow that doesn't lie on the first. Together they sweep out a whole plane — dimension two."
+    },
+    {
+      "id": "dimThree",
+      "audioStart": 17.68,
+      "narration": "Pop a third arrow up out of the plane and the span becomes all of three dimensional space."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 23.44,
+      "narration": "Dimension is just the number of arrows you need before you stop reaching new ground."
+    }
+  ]
+}

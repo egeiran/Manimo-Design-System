@@ -1,0 +1,80 @@
+{
+  "id": "euler-step",
+  "subject_id": "mat2b",
+  "chapter_number": 4,
+  "week": 9,
+  "title": "Euler's Method: Tangent Steps Along a Slope Field",
+  "eyebrow": "numerical ODEs",
+  "language": "en",
+  "duration": 40,
+  "topic": "Euler's explicit method — march along a slope field by taking small tangent steps. Each step uses the current derivative to estimate where the solution heads next. As step size h shrinks, the polyline hugs the true curve more closely; as it grows, error opens up like a fan.",
+  "concepts": [
+    "Euler's method",
+    "slope field",
+    "step size",
+    "numerical integration",
+    "local truncation error"
+  ],
+  "pairs_with": [
+    "chapter_concepts: Euler",
+    "chapter_concepts: stegmetode"
+  ],
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.8,
+      "narration": "How do you draw a curve when you only know its slope at every point? Walk it.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "manimo-enter", "content": "Manimo bobs centre", "delay": 0 },
+        { "type": "text-caption", "content": "Hook caption", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo" }
+      ]}
+    },
+    {
+      "id": "slopeField",
+      "start": 4.8,
+      "end": 13.67,
+      "narration": "Here is a slope field for y prime equals f of t comma y. At every grid point a little tangent shows which way the solution heads.",
+      "visuals": { "layout": "left-diagram + right-panel", "elements": [
+        { "type": "svg-axes", "content": "Axes chalk-200", "delay": 0.0, "color": "var(--chalk-200)" },
+        { "type": "svg-slope-field", "content": "Grid of short tangent strokes in chalk-300", "delay": 0.3, "color": "var(--chalk-300)" },
+        { "type": "svg-curve", "content": "True solution curve in violet", "delay": 1.2, "color": "var(--violet-400)" },
+        { "type": "text-caption", "content": "Tangents whisper which way to walk.", "delay": 2.2, "color": "var(--chalk-100)", "position": "right" }
+      ]}
+    },
+    {
+      "id": "smallStep",
+      "start": 13.67,
+      "end": 23.05,
+      "narration": "Pick a starting point. Step forward by a small amount h, following the tangent. From the new spot, read the new tangent, and step again.",
+      "visuals": { "layout": "left-diagram + right-panel", "elements": [
+        { "type": "svg-points", "content": "Euler steps as amber dots + line segments", "delay": 0.3, "color": "var(--amber-400)" },
+        { "type": "text-formula", "content": "y_{n+1} = y_n + h · f(t_n, y_n)", "delay": 1.6, "color": "var(--chalk-100)", "position": "right" },
+        { "type": "text-caption", "content": "Each step uses the local slope.", "delay": 3.0, "color": "var(--chalk-300)", "position": "right" }
+      ]}
+    },
+    {
+      "id": "bigStep",
+      "start": 23.05,
+      "end": 32.43,
+      "narration": "Make h bigger and the polyline starts to drift away from the true curve. The error fan opens because each tangent only knows the starting point of its step.",
+      "visuals": { "layout": "left-diagram + right-panel", "elements": [
+        { "type": "svg-points", "content": "Larger Euler steps in rose, drifting off the curve", "delay": 0.3, "color": "var(--rose-400)" },
+        { "type": "svg-arrow", "content": "Error gap arrows between rose path and violet truth", "delay": 1.4, "color": "var(--rose-400)" },
+        { "type": "text-caption", "content": "Bigger h → bigger drift.", "delay": 2.4, "color": "var(--rose-400)", "position": "right" }
+      ]}
+    },
+    {
+      "id": "heroOutro",
+      "start": 32.43,
+      "end": 40.0,
+      "narration": "Euler's method trades exact for explicit. Smaller steps follow truer curves — at the cost of doing more work.",
+      "visuals": { "layout": "center", "elements": [
+        { "type": "text-eyebrow", "content": "'EULER STEP'", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
+        { "type": "text-hero", "content": "'y_{n+1} = y_n + h · f(t_n, y_n)'", "delay": 0.35, "color": "var(--chalk-100)", "position": "centre" },
+        { "type": "text-caption", "content": "First-order accurate — error O(h).", "delay": 1.4, "color": "var(--chalk-200)", "position": "below hero" }
+      ]}
+    }
+  ]
+}

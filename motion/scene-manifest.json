@@ -12,7 +12,12 @@
       "duration": 34,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["RC circuit", "capacitor charging", "time constant", "exponential decay"],
+      "concepts": [
+        "RC circuit",
+        "capacitor charging",
+        "time constant",
+        "exponential decay"
+      ],
       "subject_id": "fysikk",
       "chapter_number": 4
     },
@@ -27,7 +32,13 @@
       "duration": 43,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["moment of inertia", "rotational inertia", "angular acceleration", "disk vs ring", "integration"],
+      "concepts": [
+        "moment of inertia",
+        "rotational inertia",
+        "angular acceleration",
+        "disk vs ring",
+        "integration"
+      ],
       "subject_id": "fysikk",
       "chapter_number": 2
     },
@@ -41,8 +52,16 @@
       "topic": "Rolling without slipping — energy conservation gives v = √(2gh / (1 + I/MR²)); disk beats hoop because less inertia goes into rotation",
       "duration": 48,
       "language": "en",
-      "prerequisites": ["moment-of-inertia"],
-      "concepts": ["rolling motion", "energy conservation", "rotational kinetic energy", "rolling without slipping", "moment of inertia"],
+      "prerequisites": [
+        "moment-of-inertia"
+      ],
+      "concepts": [
+        "rolling motion",
+        "energy conservation",
+        "rotational kinetic energy",
+        "rolling without slipping",
+        "moment of inertia"
+      ],
       "subject_id": "fysikk",
       "chapter_number": 2
     },
@@ -57,7 +76,13 @@
       "duration": 41,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["simple harmonic motion", "Hooke's law", "natural frequency", "spring constant", "period"],
+      "concepts": [
+        "simple harmonic motion",
+        "Hooke's law",
+        "natural frequency",
+        "spring constant",
+        "period"
+      ],
       "subject_id": "fysikk",
       "chapter_number": 3
     },
@@ -71,8 +96,16 @@
       "topic": "Simple pendulum — for small swings, T = 2π√(L/g); the period depends on length and gravity, not mass",
       "duration": 50,
       "language": "en",
-      "prerequisites": ["spring-oscillation"],
-      "concepts": ["pendulum", "small-angle approximation", "simple harmonic motion", "period", "gravity"],
+      "prerequisites": [
+        "spring-oscillation"
+      ],
+      "concepts": [
+        "pendulum",
+        "small-angle approximation",
+        "simple harmonic motion",
+        "period",
+        "gravity"
+      ],
       "subject_id": "fysikk",
       "chapter_number": 3
     },
@@ -86,8 +119,19 @@
       "topic": "RLC ↔ pendulum analogy — both obey the same second-order linear ODE, with q↔x, I↔v, L↔m, 1/C↔k, R↔b",
       "duration": 48,
       "language": "en",
-      "prerequisites": ["spring-oscillation", "pendulum", "rc-circuit"],
-      "concepts": ["analogy", "second-order ODE", "RLC circuit", "damped oscillation", "natural frequency", "energy exchange"],
+      "prerequisites": [
+        "spring-oscillation",
+        "pendulum",
+        "rc-circuit"
+      ],
+      "concepts": [
+        "analogy",
+        "second-order ODE",
+        "RLC circuit",
+        "damped oscillation",
+        "natural frequency",
+        "energy exchange"
+      ],
       "subject_id": "fysikk",
       "chapter_number": 3
     },
@@ -102,7 +146,13 @@
       "duration": 42,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["centripetal acceleration", "uniform circular motion", "angular velocity", "radial acceleration", "no work done"],
+      "concepts": [
+        "centripetal acceleration",
+        "uniform circular motion",
+        "angular velocity",
+        "radial acceleration",
+        "no work done"
+      ],
       "subject_id": "fysikk",
       "chapter_number": 1
     },
@@ -116,8 +166,16 @@
       "topic": "Parallel-axis (Steiner's) theorem — I = I_cm + Md², the moment of inertia about any axis equals the inertia about a parallel axis through the centre of mass plus M times the squared offset",
       "duration": 54.85,
       "language": "en",
-      "prerequisites": ["moment-of-inertia"],
-      "concepts": ["parallel axis theorem", "Steiner's theorem", "moment of inertia", "centre of mass", "rigid body rotation"],
+      "prerequisites": [
+        "moment-of-inertia"
+      ],
+      "concepts": [
+        "parallel axis theorem",
+        "Steiner's theorem",
+        "moment of inertia",
+        "centre of mass",
+        "rigid body rotation"
+      ],
       "subject_id": "fysikk",
       "chapter_number": 2
     },
@@ -131,8 +189,17 @@
       "topic": "Damped harmonic oscillator — adding velocity-proportional drag turns Hooke's law into m·ẍ + b·ẋ + k·x = 0; underdamped solution x(t) = A·e^(-γt)·sin(ωt+φ); regimes: underdamped, critically damped, overdamped",
       "duration": 46,
       "language": "en",
-      "prerequisites": ["spring-oscillation"],
-      "concepts": ["damped oscillation", "viscous drag", "exponential decay", "underdamped", "critically damped", "overdamped"],
+      "prerequisites": [
+        "spring-oscillation"
+      ],
+      "concepts": [
+        "damped oscillation",
+        "viscous drag",
+        "exponential decay",
+        "underdamped",
+        "critically damped",
+        "overdamped"
+      ],
       "subject_id": "fysikk",
       "chapter_number": 3
     },
@@ -147,7 +214,13 @@
       "duration": 45,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["torque", "lever arm", "cross product", "rotational mechanics", "moment of force"],
+      "concepts": [
+        "torque",
+        "lever arm",
+        "cross product",
+        "rotational mechanics",
+        "moment of force"
+      ],
       "subject_id": "fysikk",
       "chapter_number": 2
     },
@@ -162,7 +235,13 @@
       "duration": 46,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["Coulomb's law", "electric charge", "inverse-square law", "Coulomb's constant", "electrostatic force"],
+      "concepts": [
+        "Coulomb's law",
+        "electric charge",
+        "inverse-square law",
+        "Coulomb's constant",
+        "electrostatic force"
+      ],
       "subject_id": "fysikk",
       "chapter_number": 4
     },
@@ -177,7 +256,13 @@
       "duration": 45,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["CPU virtualization", "process", "time-slicing", "context switch", "scheduling"],
+      "concepts": [
+        "CPU virtualization",
+        "process",
+        "time-slicing",
+        "context switch",
+        "scheduling"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 1
     },
@@ -192,7 +277,13 @@
       "duration": 44,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["fork", "process API", "address space", "PID", "concurrency"],
+      "concepts": [
+        "fork",
+        "process API",
+        "address space",
+        "PID",
+        "concurrency"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 2
     },
@@ -207,7 +298,13 @@
       "duration": 42,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["user mode", "kernel mode", "trap", "system call", "Limited Direct Execution"],
+      "concepts": [
+        "user mode",
+        "kernel mode",
+        "trap",
+        "system call",
+        "Limited Direct Execution"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 3
     },
@@ -221,8 +318,17 @@
       "topic": "Round-robin scheduling — give every ready job one fixed-length time slice in turn; short jobs respond fast, long jobs make steady progress",
       "duration": 53,
       "language": "en",
-      "prerequisites": ["virtualizing-cpu"],
-      "concepts": ["round-robin", "time quantum", "Gantt chart", "ready queue", "response time", "scheduling fairness"],
+      "prerequisites": [
+        "virtualizing-cpu"
+      ],
+      "concepts": [
+        "round-robin",
+        "time quantum",
+        "Gantt chart",
+        "ready queue",
+        "response time",
+        "scheduling fairness"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 3
     },
@@ -236,8 +342,18 @@
       "topic": "Paging address translation — a virtual address splits into VPN + offset; the VPN indexes a per-process page table to a physical frame number; the frame number plus the offset is the physical address",
       "duration": 51,
       "language": "en",
-      "prerequisites": ["virtualizing-cpu"],
-      "concepts": ["paging", "virtual address", "physical address", "VPN", "PFN", "page table", "address translation"],
+      "prerequisites": [
+        "virtualizing-cpu"
+      ],
+      "concepts": [
+        "paging",
+        "virtual address",
+        "physical address",
+        "VPN",
+        "PFN",
+        "page table",
+        "address translation"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 5
     },
@@ -251,8 +367,17 @@
       "topic": "Race condition — two threads incrementing a shared counter can interleave their load-add-store steps so an increment is silently lost; fixing it needs a critical section",
       "duration": 53,
       "language": "en",
-      "prerequisites": ["fork-process"],
-      "concepts": ["race condition", "critical section", "mutual exclusion", "interleaving", "atomic operation", "lock"],
+      "prerequisites": [
+        "fork-process"
+      ],
+      "concepts": [
+        "race condition",
+        "critical section",
+        "mutual exclusion",
+        "interleaving",
+        "atomic operation",
+        "lock"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 6
     },
@@ -266,8 +391,16 @@
       "topic": "Test-and-set lock — a single atomic hardware instruction reads a flag's old value and writes one in the same step; threads that read zero own the lock, threads that read one spin until it is released",
       "duration": 54,
       "language": "en",
-      "prerequisites": ["race-condition"],
-      "concepts": ["spin lock", "test-and-set", "atomic instruction", "mutual exclusion", "busy waiting"],
+      "prerequisites": [
+        "race-condition"
+      ],
+      "concepts": [
+        "spin lock",
+        "test-and-set",
+        "atomic instruction",
+        "mutual exclusion",
+        "busy waiting"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 7
     },
@@ -281,8 +414,18 @@
       "topic": "Address space layout — every process sees a virtual memory region with code at the bottom, static data above it, the heap growing up via malloc, and the stack growing down on each function call",
       "duration": 42,
       "language": "en",
-      "prerequisites": ["virtualizing-cpu"],
-      "concepts": ["address space", "virtual memory", "code segment", "data segment", "heap", "stack", "memory layout"],
+      "prerequisites": [
+        "virtualizing-cpu"
+      ],
+      "concepts": [
+        "address space",
+        "virtual memory",
+        "code segment",
+        "data segment",
+        "heap",
+        "stack",
+        "memory layout"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 4
     },
@@ -297,7 +440,14 @@
       "duration": 43,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["inode", "file system", "direct pointer", "indirect pointer", "metadata", "block addressing"],
+      "concepts": [
+        "inode",
+        "file system",
+        "direct pointer",
+        "indirect pointer",
+        "metadata",
+        "block addressing"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 11
     },
@@ -311,8 +461,17 @@
       "topic": "Shortest Job First scheduling — three jobs arrive together; running them in arrival order versus shortest-first changes the average turnaround time even though the total work is identical",
       "duration": 46,
       "language": "en",
-      "prerequisites": ["virtualizing-cpu"],
-      "concepts": ["shortest job first", "FIFO scheduling", "turnaround time", "Gantt chart", "convoy effect", "non-preemptive scheduling"],
+      "prerequisites": [
+        "virtualizing-cpu"
+      ],
+      "concepts": [
+        "shortest job first",
+        "FIFO scheduling",
+        "turnaround time",
+        "Gantt chart",
+        "convoy effect",
+        "non-preemptive scheduling"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 3
     },
@@ -326,8 +485,17 @@
       "topic": "Producer–consumer with condition variables — a bounded buffer fills and drains; a producer that finds the buffer full waits on a condition; a consumer that finds it empty waits on the other; signal wakes one waiter",
       "duration": 44,
       "language": "en",
-      "prerequisites": ["race-condition"],
-      "concepts": ["producer-consumer", "condition variable", "bounded buffer", "wait and signal", "monitor", "thread synchronization"],
+      "prerequisites": [
+        "race-condition"
+      ],
+      "concepts": [
+        "producer-consumer",
+        "condition variable",
+        "bounded buffer",
+        "wait and signal",
+        "monitor",
+        "thread synchronization"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 8
     },
@@ -341,8 +509,17 @@
       "topic": "Translation Lookaside Buffer — a tiny on-chip cache of recent virtual-to-physical translations; a hit returns the frame number in a single cycle, a miss walks the page table and then fills the cache, dramatically slower",
       "duration": 48,
       "language": "en",
-      "prerequisites": ["address-translation"],
-      "concepts": ["TLB", "translation lookaside buffer", "cache hit", "cache miss", "locality of reference", "page table walk"],
+      "prerequisites": [
+        "address-translation"
+      ],
+      "concepts": [
+        "TLB",
+        "translation lookaside buffer",
+        "cache hit",
+        "cache miss",
+        "locality of reference",
+        "page table walk"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 5
     },
@@ -356,8 +533,17 @@
       "topic": "Semaphores — a single integer plus a queue: P() decrements and blocks if the value would go negative, V() increments and wakes a waiter; a semaphore with initial value 1 acts as a lock",
       "duration": 45,
       "language": "en",
-      "prerequisites": ["race-condition"],
-      "concepts": ["semaphore", "P and V", "mutex", "counting semaphore", "wait queue", "mutual exclusion"],
+      "prerequisites": [
+        "race-condition"
+      ],
+      "concepts": [
+        "semaphore",
+        "P and V",
+        "mutex",
+        "counting semaphore",
+        "wait queue",
+        "mutual exclusion"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 9
     },
@@ -371,8 +557,18 @@
       "topic": "Process states — a process is always in one of three states: RUNNING on the CPU, READY waiting for the CPU, or BLOCKED waiting on an I/O completion; the scheduler and I/O events drive every transition",
       "duration": 59,
       "language": "en",
-      "prerequisites": ["fork-process"],
-      "concepts": ["process state", "running", "ready", "blocked", "state transition", "I/O", "scheduler"],
+      "prerequisites": [
+        "fork-process"
+      ],
+      "concepts": [
+        "process state",
+        "running",
+        "ready",
+        "blocked",
+        "state transition",
+        "I/O",
+        "scheduler"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 2
     },
@@ -387,7 +583,14 @@
       "duration": 44,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["polling", "interrupt", "I/O device", "device driver", "CPU utilisation", "busy-wait"],
+      "concepts": [
+        "polling",
+        "interrupt",
+        "I/O device",
+        "device driver",
+        "CPU utilisation",
+        "busy-wait"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 10
     },
@@ -401,8 +604,18 @@
       "topic": "MLFQ — three priority queues, jobs start at the top and get demoted when they use a whole time slice; a periodic priority boost lifts everyone back to the top to avoid starvation. Learns short vs long without knowing job lengths up front.",
       "duration": 44,
       "language": "en",
-      "prerequisites": ["sjf-scheduling", "round-robin-scheduling"],
-      "concepts": ["MLFQ", "priority queues", "scheduling", "feedback", "priority boost", "starvation"],
+      "prerequisites": [
+        "sjf-scheduling",
+        "round-robin-scheduling"
+      ],
+      "concepts": [
+        "MLFQ",
+        "priority queues",
+        "scheduling",
+        "feedback",
+        "priority boost",
+        "starvation"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 3
     },
@@ -416,8 +629,17 @@
       "topic": "Dining philosophers — five threads each need two shared chopsticks; if every philosopher grabs the left one first they all wait forever for the right. The four Coffman conditions for deadlock and how breaking symmetry breaks the cycle.",
       "duration": 53,
       "language": "en",
-      "prerequisites": ["test-and-set-lock", "semaphore-counter"],
-      "concepts": ["deadlock", "Coffman conditions", "circular wait", "lock ordering", "dining philosophers"],
+      "prerequisites": [
+        "test-and-set-lock",
+        "semaphore-counter"
+      ],
+      "concepts": [
+        "deadlock",
+        "Coffman conditions",
+        "circular wait",
+        "lock ordering",
+        "dining philosophers"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 8
     },
@@ -431,8 +653,18 @@
       "topic": "Demand paging — virtual pages live on disk and are loaded into physical frames only when touched. The present bit, the page-fault trap, the swap-in animation, and what happens when RAM is full and a victim must be evicted first.",
       "duration": 54,
       "language": "en",
-      "prerequisites": ["address-translation", "tlb-hit-miss"],
-      "concepts": ["demand paging", "page fault", "present bit", "swap", "page replacement", "eviction"],
+      "prerequisites": [
+        "address-translation",
+        "tlb-hit-miss"
+      ],
+      "concepts": [
+        "demand paging",
+        "page fault",
+        "present bit",
+        "swap",
+        "page replacement",
+        "eviction"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 5
     },
@@ -446,8 +678,17 @@
       "topic": "Crash consistency — a single file write touches data, inode, and bitmap; a crash partway through leaves the filesystem corrupt. A write-ahead journal records the intent first, then replays it on reboot so partial writes never become permanent.",
       "duration": 62,
       "language": "en",
-      "prerequisites": ["inode-block-pointers"],
-      "concepts": ["journaling", "crash consistency", "write-ahead log", "transaction", "atomic commit", "redo"],
+      "prerequisites": [
+        "inode-block-pointers"
+      ],
+      "concepts": [
+        "journaling",
+        "crash consistency",
+        "write-ahead log",
+        "transaction",
+        "atomic commit",
+        "redo"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 11
     },
@@ -461,8 +702,18 @@
       "topic": "RAID — combining several disks to trade capacity for speed (striping, RAID-0), redundancy (mirroring, RAID-1), or both (parity, RAID-5). Visualises a block landing across multiple disks and what happens when one disk dies.",
       "duration": 56,
       "language": "en",
-      "prerequisites": ["inode-block-pointers"],
-      "concepts": ["RAID", "striping", "mirroring", "parity", "xor reconstruction", "redundancy", "throughput"],
+      "prerequisites": [
+        "inode-block-pointers"
+      ],
+      "concepts": [
+        "RAID",
+        "striping",
+        "mirroring",
+        "parity",
+        "xor reconstruction",
+        "redundancy",
+        "throughput"
+      ],
       "subject_id": "operativsystemer",
       "chapter_number": 11
     },
@@ -477,7 +728,13 @@
       "duration": 39,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["voltage divider", "series resistors", "Ohm's law", "Kirchhoff voltage law", "circuit analysis"],
+      "concepts": [
+        "voltage divider",
+        "series resistors",
+        "Ohm's law",
+        "Kirchhoff voltage law",
+        "circuit analysis"
+      ],
       "subject_id": "ade",
       "chapter_number": 1
     },
@@ -492,7 +749,14 @@
       "duration": 41,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["diode", "rectifier", "forward bias", "reverse bias", "half-wave", "AC to DC"],
+      "concepts": [
+        "diode",
+        "rectifier",
+        "forward bias",
+        "reverse bias",
+        "half-wave",
+        "AC to DC"
+      ],
       "subject_id": "ade",
       "chapter_number": 4
     },
@@ -507,7 +771,14 @@
       "duration": 38,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["D flip-flop", "edge-triggered", "rising edge", "clock", "sequential logic", "register"],
+      "concepts": [
+        "D flip-flop",
+        "edge-triggered",
+        "rising edge",
+        "clock",
+        "sequential logic",
+        "register"
+      ],
       "subject_id": "ade",
       "chapter_number": 7
     },
@@ -522,7 +793,14 @@
       "duration": 40,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["Kirchhoff voltage law", "KVL", "loop analysis", "voltage", "energy conservation", "mesh"],
+      "concepts": [
+        "Kirchhoff voltage law",
+        "KVL",
+        "loop analysis",
+        "voltage",
+        "energy conservation",
+        "mesh"
+      ],
       "subject_id": "ade",
       "chapter_number": 1
     },
@@ -537,7 +815,14 @@
       "duration": 40,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["phasor", "AC analysis", "complex plane", "sinusoid", "phase difference", "angular frequency"],
+      "concepts": [
+        "phasor",
+        "AC analysis",
+        "complex plane",
+        "sinusoid",
+        "phase difference",
+        "angular frequency"
+      ],
       "subject_id": "ade",
       "chapter_number": 8
     },
@@ -552,7 +837,14 @@
       "duration": 39,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["Karnaugh map", "Boolean minimization", "Gray code", "sum of products", "logic simplification", "minterm"],
+      "concepts": [
+        "Karnaugh map",
+        "Boolean minimization",
+        "Gray code",
+        "sum of products",
+        "logic simplification",
+        "minterm"
+      ],
       "subject_id": "ade",
       "chapter_number": 10
     },
@@ -566,8 +858,18 @@
       "topic": "Thévenin's theorem — any linear two-terminal network can be replaced by an open-circuit voltage V_th in series with an equivalent resistance R_th; the load sees the same current and voltage either way",
       "duration": 44,
       "language": "en",
-      "prerequisites": ["voltage-divider", "kirchhoff-voltage-law"],
-      "concepts": ["Thévenin's theorem", "equivalent circuit", "open-circuit voltage", "equivalent resistance", "linear network", "circuit reduction"],
+      "prerequisites": [
+        "voltage-divider",
+        "kirchhoff-voltage-law"
+      ],
+      "concepts": [
+        "Thévenin's theorem",
+        "equivalent circuit",
+        "open-circuit voltage",
+        "equivalent resistance",
+        "linear network",
+        "circuit reduction"
+      ],
       "subject_id": "ade",
       "chapter_number": 3
     },
@@ -581,8 +883,19 @@
       "topic": "RC low-pass filter — transfer function H(jω) = 1/(1 + jωRC); gain stays flat below the cutoff ω_c = 1/RC and rolls off at −20 dB/decade above; Bode magnitude and phase together describe the filter at every frequency",
       "duration": 48,
       "language": "en",
-      "prerequisites": ["voltage-divider", "phasor-rotation"],
-      "concepts": ["low-pass filter", "Bode plot", "cutoff frequency", "transfer function", "frequency response", "decibels", "RC filter"],
+      "prerequisites": [
+        "voltage-divider",
+        "phasor-rotation"
+      ],
+      "concepts": [
+        "low-pass filter",
+        "Bode plot",
+        "cutoff frequency",
+        "transfer function",
+        "frequency response",
+        "decibels",
+        "RC filter"
+      ],
       "subject_id": "ade",
       "chapter_number": 8
     },
@@ -596,8 +909,17 @@
       "topic": "Finite state machines — a graph of states and labelled transitions models any sequential circuit; a Moore-style 11-detector with three states walks an input bit-stream and asserts its output whenever the last two bits were ones",
       "duration": 39,
       "language": "en",
-      "prerequisites": ["d-flip-flop"],
-      "concepts": ["finite state machine", "Moore machine", "state diagram", "sequential logic", "state transition", "pattern detector"],
+      "prerequisites": [
+        "d-flip-flop"
+      ],
+      "concepts": [
+        "finite state machine",
+        "Moore machine",
+        "state diagram",
+        "sequential logic",
+        "state transition",
+        "pattern detector"
+      ],
       "subject_id": "ade",
       "chapter_number": 10
     },
@@ -612,7 +934,13 @@
       "duration": 48,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["capacitor", "energy storage", "electric field", "work integral", "½CV²"],
+      "concepts": [
+        "capacitor",
+        "energy storage",
+        "electric field",
+        "work integral",
+        "½CV²"
+      ],
       "subject_id": "ade",
       "chapter_number": 2
     },
@@ -627,7 +955,14 @@
       "duration": 42,
       "language": "en",
       "prerequisites": [],
-      "concepts": ["NAND gate", "functional completeness", "Boolean algebra", "De Morgan", "logic gate", "universal gate"],
+      "concepts": [
+        "NAND gate",
+        "functional completeness",
+        "Boolean algebra",
+        "De Morgan",
+        "logic gate",
+        "universal gate"
+      ],
       "subject_id": "ade",
       "chapter_number": 5
     },
@@ -641,10 +976,532 @@
       "topic": "Inverting op-amp — V+ grounded, V− driven to a virtual ground by feedback, KCL at the summing junction gives V_out = −(R_f/R_in)·V_in; the op-amp's own gain never enters the answer because the feedback loop forces V− to match V+",
       "duration": 56,
       "language": "en",
-      "prerequisites": ["voltage-divider", "kirchhoff-voltage-law"],
-      "concepts": ["operational amplifier", "inverting amplifier", "virtual short", "virtual ground", "feedback", "Kirchhoff current law"],
+      "prerequisites": [
+        "voltage-divider",
+        "kirchhoff-voltage-law"
+      ],
+      "concepts": [
+        "operational amplifier",
+        "inverting amplifier",
+        "virtual short",
+        "virtual ground",
+        "feedback",
+        "Kirchhoff current law"
+      ],
       "subject_id": "ade",
       "chapter_number": 9
+    },
+    {
+      "id": "euler-step",
+      "file": "euler-step.jsx",
+      "html": "euler-step.html",
+      "spec": "euler-step.spec.json",
+      "title": "Euler's Method: Tangent Steps Along a Slope Field",
+      "eyebrow": "numerical ODEs",
+      "topic": "Euler's explicit method — march along a slope field by taking tangent steps. Small h hugs the true curve; large h drifts off step by step. Global error is first order in h.",
+      "duration": 40,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": [
+        "Euler's method",
+        "slope field",
+        "step size",
+        "numerical integration",
+        "local truncation error"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 4
+    },
+    {
+      "id": "best-approximation",
+      "file": "best-approximation.jsx",
+      "html": "best-approximation.html",
+      "spec": "best-approximation.spec.json",
+      "title": "Best Approximation: The Perpendicular Wins",
+      "eyebrow": "projection · approximation",
+      "topic": "Best approximation theorem — the closest point in a subspace to a given vector is its orthogonal projection. A point u above a line L: dropping a perpendicular hits the foot uniquely, and any other candidate on the line is strictly farther by Pythagoras.",
+      "duration": 35,
+      "language": "en",
+      "prerequisites": [
+        "projection-onto-line",
+        "gram-schmidt-2d-then-3d"
+      ],
+      "concepts": [
+        "best approximation",
+        "orthogonal projection",
+        "subspace",
+        "Pythagoras",
+        "minimum distance"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 3
+    },
+    {
+      "id": "gram-schmidt-2d-then-3d",
+      "file": "gram-schmidt-2d-then-3d.jsx",
+      "html": "gram-schmidt-2d-then-3d.html",
+      "spec": "gram-schmidt-2d-then-3d.spec.json",
+      "title": "Gram-Schmidt: Subtract the Projection",
+      "eyebrow": "orthonormal bases",
+      "topic": "Gram-Schmidt orthogonalisation — keep v₁ as u₁; subtract the projection of v₂ onto u₁ so what's left (u₂) is perpendicular; normalise to get an orthonormal pair. The same recipe extends to 3D by subtracting both shadows in turn.",
+      "duration": 50,
+      "language": "en",
+      "prerequisites": [
+        "projection-onto-line"
+      ],
+      "concepts": [
+        "Gram-Schmidt",
+        "orthogonal basis",
+        "orthonormal basis",
+        "projection",
+        "inner product"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 3
+    },
+    {
+      "id": "change-of-basis-matrix",
+      "file": "change-of-basis-matrix.jsx",
+      "html": "change-of-basis-matrix.html",
+      "spec": "change-of-basis-matrix.spec.json",
+      "title": "Change of Basis: P Converts the Reading",
+      "eyebrow": "coordinate vectors",
+      "topic": "Change-of-basis matrix — the same vector has different coordinate readings in two bases. Stack the new basis vectors as columns of P; then P times the new-basis coordinates returns the standard-basis coordinates of the same vector.",
+      "duration": 38,
+      "language": "en",
+      "prerequisites": [
+        "basis-change-grid"
+      ],
+      "concepts": [
+        "basis",
+        "coordinate vector",
+        "change of basis",
+        "transition matrix",
+        "linear combination"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 2
+    },
+    {
+      "id": "rank-nullity-visual",
+      "file": "rank-nullity-visual.jsx",
+      "html": "rank-nullity-visual.html",
+      "spec": "rank-nullity-visual.spec.json",
+      "title": "Rank, Nullity, and a Squashed Plane",
+      "eyebrow": "rank · nullity",
+      "topic": "Rank-nullity by example — a singular 2×2 matrix squashes the whole plane down to one line. The image is that surviving line (rank 1); the kernel is the direction that collapsed onto the origin (nullity 1). Together they account for the dimension of the domain.",
+      "duration": 39,
+      "language": "en",
+      "prerequisites": [
+        "linear-transformation-grid"
+      ],
+      "concepts": [
+        "rank",
+        "nullity",
+        "kernel",
+        "image",
+        "rank-nullity theorem",
+        "singular matrix"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 2
+    },
+    {
+      "id": "dimension-intuition",
+      "file": "dimension-intuition.jsx",
+      "html": "dimension-intuition.html",
+      "spec": "dimension-intuition.spec.json",
+      "title": "Dimension: How Many Free Directions?",
+      "eyebrow": "vector spaces",
+      "topic": "Dimension as a count of linearly independent directions — a single arrow gives a line (dim 1), a second non-collinear arrow sweeps out a plane (dim 2), and a third arrow off the plane fills three-dimensional space (dim 3).",
+      "duration": 29,
+      "language": "en",
+      "prerequisites": [
+        "span-and-dependence"
+      ],
+      "concepts": [
+        "dimension",
+        "basis",
+        "span",
+        "linear independence",
+        "R^n"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 1
+    },
+    {
+      "id": "diagonalisation-eigenaxes",
+      "file": "diagonalisation-eigenaxes.jsx",
+      "html": "diagonalisation-eigenaxes.html",
+      "spec": "diagonalisation-eigenaxes.spec.json",
+      "title": "Diagonalisation: Eigenvectors as Natural Axes",
+      "eyebrow": "diagonalisation",
+      "topic": "A 2×2 matrix maps the unit circle to an ellipse. The two directions that stretch without rotating are the eigenvectors; their stretch factors are the eigenvalues. In the eigenbasis A is diagonal: A = PDP⁻¹.",
+      "duration": 39,
+      "language": "en",
+      "prerequisites": [
+        "linear-transformation-grid",
+        "basis-change-grid"
+      ],
+      "concepts": [
+        "eigenvalue",
+        "eigenvector",
+        "diagonalisation",
+        "change of basis",
+        "ellipse",
+        "natural axes"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 4
+    },
+    {
+      "id": "projection-onto-line",
+      "file": "projection-onto-line.jsx",
+      "html": "projection-onto-line.html",
+      "spec": "projection-onto-line.spec.json",
+      "title": "Projection onto a Line",
+      "eyebrow": "inner product spaces",
+      "topic": "Project a vector u onto the line spanned by v. The foot of the perpendicular is proj_v(u) — the closest point. The leftover u minus its projection is orthogonal to v. proj_v(u) = (u·v / v·v) v.",
+      "duration": 31,
+      "language": "en",
+      "prerequisites": [
+        "span-and-dependence"
+      ],
+      "concepts": [
+        "projection onto a line",
+        "orthogonal decomposition",
+        "inner product",
+        "residual",
+        "closest point"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 3
+    },
+    {
+      "id": "matrix-as-function",
+      "file": "matrix-as-function.jsx",
+      "html": "matrix-as-function.html",
+      "spec": "matrix-as-function.spec.json",
+      "title": "A Matrix Is a Function: T(v) = Av",
+      "eyebrow": "linear transformations",
+      "topic": "A matrix-vector multiplication is a linear transformation. Walk through input v, the matrix machine A, the row-by-column dot product, and the output Av. Every linear T from ℝⁿ to ℝⁿ is multiplication by a matrix.",
+      "duration": 37,
+      "language": "en",
+      "prerequisites": [
+        "linear-transformation-grid"
+      ],
+      "concepts": [
+        "linear transformation",
+        "matrix-vector product",
+        "row times column",
+        "T(v) = Av",
+        "dot product"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 2
+    },
+    {
+      "id": "basis-change-grid",
+      "file": "basis-change-grid.jsx",
+      "html": "basis-change-grid.html",
+      "spec": "basis-change-grid.spec.json",
+      "title": "Same Vector, Two Grids",
+      "eyebrow": "basis and coordinates",
+      "topic": "Change of basis — the same arrow has different coordinates depending on the grid it is measured against. Standard grid reads our vector as (1, 3); a tilted basis B = {b₁, b₂} reads the very same vector as (2, 1).",
+      "duration": 35,
+      "language": "en",
+      "prerequisites": [
+        "span-and-dependence"
+      ],
+      "concepts": [
+        "basis",
+        "coordinate vector",
+        "change of basis",
+        "linear combination",
+        "standard basis"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 1
+    },
+    {
+      "id": "span-and-dependence",
+      "file": "span-and-dependence.jsx",
+      "html": "span-and-dependence.html",
+      "spec": "span-and-dependence.spec.json",
+      "title": "Span and Linear Dependence",
+      "eyebrow": "vector spaces",
+      "topic": "Span of two non-parallel 2D arrows is a parallelogram (the whole plane); a third arrow inside the span is linearly dependent; a third arrow off the plane lifts the span to all of ℝ³, demonstrating linear independence.",
+      "duration": 39,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": [
+        "vector space",
+        "span",
+        "linear combination",
+        "linear independence",
+        "linear dependence"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 1
+    },
+    {
+      "id": "linear-transformation-grid",
+      "file": "linear-transformation-grid.jsx",
+      "html": "linear-transformation-grid.html",
+      "spec": "linear-transformation-grid.spec.json",
+      "title": "Linear Transformations: A Matrix Moves the Grid",
+      "eyebrow": "linear transformations",
+      "topic": "Linear transformation of the plane — every 2×2 matrix bends the standard grid in exactly one way, and its two columns are the images of the basis vectors e₁ and e₂. Rotation, scaling and shear are special cases of the same machine, closed off with a hero outro.",
+      "duration": 62,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": [
+        "linear transformation",
+        "matrix representation",
+        "standard basis",
+        "rotation",
+        "scaling",
+        "shear",
+        "columns of a matrix"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 2
+    },
+    {
+      "id": "euler-vs-rk4",
+      "file": "euler-vs-rk4.jsx",
+      "html": "euler-vs-rk4.html",
+      "spec": "euler-vs-rk4.spec.json",
+      "title": "Euler vs RK4: Same Step Size, Different Curves",
+      "eyebrow": "numerical ODEs",
+      "topic": "Same ODE, same step size, two methods. Euler uses one tangent per step and drifts; classical Runge-Kutta samples four slopes per step, averages them, and hugs the true curve. A log-log error plot lays the order claim bare: slope 1 for Euler, slope 4 for RK4.",
+      "duration": 53,
+      "language": "en",
+      "prerequisites": [
+        "euler-step"
+      ],
+      "concepts": [
+        "Runge-Kutta method",
+        "RK4",
+        "order of accuracy",
+        "global error",
+        "log-log error plot",
+        "Euler's method"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 4
+    },
+    {
+      "id": "second-order-to-system",
+      "file": "second-order-to-system.jsx",
+      "html": "second-order-to-system.html",
+      "spec": "second-order-to-system.spec.json",
+      "title": "Second-Order ODE as a First-Order System",
+      "eyebrow": "ODE systems",
+      "topic": "A linear second-order ODE y'' + p y' + q y = 0 becomes a first-order system in two unknowns by introducing v = y'. The state vector (y, v) evolves under a single 2×2 matrix, opening up every first-order tool — Euler, RK4, eigenvector analysis.",
+      "duration": 59,
+      "language": "en",
+      "prerequisites": [
+        "euler-step"
+      ],
+      "concepts": [
+        "second-order ODE",
+        "first-order system",
+        "state vector",
+        "companion matrix",
+        "phase plane"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 4
+    },
+    {
+      "id": "phase-portrait-2x2",
+      "file": "phase-portrait-2x2.jsx",
+      "html": "phase-portrait-2x2.html",
+      "spec": "phase-portrait-2x2.spec.json",
+      "title": "Phase Portraits of a 2×2 Linear System",
+      "eyebrow": "linear ODE systems",
+      "topic": "For x' = A x with a 2×2 matrix A, the eigenvalues of A set the geometry of trajectories. Two negative real eigenvalues give a stable node; opposite signs give a saddle; a complex pair with negative real part gives a stable spiral.",
+      "duration": 48,
+      "language": "en",
+      "prerequisites": [
+        "diagonalisation-eigenaxes",
+        "second-order-to-system"
+      ],
+      "concepts": [
+        "phase portrait",
+        "linear system of ODEs",
+        "eigenvalue",
+        "stable node",
+        "saddle",
+        "spiral",
+        "vector field"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 4
+    },
+    {
+      "id": "multivariable-limit-paths",
+      "file": "multivariable-limit-paths.jsx",
+      "html": "multivariable-limit-paths.html",
+      "spec": "multivariable-limit-paths.spec.json",
+      "title": "Multivariable Limits Fail Along Different Paths",
+      "eyebrow": "limits in higher dimensions",
+      "topic": "A two-variable limit must agree along every path. For f(x, y) = (xy + y³)/(x² + y²), approaching the origin along the x-axis gives 0, while approaching along y = x gives 1/2. Two different values — so the limit does not exist.",
+      "duration": 57,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": [
+        "limit of a function of two variables",
+        "path-dependence",
+        "limit does not exist",
+        "approach along a curve",
+        "continuity in two variables"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 5
+    },
+    {
+      "id": "gradient-and-level-curves",
+      "file": "gradient-and-level-curves.jsx",
+      "html": "gradient-and-level-curves.html",
+      "spec": "gradient-and-level-curves.spec.json",
+      "title": "Gradient and Level Curves: Perpendicular by Design",
+      "eyebrow": "gradient · directional derivative",
+      "topic": "On a contour plot, the gradient ∇f at every point is perpendicular to the level curve through that point. The gradient direction is steepest ascent; its length is the rate of steepest ascent. The directional derivative along the level-curve tangent is zero.",
+      "duration": 49,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": [
+        "gradient",
+        "level curve",
+        "contour plot",
+        "directional derivative",
+        "steepest ascent"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 5
+    },
+    {
+      "id": "directional-derivative",
+      "file": "directional-derivative.jsx",
+      "html": "directional-derivative.html",
+      "spec": "directional-derivative.spec.json",
+      "title": "Directional Derivative: A Tilted Slice",
+      "eyebrow": "directional derivatives",
+      "topic": "Directional derivative as the slope of a vertical slice. Pick a point on a surface z = f(x, y) and a unit direction u; the plane through that point parallel to u cuts the surface along a curve whose slope at the point is D_u f. Algebraically D_u f = ∇f · u, so every direction's slope is a projection of the gradient.",
+      "duration": 48,
+      "language": "en",
+      "prerequisites": [
+        "gradient-and-level-curves"
+      ],
+      "concepts": [
+        "directional derivative",
+        "gradient",
+        "unit direction",
+        "partial derivative",
+        "level curves",
+        "dot product"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 5
+    },
+    {
+      "id": "tangent-plane-linearisation",
+      "file": "tangent-plane-linearisation.jsx",
+      "html": "tangent-plane-linearisation.html",
+      "spec": "tangent-plane-linearisation.spec.json",
+      "title": "Linearisation: The Tangent Plane Snaps On",
+      "eyebrow": "linearisation",
+      "topic": "Linear approximation of a surface near a point. Lead with the one-variable picture — a curve and its tangent line — then zoom in to feel that the error vanishes faster than the step. Generalises to L(x, y) = f(a, b) + f_x(a, b)(x − a) + f_y(a, b)(y − b), the equation of the tangent plane.",
+      "duration": 42,
+      "language": "en",
+      "prerequisites": [
+        "directional-derivative"
+      ],
+      "concepts": [
+        "linearisation",
+        "tangent plane",
+        "differentiability",
+        "partial derivative",
+        "local approximation"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 5
+    },
+    {
+      "id": "hessian-test",
+      "file": "hessian-test.jsx",
+      "html": "hessian-test.html",
+      "spec": "hessian-test.spec.json",
+      "title": "The Second-Derivative Test: A Discriminant Decides",
+      "eyebrow": "extrema · second-derivative test",
+      "topic": "Classifying a critical point with the Hesse matrix. Three cases shown side by side: a bowl (D > 0, f_xx > 0) is a local minimum; a dome (D > 0, f_xx < 0) is a local maximum; a saddle (D < 0) is neither. The discriminant D = f_xx · f_yy − f_xy² and the sign of f_xx read the verdict off the matrix.",
+      "duration": 49,
+      "language": "en",
+      "prerequisites": [
+        "tangent-plane-linearisation"
+      ],
+      "concepts": [
+        "Hesse matrix",
+        "discriminant",
+        "second-derivative test",
+        "critical point",
+        "local minimum",
+        "local maximum",
+        "saddle point"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 6
+    },
+    {
+      "id": "hesse-eigenvalues",
+      "file": "hesse-eigenvalues.jsx",
+      "html": "hesse-eigenvalues.html",
+      "spec": "hesse-eigenvalues.spec.json",
+      "title": "Hesse Eigenvalues: Curvature on the Principal Axes",
+      "eyebrow": "Hesse · eigenvalues",
+      "topic": "The Hesse matrix is symmetric, so it diagonalises in an orthonormal basis: its eigenvectors are the principal directions of curvature and its eigenvalues are the curvatures along them. Both eigenvalues positive — minimum; both negative — maximum; mixed signs — saddle. The discriminant just tracks the product λ₁ λ₂ = det H.",
+      "duration": 40,
+      "language": "en",
+      "prerequisites": [
+        "hessian-test",
+        "diagonalisation-eigenaxes"
+      ],
+      "concepts": [
+        "Hesse matrix",
+        "eigenvalues",
+        "eigenvectors",
+        "principal curvature",
+        "diagonalisation",
+        "spectral theorem"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 6
+    },
+    {
+      "id": "global-extrema-triangle",
+      "file": "global-extrema-triangle.jsx",
+      "html": "global-extrema-triangle.html",
+      "spec": "global-extrema-triangle.spec.json",
+      "title": "Global Extrema on a Triangle",
+      "eyebrow": "extrema · closed region",
+      "topic": "Finding the global min and max of f(x, y) = x² + y² − xy + x + y on the triangle x ≤ 0, y ≤ 0, x + y ≥ −3. Walks Plenum 6 problem 3 — the highest-leverage exam workout in chapter 6. Candidates: an interior critical point at (−1, −1), three edge minimisers, three corners. Min = −1 at the interior point; max = 6 at the two off-origin corners.",
+      "duration": 52,
+      "language": "en",
+      "prerequisites": [
+        "hessian-test"
+      ],
+      "concepts": [
+        "global extrema",
+        "extreme value theorem",
+        "closed bounded region",
+        "critical point",
+        "boundary search",
+        "candidate comparison"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 6
     }
   ]
 }

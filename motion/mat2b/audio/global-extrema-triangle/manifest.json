@@ -1,0 +1,46 @@
+{
+  "sceneId": "global-extrema-triangle",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/global-extrema-triangle/scene.mp3",
+  "durationSec": 84.62,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "A continuous function on a closed bounded region always has a global minimum and a global maximum. The trick is finding them — and there are only three places they can hide."
+    },
+    {
+      "id": "setup",
+      "audioStart": 10.86,
+      "narration": "Here's the region: the triangle with x at most zero, y at most zero, and x plus y at least minus three. Inside that triangle we want the smallest and largest values of f of x comma y equals x squared plus y squared minus x y plus x plus y."
+    },
+    {
+      "id": "interior",
+      "audioStart": 30.36,
+      "narration": "First place to look — interior critical points. Set the gradient to zero. That gives x equals y equals minus one, and f equals minus one. Already a strong candidate for the minimum."
+    },
+    {
+      "id": "edges",
+      "audioStart": 43.26,
+      "narration": "Second place to look — the three edges. On each edge, restrict f to a single variable function and minimise. You get three more candidate points, with values of minus a quarter, minus a quarter, and minus three quarters."
+    },
+    {
+      "id": "corners",
+      "audioStart": 57.26,
+      "narration": "Third place to look — the corners. f at the origin is zero. f at the other two corners is six and six. Big numbers — the maximum is going to live here."
+    },
+    {
+      "id": "compare",
+      "audioStart": 67.71,
+      "narration": "Compare the seven candidates. The smallest value is minus one at the interior critical point — that's the global minimum. The largest is six, hit at two of the corners — that's the global maximum."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 80.04,
+      "narration": "Three places, three checks, one comparison. That's the whole recipe."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "sceneId": "best-approximation",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/best-approximation/scene.mp3",
+  "durationSec": 33.76,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "What point on a line is closest to a point off the line? Find out."
+    },
+    {
+      "id": "setup",
+      "audioStart": 4.45,
+      "narration": "Here's a point u sitting off a line L. We want the closest point on L to u."
+    },
+    {
+      "id": "candidates",
+      "audioStart": 9.45,
+      "narration": "Try any other point on L — measure the distance. As we slide along the line, the distance changes, but it never beats the perpendicular drop."
+    },
+    {
+      "id": "perpendicular",
+      "audioStart": 17.87,
+      "narration": "Drop a perpendicular from u straight down onto L. That foot, p, is the projection — and it is the unique closest point."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 25.86,
+      "narration": "The closest point in any subspace to a vector outside it is the orthogonal projection. That's the best approximation theorem."
+    }
+  ]
+}

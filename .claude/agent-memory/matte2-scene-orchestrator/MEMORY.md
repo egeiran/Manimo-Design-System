@@ -1,0 +1,7 @@
+- [mat2b subject identity](project_mat2b_identity.md) — subject_id, course code, chapter map, style anchor scene
+- [Linear-algebra color discipline](feedback_linalg_color_roles.md) — violet/teal/amber/rose semantics carried across chapter 2–4 scenes
+- [ElevenLabs voice for mat2b](reference_elevenlabs_voice.md) — voice id + model held constant across the subject
+- [Build pipeline per scene](project_build_pipeline.md) — write spec → write jsx → write html → npm run audio → wire timings → update manifest
+- [Reusable visual recipes](project_visual_recipes.md) — SoftPanel, GridMaskedSvg, TransformationBeat, hero-outro
+- [Narration phrasings that pass preflight](feedback_narration_phrasings.md) — canonical spoken-prose for common math symbols
+- [Built scenes log](project_built_scenes_log.md) — running list of mat2b scenes shipped vs still pending, with pipeline tips from session 2

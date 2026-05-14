@@ -1,0 +1,36 @@
+{
+  "sceneId": "projection-onto-line",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/projection-onto-line/scene.mp3",
+  "durationSec": 30,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Project a vector onto a line — what is the closest point?"
+    },
+    {
+      "id": "setupVectors",
+      "audioStart": 4.41,
+      "narration": "Here is a vector u, and a line through the origin spanning some direction v. We want the shadow u casts on the line."
+    },
+    {
+      "id": "dropPerpendicular",
+      "audioStart": 12.13,
+      "narration": "Drop a perpendicular from u down to the line. Where it lands is the projection — the closest point. Everything left over is orthogonal to v."
+    },
+    {
+      "id": "formula",
+      "audioStart": 21.13,
+      "narration": "Algebraically, the projection scales v by u dot v over v dot v."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 27.18,
+      "narration": "Closest point is always the perpendicular drop."
+    }
+  ]
+}

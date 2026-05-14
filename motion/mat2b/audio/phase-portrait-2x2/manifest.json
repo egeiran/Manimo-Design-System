@@ -1,0 +1,36 @@
+{
+  "sceneId": "phase-portrait-2x2",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/phase-portrait-2x2/scene.mp3",
+  "durationSec": 47.37,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "For a linear system x prime equals A x, the eigenvalues of A decide what its trajectories look like. Three cases. Three pictures."
+    },
+    {
+      "id": "stableNode",
+      "audioStart": 10.7,
+      "narration": "Two negative real eigenvalues. Every trajectory bends toward the origin along the eigenvector directions. The origin is a stable node — a sink."
+    },
+    {
+      "id": "saddle",
+      "audioStart": 21.26,
+      "narration": "One positive eigenvalue and one negative. Along one eigenvector trajectories rush in, along the other they rush out. The origin is a saddle — unstable."
+    },
+    {
+      "id": "spiral",
+      "audioStart": 32.13,
+      "narration": "A complex conjugate pair with negative real part. No real eigenvector to fall along — trajectories rotate as they shrink. The origin is a stable spiral."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 42.23,
+      "narration": "The eigenvalues of A tell you the picture. Read the signs, then read the portrait."
+    }
+  ]
+}

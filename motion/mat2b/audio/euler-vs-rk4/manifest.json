@@ -1,0 +1,36 @@
+{
+  "sceneId": "euler-vs-rk4",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/euler-vs-rk4/scene.mp3",
+  "durationSec": 51.69,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Same problem. Same step size. Why does one method hug the curve while the other drifts?"
+    },
+    {
+      "id": "twoMarches",
+      "audioStart": 6.1,
+      "narration": "On the left, Euler walks one tangent per step. On the right, R K four samples four slopes per step and averages them. With the same step size, R K four lands almost on the true curve."
+    },
+    {
+      "id": "rk4Sampling",
+      "audioStart": 18.82,
+      "narration": "Inside one R K four step: sample the slope at the start, twice in the middle, and once at the end. The next point is the start plus h times a weighted average of these four slopes."
+    },
+    {
+      "id": "logLogError",
+      "audioStart": 30.99,
+      "narration": "Halve the step size. Euler's error halves. R K four's error drops by a factor of sixteen. On a log log plot of error against step size, the slopes are one and four — the orders of the two methods."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 44.3,
+      "narration": "More work per step buys you a much faster fall in error. For the same accuracy, higher order means fewer steps."
+    }
+  ]
+}

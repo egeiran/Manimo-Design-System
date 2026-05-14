@@ -1,0 +1,46 @@
+{
+  "sceneId": "linear-transformation-grid",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/linear-transformation-grid/scene.mp3",
+  "durationSec": 61.02,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "What does a matrix actually do to space? Let's look."
+    },
+    {
+      "id": "setup",
+      "audioStart": 4.23,
+      "narration": "Here is the standard grid, and two unit basis vectors — e one along the x-axis, and e two along the y-axis. Every other vector is built from these two."
+    },
+    {
+      "id": "rotation",
+      "audioStart": 15.67,
+      "narration": "First, rotation. Spin the whole grid by an angle theta. Watch where e one and e two land — those landing spots become the two columns of the rotation matrix."
+    },
+    {
+      "id": "scaling",
+      "audioStart": 26.7,
+      "narration": "Next, scaling. Stretch along x, squeeze along y. The basis vectors stay on their own axes, but their lengths change — and that change sits on the diagonal of the matrix."
+    },
+    {
+      "id": "shear",
+      "audioStart": 38.49,
+      "narration": "Now shear. Hold e one in place, but slide e two sideways. Vertical lines tilt; horizontal lines stay flat."
+    },
+    {
+      "id": "general",
+      "audioStart": 47.07,
+      "narration": "Every two by two matrix works the same way. Wherever e one lands becomes column one. Wherever e two lands becomes column two."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 56.47,
+      "narration": "So a matrix is a verb — it does not describe space, it moves space."
+    }
+  ]
+}
