@@ -1,11 +1,11 @@
 {
   "sceneId": "voltage-divider",
-  "mode": "mistral",
-  "engine": "mistral",
-  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
-  "model": "voxtral-mini-tts-2603",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
   "audio": "audio/voltage-divider/scene.mp3",
-  "durationSec": 38.07,
+  "durationSec": 34.46,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -14,22 +14,22 @@
     },
     {
       "id": "circuit",
-      "audioStart": 7.51,
+      "audioStart": 5.19,
       "narration": "Send V in across R one and R two in series — Kirchhoff says the two drops have to add up to V in."
     },
     {
       "id": "formula",
-      "audioStart": 13.74,
+      "audioStart": 11.83,
       "narration": "The same current flows through both, so V out equals V in times R two divided by R one plus R two."
     },
     {
       "id": "sweep",
-      "audioStart": 21.89,
+      "audioStart": 20.02,
       "narration": "Scrub R two. As it grows from small to large, V out climbs from near zero up toward V in — proportionally."
     },
     {
       "id": "takeaway",
-      "audioStart": 31.15,
+      "audioStart": 28.56,
       "narration": "The output is V in scaled by R two's share of the total resistance — that's the voltage divider."
     }
   ]

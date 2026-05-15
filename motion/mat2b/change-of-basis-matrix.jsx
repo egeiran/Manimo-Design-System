@@ -24,7 +24,7 @@
 //   emerald-400 verified equality
 //   amber-300  takeaway accent
 
-const SCENE_DURATION = 38;
+const SCENE_DURATION = 39;
 
 const NARRATION = [
   "Same arrow, two readings. How do you convert between them?",

@@ -137,6 +137,29 @@ use time. New subjects (e.g. `matematikk1`) follow the same shape.
    not optional. If the script aborts on this rule, rewrite the narration
    first.
 
+10. **Video must outlast audio by ≥ 1.0 s — and audio is always ElevenLabs.**
+
+    All scene narration is generated with `node scripts/generate-audio.js
+    <id> --engine elevenlabs` (voice `JBFqnCBsd6RMkjVDRZzb` "George",
+    model `eleven_multilingual_v2`). Voxtral / `--engine mistral` is
+    retired — it does not support Norwegian, and the NTNU pilot is
+    Norwegian. Never let the auto-chain pick the engine for a scene
+    destined for the public playlist.
+
+    After audio is generated, set `SCENE_DURATION = ceil(audioDur + 1.0)`
+    so the video never ends before the narration finishes. The audio
+    `manifest.json` field `durationSec` is the source of truth. A 1.0 s
+    tail buffer is the floor, not the target — going to 1.5–2.0 s is
+    fine when the last beat needs visual breathing room.
+
+    The wiring is fragile: the same numbers (`SCENE_DURATION`, every
+    `<Sprite start end>`, `introEnd`, `spec.duration`, `spec.beats[].start/end`,
+    the manifest entry's `duration`, and the studio app's
+    `initialScenes[].duration`) live in four files and must stay in sync.
+    Use `node scripts/rewire-scene.js <id>` after every audio regen — it
+    reads the audio manifest and updates all four files atomically.
+    Hand-editing one file in isolation will silently desync the others.
+
 ---
 
 ## Authoring a new scene — checklist

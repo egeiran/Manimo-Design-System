@@ -11,7 +11,7 @@
 // a complete copy (RAID 1), or triggers a parity-xor recompute (RAID 5)
 // that visually rebuilds the missing stripe from the survivors.
 
-const SCENE_DURATION = 56;
+const SCENE_DURATION = 53;
 
 const NARRATION = [
   /*  0.00– 9.78 */ 'A single disk gives you one shot at not failing. RAID groups several disks behind one logical drive and trades off speed, capacity, and survival.',
@@ -149,24 +149,24 @@ function Scene() {
       eyebrow="storage"
       title="RAID"
       duration={SCENE_DURATION}
-      introEnd={9.78}
+      introEnd={10.23}
       introCaption="Three layouts. Same disks. Different tradeoffs."
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={9.78} end={21.59}>
+      <Sprite start={10.23} end={21.01}>
         <Raid0Beat/>
       </Sprite>
 
-      <Sprite start={21.59} end={32.65}>
+      <Sprite start={21.01} end={29.41}>
         <Raid1Beat/>
       </Sprite>
 
-      <Sprite start={32.65} end={43.92}>
+      <Sprite start={29.41} end={41.82}>
         <Raid5Beat/>
       </Sprite>
 
-      <Sprite start={43.92} end={SCENE_DURATION}>
+      <Sprite start={41.82} end={SCENE_DURATION}>
         <TakeawayBeat/>
       </Sprite>
     </SceneChrome>

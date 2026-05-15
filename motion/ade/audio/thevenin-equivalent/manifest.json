@@ -1,11 +1,11 @@
 {
   "sceneId": "thevenin-equivalent",
-  "mode": "mistral",
-  "engine": "mistral",
-  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
-  "model": "voxtral-mini-tts-2603",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
   "audio": "audio/thevenin-equivalent/scene.mp3",
-  "durationSec": 42.72,
+  "durationSec": 39.34,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -14,22 +14,22 @@
     },
     {
       "id": "originalCircuit",
-      "audioStart": 6.95,
+      "audioStart": 6.34,
       "narration": "Here is the network — two sources, three resistors, and a load on the right. The load sees a voltage at its terminals and a current through it."
     },
     {
       "id": "openCircuit",
-      "audioStart": 16.11,
+      "audioStart": 15.13,
       "narration": "Disconnect the load. The voltage that appears across the open terminals is V Thevenin — the open-circuit voltage of the network."
     },
     {
       "id": "shortSources",
-      "audioStart": 25.79,
+      "audioStart": 23.37,
       "narration": "Now zero the independent sources — every voltage source becomes a wire. The resistance you see looking back into the terminals is R Thevenin."
     },
     {
       "id": "equivalent",
-      "audioStart": 35.36,
+      "audioStart": 32.22,
       "narration": "Put V Thevenin in series with R Thevenin, reconnect the load, and the current is identical. The load can't tell the difference."
     }
   ]

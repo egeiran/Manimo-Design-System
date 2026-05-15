@@ -12,7 +12,7 @@
 // scene with philosopher P0's pick order reversed; the cycle visibly
 // fails to close.
 
-const SCENE_DURATION = 53;
+const SCENE_DURATION = 54;
 
 const NARRATION = [
   /*  0.00– 9.11 */ 'Five philosophers, five chopsticks, one round table. They take turns thinking and eating — but their lock pattern can stop them all at once.',

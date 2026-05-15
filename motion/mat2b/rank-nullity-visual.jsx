@@ -24,7 +24,7 @@
 //   rose-400   kernel direction (what got squashed)
 //   amber-300  takeaway accent
 
-const SCENE_DURATION = 39;
+const SCENE_DURATION = 40;
 
 const NARRATION = [
   "What happens when a matrix has nowhere to go? Watch the plane collapse.",

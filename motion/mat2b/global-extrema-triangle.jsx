@@ -38,7 +38,7 @@
 //   chalk-100  the origin corner (f = 0, also an also-ran)
 //   amber-300  takeaway accent
 
-const SCENE_DURATION = 52;
+const SCENE_DURATION = 86;
 
 const NARRATION = [
   "A continuous function on a closed bounded region always has a global minimum and a global maximum. The trick is finding them — and there are only three places they can hide.",
@@ -251,31 +251,31 @@ function Scene() {
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={0} end={4.5}>
+      <Sprite start={0} end={10.86}>
         <ManimoBubbleIntro/>
       </Sprite>
 
-      <Sprite start={4.5} end={13.0}>
+      <Sprite start={10.86} end={30.36}>
         <SetupBeat/>
       </Sprite>
 
-      <Sprite start={13.0} end={22.5}>
+      <Sprite start={30.36} end={43.26}>
         <InteriorBeat/>
       </Sprite>
 
-      <Sprite start={22.5} end={33.5}>
+      <Sprite start={43.26} end={57.26}>
         <EdgesBeat/>
       </Sprite>
 
-      <Sprite start={33.5} end={43.0}>
+      <Sprite start={57.26} end={67.71}>
         <CornersBeat/>
       </Sprite>
 
-      <Sprite start={43.0} end={49.0}>
+      <Sprite start={67.71} end={80.04}>
         <CompareBeat/>
       </Sprite>
 
-      <Sprite start={49.0} end={SCENE_DURATION}>
+      <Sprite start={80.04} end={SCENE_DURATION}>
         <HeroOutro/>
       </Sprite>
     </SceneChrome>

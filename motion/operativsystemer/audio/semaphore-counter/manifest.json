@@ -1,11 +1,11 @@
 {
   "sceneId": "semaphore-counter",
-  "mode": "mistral",
-  "engine": "mistral",
-  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
-  "model": "voxtral-mini-tts-2603",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
   "audio": "audio/semaphore-counter/scene.mp3",
-  "durationSec": 43.88,
+  "durationSec": 36.46,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -14,22 +14,22 @@
     },
     {
       "id": "shape",
-      "audioStart": 6.83,
+      "audioStart": 4.93,
       "narration": "A semaphore is just two things — an integer and a queue. The integer counts how many more threads may pass; the queue holds threads that have to wait."
     },
     {
       "id": "pCallsConsume",
-      "audioStart": 15.92,
+      "audioStart": 14.37,
       "narration": "When a thread calls P of s, the counter drops by one. If it would drop below zero, that thread goes to sleep in the queue."
     },
     {
       "id": "vCallsRelease",
-      "audioStart": 28.45,
+      "audioStart": 21.87,
       "narration": "When a thread finishes and calls V of s, the counter goes back up. If anyone was waiting, the semaphore wakes one of them."
     },
     {
       "id": "takeaway",
-      "audioStart": 36.5,
+      "audioStart": 29.9,
       "narration": "Set S to one and a semaphore behaves like a lock. Set it to N and you have an N-way capacity gate."
     }
   ]

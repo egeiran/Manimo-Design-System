@@ -20,7 +20,7 @@
 //     drives the V_in trace, so the badge and the waveform are
 //     guaranteed to stay in sync.
 
-const SCENE_DURATION = 41;
+const SCENE_DURATION = 37;
 
 const NARRATION = [
   /*  0.00– 4.55 */ "An AC source plus a diode — what shape comes out across the load?",
@@ -38,24 +38,24 @@ function Scene() {
       eyebrow="diodes"
       title="Half-Wave Rectifier: How a Diode Turns AC into Pulses"
       duration={SCENE_DURATION}
-      introEnd={4.55}
+      introEnd={4.48}
       introCaption="AC in — what waveform comes out the other side?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={4.55} end={10.08}>
+      <Sprite start={4.48} end={11.01}>
         <CircuitBeat />
       </Sprite>
 
-      <Sprite start={10.08} end={25.55}>
+      <Sprite start={11.01} end={21.21}>
         <StatesBeat />
       </Sprite>
 
-      <Sprite start={25.55} end={34.71}>
+      <Sprite start={21.21} end={29.69}>
         <WaveformBeat />
       </Sprite>
 
-      <Sprite start={34.71} end={SCENE_DURATION}>
+      <Sprite start={29.69} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>

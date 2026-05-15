@@ -1,11 +1,11 @@
 {
   "sceneId": "polling-vs-interrupt",
-  "mode": "mistral",
-  "engine": "mistral",
-  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
-  "model": "voxtral-mini-tts-2603",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
   "audio": "audio/polling-vs-interrupt/scene.mp3",
-  "durationSec": 41.08,
+  "durationSec": 42.08,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -14,22 +14,22 @@
     },
     {
       "id": "polling",
-      "audioStart": 5.97,
+      "audioStart": 6.69,
       "narration": "Polling means the CPU asks the device, again and again — is it ready yet? Every check is a wasted cycle, and almost every check returns no."
     },
     {
       "id": "interrupt",
-      "audioStart": 16.19,
+      "audioStart": 16.52,
       "narration": "Interrupts flip the question around. The CPU issues the request, runs something else, and the device fires an interrupt when it is done."
     },
     {
       "id": "compare",
-      "audioStart": 23.72,
+      "audioStart": 24.99,
       "narration": "Stack the two side by side. With polling the CPU's wait is wasted. With interrupts that same time becomes throughput for the rest of the system."
     },
     {
       "id": "takeaway",
-      "audioStart": 32.72,
+      "audioStart": 34.09,
       "narration": "Interrupts give you concurrency for free. Polling only makes sense when the wait is so short an interrupt would cost more than the wait itself."
     }
   ]

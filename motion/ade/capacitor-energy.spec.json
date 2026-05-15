@@ -3,7 +3,7 @@
   "title": "Energy in a Capacitor: Why It's One Half C V Squared",
   "eyebrow": "energy and power",
   "language": "en",
-  "duration": 48,
+  "duration": 44,
   "topic": "Energy stored in a capacitor — pushing charge against a rising voltage; the work integral ∫V dq from 0 to Q traces a triangle of area ½QV, giving the three equivalent forms ½CV², ½QV and Q²/(2C)",
   "subject_id": "ade",
   "chapter_number": 2,
@@ -12,74 +12,179 @@
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 6.86,
+      "end": 4.85,
       "narration": "You push charge onto a capacitor — where does the energy actually go?",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
-          { "type": "text-caption", "content": "Charge a capacitor — where does the energy go?", "delay": 0.7, "color": "var(--chalk-100)", "position": "next to Manimo, serif italic" }
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Charge a capacitor — where does the energy go?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "next to Manimo, serif italic"
+          }
         ]
       }
     },
     {
       "id": "pushingCharge",
-      "start": 6.86,
-      "end": 13.54,
+      "start": 4.85,
+      "end": 14.23,
       "narration": "Adding charge raises the voltage. The next little bit of charge has to be pushed against an already higher voltage — so the work piles up.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "svg-path", "content": "Capacitor symbol — two horizontal plates with a small gap", "delay": 0.0, "color": "var(--amber-400)" },
-          { "type": "svg-path", "content": "Charge dots accumulating on top + bottom plates as time advances", "delay": 0.6, "color": "var(--amber-300)" },
-          { "type": "svg-label", "content": "V across plates — a value that rises with q", "delay": 1.0, "color": "var(--chalk-100)" },
-          { "type": "text-formula", "content": "V = q/C", "delay": 2.2, "color": "var(--amber-300)", "position": "right of capacitor" },
-          { "type": "text-caption", "content": "more charge → more voltage → harder to push the next charge", "delay": 4.4, "color": "var(--chalk-300)", "position": "below diagram, sans 14" }
+          {
+            "type": "svg-path",
+            "content": "Capacitor symbol — two horizontal plates with a small gap",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Charge dots accumulating on top + bottom plates as time advances",
+            "delay": 0.6,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "V across plates — a value that rises with q",
+            "delay": 1,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-formula",
+            "content": "V = q/C",
+            "delay": 2.2,
+            "color": "var(--amber-300)",
+            "position": "right of capacitor"
+          },
+          {
+            "type": "text-caption",
+            "content": "more charge → more voltage → harder to push the next charge",
+            "delay": 4.4,
+            "color": "var(--chalk-300)",
+            "position": "below diagram, sans 14"
+          }
         ]
       }
     },
     {
       "id": "triangleIntegral",
-      "start": 13.54,
-      "end": 23.44,
+      "start": 14.23,
+      "end": 24.36,
       "narration": "Plot voltage against charge — a straight line from zero up to V. The total work is the area under that line, a triangle with area one half Q V.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "graph-axes", "content": "Horizontal axis: q from 0 to Q; vertical axis: V from 0 to V_final", "delay": 0.0, "color": "var(--chalk-200)" },
-          { "type": "graph-curve", "content": "Straight line V = q/C from origin to (Q, V)", "delay": 0.8, "color": "var(--amber-400)" },
-          { "type": "svg-path", "content": "Triangle area filling beneath the line as q advances 0 → Q", "delay": 1.6, "color": "var(--amber-400)" },
-          { "type": "graph-marker", "content": "Moving (q, V) point sliding up the line", "delay": 1.6, "color": "var(--rose-400)" },
-          { "type": "text-formula", "content": "E = ½ Q V", "delay": 6.0, "color": "var(--amber-300)", "position": "right of graph" },
-          { "type": "text-caption", "content": "the area under V(q) is the energy stored", "delay": 7.2, "color": "var(--chalk-300)", "position": "below graph, sans 14" }
+          {
+            "type": "graph-axes",
+            "content": "Horizontal axis: q from 0 to Q; vertical axis: V from 0 to V_final",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Straight line V = q/C from origin to (Q, V)",
+            "delay": 0.8,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Triangle area filling beneath the line as q advances 0 → Q",
+            "delay": 1.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Moving (q, V) point sliding up the line",
+            "delay": 1.6,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "E = ½ Q V",
+            "delay": 6,
+            "color": "var(--amber-300)",
+            "position": "right of graph"
+          },
+          {
+            "type": "text-caption",
+            "content": "the area under V(q) is the energy stored",
+            "delay": 7.2,
+            "color": "var(--chalk-300)",
+            "position": "below graph, sans 14"
+          }
         ]
       }
     },
     {
       "id": "threeForms",
-      "start": 23.44,
-      "end": 38.37,
+      "start": 24.36,
+      "end": 36.46,
       "narration": "Substitute Q equals C V and you get one half C V squared. Substitute V equals Q over C and you get Q squared over two C. Same energy, three shapes.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-formula", "content": "E = ½ Q V", "delay": 0.2, "color": "var(--chalk-200)", "position": "left column" },
-          { "type": "text-formula", "content": "E = ½ C V²", "delay": 1.4, "color": "var(--amber-300)", "position": "centre column, large amber payoff" },
-          { "type": "text-formula", "content": "E = Q² / (2C)", "delay": 2.6, "color": "var(--chalk-200)", "position": "right column" },
-          { "type": "text-caption", "content": "use whichever two quantities you know", "delay": 5.0, "color": "var(--chalk-300)", "position": "below the row, sans 14" }
+          {
+            "type": "text-formula",
+            "content": "E = ½ Q V",
+            "delay": 0.2,
+            "color": "var(--chalk-200)",
+            "position": "left column"
+          },
+          {
+            "type": "text-formula",
+            "content": "E = ½ C V²",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "centre column, large amber payoff"
+          },
+          {
+            "type": "text-formula",
+            "content": "E = Q² / (2C)",
+            "delay": 2.6,
+            "color": "var(--chalk-200)",
+            "position": "right column"
+          },
+          {
+            "type": "text-caption",
+            "content": "use whichever two quantities you know",
+            "delay": 5,
+            "color": "var(--chalk-300)",
+            "position": "below the row, sans 14"
+          }
         ]
       }
     },
     {
       "id": "takeaway",
-      "start": 38.37,
-      "end": 48,
+      "start": 36.46,
+      "end": 44,
       "narration": "The energy lives in the electric field between the plates — it stays there until something gives it somewhere to go.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-caption", "content": "Energy lives in the field between the plates.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic ~28px" },
-          { "type": "text-caption", "content": "(release it through a load and it powers a current)", "delay": 1.6, "color": "var(--chalk-300)", "position": "small mono caption below" }
+          {
+            "type": "text-caption",
+            "content": "Energy lives in the field between the plates.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic ~28px"
+          },
+          {
+            "type": "text-caption",
+            "content": "(release it through a load and it powers a current)",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "small mono caption below"
+          }
         ]
       }
     }

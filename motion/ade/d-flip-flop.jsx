@@ -20,7 +20,7 @@
 //   • Beat 4's cursor reads useSprite() localTime so the on-screen
 //     sampling pulses are exactly aligned with the traced Q signal.
 
-const SCENE_DURATION = 38;
+const SCENE_DURATION = 35;
 
 const NARRATION = [
   /*  0.00– 5.64 */ "A flip-flop remembers one bit — but only on command. What makes it latch?",
@@ -38,24 +38,24 @@ function Scene() {
       eyebrow="sequential logic"
       title="D Flip-Flop: One Bit of Memory at the Clock Edge"
       duration={SCENE_DURATION}
-      introEnd={5.64}
+      introEnd={5.31}
       introCaption="One bit of memory — but when does it remember?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={5.64} end={14.87}>
+      <Sprite start={5.31} end={13.04}>
         <SymbolBeat />
       </Sprite>
 
-      <Sprite start={14.87} end={20.79}>
+      <Sprite start={13.04} end={18.23}>
         <SetupBeat />
       </Sprite>
 
-      <Sprite start={20.79} end={30.01}>
+      <Sprite start={18.23} end={27.13}>
         <SamplingBeat />
       </Sprite>
 
-      <Sprite start={30.01} end={SCENE_DURATION}>
+      <Sprite start={27.13} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>

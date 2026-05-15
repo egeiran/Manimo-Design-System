@@ -1,11 +1,11 @@
 {
   "sceneId": "kirchhoff-voltage-law",
-  "mode": "mistral",
-  "engine": "mistral",
-  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
-  "model": "voxtral-mini-tts-2603",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
   "audio": "audio/kirchhoff-voltage-law/scene.mp3",
-  "durationSec": 39.33,
+  "durationSec": 37.24,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -14,22 +14,22 @@
     },
     {
       "id": "loopSetup",
-      "audioStart": 5.38,
+      "audioStart": 4.56,
       "narration": "Here's a single mesh: a battery on the left, two resistors on the right. Pick a direction and start walking."
     },
     {
       "id": "walkAndSum",
-      "audioStart": 13.12,
+      "audioStart": 11.36,
       "narration": "A test charge walks the loop. Going up through the battery, plus twelve volts. Across R one, minus eight. Down through R two, minus four. Back to the start — zero."
     },
     {
       "id": "kvlFormula",
-      "audioStart": 22.24,
+      "audioStart": 23.59,
       "narration": "Around any closed loop, the sum of all voltage rises and drops equals zero. That's Kirchhoff's voltage law."
     },
     {
       "id": "takeaway",
-      "audioStart": 30.48,
+      "audioStart": 30.91,
       "narration": "It's just energy conservation: the boost a battery gives a charge is exactly what the resistors take back."
     }
   ]

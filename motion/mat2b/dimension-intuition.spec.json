@@ -6,7 +6,7 @@
   "title": "Dimension: How Many Free Directions?",
   "eyebrow": "vector spaces",
   "language": "en",
-  "duration": 29,
+  "duration": 30,
   "topic": "Dimension as the number of linearly independent directions you can add before you stop reaching new ground — a line is dimension one, a plane is dimension two, a volume is dimension three. Each step adds a vector that escapes the previous span.",
   "concepts": [
     "dimension",
@@ -19,64 +19,172 @@
     "chapter_concepts: dimensjon",
     "chapter_concepts: basis"
   ],
-  "prerequisites": ["span-and-dependence"],
+  "prerequisites": [
+    "span-and-dependence"
+  ],
   "beats": [
     {
       "id": "manimoIntro",
       "start": 0,
       "end": 4.03,
       "narration": "How many free directions does a space really have? Count them.",
-      "visuals": { "layout": "center", "elements": [
-        { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
-        { "type": "text-caption", "content": "Hook caption serif italic", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo" }
-      ]}
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Hook caption serif italic",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo"
+          }
+        ]
+      }
     },
     {
       "id": "dimOne",
       "start": 4.03,
       "end": 10.79,
       "narration": "One arrow through the origin. Every scaling of it lives on the same line — one direction, dimension one.",
-      "visuals": { "layout": "center", "elements": [
-        { "type": "svg-axes", "content": "Faint chalk axes for reference", "delay": 0.0, "color": "var(--chalk-300)" },
-        { "type": "svg-vector", "content": "v₁ violet", "delay": 0.4, "color": "var(--violet-400)" },
-        { "type": "svg-path", "content": "Line through origin in amber — the span", "delay": 1.6, "color": "var(--amber-400)" },
-        { "type": "svg-marks", "content": "Three sliding tick-marks on the line at scalar multiples", "delay": 2.4, "color": "var(--amber-300)" },
-        { "type": "text-caption", "content": "DIM 1 — one free direction", "delay": 2.8, "color": "var(--chalk-100)", "position": "right panel" }
-      ]}
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-axes",
+            "content": "Faint chalk axes for reference",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-vector",
+            "content": "v₁ violet",
+            "delay": 0.4,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Line through origin in amber — the span",
+            "delay": 1.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-marks",
+            "content": "Three sliding tick-marks on the line at scalar multiples",
+            "delay": 2.4,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "DIM 1 — one free direction",
+            "delay": 2.8,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          }
+        ]
+      }
     },
     {
       "id": "dimTwo",
       "start": 10.79,
       "end": 17.68,
       "narration": "Now add a second arrow that doesn't lie on the first. Together they sweep out a whole plane — dimension two.",
-      "visuals": { "layout": "center", "elements": [
-        { "type": "svg-vector", "content": "v₂ teal enters at an angle", "delay": 0.3, "color": "var(--teal-400)" },
-        { "type": "svg-polygon", "content": "Parallelogram fills, then expands to a faint plane patch in amber", "delay": 1.2, "color": "var(--amber-400)" },
-        { "type": "text-caption", "content": "DIM 2 — two free directions", "delay": 2.6, "color": "var(--chalk-100)", "position": "right panel" }
-      ]}
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-vector",
+            "content": "v₂ teal enters at an angle",
+            "delay": 0.3,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "svg-polygon",
+            "content": "Parallelogram fills, then expands to a faint plane patch in amber",
+            "delay": 1.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "DIM 2 — two free directions",
+            "delay": 2.6,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          }
+        ]
+      }
     },
     {
       "id": "dimThree",
       "start": 17.68,
       "end": 23.44,
       "narration": "Pop a third arrow up out of the plane and the span becomes all of three dimensional space.",
-      "visuals": { "layout": "center", "elements": [
-        { "type": "svg-projection", "content": "Tilt to oblique 3D axes", "delay": 0.0, "color": "var(--chalk-200)" },
-        { "type": "svg-vector", "content": "v₃ rose rises out of the plane", "delay": 0.8, "color": "var(--rose-400)" },
-        { "type": "svg-polygon", "content": "Parallelepiped wireframe sweeps out as v₃ moves up", "delay": 1.6, "color": "var(--amber-400)" },
-        { "type": "text-caption", "content": "DIM 3 — three free directions", "delay": 2.8, "color": "var(--chalk-100)", "position": "right panel" }
-      ]}
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-projection",
+            "content": "Tilt to oblique 3D axes",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-vector",
+            "content": "v₃ rose rises out of the plane",
+            "delay": 0.8,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-polygon",
+            "content": "Parallelepiped wireframe sweeps out as v₃ moves up",
+            "delay": 1.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "DIM 3 — three free directions",
+            "delay": 2.8,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          }
+        ]
+      }
     },
     {
       "id": "heroOutro",
       "start": 23.44,
-      "end": 29.0,
+      "end": 30,
       "narration": "Dimension is just the number of arrows you need before you stop reaching new ground.",
-      "visuals": { "layout": "center", "elements": [
-        { "type": "text-eyebrow", "content": "'THE TAKEAWAY'", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
-        { "type": "text-hero", "content": "'Dimension counts your freedom.'", "delay": 0.35, "color": "var(--chalk-100)", "position": "centre" },
-        { "type": "text-caption", "content": "Subtext explaining the count", "delay": 1.4, "color": "var(--chalk-200)", "position": "below hero" }
-      ]}
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-eyebrow",
+            "content": "'THE TAKEAWAY'",
+            "delay": 0,
+            "color": "var(--amber-300)",
+            "position": "centre-top"
+          },
+          {
+            "type": "text-hero",
+            "content": "'Dimension counts your freedom.'",
+            "delay": 0.35,
+            "color": "var(--chalk-100)",
+            "position": "centre"
+          },
+          {
+            "type": "text-caption",
+            "content": "Subtext explaining the count",
+            "delay": 1.4,
+            "color": "var(--chalk-200)",
+            "position": "below hero"
+          }
+        ]
+      }
     }
   ]
 }

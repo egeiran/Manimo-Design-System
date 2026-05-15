@@ -1,11 +1,11 @@
 {
   "sceneId": "phasor-rotation",
-  "mode": "mistral",
-  "engine": "mistral",
-  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
-  "model": "voxtral-mini-tts-2603",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
   "audio": "audio/phasor-rotation/scene.mp3",
-  "durationSec": 39.19,
+  "durationSec": 37.43,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -14,22 +14,22 @@
     },
     {
       "id": "complexPlane",
-      "audioStart": 7.97,
+      "audioStart": 6.35,
       "narration": "Set up the complex plane. The voltage is an arrow of length V m, sitting at angle phi to the real axis."
     },
     {
       "id": "rotateAndTrace",
-      "audioStart": 14.66,
+      "audioStart": 13.61,
       "narration": "Now spin it. As the arrow rotates at omega, its projection on the real axis traces the cosine wave you see on the right."
     },
     {
       "id": "phaseDifference",
-      "audioStart": 22.96,
+      "audioStart": 21.58,
       "narration": "Add a second phasor lagging by ninety degrees. Both rotate together — and their two waves stay locked in phase difference."
     },
     {
       "id": "takeaway",
-      "audioStart": 30.26,
+      "audioStart": 29.07,
       "narration": "Each AC voltage becomes one number — magnitude and angle — that you can add like a vector. No more integrating sines."
     }
   ]

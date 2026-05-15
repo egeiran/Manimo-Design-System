@@ -3,7 +3,7 @@
   "title": "Polling vs Interrupts: How the CPU Talks to a Slow Disk",
   "eyebrow": "I/O devices",
   "language": "en",
-  "duration": 42,
+  "duration": 44,
   "topic": "Polling vs interrupts — polling spins the CPU on a device status register until the device is ready; an interrupt lets the CPU run other work and be woken when the device is done. For a slow device the difference is most of the CPU's time.",
   "subject_id": "operativsystemer",
   "chapter_number": 10,
@@ -12,69 +12,139 @@
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 5.97,
+      "end": 6.69,
       "narration": "A disk read takes millions of CPU cycles. While the disk works, what should the processor do?",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
-          { "type": "text-caption", "content": "The CPU is fast. The disk is slow. Who waits?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "The CPU is fast. The disk is slow. Who waits?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
         ]
       }
     },
     {
       "id": "polling",
-      "start": 5.97,
-      "end": 16.19,
+      "start": 6.69,
+      "end": 16.52,
       "narration": "Polling means the CPU asks the device, again and again — is it ready yet? Every check is a wasted cycle, and almost every check returns no.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "svg-path", "content": "Two horizontal bars: top labelled CPU, bottom labelled DISK", "delay": 0.4, "color": "var(--chalk-300)" },
-          { "type": "svg-path", "content": "CPU bar fills left to right with red 'check?' segments until the disk indicates ready", "delay": 1.0, "color": "var(--rose-400)" },
-          { "type": "svg-path", "content": "DISK bar shows one long busy segment ending at the same point", "delay": 1.0, "color": "var(--violet-400)" },
-          { "type": "text-caption", "content": "almost every poll returns no — the CPU did no useful work", "delay": 9.0, "color": "var(--chalk-300)" }
+          {
+            "type": "svg-path",
+            "content": "Two horizontal bars: top labelled CPU, bottom labelled DISK",
+            "delay": 0.4,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "CPU bar fills left to right with red 'check?' segments until the disk indicates ready",
+            "delay": 1,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "DISK bar shows one long busy segment ending at the same point",
+            "delay": 1,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "almost every poll returns no — the CPU did no useful work",
+            "delay": 9,
+            "color": "var(--chalk-300)"
+          }
         ]
       }
     },
     {
       "id": "interrupt",
-      "start": 16.19,
-      "end": 23.72,
+      "start": 16.52,
+      "end": 24.99,
       "narration": "Interrupts flip the question around. The CPU issues the request, runs something else, and the device fires an interrupt when it is done.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "svg-path", "content": "Same two bars: CPU now fills with green 'other work' segments while DISK is busy", "delay": 0.4, "color": "var(--teal-400)" },
-          { "type": "svg-path", "content": "When DISK finishes, an interrupt arrow drops down onto the CPU bar", "delay": 6.5, "color": "var(--amber-400)" },
-          { "type": "svg-path", "content": "CPU bar shows a short amber 'handler' segment immediately after the interrupt", "delay": 7.0, "color": "var(--amber-400)" }
+          {
+            "type": "svg-path",
+            "content": "Same two bars: CPU now fills with green 'other work' segments while DISK is busy",
+            "delay": 0.4,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "When DISK finishes, an interrupt arrow drops down onto the CPU bar",
+            "delay": 6.5,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "CPU bar shows a short amber 'handler' segment immediately after the interrupt",
+            "delay": 7,
+            "color": "var(--amber-400)"
+          }
         ]
       }
     },
     {
       "id": "compare",
-      "start": 23.72,
-      "end": 32.72,
+      "start": 24.99,
+      "end": 34.09,
       "narration": "Stack the two side by side. With polling the CPU's wait is wasted. With interrupts that same time becomes throughput for the rest of the system.",
       "visuals": {
         "layout": "top-bottom",
         "elements": [
-          { "type": "svg-path", "content": "Top mini-bar: polling CPU — almost entirely red", "delay": 0.3, "color": "var(--rose-400)" },
-          { "type": "svg-path", "content": "Bottom mini-bar: interrupt CPU — green for most of the wait, a thin amber handler at the end", "delay": 1.1, "color": "var(--teal-400)" },
-          { "type": "text-caption", "content": "same wall-clock — very different CPU utilisation", "delay": 4.0, "color": "var(--chalk-200)" }
+          {
+            "type": "svg-path",
+            "content": "Top mini-bar: polling CPU — almost entirely red",
+            "delay": 0.3,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Bottom mini-bar: interrupt CPU — green for most of the wait, a thin amber handler at the end",
+            "delay": 1.1,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "same wall-clock — very different CPU utilisation",
+            "delay": 4,
+            "color": "var(--chalk-200)"
+          }
         ]
       }
     },
     {
       "id": "takeaway",
-      "start": 32.72,
-      "end": 42,
+      "start": 34.09,
+      "end": 44,
       "narration": "Interrupts give you concurrency for free. Polling only makes sense when the wait is so short an interrupt would cost more than the wait itself.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-title", "content": "interrupts ⇒ concurrency for free", "delay": 0.3, "color": "var(--amber-300)" },
-          { "type": "text-caption", "content": "poll only when the device is faster than an interrupt is cheap", "delay": 1.8, "color": "var(--chalk-300)" }
+          {
+            "type": "text-title",
+            "content": "interrupts ⇒ concurrency for free",
+            "delay": 0.3,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "poll only when the device is faster than an interrupt is cheap",
+            "delay": 1.8,
+            "color": "var(--chalk-300)"
+          }
         ]
       }
     }

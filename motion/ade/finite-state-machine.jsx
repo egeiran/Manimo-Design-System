@@ -19,7 +19,7 @@
 //     and Beat 4 walk the same input and produce identical state/output
 //     traces.
 
-const SCENE_DURATION = 39;
+const SCENE_DURATION = 38;
 
 const NARRATION = [
   /*  0.00– 5.14 */ "A digital circuit that remembers what just happened — how do we describe it?",
@@ -37,24 +37,24 @@ function Scene() {
       eyebrow="sequential logic"
       title="Finite State Machines: A Circuit That Remembers Where It Was"
       duration={SCENE_DURATION}
-      introEnd={5.14}
+      introEnd={4.71}
       introCaption="A circuit with memory — what is it remembering?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={5.14} end={13.39}>
+      <Sprite start={4.71} end={12.59}>
         <GraphBeat />
       </Sprite>
 
-      <Sprite start={13.39} end={22.57}>
+      <Sprite start={12.59} end={22.35}>
         <WalkBeat />
       </Sprite>
 
-      <Sprite start={22.57} end={30.3}>
+      <Sprite start={22.35} end={29.22}>
         <OutputBeat />
       </Sprite>
 
-      <Sprite start={30.3} end={SCENE_DURATION}>
+      <Sprite start={29.22} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>

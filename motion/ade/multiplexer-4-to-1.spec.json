@@ -3,11 +3,13 @@
   "title": "4-to-1 Multiplexer: Two Select Bits Pick a Wire",
   "eyebrow": "combinational logic",
   "language": "en",
-  "duration": 37,
+  "duration": 38,
   "topic": "4-to-1 multiplexer — four data inputs (D0..D3) and two select inputs (S1, S0) feed into a logic block that routes whichever input is addressed by the select bits to a single output Y; demonstrates how 2^n select bits address 2^n data lines",
   "subject_id": "ade",
   "chapter_number": 10,
-  "prerequisites": ["nand-universality"],
+  "prerequisites": [
+    "nand-universality"
+  ],
   "beats": [
     {
       "id": "manimoIntro",
@@ -17,8 +19,18 @@
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "manimo-enter", "content": "Manimo enters centre-screen", "delay": 0 },
-          { "type": "text-caption", "content": "Four signals, one output — who gets through?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+          {
+            "type": "manimo-enter",
+            "content": "Manimo enters centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Four signals, one output — who gets through?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
         ]
       }
     },
@@ -30,14 +42,55 @@
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "svg-path", "content": "Trapezoidal MUX block in the centre", "delay": 0.0, "color": "var(--chalk-200)" },
-          { "type": "svg-path", "content": "Four input wires D0..D3 stub on the left edge", "delay": 0.4, "color": "var(--chalk-200)" },
-          { "type": "svg-path", "content": "Two select wires S1, S0 entering the bottom of the block", "delay": 0.8, "color": "var(--chalk-300)" },
-          { "type": "svg-path", "content": "Single output wire Y leaving the right tip", "delay": 1.2, "color": "var(--amber-400)" },
-          { "type": "svg-label", "content": "Labels D0, D1, D2, D3 next to input wires", "delay": 1.6, "color": "var(--chalk-200)" },
-          { "type": "svg-label", "content": "S1, S0 labels under the select inputs", "delay": 2.0, "color": "var(--chalk-300)" },
-          { "type": "svg-label", "content": "Y label at the output", "delay": 2.4, "color": "var(--amber-300)" },
-          { "type": "text-caption", "content": "two bits address four lines", "delay": 3.6, "color": "var(--chalk-300)", "position": "below diagram, sans 14" }
+          {
+            "type": "svg-path",
+            "content": "Trapezoidal MUX block in the centre",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Four input wires D0..D3 stub on the left edge",
+            "delay": 0.4,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Two select wires S1, S0 entering the bottom of the block",
+            "delay": 0.8,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Single output wire Y leaving the right tip",
+            "delay": 1.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Labels D0, D1, D2, D3 next to input wires",
+            "delay": 1.6,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-label",
+            "content": "S1, S0 labels under the select inputs",
+            "delay": 2,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Y label at the output",
+            "delay": 2.4,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "two bits address four lines",
+            "delay": 3.6,
+            "color": "var(--chalk-300)",
+            "position": "below diagram, sans 14"
+          }
         ]
       }
     },
@@ -49,11 +102,38 @@
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "svg-path", "content": "Active path: the addressed input wire glows amber and a charge dot travels through the MUX to Y", "delay": 0.0, "color": "var(--amber-300)", "note": "S1S0 sweeps 00 → 01 → 10 → 11 in time" },
-          { "type": "svg-label", "content": "Live S1 S0 readout above the select wires, ticking through four states", "delay": 0.0, "color": "var(--chalk-100)" },
-          { "type": "svg-label", "content": "Live Y readout near the output, showing whichever Di is currently selected", "delay": 0.0, "color": "var(--amber-300)" },
-          { "type": "svg-label", "content": "Truth-table row at the bottom highlighting the active row", "delay": 0.5, "color": "var(--chalk-300)" },
-          { "type": "text-caption", "content": "select bits decode to one of four enable lines", "delay": 11.5, "color": "var(--chalk-300)", "position": "below diagram" }
+          {
+            "type": "svg-path",
+            "content": "Active path: the addressed input wire glows amber and a charge dot travels through the MUX to Y",
+            "delay": 0,
+            "color": "var(--amber-300)",
+            "note": "S1S0 sweeps 00 → 01 → 10 → 11 in time"
+          },
+          {
+            "type": "svg-label",
+            "content": "Live S1 S0 readout above the select wires, ticking through four states",
+            "delay": 0,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Live Y readout near the output, showing whichever Di is currently selected",
+            "delay": 0,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Truth-table row at the bottom highlighting the active row",
+            "delay": 0.5,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "select bits decode to one of four enable lines",
+            "delay": 11.5,
+            "color": "var(--chalk-300)",
+            "position": "below diagram"
+          }
         ]
       }
     },
@@ -65,22 +145,52 @@
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-formula", "content": "Y = D0·S1'·S0' + D1·S1'·S0 + D2·S1·S0' + D3·S1·S0", "delay": 0.3, "color": "var(--amber-300)", "position": "centre, large serif italic amber" },
-          { "type": "text-caption", "content": "only the matching AND term is non-zero — the rest are silenced", "delay": 1.6, "color": "var(--chalk-300)", "position": "small caption below" },
-          { "type": "text-formula", "content": "S1 S0 = 10 ⇒ Y = D2", "delay": 2.8, "color": "var(--chalk-100)", "position": "single-row instantiation in mono" }
+          {
+            "type": "text-formula",
+            "content": "Y = D0·S1'·S0' + D1·S1'·S0 + D2·S1·S0' + D3·S1·S0",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre, large serif italic amber"
+          },
+          {
+            "type": "text-caption",
+            "content": "only the matching AND term is non-zero — the rest are silenced",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "small caption below"
+          },
+          {
+            "type": "text-formula",
+            "content": "S1 S0 = 10 ⇒ Y = D2",
+            "delay": 2.8,
+            "color": "var(--chalk-100)",
+            "position": "single-row instantiation in mono"
+          }
         ]
       }
     },
     {
       "id": "takeaway",
       "start": 30.26,
-      "end": 37,
+      "end": 38,
       "narration": "A multiplexer is a programmable switch — and chaining them lets one address space pick from many more lines.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-caption", "content": "An addressable switch.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic ~28px" },
-          { "type": "text-caption", "content": "the same idea scales — n select bits address 2^n lines", "delay": 1.8, "color": "var(--chalk-300)", "position": "small mono caption below" }
+          {
+            "type": "text-caption",
+            "content": "An addressable switch.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic ~28px"
+          },
+          {
+            "type": "text-caption",
+            "content": "the same idea scales — n select bits address 2^n lines",
+            "delay": 1.8,
+            "color": "var(--chalk-300)",
+            "position": "small mono caption below"
+          }
         ]
       }
     }

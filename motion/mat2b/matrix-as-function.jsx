@@ -4,7 +4,7 @@
 // the middle, the output on the right, then walk through row-by-column
 // arithmetic.
 
-const SCENE_DURATION = 37;
+const SCENE_DURATION = 38;
 
 const NARRATION = [
   "What does a matrix actually do to a vector? Let's compute.",

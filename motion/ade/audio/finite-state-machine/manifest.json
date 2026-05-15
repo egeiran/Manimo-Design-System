@@ -1,11 +1,11 @@
 {
   "sceneId": "finite-state-machine",
-  "mode": "mistral",
-  "engine": "mistral",
-  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
-  "model": "voxtral-mini-tts-2603",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
   "audio": "audio/finite-state-machine/scene.mp3",
-  "durationSec": 37.87,
+  "durationSec": 36.36,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -14,22 +14,22 @@
     },
     {
       "id": "graph",
-      "audioStart": 5.14,
+      "audioStart": 4.71,
       "narration": "Draw a state graph. Three bubbles for three memory states, arrows labelled with the input bit that triggers each transition."
     },
     {
       "id": "walk",
-      "audioStart": 13.39,
+      "audioStart": 12.59,
       "narration": "Feed a bitstream in, one bit per clock tick. The current state bubble lights up; the transition arrow pulses as the next bit decides where to go next."
     },
     {
       "id": "output",
-      "audioStart": 22.57,
+      "audioStart": 22.35,
       "narration": "The output is high only when the machine is parked in S two — that means it has just seen two ones in a row."
     },
     {
       "id": "takeaway",
-      "audioStart": 30.3,
+      "audioStart": 29.22,
       "narration": "States, transitions, outputs — that is every controller, every protocol, every counter you will ever build."
     }
   ]

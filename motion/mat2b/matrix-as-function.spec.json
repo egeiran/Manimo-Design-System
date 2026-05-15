@@ -20,63 +20,164 @@
     "chapter_concepts: lineærtransformasjon",
     "chapter_formulas: Linearitet"
   ],
-  "prerequisites": ["linear-transformation-grid"],
+  "prerequisites": [
+    "linear-transformation-grid"
+  ],
   "beats": [
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 3.6,
+      "end": 4.37,
       "narration": "What does a matrix actually do to a vector? Let's compute.",
-      "visuals": { "layout": "center", "elements": [
-        { "type": "manimo-enter", "content": "Manimo bobs in centre", "delay": 0 },
-        { "type": "text-caption", "content": "A is a rule. v is the input. Av is the output.", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo" }
-      ]}
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "A is a rule. v is the input. Av is the output.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo"
+          }
+        ]
+      }
     },
     {
       "id": "machineLayout",
-      "start": 3.6,
-      "end": 11.5,
+      "start": 4.37,
+      "end": 11.51,
       "narration": "Send in a vector. The matrix is the rule. The output is another vector — same dimension, new direction.",
-      "visuals": { "layout": "left-middle-right", "elements": [
-        { "type": "svg-mini-grid", "content": "Left mini-grid with input v = (1, 2) violet", "delay": 0.6, "color": "var(--violet-400)" },
-        { "type": "svg-bracket", "content": "Centre 'machine' — bracketed 2×2 matrix A = [[1, 2],[3, -1]] in chalk", "delay": 1.2, "color": "var(--chalk-100)" },
-        { "type": "svg-mini-grid", "content": "Right mini-grid showing placeholder 'T(v) = ?' (greyed)", "delay": 1.8, "color": "var(--chalk-300)" },
-        { "type": "text-caption", "content": "'input → matrix → output' caption strip beneath the three panels", "delay": 3.0, "color": "var(--chalk-300)", "position": "below the diagram" }
-      ]}
+      "visuals": {
+        "layout": "left-middle-right",
+        "elements": [
+          {
+            "type": "svg-mini-grid",
+            "content": "Left mini-grid with input v = (1, 2) violet",
+            "delay": 0.6,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "svg-bracket",
+            "content": "Centre 'machine' — bracketed 2×2 matrix A = [[1, 2],[3, -1]] in chalk",
+            "delay": 1.2,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "svg-mini-grid",
+            "content": "Right mini-grid showing placeholder 'T(v) = ?' (greyed)",
+            "delay": 1.8,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "'input → matrix → output' caption strip beneath the three panels",
+            "delay": 3,
+            "color": "var(--chalk-300)",
+            "position": "below the diagram"
+          }
+        ]
+      }
     },
     {
       "id": "rowByColumn",
-      "start": 11.5,
-      "end": 24.5,
+      "start": 11.51,
+      "end": 23.2,
       "narration": "Multiply row by column. One times one plus two times two gives five. Three times one minus one times two gives one. So A v equals the column five, one.",
-      "visuals": { "layout": "left-middle-right", "elements": [
-        { "type": "svg-highlight", "content": "Top row of A glows; v column glows; an arrow swings from row · column to first entry of output, animating the dot product", "delay": 0.5, "color": "var(--amber-300)" },
-        { "type": "text-formula", "content": "Step formula: '1·1 + 2·2 = 5' panel", "delay": 2.0, "color": "var(--chalk-100)", "position": "below row 1" },
-        { "type": "svg-highlight", "content": "Bottom row of A glows; second entry computed", "delay": 5.0, "color": "var(--amber-300)" },
-        { "type": "text-formula", "content": "'3·1 + (−1)·2 = 1' panel", "delay": 6.5, "color": "var(--chalk-100)", "position": "below row 2" },
-        { "type": "svg-vector", "content": "Output vector (5, 1) appears amber on the right mini-grid", "delay": 9.0, "color": "var(--amber-400)" }
-      ]}
+      "visuals": {
+        "layout": "left-middle-right",
+        "elements": [
+          {
+            "type": "svg-highlight",
+            "content": "Top row of A glows; v column glows; an arrow swings from row · column to first entry of output, animating the dot product",
+            "delay": 0.5,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "Step formula: '1·1 + 2·2 = 5' panel",
+            "delay": 2,
+            "color": "var(--chalk-100)",
+            "position": "below row 1"
+          },
+          {
+            "type": "svg-highlight",
+            "content": "Bottom row of A glows; second entry computed",
+            "delay": 5,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "'3·1 + (−1)·2 = 1' panel",
+            "delay": 6.5,
+            "color": "var(--chalk-100)",
+            "position": "below row 2"
+          },
+          {
+            "type": "svg-vector",
+            "content": "Output vector (5, 1) appears amber on the right mini-grid",
+            "delay": 9,
+            "color": "var(--amber-400)"
+          }
+        ]
+      }
     },
     {
       "id": "collapse",
-      "start": 24.5,
-      "end": 32.5,
+      "start": 23.2,
+      "end": 31.84,
       "narration": "That's it. Every linear function from the plane to the plane is just multiplication by some matrix, written T of v equals A v.",
-      "visuals": { "layout": "center", "elements": [
-        { "type": "text-hero-formula", "content": "Large serif italic equation 'T(v) = A v' centred, with A in chalk, v in violet, A v in amber-300", "delay": 0.4, "color": "var(--chalk-100)", "position": "centre, 64px" },
-        { "type": "text-caption", "content": "'Linear ↔ matrix' subtitle", "delay": 2.6, "color": "var(--chalk-200)" }
-      ]}
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-hero-formula",
+            "content": "Large serif italic equation 'T(v) = A v' centred, with A in chalk, v in violet, A v in amber-300",
+            "delay": 0.4,
+            "color": "var(--chalk-100)",
+            "position": "centre, 64px"
+          },
+          {
+            "type": "text-caption",
+            "content": "'Linear ↔ matrix' subtitle",
+            "delay": 2.6,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
     },
     {
       "id": "heroOutro",
-      "start": 32.5,
+      "start": 31.84,
       "end": 38,
       "narration": "Pick a matrix. Pick a vector. Multiply. Get a new vector.",
-      "visuals": { "layout": "center", "elements": [
-        { "type": "text-eyebrow", "content": "'the takeaway' mono eyebrow", "delay": 0.0, "color": "var(--amber-300)" },
-        { "type": "text-hero", "content": "'Linear is matrix.' huge serif italic, 'matrix' in amber-300", "delay": 0.35, "color": "var(--chalk-100)" },
-        { "type": "text-caption", "content": "'Row by column. That is the whole arithmetic.' subtitle", "delay": 1.4, "color": "var(--chalk-200)" }
-      ]}
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-eyebrow",
+            "content": "'the takeaway' mono eyebrow",
+            "delay": 0,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-hero",
+            "content": "'Linear is matrix.' huge serif italic, 'matrix' in amber-300",
+            "delay": 0.35,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "'Row by column. That is the whole arithmetic.' subtitle",
+            "delay": 1.4,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
     }
   ]
 }

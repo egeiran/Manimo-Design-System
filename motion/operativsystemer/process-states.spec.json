@@ -3,79 +3,156 @@
   "title": "Process States: Running, Ready, Blocked",
   "eyebrow": "process lifecycle",
   "language": "en",
-  "duration": 59,
+  "duration": 48,
   "topic": "Process states — a process is always in one of three states: RUNNING on the CPU, READY waiting for the CPU, or BLOCKED waiting on an I/O completion; the scheduler and I/O events drive every transition",
   "subject_id": "operativsystemer",
   "chapter_number": 2,
-  "prerequisites": ["fork-process"],
+  "prerequisites": [
+    "fork-process"
+  ],
   "beats": [
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 8.76,
+      "end": 7.06,
       "narration": "Where is your program right this second — on the CPU, waiting in line, or stuck on a disk read?",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
-          { "type": "text-caption", "content": "Every process lives in one of three states.", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Every process lives in one of three states.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
         ]
       }
     },
     {
       "id": "threeBoxes",
-      "start": 8.76,
-      "end": 18.24,
+      "start": 7.06,
+      "end": 17.68,
       "narration": "RUNNING — currently on the CPU. READY — eligible to run, but the CPU is busy. BLOCKED — waiting on something else, like a disk to finish.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "svg-path", "content": "Three rectangular state boxes: RUNNING (amber), READY (chalk), BLOCKED (rose)", "delay": 0.3, "color": "var(--amber-400)" },
-          { "type": "svg-label", "content": "Single thread token sits in RUNNING", "delay": 2.6, "color": "var(--amber-400)" },
-          { "type": "text-caption", "content": "the OS bookkeeps every process by this label", "delay": 4.5, "color": "var(--chalk-300)" }
+          {
+            "type": "svg-path",
+            "content": "Three rectangular state boxes: RUNNING (amber), READY (chalk), BLOCKED (rose)",
+            "delay": 0.3,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Single thread token sits in RUNNING",
+            "delay": 2.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the OS bookkeeps every process by this label",
+            "delay": 4.5,
+            "color": "var(--chalk-300)"
+          }
         ]
       }
     },
     {
       "id": "schedulerTransitions",
-      "start": 18.24,
-      "end": 28.99,
+      "start": 17.68,
+      "end": 25.59,
       "narration": "When the scheduler's time slice expires, the running process is descheduled to ready, and a ready process is scheduled to running.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "svg-path", "content": "Arrows between RUNNING and READY labelled 'descheduled' / 'scheduled'", "delay": 0.4, "color": "var(--amber-300)" },
-          { "type": "svg-label", "content": "Token P1 leaves RUNNING and slides to READY", "delay": 2.0, "color": "var(--amber-400)" },
-          { "type": "svg-label", "content": "Token P2 (already in READY) slides up to RUNNING", "delay": 4.5, "color": "var(--amber-400)" },
-          { "type": "text-caption", "content": "the scheduler picks who runs next", "delay": 8.5, "color": "var(--chalk-300)" }
+          {
+            "type": "svg-path",
+            "content": "Arrows between RUNNING and READY labelled 'descheduled' / 'scheduled'",
+            "delay": 0.4,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Token P1 leaves RUNNING and slides to READY",
+            "delay": 2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Token P2 (already in READY) slides up to RUNNING",
+            "delay": 4.5,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the scheduler picks who runs next",
+            "delay": 8.5,
+            "color": "var(--chalk-300)"
+          }
         ]
       }
     },
     {
       "id": "blockedTransitions",
-      "start": 28.99,
-      "end": 45.25,
+      "start": 25.59,
+      "end": 36.35,
       "narration": "If the running process asks for I/O, it leaves the CPU and enters the blocked state. When the disk finishes, the process moves back to ready, eligible to run again.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "svg-path", "content": "Arrow RUNNING → BLOCKED labelled 'I/O: initiate'", "delay": 0.4, "color": "var(--rose-300)" },
-          { "type": "svg-label", "content": "Token P2 makes an I/O request — slides from RUNNING to BLOCKED", "delay": 2.4, "color": "var(--rose-400)" },
-          { "type": "svg-label", "content": "After disk completes, token slides from BLOCKED to READY (not RUNNING)", "delay": 6.5, "color": "var(--amber-400)" },
-          { "type": "text-caption", "content": "I/O completion sends you back to the ready queue, not straight to the CPU", "delay": 10.0, "color": "var(--chalk-300)" }
+          {
+            "type": "svg-path",
+            "content": "Arrow RUNNING → BLOCKED labelled 'I/O: initiate'",
+            "delay": 0.4,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Token P2 makes an I/O request — slides from RUNNING to BLOCKED",
+            "delay": 2.4,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "After disk completes, token slides from BLOCKED to READY (not RUNNING)",
+            "delay": 6.5,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "I/O completion sends you back to the ready queue, not straight to the CPU",
+            "delay": 10,
+            "color": "var(--chalk-300)"
+          }
         ]
       }
     },
     {
       "id": "takeaway",
-      "start": 45.25,
-      "end": 59,
+      "start": 36.35,
+      "end": 48,
       "narration": "Three states — running, ready, blocked. Two drivers of motion — the scheduler and the I/O subsystem. That's how every process moves through the OS.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-title", "content": "running · ready · blocked", "delay": 0.3, "color": "var(--chalk-100)" },
-          { "type": "text-caption", "content": "scheduler + I/O drive every transition", "delay": 1.8, "color": "var(--chalk-300)" }
+          {
+            "type": "text-title",
+            "content": "running · ready · blocked",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "scheduler + I/O drive every transition",
+            "delay": 1.8,
+            "color": "var(--chalk-300)"
+          }
         ]
       }
     }

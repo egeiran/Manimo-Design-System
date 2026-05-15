@@ -19,7 +19,7 @@
 //     frame, so the diagram arrow and the graph marker stay in lockstep —
 //     this is the genuine value-driven motion this scene is built around.
 
-const SCENE_DURATION = 46;
+const SCENE_DURATION = 47;
 
 // Narration script (one sentence per beat — source of truth for TTS/subtitles).
 // NARRATION.length must equal the number of <Sprite> beats in Scene().

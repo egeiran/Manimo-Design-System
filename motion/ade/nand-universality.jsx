@@ -36,24 +36,24 @@ function Scene() {
       eyebrow="digital logic"
       title="NAND is Universal: One Gate Builds Them All"
       duration={SCENE_DURATION}
-      introEnd={6.65}
+      introEnd={6.13}
       introCaption="One gate to build them all — but which?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={6.65} end={14.69}>
+      <Sprite start={6.13} end={13.31}>
         <NandSymbolBeat />
       </Sprite>
 
-      <Sprite start={14.69} end={24.08}>
+      <Sprite start={13.31} end={20.67}>
         <NotFromNandBeat />
       </Sprite>
 
-      <Sprite start={24.08} end={34.03}>
+      <Sprite start={20.67} end={31.48}>
         <AndFromNandBeat />
       </Sprite>
 
-      <Sprite start={34.03} end={SCENE_DURATION}>
+      <Sprite start={31.48} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>

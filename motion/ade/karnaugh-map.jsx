@@ -56,24 +56,24 @@ function Scene() {
       eyebrow="Boolean minimization"
       title="Karnaugh Maps: Grouping Adjacent Ones"
       duration={SCENE_DURATION}
-      introEnd={7.53}
+      introEnd={6.42}
       introCaption="Minimize a Boolean expression by drawing — not algebra?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={7.53} end={14.54}>
+      <Sprite start={6.42} end={12.88}>
         <FunctionBeat />
       </Sprite>
 
-      <Sprite start={14.54} end={22.9}>
+      <Sprite start={12.88} end={21.65}>
         <FillMapBeat />
       </Sprite>
 
-      <Sprite start={22.9} end={32.43}>
+      <Sprite start={21.65} end={31.35}>
         <GroupCellsBeat />
       </Sprite>
 
-      <Sprite start={32.43} end={SCENE_DURATION}>
+      <Sprite start={31.35} end={SCENE_DURATION}>
         <ResultBeat />
       </Sprite>
     </SceneChrome>

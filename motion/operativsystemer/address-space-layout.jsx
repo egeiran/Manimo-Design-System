@@ -17,7 +17,7 @@
 //     localTime so the viewer sees the address space deform in real time.
 //   • SvgFadeIn for everything inside <svg>; FadeUp for HTML/DOM only.
 
-const SCENE_DURATION = 42;
+const SCENE_DURATION = 39;
 
 const NARRATION = [
   /*  0.00– 5.43 */ 'Every program sees a clean slab of memory laid out the same way each time it runs.',
@@ -56,24 +56,24 @@ function Scene() {
       eyebrow="memory"
       title="Address Space: Where Your Program Lives"
       duration={SCENE_DURATION}
-      introEnd={5.43}
+      introEnd={5.61}
       introCaption="Where in memory does each part of your program live?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={5.43} end={15.2}>
+      <Sprite start={5.61} end={17.08}>
         <LayoutBeat />
       </Sprite>
 
-      <Sprite start={15.2} end={23.77}>
+      <Sprite start={17.08} end={23.67}>
         <HeapGrowsBeat />
       </Sprite>
 
-      <Sprite start={23.77} end={34.45}>
+      <Sprite start={23.67} end={32.56}>
         <StackGrowsBeat />
       </Sprite>
 
-      <Sprite start={34.45} end={SCENE_DURATION}>
+      <Sprite start={32.56} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>

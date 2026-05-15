@@ -47,8 +47,9 @@ between a Manimo scene and a generic explainer; do not soften them.
 ### Quality bar (overrides the "ship a first draft fast" instinct)
 
 - Read `motion/README.md` end-to-end before writing anything. Read
-  `CLAUDE.md` Hard Rules 1–9 — especially the FadeUp-vs-SvgFadeIn rule
-  and the spoken-narration rule.
+  `CLAUDE.md` Hard Rules 1–10 — especially the FadeUp-vs-SvgFadeIn rule,
+  the spoken-narration rule, and the video-outlasts-audio + ElevenLabs
+  engine rule (#10).
 - Pick an existing scene as reference: `motion/fysikk/spring-oscillation.jsx`
   (best dual-aspect example, has audio wired up). Match its level of
   polish, not the bare minimum that compiles. The fysikk subject is
@@ -112,15 +113,20 @@ flag this in the routine output rather than ship a static deck.
 
 ### Audio
 
-- After the JSX passes lint and visual check, run `npm run audio <id>`.
-  If `ELEVENLABS_API_KEY` is set and quota is healthy, you get a real
-  MP3 + audio-aligned offsets. Otherwise the script falls back to
-  estimated timings without erroring. The remote nightly sandbox usually
-  has the key; locally on macOS you can also pass `--engine local` to
-  use `say` (rougher but offline).
-- Apply the printed wire-up to `motion/<subject_id>/<id>.jsx`,
-  `motion/<subject_id>/<id>.spec.json`, `motion/scene-manifest.json`
-  (`duration` field), and `ui_kits/studio/app.jsx` (`initialScenes` entry).
+- After the JSX passes lint and visual check, run
+  `node scripts/generate-audio.js <id> --engine elevenlabs`. The
+  `--engine elevenlabs` flag is required — never let the auto-chain
+  fall through to Voxtral (`--engine mistral`). Voxtral is retired
+  per CLAUDE.md Hard Rule 10 (no Norwegian support).
+- Wire the new timings in with `node scripts/rewire-scene.js <id>`. It
+  reads the audio manifest and updates JSX `SCENE_DURATION` +
+  `<Sprite start end>` + `introEnd`, `<id>.spec.json` `duration` +
+  `beats[].start/end`, `motion/scene-manifest.json` `duration`, and
+  `ui_kits/studio/app.jsx` `initialScenes` entry. Helper sets
+  `SCENE_DURATION = ceil(audioDur + 1.0)` so the video always outlasts
+  the audio by at least 1 s (Hard Rule 10).
+- After wiring, audit that every scene satisfies
+  `SCENE_DURATION ≥ ceil(audioDur + 1.0)`. If not, re-run rewire.
 - Narration must follow CLAUDE.md Hard Rule 9 (spoken, not symbolic);
   `generate-audio.js` refuses to render formula-shaped narration
   regardless of engine.

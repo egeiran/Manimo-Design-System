@@ -18,7 +18,7 @@
 //     the right while a signal arrow shoots back to the producer; the
 //     producer's held token then slides into the freed slot.
 
-const SCENE_DURATION = 44;
+const SCENE_DURATION = 43;
 
 const NARRATION = [
   /*  0.00– 6.72 */ 'A producer is filling a small buffer. A consumer is draining it. What happens when one runs ahead of the other?',
@@ -38,24 +38,24 @@ function Scene() {
       eyebrow="condition variables"
       title="Producer–Consumer"
       duration={SCENE_DURATION}
-      introEnd={6.72}
+      introEnd={6.75}
       introCaption="One fills, one empties — when do they wait?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={6.72} end={15.80}>
+      <Sprite start={6.75} end={15.78}>
         <BufferIntro />
       </Sprite>
 
-      <Sprite start={15.80} end={24.51}>
+      <Sprite start={15.78} end={24.17}>
         <FullWait />
       </Sprite>
 
-      <Sprite start={24.51} end={33.40}>
+      <Sprite start={24.17} end={33.11}>
         <SignalAndWake />
       </Sprite>
 
-      <Sprite start={33.40} end={SCENE_DURATION}>
+      <Sprite start={33.11} end={SCENE_DURATION}>
         <Takeaway />
       </Sprite>
     </SceneChrome>

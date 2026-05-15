@@ -16,7 +16,7 @@
 //     in sync with their arrival, and the fourth thread slides into a
 //     wait-queue slot when the counter would go below zero.
 
-const SCENE_DURATION = 45;
+const SCENE_DURATION = 38;
 
 const NARRATION = [
   /*  0.00– 6.83 */ 'How do you let many threads share a resource at once, but only up to a fixed limit?',
@@ -34,24 +34,24 @@ function Scene() {
       eyebrow="semaphores"
       title="Semaphores: A Counter Threads Wait On"
       duration={SCENE_DURATION}
-      introEnd={6.83}
+      introEnd={4.93}
       introCaption="Many threads, one shared resource — with a cap."
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={6.83} end={15.92}>
+      <Sprite start={4.93} end={14.37}>
         <ShapeBeat />
       </Sprite>
 
-      <Sprite start={15.92} end={28.45}>
+      <Sprite start={14.37} end={21.87}>
         <PCallBeat />
       </Sprite>
 
-      <Sprite start={28.45} end={36.5}>
+      <Sprite start={21.87} end={29.9}>
         <VCallBeat />
       </Sprite>
 
-      <Sprite start={36.5} end={SCENE_DURATION}>
+      <Sprite start={29.9} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>

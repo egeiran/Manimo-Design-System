@@ -27,7 +27,7 @@
 //   emerald-400 success accents
 //   amber-300  takeaway accent
 
-const SCENE_DURATION = 40;
+const SCENE_DURATION = 41;
 
 const NARRATION = [
   "How do you draw a curve when you only know its slope at every point? Walk it.",

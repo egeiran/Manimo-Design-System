@@ -3,11 +3,13 @@
   "title": "Full-Wave Bridge Rectifier: Both Halves of the Wave",
   "eyebrow": "diodes",
   "language": "en",
-  "duration": 47,
+  "duration": 48,
   "topic": "Full-wave bridge rectifier — four diodes arranged in a bridge route both halves of an AC sine wave through the load in the same direction; the output is the absolute value of the input, doubling the ripple frequency over a half-wave rectifier",
   "subject_id": "ade",
   "chapter_number": 4,
-  "prerequisites": ["half-wave-rectifier"],
+  "prerequisites": [
+    "half-wave-rectifier"
+  ],
   "beats": [
     {
       "id": "manimoIntro",
@@ -17,8 +19,18 @@
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "manimo-enter", "content": "Manimo enters centre-screen", "delay": 0 },
-          { "type": "text-caption", "content": "Half the wave goes to waste — can we keep all of it?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+          {
+            "type": "manimo-enter",
+            "content": "Manimo enters centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Half the wave goes to waste — can we keep all of it?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
         ]
       }
     },
@@ -30,14 +42,55 @@
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "svg-path", "content": "AC source symbol on the left", "delay": 0.0, "color": "var(--chalk-200)" },
-          { "type": "svg-path", "content": "Bridge diamond with four diodes: D1 top-left, D2 top-right, D3 bottom-left, D4 bottom-right", "delay": 0.4, "color": "var(--amber-400)" },
-          { "type": "svg-path", "content": "Wires from AC source top to W (AC1), AC source bottom to E (AC2)", "delay": 1.2, "color": "var(--chalk-200)" },
-          { "type": "svg-path", "content": "Wires from N (+) and S (−) to load on the right", "delay": 1.6, "color": "var(--chalk-200)" },
-          { "type": "svg-path", "content": "Load resistor (vertical zigzag) on the right", "delay": 2.0, "color": "var(--amber-400)" },
-          { "type": "svg-label", "content": "Diode labels D1, D2, D3, D4", "delay": 2.6, "color": "var(--chalk-300)" },
-          { "type": "svg-label", "content": "Output rails labelled + (top) and − (bottom)", "delay": 3.0, "color": "var(--chalk-200)" },
-          { "type": "text-caption", "content": "four diodes, one AC source, one load", "delay": 4.6, "color": "var(--chalk-300)", "position": "below diagram, sans 14" }
+          {
+            "type": "svg-path",
+            "content": "AC source symbol on the left",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Bridge diamond with four diodes: D1 top-left, D2 top-right, D3 bottom-left, D4 bottom-right",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Wires from AC source top to W (AC1), AC source bottom to E (AC2)",
+            "delay": 1.2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Wires from N (+) and S (−) to load on the right",
+            "delay": 1.6,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Load resistor (vertical zigzag) on the right",
+            "delay": 2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Diode labels D1, D2, D3, D4",
+            "delay": 2.6,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Output rails labelled + (top) and − (bottom)",
+            "delay": 3,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-caption",
+            "content": "four diodes, one AC source, one load",
+            "delay": 4.6,
+            "color": "var(--chalk-300)",
+            "position": "below diagram, sans 14"
+          }
         ]
       }
     },
@@ -49,12 +102,44 @@
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "svg-path", "content": "Positive half: D1 and D4 highlighted amber, D2 and D3 dimmed", "delay": 0.0, "color": "var(--amber-300)", "note": "alternates with negative half via useSprite localTime" },
-          { "type": "svg-path", "content": "Negative half: D2 and D3 highlighted, D1 and D4 dimmed", "delay": 0.0, "color": "var(--amber-300)" },
-          { "type": "svg-path", "content": "Current dots animated along the conducting path for whichever half is active", "delay": 0.0, "color": "var(--rose-300)" },
-          { "type": "svg-label", "content": "State badge top: POSITIVE HALF / NEGATIVE HALF, alternating", "delay": 0.0, "color": "var(--amber-300)" },
-          { "type": "svg-label", "content": "Load arrow: I_LOAD ↓ — always pointing the same direction", "delay": 1.0, "color": "var(--rose-300)" },
-          { "type": "text-caption", "content": "two diodes swap in, two swap out — but the load current never reverses", "delay": 11.0, "color": "var(--chalk-300)", "position": "below diagram" }
+          {
+            "type": "svg-path",
+            "content": "Positive half: D1 and D4 highlighted amber, D2 and D3 dimmed",
+            "delay": 0,
+            "color": "var(--amber-300)",
+            "note": "alternates with negative half via useSprite localTime"
+          },
+          {
+            "type": "svg-path",
+            "content": "Negative half: D2 and D3 highlighted, D1 and D4 dimmed",
+            "delay": 0,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Current dots animated along the conducting path for whichever half is active",
+            "delay": 0,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "State badge top: POSITIVE HALF / NEGATIVE HALF, alternating",
+            "delay": 0,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Load arrow: I_LOAD ↓ — always pointing the same direction",
+            "delay": 1,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "two diodes swap in, two swap out — but the load current never reverses",
+            "delay": 11,
+            "color": "var(--chalk-300)",
+            "position": "below diagram"
+          }
         ]
       }
     },
@@ -66,25 +151,68 @@
       "visuals": {
         "layout": "left-right",
         "elements": [
-          { "type": "graph-axes", "content": "Two stacked scope panels: V_in (top) and V_out (bottom)", "delay": 0.0, "color": "var(--chalk-300)" },
-          { "type": "graph-curve", "content": "V_in trace — full sinusoid both halves, two periods", "delay": 0.4, "color": "var(--chalk-100)" },
-          { "type": "graph-curve", "content": "V_out trace — |sin(ωt)|, only positive humps, doubled frequency", "delay": 0.4, "color": "var(--amber-300)" },
-          { "type": "svg-path", "content": "Vertical time cursor sweeping across both panels in sync", "delay": 0.0, "color": "var(--rose-400)" },
-          { "type": "svg-label", "content": "Panel labels 'V_in' and 'V_out'", "delay": 0.6, "color": "var(--chalk-200)" },
-          { "type": "text-caption", "content": "ripple frequency is doubled — half the smoothing capacitor needed", "delay": 7.0, "color": "var(--chalk-300)", "position": "below scopes" }
+          {
+            "type": "graph-axes",
+            "content": "Two stacked scope panels: V_in (top) and V_out (bottom)",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "V_in trace — full sinusoid both halves, two periods",
+            "delay": 0.4,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "V_out trace — |sin(ωt)|, only positive humps, doubled frequency",
+            "delay": 0.4,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Vertical time cursor sweeping across both panels in sync",
+            "delay": 0,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Panel labels 'V_in' and 'V_out'",
+            "delay": 0.6,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-caption",
+            "content": "ripple frequency is doubled — half the smoothing capacitor needed",
+            "delay": 7,
+            "color": "var(--chalk-300)",
+            "position": "below scopes"
+          }
         ]
       }
     },
     {
       "id": "takeaway",
       "start": 39.72,
-      "end": 47,
+      "end": 48,
       "narration": "Both halves of the wave do useful work — that's why every wall-wart and laptop charger starts with a bridge.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-caption", "content": "Every half-cycle counts.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic ~28px" },
-          { "type": "text-caption", "content": "the front end of every AC-to-DC power supply", "delay": 1.8, "color": "var(--chalk-300)", "position": "small mono caption below" }
+          {
+            "type": "text-caption",
+            "content": "Every half-cycle counts.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic ~28px"
+          },
+          {
+            "type": "text-caption",
+            "content": "the front end of every AC-to-DC power supply",
+            "delay": 1.8,
+            "color": "var(--chalk-300)",
+            "position": "small mono caption below"
+          }
         ]
       }
     }

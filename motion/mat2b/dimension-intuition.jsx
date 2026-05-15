@@ -25,7 +25,7 @@
 //   • SoftPanel / SceneChrome / SvgFadeIn discipline matches the calibration
 //     scene. FadeUp for HTML, SvgFadeIn for anything inside an <svg>.
 
-const SCENE_DURATION = 29;
+const SCENE_DURATION = 30;
 
 // Narration script — kept here for review and so external tooling can pick it
 // up via window.sceneNarration. Spoken English, never symbolic.

@@ -20,7 +20,7 @@
 //   • Beat 4's Bode magnitude curve is drawn by sampling H(jω) at every
 //     pixel along the log-ω axis — the cursor reveals progressively.
 
-const SCENE_DURATION = 48;
+const SCENE_DURATION = 46;
 
 const NARRATION = [
   /*  0.00– 4.54 */ "Push a sine wave through an R and a C — what comes out the other side?",
@@ -38,24 +38,24 @@ function Scene() {
       eyebrow="frequency response"
       title="RC Low-Pass Filter: Why Gain Rolls Off at the Cutoff"
       duration={SCENE_DURATION}
-      introEnd={4.54}
+      introEnd={4.91}
       introCaption="An R and a C — what frequencies survive?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={4.54} end={12.62}>
+      <Sprite start={4.91} end={12.12}>
         <CircuitBeat />
       </Sprite>
 
-      <Sprite start={12.62} end={23.78}>
+      <Sprite start={12.12} end={24}>
         <FrequencySweepBeat />
       </Sprite>
 
-      <Sprite start={23.78} end={34.88}>
+      <Sprite start={24} end={35.48}>
         <BodeMagnitudeBeat />
       </Sprite>
 
-      <Sprite start={34.88} end={SCENE_DURATION}>
+      <Sprite start={35.48} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>

@@ -20,7 +20,7 @@
 //   • Beat 4 reads localTime to compute a triangle-wave R2 sweep so V_out
 //     traces a continuous arc up and back down inside the beat.
 
-const SCENE_DURATION = 39;
+const SCENE_DURATION = 36;
 
 const NARRATION = [
   /*  0.00– 7.51 */ "Two resistors stacked across a voltage source — what voltage shows up between them?",
@@ -41,24 +41,24 @@ function Scene() {
       eyebrow="circuit analysis"
       title="Voltage Divider: Why Two Resistors Split the Voltage"
       duration={SCENE_DURATION}
-      introEnd={7.51}
+      introEnd={5.19}
       introCaption="Two resistors, one input — where does V out land?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={7.51} end={13.74}>
+      <Sprite start={5.19} end={11.83}>
         <CircuitBeat />
       </Sprite>
 
-      <Sprite start={13.74} end={21.89}>
+      <Sprite start={11.83} end={20.02}>
         <FormulaBeat />
       </Sprite>
 
-      <Sprite start={21.89} end={31.15}>
+      <Sprite start={20.02} end={28.56}>
         <SweepBeat />
       </Sprite>
 
-      <Sprite start={31.15} end={SCENE_DURATION}>
+      <Sprite start={28.56} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>

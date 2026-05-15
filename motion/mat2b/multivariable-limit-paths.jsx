@@ -21,7 +21,7 @@
 //   rose-400   contradiction accent
 //   amber-300  takeaway accent
 
-const SCENE_DURATION = 57;
+const SCENE_DURATION = 58;
 
 const NARRATION = [
   "In one variable, a limit just has to agree from the left and from the right. In two variables, every direction has a vote.",

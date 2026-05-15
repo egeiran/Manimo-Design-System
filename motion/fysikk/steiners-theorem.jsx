@@ -17,7 +17,7 @@
 //     therefore traces a circle of radius d, which is what makes the Md² term
 //     literal on screen.
 
-const SCENE_DURATION = 54.85;
+const SCENE_DURATION = 56;
 
 // Single continuous narration track — one ElevenLabs render covering the whole
 // scene. Sprite start values below match audioStart offsets in

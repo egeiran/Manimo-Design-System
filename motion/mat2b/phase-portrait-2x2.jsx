@@ -26,7 +26,7 @@
 //   teal-400       unstable eigenvector (outgoing)
 //   amber-300      takeaway accent
 
-const SCENE_DURATION = 48;
+const SCENE_DURATION = 49;
 
 const NARRATION = [
   "For a linear system x prime equals A x, the eigenvalues of A decide what its trajectories look like. Three cases. Three pictures.",

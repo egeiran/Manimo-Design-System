@@ -3,11 +3,14 @@
   "title": "Demand Paging: When the Page Isn't in RAM",
   "eyebrow": "virtual memory",
   "language": "en",
-  "duration": 54,
+  "duration": 55,
   "topic": "Demand paging — virtual pages live on disk and are loaded into physical frames only when touched. The present bit, the page-fault trap, the swap-in animation, and what happens when RAM is full and a victim must be evicted first.",
   "subject_id": "operativsystemer",
   "chapter_number": 5,
-  "prerequisites": ["address-translation", "tlb-hit-miss"],
+  "prerequisites": [
+    "address-translation",
+    "tlb-hit-miss"
+  ],
   "beats": [
     {
       "id": "manimoIntro",
@@ -17,8 +20,18 @@
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
-          { "type": "text-caption", "content": "RAM is small. Programs can be much bigger.", "delay": 0.7, "color": "var(--chalk-100)", "position": "below Manimo, serif italic" }
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "RAM is small. Programs can be much bigger.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "below Manimo, serif italic"
+          }
         ]
       }
     },
@@ -30,8 +43,19 @@
       "visuals": {
         "layout": "top-bottom",
         "elements": [
-          { "type": "text-caption", "content": "RAM = fast, small · DISK = slow, big", "delay": 0, "color": "var(--amber-300)", "position": "small mono eyebrow" },
-          { "type": "svg-path", "content": "RAM block (4 frame slots, two filled with V1 and V3) at top; disk block below (many pages V0, V2, V4...). Page-table column shows present=1/0 next to each virtual page", "delay": 0.4, "color": "var(--chalk-200)" }
+          {
+            "type": "text-caption",
+            "content": "RAM = fast, small · DISK = slow, big",
+            "delay": 0,
+            "color": "var(--amber-300)",
+            "position": "small mono eyebrow"
+          },
+          {
+            "type": "svg-path",
+            "content": "RAM block (4 frame slots, two filled with V1 and V3) at top; disk block below (many pages V0, V2, V4...). Page-table column shows present=1/0 next to each virtual page",
+            "delay": 0.4,
+            "color": "var(--chalk-200)"
+          }
         ]
       }
     },
@@ -43,8 +67,19 @@
       "visuals": {
         "layout": "top-bottom",
         "elements": [
-          { "type": "text-caption", "content": "page fault — fetch from disk", "delay": 0, "color": "var(--rose-300)", "position": "above RAM block" },
-          { "type": "svg-path", "content": "CPU requests V2; page-table row pulses (present=0) → trap glyph → page tile V2 slides up from disk slot into the free RAM frame; present bit flips to 1", "delay": 0.6, "color": "var(--rose-400)" }
+          {
+            "type": "text-caption",
+            "content": "page fault — fetch from disk",
+            "delay": 0,
+            "color": "var(--rose-300)",
+            "position": "above RAM block"
+          },
+          {
+            "type": "svg-path",
+            "content": "CPU requests V2; page-table row pulses (present=0) → trap glyph → page tile V2 slides up from disk slot into the free RAM frame; present bit flips to 1",
+            "delay": 0.6,
+            "color": "var(--rose-400)"
+          }
         ]
       }
     },
@@ -56,21 +91,44 @@
       "visuals": {
         "layout": "top-bottom",
         "elements": [
-          { "type": "text-caption", "content": "RAM full → evict before bringing in", "delay": 0, "color": "var(--amber-300)", "position": "above RAM block" },
-          { "type": "svg-path", "content": "Old victim page V1 slides DOWN from RAM back to disk; then new page V5 slides UP into the now-free frame", "delay": 0.6, "color": "var(--teal-400)" }
+          {
+            "type": "text-caption",
+            "content": "RAM full → evict before bringing in",
+            "delay": 0,
+            "color": "var(--amber-300)",
+            "position": "above RAM block"
+          },
+          {
+            "type": "svg-path",
+            "content": "Old victim page V1 slides DOWN from RAM back to disk; then new page V5 slides UP into the now-free frame",
+            "delay": 0.6,
+            "color": "var(--teal-400)"
+          }
         ]
       }
     },
     {
       "id": "takeaway",
       "start": 45.13,
-      "end": 54,
+      "end": 55,
       "narration": "Hit in RAM, it's nanoseconds. Miss to disk, it's milliseconds. Demand paging only pays that price for what you actually use.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-caption", "content": "hit ≈ 100 ns · miss ≈ 10 ms", "delay": 0.2, "color": "var(--chalk-100)", "position": "centre, big mono" },
-          { "type": "text-caption", "content": "five orders of magnitude — keep your working set small", "delay": 1.2, "color": "var(--chalk-200)", "position": "below, serif italic" }
+          {
+            "type": "text-caption",
+            "content": "hit ≈ 100 ns · miss ≈ 10 ms",
+            "delay": 0.2,
+            "color": "var(--chalk-100)",
+            "position": "centre, big mono"
+          },
+          {
+            "type": "text-caption",
+            "content": "five orders of magnitude — keep your working set small",
+            "delay": 1.2,
+            "color": "var(--chalk-200)",
+            "position": "below, serif italic"
+          }
         ]
       }
     }

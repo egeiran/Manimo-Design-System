@@ -1,11 +1,11 @@
 {
   "sceneId": "producer-consumer",
-  "mode": "mistral",
-  "engine": "mistral",
-  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
-  "model": "voxtral-mini-tts-2603",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
   "audio": "audio/producer-consumer/scene.mp3",
-  "durationSec": 43.4,
+  "durationSec": 41.98,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -14,22 +14,22 @@
     },
     {
       "id": "buffer",
-      "audioStart": 6.72,
+      "audioStart": 6.75,
       "narration": "The shared buffer holds at most four items. The producer puts items in; the consumer takes them out. Both run as their own threads."
     },
     {
       "id": "fullWait",
-      "audioStart": 15.8,
+      "audioStart": 15.78,
       "narration": "Now the producer wants to add a fifth item. The buffer is full — there is nowhere to put it. So the producer waits on the not-full condition."
     },
     {
       "id": "signal",
-      "audioStart": 24.51,
+      "audioStart": 24.17,
       "narration": "The consumer takes an item, freeing a slot — and signals the not-full condition. The producer wakes up, drops its item in, and life goes on."
     },
     {
       "id": "takeaway",
-      "audioStart": 33.4,
+      "audioStart": 33.11,
       "narration": "Two conditions, two waits, two signals — the buffer fills, drains, fills again, and neither thread ever has to spin checking a flag."
     }
   ]

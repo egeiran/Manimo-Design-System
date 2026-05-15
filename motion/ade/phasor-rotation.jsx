@@ -19,7 +19,7 @@
 //   • Portrait branch stacks the complex plane above the scope (it would
 //     be unreadably narrow side-by-side in 720 px wide).
 
-const SCENE_DURATION = 40;
+const SCENE_DURATION = 39;
 
 const NARRATION = [
   /*  0.00– 7.97 */ "An AC voltage swings sinusoidally — but there's a clearer way to picture it: a rotating arrow.",
@@ -37,24 +37,24 @@ function Scene() {
       eyebrow="AC analysis"
       title="Phasors: A Rotating Arrow Becomes a Sinusoid"
       duration={SCENE_DURATION}
-      introEnd={7.97}
+      introEnd={6.35}
       introCaption="How do you draw an AC voltage that's always changing?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={7.97} end={14.66}>
+      <Sprite start={6.35} end={13.61}>
         <ComplexPlaneBeat />
       </Sprite>
 
-      <Sprite start={14.66} end={22.96}>
+      <Sprite start={13.61} end={21.58}>
         <RotateAndTraceBeat />
       </Sprite>
 
-      <Sprite start={22.96} end={30.26}>
+      <Sprite start={21.58} end={29.07}>
         <PhaseDifferenceBeat />
       </Sprite>
 
-      <Sprite start={30.26} end={SCENE_DURATION}>
+      <Sprite start={29.07} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>

@@ -17,7 +17,7 @@
 //     a release event flips both states at the same instant.
 //   • SvgFadeIn for everything inside <svg>; FadeUp for HTML/DOM only.
 
-const SCENE_DURATION = 54;
+const SCENE_DURATION = 50;
 
 const NARRATION = [
   /*  0.00– 7.40 */ 'Two threads, one shared resource — and only one of them can have it at a time.',
@@ -35,24 +35,24 @@ function Scene() {
       eyebrow="locks"
       title="Test-and-Set: One Atomic Instruction"
       duration={SCENE_DURATION}
-      introEnd={7.4}
+      introEnd={5.04}
       introCaption="How do two threads agree on whose turn it is?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={7.4} end={18.43}>
+      <Sprite start={5.04} end={16.11}>
         <AtomicOpBeat />
       </Sprite>
 
-      <Sprite start={18.43} end={30.18}>
+      <Sprite start={16.11} end={27.18}>
         <ContendBeat />
       </Sprite>
 
-      <Sprite start={30.18} end={44.41}>
+      <Sprite start={27.18} end={41.19}>
         <SpinAndReleaseBeat />
       </Sprite>
 
-      <Sprite start={44.41} end={SCENE_DURATION}>
+      <Sprite start={41.19} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>

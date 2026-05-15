@@ -11,7 +11,7 @@
 // travels between the RAM and disk blocks. The page-table entries on
 // the right update their present bits in sync.
 
-const SCENE_DURATION = 54;
+const SCENE_DURATION = 55;
 
 const NARRATION = [
   /*  0.00–10.09 */ 'Your program thinks it owns gigabytes of memory. In reality, only the pages you actively touch live in RAM. The rest sit on disk until you need them.',

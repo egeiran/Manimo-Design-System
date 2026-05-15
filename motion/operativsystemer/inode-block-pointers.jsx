@@ -35,24 +35,24 @@ function Scene() {
       eyebrow="file systems"
       title="The Inode: A File's Map to Its Blocks"
       duration={SCENE_DURATION}
-      introEnd={5.44}
+      introEnd={4.32}
       introCaption="How does the file system find your bytes?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={5.44} end={15.78}>
+      <Sprite start={4.32} end={14.63}>
         <InodeIntroBeat />
       </Sprite>
 
-      <Sprite start={15.78} end={25.13}>
+      <Sprite start={14.63} end={24.27}>
         <DirectLookupBeat />
       </Sprite>
 
-      <Sprite start={25.13} end={35.63}>
+      <Sprite start={24.27} end={34.28}>
         <IndirectLookupBeat />
       </Sprite>
 
-      <Sprite start={35.63} end={SCENE_DURATION}>
+      <Sprite start={34.28} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>

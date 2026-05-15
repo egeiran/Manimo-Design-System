@@ -20,7 +20,7 @@
 //   • Beat 5 uses useSprite() time to sweep V_in and trace V_out — that's
 //     the value-driven graph that justifies the scene.
 
-const SCENE_DURATION = 56;
+const SCENE_DURATION = 50;
 
 const NARRATION = [
   /*  0.00– 7.65 */ "An op-amp gain is enormous and not well controlled — yet you can build a precise amplifier from one. How?",
@@ -38,24 +38,24 @@ function Scene() {
       eyebrow="operational amplifiers"
       title="Inverting Op-Amp: The Virtual Short Does the Algebra"
       duration={SCENE_DURATION}
-      introEnd={7.65}
+      introEnd={7.35}
       introCaption="Sloppy gain, precise amplifier — how?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={7.65} end={20.12}>
+      <Sprite start={7.35} end={18.38}>
         <ConfigurationBeat />
       </Sprite>
 
-      <Sprite start={20.12} end={34.25}>
+      <Sprite start={18.38} end={30.99}>
         <VirtualShortBeat />
       </Sprite>
 
-      <Sprite start={34.25} end={49.18}>
+      <Sprite start={30.99} end={43.77}>
         <KclResultBeat />
       </Sprite>
 
-      <Sprite start={49.18} end={SCENE_DURATION}>
+      <Sprite start={43.77} end={SCENE_DURATION}>
         <SweepBeat />
       </Sprite>
     </SceneChrome>

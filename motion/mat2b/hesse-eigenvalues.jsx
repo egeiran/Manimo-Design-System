@@ -23,7 +23,7 @@
 //   rose-400   local-max accent (column-card)
 //   amber-300  takeaway accent
 
-const SCENE_DURATION = 40;
+const SCENE_DURATION = 52;
 
 const NARRATION = [
   "The Hesse matrix is symmetric, so it has a hidden pair of perpendicular axes. Those are where the curvature really lives.",
@@ -213,23 +213,23 @@ function Scene() {
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={0} end={4.2}>
+      <Sprite start={0} end={7.81}>
         <ManimoBubbleIntro/>
       </Sprite>
 
-      <Sprite start={4.2} end={16.0}>
+      <Sprite start={7.81} end={20.4}>
         <PrincipalAxesBeat/>
       </Sprite>
 
-      <Sprite start={16.0} end={25.0}>
+      <Sprite start={20.4} end={31.14}>
         <DiagonalFormBeat/>
       </Sprite>
 
-      <Sprite start={25.0} end={34.5}>
+      <Sprite start={31.14} end={44.7}>
         <ClassifyBeat/>
       </Sprite>
 
-      <Sprite start={34.5} end={SCENE_DURATION}>
+      <Sprite start={44.7} end={SCENE_DURATION}>
         <HeroOutro/>
       </Sprite>
     </SceneChrome>

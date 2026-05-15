@@ -17,7 +17,7 @@
 //     screen because SVG y grows downward). Ball position, tangent v, and
 //     inward a_c are derived from that single angle.
 
-const SCENE_DURATION = 42;
+const SCENE_DURATION = 43;
 
 // Narration script (one sentence per beat — source of truth for TTS/subtitles).
 // NARRATION.length must equal the number of <Sprite> beats in Scene().

@@ -19,7 +19,7 @@
 //   • Loop is wide-orient in landscape, tall-orient in portrait so the
 //     walker's circuit and the centre readout both stay legible.
 
-const SCENE_DURATION = 40;
+const SCENE_DURATION = 39;
 
 const NARRATION = [
   /*  0.00– 5.38 */ "Walk all the way around a circuit loop — what's the total voltage you've gained?",
@@ -37,24 +37,24 @@ function Scene() {
       eyebrow="circuit analysis"
       title="Kirchhoff's Voltage Law: Why a Loop Sums to Zero"
       duration={SCENE_DURATION}
-      introEnd={5.38}
+      introEnd={4.56}
       introCaption="Walk a loop, add every voltage — what do you get?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={5.38} end={13.12}>
+      <Sprite start={4.56} end={11.36}>
         <LoopSetupBeat />
       </Sprite>
 
-      <Sprite start={13.12} end={22.24}>
+      <Sprite start={11.36} end={23.59}>
         <WalkAndSumBeat />
       </Sprite>
 
-      <Sprite start={22.24} end={30.48}>
+      <Sprite start={23.59} end={30.91}>
         <KvlFormulaBeat />
       </Sprite>
 
-      <Sprite start={30.48} end={SCENE_DURATION}>
+      <Sprite start={30.91} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>

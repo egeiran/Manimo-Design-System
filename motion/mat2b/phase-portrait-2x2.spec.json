@@ -6,7 +6,7 @@
   "title": "Phase Portraits of a 2×2 Linear System",
   "eyebrow": "linear ODE systems",
   "language": "en",
-  "duration": 48,
+  "duration": 49,
   "topic": "For x' = A x with a 2×2 matrix A, the geometry of trajectories in the phase plane is set by the eigenvalues. Two negative real eigenvalues give a stable node; one positive and one negative gives a saddle; a complex pair with negative real part gives an inward spiral. Three small panels, three eigenvalue signatures, three pictures.",
   "concepts": [
     "phase portrait",
@@ -22,60 +22,149 @@
     "chapter_concepts: egenverdier",
     "chapter_concepts: stabilitet"
   ],
-  "prerequisites": ["diagonalisation-eigenaxes", "second-order-to-system"],
+  "prerequisites": [
+    "diagonalisation-eigenaxes",
+    "second-order-to-system"
+  ],
   "beats": [
     {
       "id": "manimoIntro",
       "start": 0,
       "end": 10.7,
       "narration": "For a linear system x prime equals A x, the eigenvalues of A decide what its trajectories look like. Three cases. Three pictures.",
-      "visuals": { "layout": "center", "elements": [
-        { "type": "manimo-enter", "content": "Manimo bobs centre", "delay": 0 },
-        { "type": "text-caption", "content": "Hook caption.", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo" }
-      ]}
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs centre",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Hook caption.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo"
+          }
+        ]
+      }
     },
     {
       "id": "stableNode",
       "start": 10.7,
       "end": 21.26,
       "narration": "Two negative real eigenvalues. Every trajectory bends toward the origin along the eigenvector directions. The origin is a stable node — a sink.",
-      "visuals": { "layout": "single panel", "elements": [
-        { "type": "svg-axes", "content": "Phase axes y1, y2", "delay": 0.2, "color": "var(--chalk-200)" },
-        { "type": "svg-arrow", "content": "Vector field arrows in chalk-300", "delay": 0.6, "color": "var(--chalk-300)" },
-        { "type": "svg-curve", "content": "Multiple trajectories bending inward, emerald", "delay": 1.2, "color": "var(--emerald-400)" },
-        { "type": "text-caption", "content": "Eigenvalues both negative — sink.", "delay": 3.0, "color": "var(--chalk-100)", "position": "right" }
-      ]}
+      "visuals": {
+        "layout": "single panel",
+        "elements": [
+          {
+            "type": "svg-axes",
+            "content": "Phase axes y1, y2",
+            "delay": 0.2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-arrow",
+            "content": "Vector field arrows in chalk-300",
+            "delay": 0.6,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-curve",
+            "content": "Multiple trajectories bending inward, emerald",
+            "delay": 1.2,
+            "color": "var(--emerald-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "Eigenvalues both negative — sink.",
+            "delay": 3,
+            "color": "var(--chalk-100)",
+            "position": "right"
+          }
+        ]
+      }
     },
     {
       "id": "saddle",
       "start": 21.26,
       "end": 32.13,
       "narration": "One positive eigenvalue and one negative. Along one eigenvector trajectories rush in, along the other they rush out. The origin is a saddle — unstable.",
-      "visuals": { "layout": "single panel", "elements": [
-        { "type": "svg-curve", "content": "Trajectories along stable manifold (in) and unstable manifold (out)", "delay": 0.6, "color": "var(--rose-400)" },
-        { "type": "text-caption", "content": "Mixed signs — saddle.", "delay": 3.0, "color": "var(--chalk-100)", "position": "right" }
-      ]}
+      "visuals": {
+        "layout": "single panel",
+        "elements": [
+          {
+            "type": "svg-curve",
+            "content": "Trajectories along stable manifold (in) and unstable manifold (out)",
+            "delay": 0.6,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "Mixed signs — saddle.",
+            "delay": 3,
+            "color": "var(--chalk-100)",
+            "position": "right"
+          }
+        ]
+      }
     },
     {
       "id": "spiral",
       "start": 32.13,
       "end": 42.23,
       "narration": "A complex conjugate pair with negative real part. No real eigenvector to fall along — trajectories rotate as they shrink. The origin is a stable spiral.",
-      "visuals": { "layout": "single panel", "elements": [
-        { "type": "svg-curve", "content": "Inward spirals from a few initial conditions, amber", "delay": 0.6, "color": "var(--amber-400)" },
-        { "type": "text-caption", "content": "Complex eigenvalues — spiral.", "delay": 3.0, "color": "var(--chalk-100)", "position": "right" }
-      ]}
+      "visuals": {
+        "layout": "single panel",
+        "elements": [
+          {
+            "type": "svg-curve",
+            "content": "Inward spirals from a few initial conditions, amber",
+            "delay": 0.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "Complex eigenvalues — spiral.",
+            "delay": 3,
+            "color": "var(--chalk-100)",
+            "position": "right"
+          }
+        ]
+      }
     },
     {
       "id": "heroOutro",
       "start": 42.23,
-      "end": 48,
+      "end": 49,
       "narration": "The eigenvalues of A tell you the picture. Read the signs, then read the portrait.",
-      "visuals": { "layout": "center", "elements": [
-        { "type": "text-eyebrow", "content": "'EIGENVALUES → PORTRAIT'", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
-        { "type": "text-hero", "content": "'The signs of lambda decide the geometry.'", "delay": 0.35, "color": "var(--chalk-100)", "position": "centre" },
-        { "type": "text-caption", "content": "Node · saddle · spiral.", "delay": 1.4, "color": "var(--chalk-200)", "position": "below hero" }
-      ]}
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-eyebrow",
+            "content": "'EIGENVALUES → PORTRAIT'",
+            "delay": 0,
+            "color": "var(--amber-300)",
+            "position": "centre-top"
+          },
+          {
+            "type": "text-hero",
+            "content": "'The signs of lambda decide the geometry.'",
+            "delay": 0.35,
+            "color": "var(--chalk-100)",
+            "position": "centre"
+          },
+          {
+            "type": "text-caption",
+            "content": "Node · saddle · spiral.",
+            "delay": 1.4,
+            "color": "var(--chalk-200)",
+            "position": "below hero"
+          }
+        ]
+      }
     }
   ]
 }

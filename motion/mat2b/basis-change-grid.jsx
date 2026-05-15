@@ -10,7 +10,7 @@
 //   teal-400               b₂ and the new lattice lines along b₂
 //   amber-300              the payoff coordinates, hero accent
 
-const SCENE_DURATION = 35;
+const SCENE_DURATION = 36;
 
 const NARRATION = [
   "A vector is just an arrow. The numbers we attach to it depend on the grid we measure with.",

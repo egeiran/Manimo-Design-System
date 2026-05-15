@@ -1,11 +1,11 @@
 {
   "sceneId": "test-and-set-lock",
-  "mode": "mistral",
-  "engine": "mistral",
-  "voice": "e3596645-b1af-469e-b857-f18ddedc7652",
-  "model": "voxtral-mini-tts-2603",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
   "audio": "audio/test-and-set-lock/scene.mp3",
-  "durationSec": 53.38,
+  "durationSec": 48.72,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -14,22 +14,22 @@
     },
     {
       "id": "atomicOp",
-      "audioStart": 7.4,
+      "audioStart": 5.04,
       "narration": "Test and set is one hardware instruction that does two things at once. It reads the lock's old value and writes one — atomically, so no other thread can slip in between."
     },
     {
       "id": "contend",
-      "audioStart": 18.43,
+      "audioStart": 16.11,
       "narration": "Two threads race for the lock. Thread one calls test and set first, gets back zero, and walks in. Thread two calls a moment later, gets back one, and has to wait."
     },
     {
       "id": "spinAndRelease",
-      "audioStart": 30.18,
+      "audioStart": 27.18,
       "narration": "Thread two keeps trying. Each loop reads one, sees the lock is taken, and spins. When thread one finishes its work and writes zero, the very next call returns zero — and now thread two is the holder."
     },
     {
       "id": "takeaway",
-      "audioStart": 44.41,
+      "audioStart": 41.19,
       "narration": "Spin while busy. One atomic step does the test and the set together — and that is the simplest lock in computing."
     }
   ]

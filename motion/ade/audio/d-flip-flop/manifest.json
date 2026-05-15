@@ -1,11 +1,11 @@
 {
   "sceneId": "d-flip-flop",
-  "mode": "mistral",
-  "engine": "mistral",
-  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
-  "model": "voxtral-mini-tts-2603",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
   "audio": "audio/d-flip-flop/scene.mp3",
-  "durationSec": 37.01,
+  "durationSec": 33.07,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -14,22 +14,22 @@
     },
     {
       "id": "symbol",
-      "audioStart": 5.64,
+      "audioStart": 5.31,
       "narration": "Here's a D flip-flop — data in, clock in, and Q out. The triangle on the clock input means it's edge triggered."
     },
     {
       "id": "setup",
-      "audioStart": 14.87,
+      "audioStart": 13.04,
       "narration": "Set up a clock signal toggling steadily, and a data signal moving in its own rhythm."
     },
     {
       "id": "sampling",
-      "audioStart": 20.79,
+      "audioStart": 18.23,
       "narration": "On every rising edge of the clock, Q samples whatever D is right then. Between edges, D can dance around freely and Q ignores it."
     },
     {
       "id": "takeaway",
-      "audioStart": 30.01,
+      "audioStart": 27.13,
       "narration": "Q catches D on the rising edge — that one bit of memory is the cell behind every register and counter."
     }
   ]

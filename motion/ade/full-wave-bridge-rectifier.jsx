@@ -35,7 +35,7 @@
 //     D3 (S→W) conducts  ←
 //     D1, D4 blocked
 
-const SCENE_DURATION = 47;
+const SCENE_DURATION = 48;
 
 const NARRATION = [
   /*  0.00– 7.00 */ "A half wave rectifier throws away half the input. Can we keep both halves and still get a one sided output?",

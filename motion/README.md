@@ -285,31 +285,46 @@ symbols (√, ², ½, π, ω, =, %, …). The script aborts and prints which bea
 needs rewriting. Bypass with `--unsafe-narration` only when you genuinely
 need a non-prose character in the script (rare).
 
-**Step 2 — generate audio.**
+**Step 2 — generate audio (always ElevenLabs).**
 
 ```sh
-npm run audio <scene-id>
+node scripts/generate-audio.js <scene-id> --engine elevenlabs
 ```
 
-Single-track is the default. The script either succeeds (writes
-`motion/audio/<scene-id>/scene.mp3` + `manifest.json`, removes any stale
-per-beat MP3s, prints the wire-up edits) **or** falls back gracefully when
-the key is missing/expired/quota-empty: it estimates each beat's spoken
-duration at ~14 chars/sec, writes a no-audio `manifest.json` with
-estimated `audioStart` offsets, and prints the same wire-up shape minus
-the `<SceneNarration>` line. Re-running with a working key later overwrites
-the manifest with real timings.
+Pass `--engine elevenlabs` explicitly. The auto-chain may fall through
+to Voxtral, which is retired (no Norwegian support) — see CLAUDE.md
+Hard Rule 10. The script writes `motion/<subj>/audio/<id>/scene.mp3`
++ `manifest.json` with real audio-aligned offsets in `tracks[].audioStart`
+and a true `durationSec`. If `ELEVENLABS_API_KEY` is missing it falls
+back to estimated timings (no MP3) so the build doesn't break.
 
-**Step 3 — apply the printed wire-up to four files.**
+**Step 3 — wire the new timings in (one command, four files).**
 
-The script's tail output names exactly what to edit:
+```sh
+node scripts/rewire-scene.js <scene-id>
+```
 
-| File                              | Change                                                           |
-| --------------------------------- | ---------------------------------------------------------------- |
-| `motion/<scene-id>.jsx`           | `SCENE_DURATION`, every `<Sprite start/end>`, `<SceneNarration src=…/>` (audio mode only), `<Stage … loop={false}>` (audio mode only), and the time prefixes in the `NARRATION` array comment |
-| `motion/<scene-id>.spec.json`     | Each `beat.start` / `beat.end` and the top-level `duration`      |
-| `motion/scene-manifest.json`      | This scene's `duration`                                          |
-| `ui_kits/studio/app.jsx`          | This scene's `duration: 'M:SS'` string in `initialScenes`        |
+This reads the audio manifest as source of truth and updates JSX
+`SCENE_DURATION` + every `<Sprite start end>` + `introEnd`,
+`<id>.spec.json` (`duration` + every `beats[].start/end`),
+`motion/scene-manifest.json` (this scene's `duration`), and
+`ui_kits/studio/app.jsx` (`initialScenes` entry). It sets
+`SCENE_DURATION = ceil(audioDur + 1.0)` so the video always outlasts
+the audio by ≥ 1 s (Hard Rule 10). Hand-editing one file in isolation
+will silently desync the others.
+
+The four files it touches:
+
+| File                                | What rewire updates                                                  |
+| ----------------------------------- | -------------------------------------------------------------------- |
+| `motion/<subj>/<id>.jsx`            | `SCENE_DURATION`, every `<Sprite start end>`, `introEnd`             |
+| `motion/<subj>/<id>.spec.json`      | `duration`, every `beats[].start` / `beats[].end`                    |
+| `motion/scene-manifest.json`        | This scene's `duration`                                              |
+| `ui_kits/studio/app.jsx`            | This scene's `initialScenes[].duration`                              |
+
+The `NARRATION` array's leading `/* X.XX–Y.YY */` comments in the JSX
+are decorative and not updated by the helper — fix manually if they
+bother you, but they don't drive playback.
 
 **Step 4 — verify.**
 

@@ -15,7 +15,7 @@
 //     tick. Both share a single time variable so they stay locked.
 //   • SvgFadeIn for elements inside <svg>; FadeUp for HTML/DOM only.
 
-const SCENE_DURATION = 53;
+const SCENE_DURATION = 54;
 
 const NARRATION = [
   /*  0.00– 6.34 */ 'Three programs are ready to run, but only one CPU. Who goes first — and for how long?',

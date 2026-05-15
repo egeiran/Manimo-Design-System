@@ -3,7 +3,7 @@
   "title": "Coulomb's Law: The Inverse-Square Tug",
   "eyebrow": "electromagnetism",
   "language": "en",
-  "duration": 46,
+  "duration": 47,
   "topic": "Coulomb's law — F = k·q₁q₂/r²; force scales with the product of charges and the inverse square of distance; like repels, opposite attracts",
   "prerequisites": [],
   "beats": [
@@ -15,8 +15,18 @@
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
-          { "type": "text-caption", "content": "Two charges, nothing else — what tugs them?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Two charges, nothing else — what tugs them?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
         ]
       }
     },
@@ -28,14 +38,55 @@
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "svg-circle", "content": "Left charge q₁ — amber circle on the horizontal axis", "delay": 0.0, "color": "var(--amber-400)" },
-          { "type": "svg-label", "content": "+q₁ inside left charge", "delay": 0.0, "color": "var(--bg-canvas)" },
-          { "type": "svg-circle", "content": "Right charge q₂ — amber circle to the right", "delay": 0.4, "color": "var(--amber-400)" },
-          { "type": "svg-label", "content": "+q₂ inside right charge", "delay": 0.4, "color": "var(--bg-canvas)" },
-          { "type": "svg-path", "content": "Dashed line between the two charges showing the line of force", "delay": 0.8, "color": "var(--chalk-300)" },
-          { "type": "svg-label", "content": "r distance label centred above the line", "delay": 1.2, "color": "var(--chalk-200)" },
-          { "type": "svg-path", "content": "Repulsive force arrow on each charge — pointing outward (left charge pushes left, right charge pushes right)", "delay": 1.8, "color": "var(--rose-400)" },
-          { "type": "text-caption", "content": "like repels — opposite would attract", "delay": 5.5, "color": "var(--chalk-300)", "position": "below the diagram, sans 14" }
+          {
+            "type": "svg-circle",
+            "content": "Left charge q₁ — amber circle on the horizontal axis",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "+q₁ inside left charge",
+            "delay": 0,
+            "color": "var(--bg-canvas)"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Right charge q₂ — amber circle to the right",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "+q₂ inside right charge",
+            "delay": 0.4,
+            "color": "var(--bg-canvas)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Dashed line between the two charges showing the line of force",
+            "delay": 0.8,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "r distance label centred above the line",
+            "delay": 1.2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Repulsive force arrow on each charge — pointing outward (left charge pushes left, right charge pushes right)",
+            "delay": 1.8,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "like repels — opposite would attract",
+            "delay": 5.5,
+            "color": "var(--chalk-300)",
+            "position": "below the diagram, sans 14"
+          }
         ]
       }
     },
@@ -47,9 +98,27 @@
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-formula", "content": "F = k · q₁q₂ / r²", "delay": 0.3, "color": "var(--amber-300)", "position": "centre, large serif italic amber payoff" },
-          { "type": "text-caption", "content": "k ≈ 8.99 × 10⁹ N·m²/C² — Coulomb's constant", "delay": 1.6, "color": "var(--chalk-300)", "position": "small mono caption below formula" },
-          { "type": "text-caption", "content": "double a charge → force doubles; double the distance → force quarters", "delay": 3.4, "color": "var(--chalk-200)", "position": "smaller serif caption" }
+          {
+            "type": "text-formula",
+            "content": "F = k · q₁q₂ / r²",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre, large serif italic amber payoff"
+          },
+          {
+            "type": "text-caption",
+            "content": "k ≈ 8.99 × 10⁹ N·m²/C² — Coulomb's constant",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "small mono caption below formula"
+          },
+          {
+            "type": "text-caption",
+            "content": "double a charge → force doubles; double the distance → force quarters",
+            "delay": 3.4,
+            "color": "var(--chalk-200)",
+            "position": "smaller serif caption"
+          }
         ]
       }
     },
@@ -61,27 +130,81 @@
       "visuals": {
         "layout": "top-bottom",
         "elements": [
-          { "type": "svg-circle", "content": "Anchored left charge at fixed x", "delay": 0.0, "color": "var(--amber-400)" },
-          { "type": "svg-circle", "content": "Right charge whose x is swept from r=80 (close) out to r=320 over the beat", "delay": 0.0, "color": "var(--amber-400)" },
-          { "type": "svg-path", "content": "Force arrow on the right charge whose length scales as 1/r² in real time as the charge slides", "delay": 0.0, "color": "var(--rose-400)" },
-          { "type": "graph-axes", "content": "F vs r axes below the diagram, F on the vertical, r on the horizontal", "delay": 0.6, "color": "var(--chalk-300)" },
-          { "type": "graph-curve", "content": "F = k/r² curve traced incrementally — the dot tracks the swept charge's position so the curve grows as the charge slides", "delay": 0.6, "color": "var(--rose-400)" },
-          { "type": "graph-marker", "content": "Marker dot on the curve at the current (r, F) — moves with the swept charge", "delay": 0.8, "color": "var(--rose-300)" },
-          { "type": "text-caption", "content": "twice the distance → one quarter the force", "delay": 6.0, "color": "var(--chalk-300)", "position": "below the graph, sans 14" }
+          {
+            "type": "svg-circle",
+            "content": "Anchored left charge at fixed x",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Right charge whose x is swept from r=80 (close) out to r=320 over the beat",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Force arrow on the right charge whose length scales as 1/r² in real time as the charge slides",
+            "delay": 0,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "graph-axes",
+            "content": "F vs r axes below the diagram, F on the vertical, r on the horizontal",
+            "delay": 0.6,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "F = k/r² curve traced incrementally — the dot tracks the swept charge's position so the curve grows as the charge slides",
+            "delay": 0.6,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Marker dot on the curve at the current (r, F) — moves with the swept charge",
+            "delay": 0.8,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "twice the distance → one quarter the force",
+            "delay": 6,
+            "color": "var(--chalk-300)",
+            "position": "below the graph, sans 14"
+          }
         ]
       }
     },
     {
       "id": "takeaway",
       "start": 37.59,
-      "end": 46,
+      "end": 47,
       "narration": "Same shape as Newton's gravity, but stronger by far — and signed. Charges can pull or push; mass only ever pulls.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-caption", "content": "Same shape as gravity — but stronger, and signed.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic ~26px" },
-          { "type": "text-caption", "content": "Charges push or pull. Mass only ever pulls.", "delay": 1.6, "color": "var(--chalk-100)", "position": "below, serif italic ~22px" },
-          { "type": "text-caption", "content": "(electricity is gravity's louder, two-faced cousin)", "delay": 3.0, "color": "var(--chalk-300)", "position": "small mono caption" }
+          {
+            "type": "text-caption",
+            "content": "Same shape as gravity — but stronger, and signed.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic ~26px"
+          },
+          {
+            "type": "text-caption",
+            "content": "Charges push or pull. Mass only ever pulls.",
+            "delay": 1.6,
+            "color": "var(--chalk-100)",
+            "position": "below, serif italic ~22px"
+          },
+          {
+            "type": "text-caption",
+            "content": "(electricity is gravity's louder, two-faced cousin)",
+            "delay": 3,
+            "color": "var(--chalk-300)",
+            "position": "small mono caption"
+          }
         ]
       }
     }

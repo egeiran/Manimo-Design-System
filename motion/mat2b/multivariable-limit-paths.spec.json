@@ -6,7 +6,7 @@
   "title": "Multivariable Limits Fail Along Different Paths",
   "eyebrow": "limits in higher dimensions",
   "language": "en",
-  "duration": 57,
+  "duration": 58,
   "topic": "A two-variable limit must agree no matter how you approach the point. For f(x, y) = (x y + y³) / (x² + y²), approaching the origin along the x-axis gives zero; approaching along y equals x gives one half. Two different values, so the limit does not exist.",
   "concepts": [
     "limit of a function of two variables",
@@ -26,51 +26,127 @@
       "start": 0,
       "end": 8.08,
       "narration": "In one variable, a limit just has to agree from the left and from the right. In two variables, every direction has a vote.",
-      "visuals": { "layout": "center", "elements": [
-        { "type": "manimo-enter", "content": "Manimo bobs centre", "delay": 0 },
-        { "type": "text-caption", "content": "Hook caption: every path has a vote.", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo" }
-      ]}
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs centre",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Hook caption: every path has a vote.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo"
+          }
+        ]
+      }
     },
     {
       "id": "introduceF",
       "start": 8.08,
       "end": 20.48,
       "narration": "Consider f of x comma y, equal to x y plus y cubed, divided by x squared plus y squared. The denominator goes to zero at the origin. Does f have a limit there?",
-      "visuals": { "layout": "function display", "elements": [
-        { "type": "text-formula", "content": "f(x, y) = (xy + y³) / (x² + y²)", "delay": 0.4, "color": "var(--chalk-100)", "position": "centre" },
-        { "type": "svg-axes", "content": "xy-plane with origin highlighted", "delay": 1.2, "color": "var(--chalk-200)" }
-      ]}
+      "visuals": {
+        "layout": "function display",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "f(x, y) = (xy + y³) / (x² + y²)",
+            "delay": 0.4,
+            "color": "var(--chalk-100)",
+            "position": "centre"
+          },
+          {
+            "type": "svg-axes",
+            "content": "xy-plane with origin highlighted",
+            "delay": 1.2,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
     },
     {
       "id": "pathXAxis",
       "start": 20.48,
       "end": 33.26,
       "narration": "Walk in along the x-axis. Set y to zero. Then f reduces to x times zero plus zero, divided by x squared. That is zero. The limit along this path is zero.",
-      "visuals": { "layout": "diagram + side panel", "elements": [
-        { "type": "svg-arrow", "content": "Path arrow along x-axis toward origin in violet", "delay": 0.5, "color": "var(--violet-400)" },
-        { "type": "text-formula", "content": "f(x, 0) = 0 → limit = 0", "delay": 2.0, "color": "var(--violet-400)", "position": "right" }
-      ]}
+      "visuals": {
+        "layout": "diagram + side panel",
+        "elements": [
+          {
+            "type": "svg-arrow",
+            "content": "Path arrow along x-axis toward origin in violet",
+            "delay": 0.5,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "f(x, 0) = 0 → limit = 0",
+            "delay": 2,
+            "color": "var(--violet-400)",
+            "position": "right"
+          }
+        ]
+      }
     },
     {
       "id": "pathDiagonal",
       "start": 33.26,
       "end": 50.06,
       "narration": "Now walk in along the diagonal where y equals x. Substitute: the numerator becomes x squared plus x cubed; the denominator is two x squared. As x goes to zero, the ratio approaches one half. The limit along this path is one half.",
-      "visuals": { "layout": "diagram + side panel", "elements": [
-        { "type": "svg-arrow", "content": "Path arrow along y = x toward origin in amber", "delay": 0.5, "color": "var(--amber-400)" },
-        { "type": "text-formula", "content": "f(x, x) → 1/2", "delay": 2.4, "color": "var(--amber-400)", "position": "right" }
-      ]}
+      "visuals": {
+        "layout": "diagram + side panel",
+        "elements": [
+          {
+            "type": "svg-arrow",
+            "content": "Path arrow along y = x toward origin in amber",
+            "delay": 0.5,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "f(x, x) → 1/2",
+            "delay": 2.4,
+            "color": "var(--amber-400)",
+            "position": "right"
+          }
+        ]
+      }
     },
     {
       "id": "heroOutro",
       "start": 50.06,
-      "end": 57,
+      "end": 58,
       "narration": "Two different answers along two different paths. So the two variable limit at the origin does not exist.",
-      "visuals": { "layout": "center", "elements": [
-        { "type": "text-eyebrow", "content": "'TWO PATHS, TWO VALUES'", "delay": 0.0, "color": "var(--amber-300)", "position": "centre-top" },
-        { "type": "text-hero", "content": "'The limit does not exist.'", "delay": 0.35, "color": "var(--chalk-100)", "position": "centre" },
-        { "type": "text-caption", "content": "Every direction must agree.", "delay": 1.4, "color": "var(--chalk-200)", "position": "below hero" }
-      ]}
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-eyebrow",
+            "content": "'TWO PATHS, TWO VALUES'",
+            "delay": 0,
+            "color": "var(--amber-300)",
+            "position": "centre-top"
+          },
+          {
+            "type": "text-hero",
+            "content": "'The limit does not exist.'",
+            "delay": 0.35,
+            "color": "var(--chalk-100)",
+            "position": "centre"
+          },
+          {
+            "type": "text-caption",
+            "content": "Every direction must agree.",
+            "delay": 1.4,
+            "color": "var(--chalk-200)",
+            "position": "below hero"
+          }
+        ]
+      }
     }
   ]
 }

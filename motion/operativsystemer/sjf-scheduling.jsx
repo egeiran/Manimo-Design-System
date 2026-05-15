@@ -14,7 +14,7 @@
 // completion-time tally counts up live as each job finishes. Not just
 // fade-ins.
 
-const SCENE_DURATION = 46;
+const SCENE_DURATION = 44;
 
 const NARRATION = [
   /*  0.00– 8.13 */ 'Three jobs land at the scheduler at the same time. Same work — but the order you pick changes how long everyone waits.',
@@ -41,16 +41,16 @@ function Scene() {
       eyebrow="scheduling"
       title="Shortest Job First"
       duration={SCENE_DURATION}
-      introEnd={8.13}
+      introEnd={6.97}
       introCaption="Three jobs, one queue — does order matter?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={8.13} end={16.60}>
+      <Sprite start={6.97} end={15.04}>
         <JobsArrive />
       </Sprite>
 
-      <Sprite start={16.60} end={24.57}>
+      <Sprite start={15.04} end={23.87}>
         <GanttBeat
           eyebrow="FIFO"
           eyebrowColor="var(--rose-300)"
@@ -60,7 +60,7 @@ function Scene() {
         />
       </Sprite>
 
-      <Sprite start={24.57} end={34.83}>
+      <Sprite start={23.87} end={33.74}>
         <GanttBeat
           eyebrow="SJF"
           eyebrowColor="var(--teal-400)"
@@ -70,7 +70,7 @@ function Scene() {
         />
       </Sprite>
 
-      <Sprite start={34.83} end={SCENE_DURATION}>
+      <Sprite start={33.74} end={SCENE_DURATION}>
         <Takeaway />
       </Sprite>
     </SceneChrome>

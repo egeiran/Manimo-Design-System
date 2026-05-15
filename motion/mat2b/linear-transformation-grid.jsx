@@ -34,7 +34,7 @@
 //   • SceneChrome supplies the title block, watermark and corner mascot —
 //     don't redraw them.
 
-const SCENE_DURATION = 62;
+const SCENE_DURATION = 63;
 
 // Narration script (one sentence per beat — source of truth for TTS/subtitles).
 // NARRATION.length must equal the number of <Sprite> beats in Scene().

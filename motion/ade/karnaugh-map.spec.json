@@ -12,72 +12,165 @@
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 7.53,
+      "end": 6.42,
       "narration": "There's a way to minimize a Boolean function by drawing — not algebra. Karnaugh maps.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
-          { "type": "text-caption", "content": "Minimize a Boolean expression by drawing instead of algebra?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Minimize a Boolean expression by drawing instead of algebra?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
         ]
       }
     },
     {
       "id": "function",
-      "start": 7.53,
-      "end": 14.54,
+      "start": 6.42,
+      "end": 12.88,
       "narration": "Take a function of three variables — A, B, C — and assume it's one for these six minterms.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-formula", "content": "F(A,B,C) = Σm(2,3,4,5,6,7)", "delay": 0.2, "color": "var(--amber-300)", "position": "centre, large serif italic" },
-          { "type": "text-caption", "content": "six 1's, two 0's — what's the simplest expression?", "delay": 1.4, "color": "var(--chalk-300)", "position": "below formula" },
-          { "type": "text-formula", "content": "Algebraic version: A'B + AB' + AB", "delay": 2.6, "color": "var(--chalk-100)", "position": "below caption, JetBrains Mono" }
+          {
+            "type": "text-formula",
+            "content": "F(A,B,C) = Σm(2,3,4,5,6,7)",
+            "delay": 0.2,
+            "color": "var(--amber-300)",
+            "position": "centre, large serif italic"
+          },
+          {
+            "type": "text-caption",
+            "content": "six 1's, two 0's — what's the simplest expression?",
+            "delay": 1.4,
+            "color": "var(--chalk-300)",
+            "position": "below formula"
+          },
+          {
+            "type": "text-formula",
+            "content": "Algebraic version: A'B + AB' + AB",
+            "delay": 2.6,
+            "color": "var(--chalk-100)",
+            "position": "below caption, JetBrains Mono"
+          }
         ]
       }
     },
     {
       "id": "fillMap",
-      "start": 14.54,
-      "end": 22.9,
+      "start": 12.88,
+      "end": 21.65,
       "narration": "Lay out a Karnaugh map: A B down the side in Gray code, C across the top. Drop in a one wherever the function equals one.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "svg-path", "content": "Empty 4x2 K-map grid, AB rows in Gray code (00,01,11,10), C columns (0,1)", "delay": 0.0, "color": "var(--chalk-300)" },
-          { "type": "svg-label", "content": "Cells fill with 0s and 1s one row at a time", "delay": 1.0, "color": "var(--chalk-100)" },
-          { "type": "text-caption", "content": "rows ordered so neighbours differ in exactly one variable", "delay": 7.0, "color": "var(--chalk-300)", "position": "below grid" }
+          {
+            "type": "svg-path",
+            "content": "Empty 4x2 K-map grid, AB rows in Gray code (00,01,11,10), C columns (0,1)",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Cells fill with 0s and 1s one row at a time",
+            "delay": 1,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "rows ordered so neighbours differ in exactly one variable",
+            "delay": 7,
+            "color": "var(--chalk-300)",
+            "position": "below grid"
+          }
         ]
       }
     },
     {
       "id": "groupCells",
-      "start": 22.9,
-      "end": 32.43,
+      "start": 21.65,
+      "end": 31.35,
       "narration": "Now the magic. Two rectangles cover all six ones. The vertical block is A. The horizontal block is B. Together — A or B.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "svg-path", "content": "Filled K-map (same as previous beat, persists)", "delay": 0.0, "color": "var(--chalk-200)" },
-          { "type": "svg-path", "content": "Group 1 — amber rounded rectangle around the bottom 4 cells (AB=11 + AB=10)", "delay": 1.5, "color": "var(--amber-400)" },
-          { "type": "svg-label", "content": "Label 'A' on group 1", "delay": 2.5, "color": "var(--amber-300)" },
-          { "type": "svg-path", "content": "Group 2 — rose rounded rectangle around the middle 4 cells (AB=01 + AB=11)", "delay": 4.0, "color": "var(--rose-400)" },
-          { "type": "svg-label", "content": "Label 'B' on group 2", "delay": 5.0, "color": "var(--rose-300)" },
-          { "type": "text-caption", "content": "each rectangle of size 2ⁿ erases n variables", "delay": 7.0, "color": "var(--chalk-300)", "position": "below grid" }
+          {
+            "type": "svg-path",
+            "content": "Filled K-map (same as previous beat, persists)",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Group 1 — amber rounded rectangle around the bottom 4 cells (AB=11 + AB=10)",
+            "delay": 1.5,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Label 'A' on group 1",
+            "delay": 2.5,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Group 2 — rose rounded rectangle around the middle 4 cells (AB=01 + AB=11)",
+            "delay": 4,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Label 'B' on group 2",
+            "delay": 5,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "each rectangle of size 2ⁿ erases n variables",
+            "delay": 7,
+            "color": "var(--chalk-300)",
+            "position": "below grid"
+          }
         ]
       }
     },
     {
       "id": "result",
-      "start": 32.43,
+      "start": 31.35,
       "end": 39,
       "narration": "F equals A or B. Two terms instead of three — and you didn't have to factor anything.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-formula", "content": "F = A + B", "delay": 0.3, "color": "var(--amber-300)", "position": "centre, very large serif italic" },
-          { "type": "text-formula", "content": "A'B + AB' + AB  →  A + B", "delay": 1.6, "color": "var(--chalk-200)", "position": "below, mono" },
-          { "type": "text-caption", "content": "drawing beats algebra for any function up to 4 variables", "delay": 3.4, "color": "var(--chalk-300)", "position": "small caption below" }
+          {
+            "type": "text-formula",
+            "content": "F = A + B",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre, very large serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "A'B + AB' + AB  →  A + B",
+            "delay": 1.6,
+            "color": "var(--chalk-200)",
+            "position": "below, mono"
+          },
+          {
+            "type": "text-caption",
+            "content": "drawing beats algebra for any function up to 4 variables",
+            "delay": 3.4,
+            "color": "var(--chalk-300)",
+            "position": "small caption below"
+          }
         ]
       }
     }

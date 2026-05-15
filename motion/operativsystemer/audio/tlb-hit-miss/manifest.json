@@ -1,11 +1,11 @@
 {
   "sceneId": "tlb-hit-miss",
-  "mode": "mistral",
-  "engine": "mistral",
-  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
-  "model": "voxtral-mini-tts-2603",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
   "audio": "audio/tlb-hit-miss/scene.mp3",
-  "durationSec": 47.49,
+  "durationSec": 51.41,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -14,22 +14,22 @@
     },
     {
       "id": "tlbCard",
-      "audioStart": 8.36,
+      "audioStart": 8.93,
       "narration": "The translation lookaside buffer is a small on-chip cache. Each entry maps a virtual page number to a physical frame number, with a valid bit on the side."
     },
     {
       "id": "hit",
-      "audioStart": 17.92,
+      "audioStart": 18.76,
       "narration": "A load asks for virtual page seven. The TLB has it, and answers in one cycle: frame ninety-two. Fast path — about ten nanoseconds."
     },
     {
       "id": "miss",
-      "audioStart": 27.32,
+      "audioStart": 29.95,
       "narration": "A load asks for virtual page nineteen. Not in the TLB. The hardware walks the page table in memory, finds frame thirty-four, fills a TLB slot, and only then completes the access."
     },
     {
       "id": "takeaway",
-      "audioStart": 39.14,
+      "audioStart": 42.74,
       "narration": "Programs reuse a small set of pages, so most lookups hit the TLB — and a few cheap misses end up paying for themselves many times over."
     }
   ]

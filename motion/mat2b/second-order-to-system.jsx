@@ -24,7 +24,7 @@
 //   amber-400  the matrix machine A
 //   amber-300  takeaway accent
 
-const SCENE_DURATION = 59;
+const SCENE_DURATION = 60;
 
 const NARRATION = [
   "Why do we keep rewriting second-order equations as first-order systems? Because every numerical method, every matrix tool, is built for first order.",

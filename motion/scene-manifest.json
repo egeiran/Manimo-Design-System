@@ -73,7 +73,7 @@
       "title": "Hooke's Law: Why a Spring Bobs",
       "eyebrow": "harmonic motion",
       "topic": "Simple harmonic motion of a spring — Hooke's law F = -kx leads to ω₀ = √(k/m) and period T = 2π√(m/k)",
-      "duration": 41,
+      "duration": 42,
       "language": "en",
       "prerequisites": [],
       "concepts": [
@@ -94,7 +94,7 @@
       "title": "The Simple Pendulum: Why Mass Doesn't Matter",
       "eyebrow": "pendulum motion",
       "topic": "Simple pendulum — for small swings, T = 2π√(L/g); the period depends on length and gravity, not mass",
-      "duration": 50,
+      "duration": 51,
       "language": "en",
       "prerequisites": [
         "spring-oscillation"
@@ -143,7 +143,7 @@
       "title": "Centripetal Acceleration: Steering, Not Speeding",
       "eyebrow": "circular motion",
       "topic": "Centripetal acceleration — uniform circular motion gives a = v²/r = rω², always pointing toward the centre",
-      "duration": 42,
+      "duration": 43,
       "language": "en",
       "prerequisites": [],
       "concepts": [
@@ -164,7 +164,7 @@
       "title": "Steiner's Theorem: The Cost of an Off-Centre Axis",
       "eyebrow": "rotational mechanics",
       "topic": "Parallel-axis (Steiner's) theorem — I = I_cm + Md², the moment of inertia about any axis equals the inertia about a parallel axis through the centre of mass plus M times the squared offset",
-      "duration": 54.85,
+      "duration": 56,
       "language": "en",
       "prerequisites": [
         "moment-of-inertia"
@@ -187,7 +187,7 @@
       "title": "Damped Oscillation: Why Real Springs Stop",
       "eyebrow": "damping",
       "topic": "Damped harmonic oscillator — adding velocity-proportional drag turns Hooke's law into m·ẍ + b·ẋ + k·x = 0; underdamped solution x(t) = A·e^(-γt)·sin(ωt+φ); regimes: underdamped, critically damped, overdamped",
-      "duration": 46,
+      "duration": 47,
       "language": "en",
       "prerequisites": [
         "spring-oscillation"
@@ -232,7 +232,7 @@
       "title": "Coulomb's Law: The Inverse-Square Tug",
       "eyebrow": "electromagnetism",
       "topic": "Coulomb's law — F = k·q₁q₂/r²; force scales with the product of charges and the inverse square of distance; like repels, opposite attracts",
-      "duration": 46,
+      "duration": 47,
       "language": "en",
       "prerequisites": [],
       "concepts": [
@@ -316,7 +316,7 @@
       "title": "Round-Robin Scheduling: Fairness by the Slice",
       "eyebrow": "scheduling",
       "topic": "Round-robin scheduling — give every ready job one fixed-length time slice in turn; short jobs respond fast, long jobs make steady progress",
-      "duration": 53,
+      "duration": 54,
       "language": "en",
       "prerequisites": [
         "virtualizing-cpu"
@@ -389,7 +389,7 @@
       "title": "Test-and-Set: Building a Lock with One Atomic Instruction",
       "eyebrow": "locks",
       "topic": "Test-and-set lock — a single atomic hardware instruction reads a flag's old value and writes one in the same step; threads that read zero own the lock, threads that read one spin until it is released",
-      "duration": 54,
+      "duration": 50,
       "language": "en",
       "prerequisites": [
         "race-condition"
@@ -412,7 +412,7 @@
       "title": "Address Space: Where Your Program Lives in Memory",
       "eyebrow": "memory",
       "topic": "Address space layout — every process sees a virtual memory region with code at the bottom, static data above it, the heap growing up via malloc, and the stack growing down on each function call",
-      "duration": 42,
+      "duration": 39,
       "language": "en",
       "prerequisites": [
         "virtualizing-cpu"
@@ -459,7 +459,7 @@
       "title": "Shortest Job First: Why Order Changes Wait Time",
       "eyebrow": "scheduling",
       "topic": "Shortest Job First scheduling — three jobs arrive together; running them in arrival order versus shortest-first changes the average turnaround time even though the total work is identical",
-      "duration": 46,
+      "duration": 44,
       "language": "en",
       "prerequisites": [
         "virtualizing-cpu"
@@ -483,7 +483,7 @@
       "title": "Producer–Consumer: When a Thread Needs to Wait",
       "eyebrow": "condition variables",
       "topic": "Producer–consumer with condition variables — a bounded buffer fills and drains; a producer that finds the buffer full waits on a condition; a consumer that finds it empty waits on the other; signal wakes one waiter",
-      "duration": 44,
+      "duration": 43,
       "language": "en",
       "prerequisites": [
         "race-condition"
@@ -507,7 +507,7 @@
       "title": "TLB Hits and Misses: The Cost of a Page Table Lookup",
       "eyebrow": "paging",
       "topic": "Translation Lookaside Buffer — a tiny on-chip cache of recent virtual-to-physical translations; a hit returns the frame number in a single cycle, a miss walks the page table and then fills the cache, dramatically slower",
-      "duration": 48,
+      "duration": 53,
       "language": "en",
       "prerequisites": [
         "address-translation"
@@ -531,7 +531,7 @@
       "title": "Semaphores: A Counter Threads Wait On",
       "eyebrow": "semaphores",
       "topic": "Semaphores — a single integer plus a queue: P() decrements and blocks if the value would go negative, V() increments and wakes a waiter; a semaphore with initial value 1 acts as a lock",
-      "duration": 45,
+      "duration": 38,
       "language": "en",
       "prerequisites": [
         "race-condition"
@@ -555,7 +555,7 @@
       "title": "Process States: Running, Ready, Blocked",
       "eyebrow": "process lifecycle",
       "topic": "Process states — a process is always in one of three states: RUNNING on the CPU, READY waiting for the CPU, or BLOCKED waiting on an I/O completion; the scheduler and I/O events drive every transition",
-      "duration": 59,
+      "duration": 48,
       "language": "en",
       "prerequisites": [
         "fork-process"
@@ -627,7 +627,7 @@
       "title": "Dining Philosophers: A Deadlock by Symmetry",
       "eyebrow": "concurrency",
       "topic": "Dining philosophers — five threads each need two shared chopsticks; if every philosopher grabs the left one first they all wait forever for the right. The four Coffman conditions for deadlock and how breaking symmetry breaks the cycle.",
-      "duration": 53,
+      "duration": 54,
       "language": "en",
       "prerequisites": [
         "test-and-set-lock",
@@ -651,7 +651,7 @@
       "title": "Demand Paging: When the Page Isn't in RAM",
       "eyebrow": "virtual memory",
       "topic": "Demand paging — virtual pages live on disk and are loaded into physical frames only when touched. The present bit, the page-fault trap, the swap-in animation, and what happens when RAM is full and a victim must be evicted first.",
-      "duration": 54,
+      "duration": 55,
       "language": "en",
       "prerequisites": [
         "address-translation",
@@ -700,7 +700,7 @@
       "title": "RAID: Many Disks, One Logical Drive",
       "eyebrow": "storage",
       "topic": "RAID — combining several disks to trade capacity for speed (striping, RAID-0), redundancy (mirroring, RAID-1), or both (parity, RAID-5). Visualises a block landing across multiple disks and what happens when one disk dies.",
-      "duration": 56,
+      "duration": 53,
       "language": "en",
       "prerequisites": [
         "inode-block-pointers"
@@ -725,7 +725,7 @@
       "title": "Voltage Divider: Why Two Resistors Split the Voltage",
       "eyebrow": "circuit analysis",
       "topic": "Voltage divider — two resistors in series across a source put V_out = V_in · R2/(R1+R2) at the midpoint; sweeping R2 sweeps V_out proportionally",
-      "duration": 39,
+      "duration": 36,
       "language": "en",
       "prerequisites": [],
       "concepts": [
@@ -746,7 +746,7 @@
       "title": "Half-Wave Rectifier: How a Diode Turns AC into Pulses",
       "eyebrow": "diodes",
       "topic": "Half-wave rectifier — a diode in series with a load conducts on positive half-cycles and blocks on negative, turning an AC sinusoid into a one-sided pulse train",
-      "duration": 41,
+      "duration": 37,
       "language": "en",
       "prerequisites": [],
       "concepts": [
@@ -768,7 +768,7 @@
       "title": "D Flip-Flop: One Bit of Memory at the Clock Edge",
       "eyebrow": "sequential logic",
       "topic": "D flip-flop — an edge-triggered storage cell whose output Q samples the input D at every rising edge of the clock; the cell behind every register and counter",
-      "duration": 38,
+      "duration": 35,
       "language": "en",
       "prerequisites": [],
       "concepts": [
@@ -790,7 +790,7 @@
       "title": "Kirchhoff's Voltage Law: Why a Loop Sums to Zero",
       "eyebrow": "circuit analysis",
       "topic": "Kirchhoff's voltage law — walking around any closed loop, the sum of every voltage rise and drop equals zero; this is just energy conservation for charges returning to the same potential",
-      "duration": 40,
+      "duration": 39,
       "language": "en",
       "prerequisites": [],
       "concepts": [
@@ -812,7 +812,7 @@
       "title": "Phasors: A Rotating Arrow Becomes a Sinusoid",
       "eyebrow": "AC analysis",
       "topic": "Phasor representation of an AC voltage — a vector of length V_m rotating at angular frequency ω; its real-axis projection traces v(t) = V_m cos(ωt + φ); two phasors at a fixed phase difference give two locked sinusoids",
-      "duration": 40,
+      "duration": 39,
       "language": "en",
       "prerequisites": [],
       "concepts": [
@@ -856,7 +856,7 @@
       "title": "Thévenin's Theorem: Any Linear Circuit Becomes One Source",
       "eyebrow": "circuit analysis",
       "topic": "Thévenin's theorem — any linear two-terminal network can be replaced by an open-circuit voltage V_th in series with an equivalent resistance R_th; the load sees the same current and voltage either way",
-      "duration": 44,
+      "duration": 41,
       "language": "en",
       "prerequisites": [
         "voltage-divider",
@@ -881,7 +881,7 @@
       "title": "RC Low-Pass Filter: Why Gain Rolls Off at the Cutoff",
       "eyebrow": "frequency response",
       "topic": "RC low-pass filter — transfer function H(jω) = 1/(1 + jωRC); gain stays flat below the cutoff ω_c = 1/RC and rolls off at −20 dB/decade above; Bode magnitude and phase together describe the filter at every frequency",
-      "duration": 48,
+      "duration": 46,
       "language": "en",
       "prerequisites": [
         "voltage-divider",
@@ -907,7 +907,7 @@
       "title": "Finite State Machines: A Circuit That Remembers Where It Was",
       "eyebrow": "sequential logic",
       "topic": "Finite state machines — a graph of states and labelled transitions models any sequential circuit; a Moore-style 11-detector with three states walks an input bit-stream and asserts its output whenever the last two bits were ones",
-      "duration": 39,
+      "duration": 38,
       "language": "en",
       "prerequisites": [
         "d-flip-flop"
@@ -931,7 +931,7 @@
       "title": "Energy in a Capacitor: Why It's One Half C V Squared",
       "eyebrow": "energy and power",
       "topic": "Energy stored in a capacitor — pushing charge against a rising voltage; the work integral ∫V dq from 0 to Q traces a triangle of area ½QV, giving the three equivalent forms ½CV², ½QV and Q²/(2C)",
-      "duration": 48,
+      "duration": 44,
       "language": "en",
       "prerequisites": [],
       "concepts": [
@@ -974,7 +974,7 @@
       "title": "Inverting Op-Amp: The Virtual Short Does the Algebra",
       "eyebrow": "operational amplifiers",
       "topic": "Inverting op-amp — V+ grounded, V− driven to a virtual ground by feedback, KCL at the summing junction gives V_out = −(R_f/R_in)·V_in; the op-amp's own gain never enters the answer because the feedback loop forces V− to match V+",
-      "duration": 56,
+      "duration": 50,
       "language": "en",
       "prerequisites": [
         "voltage-divider",
@@ -999,7 +999,7 @@
       "title": "Euler's Method: Tangent Steps Along a Slope Field",
       "eyebrow": "numerical ODEs",
       "topic": "Euler's explicit method — march along a slope field by taking tangent steps. Small h hugs the true curve; large h drifts off step by step. Global error is first order in h.",
-      "duration": 40,
+      "duration": 41,
       "language": "en",
       "prerequisites": [],
       "concepts": [
@@ -1067,7 +1067,7 @@
       "title": "Change of Basis: P Converts the Reading",
       "eyebrow": "coordinate vectors",
       "topic": "Change-of-basis matrix — the same vector has different coordinate readings in two bases. Stack the new basis vectors as columns of P; then P times the new-basis coordinates returns the standard-basis coordinates of the same vector.",
-      "duration": 38,
+      "duration": 39,
       "language": "en",
       "prerequisites": [
         "basis-change-grid"
@@ -1090,7 +1090,7 @@
       "title": "Rank, Nullity, and a Squashed Plane",
       "eyebrow": "rank · nullity",
       "topic": "Rank-nullity by example — a singular 2×2 matrix squashes the whole plane down to one line. The image is that surviving line (rank 1); the kernel is the direction that collapsed onto the origin (nullity 1). Together they account for the dimension of the domain.",
-      "duration": 39,
+      "duration": 40,
       "language": "en",
       "prerequisites": [
         "linear-transformation-grid"
@@ -1114,7 +1114,7 @@
       "title": "Dimension: How Many Free Directions?",
       "eyebrow": "vector spaces",
       "topic": "Dimension as a count of linearly independent directions — a single arrow gives a line (dim 1), a second non-collinear arrow sweeps out a plane (dim 2), and a third arrow off the plane fills three-dimensional space (dim 3).",
-      "duration": 29,
+      "duration": 30,
       "language": "en",
       "prerequisites": [
         "span-and-dependence"
@@ -1137,7 +1137,7 @@
       "title": "Diagonalisation: Eigenvectors as Natural Axes",
       "eyebrow": "diagonalisation",
       "topic": "A 2×2 matrix maps the unit circle to an ellipse. The two directions that stretch without rotating are the eigenvectors; their stretch factors are the eigenvalues. In the eigenbasis A is diagonal: A = PDP⁻¹.",
-      "duration": 39,
+      "duration": 40,
       "language": "en",
       "prerequisites": [
         "linear-transformation-grid",
@@ -1185,7 +1185,7 @@
       "title": "A Matrix Is a Function: T(v) = Av",
       "eyebrow": "linear transformations",
       "topic": "A matrix-vector multiplication is a linear transformation. Walk through input v, the matrix machine A, the row-by-column dot product, and the output Av. Every linear T from ℝⁿ to ℝⁿ is multiplication by a matrix.",
-      "duration": 37,
+      "duration": 38,
       "language": "en",
       "prerequisites": [
         "linear-transformation-grid"
@@ -1208,7 +1208,7 @@
       "title": "Same Vector, Two Grids",
       "eyebrow": "basis and coordinates",
       "topic": "Change of basis — the same arrow has different coordinates depending on the grid it is measured against. Standard grid reads our vector as (1, 3); a tilted basis B = {b₁, b₂} reads the very same vector as (2, 1).",
-      "duration": 35,
+      "duration": 36,
       "language": "en",
       "prerequisites": [
         "span-and-dependence"
@@ -1252,7 +1252,7 @@
       "title": "Linear Transformations: A Matrix Moves the Grid",
       "eyebrow": "linear transformations",
       "topic": "Linear transformation of the plane — every 2×2 matrix bends the standard grid in exactly one way, and its two columns are the images of the basis vectors e₁ and e₂. Rotation, scaling and shear are special cases of the same machine, closed off with a hero outro.",
-      "duration": 62,
+      "duration": 63,
       "language": "en",
       "prerequisites": [],
       "concepts": [
@@ -1299,7 +1299,7 @@
       "title": "Second-Order ODE as a First-Order System",
       "eyebrow": "ODE systems",
       "topic": "A linear second-order ODE y'' + p y' + q y = 0 becomes a first-order system in two unknowns by introducing v = y'. The state vector (y, v) evolves under a single 2×2 matrix, opening up every first-order tool — Euler, RK4, eigenvector analysis.",
-      "duration": 59,
+      "duration": 60,
       "language": "en",
       "prerequisites": [
         "euler-step"
@@ -1322,7 +1322,7 @@
       "title": "Phase Portraits of a 2×2 Linear System",
       "eyebrow": "linear ODE systems",
       "topic": "For x' = A x with a 2×2 matrix A, the eigenvalues of A set the geometry of trajectories. Two negative real eigenvalues give a stable node; opposite signs give a saddle; a complex pair with negative real part gives a stable spiral.",
-      "duration": 48,
+      "duration": 49,
       "language": "en",
       "prerequisites": [
         "diagonalisation-eigenaxes",
@@ -1348,7 +1348,7 @@
       "title": "Multivariable Limits Fail Along Different Paths",
       "eyebrow": "limits in higher dimensions",
       "topic": "A two-variable limit must agree along every path. For f(x, y) = (xy + y³)/(x² + y²), approaching the origin along the x-axis gives 0, while approaching along y = x gives 1/2. Two different values — so the limit does not exist.",
-      "duration": 57,
+      "duration": 58,
       "language": "en",
       "prerequisites": [],
       "concepts": [
@@ -1462,7 +1462,7 @@
       "title": "Hesse Eigenvalues: Curvature on the Principal Axes",
       "eyebrow": "Hesse · eigenvalues",
       "topic": "The Hesse matrix is symmetric, so it diagonalises in an orthonormal basis: its eigenvectors are the principal directions of curvature and its eigenvalues are the curvatures along them. Both eigenvalues positive — minimum; both negative — maximum; mixed signs — saddle. The discriminant just tracks the product λ₁ λ₂ = det H.",
-      "duration": 40,
+      "duration": 52,
       "language": "en",
       "prerequisites": [
         "hessian-test",
@@ -1487,7 +1487,7 @@
       "title": "Global Extrema on a Triangle",
       "eyebrow": "extrema · closed region",
       "topic": "Finding the global min and max of f(x, y) = x² + y² − xy + x + y on the triangle x ≤ 0, y ≤ 0, x + y ≥ −3. Walks Plenum 6 problem 3 — the highest-leverage exam workout in chapter 6. Candidates: an interior critical point at (−1, −1), three edge minimisers, three corners. Min = −1 at the interior point; max = 6 at the two off-origin corners.",
-      "duration": 52,
+      "duration": 86,
       "language": "en",
       "prerequisites": [
         "hessian-test"
@@ -1534,7 +1534,7 @@
       "title": "BJT Load Line: Where the Operating Point Lives",
       "eyebrow": "transistors",
       "topic": "Common-emitter NPN amplifier — the DC load line V_CE = V_CC − I_C·R_C is fixed by the supply and the collector resistor; sweep the base current I_B and the operating point Q slides along that line through cutoff, the active region, and into saturation.",
-      "duration": 61,
+      "duration": 62,
       "language": "en",
       "prerequisites": [
         "voltage-divider"
@@ -1606,7 +1606,7 @@
       "title": "Full-Wave Bridge Rectifier: Both Halves of the Wave",
       "eyebrow": "diodes",
       "topic": "Full-wave bridge rectifier — four diodes arranged in a bridge route both halves of an AC sine wave through the load in the same direction; the output is the absolute value of the input, doubling the ripple frequency over a half-wave rectifier",
-      "duration": 47,
+      "duration": 48,
       "language": "en",
       "prerequisites": [
         "half-wave-rectifier"
@@ -1630,7 +1630,7 @@
       "title": "4-to-1 Multiplexer: Two Select Bits Pick a Wire",
       "eyebrow": "combinational logic",
       "topic": "4-to-1 multiplexer — four data inputs (D0..D3) and two select inputs (S1, S0) feed into a logic block that routes whichever input is addressed by the select bits to a single output Y; demonstrates how 2^n select bits address 2^n data lines",
-      "duration": 37,
+      "duration": 38,
       "language": "en",
       "prerequisites": [
         "nand-universality"

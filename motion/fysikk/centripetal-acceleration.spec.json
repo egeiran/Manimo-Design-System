@@ -3,7 +3,7 @@
   "title": "Centripetal Acceleration: Steering, Not Speeding",
   "eyebrow": "circular motion",
   "language": "en",
-  "duration": 42,
+  "duration": 43,
   "topic": "Centripetal acceleration — uniform circular motion gives a = v²/r = rω², always pointing toward the centre",
   "prerequisites": [],
   "beats": [
@@ -15,8 +15,18 @@
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
-          { "type": "text-caption", "content": "Constant speed, curved path — yet it's accelerating.", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Constant speed, curved path — yet it's accelerating.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
         ]
       }
     },
@@ -28,12 +38,43 @@
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "svg-path", "content": "Dashed circle of radius 130 centred at (440, 200)", "delay": 0.0, "color": "var(--chalk-300)" },
-          { "type": "svg-circle", "content": "Centre dot at the circle's centre", "delay": 0.4, "color": "var(--chalk-300)" },
-          { "type": "svg-circle", "content": "Orbiting ball (amber, radius 14) revolving once every 4 seconds", "delay": 0.8, "color": "var(--amber-400)" },
-          { "type": "svg-path", "content": "Velocity vector tangent to the circle, anchored at the ball, rotates with it", "delay": 1.2, "color": "var(--rose-400)" },
-          { "type": "svg-label", "content": "v label near the velocity arrowhead", "delay": 1.6, "color": "var(--rose-300)" },
-          { "type": "text-caption", "content": "same speed, but the velocity vector keeps turning", "delay": 6.0, "color": "var(--chalk-300)", "position": "below the diagram, sans 14" }
+          {
+            "type": "svg-path",
+            "content": "Dashed circle of radius 130 centred at (440, 200)",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Centre dot at the circle's centre",
+            "delay": 0.4,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Orbiting ball (amber, radius 14) revolving once every 4 seconds",
+            "delay": 0.8,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Velocity vector tangent to the circle, anchored at the ball, rotates with it",
+            "delay": 1.2,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "v label near the velocity arrowhead",
+            "delay": 1.6,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "same speed, but the velocity vector keeps turning",
+            "delay": 6,
+            "color": "var(--chalk-300)",
+            "position": "below the diagram, sans 14"
+          }
         ]
       }
     },
@@ -45,13 +86,50 @@
       "visuals": {
         "layout": "top-bottom",
         "elements": [
-          { "type": "svg-path", "content": "Same dashed circle (smaller, radius 100) at (440, 130)", "delay": 0.0, "color": "var(--chalk-300)" },
-          { "type": "svg-circle", "content": "Orbiting ball revolving once every 4 seconds", "delay": 0.0, "color": "var(--amber-400)" },
-          { "type": "svg-path", "content": "Velocity vector tangent to circle (rose)", "delay": 0.0, "color": "var(--rose-400)" },
-          { "type": "svg-path", "content": "Centripetal acceleration vector pointing from ball toward centre", "delay": 1.0, "color": "var(--amber-300)" },
-          { "type": "svg-label", "content": "a_c label near the inward arrow", "delay": 1.4, "color": "var(--amber-300)" },
-          { "type": "text-formula", "content": "a_c = v²/r", "delay": 3.0, "color": "var(--amber-300)", "position": "below the diagram, large amber payoff" },
-          { "type": "text-caption", "content": "always inward — toward the centre of the curve", "delay": 4.6, "color": "var(--chalk-300)", "position": "small caption below formula" }
+          {
+            "type": "svg-path",
+            "content": "Same dashed circle (smaller, radius 100) at (440, 130)",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Orbiting ball revolving once every 4 seconds",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Velocity vector tangent to circle (rose)",
+            "delay": 0,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Centripetal acceleration vector pointing from ball toward centre",
+            "delay": 1,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "a_c label near the inward arrow",
+            "delay": 1.4,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "a_c = v²/r",
+            "delay": 3,
+            "color": "var(--amber-300)",
+            "position": "below the diagram, large amber payoff"
+          },
+          {
+            "type": "text-caption",
+            "content": "always inward — toward the centre of the curve",
+            "delay": 4.6,
+            "color": "var(--chalk-300)",
+            "position": "small caption below formula"
+          }
         ]
       }
     },
@@ -63,24 +141,66 @@
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-formula", "content": "v = rω", "delay": 0.3, "color": "var(--chalk-200)", "position": "left of chain, serif italic" },
-          { "type": "text-formula", "content": "a_c = v²/r", "delay": 1.0, "color": "var(--chalk-200)", "position": "centre of chain" },
-          { "type": "text-formula", "content": "a_c = rω²", "delay": 2.0, "color": "var(--amber-300)", "position": "right, large amber payoff" },
-          { "type": "text-caption", "content": "two ways of saying the same thing", "delay": 3.4, "color": "var(--chalk-300)", "position": "small mono caption below" }
+          {
+            "type": "text-formula",
+            "content": "v = rω",
+            "delay": 0.3,
+            "color": "var(--chalk-200)",
+            "position": "left of chain, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "a_c = v²/r",
+            "delay": 1,
+            "color": "var(--chalk-200)",
+            "position": "centre of chain"
+          },
+          {
+            "type": "text-formula",
+            "content": "a_c = rω²",
+            "delay": 2,
+            "color": "var(--amber-300)",
+            "position": "right, large amber payoff"
+          },
+          {
+            "type": "text-caption",
+            "content": "two ways of saying the same thing",
+            "delay": 3.4,
+            "color": "var(--chalk-300)",
+            "position": "small mono caption below"
+          }
         ]
       }
     },
     {
       "id": "takeaway",
       "start": 31.92,
-      "end": 42,
+      "end": 43,
       "narration": "Centripetal acceleration sits perpendicular to the motion at every instant — so it does no work. It does not speed the ball up. It just steers.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-caption", "content": "Always perpendicular to v — does no work.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic ~26px" },
-          { "type": "text-caption", "content": "It doesn't speed the ball up — it just steers.", "delay": 1.4, "color": "var(--chalk-100)", "position": "below, serif italic ~22px" },
-          { "type": "text-caption", "content": "(no work, no energy spent — pure direction change)", "delay": 2.6, "color": "var(--chalk-300)", "position": "small mono caption" }
+          {
+            "type": "text-caption",
+            "content": "Always perpendicular to v — does no work.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic ~26px"
+          },
+          {
+            "type": "text-caption",
+            "content": "It doesn't speed the ball up — it just steers.",
+            "delay": 1.4,
+            "color": "var(--chalk-100)",
+            "position": "below, serif italic ~22px"
+          },
+          {
+            "type": "text-caption",
+            "content": "(no work, no energy spent — pure direction change)",
+            "delay": 2.6,
+            "color": "var(--chalk-300)",
+            "position": "small mono caption"
+          }
         ]
       }
     }

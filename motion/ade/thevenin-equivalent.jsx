@@ -18,7 +18,7 @@
 //   • Beat 5's parallel charge dots are the genuine motion: a single
 //     useSprite() phase drives both loops so their flow rate stays locked.
 
-const SCENE_DURATION = 44;
+const SCENE_DURATION = 41;
 
 const NARRATION = [
   /*  0.00– 6.95 */ "A messy box of sources and resistors drives a load — how can we treat the whole thing as one battery?",
@@ -36,24 +36,24 @@ function Scene() {
       eyebrow="circuit analysis"
       title="Thévenin's Theorem: Any Linear Circuit Becomes One Source"
       duration={SCENE_DURATION}
-      introEnd={6.95}
+      introEnd={6.34}
       introCaption="A two-terminal black box — what does the load really see?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={6.95} end={16.11}>
+      <Sprite start={6.34} end={15.13}>
         <OriginalCircuitBeat />
       </Sprite>
 
-      <Sprite start={16.11} end={25.79}>
+      <Sprite start={15.13} end={23.37}>
         <OpenCircuitBeat />
       </Sprite>
 
-      <Sprite start={25.79} end={35.36}>
+      <Sprite start={23.37} end={32.22}>
         <ZeroSourcesBeat />
       </Sprite>
 
-      <Sprite start={35.36} end={SCENE_DURATION}>
+      <Sprite start={32.22} end={SCENE_DURATION}>
         <EquivalentBeat />
       </Sprite>
     </SceneChrome>

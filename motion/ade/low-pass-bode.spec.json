@@ -3,77 +3,148 @@
   "title": "RC Low-Pass Filter: Why Gain Rolls Off at the Cutoff",
   "eyebrow": "frequency response",
   "language": "en",
-  "duration": 48,
+  "duration": 46,
   "topic": "RC low-pass filter — transfer function H(jω) = 1/(1 + jωRC); gain stays flat below the cutoff ω_c = 1/RC and rolls off at −20 dB/decade above; Bode magnitude and phase plots together describe the filter at every frequency",
   "subject_id": "ade",
   "chapter_number": 8,
-  "prerequisites": ["voltage-divider", "phasor-rotation"],
+  "prerequisites": [
+    "voltage-divider",
+    "phasor-rotation"
+  ],
   "beats": [
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 4.54,
+      "end": 4.91,
       "narration": "Push a sine wave through an R and a C — what comes out the other side?",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "manimo-enter", "content": "Manimo enters centre", "delay": 0 },
-          { "type": "text-caption", "content": "An R and a C — what frequencies survive?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+          {
+            "type": "manimo-enter",
+            "content": "Manimo enters centre",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "An R and a C — what frequencies survive?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
         ]
       }
     },
     {
       "id": "circuit",
-      "start": 4.54,
-      "end": 12.62,
+      "start": 4.91,
+      "end": 12.12,
       "narration": "Here is the filter — a resistor in series, a capacitor to ground, output taken across the capacitor.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "svg-path", "content": "RC low-pass circuit: V_in on the left, R in series along the top, C to ground at the mid-node, V_out across C", "delay": 0.2, "color": "var(--amber-400)" },
-          { "type": "svg-label", "content": "V_in (input), V_out (output) terminals", "delay": 2.0, "color": "var(--chalk-200)" },
-          { "type": "text-formula", "content": "H(jω) = 1 / (1 + jωRC)", "delay": 4.0, "color": "var(--amber-300)", "position": "below diagram" }
+          {
+            "type": "svg-path",
+            "content": "RC low-pass circuit: V_in on the left, R in series along the top, C to ground at the mid-node, V_out across C",
+            "delay": 0.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "V_in (input), V_out (output) terminals",
+            "delay": 2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-formula",
+            "content": "H(jω) = 1 / (1 + jωRC)",
+            "delay": 4,
+            "color": "var(--amber-300)",
+            "position": "below diagram"
+          }
         ]
       }
     },
     {
       "id": "frequencySweep",
-      "start": 12.62,
-      "end": 23.78,
+      "start": 12.12,
+      "end": 24,
       "narration": "Step the input frequency from low to high. At low frequencies the output tracks the input. As the frequency climbs past the cutoff, the output shrinks and lags behind.",
       "visuals": {
         "layout": "top-bottom",
         "elements": [
-          { "type": "graph-axes", "content": "Top trace: V_in sinusoid at a stepping frequency", "delay": 0.2, "color": "var(--chalk-200)" },
-          { "type": "graph-curve", "content": "Bottom trace: V_out — same frequency but amplitude scales by 1/sqrt(1+(ωRC)^2) and lags by atan(ωRC)", "delay": 0.3, "color": "var(--amber-300)" },
-          { "type": "svg-label", "content": "Live frequency readout: ω = 0.1 ω_c → 10 ω_c", "delay": 1.0, "color": "var(--amber-300)" }
+          {
+            "type": "graph-axes",
+            "content": "Top trace: V_in sinusoid at a stepping frequency",
+            "delay": 0.2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Bottom trace: V_out — same frequency but amplitude scales by 1/sqrt(1+(ωRC)^2) and lags by atan(ωRC)",
+            "delay": 0.3,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Live frequency readout: ω = 0.1 ω_c → 10 ω_c",
+            "delay": 1,
+            "color": "var(--amber-300)"
+          }
         ]
       }
     },
     {
       "id": "bodeMagnitude",
-      "start": 23.78,
-      "end": 34.88,
+      "start": 24,
+      "end": 35.48,
       "narration": "Plot the gain in decibels against frequency on a log axis. Below the cutoff the gain is flat at zero dB; above the cutoff it falls by twenty decibels every decade.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "graph-axes", "content": "Bode magnitude plot — log ω horizontal, |H| in dB vertical", "delay": 0.2, "color": "var(--chalk-200)" },
-          { "type": "graph-curve", "content": "Magnitude curve traces in as a frequency cursor sweeps left to right; flat at 0 dB then rolls off at −20 dB/decade past ω_c", "delay": 0.5, "color": "var(--amber-300)" },
-          { "type": "svg-label", "content": "ω_c marker; −3 dB annotation at the corner", "delay": 4.0, "color": "var(--rose-400)" }
+          {
+            "type": "graph-axes",
+            "content": "Bode magnitude plot — log ω horizontal, |H| in dB vertical",
+            "delay": 0.2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Magnitude curve traces in as a frequency cursor sweeps left to right; flat at 0 dB then rolls off at −20 dB/decade past ω_c",
+            "delay": 0.5,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "ω_c marker; −3 dB annotation at the corner",
+            "delay": 4,
+            "color": "var(--rose-400)"
+          }
         ]
       }
     },
     {
       "id": "takeaway",
-      "start": 34.88,
-      "end": 48,
+      "start": 35.48,
+      "end": 46,
       "narration": "Below omega equals one over R C the filter passes the signal through. Above, it kills high frequencies — that is why we call it a low pass filter.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-formula", "content": "ω_c = 1 / RC", "delay": 0.3, "color": "var(--amber-300)", "position": "centre, large" },
-          { "type": "text-caption", "content": "low frequencies pass — high frequencies are attenuated", "delay": 1.6, "color": "var(--chalk-100)", "position": "centre takeaway" }
+          {
+            "type": "text-formula",
+            "content": "ω_c = 1 / RC",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre, large"
+          },
+          {
+            "type": "text-caption",
+            "content": "low frequencies pass — high frequencies are attenuated",
+            "delay": 1.6,
+            "color": "var(--chalk-100)",
+            "position": "centre takeaway"
+          }
         ]
       }
     }

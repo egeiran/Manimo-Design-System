@@ -1,11 +1,11 @@
 {
   "sceneId": "low-pass-bode",
-  "mode": "mistral",
-  "engine": "mistral",
-  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
-  "model": "voxtral-mini-tts-2603",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
   "audio": "audio/low-pass-bode/scene.mp3",
-  "durationSec": 47.08,
+  "durationSec": 44.72,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -14,22 +14,22 @@
     },
     {
       "id": "circuit",
-      "audioStart": 4.54,
+      "audioStart": 4.91,
       "narration": "Here is the filter — a resistor in series, a capacitor to ground, output taken across the capacitor."
     },
     {
       "id": "frequencySweep",
-      "audioStart": 12.62,
+      "audioStart": 12.12,
       "narration": "Step the input frequency from low to high. At low frequencies the output tracks the input. As the frequency climbs past the cutoff, the output shrinks and lags behind."
     },
     {
       "id": "bodeMagnitude",
-      "audioStart": 23.78,
+      "audioStart": 24,
       "narration": "Plot the gain in decibels against frequency on a log axis. Below the cutoff the gain is flat at zero dB; above the cutoff it falls by twenty decibels every decade."
     },
     {
       "id": "takeaway",
-      "audioStart": 34.88,
+      "audioStart": 35.48,
       "narration": "Below omega equals one over R C the filter passes the signal through. Above, it kills high frequencies — that is why we call it a low pass filter."
     }
   ]

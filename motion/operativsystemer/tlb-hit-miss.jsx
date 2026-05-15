@@ -21,7 +21,7 @@
 //     row content actually changes mid-beat (the empty row becomes
 //     occupied with VPN=19 → PFN=34) — a state mutation, not a fade-in.
 
-const SCENE_DURATION = 48;
+const SCENE_DURATION = 53;
 
 const NARRATION = [
   /*  0.00– 8.36 */ 'Every memory access has to be translated. Doing that walk on every load would be ruinously slow — so the hardware keeps a tiny cheat sheet.',
@@ -54,24 +54,24 @@ function Scene() {
       eyebrow="paging"
       title="TLB Hits and Misses"
       duration={SCENE_DURATION}
-      introEnd={8.36}
+      introEnd={8.93}
       introCaption="How do we make a page-table lookup cheap?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={8.36} end={17.92}>
+      <Sprite start={8.93} end={18.76}>
         <TlbCardBeat />
       </Sprite>
 
-      <Sprite start={17.92} end={27.32}>
+      <Sprite start={18.76} end={29.95}>
         <HitBeat />
       </Sprite>
 
-      <Sprite start={27.32} end={39.14}>
+      <Sprite start={29.95} end={42.74}>
         <MissBeat />
       </Sprite>
 
-      <Sprite start={39.14} end={SCENE_DURATION}>
+      <Sprite start={42.74} end={SCENE_DURATION}>
         <Takeaway />
       </Sprite>
     </SceneChrome>

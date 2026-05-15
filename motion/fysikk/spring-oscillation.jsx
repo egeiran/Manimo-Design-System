@@ -14,7 +14,7 @@
 //   • SvgFadeIn for every element inside <svg>. FadeUp for HTML/DOM only.
 //   • SceneChrome handles background, watermark, title block, corner Manimo.
 
-const SCENE_DURATION = 41;
+const SCENE_DURATION = 42;
 
 // Narration script (one sentence per beat — source of truth for TTS/subtitles).
 // NARRATION.length must equal the number of <Sprite> beats in Scene().

@@ -17,7 +17,7 @@
 //   • Token motion follows a two-segment path (corner) for the
 //     non-adjacent transitions (BLOCKED → READY).
 
-const SCENE_DURATION = 59;
+const SCENE_DURATION = 48;
 
 const NARRATION = [
   /*  0.00– 8.76 */ 'Where is your program right this second — on the CPU, waiting in line, or stuck on a disk read?',
@@ -35,24 +35,24 @@ function Scene() {
       eyebrow="process lifecycle"
       title="Process States: Running, Ready, Blocked"
       duration={SCENE_DURATION}
-      introEnd={8.76}
+      introEnd={7.06}
       introCaption="Every process lives in one of three states."
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={8.76} end={18.24}>
+      <Sprite start={7.06} end={17.68}>
         <ThreeBoxesBeat />
       </Sprite>
 
-      <Sprite start={18.24} end={28.99}>
+      <Sprite start={17.68} end={25.59}>
         <SchedulerBeat />
       </Sprite>
 
-      <Sprite start={28.99} end={45.25}>
+      <Sprite start={25.59} end={36.35}>
         <BlockedBeat />
       </Sprite>
 
-      <Sprite start={45.25} end={SCENE_DURATION}>
+      <Sprite start={36.35} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>

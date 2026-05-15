@@ -16,7 +16,7 @@
 //   • Beat 4 (DampedTrace) is the genuine-animation beat: x(t) is sampled
 //     at the current localTime and a head marker tracks the live value.
 
-const SCENE_DURATION = 46;
+const SCENE_DURATION = 47;
 
 // Narration script — one sentence per beat, source of truth for TTS.
 // NARRATION.length must match the number of <Sprite> beats in Scene().

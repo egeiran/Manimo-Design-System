@@ -1,11 +1,11 @@
 {
   "sceneId": "raid",
-  "mode": "mistral",
-  "engine": "mistral",
-  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
-  "model": "voxtral-mini-tts-2603",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
   "audio": "audio/raid/scene.mp3",
-  "durationSec": 55.04,
+  "durationSec": 51.46,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -14,22 +14,22 @@
     },
     {
       "id": "raid0",
-      "audioStart": 9.78,
+      "audioStart": 10.23,
       "narration": "RAID zero splits each block across all the disks. Reads and writes go in parallel, so throughput multiplies. But one disk dies and the whole array is lost."
     },
     {
       "id": "raid1",
-      "audioStart": 21.59,
+      "audioStart": 21.01,
       "narration": "RAID one mirrors every block onto two disks. You lose half your capacity, but a single disk failure leaves a complete copy behind."
     },
     {
       "id": "raid5",
-      "audioStart": 32.65,
+      "audioStart": 29.41,
       "narration": "RAID five stripes data across all the disks plus one parity stripe — the bitwise xor of the others. Lose any single disk, and the missing stripe can be xor'd back from what's left."
     },
     {
       "id": "takeaway",
-      "audioStart": 43.92,
+      "audioStart": 41.82,
       "narration": "RAID zero buys speed and gambles. RAID one buys safety and pays half. RAID five buys both and pays one disk out of however many you have."
     }
   ]

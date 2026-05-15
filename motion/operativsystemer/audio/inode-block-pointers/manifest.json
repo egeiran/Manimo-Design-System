@@ -1,11 +1,11 @@
 {
   "sceneId": "inode-block-pointers",
-  "mode": "mistral",
-  "engine": "mistral",
-  "voice": "e3596645-b1af-469e-b857-f18ddedc7652",
-  "model": "voxtral-mini-tts-2603",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
   "audio": "audio/inode-block-pointers/scene.mp3",
-  "durationSec": 42.23,
+  "durationSec": 41.52,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -14,22 +14,22 @@
     },
     {
       "id": "inodeIntro",
-      "audioStart": 5.44,
+      "audioStart": 4.32,
       "narration": "An inode answers that. It is a small record per file: who owns it, how big it is, when it changed — and a list of pointers to the disk blocks that hold the data."
     },
     {
       "id": "directLookup",
-      "audioStart": 15.78,
+      "audioStart": 14.63,
       "narration": "Want byte one thousand? Divide by the block size, look up the right pointer, and follow it. Twelve direct pointers cover small files in one hop."
     },
     {
       "id": "indirectLookup",
-      "audioStart": 25.13,
+      "audioStart": 24.27,
       "narration": "Bigger files reach further. The thirteenth pointer is indirect — it points to a whole block of pointers. Now one inode lookup reaches thousands more blocks."
     },
     {
       "id": "takeaway",
-      "audioStart": 35.63,
+      "audioStart": 34.28,
       "narration": "Small files travel one hop. Big files take a tree. Same inode, same shape — only the depth changes."
     }
   ]

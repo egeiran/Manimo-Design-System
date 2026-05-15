@@ -4,7 +4,7 @@
 // Two directions (the eigenvectors) only stretch and never rotate — they
 // are the natural axes of A, and in those coordinates A is diagonal.
 
-const SCENE_DURATION = 39;
+const SCENE_DURATION = 40;
 
 const NARRATION = [
   "Apply a matrix to every point on the unit circle. What comes out?",

@@ -20,7 +20,7 @@
 //   • The interrupt arrow drops in at a specific time and re-routes the
 //     CPU bar's content.
 
-const SCENE_DURATION = 42;
+const SCENE_DURATION = 44;
 
 const NARRATION = [
   /*  0.00– 5.97 */ 'A disk read takes millions of CPU cycles. While the disk works, what should the processor do?',
@@ -38,24 +38,24 @@ function Scene() {
       eyebrow="I/O devices"
       title="Polling vs Interrupts"
       duration={SCENE_DURATION}
-      introEnd={5.97}
+      introEnd={6.69}
       introCaption="The CPU is fast. The disk is slow. Who waits?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={5.97} end={16.19}>
+      <Sprite start={6.69} end={16.52}>
         <PollingBeat />
       </Sprite>
 
-      <Sprite start={16.19} end={23.72}>
+      <Sprite start={16.52} end={24.99}>
         <InterruptBeat />
       </Sprite>
 
-      <Sprite start={23.72} end={32.72}>
+      <Sprite start={24.99} end={34.09}>
         <CompareBeat />
       </Sprite>
 
-      <Sprite start={32.72} end={SCENE_DURATION}>
+      <Sprite start={34.09} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>

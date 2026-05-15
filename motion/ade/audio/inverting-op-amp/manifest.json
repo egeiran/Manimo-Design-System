@@ -1,11 +1,11 @@
 {
   "sceneId": "inverting-op-amp",
-  "mode": "mistral",
-  "engine": "mistral",
-  "voice": "530e2e20-58e2-45d8-b0a5-4594f4915944",
-  "model": "voxtral-mini-tts-2603",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
   "audio": "audio/inverting-op-amp/scene.mp3",
-  "durationSec": 54.69,
+  "durationSec": 48.62,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -14,22 +14,22 @@
     },
     {
       "id": "configuration",
-      "audioStart": 7.65,
+      "audioStart": 7.35,
       "narration": "Here's the inverting configuration. V plus sits at ground. The input drives V minus through R in, and R f closes a loop from the output back to V minus."
     },
     {
       "id": "virtualShort",
-      "audioStart": 20.12,
+      "audioStart": 18.38,
       "narration": "Because the gain is huge, the op-amp will adjust V out by whatever amount it takes to drag V minus back to the same voltage as V plus — which is ground. V minus is a virtual ground."
     },
     {
       "id": "kclResult",
-      "audioStart": 34.25,
+      "audioStart": 30.99,
       "narration": "Apply Kirchhoff's current law at V minus. The current arriving from V in equals the current leaving towards V out. Solve, and the output is minus R f over R in times the input."
     },
     {
       "id": "sweepDemo",
-      "audioStart": 49.18,
+      "audioStart": 43.77,
       "narration": "Sweep the input — the output moves opposite, scaled by the resistor ratio."
     }
   ]

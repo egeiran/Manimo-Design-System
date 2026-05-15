@@ -3,9 +3,11 @@
   "title": "Steiner's Theorem: The Cost of an Off-Centre Axis",
   "eyebrow": "rotational mechanics",
   "language": "en",
-  "duration": 54.85,
+  "duration": 56,
   "topic": "Parallel-axis (Steiner's) theorem — I = I_cm + Md², the moment of inertia about any axis equals the inertia about a parallel axis through the centre of mass plus M times the squared offset",
-  "prerequisites": ["moment-of-inertia"],
+  "prerequisites": [
+    "moment-of-inertia"
+  ],
   "beats": [
     {
       "id": "manimoIntro",
@@ -15,8 +17,17 @@
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "manimo-enter", "content": "Manimo bobs in centre-top", "delay": 0 },
-          { "type": "text-caption", "content": "Same disk — different axis. Does the inertia change?", "delay": 0.7, "color": "var(--chalk-100)" }
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-top",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Same disk — different axis. Does the inertia change?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)"
+          }
         ]
       }
     },
@@ -28,15 +39,61 @@
       "visuals": {
         "layout": "left-right",
         "elements": [
-          { "type": "svg-circle", "content": "Left: disk centred, faint amber fill, amber rim. Rotating about its centre at constant ω.", "delay": 0.2, "color": "var(--amber-400)" },
-          { "type": "svg-label", "content": "Left axis cross + 'CM' label at disk centre", "delay": 0.0, "color": "var(--chalk-300)" },
-          { "type": "svg-label", "content": "Left caption: 'about the centre'", "delay": 1.4, "color": "var(--chalk-200)" },
-          { "type": "svg-circle", "content": "Right: same disk, but pinned at offset axis at distance d from CM. Whole disk swings about the pin; CM traces a circle of radius d.", "delay": 0.6, "color": "var(--rose-400)" },
-          { "type": "svg-label", "content": "Right axis cross at offset pin + 'P' label", "delay": 0.4, "color": "var(--chalk-300)" },
-          { "type": "svg-path", "content": "Dashed segment from pin to CM with d label", "delay": 1.0, "color": "var(--rose-300)" },
-          { "type": "svg-arc", "content": "Faint dashed circle of radius d showing the path of the CM", "delay": 1.5, "color": "var(--rose-300)" },
-          { "type": "svg-label", "content": "Right caption: 'about an axis offset by d'", "delay": 1.4, "color": "var(--chalk-200)" },
-          { "type": "text-caption", "content": "Spinning off-centre is always harder — the centre itself has to swing.", "delay": 4.5, "color": "var(--chalk-100)", "position": "below both diagrams, serif italic" }
+          {
+            "type": "svg-circle",
+            "content": "Left: disk centred, faint amber fill, amber rim. Rotating about its centre at constant ω.",
+            "delay": 0.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Left axis cross + 'CM' label at disk centre",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Left caption: 'about the centre'",
+            "delay": 1.4,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Right: same disk, but pinned at offset axis at distance d from CM. Whole disk swings about the pin; CM traces a circle of radius d.",
+            "delay": 0.6,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Right axis cross at offset pin + 'P' label",
+            "delay": 0.4,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Dashed segment from pin to CM with d label",
+            "delay": 1,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "svg-arc",
+            "content": "Faint dashed circle of radius d showing the path of the CM",
+            "delay": 1.5,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Right caption: 'about an axis offset by d'",
+            "delay": 1.4,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-caption",
+            "content": "Spinning off-centre is always harder — the centre itself has to swing.",
+            "delay": 4.5,
+            "color": "var(--chalk-100)",
+            "position": "below both diagrams, serif italic"
+          }
         ]
       }
     },
@@ -48,11 +105,39 @@
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-formula", "content": "I = I_cm + Md²", "delay": 0.5, "color": "var(--chalk-100)", "position": "centre, large serif italic" },
-          { "type": "text-caption", "content": "spin about its own centre", "delay": 2.0, "color": "var(--amber-300)", "position": "label under I_cm term" },
-          { "type": "text-caption", "content": "centre carried around the pin", "delay": 3.6, "color": "var(--rose-300)", "position": "label under Md² term" },
-          { "type": "svg-circle", "content": "Tiny amber disk glyph (with rotation tick) — illustrates I_cm term", "delay": 2.0, "color": "var(--amber-400)" },
-          { "type": "svg-circle", "content": "Tiny rose dot orbiting a pin at radius d — illustrates Md² term", "delay": 3.6, "color": "var(--rose-400)" }
+          {
+            "type": "text-formula",
+            "content": "I = I_cm + Md²",
+            "delay": 0.5,
+            "color": "var(--chalk-100)",
+            "position": "centre, large serif italic"
+          },
+          {
+            "type": "text-caption",
+            "content": "spin about its own centre",
+            "delay": 2,
+            "color": "var(--amber-300)",
+            "position": "label under I_cm term"
+          },
+          {
+            "type": "text-caption",
+            "content": "centre carried around the pin",
+            "delay": 3.6,
+            "color": "var(--rose-300)",
+            "position": "label under Md² term"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Tiny amber disk glyph (with rotation tick) — illustrates I_cm term",
+            "delay": 2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Tiny rose dot orbiting a pin at radius d — illustrates Md² term",
+            "delay": 3.6,
+            "color": "var(--rose-400)"
+          }
         ]
       }
     },
@@ -64,26 +149,75 @@
       "visuals": {
         "layout": "left-right",
         "elements": [
-          { "type": "svg-circle", "content": "Disk pinned at the rim (right edge). Pin marked. Dashed radius from pin to centre labelled d = R.", "delay": 0.2, "color": "var(--amber-400)" },
-          { "type": "svg-label", "content": "Pin axis cross + 'P' label at rim", "delay": 0.4, "color": "var(--chalk-300)" },
-          { "type": "svg-label", "content": "d = R label on dashed line from pin to centre", "delay": 1.0, "color": "var(--rose-300)" },
-          { "type": "text-formula", "content": "I_rim = ½MR² + MR²", "delay": 2.5, "color": "var(--chalk-200)", "position": "right column, serif italic" },
-          { "type": "text-formula", "content": "I_rim = ³⁄₂ MR²", "delay": 4.2, "color": "var(--amber-300)", "position": "right column, large amber payoff" },
-          { "type": "text-caption", "content": "About the rim → 3× the inertia about the centre.", "delay": 5.6, "color": "var(--chalk-100)", "position": "centred below, serif italic" }
+          {
+            "type": "svg-circle",
+            "content": "Disk pinned at the rim (right edge). Pin marked. Dashed radius from pin to centre labelled d = R.",
+            "delay": 0.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Pin axis cross + 'P' label at rim",
+            "delay": 0.4,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "d = R label on dashed line from pin to centre",
+            "delay": 1,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "I_rim = ½MR² + MR²",
+            "delay": 2.5,
+            "color": "var(--chalk-200)",
+            "position": "right column, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "I_rim = ³⁄₂ MR²",
+            "delay": 4.2,
+            "color": "var(--amber-300)",
+            "position": "right column, large amber payoff"
+          },
+          {
+            "type": "text-caption",
+            "content": "About the rim → 3× the inertia about the centre.",
+            "delay": 5.6,
+            "color": "var(--chalk-100)",
+            "position": "centred below, serif italic"
+          }
         ]
       }
     },
     {
       "id": "takeaway",
       "start": 48.09,
-      "end": 54.85,
+      "end": 56,
       "narration": "The centre of mass always gives the smallest moment of inertia. Move the axis away, and spinning only gets harder.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "graph-curve", "content": "Parabolic curve: I as a function of axis offset d, with minimum at d = 0 (the centre of mass)", "delay": 0.0, "color": "var(--amber-400)" },
-          { "type": "graph-marker", "content": "Marker at minimum showing I = I_cm at d = 0", "delay": 0.8, "color": "var(--amber-300)" },
-          { "type": "text-caption", "content": "The centre of mass minimises the moment of inertia.", "delay": 1.8, "color": "var(--chalk-100)", "position": "below curve, serif italic" }
+          {
+            "type": "graph-curve",
+            "content": "Parabolic curve: I as a function of axis offset d, with minimum at d = 0 (the centre of mass)",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Marker at minimum showing I = I_cm at d = 0",
+            "delay": 0.8,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "The centre of mass minimises the moment of inertia.",
+            "delay": 1.8,
+            "color": "var(--chalk-100)",
+            "position": "below curve, serif italic"
+          }
         ]
       }
     }

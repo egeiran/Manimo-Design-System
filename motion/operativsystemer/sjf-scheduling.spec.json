@@ -3,80 +3,171 @@
   "title": "Shortest Job First: Why Order Changes Wait Time",
   "eyebrow": "scheduling",
   "language": "en",
-  "duration": 46,
+  "duration": 44,
   "topic": "Shortest Job First scheduling — three jobs arrive together; running them in arrival order versus shortest-first changes the average turnaround time even though the total work is identical",
   "subject_id": "operativsystemer",
   "chapter_number": 3,
-  "prerequisites": ["virtualizing-cpu"],
+  "prerequisites": [
+    "virtualizing-cpu"
+  ],
   "beats": [
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 8.13,
+      "end": 6.97,
       "narration": "Three jobs land at the scheduler at the same time. Same work — but the order you pick changes how long everyone waits.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
-          { "type": "text-caption", "content": "Three jobs, one queue — does order matter?", "delay": 0.7, "color": "var(--chalk-100)", "position": "below Manimo, serif italic" }
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Three jobs, one queue — does order matter?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "below Manimo, serif italic"
+          }
         ]
       }
     },
     {
       "id": "jobsArrive",
-      "start": 8.13,
-      "end": 16.60,
+      "start": 6.97,
+      "end": 15.04,
       "narration": "Job A needs ten units of CPU time, job B needs two, job C needs two. All three are ready at time zero.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-caption", "content": "ready queue at t = 0", "delay": 0, "color": "var(--amber-300)", "position": "small mono eyebrow" },
-          { "type": "svg-path", "content": "Three job tiles labelled A=10, B=2, C=2 lined up", "delay": 0.4, "color": "var(--chalk-200)" },
-          { "type": "text-caption", "content": "the scheduler picks one — then the next — then the last", "delay": 2.4, "color": "var(--chalk-300)", "position": "below tiles" }
+          {
+            "type": "text-caption",
+            "content": "ready queue at t = 0",
+            "delay": 0,
+            "color": "var(--amber-300)",
+            "position": "small mono eyebrow"
+          },
+          {
+            "type": "svg-path",
+            "content": "Three job tiles labelled A=10, B=2, C=2 lined up",
+            "delay": 0.4,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the scheduler picks one — then the next — then the last",
+            "delay": 2.4,
+            "color": "var(--chalk-300)",
+            "position": "below tiles"
+          }
         ]
       }
     },
     {
       "id": "fifoGantt",
-      "start": 16.60,
-      "end": 24.57,
+      "start": 15.04,
+      "end": 23.87,
       "narration": "First-in first-out runs them in arrival order. A finishes at ten, B at twelve, C at fourteen. Average turnaround: twelve.",
       "visuals": {
         "layout": "top-bottom",
         "elements": [
-          { "type": "text-caption", "content": "FIFO", "delay": 0, "color": "var(--rose-300)", "position": "label above Gantt" },
-          { "type": "graph-axes", "content": "Time axis 0..14, Gantt strip below", "delay": 0.3, "color": "var(--chalk-300)" },
-          { "type": "svg-path", "content": "Bar A grows from 0 to 10, then B 10..12, then C 12..14", "delay": 0.8, "color": "var(--amber-400)" },
-          { "type": "text-formula", "content": "avg = (10 + 12 + 14) / 3 = 12", "delay": 6.5, "color": "var(--chalk-100)", "position": "below Gantt, mono" }
+          {
+            "type": "text-caption",
+            "content": "FIFO",
+            "delay": 0,
+            "color": "var(--rose-300)",
+            "position": "label above Gantt"
+          },
+          {
+            "type": "graph-axes",
+            "content": "Time axis 0..14, Gantt strip below",
+            "delay": 0.3,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Bar A grows from 0 to 10, then B 10..12, then C 12..14",
+            "delay": 0.8,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "avg = (10 + 12 + 14) / 3 = 12",
+            "delay": 6.5,
+            "color": "var(--chalk-100)",
+            "position": "below Gantt, mono"
+          }
         ]
       }
     },
     {
       "id": "sjfGantt",
-      "start": 24.57,
-      "end": 34.83,
+      "start": 23.87,
+      "end": 33.74,
       "narration": "Shortest job first runs the small ones up front. B finishes at two, C at four, A at fourteen. Average turnaround drops to six and two thirds.",
       "visuals": {
         "layout": "top-bottom",
         "elements": [
-          { "type": "text-caption", "content": "SJF", "delay": 0, "color": "var(--teal-400)", "position": "label above Gantt" },
-          { "type": "graph-axes", "content": "Same time axis, Gantt strip below", "delay": 0.3, "color": "var(--chalk-300)" },
-          { "type": "svg-path", "content": "Bar B 0..2, C 2..4, A 4..14 — total work identical, distribution different", "delay": 0.8, "color": "var(--teal-400)" },
-          { "type": "text-formula", "content": "avg = (2 + 4 + 14) / 3 ≈ 6.67", "delay": 7.0, "color": "var(--chalk-100)", "position": "below Gantt, mono" }
+          {
+            "type": "text-caption",
+            "content": "SJF",
+            "delay": 0,
+            "color": "var(--teal-400)",
+            "position": "label above Gantt"
+          },
+          {
+            "type": "graph-axes",
+            "content": "Same time axis, Gantt strip below",
+            "delay": 0.3,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Bar B 0..2, C 2..4, A 4..14 — total work identical, distribution different",
+            "delay": 0.8,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "avg = (2 + 4 + 14) / 3 ≈ 6.67",
+            "delay": 7,
+            "color": "var(--chalk-100)",
+            "position": "below Gantt, mono"
+          }
         ]
       }
     },
     {
       "id": "takeaway",
-      "start": 34.83,
-      "end": 46,
+      "start": 33.74,
+      "end": 44,
       "narration": "Same jobs, same total work — but the convoy of one big job behind two small ones is what hurts. Run short first, and everyone waits less.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "text-caption", "content": "12  vs  6.67", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, two big numbers" },
-          { "type": "text-caption", "content": "shortest job first nearly halves the average wait", "delay": 1.4, "color": "var(--chalk-200)", "position": "serif italic caption" },
-          { "type": "text-caption", "content": "(it needs to know job lengths up front — and that's the catch)", "delay": 3.0, "color": "var(--chalk-300)", "position": "small mono footnote" }
+          {
+            "type": "text-caption",
+            "content": "12  vs  6.67",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, two big numbers"
+          },
+          {
+            "type": "text-caption",
+            "content": "shortest job first nearly halves the average wait",
+            "delay": 1.4,
+            "color": "var(--chalk-200)",
+            "position": "serif italic caption"
+          },
+          {
+            "type": "text-caption",
+            "content": "(it needs to know job lengths up front — and that's the catch)",
+            "delay": 3,
+            "color": "var(--chalk-300)",
+            "position": "small mono footnote"
+          }
         ]
       }
     }

@@ -18,7 +18,7 @@
 //   • Beat 3's triangle uses useSprite().localTime so the fill rate matches
 //     the line's TraceIn — value-driven, not a fade.
 
-const SCENE_DURATION = 48;
+const SCENE_DURATION = 44;
 
 const NARRATION = [
   /*  0.00– 6.86 */ "You push charge onto a capacitor — where does the energy actually go?",
@@ -36,24 +36,24 @@ function Scene() {
       eyebrow="energy and power"
       title="Energy in a Capacitor: Why It's One Half C V Squared"
       duration={SCENE_DURATION}
-      introEnd={6.86}
+      introEnd={4.85}
       introCaption="Charge a capacitor — where does the energy go?"
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={6.86} end={13.54}>
+      <Sprite start={4.85} end={14.23}>
         <PushingChargeBeat />
       </Sprite>
 
-      <Sprite start={13.54} end={23.44}>
+      <Sprite start={14.23} end={24.36}>
         <TriangleIntegralBeat />
       </Sprite>
 
-      <Sprite start={23.44} end={38.37}>
+      <Sprite start={24.36} end={36.46}>
         <ThreeFormsBeat />
       </Sprite>
 
-      <Sprite start={38.37} end={SCENE_DURATION}>
+      <Sprite start={36.46} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>

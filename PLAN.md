@@ -26,6 +26,16 @@ each merged scene to Supabase** via `npm run publish <id>`. See
 `trig_01QXiioNfPwJnDgThdsmQfXt` (reviewer, 03:00 UTC) for the exact
 prompts.
 
+**Audio + wiring (CLAUDE.md Hard Rule 10, set 2026-05-15):** every
+nightly run **must** generate audio with
+`node scripts/generate-audio.js <id> --engine elevenlabs` (never the
+auto-chain — Voxtral is retired) and apply timings with
+`node scripts/rewire-scene.js <id>`. The rewire helper sets
+`SCENE_DURATION = ceil(audioDur + 1.0)` so the video always outlasts
+the narration by at least 1 s. The reviewer should reject any PR where
+`SCENE_DURATION < ceil(audioDur + 1.0)` for any scene touched, or where
+a scene's `audio/<id>/manifest.json` has `engine: "mistral"`.
+
 ### How the author picks a chapter (and how scenes get attached)
 
 The canonical chapter list for `subject_id="ade"` lives in

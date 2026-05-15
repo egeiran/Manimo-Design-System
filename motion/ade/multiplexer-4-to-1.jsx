@@ -21,7 +21,7 @@
 //   • Each Di carries a fixed mock value (0/1/1/0) so the live Y
 //     readout has something to show.
 
-const SCENE_DURATION = 37;
+const SCENE_DURATION = 38;
 
 const NARRATION = [
   /*  0.00– 5.13 */ "Four wires want to share one output line — how do we pick which one talks?",

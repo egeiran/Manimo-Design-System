@@ -19,7 +19,7 @@
 //     reads the SAME (V_CE, I_C) as the load-line equation, so the marker
 //     is guaranteed to live on the line.
 
-const SCENE_DURATION = 61;
+const SCENE_DURATION = 62;
 
 const NARRATION = [
   /*  0.00– 6.61 */ "Where exactly does an amplifier sit on its output curve? The load line answers that in one straight stroke.",
@@ -51,11 +51,11 @@ function Scene() {
         <CircuitBeat />
       </Sprite>
 
-      <Sprite start={20.49} end={35.40}>
+      <Sprite start={20.49} end={35.4}>
         <LoadLineBeat />
       </Sprite>
 
-      <Sprite start={35.40} end={52.43}>
+      <Sprite start={35.4} end={52.43}>
         <SweepBeat />
       </Sprite>
 

@@ -3,79 +3,161 @@
   "title": "Thévenin's Theorem: Any Linear Circuit Becomes One Source",
   "eyebrow": "circuit analysis",
   "language": "en",
-  "duration": 44,
+  "duration": 41,
   "topic": "Thévenin's theorem — any linear two-terminal network can be replaced by an open-circuit voltage V_th in series with an equivalent resistance R_th; the load sees the same current and voltage either way",
   "subject_id": "ade",
   "chapter_number": 3,
-  "prerequisites": ["voltage-divider", "kirchhoff-voltage-law"],
+  "prerequisites": [
+    "voltage-divider",
+    "kirchhoff-voltage-law"
+  ],
   "beats": [
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 6.95,
+      "end": 6.34,
       "narration": "A messy box of sources and resistors drives a load — how can we treat the whole thing as one battery?",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "manimo-enter", "content": "Manimo enters centre", "delay": 0 },
-          { "type": "text-caption", "content": "A circuit with two terminals — what does the load really see?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+          {
+            "type": "manimo-enter",
+            "content": "Manimo enters centre",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "A circuit with two terminals — what does the load really see?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
         ]
       }
     },
     {
       "id": "originalCircuit",
-      "start": 6.95,
-      "end": 16.11,
+      "start": 6.34,
+      "end": 15.13,
       "narration": "Here is the network — two sources, three resistors, and a load on the right. The load sees a voltage at its terminals and a current through it.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "svg-path", "content": "Two-source three-resistor network: V1 in series with R1 on top branch, V2 in series with R2 on bottom branch, R3 across the terminal pair, load R_L to the right", "delay": 0.2, "color": "var(--amber-400)" },
-          { "type": "svg-label", "content": "Terminal labels a and b at the load junction", "delay": 1.6, "color": "var(--chalk-200)" },
-          { "type": "svg-label", "content": "I_L current arrow flowing into the load", "delay": 2.6, "color": "var(--rose-400)" },
-          { "type": "text-caption", "content": "from the load's perspective, the rest is a black box", "delay": 5.0, "color": "var(--chalk-300)", "position": "below diagram, sans 14" }
+          {
+            "type": "svg-path",
+            "content": "Two-source three-resistor network: V1 in series with R1 on top branch, V2 in series with R2 on bottom branch, R3 across the terminal pair, load R_L to the right",
+            "delay": 0.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Terminal labels a and b at the load junction",
+            "delay": 1.6,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-label",
+            "content": "I_L current arrow flowing into the load",
+            "delay": 2.6,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "from the load's perspective, the rest is a black box",
+            "delay": 5,
+            "color": "var(--chalk-300)",
+            "position": "below diagram, sans 14"
+          }
         ]
       }
     },
     {
       "id": "openCircuit",
-      "start": 16.11,
-      "end": 25.79,
+      "start": 15.13,
+      "end": 23.37,
       "narration": "Disconnect the load. The voltage that appears across the open terminals is V Thevenin — the open-circuit voltage of the network.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "svg-path", "content": "Same network but load R_L slides away to the right — terminals a-b now open", "delay": 0.4, "color": "var(--chalk-200)" },
-          { "type": "svg-label", "content": "Voltmeter symbol across the open terminals reading V_th", "delay": 1.6, "color": "var(--amber-300)" },
-          { "type": "text-formula", "content": "V_th = open-circuit voltage at a–b", "delay": 3.0, "color": "var(--amber-300)", "position": "right of diagram" }
+          {
+            "type": "svg-path",
+            "content": "Same network but load R_L slides away to the right — terminals a-b now open",
+            "delay": 0.4,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Voltmeter symbol across the open terminals reading V_th",
+            "delay": 1.6,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "V_th = open-circuit voltage at a–b",
+            "delay": 3,
+            "color": "var(--amber-300)",
+            "position": "right of diagram"
+          }
         ]
       }
     },
     {
       "id": "shortSources",
-      "start": 25.79,
-      "end": 35.36,
+      "start": 23.37,
+      "end": 32.22,
       "narration": "Now zero the independent sources — every voltage source becomes a wire. The resistance you see looking back into the terminals is R Thevenin.",
       "visuals": {
         "layout": "center",
         "elements": [
-          { "type": "svg-path", "content": "Same network with V1 and V2 replaced by short wires; resistor network simplifies", "delay": 0.3, "color": "var(--chalk-200)" },
-          { "type": "svg-label", "content": "Ohmmeter symbol across terminals reading R_th", "delay": 2.0, "color": "var(--amber-300)" },
-          { "type": "text-formula", "content": "R_th = resistance looking in (sources zeroed)", "delay": 3.4, "color": "var(--amber-300)", "position": "right of diagram" }
+          {
+            "type": "svg-path",
+            "content": "Same network with V1 and V2 replaced by short wires; resistor network simplifies",
+            "delay": 0.3,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Ohmmeter symbol across terminals reading R_th",
+            "delay": 2,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "R_th = resistance looking in (sources zeroed)",
+            "delay": 3.4,
+            "color": "var(--amber-300)",
+            "position": "right of diagram"
+          }
         ]
       }
     },
     {
       "id": "equivalent",
-      "start": 35.36,
-      "end": 44,
+      "start": 32.22,
+      "end": 41,
       "narration": "Put V Thevenin in series with R Thevenin, reconnect the load, and the current is identical. The load can't tell the difference.",
       "visuals": {
         "layout": "left-right",
         "elements": [
-          { "type": "svg-path", "content": "Two stacked circuits — top: original messy network with load and charge dots flowing through R_L; bottom: V_th source + R_th resistor + load with the same flow rate", "delay": 0.3, "color": "var(--amber-400)" },
-          { "type": "svg-label", "content": "Both ammeters read the same I_L", "delay": 2.5, "color": "var(--rose-400)" },
-          { "type": "text-formula", "content": "I_L = V_th / (R_th + R_L)", "delay": 5.0, "color": "var(--amber-300)", "position": "centre takeaway" }
+          {
+            "type": "svg-path",
+            "content": "Two stacked circuits — top: original messy network with load and charge dots flowing through R_L; bottom: V_th source + R_th resistor + load with the same flow rate",
+            "delay": 0.3,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Both ammeters read the same I_L",
+            "delay": 2.5,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "I_L = V_th / (R_th + R_L)",
+            "delay": 5,
+            "color": "var(--amber-300)",
+            "position": "centre takeaway"
+          }
         ]
       }
     }
