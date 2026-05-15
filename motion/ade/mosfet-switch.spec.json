@@ -1,0 +1,87 @@
+{
+  "id": "mosfet-switch",
+  "title": "The MOSFET as a Switch: How a Voltage Opens a Channel",
+  "eyebrow": "transistors",
+  "language": "en",
+  "duration": 54,
+  "topic": "NMOS as a digital switch — when V_GS is below the threshold V_t the channel is empty and the transistor is off; raise V_GS above V_t and a conducting channel forms, dropping R_DS and turning the transistor on. Wire it as an inverter and the output flips with the input.",
+  "subject_id": "ade",
+  "chapter_number": 6,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.71,
+      "narration": "One voltage at the gate decides whether current flows from drain to source. Meet the MOSFET as a switch.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "One pin opens or closes the channel — meet the MOSFET as a switch.", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "mosfetSymbol",
+      "start": 6.71,
+      "end": 18.65,
+      "narration": "An n channel MOSFET has three terminals — gate, drain and source. Between drain and source sits a slice of silicon that conducts only when a channel of electrons forms underneath the gate.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "svg-path", "content": "NMOS symbol — drain on top, source on bottom, gate on left, body line with arrow", "delay": 0.2, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "G, D, S labels next to terminals", "delay": 0.8, "color": "var(--chalk-100)" },
+          { "type": "svg-path", "content": "Cross-section to the right — n+ source, n+ drain, p-substrate, gate over oxide, channel region empty", "delay": 1.4, "color": "var(--chalk-200)" },
+          { "type": "svg-label", "content": "channel region label", "delay": 2.2, "color": "var(--chalk-300)" },
+          { "type": "text-caption", "content": "no electrons in the channel — drain and source are isolated", "delay": 3.2, "color": "var(--chalk-300)", "position": "below the cross-section, sans 14" }
+        ]
+      }
+    },
+    {
+      "id": "vgsSweep",
+      "start": 18.65,
+      "end": 30.76,
+      "narration": "Push V G S past the threshold V t and electrons get pulled up into the channel. Now drain to source is a conducting path and the drain current jumps from zero up to its on value.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "svg-path", "content": "Cross-section with V_GS slider above gate — sweeps from 0 to high; channel fills with charge dots once V_GS > V_t", "delay": 0.0, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "V_GS readout updating live", "delay": 0.4, "color": "var(--amber-300)" },
+          { "type": "svg-path", "content": "I_D vs V_GS plot on the right — the I_D curve traces in as the cursor sweeps", "delay": 0.6, "color": "var(--rose-400)" },
+          { "type": "svg-label", "content": "V_t threshold tick on the V_GS axis", "delay": 1.0, "color": "var(--chalk-200)" },
+          { "type": "text-caption", "content": "below V_t — channel empty, no current. Above V_t — channel forms, current flows.", "delay": 4.0, "color": "var(--chalk-300)", "position": "below the chart" }
+        ]
+      }
+    },
+    {
+      "id": "inverter",
+      "start": 30.76,
+      "end": 46.29,
+      "narration": "Wire the drain through a pull up resistor to V D D. Now a high input grounds the output through the channel; a low input lets the resistor pull V out back up. That is a logic inverter built from one transistor and one resistor.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Inverter schematic — V_DD up top → R_D → drain; gate ← V_in; source → ground", "delay": 0.2, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "V_in, V_out, V_DD, R_D labels", "delay": 0.8, "color": "var(--chalk-200)" },
+          { "type": "svg-path", "content": "V_in square wave on a small scope panel toggling 0 / 1", "delay": 2.0, "color": "var(--chalk-100)" },
+          { "type": "svg-path", "content": "V_out square wave directly underneath, inverted", "delay": 2.0, "color": "var(--amber-300)" },
+          { "type": "text-caption", "content": "high in → low out, low in → high out — the simplest logic gate", "delay": 7.5, "color": "var(--chalk-300)", "position": "below the scope panels" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 46.29,
+      "end": 54,
+      "narration": "Every digital chip is a city of these little switches — billions of channels opening and closing in step with a clock.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "One voltage controls one channel — and a billion channels make a CPU.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic 28px" },
+          { "type": "text-caption", "content": "(NMOS, V_t ≈ 0.4 V on a modern process)", "delay": 1.6, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}

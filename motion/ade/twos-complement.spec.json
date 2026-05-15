@@ -1,0 +1,91 @@
+{
+  "id": "twos-complement",
+  "title": "Two's Complement: How Computers Carry a Minus Sign",
+  "eyebrow": "binary numbers",
+  "language": "en",
+  "duration": 51,
+  "topic": "Two's complement signed integers — flip every bit (one's complement) and add one to negate. The MSB becomes a sign bit, addition stays exactly the same as for unsigned integers, and a 4-bit register covers −8 to +7.",
+  "subject_id": "ade",
+  "chapter_number": 5,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.40,
+      "narration": "Computers only store ones and zeros — so where does the minus sign come from? Two's complement is the trick.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "Where does the minus sign live in a row of bits?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "negate",
+      "start": 7.40,
+      "end": 20.76,
+      "narration": "To negate a number, flip every bit, then add one. Take three: zero zero one one. Flipped: one one zero zero. Plus one: one one zero one — that is minus three.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "+3", "delay": 0.2, "color": "var(--chalk-200)", "position": "left column header" },
+          { "type": "svg-path", "content": "Bit row 0011, large mono digits in chalk", "delay": 0.4, "color": "var(--chalk-100)" },
+          { "type": "svg-label", "content": "Step 1: ~ (NOT)", "delay": 2.4, "color": "var(--rose-300)" },
+          { "type": "svg-path", "content": "Bit row 1100 — each bit flips with a soft pulse animation", "delay": 2.8, "color": "var(--rose-300)" },
+          { "type": "svg-label", "content": "Step 2: + 0001", "delay": 5.4, "color": "var(--amber-300)" },
+          { "type": "svg-path", "content": "Bit row 1101 — LSB toggles 0→1, ripple-carry shown", "delay": 5.8, "color": "var(--amber-300)" },
+          { "type": "text-caption", "content": "−3", "delay": 8.2, "color": "var(--amber-300)", "position": "right column header, large" }
+        ]
+      }
+    },
+    {
+      "id": "sweep",
+      "start": 20.76,
+      "end": 33.89,
+      "narration": "Sweep through every 4 bit pattern from minus eight to plus seven. The most significant bit acts like a sign — zero on the positives, one on the negatives — and the value wraps cleanly around at minus eight.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "4-bit register with each bit cell in its own box; bits update live as the value sweeps", "delay": 0.0, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "MSB highlighted as the sign bit (rose for negative, amber for non-negative)", "delay": 0.4, "color": "var(--rose-400)" },
+          { "type": "text-formula", "content": "Decimal value updating live, large monotype", "delay": 0.0, "color": "var(--chalk-100)", "position": "above the bit row" },
+          { "type": "graph-axes", "content": "Number line from −8 to +7 with a sliding indicator dot", "delay": 0.6, "color": "var(--chalk-200)" },
+          { "type": "graph-marker", "content": "Indicator dot on the number line tracks the live value", "delay": 0.6, "color": "var(--amber-300)" },
+          { "type": "text-caption", "content": "MSB = 1 → negative half. MSB = 0 → non-negative half.", "delay": 8.0, "color": "var(--chalk-300)", "position": "below the number line" }
+        ]
+      }
+    },
+    {
+      "id": "addition",
+      "start": 33.89,
+      "end": 43.46,
+      "narration": "The pay off — addition just works. Five plus minus three: line up the bits, ripple the carries, and you land on two with no special case for the sign.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-label", "content": "5 = 0101 row", "delay": 0.2, "color": "var(--chalk-200)" },
+          { "type": "svg-label", "content": "+ −3 = 1101 row", "delay": 0.6, "color": "var(--rose-300)" },
+          { "type": "svg-path", "content": "Horizontal divider line", "delay": 1.4, "color": "var(--chalk-300)" },
+          { "type": "svg-path", "content": "Carry chain: per-column carry bits ripple in left to right", "delay": 1.6, "color": "var(--amber-300)" },
+          { "type": "svg-label", "content": "Result row 0010 = 2 — overflow carry out is dropped", "delay": 4.0, "color": "var(--amber-300)" },
+          { "type": "text-caption", "content": "the extra carry off the left simply falls away", "delay": 5.4, "color": "var(--chalk-300)", "position": "below the sum" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 43.46,
+      "end": 51,
+      "narration": "Flip and add one — that one rule lets a computer subtract using only the same adder it uses to add.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "Flip and add one — and subtraction comes free.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic 28px" },
+          { "type": "text-caption", "content": "(an N-bit two's-complement register covers −2^(N−1) to 2^(N−1)−1)", "delay": 1.6, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}

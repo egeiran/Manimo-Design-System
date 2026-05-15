@@ -1502,6 +1502,79 @@
       ],
       "subject_id": "mat2b",
       "chapter_number": 6
+    },
+    {
+      "id": "mosfet-switch",
+      "file": "mosfet-switch.jsx",
+      "html": "mosfet-switch.html",
+      "spec": "mosfet-switch.spec.json",
+      "title": "The MOSFET as a Switch: How a Voltage Opens a Channel",
+      "eyebrow": "transistors",
+      "topic": "NMOS as a digital switch — when V_GS is below the threshold V_t the channel is empty and the transistor is off; raise V_GS above V_t and a conducting channel forms, dropping R_DS and turning the transistor on. Wire it as an inverter and the output flips with the input.",
+      "duration": 54,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": [
+        "MOSFET",
+        "NMOS",
+        "threshold voltage",
+        "channel formation",
+        "switch",
+        "inverter",
+        "digital logic"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 6
+    },
+    {
+      "id": "bjt-load-line",
+      "file": "bjt-load-line.jsx",
+      "html": "bjt-load-line.html",
+      "spec": "bjt-load-line.spec.json",
+      "title": "BJT Load Line: Where the Operating Point Lives",
+      "eyebrow": "transistors",
+      "topic": "Common-emitter NPN amplifier — the DC load line V_CE = V_CC − I_C·R_C is fixed by the supply and the collector resistor; sweep the base current I_B and the operating point Q slides along that line through cutoff, the active region, and into saturation.",
+      "duration": 61,
+      "language": "en",
+      "prerequisites": [
+        "voltage-divider"
+      ],
+      "concepts": [
+        "BJT",
+        "NPN transistor",
+        "common emitter",
+        "load line",
+        "operating point",
+        "cutoff",
+        "active region",
+        "saturation",
+        "biasing"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 6
+    },
+    {
+      "id": "twos-complement",
+      "file": "twos-complement.jsx",
+      "html": "twos-complement.html",
+      "spec": "twos-complement.spec.json",
+      "title": "Two's Complement: How Computers Carry a Minus Sign",
+      "eyebrow": "binary numbers",
+      "topic": "Two's complement signed integers — flip every bit (one's complement) and add one to negate. The MSB becomes a sign bit, addition stays exactly the same as for unsigned integers, and a 4-bit register covers −8 to +7.",
+      "duration": 51,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": [
+        "two's complement",
+        "signed integer",
+        "binary",
+        "sign bit",
+        "negation",
+        "addition",
+        "carry"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 5
     }
   ]
 }
