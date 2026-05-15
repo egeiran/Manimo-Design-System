@@ -526,7 +526,7 @@ function SweepBeat() {
         </SvgFadeIn>
 
         {/* Caption */}
-        <SvgFadeIn duration={0.4} delay={4.5}>
+        <SvgFadeIn duration={0.4} delay={3.5}>
           <text x={G.vbW / 2} y={G.captionY} textAnchor="middle"
                 fill="var(--chalk-300)" fontFamily="var(--font-sans)"
                 fontSize={14} letterSpacing="0.02em">
