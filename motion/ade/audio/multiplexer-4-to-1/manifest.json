@@ -1,0 +1,36 @@
+{
+  "sceneId": "multiplexer-4-to-1",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/multiplexer-4-to-1/scene.mp3",
+  "durationSec": 36.32,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Four wires want to share one output line — how do we pick which one talks?"
+    },
+    {
+      "id": "setup",
+      "audioStart": 5.13,
+      "narration": "A four to one multiplexer: four data inputs on the left, two select bits at the bottom, and a single output on the right."
+    },
+    {
+      "id": "sweep",
+      "audioStart": 13.29,
+      "narration": "Walk the select bits from zero zero up to one one. Whichever input is addressed lights up, and its signal walks through the block to the output."
+    },
+    {
+      "id": "formula",
+      "audioStart": 22.21,
+      "narration": "In Boolean form, Y is the OR of four AND terms: each data line ANDed with the decoded address that selects it."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 30.26,
+      "narration": "A multiplexer is a programmable switch — and chaining them lets one address space pick from many more lines."
+    }
+  ]
+}

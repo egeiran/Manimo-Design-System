@@ -283,10 +283,9 @@ function LoadLineBeat() {
                  stroke="var(--chalk-200)" strokeWidth={1.6}
                  duration={0.5} delay={0.0}/>
         <SvgFadeIn duration={0.3} delay={0.3}>
-          {/* I_C axis title — above the axis to avoid the y-intercept tick label */}
-          <text x={G.gx} y={G.gy - 4} textAnchor="middle"
-                fill="var(--chalk-100)" fontFamily="var(--font-serif)"
-                fontStyle="italic" fontSize={18}>I<tspan baselineShift="sub" fontSize={11}>C</tspan></text>
+          {/* V_CE axis title at the right end of the x-axis. The I_C axis title
+             is omitted — the "I_C vs V_CE" mono section title above the plot
+             already names the y-axis and the italic label was crowding it. */}
           <text x={G.gx + G.gw + 14} y={G.gy + G.gh + 5}
                 fill="var(--chalk-100)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={18}>V<tspan baselineShift="sub" fontSize={11}>CE</tspan></text>

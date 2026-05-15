@@ -1575,6 +1575,77 @@
       ],
       "subject_id": "ade",
       "chapter_number": 5
+    },
+    {
+      "id": "kirchhoff-current-law",
+      "file": "kirchhoff-current-law.jsx",
+      "html": "kirchhoff-current-law.html",
+      "spec": "kirchhoff-current-law.spec.json",
+      "title": "Kirchhoff's Current Law: Why a Node Adds to Zero",
+      "eyebrow": "circuit analysis",
+      "topic": "Kirchhoff's current law — at every node, the sum of currents flowing in equals the sum of currents flowing out; this is charge conservation, since the node has no capacity to store charge",
+      "duration": 38,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": [
+        "Kirchhoff current law",
+        "KCL",
+        "node analysis",
+        "charge conservation",
+        "current",
+        "junction rule"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 1
+    },
+    {
+      "id": "full-wave-bridge-rectifier",
+      "file": "full-wave-bridge-rectifier.jsx",
+      "html": "full-wave-bridge-rectifier.html",
+      "spec": "full-wave-bridge-rectifier.spec.json",
+      "title": "Full-Wave Bridge Rectifier: Both Halves of the Wave",
+      "eyebrow": "diodes",
+      "topic": "Full-wave bridge rectifier — four diodes arranged in a bridge route both halves of an AC sine wave through the load in the same direction; the output is the absolute value of the input, doubling the ripple frequency over a half-wave rectifier",
+      "duration": 47,
+      "language": "en",
+      "prerequisites": [
+        "half-wave-rectifier"
+      ],
+      "concepts": [
+        "bridge rectifier",
+        "full-wave rectification",
+        "diode",
+        "AC to DC",
+        "ripple frequency",
+        "power supply"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 4
+    },
+    {
+      "id": "multiplexer-4-to-1",
+      "file": "multiplexer-4-to-1.jsx",
+      "html": "multiplexer-4-to-1.html",
+      "spec": "multiplexer-4-to-1.spec.json",
+      "title": "4-to-1 Multiplexer: Two Select Bits Pick a Wire",
+      "eyebrow": "combinational logic",
+      "topic": "4-to-1 multiplexer — four data inputs (D0..D3) and two select inputs (S1, S0) feed into a logic block that routes whichever input is addressed by the select bits to a single output Y; demonstrates how 2^n select bits address 2^n data lines",
+      "duration": 37,
+      "language": "en",
+      "prerequisites": [
+        "nand-universality"
+      ],
+      "concepts": [
+        "multiplexer",
+        "MUX",
+        "select bits",
+        "data selector",
+        "sum of products",
+        "combinational logic",
+        "address decoding"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 10
     }
   ]
 }
