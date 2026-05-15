@@ -1,0 +1,36 @@
+{
+  "sceneId": "full-wave-bridge-rectifier",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/full-wave-bridge-rectifier/scene.mp3",
+  "durationSec": 46.39,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "A half-wave rectifier throws away half the input. Can we keep both halves and still get a one-sided output?"
+    },
+    {
+      "id": "circuitSetup",
+      "audioStart": 7,
+      "narration": "Four diodes wired as a bridge. An AC source on one diagonal, a load on the other. Two diodes will conduct on the positive half, two on the negative."
+    },
+    {
+      "id": "halfCycles",
+      "audioStart": 16.71,
+      "narration": "On the positive half, D1 and D4 conduct. Current flows out the top, through the load, back through the bottom. On the negative half, D2 and D3 take over — but the current through the load still flows top to bottom."
+    },
+    {
+      "id": "waveformReveal",
+      "audioStart": 30.34,
+      "narration": "Watch V in trace as a full sinusoid, and V out as the absolute value — every dip flipped above the line, so the ripple frequency is doubled."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 39.72,
+      "narration": "Both halves of the wave do useful work — that's why every wall-wart and laptop charger starts with a bridge."
+    }
+  ]
+}

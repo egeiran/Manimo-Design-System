@@ -85,6 +85,9 @@ const initialScenes = [
   { id: 'live-mosfet-switch', kind: 'live', kindLabel: 'Live', cardTitle: 'The MOSFET as a Switch', duration: '0:53', html: '../../motion/ade/mosfet-switch.html' },
   { id: 'live-bjt-load-line', kind: 'live', kindLabel: 'Live', cardTitle: 'BJT Load Line', duration: '1:00', html: '../../motion/ade/bjt-load-line.html' },
   { id: 'live-twos-complement', kind: 'live', kindLabel: 'Live', cardTitle: "Two's Complement", duration: '0:50', html: '../../motion/ade/twos-complement.html' },
+  { id: 'live-kcl', kind: 'live', kindLabel: 'Live', cardTitle: "Kirchhoff's Current Law", duration: '0:37', html: '../../motion/ade/kirchhoff-current-law.html' },
+  { id: 'live-bridge-rectifier', kind: 'live', kindLabel: 'Live', cardTitle: 'Full-Wave Bridge Rectifier', duration: '0:46', html: '../../motion/ade/full-wave-bridge-rectifier.html' },
+  { id: 'live-mux-4to1', kind: 'live', kindLabel: 'Live', cardTitle: '4-to-1 Multiplexer', duration: '0:36', html: '../../motion/ade/multiplexer-4-to-1.html' },
 ];
 
 function loadJSON(key, fallback) {

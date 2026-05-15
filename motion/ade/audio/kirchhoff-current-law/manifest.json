@@ -1,0 +1,36 @@
+{
+  "sceneId": "kirchhoff-current-law",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/kirchhoff-current-law/scene.mp3",
+  "durationSec": 36.92,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Three wires meet at a single point — where does all the charge go?"
+    },
+    {
+      "id": "nodeSetup",
+      "audioStart": 4.26,
+      "narration": "Here's a node: one wire bringing five amps in, two wires carrying current out — three amps one way, two the other."
+    },
+    {
+      "id": "charges",
+      "audioStart": 12.37,
+      "narration": "Watch the charge dots stream in from the top. Five dots arrive every second. Three peel off to the right, two go left. Nothing piles up."
+    },
+    {
+      "id": "kclFormula",
+      "audioStart": 21.97,
+      "narration": "Sum of currents in equals sum of currents out, at every node. Five equals three plus two. That's Kirchhoff's current law."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 30.7,
+      "narration": "It's just charge conservation: a node is a wire, not a bucket — what arrives must leave."
+    }
+  ]
+}

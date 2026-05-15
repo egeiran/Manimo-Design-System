@@ -1,0 +1,92 @@
+{
+  "id": "kirchhoff-current-law",
+  "title": "Kirchhoff's Current Law: Why a Node Adds to Zero",
+  "eyebrow": "circuit analysis",
+  "language": "en",
+  "duration": 38,
+  "topic": "Kirchhoff's current law — at every node, the sum of currents flowing in equals the sum of currents flowing out; this is charge conservation, since the node has no capacity to store charge",
+  "subject_id": "ade",
+  "chapter_number": 1,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.26,
+      "narration": "Three wires meet at a single point — where does all the charge go?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo enters centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "Three wires meet — where does the charge go?", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "nodeSetup",
+      "start": 4.26,
+      "end": 12.37,
+      "narration": "Here's a node: one wire bringing five amps in, two wires carrying current out — three amps one way, two the other.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "T-junction: vertical wire from top, horizontal wire splitting left and right", "delay": 0.0, "color": "var(--chalk-200)" },
+          { "type": "svg-circle", "content": "Node dot at the junction", "delay": 0.3, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Arrow on the top wire pointing down (I_1 in)", "delay": 0.6, "color": "var(--amber-400)" },
+          { "type": "svg-path", "content": "Arrow on the right wire pointing right (I_2 out)", "delay": 1.0, "color": "var(--rose-400)" },
+          { "type": "svg-path", "content": "Arrow on the left wire pointing left (I_3 out)", "delay": 1.4, "color": "var(--rose-400)" },
+          { "type": "svg-label", "content": "I_1 = 5 A label on the top branch", "delay": 1.8, "color": "var(--amber-300)" },
+          { "type": "svg-label", "content": "I_2 = 3 A label on the right branch", "delay": 2.1, "color": "var(--rose-300)" },
+          { "type": "svg-label", "content": "I_3 = 2 A label on the left branch", "delay": 2.4, "color": "var(--rose-300)" },
+          { "type": "text-caption", "content": "one arriving, two leaving", "delay": 3.4, "color": "var(--chalk-300)", "position": "below diagram, sans 14" }
+        ]
+      }
+    },
+    {
+      "id": "charges",
+      "start": 12.37,
+      "end": 21.97,
+      "narration": "Watch the charge dots stream in from the top. Five dots arrive every second. Three peel off to the right, two go left. Nothing piles up.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Charge dots flowing along the inflow wire", "delay": 0.0, "color": "var(--amber-300)", "note": "five dots per second, animated" },
+          { "type": "svg-path", "content": "Charge dots peeling off into the right outflow", "delay": 0.0, "color": "var(--rose-300)", "note": "three dots per second" },
+          { "type": "svg-path", "content": "Charge dots peeling off into the left outflow", "delay": 0.0, "color": "var(--rose-300)", "note": "two dots per second" },
+          { "type": "svg-label", "content": "Live count box: 'IN 5 A' top right", "delay": 0.5, "color": "var(--amber-300)" },
+          { "type": "svg-label", "content": "Live count box: 'OUT 5 A' bottom right", "delay": 1.0, "color": "var(--rose-300)" },
+          { "type": "svg-label", "content": "Balance readout: '∑ in − ∑ out = 0'", "delay": 6.0, "color": "var(--chalk-100)", "position": "centre overlay" },
+          { "type": "text-caption", "content": "the node has no room to store charge", "delay": 10.0, "color": "var(--chalk-300)", "position": "below diagram, sans 14" }
+        ]
+      }
+    },
+    {
+      "id": "kclFormula",
+      "start": 21.97,
+      "end": 30.70,
+      "narration": "Sum of currents in equals sum of currents out, at every node. Five equals three plus two. That's Kirchhoff's current law.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-formula", "content": "∑ I_in = ∑ I_out", "delay": 0.3, "color": "var(--amber-300)", "position": "centre, large serif italic amber" },
+          { "type": "text-caption", "content": "at every node", "delay": 0.9, "color": "var(--chalk-300)", "position": "small caption under the formula" },
+          { "type": "text-formula", "content": "5 = 3 + 2", "delay": 1.6, "color": "var(--chalk-100)", "position": "below the formula, JetBrains Mono" },
+          { "type": "text-caption", "content": "charge in equals charge out — no piling up, no leaking away", "delay": 3.0, "color": "var(--chalk-300)", "position": "small caption" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 30.70,
+      "end": 38,
+      "narration": "It's just charge conservation: a node is a wire, not a bucket — what arrives must leave.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "A node is a wire, not a bucket.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic ~28px" },
+          { "type": "text-caption", "content": "the foundation of nodal analysis", "delay": 1.8, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}
