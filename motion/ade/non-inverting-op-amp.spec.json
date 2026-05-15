@@ -1,0 +1,83 @@
+{
+  "id": "non-inverting-op-amp",
+  "title": "Non-Inverting Op-Amp: A Voltage Divider Sets the Gain",
+  "eyebrow": "operational amplifiers",
+  "language": "en",
+  "duration": 47,
+  "topic": "Non-inverting op-amp configuration — V_in at V+, R1 to ground, R_f from V_out to V−; virtual short forces V− = V_in, so V_out = (1 + R_f/R1)·V_in; gain is positive and always ≥ 1",
+  "subject_id": "ade",
+  "chapter_number": 9,
+  "prerequisites": ["inverting-op-amp"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.09,
+      "narration": "Same op-amp — but this time drive the plus pin. What does the output do?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo enters centre", "delay": 0 },
+          { "type": "text-caption", "content": "Drive V+, see what comes out.", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "configuration",
+      "start": 5.09,
+      "end": 17.07,
+      "narration": "The non-inverting configuration: V in feeds the plus pin directly. R 1 ties V minus to ground; R f closes the feedback loop from the output back to V minus.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Op-amp triangle pointing right; V_in wire into V+ pin (top of triangle); V- pin connected via R1 to ground and via R_f to V_out; ground symbol at the bottom", "delay": 0.2, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Labels: V_in, V+, V−, R1, R_f, V_out, ground", "delay": 2.0, "color": "var(--chalk-200)" },
+          { "type": "text-caption", "content": "input on V+, feedback through the R1/R_f divider", "delay": 5.0, "color": "var(--chalk-300)", "position": "below diagram, sans 14" }
+        ]
+      }
+    },
+    {
+      "id": "virtualShort",
+      "start": 17.07,
+      "end": 26.60,
+      "narration": "Negative feedback drags V minus up until it matches V plus. So V minus equals V in — a virtual short, but at V in instead of ground.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Same circuit with a pulsing ring around the V− node showing it being tugged to V_in's level", "delay": 0.3, "color": "var(--amber-300)" },
+          { "type": "svg-label", "content": "Annotation V_in = V+ = V− painted on the inputs", "delay": 1.6, "color": "var(--amber-300)" },
+          { "type": "text-formula", "content": "V− = V_in (virtual short)", "delay": 4.0, "color": "var(--amber-300)", "position": "right of diagram" }
+        ]
+      }
+    },
+    {
+      "id": "gainDerivation",
+      "start": 26.60,
+      "end": 42.56,
+      "narration": "Now R 1 and R f form a divider from V out down to ground, with V minus tapped between them. Solve V minus equals V out times R 1 over R 1 plus R f, and you get the gain: one plus R f over R 1.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Schematic with the R1/R_f voltage divider highlighted between V_out and ground, V_in tapped at the V− node", "delay": 0.3, "color": "var(--amber-400)" },
+          { "type": "text-formula", "content": "V_in = V_out · R1 / (R1 + R_f)", "delay": 2.0, "color": "var(--chalk-200)", "position": "stepping line 1" },
+          { "type": "text-formula", "content": "V_out = (1 + R_f/R1) · V_in", "delay": 4.5, "color": "var(--amber-300)", "position": "headline result" },
+          { "type": "text-caption", "content": "gain is always at least 1 — and the sign is positive", "delay": 6.0, "color": "var(--chalk-300)", "position": "below result" }
+        ]
+      }
+    },
+    {
+      "id": "sweep",
+      "start": 42.56,
+      "end": 47.0,
+      "narration": "Sweep V in — V out follows in phase, just bigger.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Scope panel: V_in sinusoid in chalk, V_out sinusoid in amber at 2x amplitude, in phase (no inversion); time cursor sweeps left to right", "delay": 0.3, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Gain readout: V_out / V_in = 2.0", "delay": 2.0, "color": "var(--amber-300)" },
+          { "type": "text-caption", "content": "in phase, scaled by 1 + R_f / R1", "delay": 5.0, "color": "var(--chalk-300)", "position": "below scope" }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "shift-register",
+  "title": "Shift Register: A Bit Marches One Step per Clock Edge",
+  "eyebrow": "sequential logic",
+  "language": "en",
+  "duration": 53,
+  "topic": "4-bit serial-in / parallel-out shift register — four D flip-flops in series sharing a clock; on every rising edge each stage's content shifts to the next, so a serial input pattern walks across the register one cell per clock tick",
+  "subject_id": "ade",
+  "chapter_number": 7,
+  "prerequisites": ["d-flip-flop"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.21,
+      "narration": "Chain four flip-flops together and clock them as one. What happens to a bit you push in the front?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo enters centre", "delay": 0 },
+          { "type": "text-caption", "content": "Four flip-flops in a row — one shared clock.", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "structure",
+      "start": 6.21,
+      "end": 19.34,
+      "narration": "Four D flip-flops are wired so each one's Q output drives the next one's D input. They all share the same clock line and the same data line is irrelevant — each stage just listens to the previous stage.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Four FF blocks (FF0, FF1, FF2, FF3) drawn left to right with D-in arrows from the previous Q-out; serial input D_in feeds FF0; shared CLK rail below; outputs Q0..Q3", "delay": 0.2, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "D_in, FF0, FF1, FF2, FF3, CLK, Q0..Q3 labels", "delay": 2.0, "color": "var(--chalk-200)" },
+          { "type": "text-caption", "content": "each Q feeds the next D — the cells trade contents", "delay": 5.0, "color": "var(--chalk-300)", "position": "below diagram" }
+        ]
+      }
+    },
+    {
+      "id": "clockPattern",
+      "start": 19.34,
+      "end": 27.26,
+      "narration": "Set up a clock that toggles steadily, and a serial data input that we'll feed in: one, zero, one, one.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          { "type": "svg-path", "content": "Two timing diagrams: CLK as a square wave, D_in as 1, 0, 1, 1 valid during the rising edges", "delay": 0.3, "color": "var(--amber-400)" },
+          { "type": "text-formula", "content": "D_in pattern: 1, 0, 1, 1", "delay": 2.0, "color": "var(--amber-300)", "position": "right of timing" }
+        ]
+      }
+    },
+    {
+      "id": "shifting",
+      "start": 27.26,
+      "end": 42.78,
+      "narration": "On each rising clock edge, every cell copies whatever its D pin sees. The new bit lands in FF zero, the old FF zero bit slides into FF one, and so on. After four clock pulses the whole word has marched across.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Four-cell register row; on each clock tick the bits shift right by one cell; a glow flashes on each cell as it samples; the input bit slides in from the left arrow", "delay": 0.3, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Clock-tick counter and rising-edge markers", "delay": 1.0, "color": "var(--rose-300)" },
+          { "type": "text-caption", "content": "after 4 clocks: 1011 has marched all the way across", "delay": 12.0, "color": "var(--chalk-300)", "position": "below register" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 42.78,
+      "end": 53.0,
+      "narration": "Read every Q at once and you've converted serial data into parallel — that's how every UART and serial bus turns wires into bytes.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "Serial in → parallel out: one bit per clock, all four read at once.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic" },
+          { "type": "text-caption", "content": "(every UART, SPI byte and LED chain rides this trick)", "delay": 1.8, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}

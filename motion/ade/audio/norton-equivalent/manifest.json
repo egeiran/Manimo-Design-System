@@ -1,0 +1,36 @@
+{
+  "sceneId": "norton-equivalent",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/norton-equivalent/scene.mp3",
+  "durationSec": 40.91,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Thévenin gave us a voltage source. What if we want a current source instead?"
+    },
+    {
+      "id": "shortCircuit",
+      "audioStart": 5.02,
+      "narration": "Short the terminals together. The current that flows through that wire is I Norton — the short-circuit current of the network."
+    },
+    {
+      "id": "transformation",
+      "audioStart": 12.53,
+      "narration": "A Thévenin form on the left morphs into a Norton form on the right. The resistance is the same; the source flips from V Thevenin over R Thevenin volts to V Thevenin over R Thevenin amps in parallel."
+    },
+    {
+      "id": "loadCurrent",
+      "audioStart": 26,
+      "narration": "Reconnect a load. The current source splits between R Norton and the load by the current-divider rule — and you get exactly the same I L as Thevenin predicted."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 35.97,
+      "narration": "Pick whichever form makes the algebra easier — same load current either way."
+    }
+  ]
+}

@@ -88,6 +88,9 @@ const initialScenes = [
   { id: 'live-kcl', kind: 'live', kindLabel: 'Live', cardTitle: "Kirchhoff's Current Law", duration: '0:37', html: '../../motion/ade/kirchhoff-current-law.html' },
   { id: 'live-bridge-rectifier', kind: 'live', kindLabel: 'Live', cardTitle: 'Full-Wave Bridge Rectifier', duration: '0:46', html: '../../motion/ade/full-wave-bridge-rectifier.html' },
   { id: 'live-mux-4to1', kind: 'live', kindLabel: 'Live', cardTitle: '4-to-1 Multiplexer', duration: '0:36', html: '../../motion/ade/multiplexer-4-to-1.html' },
+  { id: 'live-norton', kind: 'live', kindLabel: 'Live', cardTitle: "Norton's Theorem", duration: '0:41', html: '../../motion/ade/norton-equivalent.html' },
+  { id: 'live-non-inv-opamp', kind: 'live', kindLabel: 'Live', cardTitle: 'Non-Inverting Op-Amp', duration: '0:46', html: '../../motion/ade/non-inverting-op-amp.html' },
+  { id: 'live-shift-register', kind: 'live', kindLabel: 'Live', cardTitle: 'Shift Register', duration: '0:52', html: '../../motion/ade/shift-register.html' },
 ];
 
 function loadJSON(key, fallback) {
