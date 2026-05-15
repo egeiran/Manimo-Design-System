@@ -91,7 +91,7 @@ function muxGeometry(portrait) {
     };
   }
   return {
-    vbW: 900, vbH: 460,
+    vbW: 900, vbH: 490,
     bTL: { x: 380, y: 130 }, bTR: { x: 580, y: 190 },
     bBR: { x: 580, y: 350 }, bBL: { x: 380, y: 410 },
     inX0: 100, inXs: 380,
@@ -100,7 +100,7 @@ function muxGeometry(portrait) {
     sYbot: 430, sYtop: 380,
     outX0: 580, outX1: 800, outY: 270,
     labelFont: 18, valFont: 14, axisFont: 12,
-    captionY: 432,
+    captionY: 478,
   };
 }
 

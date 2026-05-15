@@ -519,7 +519,7 @@ function HalfCyclesBeat() {
               fill="var(--rose-300)"/>
             <text x={loadArrowX - 18} y={loadArrowY + 6} textAnchor="end"
                   fill="var(--rose-300)" fontFamily="var(--font-mono)"
-                  fontSize={11} letterSpacing="0.12em">I↓</text>
+                  fontSize={portrait ? 10 : 11} letterSpacing="0.12em">I↓</text>
           </g>
         )}
 

@@ -412,7 +412,7 @@ function KclFormulaBeat() {
         style={{
           fontFamily: 'var(--font-sans)', fontSize: portrait ? 14 : 15,
           color: 'var(--chalk-300)', textAlign: 'center',
-          maxWidth: portrait ? '24ch' : '46ch', lineHeight: 1.45,
+          maxWidth: portrait ? '32ch' : '46ch', lineHeight: 1.45,
           marginTop: 4,
         }}>
         charge in equals charge out — no piling up, no leaking away
