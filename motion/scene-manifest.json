@@ -1646,6 +1646,79 @@
       ],
       "subject_id": "ade",
       "chapter_number": 10
+    },
+    {
+      "id": "norton-equivalent",
+      "file": "norton-equivalent.jsx",
+      "html": "norton-equivalent.html",
+      "spec": "norton-equivalent.spec.json",
+      "title": "Norton's Theorem: Any Linear Circuit Becomes One Current Source",
+      "eyebrow": "circuit analysis",
+      "topic": "Norton's theorem — any linear two-terminal network can be replaced by a short-circuit current I_N in parallel with R_N = R_th; source transformation swaps freely between Thévenin and Norton forms",
+      "duration": 42,
+      "language": "en",
+      "prerequisites": [
+        "thevenin-equivalent"
+      ],
+      "concepts": [
+        "Norton equivalent",
+        "short-circuit current",
+        "source transformation",
+        "current divider",
+        "two-terminal network",
+        "linear circuits"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 3
+    },
+    {
+      "id": "non-inverting-op-amp",
+      "file": "non-inverting-op-amp.jsx",
+      "html": "non-inverting-op-amp.html",
+      "spec": "non-inverting-op-amp.spec.json",
+      "title": "Non-Inverting Op-Amp: A Voltage Divider Sets the Gain",
+      "eyebrow": "operational amplifiers",
+      "topic": "Non-inverting op-amp configuration — V_in at V+, R1 ties V- to ground, R_f closes the loop from V_out to V-; virtual short forces V- = V_in, so V_out = (1 + R_f/R1)·V_in; gain is positive and always at least 1",
+      "duration": 47,
+      "language": "en",
+      "prerequisites": [
+        "inverting-op-amp"
+      ],
+      "concepts": [
+        "non-inverting amplifier",
+        "virtual short",
+        "negative feedback",
+        "voltage divider feedback",
+        "closed-loop gain",
+        "operational amplifier"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 9
+    },
+    {
+      "id": "shift-register",
+      "file": "shift-register.jsx",
+      "html": "shift-register.html",
+      "spec": "shift-register.spec.json",
+      "title": "Shift Register: A Bit Marches One Step per Clock Edge",
+      "eyebrow": "sequential logic",
+      "topic": "4-bit serial-in / parallel-out shift register — four D flip-flops chained so each Q drives the next D, all sharing one clock; on every rising edge each cell samples its D pin, marching a bit pattern across the register one cell per clock pulse",
+      "duration": 53,
+      "language": "en",
+      "prerequisites": [
+        "d-flip-flop"
+      ],
+      "concepts": [
+        "shift register",
+        "serial-in parallel-out",
+        "D flip-flop chain",
+        "synchronous logic",
+        "clocked sampling",
+        "UART",
+        "data movement"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 7
     }
   ]
 }

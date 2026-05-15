@@ -463,9 +463,11 @@ function HalfCyclesBeat() {
     dots.push({ x, y });
   }
 
-  // Load arrow position — always inside the load, pointing down.
+  // Load arrow position — always inside the load, pointing down. In
+  // portrait the bridge "E" (AC2) label crowds the left side, so flip
+  // the arrow + I↓ glyph to the RIGHT of the load resistor.
   const loadMidY = (G.loadTopY + G.loadBotY) / 2;
-  const loadArrowX = G.loadX - 28;
+  const loadArrowX = portrait ? G.loadX + 28 : G.loadX - 28;
   const loadArrowY = loadMidY;
 
   return (
@@ -517,7 +519,8 @@ function HalfCyclesBeat() {
             <polygon
               points={`${loadArrowX},${loadArrowY + 22} ${loadArrowX - 5},${loadArrowY + 12} ${loadArrowX + 5},${loadArrowY + 12}`}
               fill="var(--rose-300)"/>
-            <text x={loadArrowX - 18} y={loadArrowY + 6} textAnchor="end"
+            <text x={loadArrowX + (portrait ? 18 : -18)} y={loadArrowY + 6}
+                  textAnchor={portrait ? 'start' : 'end'}
                   fill="var(--rose-300)" fontFamily="var(--font-mono)"
                   fontSize={portrait ? 10 : 11} letterSpacing="0.12em">I↓</text>
           </g>

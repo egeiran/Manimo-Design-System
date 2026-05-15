@@ -1,0 +1,82 @@
+{
+  "id": "norton-equivalent",
+  "title": "Norton's Theorem: Any Linear Circuit Becomes One Current Source",
+  "eyebrow": "circuit analysis",
+  "language": "en",
+  "duration": 42,
+  "topic": "Norton's theorem — any linear two-terminal network can be replaced by a short-circuit current I_N in parallel with the same R_N = R_th; source transformation swaps freely between Thévenin and Norton",
+  "subject_id": "ade",
+  "chapter_number": 3,
+  "prerequisites": ["thevenin-equivalent"],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.02,
+      "narration": "Thévenin gave us a voltage source. What if we want a current source instead?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo enters centre", "delay": 0 },
+          { "type": "text-caption", "content": "Same network — viewed as a current source.", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "shortCircuit",
+      "start": 5.02,
+      "end": 12.53,
+      "narration": "Short the terminals together. The current that flows through that wire is I Norton — the short-circuit current of the network.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Two-source three-resistor network with terminals a and b shorted by a wire", "delay": 0.3, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Ammeter symbol in the shorting wire reading I_N", "delay": 1.6, "color": "var(--amber-300)" },
+          { "type": "svg-path", "content": "Charge dots flowing through the shorting wire", "delay": 2.4, "color": "var(--rose-300)" },
+          { "type": "text-formula", "content": "I_N = short-circuit current at a–b", "delay": 4.0, "color": "var(--amber-300)", "position": "below diagram" }
+        ]
+      }
+    },
+    {
+      "id": "transformation",
+      "start": 12.53,
+      "end": 26.00,
+      "narration": "A Thévenin form on the left morphs into a Norton form on the right. The resistance is the same; the source flips from V Thevenin over R Thevenin volts to V Thevenin over R Thevenin amps in parallel.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "svg-path", "content": "Side-by-side: V_th + R_th in series feeding R_L on the left morphs into I_N + R_N in parallel feeding R_L on the right; both share the same I_L through the load.", "delay": 0.2, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Transformation arrow between the two with R_N = R_th and I_N = V_th / R_th labels", "delay": 1.8, "color": "var(--chalk-200)" },
+          { "type": "text-formula", "content": "I_N = V_th / R_th, R_N = R_th", "delay": 4.0, "color": "var(--amber-300)", "position": "centre below diagrams" }
+        ]
+      }
+    },
+    {
+      "id": "loadCurrent",
+      "start": 26.00,
+      "end": 35.97,
+      "narration": "Reconnect a load. The current source splits between R Norton and the load by the current-divider rule — and you get exactly the same I L as Thevenin predicted.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "svg-path", "content": "Norton equivalent driving a load R_L: I_N current source on the left, R_N in parallel, R_L to the right; charge dots split between R_N and R_L", "delay": 0.3, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Current arrows on each branch — I_L into R_L, the rest into R_N", "delay": 1.6, "color": "var(--rose-400)" },
+          { "type": "text-formula", "content": "I_L = I_N · R_N / (R_N + R_L)", "delay": 3.4, "color": "var(--amber-300)", "position": "centre takeaway" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 35.97,
+      "end": 42.0,
+      "narration": "Pick whichever form makes the algebra easier — same load current either way.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "Thévenin and Norton are two faces of the same network.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic" },
+          { "type": "text-caption", "content": "(in series → in parallel, just divide V_th by R_th)", "delay": 1.6, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}

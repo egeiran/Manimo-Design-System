@@ -1,0 +1,36 @@
+{
+  "sceneId": "non-inverting-op-amp",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/non-inverting-op-amp/scene.mp3",
+  "durationSec": 46.44,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Same op-amp — but this time drive the plus pin. What does the output do?"
+    },
+    {
+      "id": "configuration",
+      "audioStart": 5.09,
+      "narration": "The non-inverting configuration: V in feeds the plus pin directly. R 1 ties V minus to ground; R f closes the feedback loop from the output back to V minus."
+    },
+    {
+      "id": "virtualShort",
+      "audioStart": 17.07,
+      "narration": "Negative feedback drags V minus up until it matches V plus. So V minus equals V in — a virtual short, but at V in instead of ground."
+    },
+    {
+      "id": "gainDerivation",
+      "audioStart": 26.6,
+      "narration": "Now R 1 and R f form a divider from V out down to ground, with V minus tapped between them. Solve V minus equals V out times R 1 over R 1 plus R f, and you get the gain: one plus R f over R 1."
+    },
+    {
+      "id": "sweep",
+      "audioStart": 42.56,
+      "narration": "Sweep V in — V out follows in phase, just bigger."
+    }
+  ]
+}

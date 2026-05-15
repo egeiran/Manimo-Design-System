@@ -1,0 +1,36 @@
+{
+  "sceneId": "shift-register",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/shift-register/scene.mp3",
+  "durationSec": 51.69,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Chain four flip-flops together and clock them as one. What happens to a bit you push in the front?"
+    },
+    {
+      "id": "structure",
+      "audioStart": 6.21,
+      "narration": "Four D flip-flops are wired so each one's Q output drives the next one's D input. They all share the same clock line and the same data line is irrelevant — each stage just listens to the previous stage."
+    },
+    {
+      "id": "clockPattern",
+      "audioStart": 19.34,
+      "narration": "Set up a clock that toggles steadily, and a serial data input that we'll feed in: one, zero, one, one."
+    },
+    {
+      "id": "shifting",
+      "audioStart": 27.26,
+      "narration": "On each rising clock edge, every cell copies whatever its D pin sees. The new bit lands in FF zero, the old FF zero bit slides into FF one, and so on. After four clock pulses the whole word has marched across."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 42.78,
+      "narration": "Read every Q at once and you've converted serial data into parallel — that's how every UART and serial bus turns wires into bytes."
+    }
+  ]
+}
