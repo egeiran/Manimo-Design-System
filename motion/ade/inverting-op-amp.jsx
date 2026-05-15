@@ -289,9 +289,11 @@ function VirtualShortBeat() {
           );
         })}
 
-        {/* V+ = 0 callout */}
+        {/* V+ = 0 callout — anchored to the V+ wire segment between the
+            op-amp pin and the ground rail, well clear of the bottom "+"
+            input glyph that OpAmpShape draws inside the triangle. */}
         <SvgFadeIn duration={0.4} delay={0.2}>
-          <text x={G.gndX + 28} y={G.gndY - 28}
+          <text x={G.gndX + 36} y={(G.ampCy + G.ampW * 0.95 * 0.32 + G.gndY) / 2 + 4}
                 fill="var(--chalk-200)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={18}>V<tspan baselineShift="sub" fontSize={11}>+</tspan> = 0</text>
         </SvgFadeIn>
@@ -426,8 +428,10 @@ function SweepBeat() {
   const TRACE_DUR = Math.max(spriteDur - TRACE_START - 1.5, 1);
   const traceFrac = clamp((localTime - TRACE_START) / TRACE_DUR, 0, 1);
 
-  // Axes: midline is V = 0. amplitude = 1 (input), gain = 2.
-  const GAIN = 2;
+  // Axes: midline is V = 0. amplitude = 1 (input), gain ≈ 1.7.
+  // Trimmed from a clean ×2 so the V_out trace doesn't skim the bottom
+  // axis or the dashed sweep cursor on its negative peak.
+  const GAIN = 1.7;
   const midY = G.gy + G.gh / 2;
   const amp = G.gh * 0.18;             // V_in amplitude
   const ampOut = amp * GAIN;           // V_out amplitude (clipped to top/bottom)

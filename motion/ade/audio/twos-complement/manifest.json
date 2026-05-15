@@ -1,0 +1,36 @@
+{
+  "sceneId": "twos-complement",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/twos-complement/scene.mp3",
+  "durationSec": 49.55,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Computers only store ones and zeros — so where does the minus sign come from? Two's complement is the trick."
+    },
+    {
+      "id": "negate",
+      "audioStart": 7.4,
+      "narration": "To negate a number, flip every bit, then add one. Take three: zero zero one one. Flipped: one one zero zero. Plus one: one one zero one — that is minus three."
+    },
+    {
+      "id": "sweep",
+      "audioStart": 20.76,
+      "narration": "Sweep through every 4 bit pattern from minus eight to plus seven. The most significant bit acts like a sign — zero on the positives, one on the negatives — and the value wraps cleanly around at minus eight."
+    },
+    {
+      "id": "addition",
+      "audioStart": 33.89,
+      "narration": "The pay off — addition just works. Five plus minus three: line up the bits, ripple the carries, and you land on two with no special case for the sign."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 43.46,
+      "narration": "Flip and add one — that one rule lets a computer subtract using only the same adder it uses to add."
+    }
+  ]
+}

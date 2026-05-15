@@ -1,0 +1,36 @@
+{
+  "sceneId": "mosfet-switch",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/mosfet-switch/scene.mp3",
+  "durationSec": 52.76,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "One voltage at the gate decides whether current flows from drain to source. Meet the MOSFET as a switch."
+    },
+    {
+      "id": "mosfetSymbol",
+      "audioStart": 6.71,
+      "narration": "An n channel MOSFET has three terminals — gate, drain and source. Between drain and source sits a slice of silicon that conducts only when a channel of electrons forms underneath the gate."
+    },
+    {
+      "id": "vgsSweep",
+      "audioStart": 18.65,
+      "narration": "Push V G S past the threshold V t and electrons get pulled up into the channel. Now drain to source is a conducting path and the drain current jumps from zero up to its on value."
+    },
+    {
+      "id": "inverter",
+      "audioStart": 30.76,
+      "narration": "Wire the drain through a pull up resistor to V D D. Now a high input grounds the output through the channel; a low input lets the resistor pull V out back up. That is a logic inverter built from one transistor and one resistor."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 46.29,
+      "narration": "Every digital chip is a city of these little switches — billions of channels opening and closing in step with a clock."
+    }
+  ]
+}

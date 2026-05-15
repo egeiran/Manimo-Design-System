@@ -1,0 +1,89 @@
+{
+  "id": "bjt-load-line",
+  "title": "BJT Load Line: Where the Operating Point Lives",
+  "eyebrow": "transistors",
+  "language": "en",
+  "duration": 61,
+  "topic": "Common-emitter NPN amplifier — the DC load line V_CE = V_CC − I_C·R_C is fixed by the supply and the collector resistor; sweep the base current I_B and the operating point Q slides along that line through cutoff, the active region, and into saturation.",
+  "subject_id": "ade",
+  "chapter_number": 6,
+  "prerequisites": [
+    "voltage-divider"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.61,
+      "narration": "Where exactly does an amplifier sit on its output curve? The load line answers that in one straight stroke.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "manimo-enter", "content": "Manimo bobs in centre-screen", "delay": 0 },
+          { "type": "text-caption", "content": "One straight line tells you where the transistor is biased.", "delay": 0.7, "color": "var(--chalk-100)", "position": "right of Manimo, serif italic" }
+        ]
+      }
+    },
+    {
+      "id": "circuit",
+      "start": 6.61,
+      "end": 20.49,
+      "narration": "Common emitter NPN, supply V C C feeding R C, output taken at the collector. KVL around the output loop gives V C C equals I C times R C plus V C E.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          { "type": "svg-path", "content": "Common-emitter NPN schematic — V_CC → R_C → collector; base ← I_B; emitter → ground; V_out tapped at collector", "delay": 0.2, "color": "var(--amber-400)" },
+          { "type": "svg-label", "content": "Component labels V_CC, R_C, I_B, V_CE, V_out", "delay": 1.0, "color": "var(--chalk-200)" },
+          { "type": "text-formula", "content": "V_CC = I_C·R_C + V_CE", "delay": 4.0, "color": "var(--amber-300)", "position": "below the schematic" }
+        ]
+      }
+    },
+    {
+      "id": "loadLine",
+      "start": 20.49,
+      "end": 35.40,
+      "narration": "Rearrange and you get a straight line in the I C versus V C E plane. Two endpoints fix it — V C E equals V C C when the transistor is cut off, and I C equals V C C over R C when V C E is zero.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "graph-axes", "content": "I_C vs V_CE plot — axes drawn", "delay": 0.0, "color": "var(--chalk-200)" },
+          { "type": "svg-label", "content": "V_CC tick on the V_CE axis", "delay": 0.4, "color": "var(--chalk-300)" },
+          { "type": "svg-label", "content": "V_CC/R_C tick on the I_C axis", "delay": 0.4, "color": "var(--chalk-300)" },
+          { "type": "graph-curve", "content": "Diagonal load line drawn from (V_CC, 0) to (0, V_CC/R_C)", "delay": 1.4, "color": "var(--rose-400)" },
+          { "type": "text-formula", "content": "I_C = (V_CC − V_CE)/R_C", "delay": 4.0, "color": "var(--amber-300)", "position": "above the line, mid-plot" },
+          { "type": "text-caption", "content": "every (V_CE, I_C) the circuit can produce lies on this line", "delay": 6.0, "color": "var(--chalk-300)", "position": "below the plot" }
+        ]
+      }
+    },
+    {
+      "id": "sweepIb",
+      "start": 35.40,
+      "end": 52.43,
+      "narration": "The transistor curves slice the I C V C E plane into one curve per base current. Sweep I B and the operating point Q slides along the load line — through cutoff at the right, through the active region in the middle, and into saturation against the V C E equals zero wall.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "graph-curve", "content": "Family of NPN output curves I_C(V_CE) for several I_B values", "delay": 0.0, "color": "var(--chalk-300)" },
+          { "type": "graph-curve", "content": "Load line overlaid", "delay": 0.0, "color": "var(--rose-400)" },
+          { "type": "graph-marker", "content": "Q point sliding along the load line as I_B sweeps", "delay": 0.4, "color": "var(--amber-300)" },
+          { "type": "svg-label", "content": "Region labels — CUTOFF, ACTIVE, SATURATION — light up under Q", "delay": 0.8, "color": "var(--amber-300)" },
+          { "type": "svg-label", "content": "Live I_B readout above the plot", "delay": 0.4, "color": "var(--chalk-200)" },
+          { "type": "text-caption", "content": "amplifiers want Q in the middle of the active region — symmetric headroom both ways", "delay": 8.0, "color": "var(--chalk-300)", "position": "below the plot" }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 52.43,
+      "end": 61,
+      "narration": "Pick R C and a bias I B that put Q in the middle of the active region — that is what biasing an amplifier means.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          { "type": "text-caption", "content": "Two endpoints fix the line. The bias picks the spot.", "delay": 0.3, "color": "var(--chalk-100)", "position": "centre, serif italic 28px" },
+          { "type": "text-caption", "content": "(active region — symmetric swing both ways)", "delay": 1.6, "color": "var(--chalk-300)", "position": "small mono caption below" }
+        ]
+      }
+    }
+  ]
+}

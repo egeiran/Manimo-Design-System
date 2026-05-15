@@ -1,0 +1,36 @@
+{
+  "sceneId": "bjt-load-line",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/bjt-load-line/scene.mp3",
+  "durationSec": 60.19,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Where exactly does an amplifier sit on its output curve? The load line answers that in one straight stroke."
+    },
+    {
+      "id": "circuit",
+      "audioStart": 6.61,
+      "narration": "Common emitter NPN, supply V C C feeding R C, output taken at the collector. KVL around the output loop gives V C C equals I C times R C plus V C E."
+    },
+    {
+      "id": "loadLine",
+      "audioStart": 20.49,
+      "narration": "Rearrange and you get a straight line in the I C versus V C E plane. Two endpoints fix it — V C E equals V C C when the transistor is cut off, and I C equals V C C over R C when V C E is zero."
+    },
+    {
+      "id": "sweepIb",
+      "audioStart": 35.4,
+      "narration": "The transistor curves slice the I C V C E plane into one curve per base current. Sweep I B and the operating point Q slides along the load line — through cutoff at the right, through the active region in the middle, and into saturation against the V C E equals zero wall."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 52.43,
+      "narration": "Pick R C and a bias I B that put Q in the middle of the active region — that is what biasing an amplifier means."
+    }
+  ]
+}

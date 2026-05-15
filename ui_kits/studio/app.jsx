@@ -82,6 +82,9 @@ const initialScenes = [
   { id: 'live-matrix-fn', kind: 'live', kindLabel: 'Live', cardTitle: 'A Matrix Is a Function', duration: 37, html: '../../motion/mat2b/matrix-as-function.html' },
   { id: 'live-projection', kind: 'live', kindLabel: 'Live', cardTitle: 'Projection onto a Line', duration: 31, html: '../../motion/mat2b/projection-onto-line.html' },
   { id: 'live-diagonal', kind: 'live', kindLabel: 'Live', cardTitle: 'Diagonalisation: Eigenaxes', duration: 39, html: '../../motion/mat2b/diagonalisation-eigenaxes.html' },
+  { id: 'live-mosfet-switch', kind: 'live', kindLabel: 'Live', cardTitle: 'The MOSFET as a Switch', duration: '0:53', html: '../../motion/ade/mosfet-switch.html' },
+  { id: 'live-bjt-load-line', kind: 'live', kindLabel: 'Live', cardTitle: 'BJT Load Line', duration: '1:00', html: '../../motion/ade/bjt-load-line.html' },
+  { id: 'live-twos-complement', kind: 'live', kindLabel: 'Live', cardTitle: "Two's Complement", duration: '0:50', html: '../../motion/ade/twos-complement.html' },
 ];
 
 function loadJSON(key, fallback) {
