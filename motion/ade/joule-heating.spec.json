@@ -1,0 +1,187 @@
+{
+  "id": "joule-heating",
+  "title": "Joule Heating: How a Resistor Turns Current into Heat",
+  "eyebrow": "energy and power",
+  "language": "en",
+  "duration": 47,
+  "topic": "Joule heating in a resistor — every charge crossing a resistor drops potential V·q which becomes heat; instantaneous power P = V·I = I²R = V²/R; total dissipated energy W = P·t accumulates linearly while the current flows",
+  "subject_id": "ade",
+  "chapter_number": 2,
+  "prerequisites": [
+    "voltage-divider"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.18,
+      "narration": "Current flows through a resistor — where does the energy actually go?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Current through a resistor — where does the energy go?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "next to Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "chargesThroughR",
+      "start": 4.18,
+      "end": 15.92,
+      "narration": "Each charge that crosses the resistor drops by V volts, so it gives up an amount of energy equal to V times q. That energy doesn't vanish — it jiggles the lattice and the resistor warms.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Battery on the left, wire loop, resistor as a zigzag in the centre; heat glow on the resistor brightens as time advances",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Charge dots stream through the loop and dim as they pass through the resistor",
+            "delay": 0.6,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "V across the resistor, label and bracket",
+            "delay": 1.4,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-formula",
+            "content": "ΔE = V · q",
+            "delay": 3.4,
+            "color": "var(--amber-300)",
+            "position": "above resistor"
+          },
+          {
+            "type": "text-caption",
+            "content": "every charge that crosses leaves a little heat behind",
+            "delay": 6,
+            "color": "var(--chalk-300)",
+            "position": "below diagram, sans 14"
+          }
+        ]
+      }
+    },
+    {
+      "id": "threeForms",
+      "start": 15.92,
+      "end": 29.11,
+      "narration": "Multiply V times q over time — that's V times I, the power dissipated. Ohm's law gives two more forms: I squared R, and V squared over R. Same wattage, three faces.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "P = V · I",
+            "delay": 0.3,
+            "color": "var(--chalk-200)",
+            "position": "left column"
+          },
+          {
+            "type": "text-formula",
+            "content": "P = I² · R",
+            "delay": 1.6,
+            "color": "var(--amber-300)",
+            "position": "centre column, large amber payoff"
+          },
+          {
+            "type": "text-formula",
+            "content": "P = V² / R",
+            "delay": 2.8,
+            "color": "var(--chalk-200)",
+            "position": "right column"
+          },
+          {
+            "type": "svg-label",
+            "content": "Substitution arrows: V = IR feeds the middle and right forms",
+            "delay": 4.6,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "use whichever two quantities you know",
+            "delay": 6.2,
+            "color": "var(--chalk-300)",
+            "position": "below the row, sans 14"
+          }
+        ]
+      }
+    },
+    {
+      "id": "growingHeat",
+      "start": 29.11,
+      "end": 38.86,
+      "narration": "Power is the rate, not the total. Energy is power times time — keep the current flowing and the heat piles up, joule by joule, second by second.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Horizontal axis: t; vertical axis: W = P·t",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Linear line W = P·t rises from the origin as time advances",
+            "delay": 0.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Moving (t, W) point sliding up the line",
+            "delay": 0.6,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "W = P · t",
+            "delay": 4.4,
+            "color": "var(--amber-300)",
+            "position": "right of graph"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 38.86,
+      "end": 47,
+      "narration": "It's not loss — it's transformation. A resistor's job is to convert electrical energy into heat.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Electrical energy → heat. Not loss — transformation.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic ~28px"
+          },
+          {
+            "type": "text-caption",
+            "content": "(the same physics that boils a kettle and toasts your bread)",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "small mono caption below"
+          }
+        ]
+      }
+    }
+  ]
+}

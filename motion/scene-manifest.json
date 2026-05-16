@@ -1719,6 +1719,75 @@
       ],
       "subject_id": "ade",
       "chapter_number": 7
+    },
+    {
+      "id": "inductor-energy",
+      "file": "inductor-energy.jsx",
+      "html": "inductor-energy.html",
+      "spec": "inductor-energy.spec.json",
+      "title": "Energy in an Inductor: Why It's One Half L I Squared",
+      "eyebrow": "energy and power",
+      "topic": "Energy stored in an inductor — ramping current builds a magnetic field; the work integral ∫v·i dt collapses to ½LI² via Φ = L·I, giving the three equivalent forms ½LI², ½ΦI, and Φ²/(2L)",
+      "duration": 49,
+      "language": "en",
+      "prerequisites": [
+        "capacitor-energy"
+      ],
+      "concepts": [
+        "inductor",
+        "magnetic energy",
+        "flux linkage",
+        "self-inductance",
+        "½LI²"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 2
+    },
+    {
+      "id": "max-power-transfer",
+      "file": "max-power-transfer.jsx",
+      "html": "max-power-transfer.html",
+      "spec": "max-power-transfer.spec.json",
+      "title": "Maximum Power Transfer: Match the Load to the Source",
+      "eyebrow": "energy and power",
+      "topic": "Maximum power transfer theorem — a source with internal resistance R_s delivers the most power into a load R_L when R_L equals R_s; the load power P_L = V_s²·R_L/(R_s+R_L)² peaks at R_L = R_s with value V_s²/(4R_s) and efficiency 50%",
+      "duration": 61,
+      "language": "en",
+      "prerequisites": [
+        "voltage-divider"
+      ],
+      "concepts": [
+        "maximum power transfer",
+        "impedance matching",
+        "internal resistance",
+        "load resistance",
+        "efficiency"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 2
+    },
+    {
+      "id": "joule-heating",
+      "file": "joule-heating.jsx",
+      "html": "joule-heating.html",
+      "spec": "joule-heating.spec.json",
+      "title": "Joule Heating: How a Resistor Turns Current into Heat",
+      "eyebrow": "energy and power",
+      "topic": "Joule heating in a resistor — every charge crossing a resistor drops potential V·q which becomes heat; instantaneous power P = V·I = I²R = V²/R; total dissipated energy W = P·t accumulates linearly while the current flows",
+      "duration": 47,
+      "language": "en",
+      "prerequisites": [
+        "voltage-divider"
+      ],
+      "concepts": [
+        "Joule heating",
+        "power dissipation",
+        "Ohm's law",
+        "I²R loss",
+        "energy"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 2
     }
   ]
 }

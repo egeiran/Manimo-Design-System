@@ -127,7 +127,7 @@ function StructureBeat() {
     ? { vbW: 600, vbH: 560,
         cellW: 120, cellH: 80,
         startX: 30, rowY: 200, gap: 16,
-        dInLabelX: 22, dInLabelY: 240,
+        dInLabelX: 34, dInLabelY: 240,
         clkRailY: 360, clkLabelX: 22, clkLabelY: 364,
         qLabelsY: 460, captionY: 530, fontMain: 14 }
     : { vbW: 1100, vbH: 420,
