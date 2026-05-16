@@ -370,7 +370,7 @@ function MatchedFormulaBeat() {
         style={{
           fontFamily: 'var(--font-sans)', fontSize: portrait ? 15 : 17,
           color: 'var(--chalk-100)',
-          textAlign: 'center', maxWidth: portrait ? '24ch' : 'none',
+          textAlign: 'center', maxWidth: portrait ? '34ch' : 'none',
           letterSpacing: '0.02em', marginTop: 8,
         }}>
         efficiency at the peak: fifty percent
@@ -380,7 +380,7 @@ function MatchedFormulaBeat() {
         style={{
           fontFamily: 'var(--font-mono)', fontSize: 12,
           color: 'var(--chalk-300)', letterSpacing: '0.1em',
-          textAlign: 'center', maxWidth: portrait ? '34ch' : 'none',
+          textAlign: 'center', maxWidth: portrait ? '40ch' : 'none',
         }}>
         half the source energy heats R_s
       </FadeUp>

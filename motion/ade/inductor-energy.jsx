@@ -68,10 +68,10 @@ function RampingCurrentBeat() {
 
   const G = portrait
     ? { vbW: 600, vbH: 620,
-        srcX: 100, srcY: 200, coilCx: 380, coilCy: 360, coilR: 70,
-        wireTopY: 200, wireBotY: 460,
-        formulaX: 300, formulaY: 540, fontFormula: 26,
-        captionY: 600, fontCaption: 13 }
+        srcX: 100, srcY: 160, coilCx: 380, coilCy: 320, coilR: 70,
+        wireTopY: 160, wireBotY: 420,
+        formulaX: 300, formulaY: 500, fontFormula: 26,
+        captionY: 580, fontCaption: 13 }
     : { vbW: 1000, vbH: 440,
         srcX: 140, srcY: 220, coilCx: 600, coilCy: 220, coilR: 70,
         wireTopY: 130, wireBotY: 310,
