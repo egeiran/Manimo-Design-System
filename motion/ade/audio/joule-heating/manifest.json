@@ -1,0 +1,36 @@
+{
+  "sceneId": "joule-heating",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/joule-heating/scene.mp3",
+  "durationSec": 45.14,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Current flows through a resistor — where does the energy actually go?"
+    },
+    {
+      "id": "chargesThroughR",
+      "audioStart": 4.18,
+      "narration": "Each charge that crosses the resistor drops by V volts, so it gives up an amount of energy equal to V times q. That energy doesn't vanish — it jiggles the lattice and the resistor warms."
+    },
+    {
+      "id": "threeForms",
+      "audioStart": 15.92,
+      "narration": "Multiply V times q over time — that's V times I, the power dissipated. Ohm's law gives two more forms: I squared R, and V squared over R. Same wattage, three faces."
+    },
+    {
+      "id": "growingHeat",
+      "audioStart": 29.11,
+      "narration": "Power is the rate, not the total. Energy is power times time — keep the current flowing and the heat piles up, joule by joule, second by second."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 38.86,
+      "narration": "It's not loss — it's transformation. A resistor's job is to convert electrical energy into heat."
+    }
+  ]
+}

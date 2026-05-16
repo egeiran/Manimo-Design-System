@@ -91,6 +91,9 @@ const initialScenes = [
   { id: 'live-norton', kind: 'live', kindLabel: 'Live', cardTitle: "Norton's Theorem", duration: '0:41', html: '../../motion/ade/norton-equivalent.html' },
   { id: 'live-non-inv-opamp', kind: 'live', kindLabel: 'Live', cardTitle: 'Non-Inverting Op-Amp', duration: '0:46', html: '../../motion/ade/non-inverting-op-amp.html' },
   { id: 'live-shift-register', kind: 'live', kindLabel: 'Live', cardTitle: 'Shift Register', duration: '0:52', html: '../../motion/ade/shift-register.html' },
+  { id: 'live-inductor-energy', kind: 'live', kindLabel: 'Live', cardTitle: 'Energy in an Inductor', duration: 49, html: '../../motion/ade/inductor-energy.html' },
+  { id: 'live-max-power-transfer', kind: 'live', kindLabel: 'Live', cardTitle: 'Maximum Power Transfer', duration: 61, html: '../../motion/ade/max-power-transfer.html' },
+  { id: 'live-joule-heating', kind: 'live', kindLabel: 'Live', cardTitle: 'Joule Heating', duration: 47, html: '../../motion/ade/joule-heating.html' },
 ];
 
 function loadJSON(key, fallback) {

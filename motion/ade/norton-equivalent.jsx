@@ -620,7 +620,7 @@ function LoadCurrentBeat() {
               const y = (midY - 30) + ((midY + 30) - (midY - 30)) * u;
               return (
                 <circle key={`rn-${i}`} cx={G.rnX} cy={y} r={3.5}
-                        fill="var(--rose-300)" opacity={0.95}/>
+                        fill="var(--amber-300)" opacity={0.95}/>
               );
             })}
             {Array.from({ length: NUM }).map((_, i) => {
@@ -628,7 +628,7 @@ function LoadCurrentBeat() {
               const y = yTop + (yBot - yTop) * u;
               return (
                 <circle key={`rl-${i}`} cx={G.loadX} cy={y} r={3.5}
-                        fill="var(--rose-300)" opacity={0.95}/>
+                        fill="var(--amber-300)" opacity={0.95}/>
               );
             })}
           </SvgFadeIn>

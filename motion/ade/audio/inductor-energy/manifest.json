@@ -1,0 +1,36 @@
+{
+  "sceneId": "inductor-energy",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/inductor-energy/scene.mp3",
+  "durationSec": 47.23,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Push current through an inductor — where does the energy go?"
+    },
+    {
+      "id": "rampingCurrent",
+      "audioStart": 3.69,
+      "narration": "Close the switch and the current ramps from zero up to I. A magnetic field grows around the coil, and the inductor pushes back with a voltage v equal to L times the rate of change of current."
+    },
+    {
+      "id": "fluxIntegral",
+      "audioStart": 15.69,
+      "narration": "Plot flux against current. Φ equals L times i — a straight line. The work to push the current from zero up to I is the area under that line, a triangle with area one half L I squared."
+    },
+    {
+      "id": "threeForms",
+      "audioStart": 29.58,
+      "narration": "Three faces of the same energy: one half L I squared, one half Φ I, and Φ squared over two L. Use whichever two quantities you know."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 39.28,
+      "narration": "The energy lives in the magnetic field around the coil. Open the switch and the field collapses — releasing every joule back into the circuit."
+    }
+  ]
+}

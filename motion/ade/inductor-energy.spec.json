@@ -1,0 +1,194 @@
+{
+  "id": "inductor-energy",
+  "title": "Energy in an Inductor: Why It's One Half L I Squared",
+  "eyebrow": "energy and power",
+  "language": "en",
+  "duration": 49,
+  "topic": "Energy stored in an inductor — ramping current builds a magnetic field; the work integral ∫v·i dt collapses to ½LI² via Φ = L·I, giving the three equivalent forms ½LI², ½ΦI, and Φ²/(2L)",
+  "subject_id": "ade",
+  "chapter_number": 2,
+  "prerequisites": [
+    "capacitor-energy"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 3.69,
+      "narration": "Push current through an inductor — where does the energy go?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Ramp current through a coil — where does the energy go?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "next to Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rampingCurrent",
+      "start": 3.69,
+      "end": 15.69,
+      "narration": "Close the switch and the current ramps from zero up to I. A magnetic field grows around the coil, and the inductor pushes back with a voltage v equal to L times the rate of change of current.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Source on the left, switch closing, inductor coil on the right with growing magnetic field loops",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Current dots flow around the loop, density scaling with i(t)",
+            "delay": 0.6,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Field-line ovals around the coil expanding as i grows",
+            "delay": 1,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "v = L · di/dt",
+            "delay": 2.4,
+            "color": "var(--amber-300)",
+            "position": "right of coil"
+          },
+          {
+            "type": "text-caption",
+            "content": "ramping current → growing field → induced voltage",
+            "delay": 4.6,
+            "color": "var(--chalk-300)",
+            "position": "below diagram, sans 14"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fluxIntegral",
+      "start": 15.69,
+      "end": 29.58,
+      "narration": "Plot flux against current. Φ equals L times i — a straight line. The work to push the current from zero up to I is the area under that line, a triangle with area one half L I squared.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Horizontal axis: i from 0 to I; vertical axis: Φ from 0 to Φ = L·I",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Line Φ = L·i from origin to (I, L·I)",
+            "delay": 0.8,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Triangle area filling under the line as the (i, Φ) point slides up",
+            "delay": 1.8,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Moving (i, Φ) point on the line",
+            "delay": 1.8,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "W = ½ L I²",
+            "delay": 6.2,
+            "color": "var(--amber-300)",
+            "position": "right of graph"
+          },
+          {
+            "type": "text-caption",
+            "content": "the area under Φ(i) is the energy stored",
+            "delay": 7.4,
+            "color": "var(--chalk-300)",
+            "position": "below graph, sans 14"
+          }
+        ]
+      }
+    },
+    {
+      "id": "threeForms",
+      "start": 29.58,
+      "end": 39.28,
+      "narration": "Three faces of the same energy: one half L I squared, one half Φ I, and Φ squared over two L. Use whichever two quantities you know.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "W = ½ L I²",
+            "delay": 0.2,
+            "color": "var(--amber-300)",
+            "position": "centre column, large amber payoff"
+          },
+          {
+            "type": "text-formula",
+            "content": "W = ½ Φ I",
+            "delay": 1.4,
+            "color": "var(--chalk-200)",
+            "position": "left column"
+          },
+          {
+            "type": "text-formula",
+            "content": "W = Φ² / (2L)",
+            "delay": 2.6,
+            "color": "var(--chalk-200)",
+            "position": "right column"
+          },
+          {
+            "type": "text-caption",
+            "content": "use whichever two quantities you know",
+            "delay": 5,
+            "color": "var(--chalk-300)",
+            "position": "below the row, sans 14"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 39.28,
+      "end": 49,
+      "narration": "The energy lives in the magnetic field around the coil. Open the switch and the field collapses — releasing every joule back into the circuit.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Energy lives in the magnetic field around the coil.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic ~28px"
+          },
+          {
+            "type": "text-caption",
+            "content": "(open the switch and the field collapses — every joule released)",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "small mono caption below"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "sceneId": "max-power-transfer",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/max-power-transfer/scene.mp3",
+  "durationSec": 59.63,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "What load pulls the most power out of a source?"
+    },
+    {
+      "id": "circuitSetup",
+      "audioStart": 3.12,
+      "narration": "A real source has an internal resistance R sub s. The current through any load R sub L equals V sub s divided by R sub s plus R sub L. The power delivered into the load is I squared times R sub L."
+    },
+    {
+      "id": "sweepRL",
+      "audioStart": 19.71,
+      "narration": "Sweep the load from very small to very large. With a tiny load, the current is huge but the load voltage is nearly zero — almost no power. With a huge load, the voltage is full but the current is nearly zero — also almost no power. The peak sits in the middle."
+    },
+    {
+      "id": "matchedFormula",
+      "audioStart": 36.39,
+      "narration": "At the peak the load equals R sub s, and the delivered power is V sub s squared over four R sub s. Half the source energy goes to the load, half is wasted in R sub s — fifty percent efficiency at maximum power transfer."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 52.45,
+      "narration": "Match the load when you want maximum power — useful for antennas and signal receivers, wasteful for power distribution."
+    }
+  ]
+}

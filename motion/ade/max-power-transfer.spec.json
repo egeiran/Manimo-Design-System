@@ -1,0 +1,175 @@
+{
+  "id": "max-power-transfer",
+  "title": "Maximum Power Transfer: Match the Load to the Source",
+  "eyebrow": "energy and power",
+  "language": "en",
+  "duration": 61,
+  "topic": "Maximum power transfer theorem — a source with internal resistance R_s delivers the most power into a load R_L when R_L equals R_s; the load power P_L = V_s²·R_L/(R_s+R_L)² peaks at R_L = R_s with value V_s²/(4R_s) and efficiency 50%",
+  "subject_id": "ade",
+  "chapter_number": 2,
+  "prerequisites": [
+    "voltage-divider"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 3.12,
+      "narration": "What load pulls the most power out of a source?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "What load pulls the most power out of a source?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "next to Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "circuitSetup",
+      "start": 3.12,
+      "end": 19.71,
+      "narration": "A real source has an internal resistance R sub s. The current through any load R sub L equals V sub s divided by R sub s plus R sub L. The power delivered into the load is I squared times R sub L.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Circuit: V_s in series with R_s, terminals labelled, R_L drawn as variable resistor with arrow",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "I = V_s / (R_s + R_L)",
+            "delay": 2.4,
+            "color": "var(--chalk-200)",
+            "position": "below circuit"
+          },
+          {
+            "type": "text-formula",
+            "content": "P_L = I² · R_L",
+            "delay": 4.4,
+            "color": "var(--amber-300)",
+            "position": "below current formula"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweepRL",
+      "start": 19.71,
+      "end": 36.39,
+      "narration": "Sweep the load from very small to very large. With a tiny load, the current is huge but the load voltage is nearly zero — almost no power. With a huge load, the voltage is full but the current is nearly zero — also almost no power. The peak sits in the middle.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Horizontal axis: R_L from 0 to 4·R_s; vertical axis: P_L (normalised)",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Power curve P_L(R_L) traces left-to-right as R_L sweeps",
+            "delay": 0.8,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Slider on the R_L axis and corresponding (R_L, P_L) marker on the curve, peak at R_L = R_s",
+            "delay": 0.8,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Dashed vertical line at R_L = R_s with peak callout",
+            "delay": 7,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the peak sits where the load matches the source",
+            "delay": 9.5,
+            "color": "var(--chalk-300)",
+            "position": "below graph, sans 14"
+          }
+        ]
+      }
+    },
+    {
+      "id": "matchedFormula",
+      "start": 36.39,
+      "end": 52.45,
+      "narration": "At the peak the load equals R sub s, and the delivered power is V sub s squared over four R sub s. Half the source energy goes to the load, half is wasted in R sub s — fifty percent efficiency at maximum power transfer.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "R_L = R_s",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "left of central row"
+          },
+          {
+            "type": "text-formula",
+            "content": "P_max = V_s² / (4 R_s)",
+            "delay": 1.6,
+            "color": "var(--amber-300)",
+            "position": "centre, large amber payoff"
+          },
+          {
+            "type": "text-caption",
+            "content": "efficiency at the peak: fifty percent",
+            "delay": 3.4,
+            "color": "var(--chalk-200)",
+            "position": "below payoff, sans 16"
+          },
+          {
+            "type": "text-caption",
+            "content": "half the source energy heats R_s",
+            "delay": 4.8,
+            "color": "var(--chalk-300)",
+            "position": "below caption, sans 14"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 52.45,
+      "end": 61,
+      "narration": "Match the load when you want maximum power — useful for antennas and signal receivers, wasteful for power distribution.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Matching maximises power, not efficiency.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic ~28px"
+          },
+          {
+            "type": "text-caption",
+            "content": "(great for receivers, terrible for the grid)",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "small mono caption below"
+          }
+        ]
+      }
+    }
+  ]
+}
