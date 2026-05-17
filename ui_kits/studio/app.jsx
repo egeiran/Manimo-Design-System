@@ -97,6 +97,9 @@ const initialScenes = [
   { id: 'live-superposition', kind: 'live', kindLabel: 'Live', cardTitle: 'Superposition: One Source at a Time', duration: 51, html: '../../motion/ade/superposition.html' },
   { id: 'live-summing-amp', kind: 'live', kindLabel: 'Live', cardTitle: 'Summing Amplifier', duration: 53, html: '../../motion/ade/summing-amplifier.html' },
   { id: 'live-sr-latch', kind: 'live', kindLabel: 'Live', cardTitle: 'SR Latch: Two NOR Gates', duration: 57, html: '../../motion/ade/sr-latch.html' },
+  { id: 'live-ohms-law', kind: 'live', kindLabel: 'Live', cardTitle: "Ohm's Law", duration: 35, html: '../../motion/ade/ohms-law.html' },
+  { id: 'live-zener-clipper', kind: 'live', kindLabel: 'Live', cardTitle: 'Zener Clipper', duration: 39, html: '../../motion/ade/zener-clipper.html' },
+  { id: 'live-two-to-four-decoder', kind: 'live', kindLabel: 'Live', cardTitle: '2-to-4 Decoder', duration: 37, html: '../../motion/ade/two-to-four-decoder.html' },
 ];
 
 function loadJSON(key, fallback) {

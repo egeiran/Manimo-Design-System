@@ -1,0 +1,164 @@
+{
+  "id": "zener-clipper",
+  "title": "Zener Clipper: A Diode That Caps the Peaks",
+  "eyebrow": "diodes",
+  "language": "en",
+  "duration": 39,
+  "topic": "Zener diode used as a clipper / regulator — above the breakdown voltage V_Z it conducts in reverse and clamps the output to V_Z, shearing the tops off a sine input.",
+  "subject_id": "ade",
+  "chapter_number": 4,
+  "prerequisites": [
+    "half-wave-rectifier"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.34,
+      "narration": "A diode that fights back when you push too hard — meet the Zener.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Push too hard on a Zener — it pushes back at exactly V Z.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ivCurve",
+      "start": 4.34,
+      "end": 12.03,
+      "narration": "A Zener has an ordinary forward knee — but in reverse, it breaks down sharply at minus V Z and conducts hard.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "I-V plane: V on x-axis, I on y-axis, origin centred",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Forward knee around +0.7 V rising steeply",
+            "delay": 0.8,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Reverse knee at -V_Z dropping into negative current",
+            "delay": 2,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "V_Z label at the reverse knee",
+            "delay": 3,
+            "color": "var(--rose-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "circuit",
+      "start": 12.03,
+      "end": 21.8,
+      "narration": "Wire a Zener across the output with a series resistor — once the input pushes above V Z, the Zener clamps the output and the resistor soaks up the rest.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Source on left → series R → Zener to ground; output node between R and Zener",
+            "delay": 0.4,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Zener diode symbol (triangle + bent cathode bar)",
+            "delay": 1.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Labels: V_in source, R series, V_out across Zener",
+            "delay": 2.4,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "waveform",
+      "start": 21.8,
+      "end": 30.9,
+      "narration": "Feed in a sine wave taller than V Z. The output rides the sine where it stays below the clamp, but the peaks get sheared off flat at V Z.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Time axis below, voltage axis up",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Input sine wave traced left to right",
+            "delay": 0.8,
+            "color": "var(--chalk-200)",
+            "note": "Traced as a live moving cursor reveals the path"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Output waveform: equals input below V_Z, clamped flat at V_Z above",
+            "delay": 2.4,
+            "color": "var(--amber-400)",
+            "note": "Live waveform — pen cursor moves with time"
+          },
+          {
+            "type": "svg-label",
+            "content": "Dashed V_Z clamp line",
+            "delay": 1.6,
+            "color": "var(--rose-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 30.9,
+      "end": 39,
+      "narration": "The Zener acts like a voltage ceiling — anything above V Z gets clipped, anything below passes through unchanged.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Below V Z: pass-through. Above V Z: clamp.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-caption",
+            "content": "(a voltage ceiling — used for regulators, protection, reference)",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "small caption below"
+          }
+        ]
+      }
+    }
+  ]
+}

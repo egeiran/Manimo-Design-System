@@ -1,0 +1,36 @@
+{
+  "sceneId": "zener-clipper",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/zener-clipper/scene.mp3",
+  "durationSec": 37.94,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "A diode that fights back when you push too hard — meet the Zener."
+    },
+    {
+      "id": "ivCurve",
+      "audioStart": 4.34,
+      "narration": "A Zener has an ordinary forward knee — but in reverse, it breaks down sharply at minus V Z and conducts hard."
+    },
+    {
+      "id": "circuit",
+      "audioStart": 12.03,
+      "narration": "Wire a Zener across the output with a series resistor — once the input pushes above V Z, the Zener clamps the output and the resistor soaks up the rest."
+    },
+    {
+      "id": "waveform",
+      "audioStart": 21.8,
+      "narration": "Feed in a sine wave taller than V Z. The output rides the sine where it stays below the clamp, but the peaks get sheared off flat at V Z."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 30.9,
+      "narration": "The Zener acts like a voltage ceiling — anything above V Z gets clipped, anything below passes through unchanged."
+    }
+  ]
+}

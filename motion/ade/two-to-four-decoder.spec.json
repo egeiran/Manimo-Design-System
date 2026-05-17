@@ -1,0 +1,153 @@
+{
+  "id": "two-to-four-decoder",
+  "title": "2-to-4 Decoder: One-Hot Output Selection",
+  "eyebrow": "combinational logic",
+  "language": "en",
+  "duration": 37,
+  "topic": "2-to-4 line decoder — two input bits select exactly one of four output lines (one-hot). Built from AND gates fed by the inputs and their inverses.",
+  "subject_id": "ade",
+  "chapter_number": 10,
+  "prerequisites": [
+    "multiplexer-4-to-1"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.34,
+      "narration": "Two address bits, four output lines — and only one of them fires at a time.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Two inputs in — exactly one of four outputs out. One-hot.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "truthTable",
+      "start": 5.34,
+      "end": 14,
+      "narration": "The truth table lays it out — for each of the four input combinations, exactly one output is high and the other three stay low.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-title",
+            "content": "Truth table header: A B | Y0 Y1 Y2 Y3",
+            "delay": 0.2,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-formula",
+            "content": "Four rows: 00 → Y0; 01 → Y1; 10 → Y2; 11 → Y3",
+            "delay": 0.8,
+            "color": "var(--chalk-200)",
+            "note": "Active output highlighted amber row by row"
+          },
+          {
+            "type": "text-caption",
+            "content": "exactly one output high per input pattern",
+            "delay": 4,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gates",
+      "start": 14,
+      "end": 23.86,
+      "narration": "Inside, four AND gates each watch for one input pattern — the inputs and their inverses are routed so each gate fires for one and only one combination.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Two input lines A, B at top with inverters branching off",
+            "delay": 0.4,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Four AND gates stacked vertically — inputs wired (!A,!B), (!A,B), (A,!B), (A,B)",
+            "delay": 1.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Outputs labelled Y0..Y3 on the right",
+            "delay": 3.4,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweep",
+      "start": 23.86,
+      "end": 30.33,
+      "narration": "Step the inputs through all four patterns — and watch the high output hop down the column, one at a time.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-label",
+            "content": "Input bits A, B shown as a binary counter cycling 00 → 01 → 10 → 11",
+            "delay": 0.2,
+            "color": "var(--chalk-100)",
+            "note": "Counter advances every 2s, driven by useSprite() localTime"
+          },
+          {
+            "type": "svg-path",
+            "content": "Four output indicators Y0..Y3 — exactly one glows amber each step",
+            "delay": 0.5,
+            "color": "var(--amber-300)",
+            "note": "Active output computed from current (A,B) pair"
+          },
+          {
+            "type": "svg-path",
+            "content": "Wires from active gate to its output glow brightly",
+            "delay": 0.5,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 30.33,
+      "end": 37,
+      "narration": "Two bits give four addresses — and a decoder turns each address into a single chosen line.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "n inputs → 2ⁿ outputs, one-hot.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-caption",
+            "content": "(the front end of every memory address decode and MUX)",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "small caption below"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "sceneId": "ohms-law",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/ohms-law/scene.mp3",
+  "durationSec": 33.34,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Push electrons through a resistor — how hard, and how many?"
+    },
+    {
+      "id": "circuit",
+      "audioStart": 4.69,
+      "narration": "A battery, a resistor, and a wire — the battery pushes, the resistor resists, and the current flows around the loop."
+    },
+    {
+      "id": "formula",
+      "audioStart": 12.73,
+      "narration": "The three are tied together by V equals I times R — rearrange it and you can solve for whichever one you need."
+    },
+    {
+      "id": "sweep",
+      "audioStart": 20.16,
+      "narration": "Crank the voltage up and the current rises in step. Crank the resistance up instead and the current drops away."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 27.42,
+      "narration": "Double the push, double the flow — for the same resistor, current tracks voltage in a straight line."
+    }
+  ]
+}

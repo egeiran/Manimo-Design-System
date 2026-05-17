@@ -369,13 +369,17 @@ function KclResultBeat() {
                   fill="var(--rose-300)" opacity={0.95}/>
         ))}
 
-        {/* i arrows */}
+        {/* i arrows — in portrait the result formulas land in the lower
+            column and crowd the bottom of the diagram, so the i labels
+            float above the resistors to keep clear of the formulas. */}
         <SvgFadeIn duration={0.4} delay={0.4}>
-          <text x={(G.rInLeftX + G.rInRightX) / 2} y={G.rInY + 30}
+          <text x={(G.rInLeftX + G.rInRightX) / 2}
+                y={portrait ? G.rInY - 22 : G.rInY + 30}
                 textAnchor="middle"
                 fill="var(--rose-300)" fontFamily="var(--font-mono)"
                 fontSize={13} letterSpacing="0.1em">i_in →</text>
-          <text x={(G.rfX1 + G.rfX2) / 2} y={G.rfY + 28}
+          <text x={(G.rfX1 + G.rfX2) / 2}
+                y={portrait ? G.rfY - 24 : G.rfY + 28}
                 textAnchor="middle"
                 fill="var(--rose-300)" fontFamily="var(--font-mono)"
                 fontSize={13} letterSpacing="0.1em">i_f →</text>
