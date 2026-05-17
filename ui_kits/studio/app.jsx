@@ -100,6 +100,9 @@ const initialScenes = [
   { id: 'live-ohms-law', kind: 'live', kindLabel: 'Live', cardTitle: "Ohm's Law", duration: 35, html: '../../motion/ade/ohms-law.html' },
   { id: 'live-zener-clipper', kind: 'live', kindLabel: 'Live', cardTitle: 'Zener Clipper', duration: 39, html: '../../motion/ade/zener-clipper.html' },
   { id: 'live-two-to-four-decoder', kind: 'live', kindLabel: 'Live', cardTitle: '2-to-4 Decoder', duration: 37, html: '../../motion/ade/two-to-four-decoder.html' },
+  { id: 'live-rc-charging', kind: 'live', kindLabel: 'Live', cardTitle: 'RC Charging', duration: '0:41', html: '../../motion/ade/rc-charging.html' },
+  { id: 'live-cmos-inverter', kind: 'live', kindLabel: 'Live', cardTitle: 'The CMOS Inverter', duration: '0:54', html: '../../motion/ade/cmos-inverter.html' },
+  { id: 'live-hexadecimal-counting', kind: 'live', kindLabel: 'Live', cardTitle: 'Counting in Hexadecimal', duration: '0:38', html: '../../motion/ade/hexadecimal-counting.html' },
 ];
 
 function loadJSON(key, fallback) {

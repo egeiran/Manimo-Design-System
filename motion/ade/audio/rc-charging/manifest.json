@@ -1,0 +1,36 @@
+{
+  "sceneId": "rc-charging",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/rc-charging/scene.mp3",
+  "durationSec": 40.91,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Close a switch and a capacitor starts filling — how fast does it get there?"
+    },
+    {
+      "id": "circuitDiagram",
+      "audioStart": 4.74,
+      "narration": "Battery V zero in series with a resistor R and capacitor C. Flip the switch, and current starts pushing charge onto the plates."
+    },
+    {
+      "id": "chargingCurve",
+      "audioStart": 13.5,
+      "narration": "The voltage across the capacitor climbs along an exponential curve — V of t equals V zero times one minus e to the minus t over tau."
+    },
+    {
+      "id": "timeConstant",
+      "audioStart": 23.81,
+      "narration": "Tau equals R times C is the time constant. After one tau the voltage has reached sixty three percent. After five tau it is essentially full."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 33.73,
+      "narration": "Bigger R or bigger C means slower charging. The time constant R times C sets the entire rhythm."
+    }
+  ]
+}

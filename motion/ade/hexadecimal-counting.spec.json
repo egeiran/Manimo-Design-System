@@ -1,0 +1,151 @@
+{
+  "id": "hexadecimal-counting",
+  "title": "Counting in Hexadecimal: Four Bits, One Symbol",
+  "eyebrow": "binary numbers",
+  "language": "en",
+  "duration": 39,
+  "topic": "Hexadecimal as a packing of binary — every 4-bit nibble maps to exactly one hex symbol 0..F; an 8-bit byte becomes two hex digits. The radix is base 16 with place values 16⁰, 16¹, 16², which is why programmers prefer hex for memory addresses, byte patterns, and machine code.",
+  "subject_id": "ade",
+  "chapter_number": 5,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.31,
+      "narration": "Why do programmers write addresses and bytes in hexadecimal instead of plain decimal?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Why is everything in 0x… ?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "placeValueRecap",
+      "start": 5.31,
+      "end": 13.86,
+      "narration": "Decimal is base ten — every column is a power of ten. Hexadecimal is base sixteen — every column is a power of sixteen.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "Decimal: 173 = 1·100 + 7·10 + 3·1",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-formula",
+            "content": "Hex:    0xAD = 10·16 + 13·1 = 173",
+            "delay": 2.5,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "same value, two different alphabets",
+            "delay": 5,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nibbleCounter",
+      "start": 13.86,
+      "end": 22.47,
+      "narration": "A four bit nibble runs from zero zero zero zero to one one one one — sixteen patterns. Each one gets exactly one hex symbol.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Four-cell bit row that ticks through 0000..1111; alongside, the matching hex symbol updates (0..F); below, the decimal value updates",
+            "delay": 0.5,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Sixteen-cell strip below showing the full alphabet 0123456789ABCDEF with the active digit highlighted",
+            "delay": 0.5,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-caption",
+            "content": "sixteen patterns → sixteen symbols, 0 through F",
+            "delay": 12,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "byteSplit",
+      "start": 22.47,
+      "end": 29.73,
+      "narration": "An eight bit byte splits into two nibbles — pack each one into a hex symbol and the whole byte fits in two characters.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "8-bit row showing 10101101; gap opens between bits 3 and 4, splitting into two 4-bit groups",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Left nibble 1010 → A, right nibble 1101 → D appear under the groups",
+            "delay": 2.5,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "10101101₂ = 0xAD = 173₁₀",
+            "delay": 5,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "every byte → two hex digits, no remainder",
+            "delay": 8,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 29.73,
+      "end": 39,
+      "narration": "Four bits per symbol, two symbols per byte — that is why memory addresses, colour codes, and machine code are written in hex.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "4 bits per symbol · 2 symbols per byte.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "(addresses, colour codes, machine code — all hex)",
+            "delay": 1.6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    }
+  ]
+}

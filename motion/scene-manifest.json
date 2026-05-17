@@ -1925,6 +1925,78 @@
       ],
       "subject_id": "ade",
       "chapter_number": 10
+    },
+    {
+      "id": "rc-charging",
+      "file": "rc-charging.jsx",
+      "html": "rc-charging.html",
+      "spec": "rc-charging.spec.json",
+      "title": "RC Charging: Why a Capacitor Fills on an Exponential Curve",
+      "eyebrow": "reactive elements",
+      "topic": "RC charging transient — a battery, resistor and capacitor in series; after the switch closes the capacitor voltage rises as V_C(t) = V_0(1 − e^{−t/τ}); the time constant τ = RC sets the speed (63% at one τ, ≈99% after five τ).",
+      "duration": 42,
+      "language": "en",
+      "prerequisites": [
+        "voltage-divider"
+      ],
+      "concepts": [
+        "RC circuit",
+        "capacitor charging",
+        "time constant",
+        "exponential",
+        "transient response",
+        "first-order system"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 8
+    },
+    {
+      "id": "cmos-inverter",
+      "file": "cmos-inverter.jsx",
+      "html": "cmos-inverter.html",
+      "spec": "cmos-inverter.spec.json",
+      "title": "The CMOS Inverter: Two Transistors, Zero Static Power",
+      "eyebrow": "transistors",
+      "topic": "CMOS inverter — PMOS to V_DD, NMOS to ground, gates tied to V_in, drains tied to V_out. Only one transistor conducts at a time, so the output flips between V_DD and 0 with essentially no static current. Sweeping V_in across the threshold produces the sharp transfer curve at the heart of every digital logic family.",
+      "duration": 55,
+      "language": "en",
+      "prerequisites": [
+        "mosfet-switch"
+      ],
+      "concepts": [
+        "CMOS",
+        "inverter",
+        "PMOS",
+        "NMOS",
+        "transfer characteristic",
+        "static power",
+        "complementary logic"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 6
+    },
+    {
+      "id": "hexadecimal-counting",
+      "file": "hexadecimal-counting.jsx",
+      "html": "hexadecimal-counting.html",
+      "spec": "hexadecimal-counting.spec.json",
+      "title": "Counting in Hexadecimal: Four Bits, One Symbol",
+      "eyebrow": "binary numbers",
+      "topic": "Hexadecimal as a packing of binary — every 4-bit nibble maps to exactly one hex symbol 0..F; an 8-bit byte becomes two hex digits. The radix is base 16 with place values 16⁰, 16¹, 16², which is why programmers prefer hex for memory addresses, byte patterns, and machine code.",
+      "duration": 39,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": [
+        "hexadecimal",
+        "binary",
+        "nibble",
+        "byte",
+        "place value",
+        "number system",
+        "base 16"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 5
     }
   ]
 }

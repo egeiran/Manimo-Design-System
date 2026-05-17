@@ -1,0 +1,36 @@
+{
+  "sceneId": "hexadecimal-counting",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/hexadecimal-counting/scene.mp3",
+  "durationSec": 37.34,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Why do programmers write addresses and bytes in hexadecimal instead of plain decimal?"
+    },
+    {
+      "id": "placeValueRecap",
+      "audioStart": 5.31,
+      "narration": "Decimal is base ten — every column is a power of ten. Hexadecimal is base sixteen — every column is a power of sixteen."
+    },
+    {
+      "id": "nibbleCounter",
+      "audioStart": 13.86,
+      "narration": "A four bit nibble runs from zero zero zero zero to one one one one — sixteen patterns. Each one gets exactly one hex symbol."
+    },
+    {
+      "id": "byteSplit",
+      "audioStart": 22.47,
+      "narration": "An eight bit byte splits into two nibbles — pack each one into a hex symbol and the whole byte fits in two characters."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 29.73,
+      "narration": "Four bits per symbol, two symbols per byte — that is why memory addresses, colour codes, and machine code are written in hex."
+    }
+  ]
+}
