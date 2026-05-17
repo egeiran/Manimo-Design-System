@@ -201,7 +201,7 @@ function ChargesThroughResistorBeat() {
           <line x1={zigEndX} y1={G.loopTopY - G.resAmp - 18}
                 x2={zigEndX} y2={G.loopTopY - G.resAmp - 10}
                 stroke="var(--chalk-200)" strokeWidth={1.4}/>
-          <text x={(zigStartX + zigEndX) / 2} y={G.loopTopY - G.resAmp - 26}
+          <text x={(zigStartX + zigEndX) / 2} y={G.loopTopY - G.resAmp - 32}
                 textAnchor="middle"
                 fill="var(--chalk-200)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={20}>V</text>

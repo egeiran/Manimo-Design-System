@@ -1,0 +1,36 @@
+{
+  "sceneId": "superposition",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/superposition/scene.mp3",
+  "durationSec": 49.51,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Two sources, one resistor — what's the current through it? Mesh equations work, but there's a slicker way."
+    },
+    {
+      "id": "setup",
+      "audioStart": 6.5,
+      "narration": "Here's the circuit. A voltage source V one on the left, a current source I two on the right, and a load resistor R L in the middle."
+    },
+    {
+      "id": "killV2",
+      "audioStart": 15.15,
+      "narration": "Step one: kill the current source — replace it with an open circuit. Now only V one drives the network. Charge flows along this path, and the current through R L is the first contribution."
+    },
+    {
+      "id": "killV1",
+      "audioStart": 27.41,
+      "narration": "Step two: bring back the current source, but kill V one — replace it with a short. Now I two drives the network. Charge flows the other way through R L; that's the second contribution."
+    },
+    {
+      "id": "sum",
+      "audioStart": 39.68,
+      "narration": "Add the two contributions and you've found the current with both sources live. Superposition works because the circuit is linear — sources add their effects independently."
+    }
+  ]
+}

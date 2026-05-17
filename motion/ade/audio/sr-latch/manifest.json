@@ -1,0 +1,36 @@
+{
+  "sceneId": "sr-latch",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/sr-latch/scene.mp3",
+  "durationSec": 55.31,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Two gates with their outputs wired into each other's inputs. That's a memory cell — but how?"
+    },
+    {
+      "id": "structure",
+      "audioStart": 6.44,
+      "narration": "Here's the SR latch: two NOR gates cross-coupled. S sets the latch, R resets it, and Q and Q-bar are the outputs — wired back into each other's inputs."
+    },
+    {
+      "id": "set",
+      "audioStart": 17.84,
+      "narration": "Raise S to one and the top NOR sees a one — its output Q-bar goes to zero. That zero feeds the bottom NOR with R also zero — bottom output Q swings to one. Q is set."
+    },
+    {
+      "id": "reset",
+      "audioStart": 32.29,
+      "narration": "Now drop S and raise R to one. The bottom NOR sees a one, so Q goes to zero. That zero feeds the top NOR with S also zero — Q-bar swings to one. Q is reset."
+    },
+    {
+      "id": "timing",
+      "audioStart": 45.16,
+      "narration": "And when both S and R are zero, the loop holds whatever Q already was. Pulse S, pulse R, and you can see Q latch high and stay there until R clears it."
+    }
+  ]
+}

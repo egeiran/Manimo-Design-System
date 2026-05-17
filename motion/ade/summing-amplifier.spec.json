@@ -1,0 +1,179 @@
+{
+  "id": "summing-amplifier",
+  "title": "Summing Amplifier: Add Voltages at the Virtual Ground",
+  "eyebrow": "operational amplifiers",
+  "language": "en",
+  "duration": 53,
+  "topic": "Summing amplifier: three input voltages drive a common inverting node through their own resistors; KCL at virtual ground yields V_out = -R_f·(V1/R1 + V2/R2 + V3/R3).",
+  "subject_id": "ade",
+  "chapter_number": 9,
+  "prerequisites": [
+    "inverting-op-amp"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.47,
+      "narration": "How do you add three voltages with one op-amp? It's easier than you think.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Three voltages in, one weighted sum out.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "config",
+      "start": 4.47,
+      "end": 17,
+      "narration": "Take the inverting op-amp and replace the single input resistor with three. Each input V k drives the same V minus node through its own R k. R f closes the feedback loop.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Op-amp triangle pointing right, V+ on bottom tied to ground",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Three input resistors R1, R2, R3 stacked on the left, all meeting at V-",
+            "delay": 1,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "R_f feedback resistor from V_out back to V-",
+            "delay": 1.8,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "V1, V2, V3 input labels",
+            "delay": 2.4,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "three branches share one virtual-ground node",
+            "delay": 5.6,
+            "color": "var(--chalk-300)",
+            "position": "below diagram"
+          }
+        ]
+      }
+    },
+    {
+      "id": "currents",
+      "start": 17,
+      "end": 30.57,
+      "narration": "V minus is held at zero by the feedback. So each input contributes its own current — V k over R k — and they all converge at the same node. Their sum then flows through R f to V out.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-circle",
+            "content": "Three streams of charge dots through R1, R2, R3 converging at V-",
+            "delay": 0.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Combined stream of charge dots through R_f to V_out",
+            "delay": 0.6,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "i_k = V_k / R_k",
+            "delay": 4,
+            "color": "var(--chalk-100)",
+            "position": "left of diagram"
+          },
+          {
+            "type": "text-formula",
+            "content": "i_f = -V_out / R_f",
+            "delay": 5.6,
+            "color": "var(--rose-300)",
+            "position": "right of diagram"
+          }
+        ]
+      }
+    },
+    {
+      "id": "formula",
+      "start": 30.57,
+      "end": 42.31,
+      "narration": "Kirchhoff's current law at V minus gives the punchline: V out equals minus R f times the sum of V k over R k. Each input is scaled by its own ratio.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "V_out = -R_f · (V1/R1 + V2/R2 + V3/R3)",
+            "delay": 0.4,
+            "color": "var(--amber-300)",
+            "position": "centre, large serif"
+          },
+          {
+            "type": "text-caption",
+            "content": "if R1 = R2 = R3 = R, it's just a (scaled) inverted sum",
+            "delay": 2.4,
+            "color": "var(--chalk-200)",
+            "position": "below formula"
+          },
+          {
+            "type": "text-formula",
+            "content": "V_out = -(R_f/R)(V1 + V2 + V3)",
+            "delay": 3.4,
+            "color": "var(--rose-300)",
+            "position": "below caption"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mixer",
+      "start": 42.31,
+      "end": 53,
+      "narration": "Feed in three sinewaves at different frequencies and the output traces their sum, inverted and scaled. That's an analog audio mixer in one chip.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "Three small sinusoidal V1, V2, V3 traces stacked on the left",
+            "delay": 0.4,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "V_out: inverted sum, larger and complex, on the right",
+            "delay": 0.6,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "one chip — an inverting analog mixer",
+            "delay": 4.6,
+            "color": "var(--chalk-300)",
+            "position": "below scopes"
+          }
+        ]
+      }
+    }
+  ]
+}
