@@ -1,0 +1,36 @@
+{
+  "sceneId": "two-to-four-decoder",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/two-to-four-decoder/scene.mp3",
+  "durationSec": 35.81,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Two address bits, four output lines — and only one of them fires at a time."
+    },
+    {
+      "id": "truthTable",
+      "audioStart": 5.34,
+      "narration": "The truth table lays it out — for each of the four input combinations, exactly one output is high and the other three stay low."
+    },
+    {
+      "id": "gates",
+      "audioStart": 14,
+      "narration": "Inside, four AND gates each watch for one input pattern — the inputs and their inverses are routed so each gate fires for one and only one combination."
+    },
+    {
+      "id": "sweep",
+      "audioStart": 23.86,
+      "narration": "Step the inputs through all four patterns — and watch the high output hop down the column, one at a time."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 30.33,
+      "narration": "Two bits give four addresses — and a decoder turns each address into a single chosen line."
+    }
+  ]
+}

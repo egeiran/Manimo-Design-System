@@ -1858,6 +1858,73 @@
       ],
       "subject_id": "ade",
       "chapter_number": 7
+    },
+    {
+      "id": "ohms-law",
+      "file": "ohms-law.jsx",
+      "html": "ohms-law.html",
+      "spec": "ohms-law.spec.json",
+      "title": "Ohm's Law: How Voltage, Current, and Resistance Connect",
+      "eyebrow": "circuit theory",
+      "topic": "Ohm's law — V = I·R; sweeping V scales I linearly, sweeping R bends I as 1/R.",
+      "duration": 35,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": [
+        "Ohm's law",
+        "voltage",
+        "current",
+        "resistance",
+        "linear element"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 1
+    },
+    {
+      "id": "zener-clipper",
+      "file": "zener-clipper.jsx",
+      "html": "zener-clipper.html",
+      "spec": "zener-clipper.spec.json",
+      "title": "Zener Clipper: A Diode That Caps the Peaks",
+      "eyebrow": "diodes",
+      "topic": "Zener diode reverse breakdown clamps a sine input's peaks to V_Z — clipper / regulator.",
+      "duration": 39,
+      "language": "en",
+      "prerequisites": [
+        "half-wave-rectifier"
+      ],
+      "concepts": [
+        "Zener diode",
+        "reverse breakdown",
+        "voltage clipping",
+        "voltage regulation",
+        "I-V curve"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 4
+    },
+    {
+      "id": "two-to-four-decoder",
+      "file": "two-to-four-decoder.jsx",
+      "html": "two-to-four-decoder.html",
+      "spec": "two-to-four-decoder.spec.json",
+      "title": "2-to-4 Decoder: One-Hot Output Selection",
+      "eyebrow": "combinational logic",
+      "topic": "2-to-4 decoder — two address bits drive four AND gates so exactly one output is high.",
+      "duration": 37,
+      "language": "en",
+      "prerequisites": [
+        "multiplexer-4-to-1"
+      ],
+      "concepts": [
+        "decoder",
+        "one-hot encoding",
+        "AND gate",
+        "address decode",
+        "combinational logic"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 10
     }
   ]
 }

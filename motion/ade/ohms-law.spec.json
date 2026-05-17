@@ -1,0 +1,178 @@
+{
+  "id": "ohms-law",
+  "title": "Ohm's Law: How Voltage, Current, and Resistance Connect",
+  "eyebrow": "circuit theory",
+  "language": "en",
+  "duration": 35,
+  "topic": "Ohm's law — V = I R. Voltage pushes, resistance pushes back, current is the response. Sweeping V scales I linearly; sweeping R bends I as 1/R.",
+  "subject_id": "ade",
+  "chapter_number": 1,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.69,
+      "narration": "Push electrons through a resistor — how hard, and how many?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Voltage pushes, resistance pushes back — what current shows up?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "circuit",
+      "start": 4.69,
+      "end": 12.73,
+      "narration": "A battery, a resistor, and a wire — the battery pushes, the resistor resists, and the current flows around the loop.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Rectangular loop: battery on left, resistor on right, wires on top and bottom",
+            "delay": 0.4,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Battery symbol on left",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Zigzag resistor on right",
+            "delay": 1.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "V on battery, R on resistor, I along top wire",
+            "delay": 2,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Charge dots flowing clockwise around the loop",
+            "delay": 3.4,
+            "color": "var(--amber-300)",
+            "note": "Live motion driven by useSprite() localTime"
+          }
+        ]
+      }
+    },
+    {
+      "id": "formula",
+      "start": 12.73,
+      "end": 20.16,
+      "narration": "The three are tied together by V equals I times R — rearrange it and you can solve for whichever one you need.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "V = I · R",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre, large serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "I = V / R",
+            "delay": 1.8,
+            "color": "var(--chalk-200)",
+            "position": "lower-left"
+          },
+          {
+            "type": "text-formula",
+            "content": "R = V / I",
+            "delay": 2.6,
+            "color": "var(--chalk-200)",
+            "position": "lower-right"
+          },
+          {
+            "type": "text-caption",
+            "content": "voltage drives — resistance resists — current responds",
+            "delay": 4,
+            "color": "var(--chalk-300)",
+            "position": "below"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweep",
+      "start": 20.16,
+      "end": 27.42,
+      "narration": "Crank the voltage up and the current rises in step. Crank the resistance up instead and the current drops away.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-label",
+            "content": "Voltage slider on left, current bar on right",
+            "delay": 0.2,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "graph-axes",
+            "content": "V on x-axis, I on y-axis — slope is 1/R",
+            "delay": 1,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Operating point sliding along the V/R line as V sweeps",
+            "delay": 1.6,
+            "color": "var(--amber-400)",
+            "note": "Live point driven by triangle-wave on useSprite()"
+          },
+          {
+            "type": "svg-path",
+            "content": "Charge dots speed up and slow down with V",
+            "delay": 2,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 27.42,
+      "end": 35,
+      "narration": "Double the push, double the flow — for the same resistor, current tracks voltage in a straight line.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Double V → double I. Double R → halve I.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-caption",
+            "content": "(Ohm's law is linear — until the resistor heats up)",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "small caption below"
+          }
+        ]
+      }
+    }
+  ]
+}
