@@ -1,0 +1,171 @@
+{
+  "id": "rc-charging",
+  "title": "RC Charging: Why a Capacitor Fills on an Exponential Curve",
+  "eyebrow": "reactive elements",
+  "language": "en",
+  "duration": 42,
+  "topic": "RC charging transient — a battery, resistor and capacitor in series; after the switch closes the capacitor voltage rises as V_C(t) = V_0(1 − e^{−t/τ}); the time constant τ = RC sets the speed (63% at one τ, ≈99% after five τ)",
+  "subject_id": "ade",
+  "chapter_number": 8,
+  "prerequisites": [
+    "voltage-divider"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.74,
+      "narration": "Close a switch and a capacitor starts filling — how fast does it get there?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Switch closes — how fast does the capacitor fill?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "circuitDiagram",
+      "start": 4.74,
+      "end": 13.5,
+      "narration": "Battery V zero in series with a resistor R and capacitor C. Flip the switch, and current starts pushing charge onto the plates.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Series loop: battery V0 on the left, switch closing in the top branch, resistor R, capacitor C on the right side",
+            "delay": 0.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "V₀, R, C component labels",
+            "delay": 1.5,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Switch lever rotating closed at ~delay 3.0",
+            "delay": 3,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Current-flow dots travelling clockwise around the loop once the switch closes",
+            "delay": 3.6,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "current rushes in, then slows as the cap fills",
+            "delay": 6.5,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "chargingCurve",
+      "start": 13.5,
+      "end": 23.81,
+      "narration": "The voltage across the capacitor climbs along an exponential curve — V of t equals V zero times one minus e to the minus t over tau.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "t (horizontal) vs V_C (vertical), 0 to 5τ on t, 0 to V₀ on V",
+            "delay": 0.2,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Exponential approach to V₀, traced left to right as the time cursor sweeps",
+            "delay": 0.8,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Capacitor symbol on the right — top plate fills with positive charge dots, bottom plate accumulates negative charges as the curve traces",
+            "delay": 0.8,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "V(t) = V₀(1 − e^(−t/τ))",
+            "delay": 8.5,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "timeConstant",
+      "start": 23.81,
+      "end": 33.73,
+      "narration": "Tau equals R times C is the time constant. After one tau the voltage has reached sixty three percent. After five tau it is essentially full.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "τ = RC",
+            "delay": 0.3,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Marker at t = τ → V = 0.63·V₀",
+            "delay": 1.3,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Marker at t = 5τ → V ≈ V₀",
+            "delay": 2.8,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "one τ → 63%   ·   five τ → essentially full",
+            "delay": 4.5,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 33.73,
+      "end": 42,
+      "narration": "Bigger R or bigger C means slower charging. The time constant R times C sets the entire rhythm.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Bigger R or bigger C → slower charge.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "τ = RC sets the rhythm.",
+            "delay": 1.6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    }
+  ]
+}

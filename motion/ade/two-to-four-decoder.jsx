@@ -221,7 +221,7 @@ function GatesDiagram({ active, a = 0, b = 0, delayBase = 0, caption }) {
         inAy: 70, inBy: 130,
         invAx: 200, invBx: 200,
         invAy: 100, invBy: 160,
-        railsX: 250, railSpacingX: 22,
+        railsX: 250, railSpacingX: 30,
         // Four rails (left to right): A, !A, B, !B
         gateX: 400, gateW: 56, gateH: 36,
         gateY: [240, 320, 400, 480],
@@ -230,7 +230,7 @@ function GatesDiagram({ active, a = 0, b = 0, delayBase = 0, caption }) {
         inAy: 60, inBy: 110,
         invAx: 240, invBx: 240,
         invAy: 90, invBy: 140,
-        railsX: 300, railSpacingX: 24,
+        railsX: 300, railSpacingX: 32,
         gateX: 540, gateW: 60, gateH: 38,
         gateY: [180, 250, 320, 390],
         yLabelX: 660, captionY: 440, fontMain: 16 };

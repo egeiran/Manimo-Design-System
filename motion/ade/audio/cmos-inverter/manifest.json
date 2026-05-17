@@ -1,0 +1,36 @@
+{
+  "sceneId": "cmos-inverter",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/cmos-inverter/scene.mp3",
+  "durationSec": 53.03,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Stack an N type and a P type MOSFET — and you get a logic gate that wastes almost no power at rest."
+    },
+    {
+      "id": "circuitDiagram",
+      "audioStart": 6.86,
+      "narration": "V D D on top, ground on the bottom. The P type sits up high, the N type down low, and both gates are wired to the same input."
+    },
+    {
+      "id": "switchAction",
+      "audioStart": 16.03,
+      "narration": "Drop V in to ground — the P type turns on, the N type turns off, and V out is pulled up to V D D. Push V in to V D D and the opposite happens; V out drops to ground."
+    },
+    {
+      "id": "transferCurve",
+      "audioStart": 29.61,
+      "narration": "Plot V out against V in and you get the transfer curve — flat at V D D, a sharp drop at the midpoint, then flat at zero. That sharpness is what makes the gate a clean digital element."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 42.21,
+      "narration": "Only one transistor conducts at any settled input. No path from V D D to ground means almost no static current — that is why CMOS logic dominates."
+    }
+  ]
+}

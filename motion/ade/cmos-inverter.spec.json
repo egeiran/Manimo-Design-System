@@ -1,0 +1,153 @@
+{
+  "id": "cmos-inverter",
+  "title": "The CMOS Inverter: Two Transistors, Zero Static Power",
+  "eyebrow": "transistors",
+  "language": "en",
+  "duration": 55,
+  "topic": "CMOS inverter — PMOS to V_DD, NMOS to ground, gates tied to V_in, drains tied to V_out. Only one transistor conducts at a time, so the output flips between V_DD and 0 with essentially no static current. Sweeping V_in across the threshold produces the sharp transfer curve at the heart of every digital logic family.",
+  "subject_id": "ade",
+  "chapter_number": 6,
+  "prerequisites": [
+    "mosfet-switch"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.86,
+      "narration": "Stack an N type and a P type MOSFET — and you get a logic gate that wastes almost no power at rest.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "One P-type on top, one N-type below — meet the CMOS inverter.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "circuitDiagram",
+      "start": 6.86,
+      "end": 16.03,
+      "narration": "V D D on top, ground on the bottom. The P type sits up high, the N type down low, and both gates are wired to the same input.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "VDD rail at the top, GND rail at the bottom, PMOS source connected to VDD, NMOS source to GND, drains tied together in the middle as V_out, gates tied together as V_in",
+            "delay": 0.3,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "V_DD, V_in, V_out, GND, P-type, N-type labels appearing in sequence",
+            "delay": 2.2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-caption",
+            "content": "gates tied — same V_in drives both transistors",
+            "delay": 7.5,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "switchAction",
+      "start": 16.03,
+      "end": 29.61,
+      "narration": "Drop V in to ground — the P type turns on, the N type turns off, and V out is pulled up to V D D. Push V in to V D D and the opposite happens; V out drops to ground.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "V_in input slider sweeping low → high; channel fill of PMOS gradually closes while NMOS channel opens (or vice versa); current path lights up in the conducting branch",
+            "delay": 0.4,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "V_in numeric readout updating live; V_out numeric readout flipping inversely",
+            "delay": 0.4,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "V_in low → V_out high   ·   V_in high → V_out low",
+            "delay": 13,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "transferCurve",
+      "start": 29.61,
+      "end": 42.21,
+      "narration": "Plot V out against V in and you get the transfer curve — flat at V D D, a sharp drop at the midpoint, then flat at zero. That sharpness is what makes the gate a clean digital element.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "V_in (x, 0..V_DD) vs V_out (y, 0..V_DD)",
+            "delay": 0.3,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Transfer curve traced left to right — flat near V_DD, sharp drop near V_DD/2, flat near 0",
+            "delay": 0.8,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Midpoint marker at V_in = V_out = V_DD/2",
+            "delay": 6,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "V_out = ¬V_in",
+            "delay": 8,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 42.21,
+      "end": 55,
+      "narration": "Only one transistor conducts at any settled input. No path from V D D to ground means almost no static current — that is why CMOS logic dominates.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "One conducts, one cuts off — no idle current path.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "(why CMOS won the battery-life war)",
+            "delay": 1.6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    }
+  ]
+}
