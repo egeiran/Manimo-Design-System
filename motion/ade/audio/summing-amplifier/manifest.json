@@ -1,0 +1,36 @@
+{
+  "sceneId": "summing-amplifier",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/summing-amplifier/scene.mp3",
+  "durationSec": 51.87,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "How do you add three voltages with one op-amp? It's easier than you think."
+    },
+    {
+      "id": "config",
+      "audioStart": 4.47,
+      "narration": "Take the inverting op-amp and replace the single input resistor with three. Each input V k drives the same V minus node through its own R k. R f closes the feedback loop."
+    },
+    {
+      "id": "currents",
+      "audioStart": 17,
+      "narration": "V minus is held at zero by the feedback. So each input contributes its own current — V k over R k — and they all converge at the same node. Their sum then flows through R f to V out."
+    },
+    {
+      "id": "formula",
+      "audioStart": 30.57,
+      "narration": "Kirchhoff's current law at V minus gives the punchline: V out equals minus R f times the sum of V k over R k. Each input is scaled by its own ratio."
+    },
+    {
+      "id": "mixer",
+      "audioStart": 42.31,
+      "narration": "Feed in three sinewaves at different frequencies and the output traces their sum, inverted and scaled. That's an analog audio mixer in one chip."
+    }
+  ]
+}

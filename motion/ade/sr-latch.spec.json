@@ -1,0 +1,182 @@
+{
+  "id": "sr-latch",
+  "title": "SR Latch: Two NOR Gates Remember a Bit",
+  "eyebrow": "memory cells",
+  "language": "en",
+  "duration": 57,
+  "topic": "Cross-coupled NOR gates form a bistable element. S=1 sets Q=1; R=1 resets Q=0; S=R=0 holds the stored state via the feedback loop.",
+  "subject_id": "ade",
+  "chapter_number": 7,
+  "prerequisites": [
+    "nand-universality"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.44,
+      "narration": "Two gates with their outputs wired into each other's inputs. That's a memory cell — but how?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Two NOR gates, cross-coupled — that's a bit of memory.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "structure",
+      "start": 6.44,
+      "end": 17.84,
+      "narration": "Here's the SR latch: two NOR gates cross-coupled. S sets the latch, R resets it, and Q and Q-bar are the outputs — wired back into each other's inputs.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Top NOR gate with S input and another input from Q-bar; outputs Q",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Bottom NOR gate with R input and another input from Q; outputs Q-bar",
+            "delay": 1,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Feedback wires Q -> bottom and Q-bar -> top",
+            "delay": 1.8,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "S, R input labels and Q, Q-bar output labels",
+            "delay": 2.6,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the outputs hold each other in place",
+            "delay": 4.8,
+            "color": "var(--chalk-300)",
+            "position": "below diagram"
+          }
+        ]
+      }
+    },
+    {
+      "id": "set",
+      "start": 17.84,
+      "end": 32.29,
+      "narration": "Raise S to one and the top NOR sees a one — its output Q-bar goes to zero. That zero feeds the bottom NOR with R also zero — bottom output Q swings to one. Q is set.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-label",
+            "content": "S = 1 highlighted in amber on the top input",
+            "delay": 0.4,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Top NOR glows; pulse travels along its output wire to Q-bar = 0",
+            "delay": 1.2,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Feedback wire Q-bar=0 -> bottom NOR; bottom glows; Q swings to 1",
+            "delay": 2.6,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "S=1, R=0  →  Q=1",
+            "delay": 5.4,
+            "color": "var(--amber-300)",
+            "position": "below diagram"
+          }
+        ]
+      }
+    },
+    {
+      "id": "reset",
+      "start": 32.29,
+      "end": 45.16,
+      "narration": "Now drop S and raise R to one. The bottom NOR sees a one, so Q goes to zero. That zero feeds the top NOR with S also zero — Q-bar swings to one. Q is reset.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-label",
+            "content": "R = 1 highlighted in rose on the bottom input",
+            "delay": 0.4,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Bottom NOR glows; pulse to Q = 0; feedback to top",
+            "delay": 1.2,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Top NOR glows; Q-bar swings to 1",
+            "delay": 2.6,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "S=0, R=1  →  Q=0",
+            "delay": 5.4,
+            "color": "var(--rose-300)",
+            "position": "below diagram"
+          }
+        ]
+      }
+    },
+    {
+      "id": "timing",
+      "start": 45.16,
+      "end": 57,
+      "narration": "And when both S and R are zero, the loop holds whatever Q already was. Pulse S, pulse R, and you can see Q latch high and stay there until R clears it.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Timing diagram with rows S, R, Q over a sweep cursor",
+            "delay": 0.4,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "S pulse at t=1; R pulse at t=3; Q latches high after S, returns to 0 after R",
+            "delay": 0.8,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "S=R=0 → Q stays. That's the one bit of memory.",
+            "delay": 8,
+            "color": "var(--chalk-100)",
+            "position": "below diagram, serif italic"
+          }
+        ]
+      }
+    }
+  ]
+}

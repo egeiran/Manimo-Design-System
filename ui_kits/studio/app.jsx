@@ -94,6 +94,9 @@ const initialScenes = [
   { id: 'live-inductor-energy', kind: 'live', kindLabel: 'Live', cardTitle: 'Energy in an Inductor', duration: 49, html: '../../motion/ade/inductor-energy.html' },
   { id: 'live-max-power-transfer', kind: 'live', kindLabel: 'Live', cardTitle: 'Maximum Power Transfer', duration: 61, html: '../../motion/ade/max-power-transfer.html' },
   { id: 'live-joule-heating', kind: 'live', kindLabel: 'Live', cardTitle: 'Joule Heating', duration: 47, html: '../../motion/ade/joule-heating.html' },
+  { id: 'live-superposition', kind: 'live', kindLabel: 'Live', cardTitle: 'Superposition: One Source at a Time', duration: 51, html: '../../motion/ade/superposition.html' },
+  { id: 'live-summing-amp', kind: 'live', kindLabel: 'Live', cardTitle: 'Summing Amplifier', duration: 53, html: '../../motion/ade/summing-amplifier.html' },
+  { id: 'live-sr-latch', kind: 'live', kindLabel: 'Live', cardTitle: 'SR Latch: Two NOR Gates', duration: 57, html: '../../motion/ade/sr-latch.html' },
 ];
 
 function loadJSON(key, fallback) {

@@ -1788,6 +1788,76 @@
       ],
       "subject_id": "ade",
       "chapter_number": 2
+    },
+    {
+      "id": "superposition",
+      "file": "superposition.jsx",
+      "html": "superposition.html",
+      "spec": "superposition.spec.json",
+      "title": "Superposition: One Source at a Time",
+      "eyebrow": "linear circuits",
+      "topic": "Superposition: kill one source at a time, solve the linear sub-circuits, sum the responses.",
+      "duration": 51,
+      "language": "en",
+      "prerequisites": [
+        "kirchhoff-voltage-law",
+        "kirchhoff-current-law"
+      ],
+      "concepts": [
+        "superposition",
+        "linearity",
+        "voltage source",
+        "current source",
+        "mesh / source killing"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 3
+    },
+    {
+      "id": "summing-amplifier",
+      "file": "summing-amplifier.jsx",
+      "html": "summing-amplifier.html",
+      "spec": "summing-amplifier.spec.json",
+      "title": "Summing Amplifier: Add Voltages at the Virtual Ground",
+      "eyebrow": "operational amplifiers",
+      "topic": "Summing amplifier: KCL at the inverting node produces V_out = -R_f·Σ(V_k/R_k).",
+      "duration": 53,
+      "language": "en",
+      "prerequisites": [
+        "inverting-op-amp"
+      ],
+      "concepts": [
+        "op-amp",
+        "virtual ground",
+        "KCL",
+        "weighted sum",
+        "analog mixer"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 9
+    },
+    {
+      "id": "sr-latch",
+      "file": "sr-latch.jsx",
+      "html": "sr-latch.html",
+      "spec": "sr-latch.spec.json",
+      "title": "SR Latch: Two NOR Gates Remember a Bit",
+      "eyebrow": "memory cells",
+      "topic": "Cross-coupled NOR gates form an SR latch — S sets Q=1, R resets Q=0, S=R=0 holds.",
+      "duration": 57,
+      "language": "en",
+      "prerequisites": [
+        "nand-universality"
+      ],
+      "concepts": [
+        "SR latch",
+        "NOR",
+        "cross-coupling",
+        "bistable",
+        "memory"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 7
     }
   ]
 }
