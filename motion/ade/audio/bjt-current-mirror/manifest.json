@@ -1,0 +1,36 @@
+{
+  "sceneId": "bjt-current-mirror",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/bjt-current-mirror/scene.mp3",
+  "durationSec": 43.93,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "How do you copy a current from one branch of a chip to another, without measuring it?"
+    },
+    {
+      "id": "circuit",
+      "audioStart": 4.74,
+      "narration": "Two matched NPN transistors share their bases and emitters. Q one is diode connected — its collector ties back to its base — and a reference resistor sets the current that flows through it."
+    },
+    {
+      "id": "matching",
+      "audioStart": 17.28,
+      "narration": "Both transistors see the same V B E. Because collector current depends only on V B E, the two collector currents are equal — Q two simply copies the current set by R reference."
+    },
+    {
+      "id": "sweep",
+      "audioStart": 28.96,
+      "narration": "Change R reference and I reference moves. I out tracks it in lockstep — that's the mirror in action."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 35.64,
+      "narration": "Current mirrors are the workhorse bias circuit inside almost every analog integrated chip — op-amps, references, amplifiers."
+    }
+  ]
+}

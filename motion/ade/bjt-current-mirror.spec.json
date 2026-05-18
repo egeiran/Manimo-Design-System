@@ -1,0 +1,160 @@
+{
+  "id": "bjt-current-mirror",
+  "title": "BJT Current Mirror: How Q2 Copies Q1's Current",
+  "eyebrow": "transistors",
+  "language": "en",
+  "duration": 45,
+  "topic": "Two matched NPN transistors share a base-emitter voltage. The left branch (Q1 diode-connected with a reference resistor) sets V_BE; the right branch (Q2 with its base tied to Q1's) copies that V_BE, so its collector current mirrors the reference current. A swept reference drives both branches and the right-side readout tracks the left in lockstep.",
+  "subject_id": "ade",
+  "chapter_number": 6,
+  "prerequisites": [
+    "bjt-load-line"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.74,
+      "narration": "How do you copy a current from one branch of a chip to another, without measuring it?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo enters",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Two transistors. One reference. One copy.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "circuit",
+      "start": 4.74,
+      "end": 17.28,
+      "narration": "Two matched NPN transistors share their bases and emitters. Q one is diode connected — its collector ties back to its base — and a reference resistor sets the current that flows through it.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "V_CC rail across the top",
+            "delay": 0.2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "R_ref + Q1 (diode-connected) left branch",
+            "delay": 0.5,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Q2 right branch driving load R_L",
+            "delay": 1.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "I_ref left, I_out right, V_BE shared rail between bases",
+            "delay": 2,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "matching",
+      "start": 17.28,
+      "end": 28.96,
+      "narration": "Both transistors see the same V B E. Because collector current depends only on V B E, the two collector currents are equal — Q two simply copies the current set by R reference.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "I_C = I_S(e^(V_BE/V_T) − 1)",
+            "delay": 0.4,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-caption",
+            "content": "same V_BE  →  same I_C",
+            "delay": 1.6,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-formula",
+            "content": "I_out = I_ref",
+            "delay": 2.6,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the mirror identity — exact for matched, ideal transistors",
+            "delay": 4.2,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweep",
+      "start": 28.96,
+      "end": 35.64,
+      "narration": "Change R reference and I reference moves. I out tracks it in lockstep — that's the mirror in action.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Compact mirror schematic on the left",
+            "delay": 0.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Live I_ref and I_out twin bars rising/falling together",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "note": "Genuine motion — bars driven by sin-shaped I_ref(t)"
+          },
+          {
+            "type": "text-formula",
+            "content": "Live numeric readouts in mono",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 35.64,
+      "end": 45,
+      "narration": "Current mirrors are the workhorse bias circuit inside almost every analog integrated chip — op-amps, references, amplifiers.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "the bias-current backbone of every analog IC",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "op-amps, voltage references, amplifier stages — all rely on mirrors",
+            "delay": 1.6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    }
+  ]
+}

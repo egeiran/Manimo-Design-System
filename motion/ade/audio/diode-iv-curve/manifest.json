@@ -1,0 +1,36 @@
+{
+  "sceneId": "diode-iv-curve",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/diode-iv-curve/scene.mp3",
+  "durationSec": 41.89,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Turn the voltage on a diode up from zero — when does current finally start to flow?"
+    },
+    {
+      "id": "setup",
+      "audioStart": 5.32,
+      "narration": "Put an adjustable source across a diode and measure the current. The diode is forward biased when V D is positive, anode to cathode."
+    },
+    {
+      "id": "curve",
+      "audioStart": 13.97,
+      "narration": "Plot the current against the voltage. Below the knee — about zero point six volts for silicon — almost no current flows. Cross the knee and the current climbs nearly exponentially."
+    },
+    {
+      "id": "sweep",
+      "audioStart": 26.05,
+      "narration": "Sweep the source voltage and watch the operating point slide. Reverse bias — current pinned at zero. Past the knee — current rockets up."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 35.74,
+      "narration": "For pencil-and-paper work, treat it as a switch: open below the knee, a tiny fixed drop above."
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "id": "diode-iv-curve",
+  "title": "Diode I-V Curve: How Current Climbs Past the Knee",
+  "eyebrow": "diodes",
+  "language": "en",
+  "duration": 43,
+  "topic": "Diode I-V characteristic — current is near zero below the knee voltage (~0.6 V for silicon), then climbs steeply once V_D crosses it; reverse bias passes only a tiny leakage current. A swept voltage slider drives a marker along the curve while a live current readout updates.",
+  "subject_id": "ade",
+  "chapter_number": 4,
+  "prerequisites": [
+    "ohms-law",
+    "half-wave-rectifier"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.32,
+      "narration": "Turn the voltage on a diode up from zero — when does current finally start to flow?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo enters centre stage",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "A diode doesn't pass current — until it does.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "setup",
+      "start": 5.32,
+      "end": 13.97,
+      "narration": "Put an adjustable source across a diode and measure the current. The diode is forward biased when V D is positive, anode to cathode.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Adjustable voltage source on the left",
+            "delay": 0.2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Diode symbol in series",
+            "delay": 0.8,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "V_D across the diode, I_D through the loop",
+            "delay": 1.6,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "anode → cathode is the forward direction",
+            "delay": 4,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "curve",
+      "start": 13.97,
+      "end": 26.05,
+      "narration": "Plot the current against the voltage. Below the knee — about zero point six volts for silicon — almost no current flows. Cross the knee and the current climbs nearly exponentially.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "I_D vs V_D axes",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Shockley curve traced in: flat near zero, sharp rise past V_knee",
+            "delay": 0.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "knee voltage V_knee ≈ 0.6 V",
+            "delay": 2.5,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "below the knee — off. Past the knee — wide open.",
+            "delay": 6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweep",
+      "start": 26.05,
+      "end": 35.74,
+      "narration": "Sweep the source voltage and watch the operating point slide. Reverse bias — current pinned at zero. Past the knee — current rockets up.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Same I-V plot, persistent",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Operating point dot Q slides along the curve as V_D varies",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "note": "Genuine motion — Q position is driven by a triangular V_D sweep"
+          },
+          {
+            "type": "text-formula",
+            "content": "Live readout: V_D and I_D in mono",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 35.74,
+      "end": 43,
+      "narration": "For pencil-and-paper work, treat it as a switch: open below the knee, a tiny fixed drop above.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Off below 0.6 V — short above 0.6 V (with a small drop)",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the ideal-diode model is good enough for most circuits",
+            "delay": 1.6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    }
+  ]
+}

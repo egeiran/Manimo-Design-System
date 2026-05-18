@@ -2152,6 +2152,80 @@
       ],
       "subject_id": "ade",
       "chapter_number": 5
+    },
+    {
+      "id": "diode-iv-curve",
+      "file": "diode-iv-curve.jsx",
+      "html": "diode-iv-curve.html",
+      "spec": "diode-iv-curve.spec.json",
+      "title": "Diode I-V Curve: How Current Climbs Past the Knee",
+      "eyebrow": "diodes",
+      "topic": "Silicon diode I-V characteristic — flat below ~0.6 V knee, exponentially climbing above; a triangular V_D sweep drives a marker Q along the curve while a live mono readout updates V_D and I_D in lockstep.",
+      "duration": 43,
+      "language": "en",
+      "prerequisites": [
+        "ohms-law",
+        "half-wave-rectifier"
+      ],
+      "concepts": [
+        "diode I-V curve",
+        "Shockley equation",
+        "knee voltage",
+        "forward bias",
+        "reverse bias",
+        "ideal-diode model"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 4
+    },
+    {
+      "id": "bjt-current-mirror",
+      "file": "bjt-current-mirror.jsx",
+      "html": "bjt-current-mirror.html",
+      "spec": "bjt-current-mirror.spec.json",
+      "title": "BJT Current Mirror: How Q2 Copies Q1's Current",
+      "eyebrow": "transistors",
+      "topic": "Two matched NPN transistors share a base-emitter voltage — Q1 is diode-connected with R_ref above, Q2 mirrors Q1's collector current into a load. A sweep of I_ref drives twin bar gauges that rise and fall in lockstep, demonstrating I_out = I_ref.",
+      "duration": 45,
+      "language": "en",
+      "prerequisites": [
+        "bjt-load-line"
+      ],
+      "concepts": [
+        "current mirror",
+        "matched transistors",
+        "V_BE matching",
+        "biasing",
+        "analog IC building block"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 6
+    },
+    {
+      "id": "full-adder",
+      "file": "full-adder.jsx",
+      "html": "full-adder.html",
+      "spec": "full-adder.spec.json",
+      "title": "Full Adder: Three Bits In, Two Bits Out",
+      "eyebrow": "combinational logic",
+      "topic": "A full adder takes A, B, and a carry-in and produces a sum bit and a carry-out via two XORs, two ANDs and one OR. The walk-beat cycles all eight input combinations, with wires glowing amber when carrying a 1 and the active truth-table row highlighting.",
+      "duration": 42,
+      "language": "en",
+      "prerequisites": [
+        "nand-universality",
+        "binary-addition"
+      ],
+      "concepts": [
+        "full adder",
+        "XOR gate",
+        "AND gate",
+        "OR gate",
+        "truth table",
+        "ripple-carry adder",
+        "combinational logic"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 5
     }
   ]
 }

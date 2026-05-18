@@ -106,6 +106,9 @@ const initialScenes = [
   { id: 'live-rl-transient', kind: 'live', kindLabel: 'Live', cardTitle: 'RL Transient', duration: 46, html: '../../motion/ade/rl-transient.html' },
   { id: 'live-integrator-op-amp', kind: 'live', kindLabel: 'Live', cardTitle: 'Op-Amp Integrator', duration: 58, html: '../../motion/ade/integrator-op-amp.html' },
   { id: 'live-jk-flip-flop', kind: 'live', kindLabel: 'Live', cardTitle: 'JK Flip-Flop', duration: 53, html: '../../motion/ade/jk-flip-flop.html' },
+  { id: 'live-diode-iv-curve', kind: 'live', kindLabel: 'Live', cardTitle: 'Diode I-V Curve', duration: 43, html: '../../motion/ade/diode-iv-curve.html' },
+  { id: 'live-bjt-current-mirror', kind: 'live', kindLabel: 'Live', cardTitle: 'BJT Current Mirror', duration: 45, html: '../../motion/ade/bjt-current-mirror.html' },
+  { id: 'live-full-adder', kind: 'live', kindLabel: 'Live', cardTitle: 'Full Adder', duration: 42, html: '../../motion/ade/full-adder.html' },
 ];
 
 function loadJSON(key, fallback) {
