@@ -1,0 +1,230 @@
+{
+  "id": "source-transformations",
+  "title": "Source Transformations: A Battery and a Current Source Are the Same Thing",
+  "eyebrow": "circuit equivalence",
+  "language": "en",
+  "duration": 56,
+  "topic": "Two-terminal equivalence between a voltage source in series with R and a current source in parallel with R — the same Thévenin / Norton conversion shown as a live morph.",
+  "subject_id": "ade",
+  "chapter_number": 3,
+  "prerequisites": [
+    "thevenin-equivalent",
+    "norton-equivalent",
+    "ohms-law"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.25,
+      "narration": "From the load's point of view — can a battery and a current source ever look identical?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre, mid-canvas",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Two faces of the same circuit.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "thevenin",
+      "start": 5.25,
+      "end": 16.72,
+      "narration": "Start with a voltage source V s in series with a resistor R, driving a load. The load sees a current of V s divided by the sum of R and the load resistance.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Battery V_s on the left vertical wire",
+            "delay": 0.2,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Series resistor R on top wire between source and load terminals",
+            "delay": 0.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Load resistor R_L on the right vertical wire",
+            "delay": 1,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Two terminals A and B between source network and load",
+            "delay": 1.4,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Current dots circulating clockwise through the loop",
+            "delay": 2,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "I_L = V_s / (R + R_L)",
+            "delay": 4,
+            "color": "var(--chalk-200)",
+            "position": "below diagram"
+          }
+        ]
+      }
+    },
+    {
+      "id": "morph",
+      "start": 16.72,
+      "end": 28.98,
+      "narration": "Now watch — the battery becomes a current source of V s over R, and the resistor swings from series to parallel. Two completely different drawings, but from the load's terminals they are indistinguishable.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Existing source network slides left, leaving room",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Battery symbol cross-fades into a circle-with-arrow current source",
+            "delay": 1.5,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Resistor R animates from horizontal (series) to vertical (parallel) inside the source network",
+            "delay": 2.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "I_N = V_s / R",
+            "delay": 5,
+            "color": "var(--amber-300)",
+            "position": "above current source symbol"
+          },
+          {
+            "type": "text-formula",
+            "content": "R_N = R",
+            "delay": 5.6,
+            "color": "var(--chalk-200)",
+            "position": "next to parallel resistor"
+          },
+          {
+            "type": "text-caption",
+            "content": "voltage source in series with R   ≡   current source in parallel with R",
+            "delay": 7,
+            "color": "var(--chalk-300)",
+            "position": "below diagram"
+          }
+        ]
+      }
+    },
+    {
+      "id": "proof",
+      "start": 28.98,
+      "end": 44.47,
+      "narration": "The proof is two simple tests. Open the terminals — both deliver the same voltage V s. Short them — both deliver the same current V s over R. Two conditions, two unknowns: the equivalence is exact.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "text-title",
+            "content": "OPEN-CIRCUIT TEST",
+            "delay": 0.2,
+            "color": "var(--amber-300)",
+            "position": "left column header"
+          },
+          {
+            "type": "text-formula",
+            "content": "V_OC = V_s",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "left column body"
+          },
+          {
+            "type": "text-caption",
+            "content": "no current flows, all V_s appears at the terminals",
+            "delay": 1.3,
+            "color": "var(--chalk-300)",
+            "position": "left column foot"
+          },
+          {
+            "type": "text-title",
+            "content": "SHORT-CIRCUIT TEST",
+            "delay": 4,
+            "color": "var(--rose-300)",
+            "position": "right column header"
+          },
+          {
+            "type": "text-formula",
+            "content": "I_SC = V_s / R",
+            "delay": 4.5,
+            "color": "var(--chalk-100)",
+            "position": "right column body"
+          },
+          {
+            "type": "text-caption",
+            "content": "all current routes through the shorted terminals",
+            "delay": 5.1,
+            "color": "var(--chalk-300)",
+            "position": "right column foot"
+          },
+          {
+            "type": "text-caption",
+            "content": "both pairs match — therefore the networks are interchangeable",
+            "delay": 8,
+            "color": "var(--chalk-200)",
+            "position": "centred below both columns"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 44.47,
+      "end": 56,
+      "narration": "Use whichever face makes the algebra easier — nodal analysis loves current sources, mesh analysis loves voltage sources. Swap on demand.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Pick the face that fits the method.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic 28"
+          },
+          {
+            "type": "text-formula",
+            "content": "V_s ⇌ I_N · R",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "centre, large amber formula"
+          },
+          {
+            "type": "text-caption",
+            "content": "nodal → current source · mesh → voltage source",
+            "delay": 2.8,
+            "color": "var(--chalk-300)",
+            "position": "small mono caption below"
+          }
+        ]
+      }
+    }
+  ]
+}

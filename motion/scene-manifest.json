@@ -2073,6 +2073,85 @@
       ],
       "subject_id": "ade",
       "chapter_number": 7
+    },
+    {
+      "id": "source-transformations",
+      "file": "source-transformations.jsx",
+      "html": "source-transformations.html",
+      "spec": "source-transformations.spec.json",
+      "title": "Source Transformations: A Battery and a Current Source Are the Same Thing",
+      "eyebrow": "circuit equivalence",
+      "topic": "Two-terminal equivalence between a voltage source in series with R and a current source in parallel with R — the live morph of a Thévenin network into its Norton counterpart, with open-circuit and short-circuit tests as the proof.",
+      "duration": 56,
+      "language": "en",
+      "prerequisites": [
+        "thevenin-equivalent",
+        "norton-equivalent",
+        "ohms-law"
+      ],
+      "concepts": [
+        "source transformation",
+        "Thévenin equivalent",
+        "Norton equivalent",
+        "voltage source",
+        "current source",
+        "open-circuit voltage",
+        "short-circuit current",
+        "two-terminal equivalence"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 3
+    },
+    {
+      "id": "rlc-resonance",
+      "file": "rlc-resonance.jsx",
+      "html": "rlc-resonance.html",
+      "spec": "rlc-resonance.spec.json",
+      "title": "RLC Resonance: Where the Reactances Cancel",
+      "eyebrow": "frequency response",
+      "topic": "Series RLC resonance — sweep frequency and watch the loop current peak at ω₀ = 1/√(LC) where X_L and X_C exactly cancel; three phasor diagrams show how V_L and V_C oppose perfectly at resonance, leaving only V_R.",
+      "duration": 54,
+      "language": "en",
+      "prerequisites": [
+        "phasor-rotation",
+        "low-pass-bode"
+      ],
+      "concepts": [
+        "RLC resonance",
+        "resonant frequency",
+        "impedance",
+        "reactance",
+        "phasor diagram",
+        "frequency sweep",
+        "tuning circuit",
+        "quality factor"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 8
+    },
+    {
+      "id": "binary-addition",
+      "file": "binary-addition.jsx",
+      "html": "binary-addition.html",
+      "spec": "binary-addition.spec.json",
+      "title": "Binary Addition: How the Carry Walks Left",
+      "eyebrow": "digital arithmetic",
+      "topic": "4-bit binary addition column-by-column with the carry walking right-to-left — visualises 0101 + 0111 = 1100 (5 + 7 = 12) one column at a time, then motivates ripple-carry's worst-case delay in hardware.",
+      "duration": 65,
+      "language": "en",
+      "prerequisites": [
+        "hexadecimal-counting"
+      ],
+      "concepts": [
+        "binary addition",
+        "carry propagation",
+        "ripple-carry adder",
+        "full adder",
+        "place value",
+        "overflow"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 5
     }
   ]
 }

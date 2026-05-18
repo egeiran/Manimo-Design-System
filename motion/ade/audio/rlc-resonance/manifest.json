@@ -1,0 +1,36 @@
+{
+  "sceneId": "rlc-resonance",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/rlc-resonance/scene.mp3",
+  "durationSec": 52.52,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Why does a tiny tuning capacitor pick out exactly one radio station from the noise of all of them at once?"
+    },
+    {
+      "id": "circuit",
+      "audioStart": 6.5,
+      "narration": "A series circuit with a resistor, an inductor, and a capacitor, driven by an AC source. Tune the source frequency, and watch the current."
+    },
+    {
+      "id": "sweep",
+      "audioStart": 15.85,
+      "narration": "Sweep the frequency from low to high. The current is tiny at the extremes — at low omega the capacitor blocks it, at high omega the inductor does — and peaks where the two reactances exactly cancel. That sweet spot is the resonant frequency."
+    },
+    {
+      "id": "phasors",
+      "audioStart": 31.85,
+      "narration": "At resonance, the voltages across the inductor and capacitor are equal in size but pointed opposite ways. They cancel — leaving the resistor alone to set the current, so the impedance collapses to just R."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 45.15,
+      "narration": "Resonance is the heart of every tuner. Pick L and C to land the peak where you want — and that one frequency wins."
+    }
+  ]
+}

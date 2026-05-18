@@ -1,0 +1,203 @@
+{
+  "id": "rlc-resonance",
+  "title": "RLC Resonance: Where the Reactances Cancel",
+  "eyebrow": "frequency response",
+  "language": "en",
+  "duration": 54,
+  "topic": "Series RLC circuit. Sweep frequency and watch the current peak at f_0 = 1/(2π√LC) where X_L and X_C exactly cancel; phasors visibly oppose at resonance.",
+  "subject_id": "ade",
+  "chapter_number": 8,
+  "prerequisites": [
+    "phasor-rotation",
+    "low-pass-bode"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.5,
+      "narration": "Why does a tiny tuning capacitor pick out exactly one radio station from the noise of all of them at once?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "One frequency, all the rest hushed.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "circuit",
+      "start": 6.5,
+      "end": 15.85,
+      "narration": "A series circuit with a resistor, an inductor, and a capacitor, driven by an AC source. Tune the source frequency, and watch the current.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "AC source on left vertical (circle with sine glyph)",
+            "delay": 0.2,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Resistor R on top wire",
+            "delay": 0.5,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Inductor L coil on right vertical (upper)",
+            "delay": 0.8,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Capacitor C plates on right vertical (lower)",
+            "delay": 1.1,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Source label e(t) = V₀ cos(ωt)",
+            "delay": 1.5,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-formula",
+            "content": "Z = R + j(ωL − 1/ωC)",
+            "delay": 4,
+            "color": "var(--chalk-200)",
+            "position": "below diagram"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweep",
+      "start": 15.85,
+      "end": 31.85,
+      "narration": "Sweep the frequency from low to high. The current is tiny at the extremes — at low omega the capacitor blocks it, at high omega the inductor does — and peaks where the two reactances exactly cancel. That sweet spot is the resonant frequency.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Horizontal log-style frequency axis, vertical |I| axis",
+            "delay": 0.2,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Resonance curve traces in as the cursor sweeps left-to-right",
+            "delay": 1,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Frequency cursor (vertical dashed line) that moves with localTime",
+            "delay": 1,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Peak marker dot at f_0 with label V/R",
+            "delay": 8,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "f_0 = 1 / (2π√(LC))",
+            "delay": 10,
+            "color": "var(--amber-300)",
+            "position": "below the resonance peak"
+          }
+        ]
+      }
+    },
+    {
+      "id": "phasors",
+      "start": 31.85,
+      "end": 45.15,
+      "narration": "At resonance, the voltages across the inductor and capacitor are equal in size but pointed opposite ways. They cancel — leaving the resistor alone to set the current, so the impedance collapses to just R.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Three phasor diagrams: below, at, above f_0",
+            "delay": 0.2,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Below f_0: V_C dominates, net impedance is capacitive",
+            "delay": 1,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "At f_0: V_L + V_C = 0, only V_R remains",
+            "delay": 4,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Above f_0: V_L dominates, net impedance is inductive",
+            "delay": 7,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "X_L = ωL,   X_C = 1/(ωC)   ⇒   ω_0 = 1/√(LC)",
+            "delay": 10,
+            "color": "var(--chalk-200)",
+            "position": "below the phasors"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 45.15,
+      "end": 54,
+      "narration": "Resonance is the heart of every tuner. Pick L and C to land the peak where you want — and that one frequency wins.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Resonance picks one frequency out of the crowd.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic 26"
+          },
+          {
+            "type": "text-formula",
+            "content": "ω_0 = 1 / √(LC)",
+            "delay": 1.6,
+            "color": "var(--amber-300)",
+            "position": "centre, large amber"
+          },
+          {
+            "type": "text-caption",
+            "content": "every radio, every oscilloscope trigger, every quartz watch",
+            "delay": 3,
+            "color": "var(--chalk-300)",
+            "position": "small mono caption"
+          }
+        ]
+      }
+    }
+  ]
+}
