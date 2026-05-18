@@ -1,0 +1,36 @@
+{
+  "sceneId": "full-adder",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/full-adder/scene.mp3",
+  "durationSec": 40.5,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Adding two bits is easy. Adding three bits in one box — that's the full adder."
+    },
+    {
+      "id": "truthTable",
+      "audioStart": 4.91,
+      "narration": "Three inputs — A, B, and a carry from the column on the right. Eight combinations. Each row produces a sum bit and a carry out bit."
+    },
+    {
+      "id": "gates",
+      "audioStart": 13.71,
+      "narration": "Build it from gates. Sum equals A xor B xor C in. Carry out is one whenever at least two inputs are one — two ANDs and an OR cover that."
+    },
+    {
+      "id": "walk",
+      "audioStart": 25.01,
+      "narration": "Step through all eight combinations and watch the wires light up. The sum and carry update with no extra logic — that's a single adder cell working."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 33.97,
+      "narration": "Chain n of these and you've got an n-bit ripple-carry adder — the simplest way to add binary numbers in hardware."
+    }
+  ]
+}

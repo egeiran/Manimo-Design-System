@@ -1,0 +1,149 @@
+{
+  "id": "full-adder",
+  "title": "Full Adder: Three Bits In, Two Bits Out",
+  "eyebrow": "combinational logic",
+  "language": "en",
+  "duration": 42,
+  "topic": "A full adder takes A, B, and a carry-in bit and produces a sum bit and a carry-out bit. Internally it's two XORs, two ANDs and one OR — Sum = A ⊕ B ⊕ Cin, Cout = (A·B) + Cin·(A ⊕ B). The genuine motion cycles through all eight input combinations: highlighted truth-table rows, live wire colors, and updated output bits.",
+  "subject_id": "ade",
+  "chapter_number": 5,
+  "prerequisites": [
+    "nand-universality",
+    "binary-addition"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.91,
+      "narration": "Adding two bits is easy. Adding three bits in one box — that's the full adder.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo enters centre stage",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Three bits in. Two bits out.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "truthTable",
+      "start": 4.91,
+      "end": 13.71,
+      "narration": "Three inputs — A, B, and a carry from the column on the right. Eight combinations. Each row produces a sum bit and a carry out bit.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-label",
+            "content": "Three-column input header A, B, Cin and two-column output Sum, Cout",
+            "delay": 0.2,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Eight truth-table rows fade in",
+            "delay": 0.6,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the sum bit toggles often, the carry only when at least two inputs are 1",
+            "delay": 6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gates",
+      "start": 13.71,
+      "end": 25.01,
+      "narration": "Build it from gates. Sum equals A xor B xor C in. Carry out is one whenever at least two inputs are one — two ANDs and an OR cover that.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "XOR chain: (A xor B) feeds the second XOR with Cin → Sum",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "AND of A·B, AND of (A xor B)·Cin, OR feeding Cout",
+            "delay": 1.4,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "Sum = A ⊕ B ⊕ Cin   ·   Cout = AB + Cin(A ⊕ B)",
+            "delay": 5,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "walk",
+      "start": 25.01,
+      "end": 33.97,
+      "narration": "Step through all eight combinations and watch the wires light up. The sum and carry update with no extra logic — that's a single adder cell working.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Same gate diagram, persistent",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Input bits cycle 000 → 001 → 010 → ... → 111 with active wires highlighted",
+            "delay": 0.2,
+            "color": "var(--rose-400)",
+            "note": "Genuine motion — input combinations cycle one per second"
+          },
+          {
+            "type": "svg-label",
+            "content": "Active truth-table row highlights as inputs change",
+            "delay": 0.2,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 33.97,
+      "end": 42,
+      "narration": "Chain n of these and you've got an n-bit ripple-carry adder — the simplest way to add binary numbers in hardware.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "one cell — the building block of every n-bit adder",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "chain four of these and you get a 4-bit ripple-carry adder",
+            "delay": 1.6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    }
+  ]
+}
