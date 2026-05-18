@@ -1,0 +1,196 @@
+{
+  "id": "binary-addition",
+  "title": "Binary Addition: How the Carry Walks Left",
+  "eyebrow": "digital arithmetic",
+  "language": "en",
+  "duration": 65,
+  "topic": "Adding two 4-bit binary numbers column-by-column from the least significant bit up — the carry-out from one column slides left to become the carry-in of the next.",
+  "subject_id": "ade",
+  "chapter_number": 5,
+  "prerequisites": [
+    "hexadecimal-counting"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 9.68,
+      "narration": "Computers add the way you do — column by column, right to left, carrying when you overflow. The only difference is the alphabet has just two letters.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Same long addition you learned in school — in base two.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rules",
+      "start": 9.68,
+      "end": 22.73,
+      "narration": "Four cases per column. Zero plus zero gives zero. Zero plus one gives one. One plus one — and now it overflows: the sum bit drops to zero and a carry pops out the top.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-title",
+            "content": "PER-COLUMN RULES",
+            "delay": 0.2,
+            "color": "var(--amber-300)",
+            "position": "centre top"
+          },
+          {
+            "type": "text-formula",
+            "content": "0 + 0 = 0   (carry 0)",
+            "delay": 0.7,
+            "color": "var(--chalk-200)",
+            "position": "row 1"
+          },
+          {
+            "type": "text-formula",
+            "content": "0 + 1 = 1   (carry 0)",
+            "delay": 1.5,
+            "color": "var(--chalk-200)",
+            "position": "row 2"
+          },
+          {
+            "type": "text-formula",
+            "content": "1 + 1 = 0   (carry 1)",
+            "delay": 3,
+            "color": "var(--rose-300)",
+            "position": "row 3 — the overflow row"
+          },
+          {
+            "type": "text-formula",
+            "content": "1 + 1 + 1 = 1   (carry 1)",
+            "delay": 4.5,
+            "color": "var(--rose-300)",
+            "position": "row 4 — with carry-in"
+          },
+          {
+            "type": "text-caption",
+            "content": "two ones overflow base two — they always do",
+            "delay": 6,
+            "color": "var(--chalk-300)",
+            "position": "bottom caption"
+          }
+        ]
+      }
+    },
+    {
+      "id": "walk",
+      "start": 22.73,
+      "end": 48.38,
+      "narration": "Add zero one zero one and zero one one one. Column zero: one plus one is zero, carry out one. Column one: zero plus one plus the carry is zero again, carry out one. Column two: one plus one plus the carry is one, carry out one. Column three: zero plus zero plus the carry is one — and we're done. Eleven hundred — twelve in decimal.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Two operands: 0101 and 0111, lined up vertically",
+            "delay": 0.2,
+            "color": "var(--chalk-200)",
+            "position": "centre-top"
+          },
+          {
+            "type": "svg-path",
+            "content": "Column cursor sweeps right-to-left, highlighting one column at a time",
+            "delay": 1,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Sum bit fades in below each column as the cursor leaves it",
+            "delay": 1,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Carry token slides up-and-left from column i to column i+1",
+            "delay": 1,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "Decimal check: 5 + 7 = 12",
+            "delay": 20,
+            "color": "var(--amber-300)",
+            "position": "below result"
+          }
+        ]
+      }
+    },
+    {
+      "id": "longestPath",
+      "start": 48.38,
+      "end": 58.53,
+      "narration": "In hardware, that left-walking carry is the bottleneck. The most significant bit cannot settle until every carry below it has settled. The longest carry chain sets the clock.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-title",
+            "content": "WHY HARDWARE CARES",
+            "delay": 0.2,
+            "color": "var(--amber-300)",
+            "position": "centre top"
+          },
+          {
+            "type": "svg-path",
+            "content": "Four FA blocks in a row with a carry chain animating LSB → MSB",
+            "delay": 0.6,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Carry line lights segment by segment from LSB to MSB",
+            "delay": 0.6,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the longest carry chain sets the adder's worst-case delay",
+            "delay": 4.5,
+            "color": "var(--chalk-300)",
+            "position": "below the chain"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 58.53,
+      "end": 65,
+      "narration": "Same algorithm, different alphabet — and carries are how the columns talk to each other.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "School-book addition, just two digits.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic 26"
+          },
+          {
+            "type": "text-caption",
+            "content": "the carry is how column k tells column k+1 about the overflow",
+            "delay": 1.6,
+            "color": "var(--amber-300)",
+            "position": "small mono caption"
+          }
+        ]
+      }
+    }
+  ]
+}

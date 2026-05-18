@@ -100,8 +100,8 @@ function SymbolBeat() {
   const portrait = usePortrait();
 
   const G = portrait
-    ? { vbW: 600, vbH: 500, boxX: 200, boxY: 120, boxW: 200, boxH: 260,
-        pinLen: 60, fontMain: 28, fontPin: 22, captionY: 460 }
+    ? { vbW: 600, vbH: 620, boxX: 200, boxY: 130, boxW: 200, boxH: 340,
+        pinLen: 60, fontMain: 28, fontPin: 22, captionY: 590 }
     : { vbW: 760, vbH: 400, boxX: 280, boxY: 60, boxW: 200, boxH: 280,
         pinLen: 70, fontMain: 28, fontPin: 22, captionY: 380 };
 

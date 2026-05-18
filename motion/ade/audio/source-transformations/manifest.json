@@ -1,0 +1,36 @@
+{
+  "sceneId": "source-transformations",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/source-transformations/scene.mp3",
+  "durationSec": 54.2,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "From the load's point of view — can a battery and a current source ever look identical?"
+    },
+    {
+      "id": "thevenin",
+      "audioStart": 5.25,
+      "narration": "Start with a voltage source V s in series with a resistor R, driving a load. The load sees a current of V s divided by the sum of R and the load resistance."
+    },
+    {
+      "id": "morph",
+      "audioStart": 16.72,
+      "narration": "Now watch — the battery becomes a current source of V s over R, and the resistor swings from series to parallel. Two completely different drawings, but from the load's terminals they are indistinguishable."
+    },
+    {
+      "id": "proof",
+      "audioStart": 28.98,
+      "narration": "The proof is two simple tests. Open the terminals — both deliver the same voltage V s. Short them — both deliver the same current V s over R. Two conditions, two unknowns: the equivalence is exact."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 44.47,
+      "narration": "Use whichever face makes the algebra easier — nodal analysis loves current sources, mesh analysis loves voltage sources. Swap on demand."
+    }
+  ]
+}
