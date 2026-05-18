@@ -364,11 +364,20 @@ function MorphBeat() {
         {/* Top wire from src to sink that connects when R goes parallel.
             When rot >= 0.6, draw the parallel top-wire connector from src
             to sink that bypasses the now-vertical R (since R is now
-            vertical at rParX, the top wire above it is intact). */}
+            vertical at rParX, the top wire above it is intact). Also drop
+            two short vertical stub wires from the top/bottom horizontal
+            wires down to the parallel R's endpoints so the load and the
+            parallel R actually share two nodes — without these the
+            vertical R reads as floating. */}
         {rotE > 0.5 && (
-          <line x1={G.srcX} y1={G.top} x2={G.sinkX} y2={G.top}
-                stroke="var(--chalk-200)" strokeWidth={2}
-                opacity={(rotE - 0.5) * 2}/>
+          <g opacity={(rotE - 0.5) * 2}>
+            <line x1={G.srcX} y1={G.top} x2={G.sinkX} y2={G.top}
+                  stroke="var(--chalk-200)" strokeWidth={2}/>
+            <line x1={rParX} y1={G.top} x2={rParX} y2={rlTop}
+                  stroke="var(--chalk-200)" strokeWidth={2}/>
+            <line x1={rParX} y1={rlBot} x2={rParX} y2={G.bot}
+                  stroke="var(--chalk-200)" strokeWidth={2}/>
+          </g>
         )}
 
         {/* Sink vertical (load) and bottom wire — always present */}
