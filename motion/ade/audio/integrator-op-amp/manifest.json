@@ -1,0 +1,36 @@
+{
+  "sceneId": "integrator-op-amp",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/integrator-op-amp/scene.mp3",
+  "durationSec": 56.05,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "What if the feedback path of an op-amp were a capacitor instead of a resistor? You'd build a time integrator."
+    },
+    {
+      "id": "configuration",
+      "audioStart": 7.26,
+      "narration": "Same inverting topology: V plus grounded, input through R into V minus, feedback from V out back to V minus — but the feedback element is a capacitor C, not a resistor."
+    },
+    {
+      "id": "derivation",
+      "audioStart": 19.77,
+      "narration": "Virtual short forces V minus to ground. So the current through R is V in over R, and that same current charges the capacitor — meaning dV out over dt equals minus V in over R C."
+    },
+    {
+      "id": "sweep",
+      "audioStart": 32.52,
+      "narration": "Feed in a square wave. During each half cycle V in is constant, so V out ramps down at minus V in over R C — out comes a triangle wave whose slope is set entirely by R times C."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 45.98,
+      "narration": "An op-amp integrator turns a square wave into a triangle wave, and more generally turns any input into its running time integral — with R times C setting the slope."
+    }
+  ]
+}

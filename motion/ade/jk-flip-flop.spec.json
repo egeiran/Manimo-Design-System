@@ -1,0 +1,206 @@
+{
+  "id": "jk-flip-flop",
+  "title": "JK Flip-Flop: The SR Latch With a Useful Fourth Row",
+  "eyebrow": "memory and register",
+  "language": "en",
+  "duration": 53,
+  "topic": "JK flip-flop — extends the SR latch by replacing the forbidden S=R=1 state with a TOGGLE mode (Q flips on each rising clock edge when J=K=1). The four modes hold/reset/set/toggle make it the workhorse of binary counters.",
+  "subject_id": "ade",
+  "chapter_number": 7,
+  "prerequisites": [
+    "d-flip-flop",
+    "sr-latch"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.62,
+      "narration": "The S R latch has one forbidden row. What if you turned that forbidden row into the most useful row in digital design?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Turn the SR latch's forbidden row into a feature.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "symbol",
+      "start": 7.62,
+      "end": 19.13,
+      "narration": "Here's the JK flip-flop — three inputs J, K, and CLK, two outputs Q and Q-bar. The triangle on the clock input means it samples on the rising edge.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "JK flip-flop body box",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "J input pin",
+            "delay": 0.6,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "K input pin",
+            "delay": 0.8,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "CLK input with edge-trigger triangle",
+            "delay": 1,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Q and Q-bar outputs",
+            "delay": 1.4,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "three inputs, two outputs, one edge-triggered cell",
+            "delay": 6,
+            "color": "var(--chalk-300)",
+            "position": "below the symbol"
+          }
+        ]
+      }
+    },
+    {
+      "id": "truthTable",
+      "start": 19.13,
+      "end": 32.38,
+      "narration": "Four operating modes — hold when J equals zero and K equals zero, reset when J is zero and K is one, set when J is one and K is zero, and toggle when both J and K are one.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-title",
+            "content": "Truth table headline: J K → Q_next",
+            "delay": 0.2,
+            "color": "var(--amber-300)",
+            "position": "above table"
+          },
+          {
+            "type": "text-formula",
+            "content": "0 0 → Q (hold)",
+            "delay": 0.8,
+            "color": "var(--chalk-200)",
+            "position": "row 1"
+          },
+          {
+            "type": "text-formula",
+            "content": "0 1 → 0 (reset)",
+            "delay": 1.6,
+            "color": "var(--chalk-200)",
+            "position": "row 2"
+          },
+          {
+            "type": "text-formula",
+            "content": "1 0 → 1 (set)",
+            "delay": 2.4,
+            "color": "var(--chalk-200)",
+            "position": "row 3"
+          },
+          {
+            "type": "text-formula",
+            "content": "1 1 → !Q (toggle)",
+            "delay": 3.2,
+            "color": "var(--rose-300)",
+            "position": "row 4 — the headline row"
+          }
+        ]
+      }
+    },
+    {
+      "id": "toggleWaveform",
+      "start": 32.38,
+      "end": 44.59,
+      "narration": "Hold J and K both at one. Now every rising clock edge flips Q — and Q comes out as a clean square wave at exactly half the clock frequency. That's a one bit binary counter.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Three rows: CLK, J=K=1, Q",
+            "delay": 0.2,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "CLK trace — four full cycles drawn left-to-right",
+            "delay": 0.8,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "J=K=1 constant trace — flat high line",
+            "delay": 0.8,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Q toggles on each rising edge — half-frequency square wave",
+            "delay": 1,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Sample pulses at each rising clock edge",
+            "delay": 1,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "Q frequency = CLK frequency / 2",
+            "delay": 9,
+            "color": "var(--chalk-200)",
+            "position": "below the chart"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 44.59,
+      "end": 53,
+      "narration": "Chain N of them and each stage divides by two — N J K flip-flops give you an N bit ripple counter.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Toggle mode divides the clock by two.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "Chain N stages → N-bit ripple counter.",
+            "delay": 1.6,
+            "color": "var(--amber-300)",
+            "position": "below"
+          }
+        ]
+      }
+    }
+  ]
+}

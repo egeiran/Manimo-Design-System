@@ -1997,6 +1997,82 @@
       ],
       "subject_id": "ade",
       "chapter_number": 5
+    },
+    {
+      "id": "rl-transient",
+      "file": "rl-transient.jsx",
+      "html": "rl-transient.html",
+      "spec": "rl-transient.spec.json",
+      "title": "RL Transient: Why an Inductor Slows the Current",
+      "eyebrow": "reactive elements",
+      "topic": "Series RL transient — when the switch closes, current rises along i(t) = (V/R)(1 − e^{−t/τ}) with τ = L/R, because the inductor opposes any change in current and develops a back-emf that decays as the current settles; the inductive twin of RC charging.",
+      "duration": 46,
+      "language": "en",
+      "prerequisites": [
+        "rc-charging"
+      ],
+      "concepts": [
+        "RL circuit",
+        "inductor",
+        "back-emf",
+        "time constant",
+        "transient response",
+        "exponential",
+        "Lenz's law"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 8
+    },
+    {
+      "id": "integrator-op-amp",
+      "file": "integrator-op-amp.jsx",
+      "html": "integrator-op-amp.html",
+      "spec": "integrator-op-amp.spec.json",
+      "title": "The Integrator Op-Amp: Square Wave In, Triangle Wave Out",
+      "eyebrow": "operational amplifiers",
+      "topic": "Op-amp integrator — replace the inverting amp's feedback resistor with a capacitor and the virtual short turns the circuit into a time integrator V_out(t) = −(1/RC)∫V_in dt; a square-wave input produces a linear triangle-wave output whose slope is set by 1/RC.",
+      "duration": 58,
+      "language": "en",
+      "prerequisites": [
+        "inverting-op-amp"
+      ],
+      "concepts": [
+        "op-amp integrator",
+        "virtual ground",
+        "feedback capacitor",
+        "time integration",
+        "square wave",
+        "triangle wave",
+        "RC time constant"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 9
+    },
+    {
+      "id": "jk-flip-flop",
+      "file": "jk-flip-flop.jsx",
+      "html": "jk-flip-flop.html",
+      "spec": "jk-flip-flop.spec.json",
+      "title": "JK Flip-Flop: The SR Latch With a Useful Fourth Row",
+      "eyebrow": "memory and register",
+      "topic": "JK flip-flop — the SR latch with the forbidden S=R=1 state replaced by a TOGGLE mode (Q flips on each rising clock edge when J=K=1); the four modes hold/reset/set/toggle and the divide-by-two behaviour are the workhorse of every binary counter.",
+      "duration": 53,
+      "language": "en",
+      "prerequisites": [
+        "d-flip-flop",
+        "sr-latch"
+      ],
+      "concepts": [
+        "JK flip-flop",
+        "edge-triggered",
+        "toggle mode",
+        "divide-by-two",
+        "binary counter",
+        "sequential logic",
+        "rising edge"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 7
     }
   ]
 }

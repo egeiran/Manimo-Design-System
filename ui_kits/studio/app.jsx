@@ -103,6 +103,9 @@ const initialScenes = [
   { id: 'live-rc-charging', kind: 'live', kindLabel: 'Live', cardTitle: 'RC Charging', duration: '0:41', html: '../../motion/ade/rc-charging.html' },
   { id: 'live-cmos-inverter', kind: 'live', kindLabel: 'Live', cardTitle: 'The CMOS Inverter', duration: '0:54', html: '../../motion/ade/cmos-inverter.html' },
   { id: 'live-hexadecimal-counting', kind: 'live', kindLabel: 'Live', cardTitle: 'Counting in Hexadecimal', duration: '0:38', html: '../../motion/ade/hexadecimal-counting.html' },
+  { id: 'live-rl-transient', kind: 'live', kindLabel: 'Live', cardTitle: 'RL Transient', duration: 46, html: '../../motion/ade/rl-transient.html' },
+  { id: 'live-integrator-op-amp', kind: 'live', kindLabel: 'Live', cardTitle: 'Op-Amp Integrator', duration: 58, html: '../../motion/ade/integrator-op-amp.html' },
+  { id: 'live-jk-flip-flop', kind: 'live', kindLabel: 'Live', cardTitle: 'JK Flip-Flop', duration: 53, html: '../../motion/ade/jk-flip-flop.html' },
 ];
 
 function loadJSON(key, fallback) {
