@@ -576,8 +576,9 @@ function TakeawayBeat() {
         style={{
           fontFamily: 'var(--font-mono)', fontSize: 12,
           color: 'var(--chalk-300)', letterSpacing: '0.12em',
-          marginTop: 6, maxWidth: portrait ? '34ch' : 'none',
+          marginTop: 6,
           textAlign: 'center', textTransform: 'uppercase',
+          whiteSpace: 'nowrap',
         }}>
         opposite trade-off from R · C
       </FadeUp>

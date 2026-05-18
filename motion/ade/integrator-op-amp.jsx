@@ -293,10 +293,10 @@ function DerivationBeat() {
 
       <FadeUp duration={0.4} delay={4.0} distance={6}
         style={{
-          fontFamily: 'var(--font-mono)', fontSize: 18,
-          color: 'var(--chalk-300)',
+          fontFamily: 'var(--font-mono)', fontSize: 22,
+          color: 'var(--chalk-300)', lineHeight: 1,
         }}>
-        ⇓
+        ↓
       </FadeUp>
 
       <FadeUp duration={0.6} delay={4.5} distance={14}
