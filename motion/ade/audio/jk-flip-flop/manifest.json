@@ -1,0 +1,36 @@
+{
+  "sceneId": "jk-flip-flop",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/jk-flip-flop/scene.mp3",
+  "durationSec": 51.5,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "The S R latch has one forbidden row. What if you turned that forbidden row into the most useful row in digital design?"
+    },
+    {
+      "id": "symbol",
+      "audioStart": 7.62,
+      "narration": "Here's the JK flip-flop — three inputs J, K, and CLK, two outputs Q and Q-bar. The triangle on the clock input means it samples on the rising edge."
+    },
+    {
+      "id": "truthTable",
+      "audioStart": 19.13,
+      "narration": "Four operating modes — hold when J equals zero and K equals zero, reset when J is zero and K is one, set when J is one and K is zero, and toggle when both J and K are one."
+    },
+    {
+      "id": "toggleWaveform",
+      "audioStart": 32.38,
+      "narration": "Hold J and K both at one. Now every rising clock edge flips Q — and Q comes out as a clean square wave at exactly half the clock frequency. That's a one bit binary counter."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 44.59,
+      "narration": "Chain N of them and each stage divides by two — N J K flip-flops give you an N bit ripple counter."
+    }
+  ]
+}

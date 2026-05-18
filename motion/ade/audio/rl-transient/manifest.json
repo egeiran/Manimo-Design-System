@@ -1,0 +1,36 @@
+{
+  "sceneId": "rl-transient",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/rl-transient/scene.mp3",
+  "durationSec": 44.07,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Flip a switch onto an inductor — and the current refuses to jump. What's stopping it?"
+    },
+    {
+      "id": "circuit",
+      "audioStart": 5.62,
+      "narration": "Battery V in series with a resistor R and an inductor L. Close the switch — current starts to rise, but the inductor pushes back."
+    },
+    {
+      "id": "twoCurves",
+      "audioStart": 14.57,
+      "narration": "The current rises along an exponential curve toward V over R, while the voltage across the inductor decays from V down to zero — perfect mirror images."
+    },
+    {
+      "id": "timeConstant",
+      "audioStart": 25.02,
+      "narration": "Tau equals L over R is the time constant. After one tau the current has reached sixty three percent of its final value. After five tau it is essentially full."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 35.12,
+      "narration": "Bigger L slows the rise; bigger R hurries it. The time constant L over R sets the rhythm — the exact opposite trade-off from R C."
+    }
+  ]
+}
