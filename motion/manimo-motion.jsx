@@ -338,6 +338,14 @@ function SvgFadeIn({ duration = 0.4, delay = 0, ease = Easing.easeOutCubic, chil
 //   title     string   Serif italic title, e.g. "Moment of Inertia"
 //   duration  number   SCENE_DURATION — used as the end time for persistent elements
 //   children  node     Beat <Sprite> blocks; rendered on top of all chrome
+// Portrait safe-area insets (in 720×1280 stage coordinates).
+// The 9:16 canvas is letterboxed onto narrower-than-9:16 phones (iPhone is
+// ~19.5:9) by filling width and cropping height, so chrome flush against
+// the top/bottom is hidden by the Dynamic Island, status bar, home
+// indicator, and any host-app header/transport. These insets push title +
+// mascot + watermark inward so they remain visible on iPhone.
+const PORTRAIT_SAFE = { top: 104, bottom: 96, left: 48, right: 48 };
+
 function SceneChrome({
   eyebrow, title, duration,
   // Optional intro: when set, SceneChrome owns Manimo and the intro caption
@@ -352,7 +360,7 @@ function SceneChrome({
   // Portrait gets a tighter title block (top of screen, smaller type) and
   // a smaller bottom-right mascot so the centre of the canvas stays free.
   const titleStyle = portrait
-    ? { left: 32, right: 32, top: 32, fontTitle: 22, fontEyebrow: 10, gap: 4 }
+    ? { left: PORTRAIT_SAFE.left, right: PORTRAIT_SAFE.right, top: PORTRAIT_SAFE.top, fontTitle: 22, fontEyebrow: 10, gap: 4 }
     : { left: 48, right: 'auto', top: 28, fontTitle: 32, fontEyebrow: 11, gap: 4 };
   return (
     <div style={{
@@ -376,7 +384,7 @@ function SceneChrome({
       <div style={{
         position: 'absolute',
         ...(portrait
-          ? { right: 24, bottom: 28 }
+          ? { right: PORTRAIT_SAFE.right, bottom: PORTRAIT_SAFE.bottom }
           : { right: 32, top: 24 }),
         pointerEvents: 'none',
         fontFamily: 'var(--font-serif)',
@@ -439,8 +447,8 @@ function SceneChrome({
         <Sprite start={2.2} end={duration}>
           <div style={{
             position: 'absolute',
-            left: portrait ? 16 : 24,
-            bottom: portrait ? 12 : 16,
+            left: portrait ? PORTRAIT_SAFE.left : 24,
+            bottom: portrait ? PORTRAIT_SAFE.bottom : 16,
             width: portrait ? 78 : 110,
             height: portrait ? 78 : 110,
           }}>
@@ -480,8 +488,8 @@ function JourneyManimo({ introEnd, portrait }) {
   const introCx = portrait ? 360 : 460;
   const introCy = portrait ? 514 : 300;
   const cornerSize = portrait ? 78 : 110;
-  const cornerLeft = portrait ? 16 : 24;
-  const cornerBottom = portrait ? 12 : 16;
+  const cornerLeft = portrait ? PORTRAIT_SAFE.left : 24;
+  const cornerBottom = portrait ? PORTRAIT_SAFE.bottom : 16;
   const cornerCx = cornerLeft + cornerSize / 2;
   const cornerCy = (height || (portrait ? 1280 : 720)) - cornerBottom - cornerSize / 2;
 
