@@ -65,13 +65,13 @@ function CircuitSetupBeat() {
         rsX: 280, rsY: 220, rsW: 70, rsH: 30,
         termX: 420, termTopY: 180, termBotY: 320,
         rlX: 480, rlY: 240, rlW: 56, rlH: 90,
-        formulaY1: 400, formulaY2: 470,
+        formulaY1: 390, formulaY2: 460,
         fontFormula: 24, captionY: 540 }
-    : { vbW: 1000, vbH: 460, srcX: 180, srcY: 220,
+    : { vbW: 1000, vbH: 480, srcX: 180, srcY: 220,
         rsX: 360, rsY: 220, rsW: 90, rsH: 36,
         termX: 540, termTopY: 170, termBotY: 280,
         rlX: 620, rlY: 240, rlW: 70, rlH: 110,
-        formulaY1: 380, formulaY2: 420,
+        formulaY1: 370, formulaY2: 425,
         fontFormula: 26, captionY: 0 };
 
   return (
@@ -94,10 +94,10 @@ function CircuitSetupBeat() {
 
         {/* Wires: V_s top → R_s left; R_s right → top terminal; bottom return
             from bottom terminal → V_s−. */}
-        <TraceIn d={`M ${G.srcX + 14} ${G.srcY - 10} L ${G.srcX + 28} ${G.srcY - 10} L ${G.srcX + 28} ${G.rsY - G.rsH / 2} L ${G.rsX} ${G.rsY - G.rsH / 2}`}
+        <TraceIn d={`M ${G.srcX + 14} ${G.srcY - 10} L ${G.srcX + 28} ${G.srcY - 10} L ${G.srcX + 28} ${G.rsY} L ${G.rsX} ${G.rsY}`}
                  stroke="var(--chalk-200)" strokeWidth={2}
                  duration={0.5} delay={0.3}/>
-        <TraceIn d={`M ${G.rsX + G.rsW} ${G.rsY - G.rsH / 2} L ${G.termX} ${G.rsY - G.rsH / 2} L ${G.termX} ${G.termTopY}`}
+        <TraceIn d={`M ${G.rsX + G.rsW} ${G.rsY} L ${G.termX} ${G.rsY} L ${G.termX} ${G.termTopY}`}
                  stroke="var(--chalk-200)" strokeWidth={2}
                  duration={0.5} delay={0.7}/>
         <TraceIn d={`M ${G.srcX + 7} ${G.srcY + 10} L ${G.srcX + 28} ${G.srcY + 10} L ${G.srcX + 28} ${G.termBotY} L ${G.termX} ${G.termBotY}`}
@@ -125,18 +125,18 @@ function CircuitSetupBeat() {
         <SvgFadeIn duration={0.4} delay={1.4}>
           <rect x={G.rlX} y={G.rlY - G.rlH / 2 + 10}
                 width={G.rlW} height={G.rlH - 20}
-                fill="none" stroke="var(--rose-400)" strokeWidth={2.2}
+                fill="none" stroke="var(--amber-400)" strokeWidth={2.2}
                 rx={2}/>
-          {/* Arrow through box */}
+          {/* Arrow through box — marks "variable" */}
           <line x1={G.rlX - 6} y1={G.rlY + G.rlH / 2 - 4}
                 x2={G.rlX + G.rlW + 6} y2={G.rlY - G.rlH / 2 + 4}
-                stroke="var(--rose-300)" strokeWidth={1.6}/>
+                stroke="var(--amber-300)" strokeWidth={1.6}/>
           <path d={`M ${G.rlX + G.rlW + 6} ${G.rlY - G.rlH / 2 + 4}
                     L ${G.rlX + G.rlW - 2} ${G.rlY - G.rlH / 2 + 2}
                     L ${G.rlX + G.rlW + 2} ${G.rlY - G.rlH / 2 + 12} Z`}
-                fill="var(--rose-300)"/>
+                fill="var(--amber-300)"/>
           <text x={G.rlX + G.rlW + 18} y={G.rlY + 6}
-                fill="var(--rose-300)" fontFamily="var(--font-serif)"
+                fill="var(--amber-300)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={20}>R<tspan baselineShift="sub" fontSize="0.7em">L</tspan></text>
           {/* Wires from terminals to R_L */}
           <line x1={G.termX} y1={G.termTopY}
@@ -182,12 +182,10 @@ function SweepBeat() {
   const { localTime } = useSprite();
 
   const G = portrait
-    ? { vbW: 600, vbH: 700, gx: 100, gy: 110, gw: 420, gh: 360,
-        sliderY: 540, sliderW: 420, sliderTickH: 12,
-        fontAxis: 18, captionY: 660 }
-    : { vbW: 1100, vbH: 480, gx: 160, gy: 60, gw: 720, gh: 320,
-        sliderY: 440, sliderW: 720, sliderTickH: 14,
-        fontAxis: 18, captionY: 460 };
+    ? { vbW: 600, vbH: 560, gx: 100, gy: 110, gw: 420, gh: 360,
+        fontAxis: 18, captionY: 530 }
+    : { vbW: 1100, vbH: 430, gx: 160, gy: 60, gw: 720, gh: 320,
+        fontAxis: 18, captionY: 415 };
 
   const ax0 = G.gx, ay0 = G.gy + G.gh;
   const axEnd = G.gx + G.gw;
@@ -229,9 +227,8 @@ function SweepBeat() {
   const traceD = sampleXs.slice(0, sliderIdx + 1)
     .map((x, k) => (k === 0 ? `M ${x} ${sampleYs[k]}` : `L ${x} ${sampleYs[k]}`)).join(' ');
 
-  // Slider lane below the graph: tick at peak.
-  const laneLeftX = ax0;
-  const laneRightX = axEnd;
+  // Peak y-coordinate (used for the P_max y-axis label).
+  const peakY = sampleYs[Math.floor(SAMPLES * peakFrac)];
 
   return (
     <div style={{
@@ -252,12 +249,24 @@ function SweepBeat() {
           <text x={ax0 - 14} y={ayEnd - 4} textAnchor="end"
                 fill="var(--chalk-100)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={G.fontAxis}>P<tspan baselineShift="sub" fontSize="0.7em">L</tspan></text>
-          {/* R_s tick + label */}
+          {/* R_s tick + label on x-axis */}
           <line x1={peakX} y1={ay0} x2={peakX} y2={ay0 + 6}
                 stroke="var(--chalk-300)" strokeWidth={1.4}/>
           <text x={peakX} y={ay0 + 22} textAnchor="middle"
                 fill="var(--chalk-300)" fontFamily="var(--font-mono)"
                 fontSize={12} letterSpacing="0.08em">R_s</text>
+          {/* 4·R_s tick + label at the right end of x-axis */}
+          <line x1={axEnd} y1={ay0} x2={axEnd} y2={ay0 + 6}
+                stroke="var(--chalk-300)" strokeWidth={1.4}/>
+          <text x={axEnd} y={ay0 + 22} textAnchor="middle"
+                fill="var(--chalk-300)" fontFamily="var(--font-mono)"
+                fontSize={12} letterSpacing="0.08em">4·R_s</text>
+          {/* P_max tick + label on y-axis at peak height */}
+          <line x1={ax0 - 6} y1={peakY} x2={ax0} y2={peakY}
+                stroke="var(--chalk-300)" strokeWidth={1.4}/>
+          <text x={ax0 - 10} y={peakY + 4} textAnchor="end"
+                fill="var(--chalk-300)" fontFamily="var(--font-mono)"
+                fontSize={12} letterSpacing="0.08em">P_max</text>
         </SvgFadeIn>
 
         {/* Light backdrop curve */}
@@ -282,36 +291,37 @@ function SweepBeat() {
           </g>
         )}
 
-        {/* Slider lane and knob below the graph */}
-        <SvgFadeIn duration={0.4} delay={1.0}>
-          <line x1={laneLeftX} y1={G.sliderY} x2={laneRightX} y2={G.sliderY}
-                stroke="var(--chalk-300)" strokeWidth={1.4}/>
-          <line x1={peakX} y1={G.sliderY - G.sliderTickH / 2}
-                x2={peakX} y2={G.sliderY + G.sliderTickH / 2}
-                stroke="var(--chalk-300)" strokeWidth={1.4}/>
-          <text x={peakX} y={G.sliderY + G.sliderTickH / 2 + 14} textAnchor="middle"
-                fill="var(--chalk-300)" fontFamily="var(--font-mono)"
-                fontSize={11} letterSpacing="0.08em">R_L = R_s</text>
-        </SvgFadeIn>
-        {u > 0 && (
-          <g>
-            <circle cx={sliderX} cy={G.sliderY} r={7}
-                    fill="var(--rose-400)" stroke="var(--rose-300)" strokeWidth={1.5}/>
-            <line x1={sliderX} y1={G.sliderY - 18}
-                  x2={sliderX} y2={G.sliderY - 6}
-                  stroke="var(--rose-300)" strokeWidth={1.4}/>
+        {/* Peak callout — anchored permanently at the peak so the eye
+            keeps a reference when the moving marker drifts past. */}
+        {u > 0.32 && (
+          <g style={{ opacity: clamp((u - 0.32) / 0.1, 0, 1) }}>
+            <line x1={peakX} y1={ay0} x2={peakX} y2={peakY}
+                  stroke="var(--amber-300)" strokeWidth={1.2}
+                  strokeDasharray="4 4" opacity={0.55}/>
+            <text x={peakX + 8} y={peakY - 8}
+                  fill="var(--amber-300)" fontFamily="var(--font-mono)"
+                  fontSize={12} letterSpacing="0.08em">peak</text>
           </g>
         )}
 
-        {/* Peak callout — fades in once the slider passes the peak */}
-        {u > 0.32 && (
-          <g style={{ opacity: clamp((u - 0.32) / 0.1, 0, 1) }}>
-            <line x1={peakX} y1={ay0} x2={peakX} y2={sampleYs[Math.floor(SAMPLES * peakFrac)]}
-                  stroke="var(--amber-300)" strokeWidth={1.2}
-                  strokeDasharray="4 4" opacity={0.55}/>
-            <text x={peakX + 8} y={sampleYs[Math.floor(SAMPLES * peakFrac)] - 8}
-                  fill="var(--amber-300)" fontFamily="var(--font-mono)"
-                  fontSize={12} letterSpacing="0.08em">peak</text>
+        {/* Endpoint annotations — support the narration "tiny load → V_L≈0;
+            huge load → I≈0". Each fades in when the slider reaches that region. */}
+        {u > 0.06 && (
+          <g style={{ opacity: clamp((u - 0.06) / 0.08, 0, 1) - clamp((u - 0.45) / 0.1, 0, 1) }}>
+            <text x={ax0 + 12} y={ay0 - 14}
+                  fill="var(--chalk-200)" fontFamily="var(--font-serif)"
+                  fontStyle="italic" fontSize={14}>
+              V<tspan baselineShift="sub" fontSize="0.7em">L</tspan> → 0
+            </text>
+          </g>
+        )}
+        {u > 0.55 && (
+          <g style={{ opacity: clamp((u - 0.55) / 0.08, 0, 1) }}>
+            <text x={axEnd - 12} y={ay0 - 14} textAnchor="end"
+                  fill="var(--chalk-200)" fontFamily="var(--font-serif)"
+                  fontStyle="italic" fontSize={14}>
+              I → 0
+            </text>
           </g>
         )}
 
