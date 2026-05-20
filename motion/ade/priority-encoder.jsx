@@ -225,9 +225,9 @@ function PriorityRuleBeat() {
   // Layout — three rows, top-to-bottom; LED row + arrow + 3-bit binary code
   const G = portrait
     ? { vbW: 600, vbH: 740,
-        rowX0: 80, rowXW: 440, rowY0: 100, rowH: 170,
-        ledStartX: 100, ledStep: 36, ledY: 0,    // ledY: relative to row top
-        arrowX: 350,
+        rowX0: 60, rowXW: 480, rowY0: 100, rowH: 170,
+        ledStartX: 60, ledStep: 36, ledY: 0,    // ledY: relative to row top
+        arrowX: 360,
         codeX: 430, codeY: 8, codeStep: 22,
         fontLabel: 13, captionY: 700 }
     : { vbW: 1100, vbH: 460,

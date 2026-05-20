@@ -325,7 +325,9 @@ function DecomposeBeat() {
           {/* The in-phase part along V */}
           <line x1={G.origX} y1={G.origY} x2={projXOnV} y2={projYOnV}
                 stroke="var(--teal-400)" strokeWidth={4} opacity={0.95}/>
-          <text x={projXOnV / 2 + G.origX / 2} y={G.origY - 12} textAnchor="middle"
+          {/* Label sits ~75% of the way from origin to the projection foot
+              so it clears the φ-arc label that lives near the origin. */}
+          <text x={G.origX + (projXOnV - G.origX) * 0.75} y={G.origY - 12} textAnchor="middle"
                 fill="var(--teal-400)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={G.fontLabel}>
             I cos φ
@@ -556,9 +558,9 @@ function TakeawayBeat() {
       <FadeUp duration={0.6} delay={0.3} distance={14}
         style={{
           fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-          fontSize: portrait ? 30 : 40, color: 'var(--amber-300)',
+          fontSize: portrait ? 26 : 40, color: 'var(--amber-300)',
           letterSpacing: '0.02em',
-          maxWidth: portrait ? '20ch' : 'none',
+          whiteSpace: 'nowrap',
         }}>
         S² = P² + Q²   ·   cos φ = P/S
       </FadeUp>
