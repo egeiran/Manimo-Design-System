@@ -1,0 +1,36 @@
+{
+  "sceneId": "op-amp-comparator",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/op-amp-comparator/scene.mp3",
+  "durationSec": 56.61,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "An op-amp with no feedback resistor — how does it turn a smooth voltage into a clean digital decision?"
+    },
+    {
+      "id": "schematic",
+      "audioStart": 7.11,
+      "narration": "V in goes to the plus input, a fixed reference V ref to the minus input. There is no feedback wire — the op-amp runs open loop, with a gain in the hundreds of thousands."
+    },
+    {
+      "id": "transferCurve",
+      "audioStart": 18.65,
+      "narration": "The transfer characteristic is brutal. Below V ref the output sits at minus V sat. Above V ref it jumps to plus V sat. The transition is essentially vertical."
+    },
+    {
+      "id": "rampToSquare",
+      "audioStart": 30.86,
+      "narration": "Feed it a triangle wave. Each time the input climbs past V ref, the output snaps high; each time it falls back below, the output snaps low. A smooth analog input becomes a clean square wave."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 45.47,
+      "narration": "That is what a comparator does — turn an analog crossing into a digital edge. Zero-crossing detectors, level alarms, every analog-to-digital converter starts here."
+    }
+  ]
+}

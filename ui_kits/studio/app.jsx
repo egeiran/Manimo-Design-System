@@ -112,6 +112,9 @@ const initialScenes = [
   { id: 'live-current-divider', kind: 'live', kindLabel: 'Live', cardTitle: 'Current Divider', duration: 36, html: '../../motion/ade/current-divider.html' },
   { id: 'live-high-pass-bode', kind: 'live', kindLabel: 'Live', cardTitle: 'RC High-Pass Filter', duration: 46, html: '../../motion/ade/high-pass-bode.html' },
   { id: 'live-ripple-counter', kind: 'live', kindLabel: 'Live', cardTitle: 'Ripple Counter', duration: 44, html: '../../motion/ade/ripple-counter.html' },
+  { id: 'live-wheatstone-bridge', kind: 'live', kindLabel: 'Live', cardTitle: 'The Wheatstone Bridge', duration: '0:50', html: '../../motion/ade/wheatstone-bridge.html' },
+  { id: 'live-op-amp-comparator', kind: 'live', kindLabel: 'Live', cardTitle: 'The Op-Amp Comparator', duration: '0:57', html: '../../motion/ade/op-amp-comparator.html' },
+  { id: 'live-demultiplexer-1-to-4', kind: 'live', kindLabel: 'Live', cardTitle: '1-to-4 Demultiplexer', duration: '0:59', html: '../../motion/ade/demultiplexer-1-to-4.html' },
 ];
 
 function loadJSON(key, fallback) {

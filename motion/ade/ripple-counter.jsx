@@ -65,8 +65,11 @@ function Scene() {
 // ─── Shared T-flip-flop block ────────────────────────────────────────────
 // Box with J=K=1 (tied high), CLK input on the left (triangle for
 // edge-triggered), Q output on the right. `cx, cy` = box centre.
-function TffBox({ cx, cy, w = 100, h = 80, label = 'FF', qLabel = 'Q' }) {
-  const left = cx - w / 2, right = cx + w / 2;
+// The Q signal name lives on the wire just outside the box, not inside —
+// callers render `qNames[i]` next to the right edge so there is one label,
+// not two.
+function TffBox({ cx, cy, w = 100, h = 80, label = 'FF' }) {
+  const left = cx - w / 2;
   const top = cy - h / 2, bot = cy + h / 2;
   return (
     <g>
@@ -84,10 +87,6 @@ function TffBox({ cx, cy, w = 100, h = 80, label = 'FF', qLabel = 'Q' }) {
       {/* CLK triangle on the left edge, middle */}
       <path d={`M ${left} ${cy - 7} L ${left + 12} ${cy} L ${left} ${cy + 7} Z`}
             fill="none" stroke="var(--chalk-200)" strokeWidth={1.6}/>
-      {/* Q label on the right */}
-      <text x={right - 14} y={cy + 6} textAnchor="end"
-            fill="var(--amber-300)" fontFamily="var(--font-serif)"
-            fontStyle="italic" fontSize={18}>{qLabel}</text>
       {/* Stage label below the box */}
       <text x={cx} y={bot + 18} textAnchor="middle"
             fill="var(--chalk-300)" fontFamily="var(--font-mono)"
@@ -148,7 +147,7 @@ function ChainSetupBeat() {
         {G.boxCx.map((cx, i) => (
           <SvgFadeIn key={i} duration={0.4} delay={0.6 + i * 0.4}>
             <TffBox cx={cx} cy={G.boxCy[i]} w={G.boxW} h={G.boxH}
-                    label={labels[i]} qLabel={qNames[i]}/>
+                    label={labels[i]}/>
           </SvgFadeIn>
         ))}
 

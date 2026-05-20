@@ -1,0 +1,118 @@
+{
+  "id": "demultiplexer-1-to-4",
+  "title": "1-to-4 Demultiplexer: One Data Bit, Four Possible Outputs",
+  "eyebrow": "combinational logic",
+  "language": "en",
+  "duration": 60,
+  "topic": "1-to-4 demultiplexer — one data input D, two select bits S1 and S0, and four outputs Y0 through Y3; the select bits address which output gets the input value, the others are forced to zero; the dual of a multiplexer",
+  "subject_id": "ade",
+  "chapter_number": 10,
+  "prerequisites": [
+    "multiplexer-4-to-1",
+    "two-to-four-decoder"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.55,
+      "narration": "One data line in, four possible outputs out — how do two select bits decide where the bit goes?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "One bit in, four outputs out — only one wakes up.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "schematic",
+      "start": 6.55,
+      "end": 21.95,
+      "narration": "A demultiplexer has one data input D, two select bits S one and S zero, and four output lines Y zero through Y three. Inside, four AND gates fed by a small decoder pick exactly one output to wake up.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Demux block diagram: D input on left, S1 and S0 select inputs below, four output lines Y0..Y3 on the right; inner AND gates with decoder lines feeding each gate's select pin",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "truthTable",
+      "start": 21.95,
+      "end": 35.12,
+      "narration": "The rule is short. The output addressed by the two select bits takes the value of D; every other output is held at zero. Read down the truth table and a single column of ones tracks the select address.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "Y_k = D · (k == address)",
+            "delay": 0.3,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "4-row truth table with S1 S0 | Y0 Y1 Y2 Y3, the diagonal of D values lighting the addressed column",
+            "delay": 1.2,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "addressWalk",
+      "start": 35.12,
+      "end": 48.87,
+      "narration": "Cycle the two select bits through zero zero, zero one, one zero, one one. The active output line slides from Y zero to Y three in lockstep — and whatever D is doing rides on top.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Demux schematic with live S1/S0 readout cycling 00→01→10→11; active output line glowing amber and showing D's value; inactive lines greyed at 0",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 48.87,
+      "end": 60,
+      "narration": "A demultiplexer broadcasts one wire onto many, addressed by select bits. Combined with a multiplexer it is how a single bus reaches many destinations.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "the dual of a multiplexer — one source, N addressed destinations",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "data bus distribution · address decoders · memory write enables",
+            "delay": 1.6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    }
+  ]
+}
