@@ -1,0 +1,36 @@
+{
+  "sceneId": "ripple-counter",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/ripple-counter/scene.mp3",
+  "durationSec": 42.45,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Chain four toggle flip-flops together — what do they count to?"
+    },
+    {
+      "id": "chainSetup",
+      "audioStart": 3.88,
+      "narration": "Wire four toggle flip-flops in a chain — the clock drives only the first one, and each Q output drives the clock of the next stage."
+    },
+    {
+      "id": "countWalk",
+      "audioStart": 12.19,
+      "narration": "Run the clock. The first stage toggles every edge, the second one every two edges, the third one every four, and the fourth one every eight — the four Q outputs together spell out a binary count from zero up to fifteen."
+    },
+    {
+      "id": "divideByTwo",
+      "audioStart": 26.18,
+      "narration": "Stack the four Q outputs and the divide-by-two structure jumps out — each row is a clean square wave at half the frequency of the row above."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 35.42,
+      "narration": "N flip-flops give an N bit counter that rolls over every two to the N clocks — small, simple, fast."
+    }
+  ]
+}

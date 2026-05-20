@@ -1,0 +1,36 @@
+{
+  "sceneId": "current-divider",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/current-divider/scene.mp3",
+  "durationSec": 34.46,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "A current source pushes I in into two parallel resistors — how does the current split between them?"
+    },
+    {
+      "id": "circuit",
+      "audioStart": 6.33,
+      "narration": "Both resistors sit across the same two nodes, so they share the same voltage V across them."
+    },
+    {
+      "id": "formula",
+      "audioStart": 11.95,
+      "narration": "Ohm's law gives the branch currents I one and I two, and they add up to I in — solve it and the smaller resistor takes the bigger share."
+    },
+    {
+      "id": "sweep",
+      "audioStart": 21.13,
+      "narration": "Scrub R two. Make it small and the current pours through R two; make it large and the current crowds back into R one."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 30.26,
+      "narration": "Current divides inversely to resistance — the easy path wins."
+    }
+  ]
+}

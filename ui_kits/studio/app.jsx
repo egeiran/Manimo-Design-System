@@ -109,6 +109,9 @@ const initialScenes = [
   { id: 'live-diode-iv-curve', kind: 'live', kindLabel: 'Live', cardTitle: 'Diode I-V Curve', duration: 43, html: '../../motion/ade/diode-iv-curve.html' },
   { id: 'live-bjt-current-mirror', kind: 'live', kindLabel: 'Live', cardTitle: 'BJT Current Mirror', duration: 45, html: '../../motion/ade/bjt-current-mirror.html' },
   { id: 'live-full-adder', kind: 'live', kindLabel: 'Live', cardTitle: 'Full Adder', duration: 42, html: '../../motion/ade/full-adder.html' },
+  { id: 'live-current-divider', kind: 'live', kindLabel: 'Live', cardTitle: 'Current Divider', duration: 36, html: '../../motion/ade/current-divider.html' },
+  { id: 'live-high-pass-bode', kind: 'live', kindLabel: 'Live', cardTitle: 'RC High-Pass Filter', duration: 46, html: '../../motion/ade/high-pass-bode.html' },
+  { id: 'live-ripple-counter', kind: 'live', kindLabel: 'Live', cardTitle: 'Ripple Counter', duration: 44, html: '../../motion/ade/ripple-counter.html' },
 ];
 
 function loadJSON(key, fallback) {

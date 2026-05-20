@@ -1,0 +1,184 @@
+{
+  "id": "ripple-counter",
+  "title": "Ripple Counter: How Four Toggle Flip-Flops Count to Sixteen",
+  "eyebrow": "sequential logic",
+  "language": "en",
+  "duration": 44,
+  "topic": "4-bit asynchronous ripple counter — chain four toggle (T = J = K = 1) flip-flops with each Q driving the next stage's clock. Each stage halves the frequency, so Q_0 is the least significant bit toggling every clock, Q_3 is the most significant bit toggling every eight clocks; together they count 0000 → 1111. The 'ripple' name comes from the propagation delay cascade: bits flip one stage at a time, not simultaneously.",
+  "subject_id": "ade",
+  "chapter_number": 7,
+  "prerequisites": [
+    "jk-flip-flop"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 3.88,
+      "narration": "Chain four toggle flip-flops together — what do they count to?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Four toggling cells, one clock — a binary counter falls out.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "chainSetup",
+      "start": 3.88,
+      "end": 12.19,
+      "narration": "Wire four toggle flip-flops in a chain — the clock drives only the first one, and each Q output drives the clock of the next stage.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Four T flip-flop boxes in a horizontal row, labeled FF0..FF3",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Each box: J=K=1 fixed inputs (toggle mode); CLK input on left, Q output on right",
+            "delay": 1.2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "CLK input wire feeds FF0; Q_0 wire connects to FF1.CLK; Q_1 → FF2.CLK; Q_2 → FF3.CLK",
+            "delay": 2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Output labels Q0..Q3 (LSB to MSB) above each Q wire",
+            "delay": 3,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "asynchronous — each stage clocks the next one",
+            "delay": 5,
+            "color": "var(--chalk-300)",
+            "position": "below the diagram"
+          }
+        ]
+      }
+    },
+    {
+      "id": "countWalk",
+      "start": 12.19,
+      "end": 26.18,
+      "narration": "Run the clock. The first stage toggles every edge, the second one every two edges, the third one every four, and the fourth one every eight — the four Q outputs together spell out a binary count from zero up to fifteen.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Four-bit register display Q3 Q2 Q1 Q0 with each bit lighting amber when high",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Decimal readout below the binary register (0..15)",
+            "delay": 0.6,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Clock pulse counter ticking once per period; each rising edge advances the count by one",
+            "delay": 1,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the least-significant bit flips every clock; the next one every other clock; …",
+            "delay": 2,
+            "color": "var(--chalk-300)",
+            "position": "below the readout"
+          }
+        ]
+      }
+    },
+    {
+      "id": "divideByTwo",
+      "start": 26.18,
+      "end": 35.42,
+      "narration": "Stack the four Q outputs and the divide-by-two structure jumps out — each row is a clean square wave at half the frequency of the row above.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "Five stacked timing rows: CLK (top, fastest), then Q0, Q1, Q2, Q3 — each at half the frequency of the previous",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Row labels CLK, Q0, Q1, Q2, Q3 on the left",
+            "delay": 0.5,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Period annotations: T, 2T, 4T, 8T, 16T from CLK down to Q3",
+            "delay": 4,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-caption",
+            "content": "N stages → divide-by-2^N — and the bit pattern itself counts",
+            "delay": 6.5,
+            "color": "var(--chalk-300)",
+            "position": "below the diagram"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 35.42,
+      "end": 44,
+      "narration": "N flip-flops give an N bit counter that rolls over every two to the N clocks — small, simple, fast.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "N flip-flops  →  counts 0 .. 2^N − 1",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre, large amber serif italic"
+          },
+          {
+            "type": "text-caption",
+            "content": "asynchronous = simple; ripple delay grows with N. For wide, fast counters, prefer a synchronous design.",
+            "delay": 1.6,
+            "color": "var(--chalk-100)",
+            "position": "below the formula"
+          },
+          {
+            "type": "text-caption",
+            "content": "the building block of every timer, frequency divider, and event counter",
+            "delay": 3.4,
+            "color": "var(--chalk-300)",
+            "position": "small mono caption below"
+          }
+        ]
+      }
+    }
+  ]
+}

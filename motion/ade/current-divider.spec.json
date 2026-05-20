@@ -1,0 +1,187 @@
+{
+  "id": "current-divider",
+  "title": "Current Divider: How Two Parallel Resistors Split the Current",
+  "eyebrow": "circuit analysis",
+  "language": "en",
+  "duration": 36,
+  "topic": "Current divider — two resistors in parallel across a current source I_in split the total current as I_1 = I_in · R_2/(R_1+R_2) and I_2 = I_in · R_1/(R_1+R_2); the smaller resistor steals the larger share",
+  "subject_id": "ade",
+  "chapter_number": 1,
+  "prerequisites": [
+    "voltage-divider"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.33,
+      "narration": "A current source pushes I in into two parallel resistors — how does the current split between them?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Two parallel resistors — which branch wins the current?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "circuit",
+      "start": 6.33,
+      "end": 11.95,
+      "narration": "Both resistors sit across the same two nodes, so they share the same voltage V across them.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Current source on the left injecting I_in to the top node",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Top wire connecting to two parallel resistor columns R_1 and R_2",
+            "delay": 0.4,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Two zigzag resistors R_1 and R_2 in parallel between the same two nodes",
+            "delay": 1,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "R_1 and R_2 labels next to the resistors",
+            "delay": 1.6,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Shared voltage V across both resistors with bracket on the right",
+            "delay": 2.4,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "same voltage across both — Ohm's law sets each branch current",
+            "delay": 5.4,
+            "color": "var(--chalk-300)",
+            "position": "below the diagram, sans 14"
+          }
+        ]
+      }
+    },
+    {
+      "id": "formula",
+      "start": 11.95,
+      "end": 21.13,
+      "narration": "Ohm's law gives the branch currents I one and I two, and they add up to I in — solve it and the smaller resistor takes the bigger share.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "I_1 = V/R_1,   I_2 = V/R_2",
+            "delay": 0.3,
+            "color": "var(--chalk-200)",
+            "position": "top of stack"
+          },
+          {
+            "type": "text-formula",
+            "content": "I_in = I_1 + I_2",
+            "delay": 1.2,
+            "color": "var(--chalk-200)",
+            "position": "middle of stack"
+          },
+          {
+            "type": "text-formula",
+            "content": "I_1 = I_in · R_2/(R_1 + R_2)",
+            "delay": 2.6,
+            "color": "var(--amber-300)",
+            "position": "amber payoff (note the swap — R_2 on top)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the *other* resistor lands in the numerator",
+            "delay": 4,
+            "color": "var(--chalk-300)",
+            "position": "small caption beneath"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweep",
+      "start": 21.13,
+      "end": 30.26,
+      "narration": "Scrub R two. Make it small and the current pours through R two; make it large and the current crowds back into R one.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Parallel resistor circuit with two thick arrows showing I_1 and I_2 whose widths track the ratio as R_2 sweeps",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Live numeric readouts I_1 = NN% · I_in and I_2 = NN% · I_in beside each branch",
+            "delay": 0.6,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the smaller resistor steals the larger share",
+            "delay": 1.4,
+            "color": "var(--chalk-300)",
+            "position": "below the diagram"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 30.26,
+      "end": 36,
+      "narration": "Current divides inversely to resistance — the easy path wins.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "I_k = I_in · R_other / (R_1 + R_2)",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre, large amber serif italic"
+          },
+          {
+            "type": "text-caption",
+            "content": "R_2 ≪ R_1 → I_2 takes almost all of I_in. R_2 ≫ R_1 → I_1 does.",
+            "delay": 1.6,
+            "color": "var(--chalk-100)",
+            "position": "below the formula"
+          },
+          {
+            "type": "text-caption",
+            "content": "the dual of the voltage divider — same idea, swapped roles",
+            "delay": 3.4,
+            "color": "var(--chalk-300)",
+            "position": "small mono caption below"
+          }
+        ]
+      }
+    }
+  ]
+}
