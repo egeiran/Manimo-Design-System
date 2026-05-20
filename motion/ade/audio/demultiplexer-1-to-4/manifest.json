@@ -1,0 +1,36 @@
+{
+  "sceneId": "demultiplexer-1-to-4",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/demultiplexer-1-to-4/scene.mp3",
+  "durationSec": 58.98,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "One data line in, four possible outputs out — how do two select bits decide where the bit goes?"
+    },
+    {
+      "id": "schematic",
+      "audioStart": 6.55,
+      "narration": "A demultiplexer has one data input D, two select bits S one and S zero, and four output lines Y zero through Y three. Inside, four AND gates fed by a small decoder pick exactly one output to wake up."
+    },
+    {
+      "id": "truthTable",
+      "audioStart": 21.95,
+      "narration": "The rule is short. The output addressed by the two select bits takes the value of D; every other output is held at zero. Read down the truth table and a single column of ones tracks the select address."
+    },
+    {
+      "id": "addressWalk",
+      "audioStart": 35.12,
+      "narration": "Cycle the two select bits through zero zero, zero one, one zero, one one. The active output line slides from Y zero to Y three in lockstep — and whatever D is doing rides on top."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 48.87,
+      "narration": "A demultiplexer broadcasts one wire onto many, addressed by select bits. Combined with a multiplexer it is how a single bus reaches many destinations."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "sceneId": "wheatstone-bridge",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/wheatstone-bridge/scene.mp3",
+  "durationSec": 49.6,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Four resistors in a diamond, one tiny meter in the middle — how does this circuit measure resistance you cannot easily see?"
+    },
+    {
+      "id": "bridgeSetup",
+      "audioStart": 7.67,
+      "narration": "A battery drives two parallel arms. The top arm carries R one and R three; the bottom arm carries R two and R x. Between the two midpoints sits a galvanometer."
+    },
+    {
+      "id": "balanceCondition",
+      "audioStart": 19.56,
+      "narration": "Each arm is just a voltage divider. The bridge is balanced — V A equals V B — exactly when R one times R x equals R two times R three."
+    },
+    {
+      "id": "needleSweep",
+      "audioStart": 30.79,
+      "narration": "Scrub R x. The galvanometer needle swings as the two midpoints disagree, then falls dead still the moment the ratio matches."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 39.25,
+      "narration": "At balance, the unknown comes straight from a ratio of three known resistors. That is why bridges measure strain, temperature, and tiny resistances better than any direct meter."
+    }
+  ]
+}

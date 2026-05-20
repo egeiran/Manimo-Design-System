@@ -2301,6 +2301,83 @@
       ],
       "subject_id": "ade",
       "chapter_number": 7
+    },
+    {
+      "id": "wheatstone-bridge",
+      "file": "wheatstone-bridge.jsx",
+      "html": "wheatstone-bridge.html",
+      "spec": "wheatstone-bridge.spec.json",
+      "title": "The Wheatstone Bridge: A Galvanometer That Lies Still at Balance",
+      "eyebrow": "circuit analysis",
+      "topic": "Wheatstone bridge — four resistors in a diamond with a galvanometer between the two midpoints; the two midpoints reach the same voltage when R1·Rx = R2·R3, and the meter falls dead still. Genuine motion in Beat 4: Rx scrubs in real time and the galvanometer needle deflects, crossing zero at the balance point.",
+      "duration": 51,
+      "language": "en",
+      "prerequisites": [
+        "voltage-divider",
+        "kirchhoff-voltage-law"
+      ],
+      "concepts": [
+        "Wheatstone bridge",
+        "bridge circuit",
+        "balance condition",
+        "galvanometer",
+        "voltage divider",
+        "precision measurement",
+        "circuit reduction"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 3
+    },
+    {
+      "id": "op-amp-comparator",
+      "file": "op-amp-comparator.jsx",
+      "html": "op-amp-comparator.html",
+      "spec": "op-amp-comparator.spec.json",
+      "title": "The Op-Amp Comparator: A Switch That Snaps at the Reference",
+      "eyebrow": "operational amplifiers",
+      "topic": "Open-loop op-amp as a comparator — strip away the feedback resistor and the enormous open-loop gain forces V_out to one of the supply rails the moment V_in crosses V_ref. Genuine motion in Beat 4: a triangle input sweeps through V_ref and the output snaps cleanly between +V_sat and −V_sat with synchronised scope traces.",
+      "duration": 58,
+      "language": "en",
+      "prerequisites": [
+        "inverting-op-amp"
+      ],
+      "concepts": [
+        "comparator",
+        "open-loop gain",
+        "saturation",
+        "zero-crossing detector",
+        "transfer characteristic",
+        "operational amplifier",
+        "analog-to-digital"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 9
+    },
+    {
+      "id": "demultiplexer-1-to-4",
+      "file": "demultiplexer-1-to-4.jsx",
+      "html": "demultiplexer-1-to-4.html",
+      "spec": "demultiplexer-1-to-4.spec.json",
+      "title": "1-to-4 Demultiplexer: One Data Bit, Four Possible Outputs",
+      "eyebrow": "combinational logic",
+      "topic": "1-to-4 demultiplexer — one data input D, two select bits S1 and S0, and four outputs Y0..Y3; the addressed output takes D, the others sit at zero. Genuine motion in Beat 4: the select address cycles 00→01→10→11, the active output line glows and a dot rides through the addressed AND gate while the inactive lines stay grey at 0.",
+      "duration": 60,
+      "language": "en",
+      "prerequisites": [
+        "multiplexer-4-to-1",
+        "two-to-four-decoder"
+      ],
+      "concepts": [
+        "demultiplexer",
+        "DEMUX",
+        "select bits",
+        "address decoder",
+        "combinational logic",
+        "data distribution",
+        "AND gate"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 10
     }
   ]
 }

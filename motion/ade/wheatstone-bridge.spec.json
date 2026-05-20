@@ -1,0 +1,124 @@
+{
+  "id": "wheatstone-bridge",
+  "title": "The Wheatstone Bridge: A Galvanometer That Lies Still at Balance",
+  "eyebrow": "circuit analysis",
+  "language": "en",
+  "duration": 51,
+  "topic": "Wheatstone bridge — four resistors in a diamond with a galvanometer between the two midpoints; the two midpoints reach the same voltage when R1 over R3 equals R2 over Rx, and the meter falls dead still",
+  "subject_id": "ade",
+  "chapter_number": 3,
+  "prerequisites": [
+    "voltage-divider",
+    "kirchhoff-voltage-law"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.67,
+      "narration": "Four resistors in a diamond, one tiny meter in the middle — how does this circuit measure resistance you cannot easily see?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "A diamond of resistors — when does the meter fall silent?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bridgeSetup",
+      "start": 7.67,
+      "end": 19.56,
+      "narration": "A battery drives two parallel arms. The top arm carries R one and R three; the bottom arm carries R two and R x. Between the two midpoints sits a galvanometer.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Battery on the left, two parallel arms forming a diamond, four resistor zigzags, galvanometer circle between midpoints A and B",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "balanceCondition",
+      "start": 19.56,
+      "end": 30.79,
+      "narration": "Each arm is just a voltage divider. The bridge is balanced — V A equals V B — exactly when R one times R x equals R two times R three.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "V_A = V · R3/(R1+R3)",
+            "delay": 0.3,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-formula",
+            "content": "V_B = V · Rx/(R2+Rx)",
+            "delay": 1,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-formula",
+            "content": "V_A = V_B  ⇒  R1·Rx = R2·R3",
+            "delay": 2.2,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "needleSweep",
+      "start": 30.79,
+      "end": 39.25,
+      "narration": "Scrub R x. The galvanometer needle swings as the two midpoints disagree, then falls dead still the moment the ratio matches.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Diamond bridge with R_x sweeping; galvanometer needle deflects left then right; live R_x readout; settles at balance with the needle vertical and a green dot.",
+            "delay": 0,
+            "color": "var(--rose-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 39.25,
+      "end": 51,
+      "narration": "At balance, the unknown comes straight from a ratio of three known resistors. That is why bridges measure strain, temperature, and tiny resistances better than any direct meter.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "Rx = R3 · (R2/R1)",
+            "delay": 0.3,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "compare, don't measure — that's how a bridge wins",
+            "delay": 1.6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    }
+  ]
+}

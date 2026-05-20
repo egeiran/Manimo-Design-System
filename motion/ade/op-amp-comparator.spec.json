@@ -1,0 +1,123 @@
+{
+  "id": "op-amp-comparator",
+  "title": "The Op-Amp Comparator: A Switch That Snaps at the Reference",
+  "eyebrow": "operational amplifiers",
+  "language": "en",
+  "duration": 58,
+  "topic": "Open-loop op-amp as a comparator — strip away the feedback resistor and the op-amp's enormous gain forces the output to one of the two supply rails the moment V_in crosses V_ref; the analog input becomes a clean digital decision",
+  "subject_id": "ade",
+  "chapter_number": 9,
+  "prerequisites": [
+    "inverting-op-amp"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.11,
+      "narration": "An op-amp with no feedback resistor — how does it turn a smooth voltage into a clean digital decision?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "No feedback — the gain runs wild. Why does that help?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "schematic",
+      "start": 7.11,
+      "end": 18.65,
+      "narration": "V in goes to the plus input, a fixed reference V ref to the minus input. There is no feedback wire — the op-amp runs open loop, with a gain in the hundreds of thousands.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Op-amp triangle with V_in into V+ and V_ref into V-; output line; +V_sat and -V_sat supply rails labelled",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "transferCurve",
+      "start": 18.65,
+      "end": 30.86,
+      "narration": "The transfer characteristic is brutal. Below V ref the output sits at minus V sat. Above V ref it jumps to plus V sat. The transition is essentially vertical.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "V_in horizontal axis with V_ref marked; V_out vertical axis from -V_sat to +V_sat",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Step function — -V_sat for V_in < V_ref, +V_sat for V_in > V_ref; vertical jump at V_ref",
+            "delay": 1.2,
+            "color": "var(--amber-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rampToSquare",
+      "start": 30.86,
+      "end": 45.47,
+      "narration": "Feed it a triangle wave. Each time the input climbs past V ref, the output snaps high; each time it falls back below, the output snaps low. A smooth analog input becomes a clean square wave.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "Top scope trace: triangle V_in oscillating around V_ref",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Bottom scope trace: square V_out flipping between +V_sat and -V_sat at each V_ref crossing; vertical edges aligned",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 45.47,
+      "end": 58,
+      "narration": "That is what a comparator does — turn an analog crossing into a digital edge. Zero-crossing detectors, level alarms, every analog-to-digital converter starts here.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "V_out = sign(V_in − V_ref) · V_sat",
+            "delay": 0.3,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the bridge from analog to digital — one comparison at a time",
+            "delay": 1.6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    }
+  ]
+}
