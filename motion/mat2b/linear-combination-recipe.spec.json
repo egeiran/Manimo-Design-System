@@ -1,0 +1,194 @@
+{
+  "id": "linear-combination-recipe",
+  "subject_id": "mat2b",
+  "chapter_number": 1,
+  "title": "Linear Combinations: Mix Two Arrows",
+  "eyebrow": "vector spaces",
+  "language": "en",
+  "duration": 44,
+  "topic": "A linear combination is the recipe a·v1 + b·v2 with two scalar dials. Fix b at zero and sweep a — the output point glides along a line through the origin. Sweep both dials and the output paints out a region of the plane. Two non-parallel arrows reach every point in R^2 — that is what their span really means.",
+  "prerequisites": [
+    "span-and-dependence"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 3.88,
+      "narration": "What can you build with just two arrows and a pair of dials?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Two arrows. Two dials. How far does that get you?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "recipe",
+      "start": 3.88,
+      "end": 15.45,
+      "narration": "Pick two arrows v one and v two. A linear combination is a v one plus b v two, where a and b are any two real numbers. That formula is the recipe.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Coordinate axes + faint reference grid",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "v₁ vector in violet from origin",
+            "delay": 0.6,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "v₂ vector in teal from origin",
+            "delay": 1.2,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "p = a·v₁ + b·v₂",
+            "delay": 2.2,
+            "color": "var(--amber-300)",
+            "position": "right panel, large serif italic"
+          },
+          {
+            "type": "text-caption",
+            "content": "a and b are dials — any two real numbers",
+            "delay": 3,
+            "color": "var(--chalk-200)",
+            "position": "right panel below formula"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweepA",
+      "start": 15.45,
+      "end": 25.36,
+      "narration": "Fix b at zero and sweep the dial for a. The output point slides along a single line through the origin — the line of every multiple of v one.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "v₁ and v₂ stay drawn faintly",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Output point P(t) = a(t)·v₁ slides through space as a sweeps from -2 → 2",
+            "delay": 0.4,
+            "color": "var(--amber-400)",
+            "note": "drive a from useSprite localTime"
+          },
+          {
+            "type": "svg-path",
+            "content": "Persistent trail painted along the v₁-line",
+            "delay": 0.4,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "a sweeps, b = 0 → P traces the line spanned by v₁",
+            "delay": 4,
+            "color": "var(--chalk-200)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-formula",
+            "content": "a = -2 … 2,  b = 0",
+            "delay": 4.5,
+            "color": "var(--amber-300)",
+            "position": "right panel mono"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweepBoth",
+      "start": 25.36,
+      "end": 36.84,
+      "narration": "Now turn both dials at once. The point wanders all over the plane. Every reachable spot is some recipe a v one plus b v two — that whole region is the span.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "v₁ and v₂ in faint background",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Output point P(a,b) = a·v₁ + b·v₂ wanders as (a,b) follow Lissajous curves over time",
+            "delay": 0,
+            "color": "var(--amber-400)",
+            "note": "drive (a,b) by useSprite localTime; show parallelogram of a·v₁ and b·v₂ as construction"
+          },
+          {
+            "type": "svg-path",
+            "content": "Persistent trail fills the plane",
+            "delay": 0,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "span(v₁, v₂) = { a·v₁ + b·v₂ : a, b ∈ ℝ }",
+            "delay": 4.5,
+            "color": "var(--amber-300)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "Two non-parallel arrows fill the entire plane.",
+            "delay": 6,
+            "color": "var(--chalk-200)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 36.84,
+      "end": 44,
+      "narration": "Linear combinations are how you turn arrows into reach. Two dials, two arrows, the whole plane.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Two dials, two arrows — the whole plane.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic ~32px"
+          },
+          {
+            "type": "text-caption",
+            "content": "(any reachable point has a unique recipe)",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "centre, smaller"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "sceneId": "linear-combination-recipe",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/linear-combination-recipe/scene.mp3",
+  "durationSec": 42.77,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "What can you build with just two arrows and a pair of dials?"
+    },
+    {
+      "id": "recipe",
+      "audioStart": 3.88,
+      "narration": "Pick two arrows v one and v two. A linear combination is a v one plus b v two, where a and b are any two real numbers. That formula is the recipe."
+    },
+    {
+      "id": "sweepA",
+      "audioStart": 15.45,
+      "narration": "Fix b at zero and sweep the dial for a. The output point slides along a single line through the origin — the line of every multiple of v one."
+    },
+    {
+      "id": "sweepBoth",
+      "audioStart": 25.36,
+      "narration": "Now turn both dials at once. The point wanders all over the plane. Every reachable spot is some recipe a v one plus b v two — that whole region is the span."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 36.84,
+      "narration": "Linear combinations are how you turn arrows into reach. Two dials, two arrows, the whole plane."
+    }
+  ]
+}

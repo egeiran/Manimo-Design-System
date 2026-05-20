@@ -1,0 +1,210 @@
+{
+  "id": "determinant-as-area",
+  "subject_id": "mat2b",
+  "chapter_number": 2,
+  "title": "The Determinant as Area",
+  "eyebrow": "linear transformations",
+  "language": "en",
+  "duration": 46,
+  "topic": "A 2x2 matrix maps the unit square to a parallelogram whose signed area is the determinant. Sweep one matrix entry and watch the parallelogram morph, the area readout track ad minus bc, and at det equals zero the parallelogram collapses to a line and then flips its orientation when the determinant goes negative.",
+  "prerequisites": [
+    "linear-transformation-grid",
+    "matrix-as-function"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 3.51,
+      "narration": "How much does a matrix stretch the space it acts on?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "How much does a matrix stretch the plane?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "morphSquare",
+      "start": 3.51,
+      "end": 15.55,
+      "narration": "Start with the unit square — the patch sitting on e one and e two. Apply a matrix A. The square morphs into a parallelogram, with the columns of A as its two sides.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Reference grid + axes",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Unit square at origin (e₁, e₂)",
+            "delay": 0.4,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Unit basis vectors e₁ (violet) and e₂ (teal)",
+            "delay": 0.8,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Continuous morph: identity → A as localTime increases; square stretches into a parallelogram with columns a₁=(2,0.5), a₂=(1,1.5)",
+            "delay": 1.6,
+            "color": "var(--amber-400)",
+            "note": "interpolate every grid line, e₁ → A·e₁, e₂ → A·e₂"
+          },
+          {
+            "type": "svg-path",
+            "content": "Image basis vectors a₁ (violet, A·e₁) and a₂ (teal, A·e₂)",
+            "delay": 1.6,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the columns of A become the sides of the parallelogram",
+            "delay": 6,
+            "color": "var(--chalk-200)",
+            "position": "below diagram"
+          }
+        ]
+      }
+    },
+    {
+      "id": "areaIsDet",
+      "start": 15.55,
+      "end": 23.29,
+      "narration": "The signed area of that parallelogram is the determinant. For a two by two matrix it is a d minus b c.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Parallelogram with shaded interior, area readout = 2.5",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "det A = a·d − b·c",
+            "delay": 0.6,
+            "color": "var(--amber-300)",
+            "position": "right panel, large serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "det = 2·1.5 − 1·0.5 = 2.5",
+            "delay": 2,
+            "color": "var(--chalk-100)",
+            "position": "right panel, mono"
+          },
+          {
+            "type": "text-caption",
+            "content": "area scales by |det A|",
+            "delay": 4,
+            "color": "var(--chalk-200)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "signFlip",
+      "start": 23.29,
+      "end": 38.99,
+      "narration": "Watch what happens as we scrub one entry of A. The area shrinks. At determinant zero the parallelogram collapses to a line. Push past zero and the determinant goes negative — the basis vectors have flipped, the orientation is reversed.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Parameterised matrix A(s) = [[2, 1], [s, 1.5]] with s scrubbing from 0.5 → 3 → 5",
+            "delay": 0,
+            "color": "var(--amber-400)",
+            "note": "drive s from useSprite localTime; det(s) = 3 - s; det = 0 at s = 3"
+          },
+          {
+            "type": "svg-path",
+            "content": "Parallelogram fill flips color (amber → rose) when det < 0",
+            "delay": 0,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "det A(s) = 3 − s",
+            "delay": 0.6,
+            "color": "var(--amber-300)",
+            "position": "right panel large"
+          },
+          {
+            "type": "text-formula",
+            "content": "s = 0.5  →  det = 2.5  (orientation +)",
+            "delay": 1.5,
+            "color": "var(--chalk-100)",
+            "position": "right panel mono"
+          },
+          {
+            "type": "text-formula",
+            "content": "s = 3.0  →  det = 0    (collapses)",
+            "delay": 4.5,
+            "color": "var(--chalk-300)",
+            "position": "right panel mono"
+          },
+          {
+            "type": "text-formula",
+            "content": "s = 5.0  →  det = −2   (orientation −)",
+            "delay": 8,
+            "color": "var(--rose-300)",
+            "position": "right panel mono"
+          },
+          {
+            "type": "text-caption",
+            "content": "sign of det = orientation of the basis",
+            "delay": 9.5,
+            "color": "var(--chalk-200)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 38.99,
+      "end": 46,
+      "narration": "Determinant equals area times orientation. One number, two stories.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "det A = area × orientation",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic ~36px"
+          },
+          {
+            "type": "text-caption",
+            "content": "Zero says the matrix flattens the plane.",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "centre, smaller"
+          }
+        ]
+      }
+    }
+  ]
+}

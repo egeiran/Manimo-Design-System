@@ -1,0 +1,205 @@
+{
+  "id": "subspace-test",
+  "subject_id": "mat2b",
+  "chapter_number": 1,
+  "title": "Subspaces: Why the Origin Matters",
+  "eyebrow": "vector spaces",
+  "language": "en",
+  "duration": 48,
+  "topic": "A subspace must contain the zero vector, be closed under addition, and be closed under scalar multiplication. A line through the origin passes all three tests. A line that misses the origin fails closure immediately — adding two of its vectors lands the parallelogram tip off the line.",
+  "prerequisites": [
+    "span-and-dependence"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.3,
+      "narration": "Which little patches of the plane behave like a vector space of their own?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Which patches act like a vector space of their own?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "threeTests",
+      "start": 4.3,
+      "end": 13.67,
+      "narration": "A subspace has to pass three tests. It must contain the zero vector, it must be closed under addition, and it must be closed under scaling by any number.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-title",
+            "content": "Three subspace tests",
+            "delay": 0.2,
+            "color": "var(--amber-300)",
+            "position": "eyebrow above the list"
+          },
+          {
+            "type": "text-formula",
+            "content": "0 belongs to S",
+            "delay": 0.8,
+            "color": "var(--chalk-100)",
+            "position": "row 1"
+          },
+          {
+            "type": "text-formula",
+            "content": "u + v stays in S",
+            "delay": 1.6,
+            "color": "var(--chalk-100)",
+            "position": "row 2"
+          },
+          {
+            "type": "text-formula",
+            "content": "c·v stays in S",
+            "delay": 2.4,
+            "color": "var(--chalk-100)",
+            "position": "row 3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "linePass",
+      "start": 13.67,
+      "end": 28.12,
+      "narration": "Take a line through the origin. Pick two arrows that end on it. Their sum lands back on the line. Scale one arrow by any number and the tip glides along the line. The origin is right there. All three tests pass.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Line through origin (violet, drawn left-to-right)",
+            "delay": 0,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Vector u in amber, ending on the line",
+            "delay": 0.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Vector v in teal, ending on the line",
+            "delay": 1.4,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Parallelogram-rule guide lines (dashed)",
+            "delay": 2.4,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Sum u+v vector lands on the line",
+            "delay": 3.2,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Scalar scrub: c·v point slides along the line as c sweeps",
+            "delay": 5.5,
+            "color": "var(--rose-400)",
+            "note": "drive position by useSprite localTime"
+          },
+          {
+            "type": "text-caption",
+            "content": "Closed under + and ·, origin included — a subspace",
+            "delay": 9,
+            "color": "var(--chalk-200)",
+            "position": "right side panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lineFail",
+      "start": 28.12,
+      "end": 41.91,
+      "narration": "Now shift the line so it misses the origin. Pick two arrows that end on it. This time the parallelogram tip lands off the line. Closure under addition fails, the origin is not on the line, and this set is not a subspace.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Offset line (rose), parallel to a violet through-origin line shown faintly",
+            "delay": 0,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Vector u ending on the offset line",
+            "delay": 0.7,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Vector v ending on the offset line",
+            "delay": 1.4,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Parallelogram-rule guide lines (dashed) building u+v",
+            "delay": 2.4,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Sum u+v lands ABOVE the line, marked with a rose X",
+            "delay": 3.4,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "u + v lands off the line — closure fails",
+            "delay": 5,
+            "color": "var(--rose-300)",
+            "position": "right side panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 41.91,
+      "end": 48,
+      "narration": "Every subspace must touch the origin. No origin, no subspace.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Every subspace must touch the origin.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic ~32px"
+          },
+          {
+            "type": "text-caption",
+            "content": "Lines and planes through 0 do; anything offset does not.",
+            "delay": 1.5,
+            "color": "var(--chalk-300)",
+            "position": "centre, smaller"
+          }
+        ]
+      }
+    }
+  ]
+}

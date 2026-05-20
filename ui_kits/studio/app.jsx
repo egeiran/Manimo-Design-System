@@ -118,6 +118,9 @@ const initialScenes = [
   { id: 'live-diode-clamper', kind: 'live', kindLabel: 'Live', cardTitle: 'The Diode Clamper', duration: '1:03', html: '../../motion/ade/diode-clamper.html' },
   { id: 'live-power-triangle', kind: 'live', kindLabel: 'Live', cardTitle: 'The Power Triangle', duration: '0:58', html: '../../motion/ade/power-triangle.html' },
   { id: 'live-priority-encoder', kind: 'live', kindLabel: 'Live', cardTitle: '8-to-3 Priority Encoder', duration: '1:05', html: '../../motion/ade/priority-encoder.html' },
+  { id: 'live-subspace-test', kind: 'live', kindLabel: 'Live', cardTitle: 'Subspaces: Why the Origin Matters', duration: '0:48', html: '../../motion/mat2b/subspace-test.html' },
+  { id: 'live-linear-combination-recipe', kind: 'live', kindLabel: 'Live', cardTitle: 'Linear Combinations: Mix Two Arrows', duration: '0:44', html: '../../motion/mat2b/linear-combination-recipe.html' },
+  { id: 'live-determinant-as-area', kind: 'live', kindLabel: 'Live', cardTitle: 'The Determinant as Area', duration: '0:46', html: '../../motion/mat2b/determinant-as-area.html' },
 ];
 
 function loadJSON(key, fallback) {
