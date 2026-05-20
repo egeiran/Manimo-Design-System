@@ -167,15 +167,13 @@ function ChainSetupBeat() {
             const midX = (xR + xL) / 2;
             d = `M ${xR} ${yR} L ${midX} ${yR} L ${midX} ${yR - 36} L ${midX + 20} ${yR - 36} L ${midX + 20} ${yL} L ${xL} ${yL}`;
           } else {
-            // Column layout: Q exits right, dips around the right edge,
-            // and re-enters the next box's CLK on the left.
-            const turnX = xR + 48;
-            d = `M ${xR} ${yR} L ${turnX} ${yR} L ${turnX} ${yL} L ${xL} ${yL}`;
-            // For column, route around to the LEFT instead — keep the
-            // wire on the same column as the boxes by sweeping around
-            // the right edge:
-            const dx = xR + 60;
-            d = `M ${xR} ${yR} L ${dx} ${yR} L ${dx} ${yL} L ${xL - 24} ${yL} L ${xL} ${yL}`;
+            // Column layout: Q exits right, drops into the GAP between
+            // boxes, sweeps left across the gap (NOT under the next
+            // box), then enters the next box's CLK pin on the left.
+            const xRight = xR + 50;
+            const xLeft = xL - 24;
+            const yMid = (yR + yL) / 2;
+            d = `M ${xR} ${yR} L ${xRight} ${yR} L ${xRight} ${yMid} L ${xLeft} ${yMid} L ${xLeft} ${yL} L ${xL} ${yL}`;
           }
           return (
             <g key={i}>
