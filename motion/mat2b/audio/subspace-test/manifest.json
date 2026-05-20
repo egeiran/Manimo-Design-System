@@ -1,0 +1,36 @@
+{
+  "sceneId": "subspace-test",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/subspace-test/scene.mp3",
+  "durationSec": 46.72,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Which little patches of the plane behave like a vector space of their own?"
+    },
+    {
+      "id": "threeTests",
+      "audioStart": 4.3,
+      "narration": "A subspace has to pass three tests. It must contain the zero vector, it must be closed under addition, and it must be closed under scaling by any number."
+    },
+    {
+      "id": "linePass",
+      "audioStart": 13.67,
+      "narration": "Take a line through the origin. Pick two arrows that end on it. Their sum lands back on the line. Scale one arrow by any number and the tip glides along the line. The origin is right there. All three tests pass."
+    },
+    {
+      "id": "lineFail",
+      "audioStart": 28.12,
+      "narration": "Now shift the line so it misses the origin. Pick two arrows that end on it. This time the parallelogram tip lands off the line. Closure under addition fails, the origin is not on the line, and this set is not a subspace."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 41.91,
+      "narration": "Every subspace must touch the origin. No origin, no subspace."
+    }
+  ]
+}

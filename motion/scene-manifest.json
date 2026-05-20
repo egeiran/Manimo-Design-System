@@ -1221,7 +1221,7 @@
         "standard basis"
       ],
       "subject_id": "mat2b",
-      "chapter_number": 1
+      "chapter_number": 2
     },
     {
       "id": "span-and-dependence",
@@ -2461,6 +2461,78 @@
       ],
       "subject_id": "ade",
       "chapter_number": 10
+    },
+    {
+      "id": "subspace-test",
+      "file": "subspace-test.jsx",
+      "html": "subspace-test.html",
+      "spec": "subspace-test.spec.json",
+      "title": "Subspaces: Why the Origin Matters",
+      "eyebrow": "vector spaces",
+      "topic": "A subspace must contain the zero vector, be closed under addition, and be closed under scalar multiplication. A line through the origin passes all three tests. A line that misses the origin fails closure under addition — the parallelogram-rule sum of two of its vectors lands off the line, and the origin is not on the line either.",
+      "duration": 48,
+      "language": "en",
+      "prerequisites": [
+        "span-and-dependence"
+      ],
+      "concepts": [
+        "subspace",
+        "closure under addition",
+        "closure under scalar multiplication",
+        "zero vector",
+        "affine set",
+        "vector space"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 1
+    },
+    {
+      "id": "linear-combination-recipe",
+      "file": "linear-combination-recipe.jsx",
+      "html": "linear-combination-recipe.html",
+      "spec": "linear-combination-recipe.spec.json",
+      "title": "Linear Combinations: Mix Two Arrows",
+      "eyebrow": "vector spaces",
+      "topic": "A linear combination is the recipe a·v₁ + b·v₂ with two scalar dials. Fix b at zero and sweep a — the output point glides along a line through the origin. Sweep both dials at once and the output paints out a region of the plane. Two non-parallel arrows span all of ℝ².",
+      "duration": 44,
+      "language": "en",
+      "prerequisites": [
+        "span-and-dependence"
+      ],
+      "concepts": [
+        "linear combination",
+        "scalar coefficient",
+        "span",
+        "basis",
+        "parametric sweep"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 1
+    },
+    {
+      "id": "determinant-as-area",
+      "file": "determinant-as-area.jsx",
+      "html": "determinant-as-area.html",
+      "spec": "determinant-as-area.spec.json",
+      "title": "The Determinant as Area",
+      "eyebrow": "linear transformations",
+      "topic": "A 2×2 matrix maps the unit square to a parallelogram whose signed area is det A = ad − bc. A continuous morph from identity to A shows the deformation; scrubbing one entry through det = 0 collapses the parallelogram to a line, then flips orientation as det goes negative.",
+      "duration": 40,
+      "language": "en",
+      "prerequisites": [
+        "linear-transformation-grid",
+        "matrix-as-function"
+      ],
+      "concepts": [
+        "determinant",
+        "signed area",
+        "orientation",
+        "linear transformation",
+        "unit square",
+        "singular matrix"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 2
     }
   ]
 }

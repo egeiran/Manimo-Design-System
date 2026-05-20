@@ -1,0 +1,36 @@
+{
+  "sceneId": "determinant-as-area",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/determinant-as-area/scene.mp3",
+  "durationSec": 44.21,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "How much does a matrix stretch the space it acts on?"
+    },
+    {
+      "id": "morphSquare",
+      "audioStart": 3.51,
+      "narration": "Start with the unit square — the patch sitting on e one and e two. Apply a matrix A. The square morphs into a parallelogram, with the columns of A as its two sides."
+    },
+    {
+      "id": "areaIsDet",
+      "audioStart": 15.55,
+      "narration": "The signed area of that parallelogram is the determinant. For a two by two matrix it is a d minus b c."
+    },
+    {
+      "id": "signFlip",
+      "audioStart": 23.29,
+      "narration": "Watch what happens as we scrub one entry of A. The area shrinks. At determinant zero the parallelogram collapses to a line. Push past zero and the determinant goes negative — the basis vectors have flipped, the orientation is reversed."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 38.99,
+      "narration": "Determinant equals area times orientation. One number, two stories."
+    }
+  ]
+}
