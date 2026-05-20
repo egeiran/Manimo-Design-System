@@ -1,0 +1,131 @@
+{
+  "id": "diode-clamper",
+  "title": "The Diode Clamper: Lift the AC, Keep the Shape",
+  "eyebrow": "diodes",
+  "language": "en",
+  "duration": 63,
+  "topic": "Positive diode clamper — a series capacitor and a shunt diode shift the entire AC waveform upward by its peak so the negative peaks sit at zero, without changing the shape. The capacitor charges once on the first negative half-cycle and then acts as a constant DC offset every cycle after.",
+  "subject_id": "ade",
+  "chapter_number": 4,
+  "prerequisites": [
+    "diode-iv-curve",
+    "half-wave-rectifier",
+    "rc-charging"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 9.4,
+      "narration": "A sine wave goes in centred on zero. It comes out the same shape — but lifted up. How does one diode and one capacitor do that?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo enters",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Same shape — different DC level. One diode and one capacitor.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "schematic",
+      "start": 9.4,
+      "end": 20.47,
+      "narration": "Put a capacitor in series with the input. Put a diode from the output back down to ground, anode on the bottom. Tap the output across the diode. That is the entire circuit.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "AC source on the left, series capacitor C, diode shunt to ground on the output node, output tap labelled V_out",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "series cap, shunt diode — the rest is just wires",
+            "delay": 5.5,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "chargingCycle",
+      "start": 20.47,
+      "end": 35.55,
+      "narration": "On the first negative half cycle, V in pulls the cap's right plate down. The diode turns on, clamping the output to zero, and the cap charges to V peak. After that, the diode stays off, and the cap holds its charge.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Same schematic with charge arrows during V_in < 0: diode conducts (highlighted), cap charges to V_p with polarity marks, V_out clamped at 0",
+            "delay": 0,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "V_C → V_p",
+            "delay": 6,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "steadyState",
+      "start": 35.55,
+      "end": 49.74,
+      "narration": "Now look at steady state. V out equals V in plus V cap. The shape of the input is preserved exactly — but every point sits one V peak higher. The whole waveform has been lifted off zero.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "Top scope: V_in sine centered on 0 (range -V_p to +V_p). Bottom scope: V_out sine centered on +V_p (range 0 to +2V_p). Synchronised cursor sweeps both. Diode state badge: OFF.",
+            "delay": 0,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "V_out = V_in + V_p",
+            "delay": 9,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 49.74,
+      "end": 63,
+      "narration": "That is a DC restorer — keep the AC, shift the DC. Flip the diode and the waveform shifts down instead. Television video signals once leaned on this trick on every line.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "AC shape preserved · DC level shifted",
+            "delay": 0.3,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "flip the diode → clamp the other way",
+            "delay": 1.6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    }
+  ]
+}

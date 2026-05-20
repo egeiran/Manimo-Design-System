@@ -1,0 +1,36 @@
+{
+  "sceneId": "diode-clamper",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/diode-clamper/scene.mp3",
+  "durationSec": 61.44,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "A sine wave goes in centred on zero. It comes out the same shape — but lifted up. How does one diode and one capacitor do that?"
+    },
+    {
+      "id": "schematic",
+      "audioStart": 9.4,
+      "narration": "Put a capacitor in series with the input. Put a diode from the output back down to ground, anode on the bottom. Tap the output across the diode. That is the entire circuit."
+    },
+    {
+      "id": "chargingCycle",
+      "audioStart": 20.47,
+      "narration": "On the first negative half cycle, V in pulls the cap's right plate down. The diode turns on, clamping the output to zero, and the cap charges to V peak. After that, the diode stays off, and the cap holds its charge."
+    },
+    {
+      "id": "steadyState",
+      "audioStart": 35.55,
+      "narration": "Now look at steady state. V out equals V in plus V cap. The shape of the input is preserved exactly — but every point sits one V peak higher. The whole waveform has been lifted off zero."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 49.74,
+      "narration": "That is a DC restorer — keep the AC, shift the DC. Flip the diode and the waveform shifts down instead. Television video signals once leaned on this trick on every line."
+    }
+  ]
+}

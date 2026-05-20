@@ -1,0 +1,36 @@
+{
+  "sceneId": "priority-encoder",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/priority-encoder/scene.mp3",
+  "durationSec": 63.3,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Eight buttons go in. Three wires come out. When more than one button is pressed, who gets to talk?"
+    },
+    {
+      "id": "blockDiagram",
+      "audioStart": 6.8,
+      "narration": "The encoder block takes eight inputs labelled I zero through I seven. It puts out three address bits Y two, Y one, Y zero, plus a Valid flag V. The address is the binary index of the highest input that is HIGH."
+    },
+    {
+      "id": "priorityRule",
+      "audioStart": 22.74,
+      "narration": "Here is the rule. Scan from the top down. The first input you find that is HIGH determines the address — everything below it is ignored. Higher index always wins. That is why we call it priority."
+    },
+    {
+      "id": "liveDemo",
+      "audioStart": 36.26,
+      "narration": "Watch it run. Inputs flash on and off in patterns that change every second. The output address tracks the highest active input in real time. When everything goes low, the Valid flag drops."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 49.34,
+      "narration": "Priority encoders live everywhere multiple things can ask for attention at once. Interrupt controllers, keyboard scanners, even floating-point leading-zero detectors. Many speak, one wins."
+    }
+  ]
+}

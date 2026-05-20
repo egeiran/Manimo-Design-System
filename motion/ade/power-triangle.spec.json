@@ -1,0 +1,118 @@
+{
+  "id": "power-triangle",
+  "title": "The Power Triangle: Why Not Every Volt-Amp Becomes a Watt",
+  "eyebrow": "ac power",
+  "language": "en",
+  "duration": 58,
+  "topic": "AC power decomposes into a real component P (watts) that does work, a reactive component Q (vars) that sloshes back and forth, and an apparent component S (volt-amps) that the source must supply. The three form a right triangle: S squared equals P squared plus Q squared, and the power factor cos phi equals P over S. Scrub the phase angle phi to watch the triangle morph.",
+  "subject_id": "ade",
+  "chapter_number": 2,
+  "prerequisites": [
+    "phasor-rotation",
+    "rlc-resonance"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.43,
+      "narration": "An AC source can deliver volt-amps that never become watts. So where does the power go?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo enters",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Not every volt-amp does work. So what is the rest doing?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "currentLagsVoltage",
+      "start": 5.43,
+      "end": 17.04,
+      "narration": "Drive a reactive load with a sinusoidal voltage. The current rises and falls at the same frequency, but its peaks arrive a quarter cycle late. The phase angle between the two is phi.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "Top: V(t) sine in chalk-100. Bottom: I(t) sine in amber-300, lagging by phi. Phase-difference bracket between them.",
+            "delay": 0,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "phi = V·I phase difference",
+            "delay": 6,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "decomposeIntoPandQ",
+      "start": 17.04,
+      "end": 30.84,
+      "narration": "Project the current onto V and you get the in-phase part, which carries real power P. Project it perpendicular and you get the quadrature part, which carries reactive power Q. They live at right angles to each other.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Current phasor I at angle -phi from voltage; dashed projections onto V (in-phase) and perpendicular (quadrature). Three formulas: I·cos phi (real), I·sin phi (reactive), and S = V·I.",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweepPhi",
+      "start": 30.84,
+      "end": 45.56,
+      "narration": "Now sweep phi from zero to ninety degrees. The hypotenuse stays the same length — that is apparent power S. Real power P shrinks; reactive power Q grows. The power factor cos phi falls from one to zero.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Power triangle with horizontal leg P, vertical leg Q, hypotenuse S, angle phi at origin. phi sweeps; the triangle morphs in real time. Live readouts of P, Q, S, and cos phi update each frame. A 'motor analogy' caption appears at low PF.",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 45.56,
+      "end": 58,
+      "narration": "Utilities bill for apparent power. Real power lights the room; reactive power just sloshes back and forth through the wires. That is why power factor correction is worth money.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "S² = P² + Q²   ·   cos phi = P/S",
+            "delay": 0.3,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "improve the power factor, shrink the apparent power",
+            "delay": 1.6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    }
+  ]
+}
