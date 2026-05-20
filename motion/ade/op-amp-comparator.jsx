@@ -261,18 +261,21 @@ function TransferCurveBeat() {
           </text>
         </SvgFadeIn>
 
-        {/* +V_sat and -V_sat ticks on the V_out axis */}
+        {/* +V_sat and -V_sat ticks on the V_out axis.
+            Labels sit clear of the step segments: +V_sat ABOVE its tick
+            (upper-left quadrant, where there is no segment), −V_sat BELOW
+            its tick (lower-right quadrant, where there is no segment). */}
         <SvgFadeIn duration={0.35} delay={1.0}>
           <line x1={G.axMid - 5} y1={G.ay1 + 20} x2={G.axMid + 5} y2={G.ay1 + 20}
                 stroke="var(--chalk-300)" strokeWidth={1.5}/>
-          <text x={G.axMid - 12} y={G.ay1 + 24}
+          <text x={G.axMid - 12} y={G.ay1 + 12}
                 fill="var(--teal-400)" fontFamily="var(--font-mono)"
                 fontSize={12} textAnchor="end">+V_sat</text>
           <line x1={G.axMid - 5} y1={G.ay0 - 20} x2={G.axMid + 5} y2={G.ay0 - 20}
                 stroke="var(--chalk-300)" strokeWidth={1.5}/>
-          <text x={G.axMid - 12} y={G.ay0 - 16}
+          <text x={G.axMid + 12} y={G.ay0 - 6}
                 fill="var(--rose-300)" fontFamily="var(--font-mono)"
-                fontSize={12} textAnchor="end">−V_sat</text>
+                fontSize={12} textAnchor="start">−V_sat</text>
         </SvgFadeIn>
 
         {/* Step function — three segments. Trace them in order so the

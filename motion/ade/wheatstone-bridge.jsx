@@ -450,14 +450,17 @@ function NeedleSweepBeat() {
     }}>
       <svg width={G.vbW} height={G.vbH} viewBox={`0 0 ${G.vbW} ${G.vbH}`}
            style={{ overflow: 'visible' }}>
-        {/* Diamond chrome — already laid out, fade in as a group */}
+        {/* Diamond chrome — already laid out, fade in as a group.
+            Battery rail sits OUTSIDE the diamond (left of node A), so the
+            vertical wire doesn't clip through the galvanometer. */}
         <SvgFadeIn duration={0.5} delay={0.0}>
-          {/* outer corner-to-corner wires from battery rails */}
-          <line x1={tx - 80} y1={ty} x2={tx} y2={ty} stroke="var(--chalk-200)" strokeWidth={2}/>
-          <line x1={tx - 80} y1={ty} x2={tx - 80} y2={by} stroke="var(--chalk-200)" strokeWidth={2}/>
-          <line x1={tx - 80} y1={by} x2={bx} y2={by} stroke="var(--chalk-200)" strokeWidth={2}/>
+          {/* outer corner-to-corner wires from battery rails — railX is
+              clear of node A so the rail doesn't cross the meter. */}
+          <line x1={ax - 60} y1={ty} x2={tx} y2={ty} stroke="var(--chalk-200)" strokeWidth={2}/>
+          <line x1={ax - 60} y1={ty} x2={ax - 60} y2={by} stroke="var(--chalk-200)" strokeWidth={2}/>
+          <line x1={ax - 60} y1={by} x2={bx} y2={by} stroke="var(--chalk-200)" strokeWidth={2}/>
           {/* battery */}
-          <g transform={`translate(${tx - 80}, ${(ty + by) / 2}) rotate(-90)`}>
+          <g transform={`translate(${ax - 60}, ${(ty + by) / 2}) rotate(-90)`}>
             <BatterySymbol cx={0} cy={0}/>
           </g>
           {/* four arms */}
