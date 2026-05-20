@@ -24,3 +24,9 @@ npm-debug.log*
 # Local credentials — never commit
 .env
 .env.local
+
+# Draft / stale prompt files — keep on disk for reference, out of git
+# The folder itself is kept in the repo (via .gitkeep) so docs/SCRIPTS.md
+# can reference it; contents are ignored.
+docs/prompts/*
+!docs/prompts/.gitkeep

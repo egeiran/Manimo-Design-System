@@ -1,13 +1,20 @@
 #!/usr/bin/env node
 // generate-audio.js — synthesize narration audio for a scene.
 //
+// Policy: every published scene MUST be generated with
+//   `--engine elevenlabs` explicitly. See CLAUDE.md Hard Rule 10 and
+//   docs/AUDIO.md. The reviewer rejects any PR whose
+//   audio/<id>/manifest.json records `engine: "mistral"`.
+//
 // Engine chain (default `--engine auto` / no flag):
 //   elevenlabs → mistral → local (say/espeak) → estimated-timings
 // Each link is tried in order. The first one that produces a usable
 // scene.mp3 + manifest wins; earlier failures are logged and the next
 // link runs. Estimated-timings is the final no-audio fallback so the
 // script never exits non-zero on TTS failure (the nightly agent depends
-// on graceful degradation).
+// on graceful degradation). The mistral step is DEPRECATED — it
+// remains in the auto-chain as a worst-case fallback for English scenes
+// only; never run a publish off a mistral-produced manifest.
 //
 // Norwegian scenes (`spec.language === 'no'`) drop Mistral from the
 // chain — Voxtral does not support Norwegian. English is the project

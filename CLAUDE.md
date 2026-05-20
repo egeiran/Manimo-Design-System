@@ -51,11 +51,15 @@ ui_kits/
   watch/                  Public lesson page mock
 ```
 
-Scenes live under `motion/<subject_id>/` (currently only `fysikk/`).
-Subject is organisational only — scene IDs remain globally unique and
-stable, and `scene-manifest.json` entries store bare filenames in
-`html`/`file`/`spec`; scripts compose `motion/<subject_id>/<file>` at
-use time. New subjects (e.g. `matematikk1`) follow the same shape.
+Scenes live under `motion/<subject_id>/`. Active subjects today:
+`fysikk` (TFY4125, the original pilot), `ade` (TTT4203 analog + digital
+electronics, current nightly focus), `mat2b` (Matematikk 2), and
+`operativsystemer`. Subject is organisational only — scene IDs remain
+globally unique and stable, and `scene-manifest.json` entries store
+bare filenames in `html`/`file`/`spec`; scripts compose
+`motion/<subject_id>/<file>` at use time. See `docs/SUBJECTS.md` for the
+per-subject layout, current scene counts, and "how to add a new
+subject."
 
 ---
 
@@ -139,12 +143,16 @@ use time. New subjects (e.g. `matematikk1`) follow the same shape.
 
 10. **Video must outlast audio by ≥ 1.0 s — and audio is always ElevenLabs.**
 
-    All scene narration is generated with `node scripts/generate-audio.js
-    <id> --engine elevenlabs` (voice `JBFqnCBsd6RMkjVDRZzb` "George",
-    model `eleven_multilingual_v2`). Voxtral / `--engine mistral` is
-    retired — it does not support Norwegian, and the NTNU pilot is
-    Norwegian. Never let the auto-chain pick the engine for a scene
-    destined for the public playlist.
+    All scene narration for publication is generated with
+    `node scripts/generate-audio.js <id> --engine elevenlabs` (voice
+    `JBFqnCBsd6RMkjVDRZzb` "George", model `eleven_multilingual_v2`).
+    Voxtral / `--engine mistral` is **deprecated** — kept in the
+    `--engine auto` chain as a worst-case fallback when ElevenLabs is
+    down, and only for English scenes (Voxtral does not support
+    Norwegian). Any PR whose `audio/<id>/manifest.json` records
+    `engine: "mistral"` should be rejected by the reviewer and the audio
+    regenerated with ElevenLabs explicitly. Never let the auto-chain
+    pick the engine for a scene destined for the public playlist.
 
     After audio is generated, set `SCENE_DURATION = ceil(audioDur + 1.0)`
     so the video never ends before the narration finishes. The audio
@@ -179,16 +187,39 @@ use time. New subjects (e.g. `matematikk1`) follow the same shape.
 
 ---
 
+## npm scripts
+
+Every production task is exposed as a `npm run …` shortcut. Full
+reference + flag lists in `docs/SCRIPTS.md`.
+
+| Script              | What it does                                                       |
+| ------------------- | ------------------------------------------------------------------ |
+| `npm run dev`       | Local static server + Studio notes API on `http://localhost:3000`  |
+| `npm run lint`      | Enforce design-token usage (no raw hex / rgba in `.jsx`)           |
+| `npm run snapshot`  | Render scene PNG frames at chosen timestamps (visual review)       |
+| `npm run vendor`    | Mirror React + Babel into `motion/vendor/` for offline runs        |
+| `npm run audio`     | Synthesize narration. Always pass `--engine elevenlabs` for publish |
+| `npm run render`    | Render MP4 (16:9 + 9:16). Not part of publish; ad-hoc only.        |
+| `npm run publish`   | Upsert scene metadata into kort-forklart Supabase                  |
+| `npm run coverage`  | Show chapter coverage per subject (live from Supabase)             |
+
+Two scripts are not exposed via `npm run`:
+
+- `node scripts/generate-scene.js <spec>` — turn a spec JSON into JSX/HTML
+- `node scripts/rewire-scene.js <id>` — sync the four files that hold duration numbers (call after every audio regen)
+
+---
+
 ## Voice & content (when writing copy in scenes / UI)
 
-- **Scene language: English by default.** All current scenes except the
-  original `rc-circuit` prototype are in English (see
-  `motion/scene-manifest.json` — `language` field). When authoring a new
-  scene, write narration, captions, titles, and labels in English unless
-  the user explicitly asks for Norwegian. **The language of the prompt
-  you receive is not a signal** — the scene-authoring prompt may be
-  written in Norwegian for the developer's convenience while the scene
-  itself should be English. If unsure, ask.
+- **Scene language: English by default.** Every scene currently in
+  `motion/scene-manifest.json` has `language: "en"` — including the
+  original `rc-circuit` prototype. When authoring a new scene, write
+  narration, captions, titles, and labels in English unless the user
+  explicitly asks for Norwegian. **The language of the prompt you
+  receive is not a signal** — the scene-authoring prompt may be written
+  in Norwegian for the developer's convenience while the scene itself
+  should be English. If unsure, ask.
 - The eventual student-facing pilot is Norwegian (NTNU TFY4125), so a
   Norwegian translation pass will happen later — but new scenes are
   authored in English first to match the existing library.
@@ -281,3 +312,30 @@ preview and confirm:
 The most common failure mode is a Babel parse error from mismatched JSX
 tags after a regex edit. Always re-read the changed file end-to-end if
 you used scripted find-and-replace.
+
+---
+
+## Documentation map
+
+Topic-specific docs live under `docs/`:
+
+- [`docs/SUBJECTS.md`](docs/SUBJECTS.md) — Subject organisation, current
+  per-subject scene counts, and how to add a new subject.
+- [`docs/AUDIO.md`](docs/AUDIO.md) — TTS engines, the ElevenLabs voice +
+  model pin, narration writing rules, and the `rewire-scene.js` sync flow.
+- [`docs/PUBLISHING.md`](docs/PUBLISHING.md) — Supabase schema for
+  `public.scenes`, the kort-forklart publish flow, the audit + backfill
+  loop via `chapter-coverage.js`.
+- [`docs/SCRIPTS.md`](docs/SCRIPTS.md) — Every script in `scripts/` with
+  usage examples and common flags.
+- [`docs/SCENE-SPEC.md`](docs/SCENE-SPEC.md) — Human walkthrough of
+  `motion/scene-spec.schema.json` — fields, element types, an example.
+- [`docs/prompts/`](docs/prompts/) — gitignored. Drop draft slash-command
+  specs and stale prompts here for local reference.
+
+Other reference docs (still authoritative):
+
+- [`motion/README.md`](motion/README.md) — Motion-primitive reference.
+  Read before authoring scenes.
+- [`README.md`](README.md) — Brand brief, voice guide, visual foundations.
+- [`PLAN.md`](PLAN.md) — Rolling nightly queue + per-subject chapter map.

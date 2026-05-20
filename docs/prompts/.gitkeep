@@ -1,0 +1,4 @@
+# Placeholder so the folder exists even though its contents are gitignored.
+# Drop draft slash-command specs, stale prompts, and other one-off prompt
+# artefacts here. Nothing under this folder is tracked by git (see
+# /.gitignore — `docs/prompts/`).

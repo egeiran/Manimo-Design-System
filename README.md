@@ -12,6 +12,8 @@ The user's input is conversational — they describe the lesson they want, the A
 
 **Audience.** High-school and university students learning STEM, plus the educators / hobbyists who want to teach them. Primary surface language: **English**.
 
+**Course coverage.** First launched as a TFY4125 fysikk pilot at NTNU; the library now spans four subjects — `fysikk` (TFY4125), `ade` (TTT4203 analog & digital electronics), `mat2b` (Matematikk 2), and `operativsystemer`. See [`docs/SUBJECTS.md`](docs/SUBJECTS.md) for the current per-subject layout and how to add a new course.
+
 **Output platforms.** YouTube (16:9 long-form) and TikTok / Shorts (9:16 vertical), equally weighted. The editor previews both aspect ratios live.
 
 **Component library** the AI assembles from:
@@ -61,6 +63,8 @@ Top-level files:
 | `ui_kits/watch/`                      | Hi-fi recreation of the public video watch page                                                 |
 | `motion/`                             | Animation primitives + scene template + worked example (`rc-scene`)                             |
 | `CLAUDE.md`                           | Project conventions for automated agents — read first when authoring new scenes                 |
+| `docs/`                               | Topic docs (subjects, audio, publishing, scripts, scene spec) — see Documentation map below     |
+| `PLAN.md`                             | Forward-looking nightly queue + per-subject chapter map (work-in-progress, not stable docs)     |
 | `uploads/fysikk/tfy4125.pdf` + `.txt` | Source PDF for the exemplar lesson content                                                      |
 
 ### Quick links
@@ -266,3 +270,24 @@ The display face and body face here are **substitutions** for unspecified-yet-cu
 Fraunces has a warm, slightly quirky personality that matches the "mathy + warm dark" direction well. Inter is a safe, neutral body face. JetBrains Mono is the mono pick because of its strong italics (good for variables in code).
 
 If you (the user) commission custom fonts, drop the `.woff2` files in `fonts/` and update the `@font-face` block at the top of `colors_and_type.css`.
+
+---
+
+## Documentation map
+
+Brand / voice / visual foundations are above. Engineering and operational
+docs live under `docs/` and in domain-specific READMEs:
+
+| Doc                                                | What it covers                                                                |
+| -------------------------------------------------- | ----------------------------------------------------------------------------- |
+| [`CLAUDE.md`](CLAUDE.md)                           | Project conventions for automated agents — hard rules, npm scripts, layout   |
+| [`motion/README.md`](motion/README.md)             | Motion-primitive reference (read before authoring scenes)                     |
+| [`docs/SUBJECTS.md`](docs/SUBJECTS.md)             | Subject organisation; how to add a new course                                 |
+| [`docs/SCENE-SPEC.md`](docs/SCENE-SPEC.md)         | Human walkthrough of `motion/scene-spec.schema.json`                          |
+| [`docs/AUDIO.md`](docs/AUDIO.md)                   | TTS engines, ElevenLabs setup, narration rules, `rewire-scene.js` sync flow   |
+| [`docs/PUBLISHING.md`](docs/PUBLISHING.md)         | Supabase schema, kort-forklart publish flow, audit + backfill                 |
+| [`docs/SCRIPTS.md`](docs/SCRIPTS.md)               | Every script in `scripts/` — usage, flags, common failure modes               |
+| [`preview/README.md`](preview/README.md)           | Design-system review cards (one HTML per token category)                      |
+| [`ui_kits/studio/README.md`](ui_kits/studio/README.md) | Studio editor UI kit — components, layout                                 |
+| [`ui_kits/watch/README.md`](ui_kits/watch/README.md)   | Watch page UI kit — components, layout                                    |
+| [`PLAN.md`](PLAN.md)                               | Rolling nightly queue + per-subject chapter map (work-in-progress, not stable docs) |
