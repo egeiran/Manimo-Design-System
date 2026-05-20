@@ -2378,6 +2378,89 @@
       ],
       "subject_id": "ade",
       "chapter_number": 10
+    },
+    {
+      "id": "diode-clamper",
+      "file": "diode-clamper.jsx",
+      "html": "diode-clamper.html",
+      "spec": "diode-clamper.spec.json",
+      "title": "The Diode Clamper: Lift the AC, Keep the Shape",
+      "eyebrow": "diodes",
+      "topic": "Positive diode clamper — a series capacitor and a shunt diode shift an AC sine wave upward by its peak so the negative peaks sit at zero, without changing the shape. The capacitor charges once on the first negative half-cycle and then acts as a constant DC offset on every cycle thereafter. Genuine motion in Beat 3: diode highlights, charge dots flow, V_C climbs to V_p, live readout panel. Genuine motion in Beat 4: synchronised scope traces of V_in (centred on zero) and V_out (centred on +V_p) with cursor + offset arrow.",
+      "duration": 63,
+      "language": "en",
+      "prerequisites": [
+        "diode-iv-curve",
+        "half-wave-rectifier",
+        "rc-charging"
+      ],
+      "concepts": [
+        "diode clamper",
+        "DC restorer",
+        "series capacitor",
+        "shunt diode",
+        "AC coupling",
+        "DC offset",
+        "positive clamper"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 4
+    },
+    {
+      "id": "power-triangle",
+      "file": "power-triangle.jsx",
+      "html": "power-triangle.html",
+      "spec": "power-triangle.spec.json",
+      "title": "The Power Triangle: Why Not Every Volt-Amp Becomes a Watt",
+      "eyebrow": "ac power",
+      "topic": "AC power decomposes into real power P (watts) along the in-phase axis, reactive power Q (vars) along the quadrature axis, and apparent power S (VA) as the hypotenuse. Sweeping the phase angle phi from 0 to 90 degrees morphs the triangle: P shrinks, Q grows, |S| stays fixed, cos phi (the power factor) falls from one to zero. Genuine motion in Beat 4: phi sweeps as a triangle wave, the triangle redraws each frame, live readout of P/S, Q/S, and cos phi.",
+      "duration": 58,
+      "language": "en",
+      "prerequisites": [
+        "phasor-rotation",
+        "rlc-resonance"
+      ],
+      "concepts": [
+        "power triangle",
+        "real power",
+        "reactive power",
+        "apparent power",
+        "power factor",
+        "phase angle",
+        "AC power",
+        "watts",
+        "vars",
+        "volt-amps"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 2
+    },
+    {
+      "id": "priority-encoder",
+      "file": "priority-encoder.jsx",
+      "html": "priority-encoder.html",
+      "spec": "priority-encoder.spec.json",
+      "title": "The 8-to-3 Priority Encoder: When Many Speak, One Wins",
+      "eyebrow": "combinational logic",
+      "topic": "8-to-3 priority encoder — eight input lines I0..I7, three output bits Y2 Y1 Y0, plus a Valid flag. The output is the 3-bit binary index of the highest-indexed active input; when multiple inputs are HIGH at once, the highest index wins and the others are ignored. Genuine motion in Beat 4: a sequence of curated input patterns plays out, with each frame computing the output bits and Valid flag from the current pattern in real time, and a halo highlighting the winning input.",
+      "duration": 65,
+      "language": "en",
+      "prerequisites": [
+        "two-to-four-decoder",
+        "multiplexer-4-to-1",
+        "twos-complement"
+      ],
+      "concepts": [
+        "priority encoder",
+        "8-to-3 encoder",
+        "combinational logic",
+        "address encoding",
+        "Valid flag",
+        "priority logic",
+        "interrupt controller"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 10
     }
   ]
 }

@@ -99,14 +99,14 @@ function ConfigurationBeat() {
   const portrait = usePortrait();
 
   const G = portrait
-    ? { vbW: 600, vbH: 580,
+    ? { vbW: 600, vbH: 760,
         ampCx: 360, ampCy: 290, ampW: 140,
         rInLeftX: 70, rInRightX: 210, rInY: 232,
         vMinusNodeX: 290,
         cX1: 290, cX2: 430, cY: 110,
         vOutNodeX: 430, vOutLabelX: 530,
         gndX: 290, gndY: 360,
-        captionY: 530, fontLabel: 18 }
+        captionY: 480, noteY: 580, fontLabel: 18 }
     : { vbW: 1100, vbH: 460,
         ampCx: 620, ampCy: 230, ampW: 180,
         rInLeftX: 220, rInRightX: 400, rInY: 158,
@@ -114,7 +114,7 @@ function ConfigurationBeat() {
         cX1: 530, cX2: 820, cY: 70,
         vOutNodeX: 820, vOutLabelX: 940,
         gndX: 530, gndY: 360,
-        captionY: 430, fontLabel: 20 };
+        captionY: 430, noteY: null, fontLabel: 20 };
 
   const ampH = G.ampW * 0.95;
   const vMinusY = G.ampCy - ampH * 0.32;
@@ -248,6 +248,37 @@ function ConfigurationBeat() {
             the cap in feedback turns time into voltage
           </text>
         </SvgFadeIn>
+
+        {/* Portrait-only note panel below the caption, so the bottom band
+            of the taller vbH=760 SVG carries a labelled explanation rather
+            than leaving a big empty stripe under the diagram. */}
+        {portrait && G.noteY != null && (
+          <SvgFadeIn duration={0.4} delay={7.6}>
+            <rect x={60} y={G.noteY - 28} width={G.vbW - 120} height={130}
+                  rx={10} fill="rgba(244,184,96,0.05)"
+                  stroke="rgba(232,220,193,0.10)" strokeWidth={1}/>
+            <text x={G.vbW / 2} y={G.noteY} textAnchor="middle"
+                  fill="var(--amber-300)" fontFamily="var(--font-mono)"
+                  fontSize={11} letterSpacing="0.14em">
+              INTEGRATOR WIRING
+            </text>
+            <text x={G.vbW / 2} y={G.noteY + 32} textAnchor="middle"
+                  fill="var(--chalk-200)" fontFamily="var(--font-serif)"
+                  fontStyle="italic" fontSize={16}>
+              R into V<tspan baselineShift="sub" fontSize={11}>−</tspan>,  C in feedback,  V<tspan baselineShift="sub" fontSize={11}>+</tspan> grounded
+            </text>
+            <text x={G.vbW / 2} y={G.noteY + 60} textAnchor="middle"
+                  fill="var(--chalk-300)" fontFamily="var(--font-sans)"
+                  fontSize={13}>
+              charge piles on C; V<tspan baselineShift="sub" fontSize={10}>out</tspan> swings to keep V<tspan baselineShift="sub" fontSize={10}>−</tspan> at zero
+            </text>
+            <text x={G.vbW / 2} y={G.noteY + 86} textAnchor="middle"
+                  fill="var(--chalk-300)" fontFamily="var(--font-mono)"
+                  fontSize={11} letterSpacing="0.10em">
+              that running balance IS the integral
+            </text>
+          </SvgFadeIn>
+        )}
       </svg>
     </div>
   );

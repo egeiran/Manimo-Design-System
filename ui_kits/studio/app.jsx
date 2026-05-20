@@ -115,6 +115,9 @@ const initialScenes = [
   { id: 'live-wheatstone-bridge', kind: 'live', kindLabel: 'Live', cardTitle: 'The Wheatstone Bridge', duration: '0:50', html: '../../motion/ade/wheatstone-bridge.html' },
   { id: 'live-op-amp-comparator', kind: 'live', kindLabel: 'Live', cardTitle: 'The Op-Amp Comparator', duration: '0:57', html: '../../motion/ade/op-amp-comparator.html' },
   { id: 'live-demultiplexer-1-to-4', kind: 'live', kindLabel: 'Live', cardTitle: '1-to-4 Demultiplexer', duration: '0:59', html: '../../motion/ade/demultiplexer-1-to-4.html' },
+  { id: 'live-diode-clamper', kind: 'live', kindLabel: 'Live', cardTitle: 'The Diode Clamper', duration: '1:03', html: '../../motion/ade/diode-clamper.html' },
+  { id: 'live-power-triangle', kind: 'live', kindLabel: 'Live', cardTitle: 'The Power Triangle', duration: '0:58', html: '../../motion/ade/power-triangle.html' },
+  { id: 'live-priority-encoder', kind: 'live', kindLabel: 'Live', cardTitle: '8-to-3 Priority Encoder', duration: '1:05', html: '../../motion/ade/priority-encoder.html' },
 ];
 
 function loadJSON(key, fallback) {

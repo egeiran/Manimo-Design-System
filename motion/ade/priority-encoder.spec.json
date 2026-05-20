@@ -1,0 +1,113 @@
+{
+  "id": "priority-encoder",
+  "title": "The 8-to-3 Priority Encoder: When Many Speak, One Wins",
+  "eyebrow": "combinational logic",
+  "language": "en",
+  "duration": 65,
+  "topic": "An 8-to-3 priority encoder takes eight input lines and emits the 3-bit binary index of the highest active one. When several inputs are HIGH simultaneously, the highest-index input wins; the others are ignored. Includes a Valid flag that goes LOW when all inputs are zero, distinguishing 'index zero is active' from 'nothing is active'.",
+  "subject_id": "ade",
+  "chapter_number": 10,
+  "prerequisites": [
+    "two-to-four-decoder",
+    "multiplexer-4-to-1",
+    "twos-complement"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.8,
+      "narration": "Eight buttons go in. Three wires come out. When more than one button is pressed, who gets to talk?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo enters",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Eight inputs, three outputs — when many speak, who wins?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "blockDiagram",
+      "start": 6.8,
+      "end": 22.74,
+      "narration": "The encoder block takes eight inputs labelled I zero through I seven. It puts out three address bits Y two, Y one, Y zero, plus a Valid flag V. The address is the binary index of the highest input that is HIGH.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Eight horizontal input lines on the left going into a labelled rectangular block; three output lines on the right; a Valid flag line below. Block annotated '8-to-3 priority'.",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "priorityRule",
+      "start": 22.74,
+      "end": 36.26,
+      "narration": "Here is the rule. Scan from the top down. The first input you find that is HIGH determines the address — everything below it is ignored. Higher index always wins. That is why we call it priority.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          {
+            "type": "svg-label",
+            "content": "Truth-table style display: each row shows one of three example input patterns and the resulting Y2 Y1 Y0 output. Active inputs glow; the winning input is haloed.",
+            "delay": 0,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "liveDemo",
+      "start": 36.26,
+      "end": 49.34,
+      "narration": "Watch it run. Inputs flash on and off in patterns that change every second. The output address tracks the highest active input in real time. When everything goes low, the Valid flag drops.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Eight LED-style inputs cycling through changing patterns. The encoder updates Y2 Y1 Y0 each frame to encode the highest active line. Valid flag glows green when any input is HIGH, off when all are low. A 'winner' halo highlights the active line that is driving the output.",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 49.34,
+      "end": 65,
+      "narration": "Priority encoders live everywhere multiple things can ask for attention at once. Interrupt controllers, keyboard scanners, even floating-point leading-zero detectors. Many speak, one wins.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "Y = highest active index",
+            "delay": 0.3,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "interrupt controllers · keyboard scanners · leading-zero detectors",
+            "delay": 1.6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    }
+  ]
+}

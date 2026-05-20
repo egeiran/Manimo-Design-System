@@ -1,0 +1,36 @@
+{
+  "sceneId": "power-triangle",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/power-triangle/scene.mp3",
+  "durationSec": 56.38,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "An AC source can deliver volt-amps that never become watts. So where does the power go?"
+    },
+    {
+      "id": "currentLagsVoltage",
+      "audioStart": 5.43,
+      "narration": "Drive a reactive load with a sinusoidal voltage. The current rises and falls at the same frequency, but its peaks arrive a quarter cycle late. The phase angle between the two is phi."
+    },
+    {
+      "id": "decomposeIntoPandQ",
+      "audioStart": 17.04,
+      "narration": "Project the current onto V and you get the in-phase part, which carries real power P. Project it perpendicular and you get the quadrature part, which carries reactive power Q. They live at right angles to each other."
+    },
+    {
+      "id": "sweepPhi",
+      "audioStart": 30.84,
+      "narration": "Now sweep phi from zero to ninety degrees. The hypotenuse stays the same length — that is apparent power S. Real power P shrinks; reactive power Q grows. The power factor cos phi falls from one to zero."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 45.56,
+      "narration": "Utilities bill for apparent power. Real power lights the room; reactive power just sloshes back and forth through the wires. That is why power factor correction is worth money."
+    }
+  ]
+}
