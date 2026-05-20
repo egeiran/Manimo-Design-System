@@ -1,0 +1,36 @@
+{
+  "sceneId": "high-pass-bode",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/high-pass-bode/scene.mp3",
+  "durationSec": 44.49,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Swap the R and the C in our filter — what changes?"
+    },
+    {
+      "id": "circuit",
+      "audioStart": 4.33,
+      "narration": "The capacitor sits in series; the resistor goes to ground; V out is taken across the resistor."
+    },
+    {
+      "id": "frequencySweep",
+      "audioStart": 10.75,
+      "narration": "Step the input frequency from low to high. At low frequencies the capacitor blocks the signal and V out collapses. As the frequency climbs past the cutoff, V out grows up to match V in."
+    },
+    {
+      "id": "bodeMagnitude",
+      "audioStart": 23.55,
+      "narration": "Plot the gain in decibels against frequency on a log axis. Below the cutoff the gain climbs at twenty decibels every decade; above the cutoff it is flat at zero dB."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 34.63,
+      "narration": "Above omega equals one over R C the filter passes the signal through. Below, it kills low frequencies — that is why we call it a high pass filter."
+    }
+  ]
+}

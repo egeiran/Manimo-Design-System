@@ -2226,6 +2226,81 @@
       ],
       "subject_id": "ade",
       "chapter_number": 5
+    },
+    {
+      "id": "current-divider",
+      "file": "current-divider.jsx",
+      "html": "current-divider.html",
+      "spec": "current-divider.spec.json",
+      "title": "Current Divider: How Two Parallel Resistors Split the Current",
+      "eyebrow": "circuit analysis",
+      "topic": "Current divider — two resistors in parallel across a current source I_in split the total current as I_1 = I_in · R_2/(R_1+R_2) and I_2 = I_in · R_1/(R_1+R_2); the smaller resistor steals the larger share. Genuine animation in Beat 4: R_2 scrubs and the two branch-current arrows swell/shrink with live percentages.",
+      "duration": 36,
+      "language": "en",
+      "prerequisites": [
+        "voltage-divider"
+      ],
+      "concepts": [
+        "current divider",
+        "parallel resistors",
+        "Kirchhoff current law",
+        "Ohm's law",
+        "circuit analysis",
+        "branch current"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 1
+    },
+    {
+      "id": "high-pass-bode",
+      "file": "high-pass-bode.jsx",
+      "html": "high-pass-bode.html",
+      "spec": "high-pass-bode.spec.json",
+      "title": "RC High-Pass Filter: Why Gain Rolls In Past the Cutoff",
+      "eyebrow": "frequency response",
+      "topic": "RC high-pass filter — capacitor in series, resistor to ground, V_out across the resistor; H(jω) = jωRC / (1 + jωRC); gain rises at +20 dB/decade below ω_c = 1/RC and is flat at 0 dB above; phase shifts from +90° (lead) down to 0°. Sister scene to low-pass-bode with the roles swapped.",
+      "duration": 46,
+      "language": "en",
+      "prerequisites": [
+        "low-pass-bode"
+      ],
+      "concepts": [
+        "high-pass filter",
+        "Bode plot",
+        "cutoff frequency",
+        "transfer function",
+        "frequency response",
+        "decibels",
+        "RC filter",
+        "AC coupling"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 8
+    },
+    {
+      "id": "ripple-counter",
+      "file": "ripple-counter.jsx",
+      "html": "ripple-counter.html",
+      "spec": "ripple-counter.spec.json",
+      "title": "Ripple Counter: How Four Toggle Flip-Flops Count to Sixteen",
+      "eyebrow": "sequential logic",
+      "topic": "4-bit asynchronous ripple counter — chain four toggle (J = K = 1) flip-flops with each Q driving the next stage's clock. Each stage halves the frequency, so Q_0 is the LSB toggling every clock and Q_3 is the MSB toggling every eight clocks; together they spell out a binary count from 0 to 15. The 'ripple' name comes from the propagation-delay cascade — bits flip one stage at a time.",
+      "duration": 44,
+      "language": "en",
+      "prerequisites": [
+        "jk-flip-flop"
+      ],
+      "concepts": [
+        "ripple counter",
+        "asynchronous counter",
+        "T flip-flop",
+        "divide-by-two",
+        "binary counter",
+        "frequency divider",
+        "sequential logic"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 7
     }
   ]
 }

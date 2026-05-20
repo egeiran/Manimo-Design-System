@@ -1,0 +1,194 @@
+{
+  "id": "high-pass-bode",
+  "title": "RC High-Pass Filter: Why Gain Rolls In Past the Cutoff",
+  "eyebrow": "frequency response",
+  "language": "en",
+  "duration": 46,
+  "topic": "RC high-pass filter — swap the roles of R and C: capacitor in series, resistor to ground; H(jω) = jωRC / (1 + jωRC); gain rises at +20 dB/decade below the cutoff ω_c = 1/RC and is flat (0 dB) above; phase shifts from +90° down to 0°",
+  "subject_id": "ade",
+  "chapter_number": 8,
+  "prerequisites": [
+    "low-pass-bode"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.33,
+      "narration": "Swap the R and the C in our filter — what changes?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Same parts, swapped positions — which way does the gain go?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "circuit",
+      "start": 4.33,
+      "end": 10.75,
+      "narration": "The capacitor sits in series; the resistor goes to ground; V out is taken across the resistor.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "V_in terminal pair on the left, top wire to capacitor plates in series",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Capacitor (two amber plates) in series on the top wire",
+            "delay": 1,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Resistor R from the V_out node down to ground rail",
+            "delay": 1.8,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "C label above the capacitor, R label beside the resistor",
+            "delay": 2.4,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "svg-label",
+            "content": "V_out terminal pair on the right",
+            "delay": 3,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "H(jω) = jωRC / (1 + jωRC)",
+            "delay": 4,
+            "color": "var(--amber-300)",
+            "position": "below the diagram, large serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "frequencySweep",
+      "start": 10.75,
+      "end": 23.55,
+      "narration": "Step the input frequency from low to high. At low frequencies the capacitor blocks the signal and V out collapses. As the frequency climbs past the cutoff, V out grows up to match V in.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Two stacked panels — V_in (top, constant amplitude) and V_out (bottom, amplitude grows with frequency)",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "V_in sinusoid drawn at unit amplitude every frame",
+            "delay": 0.4,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "V_out sinusoid amplitude = x/√(1+x²), phase lead = π/2 − atan(x)",
+            "delay": 0.4,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Live ω/ω_c readout and |H| readout below the panels",
+            "delay": 0.6,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bodeMagnitude",
+      "start": 23.55,
+      "end": 34.63,
+      "narration": "Plot the gain in decibels against frequency on a log axis. Below the cutoff the gain climbs at twenty decibels every decade; above the cutoff it is flat at zero dB.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Bode magnitude plot with log ω/ω_c on x-axis (4 decades) and dB on y-axis (−45 to +5)",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Dashed vertical at ω_c with rose marker",
+            "delay": 0.5,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Asymptotes: +20 dB/dec for x < 1, flat at 0 dB for x > 1",
+            "delay": 0.8,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Full magnitude curve revealed left to right by a sweeping cursor",
+            "delay": 1,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "+20 dB/decade slope annotation in the low-frequency region",
+            "delay": 6,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 34.63,
+      "end": 46,
+      "narration": "Above omega equals one over R C the filter passes the signal through. Below, it kills low frequencies — that is why we call it a high pass filter.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "ω_c = 1 / RC",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre, large amber serif italic — same cutoff formula as the low-pass"
+          },
+          {
+            "type": "text-caption",
+            "content": "high frequencies pass through; low frequencies are attenuated",
+            "delay": 1.6,
+            "color": "var(--chalk-100)",
+            "position": "below the formula"
+          },
+          {
+            "type": "text-caption",
+            "content": "the same shape drives DC blockers, AC coupling, edge detectors",
+            "delay": 3,
+            "color": "var(--chalk-300)",
+            "position": "small mono caption below"
+          }
+        ]
+      }
+    }
+  ]
+}
