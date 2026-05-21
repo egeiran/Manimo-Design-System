@@ -1,0 +1,36 @@
+{
+  "sceneId": "orthogonal-complement",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/orthogonal-complement/scene.mp3",
+  "durationSec": 50.02,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "What is left over when you remove a direction from a space?"
+    },
+    {
+      "id": "lineAndItsComplement",
+      "audioStart": 4.01,
+      "narration": "Fix a line W through the origin. Its orthogonal complement is the perpendicular line through the origin, written W perp. Everything on W perp is at right angles to everything on W."
+    },
+    {
+      "id": "rotateAndDecompose",
+      "audioStart": 16.17,
+      "narration": "Now take any vector u. Drop its shadow onto W and onto W perp. Whatever piece lives on each line, the two pieces add up to u. Spin u around the origin and watch the two shadows glide along their lines, always making a right triangle."
+    },
+    {
+      "id": "spansEverything",
+      "audioStart": 33.03,
+      "narration": "Together W and W perp span the whole plane, and the only vector in both is zero. We say the plane is the direct sum of W and W perp."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 42.89,
+      "narration": "A subspace and its complement carve the space cleanly in two. Every direction belongs to one side or the other."
+    }
+  ]
+}

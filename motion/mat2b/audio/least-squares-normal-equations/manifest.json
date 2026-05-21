@@ -1,0 +1,36 @@
+{
+  "sceneId": "least-squares-normal-equations",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/least-squares-normal-equations/scene.mp3",
+  "durationSec": 53.87,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Three points won't all lie on one line. What's the best you can do?"
+    },
+    {
+      "id": "overdetermined",
+      "audioStart": 4.16,
+      "narration": "Three noisy data points. We want a line through them. Two unknowns, slope and intercept — but three equations. The system is overdetermined, so no line passes through all three."
+    },
+    {
+      "id": "tiltAndMinimise",
+      "audioStart": 16.25,
+      "narration": "So pick the line that minimises the sum of squared vertical residuals. Tilt the slope back and forth; the squared-error total rises and falls. The best fit is the slope where it bottoms out."
+    },
+    {
+      "id": "normalEquations",
+      "audioStart": 28.02,
+      "narration": "There's a closed-form recipe. The error vector b minus A x has to be perpendicular to every column of A. Multiply both sides by A transpose, and you get the normal equations A transpose A x equals A transpose b. Solve those once, and you're done."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 45.94,
+      "narration": "When there is no exact answer, project. The same trick that found the closest point on a line works for the closest point in the column space."
+    }
+  ]
+}

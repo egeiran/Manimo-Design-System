@@ -1,0 +1,184 @@
+{
+  "id": "inner-product-geometry",
+  "subject_id": "mat2b",
+  "chapter_number": 3,
+  "title": "The Dot Product: Length, Length, Cosine",
+  "eyebrow": "inner product spaces",
+  "language": "en",
+  "duration": 35,
+  "topic": "Geometric meaning of the dot product — u·v equals the length of u times the length of v times the cosine of the angle between them. Sweeping the angle from 0 to 180 degrees walks the dot product from +‖u‖‖v‖ down through 0 (when the arrows are perpendicular) to −‖u‖‖v‖, with the sign reading off acute, right, or obtuse.",
+  "prerequisites": [
+    "linear-combination-recipe"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 2.93,
+      "narration": "How do you measure the angle between two arrows?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "How do you measure the angle between two arrows?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "componentForm",
+      "start": 2.93,
+      "end": 8.23,
+      "narration": "Multiply the matching components and add them up. That single number is u dot v.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Two arrows u = (3, 1) and v = (1, 2) from origin on a small grid",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "u·v = u₁v₁ + u₂v₂",
+            "delay": 1,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-formula",
+            "content": "= 3·1 + 1·2 = 5",
+            "delay": 2.4,
+            "color": "var(--amber-300)",
+            "position": "right panel, second row"
+          },
+          {
+            "type": "text-caption",
+            "content": "Easy to compute — but what does the number mean?",
+            "delay": 4,
+            "color": "var(--chalk-300)",
+            "position": "right panel caption"
+          }
+        ]
+      }
+    },
+    {
+      "id": "angleScrub",
+      "start": 8.23,
+      "end": 21.4,
+      "narration": "Geometrically the same number equals the length of u, times the length of v, times the cosine of the angle between them. Hold one arrow fixed, spin the other, and watch the dot product rise and fall with the cosine.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Fixed arrow u along +x; second arrow v rotating from theta=10 deg up to theta=170 deg",
+            "delay": 0,
+            "color": "var(--teal-400)",
+            "note": "drive angle by useSprite localTime — sweep over ~10 s"
+          },
+          {
+            "type": "svg-arc",
+            "content": "Arc from u to v showing the angle theta",
+            "delay": 1,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "u·v = ‖u‖ ‖v‖ cos θ",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "right panel, large serif"
+          },
+          {
+            "type": "text-formula",
+            "content": "θ = 70° · cos θ = 0.34",
+            "delay": 2.4,
+            "color": "var(--chalk-200)",
+            "position": "right panel, mono live readout — updates per frame"
+          },
+          {
+            "type": "text-formula",
+            "content": "u·v = 1.71",
+            "delay": 2.6,
+            "color": "var(--teal-300)",
+            "position": "right panel, mono live readout"
+          }
+        ]
+      }
+    },
+    {
+      "id": "signFromAngle",
+      "start": 21.4,
+      "end": 28.9,
+      "narration": "Positive means acute, zero means perpendicular, negative means obtuse. The sign reads off the corner.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Three small vector pairs side by side: acute (amber +), right (chalk 0), obtuse (rose −)",
+            "delay": 0.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "θ < 90°  ·  u·v > 0",
+            "delay": 1,
+            "color": "var(--amber-300)",
+            "position": "left tile"
+          },
+          {
+            "type": "text-caption",
+            "content": "θ = 90°  ·  u·v = 0",
+            "delay": 1.6,
+            "color": "var(--chalk-100)",
+            "position": "centre tile"
+          },
+          {
+            "type": "text-caption",
+            "content": "θ > 90°  ·  u·v < 0",
+            "delay": 2.2,
+            "color": "var(--rose-300)",
+            "position": "right tile"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 28.9,
+      "end": 35,
+      "narration": "One number tells you the angle. That is why the dot product shows up everywhere.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "One number — the angle, encoded.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic ~32px"
+          },
+          {
+            "type": "text-caption",
+            "content": "Length × length × cosine — and the cosine carries the geometry.",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "centre, smaller"
+          }
+        ]
+      }
+    }
+  ]
+}

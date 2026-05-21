@@ -127,6 +127,9 @@ const initialScenes = [
   { id: 'live-mosfet-transfer-characteristic', kind: 'live', kindLabel: 'Live', cardTitle: 'MOSFET Transfer Characteristic', duration: '1:13', html: '../../motion/ade/mosfet-transfer-characteristic.html' },
   { id: 'live-voltage-doubler', kind: 'live', kindLabel: 'Live', cardTitle: 'Voltage Doubler', duration: '1:08', html: '../../motion/ade/voltage-doubler.html' },
   { id: 'live-ac-impedance-triangle', kind: 'live', kindLabel: 'Live', cardTitle: 'Impedance Triangle', duration: '1:29', html: '../../motion/ade/ac-impedance-triangle.html' },
+  { id: 'live-inner-product-geometry', kind: 'live', kindLabel: 'Live', cardTitle: 'The Dot Product: Length, Length, Cosine', duration: '0:35', html: '../../motion/mat2b/inner-product-geometry.html' },
+  { id: 'live-orthogonal-complement', kind: 'live', kindLabel: 'Live', cardTitle: 'Orthogonal Complement', duration: '0:52', html: '../../motion/mat2b/orthogonal-complement.html' },
+  { id: 'live-least-squares-normal-equations', kind: 'live', kindLabel: 'Live', cardTitle: "Least Squares: Project, Don't Solve", duration: '0:55', html: '../../motion/mat2b/least-squares-normal-equations.html' },
 ];
 
 function loadJSON(key, fallback) {
