@@ -2686,6 +2686,80 @@
       ],
       "subject_id": "ade",
       "chapter_number": 8
+    },
+    {
+      "id": "inner-product-geometry",
+      "file": "inner-product-geometry.jsx",
+      "html": "inner-product-geometry.html",
+      "spec": "inner-product-geometry.spec.json",
+      "title": "The Dot Product: Length, Length, Cosine",
+      "eyebrow": "inner product spaces",
+      "topic": "Geometric meaning of the dot product — u·v equals ‖u‖ ‖v‖ cos θ. Hold one arrow fixed and spin the other; the dot-product readout sweeps in sync with the cosine. The sign alone reads off acute, right, or obtuse.",
+      "duration": 35,
+      "language": "en",
+      "prerequisites": [
+        "linear-combination-recipe"
+      ],
+      "concepts": [
+        "dot product",
+        "inner product",
+        "cosine of angle",
+        "magnitude",
+        "orthogonality",
+        "geometry of vectors"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 3
+    },
+    {
+      "id": "orthogonal-complement",
+      "file": "orthogonal-complement.jsx",
+      "html": "orthogonal-complement.html",
+      "spec": "orthogonal-complement.spec.json",
+      "title": "Orthogonal Complement: The Other Direction",
+      "eyebrow": "inner product spaces",
+      "topic": "The orthogonal complement of a line W is the perpendicular line W⊥ through the origin. Every vector u splits uniquely as u = w + w⊥. Rotate u and the two pieces glide along their lines. Together W and W⊥ span the whole plane — the direct sum.",
+      "duration": 52,
+      "language": "en",
+      "prerequisites": [
+        "projection-onto-line"
+      ],
+      "concepts": [
+        "orthogonal complement",
+        "direct sum",
+        "subspace",
+        "perpendicular",
+        "decomposition",
+        "projection"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 3
+    },
+    {
+      "id": "least-squares-normal-equations",
+      "file": "least-squares-normal-equations.jsx",
+      "html": "least-squares-normal-equations.html",
+      "spec": "least-squares-normal-equations.spec.json",
+      "title": "Least Squares: Project, Don't Solve",
+      "eyebrow": "inner product spaces",
+      "topic": "Three noisy points, no line through all three. Tilt the slope and the sum of squared residuals rises and falls; the minimum sits where the error vector is perpendicular to the column space of A. That perpendicularity condition is the normal equations AᵀAx = Aᵀb.",
+      "duration": 55,
+      "language": "en",
+      "prerequisites": [
+        "projection-onto-line",
+        "best-approximation"
+      ],
+      "concepts": [
+        "least squares",
+        "normal equations",
+        "overdetermined system",
+        "projection",
+        "column space",
+        "residual",
+        "best approximation"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 3
     }
   ]
 }

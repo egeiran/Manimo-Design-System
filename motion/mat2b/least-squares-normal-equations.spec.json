@@ -1,0 +1,184 @@
+{
+  "id": "least-squares-normal-equations",
+  "subject_id": "mat2b",
+  "chapter_number": 3,
+  "title": "Least Squares: Project, Don't Solve",
+  "eyebrow": "inner product spaces",
+  "language": "en",
+  "duration": 55,
+  "topic": "When a linear system Ax = b has no solution because b is not in the column space, the next best thing is to project b onto the column space and solve for the result. That gives the normal equations AᵀAx = Aᵀb. Visualised as fitting a line through three noisy points: the line tilts to minimise the sum of squared vertical residuals, and the minimum lands at exactly the line whose error vector is perpendicular to the column space of A.",
+  "prerequisites": [
+    "projection-onto-line",
+    "best-approximation"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.16,
+      "narration": "Three points won't all lie on one line. What's the best you can do?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Three points won't all lie on one line — what's the best fit?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "overdetermined",
+      "start": 4.16,
+      "end": 16.25,
+      "narration": "Three noisy data points. We want a line through them. Two unknowns, slope and intercept — but three equations. The system is overdetermined, so no line passes through all three.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Three data points (1,1.4), (2,1.9), (3,3.3) on a small grid",
+            "delay": 0.3,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Two candidate lines that each miss at least one point",
+            "delay": 1.4,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "Ax = b has no solution",
+            "delay": 2.2,
+            "color": "var(--rose-300)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "Three points, two unknowns — over-determined.",
+            "delay": 3.4,
+            "color": "var(--chalk-300)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tiltAndMinimise",
+      "start": 16.25,
+      "end": 28.02,
+      "narration": "So pick the line that minimises the sum of squared vertical residuals. Tilt the slope back and forth; the squared-error total rises and falls. The best fit is the slope where it bottoms out.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Three data points (fixed), a line of varying slope tilting from steep to shallow",
+            "delay": 0.2,
+            "color": "var(--amber-400)",
+            "note": "drive slope by useSprite localTime — sweep over ~12s"
+          },
+          {
+            "type": "svg-path",
+            "content": "Three vertical residual line segments from each data point to the candidate line",
+            "delay": 0.4,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Three small squares whose side equals the residual length (the 'squared error' literally drawn)",
+            "delay": 0.4,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "minimise Σ(yᵢ − ŷᵢ)²",
+            "delay": 1,
+            "color": "var(--amber-300)",
+            "position": "right panel, large serif"
+          },
+          {
+            "type": "text-formula",
+            "content": "slope = 0.95 · SSR = 0.27",
+            "delay": 2,
+            "color": "var(--chalk-200)",
+            "position": "right panel, live readout"
+          }
+        ]
+      }
+    },
+    {
+      "id": "normalEquations",
+      "start": 28.02,
+      "end": 45.94,
+      "narration": "There's a closed-form recipe. The error vector b minus A x has to be perpendicular to every column of A. Multiply both sides by A transpose, and you get the normal equations A transpose A x equals A transpose b. Solve those once, and you're done.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "Aᵀ(b − Ax) = 0",
+            "delay": 0.3,
+            "color": "var(--chalk-200)",
+            "position": "centre, mid-size serif"
+          },
+          {
+            "type": "text-formula",
+            "content": "⇓",
+            "delay": 1.4,
+            "color": "var(--chalk-300)",
+            "position": "centre, small"
+          },
+          {
+            "type": "text-formula",
+            "content": "AᵀAx = Aᵀb",
+            "delay": 1.8,
+            "color": "var(--amber-300)",
+            "position": "centre, large amber payoff"
+          },
+          {
+            "type": "text-caption",
+            "content": "Residual must be perpendicular to the column space — that's the projection.",
+            "delay": 3.2,
+            "color": "var(--chalk-300)",
+            "position": "below, small"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 45.94,
+      "end": 55,
+      "narration": "When there is no exact answer, project. The same trick that found the closest point on a line works for the closest point in the column space.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "No exact answer? Project.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic ~36px"
+          },
+          {
+            "type": "text-caption",
+            "content": "Closest point in the column space — same trick, bigger stage.",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "centre, smaller"
+          }
+        ]
+      }
+    }
+  ]
+}

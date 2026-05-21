@@ -1,0 +1,188 @@
+{
+  "id": "orthogonal-complement",
+  "subject_id": "mat2b",
+  "chapter_number": 3,
+  "title": "Orthogonal Complement: The Other Direction",
+  "eyebrow": "inner product spaces",
+  "language": "en",
+  "duration": 52,
+  "topic": "The orthogonal complement of a line W through the origin is the perpendicular line W⊥ through the origin. Every vector u in the plane splits uniquely as u = w + w⊥ with w on W and w⊥ on W⊥. Rotate u and the two pieces glide along their respective lines, always meeting at a right angle. The two complementary subspaces span everything between them.",
+  "prerequisites": [
+    "projection-onto-line"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.01,
+      "narration": "What is left over when you remove a direction from a space?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "What is left over when you remove a direction?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lineAndItsComplement",
+      "start": 4.01,
+      "end": 16.17,
+      "narration": "Fix a line W through the origin. Its orthogonal complement is the perpendicular line through the origin, written W perp. Everything on W perp is at right angles to everything on W.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Line W through origin (amber)",
+            "delay": 0.3,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Line W perp through origin, perpendicular to W (teal)",
+            "delay": 1.4,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Small right-angle marker at origin between the two lines",
+            "delay": 1.8,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-caption",
+            "content": "Every vector on W⊥ is perpendicular to every vector on W.",
+            "delay": 3,
+            "color": "var(--chalk-200)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rotateAndDecompose",
+      "start": 16.17,
+      "end": 33.03,
+      "narration": "Now take any vector u. Drop its shadow onto W and onto W perp. Whatever piece lives on each line, the two pieces add up to u. Spin u around the origin and watch the two shadows glide along their lines, always making a right triangle.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "u rotating around the origin at radius 2.6, sweeping over ~10s",
+            "delay": 0.2,
+            "color": "var(--violet-400)",
+            "note": "drive angle by useSprite localTime"
+          },
+          {
+            "type": "svg-path",
+            "content": "w = projection of u onto W, drawn from origin along W (amber)",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "w⊥ = projection of u onto W⊥, drawn from origin along W⊥ (teal)",
+            "delay": 0.4,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Dashed parallelogram-rule lines from w and w⊥ to u-tip",
+            "delay": 0.4,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "u = w + w⊥",
+            "delay": 1,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "Same split for every u — unique decomposition.",
+            "delay": 3,
+            "color": "var(--chalk-300)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spansEverything",
+      "start": 33.03,
+      "end": 42.89,
+      "narration": "Together W and W perp span the whole plane, and the only vector in both is zero. We say the plane is the direct sum of W and W perp.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "ℝ² = W ⊕ W⊥",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre, large serif"
+          },
+          {
+            "type": "text-caption",
+            "content": "every vector splits, uniquely",
+            "delay": 1.4,
+            "color": "var(--chalk-200)",
+            "position": "centre, small"
+          },
+          {
+            "type": "text-caption",
+            "content": "W ∩ W⊥ = {0}",
+            "delay": 2.4,
+            "color": "var(--chalk-100)",
+            "position": "centre, mid"
+          },
+          {
+            "type": "text-caption",
+            "content": "the only shared vector is zero",
+            "delay": 2.8,
+            "color": "var(--chalk-300)",
+            "position": "centre, small"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 42.89,
+      "end": 52,
+      "narration": "A subspace and its complement carve the space cleanly in two. Every direction belongs to one side or the other.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "A subspace and its complement.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic ~32px"
+          },
+          {
+            "type": "text-caption",
+            "content": "Carving the space cleanly in two — perpendicular sides.",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "centre, smaller"
+          }
+        ]
+      }
+    }
+  ]
+}

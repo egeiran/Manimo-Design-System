@@ -1,0 +1,36 @@
+{
+  "sceneId": "inner-product-geometry",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/inner-product-geometry/scene.mp3",
+  "durationSec": 33.53,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "How do you measure the angle between two arrows?"
+    },
+    {
+      "id": "componentForm",
+      "audioStart": 2.93,
+      "narration": "Multiply the matching components and add them up. That single number is u dot v."
+    },
+    {
+      "id": "angleScrub",
+      "audioStart": 8.23,
+      "narration": "Geometrically the same number equals the length of u, times the length of v, times the cosine of the angle between them. Hold one arrow fixed, spin the other, and watch the dot product rise and fall with the cosine."
+    },
+    {
+      "id": "signFromAngle",
+      "audioStart": 21.4,
+      "narration": "Positive means acute, zero means perpendicular, negative means obtuse. The sign reads off the corner."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 28.9,
+      "narration": "One number tells you the angle. That is why the dot product shows up everywhere."
+    }
+  ]
+}
