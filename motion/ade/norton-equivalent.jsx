@@ -157,9 +157,18 @@ function ShortCircuitBeat() {
     }}>
       <svg width={G.vbW} height={G.vbH} viewBox={`0 0 ${G.vbW} ${G.vbH}`}
            style={{ overflow: 'visible' }}>
-        {/* Top branch: V1 from (ltX, botY..topY), R1 zig along top to midX */}
-        <TraceIn d={`M ${G.ltX} ${G.botY} L ${G.ltX} ${G.topY} L ${G.midX} ${G.topY}`}
+        {/* Top branch rails — drawn in three pieces so the R_1 and R_2
+            zigzags don't have a straight wire visible through them. */}
+        {/*   left vertical + stub up to R_1 */}
+        <TraceIn d={`M ${G.ltX} ${G.botY} L ${G.ltX} ${G.topY} L ${G.ltX + 40} ${G.topY}`}
           stroke="var(--chalk-200)" strokeWidth={2} duration={0.6} delay={0.2}/>
+        {/*   stub between R_1 and R_2 (passes through the midX node) */}
+        <TraceIn d={`M ${G.midX - 40} ${G.topY} L ${G.midX + 40} ${G.topY}`}
+          stroke="var(--chalk-200)" strokeWidth={2} duration={0.4} delay={0.4}/>
+        {/*   stub after R_2 + descent to right midY rail */}
+        <TraceIn d={`M ${G.rtX - 40} ${G.topY} L ${G.rtX} ${G.topY} L ${G.rtX} ${G.midY}`}
+          stroke="var(--chalk-200)" strokeWidth={2} duration={0.6} delay={0.4}/>
+
         <SvgFadeIn duration={0.4} delay={0.4}>
           <BatterySymbolV cx={G.ltX} cy={(G.topY + G.midY) / 2} color="var(--chalk-200)"/>
           <text x={G.ltX - 22} y={(G.topY + G.midY) / 2 + 6} textAnchor="end"
@@ -178,9 +187,6 @@ function ShortCircuitBeat() {
           </text>
         </SvgFadeIn>
 
-        {/* Second branch: midX→rtX along top, R2 zig, V2 right battery, rtX→midY down */}
-        <TraceIn d={`M ${G.midX} ${G.topY} L ${G.rtX} ${G.topY} L ${G.rtX} ${G.midY}`}
-          stroke="var(--chalk-200)" strokeWidth={2} duration={0.6} delay={0.4}/>
         <TraceIn d={zigzagH(G.topY, G.midX + 40, G.rtX - 40, G.zig)}
           stroke="var(--amber-400)" strokeWidth={2.4} duration={0.6} delay={1.4}/>
         <SvgFadeIn duration={0.35} delay={1.8}>
@@ -199,7 +205,11 @@ function ShortCircuitBeat() {
           </text>
         </SvgFadeIn>
 
-        {/* R3 — vertical between midX/topY and midX/botY */}
+        {/* R_3 — vertical between midX/topY and midX/botY, with stubs */}
+        <TraceIn d={`M ${G.midX} ${G.topY} L ${G.midX} ${G.topY + 14}`}
+          stroke="var(--chalk-200)" strokeWidth={2} duration={0.3} delay={1.6}/>
+        <TraceIn d={`M ${G.midX} ${G.botY - 14} L ${G.midX} ${G.botY}`}
+          stroke="var(--chalk-200)" strokeWidth={2} duration={0.3} delay={1.6}/>
         <TraceIn d={zigzagV(G.midX, G.topY + 14, G.botY - 14, G.zig)}
           stroke="var(--amber-400)" strokeWidth={2.4} duration={0.6} delay={1.8}/>
         <SvgFadeIn duration={0.35} delay={2.2}>
@@ -387,8 +397,11 @@ function MiniThevenin({ x, y, w, h, phase, numDots, fontMain }) {
   const botY = y + h - 30;
   const midY = (topY + botY) / 2;
   const loadX = innerRight;
-  const yTop = midY + 8;
-  const yBot = botY - 10;
+  // R_L spans the full rail-to-rail height so the wires connect at its top
+  // and bottom rather than leaving a gap above the resistor. Dots flow
+  // through the body, slightly inset from the rails.
+  const dotTop = topY + 12;
+  const dotBot = botY - 12;
 
   return (
     <g>
@@ -401,8 +414,11 @@ function MiniThevenin({ x, y, w, h, phase, numDots, fontMain }) {
             fill="none" stroke="var(--chalk-300)" strokeWidth={1}
             strokeDasharray="3 4" opacity={0.4} rx={6}/>
 
-      {/* Rails */}
-      <line x1={innerLeft} y1={topY} x2={loadX} y2={topY}
+      {/* Top rail in two pieces, leaving room for R_th to draw cleanly
+          (otherwise a thin straight line shows through the zigzag). */}
+      <line x1={innerLeft} y1={topY} x2={innerLeft + 50} y2={topY}
+            stroke="var(--chalk-200)" strokeWidth={1.6}/>
+      <line x1={innerLeft + 140} y1={topY} x2={loadX} y2={topY}
             stroke="var(--chalk-200)" strokeWidth={1.6}/>
       <line x1={innerLeft} y1={botY} x2={loadX} y2={botY}
             stroke="var(--chalk-200)" strokeWidth={1.6}/>
@@ -428,8 +444,8 @@ function MiniThevenin({ x, y, w, h, phase, numDots, fontMain }) {
         R<tspan baselineShift="sub" fontSize={9}>th</tspan>
       </text>
 
-      {/* R_L on right side */}
-      <path d={zigzagV(loadX, yTop, yBot, 10)}
+      {/* R_L on right side — spans top rail to bottom rail */}
+      <path d={zigzagV(loadX, topY, botY, 10)}
             stroke="var(--rose-400)" strokeWidth={2.2} fill="none"
             strokeLinecap="round" strokeLinejoin="round"/>
       <text x={loadX + 16} y={midY + 6}
@@ -441,7 +457,7 @@ function MiniThevenin({ x, y, w, h, phase, numDots, fontMain }) {
       {/* Charge dots flowing down R_L */}
       {Array.from({ length: numDots }).map((_, i) => {
         const u = ((phase + i / numDots) % 1);
-        const yy = yTop + (yBot - yTop) * u;
+        const yy = dotTop + (dotBot - dotTop) * u;
         return (
           <circle key={i} cx={loadX} cy={yy} r={3.5}
                   fill="var(--rose-300)" opacity={0.95}/>
@@ -464,8 +480,9 @@ function MiniNorton({ x, y, w, h, phase, numDots, fontMain }) {
   const topY = y + 50;
   const botY = y + h - 30;
   const midY = (topY + botY) / 2;
-  const yTop = midY + 8;
-  const yBot = botY - 10;
+  // R_L spans rail to rail; dots flow inside.
+  const dotTop = topY + 12;
+  const dotBot = botY - 12;
 
   return (
     <g>
@@ -509,8 +526,8 @@ function MiniNorton({ x, y, w, h, phase, numDots, fontMain }) {
         R<tspan baselineShift="sub" fontSize={9}>N</tspan>
       </text>
 
-      {/* R_L on the far right */}
-      <path d={zigzagV(loadX, yTop, yBot, 10)}
+      {/* R_L on the far right — spans top rail to bottom rail */}
+      <path d={zigzagV(loadX, topY, botY, 10)}
             stroke="var(--rose-400)" strokeWidth={2.2} fill="none"
             strokeLinecap="round" strokeLinejoin="round"/>
       <text x={loadX + 16} y={midY + 6}
@@ -522,7 +539,7 @@ function MiniNorton({ x, y, w, h, phase, numDots, fontMain }) {
       {/* Charge dots flowing down R_L — locked phase with Thévenin panel */}
       {Array.from({ length: numDots }).map((_, i) => {
         const u = ((phase + i / numDots) % 1);
-        const yy = yTop + (yBot - yTop) * u;
+        const yy = dotTop + (dotBot - dotTop) * u;
         return (
           <circle key={i} cx={loadX} cy={yy} r={3.5}
                   fill="var(--rose-300)" opacity={0.95}/>
@@ -551,8 +568,9 @@ function LoadCurrentBeat() {
         captionY: 370, fontMain: 18 };
 
   const midY = (G.topY + G.botY) / 2;
-  const yTop = midY + 14;
-  const yBot = G.botY - 14;
+  // R_L spans the full rail height; dots flow inside the resistor body.
+  const rlDotTop = G.topY + 14;
+  const rlDotBot = G.botY - 14;
 
   // Two streams: one through R_N, one through R_L. Equal R for a 50/50 split.
   const period = 2.6;
@@ -601,8 +619,8 @@ function LoadCurrentBeat() {
           </text>
         </SvgFadeIn>
 
-        {/* R_L right branch */}
-        <TraceIn d={zigzagV(G.loadX, yTop, yBot, 12)}
+        {/* R_L right branch — spans top rail to bottom rail */}
+        <TraceIn d={zigzagV(G.loadX, G.topY, G.botY, 12)}
           stroke="var(--rose-400)" strokeWidth={2.4} duration={0.6} delay={1.0}/>
         <SvgFadeIn duration={0.35} delay={1.4}>
           <text x={G.loadX + 22} y={midY + 6}
@@ -625,7 +643,7 @@ function LoadCurrentBeat() {
             })}
             {Array.from({ length: NUM }).map((_, i) => {
               const u = ((phase + i / NUM) % 1);
-              const y = yTop + (yBot - yTop) * u;
+              const y = rlDotTop + (rlDotBot - rlDotTop) * u;
               return (
                 <circle key={`rl-${i}`} cx={G.loadX} cy={y} r={3.5}
                         fill="var(--amber-300)" opacity={0.95}/>
