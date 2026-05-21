@@ -135,10 +135,12 @@ function OriginalCircuitBeat() {
     }}>
       <svg width={G.vbW} height={G.vbH} viewBox={`0 0 ${G.vbW} ${G.vbH}`}
            style={{ overflow: 'visible' }}>
-        {/* Two source branches join at midX/topY (node a). Bottom rail at botY (node b). */}
-        {/* Top branch: V1 + R1 from ltX → midX along top rail */}
-        <TraceIn d={`M ${G.ltX} ${G.botY} L ${G.ltX} ${G.topY} L ${G.midX} ${G.topY}`}
+        {/* Top + left rails — drawn in three pieces around R_1 and R_2 so
+            the chalk line doesn't shine through the amber zigzags. */}
+        <TraceIn d={`M ${G.ltX} ${G.botY} L ${G.ltX} ${G.topY} L ${G.ltX + 40} ${G.topY}`}
           stroke="var(--chalk-200)" strokeWidth={2} duration={0.6} delay={0.2}/>
+        <TraceIn d={`M ${G.midX - 40} ${G.topY} L ${G.midX + 40} ${G.topY}`}
+          stroke="var(--chalk-200)" strokeWidth={2} duration={0.4} delay={0.4}/>
         <SvgFadeIn duration={0.4} delay={0.4}>
           <BatterySymbolV cx={G.ltX} cy={(G.topY + G.midY) / 2} color="var(--chalk-200)"/>
           <text x={G.ltX - 22} y={(G.topY + G.midY) / 2 + 6} textAnchor="end"
@@ -158,9 +160,9 @@ function OriginalCircuitBeat() {
           </text>
         </SvgFadeIn>
 
-        {/* Bottom branch: V2 + R2 from rtX → midX along bottom-of-top route. */}
-        {/* Connect midX/topY → rtX/topY → rtX/midY (where R3 bottom sits). */}
-        <TraceIn d={`M ${G.midX} ${G.topY} L ${G.rtX} ${G.topY} L ${G.rtX} ${G.midY}`}
+        {/* Right top stub after R_2 + descent to midY where the R_L branch
+            taps out toward the load. */}
+        <TraceIn d={`M ${G.rtX - 40} ${G.topY} L ${G.rtX} ${G.topY} L ${G.rtX} ${G.midY}`}
           stroke="var(--chalk-200)" strokeWidth={2} duration={0.6} delay={0.4}/>
         <TraceIn d={zigzagH(G.topY, G.midX + 40, G.rtX - 40, G.zig)}
           stroke="var(--amber-400)" strokeWidth={2.4} duration={0.6} delay={1.4}/>
@@ -172,7 +174,12 @@ function OriginalCircuitBeat() {
           </text>
         </SvgFadeIn>
 
-        {/* R3 — vertical between midX/topY and midX/botY */}
+        {/* R_3 — vertical between top and bottom rails, with chalk stubs
+            that close the 14-px gap at each end of the zigzag. */}
+        <TraceIn d={`M ${G.midX} ${G.topY} L ${G.midX} ${G.topY + 14}`}
+          stroke="var(--chalk-200)" strokeWidth={2} duration={0.3} delay={1.6}/>
+        <TraceIn d={`M ${G.midX} ${G.botY - 14} L ${G.midX} ${G.botY}`}
+          stroke="var(--chalk-200)" strokeWidth={2} duration={0.3} delay={1.6}/>
         <TraceIn d={zigzag(G.midX, G.topY + 14, G.botY - 14, G.zig)}
           stroke="var(--amber-400)" strokeWidth={2.4} duration={0.6} delay={1.8}/>
         <SvgFadeIn duration={0.35} delay={2.2}>
@@ -193,22 +200,17 @@ function OriginalCircuitBeat() {
           </text>
         </SvgFadeIn>
 
-        {/* Bottom rail — from ltX/botY across to loadX/botY */}
-        <TraceIn d={`M ${G.ltX} ${G.botY} L ${G.loadX + 30} ${G.botY} L ${G.loadX + 30} ${G.midY}`}
+        {/* Bottom rail — straight from V_1's base across to R_L's base. */}
+        <TraceIn d={`M ${G.ltX} ${G.botY} L ${G.loadX} ${G.botY}`}
           stroke="var(--chalk-200)" strokeWidth={2} duration={0.8} delay={0.2}/>
 
-        {/* Connecting wire from midX/botY → bottom rail (already on it) — just join */}
-        <TraceIn d={`M ${G.midX} ${G.botY} L ${G.midX} ${G.botY}`}
-          stroke="var(--chalk-200)" strokeWidth={2} duration={0.1} delay={0.3}/>
+        {/* Wire from rtX/midY across to (loadX, midY) — top of R_L. */}
+        <TraceIn d={`M ${G.rtX} ${G.midY} L ${G.loadX} ${G.midY}`}
+          stroke="var(--chalk-200)" strokeWidth={2} duration={0.5} delay={2.4}/>
 
-        {/* Wire from rtX/midY across to loadX (terminal a) and load to bottom rail (terminal b) */}
-        <TraceIn d={`M ${G.rtX} ${G.midY} L ${G.loadX - 30} ${G.midY} L ${G.loadX - 30} ${G.midY}`}
-          stroke="var(--chalk-200)" strokeWidth={2} duration={0.4} delay={2.4}/>
-
-        {/* Load R_L — vertical between (loadX/midY) and (loadX/botY-ish), connecting to top rail at midY */}
-        <TraceIn d={`M ${G.loadX - 30} ${G.midY} L ${G.loadX} ${G.midY}`}
-          stroke="var(--chalk-200)" strokeWidth={2} duration={0.3} delay={2.8}/>
-        <TraceIn d={zigzag(G.loadX, G.midY + 8, G.botY - 8, G.zig)}
+        {/* Load R_L — spans (loadX, midY) directly to (loadX, botY) so it
+            meets both rails at its endpoints without floating stubs. */}
+        <TraceIn d={zigzag(G.loadX, G.midY, G.botY, G.zig)}
           stroke="var(--rose-400)" strokeWidth={2.4} duration={0.6} delay={3.0}/>
         <SvgFadeIn duration={0.35} delay={3.4}>
           <text x={G.loadX + G.zig + 18} y={(G.midY + G.botY) / 2 + 6}
@@ -250,8 +252,9 @@ function OriginalCircuitBeat() {
           <SvgFadeIn duration={0.3} delay={3.6}>
             {Array.from({ length: NUM }).map((_, i) => {
               const u = ((flowT / period + i / NUM) % 1);
-              // Travel down R_L from midY → botY
-              const y = G.midY + 8 + (G.botY - 8 - G.midY - 8) * u;
+              // Travel down R_L from just below midY to just above botY,
+              // keeping dots inside the resistor body.
+              const y = G.midY + 14 + (G.botY - G.midY - 28) * u;
               return (
                 <circle key={i} cx={G.loadX} cy={y} r={3.5}
                         fill="var(--rose-300)" opacity={0.95}/>
@@ -300,30 +303,40 @@ function OpenCircuitBeat() {
     }}>
       <svg width={G.vbW} height={G.vbH} viewBox={`0 0 ${G.vbW} ${G.vbH}`}
            style={{ overflow: 'visible' }}>
-        {/* Static network — drawn pre-built (no Trace) */}
+        {/* Static network — drawn pre-built (no Trace). Top rail in three
+            pieces around R_1 and R_2 so the chalk wire doesn't show
+            through the amber zigzags; R_3 has stubs joining it to the
+            top and bottom rails. */}
         <SvgFadeIn duration={0.3} delay={0}>
-          {/* Top branch */}
-          <path d={`M ${G.ltX} ${G.botY} L ${G.ltX} ${G.topY} L ${G.midX} ${G.topY}`}
+          {/* Left vertical + top stub up to R_1 */}
+          <path d={`M ${G.ltX} ${G.botY} L ${G.ltX} ${G.topY} L ${G.ltX + 40} ${G.topY}`}
+                stroke="var(--chalk-200)" strokeWidth={2} fill="none"/>
+          {/* Top rail between R_1 and R_2 */}
+          <path d={`M ${G.midX - 40} ${G.topY} L ${G.midX + 40} ${G.topY}`}
+                stroke="var(--chalk-200)" strokeWidth={2} fill="none"/>
+          {/* Top stub after R_2 + descent to midY */}
+          <path d={`M ${G.rtX - 40} ${G.topY} L ${G.rtX} ${G.topY} L ${G.rtX} ${G.midY}`}
                 stroke="var(--chalk-200)" strokeWidth={2} fill="none"/>
           <BatterySymbolV cx={G.ltX} cy={(G.topY + G.midY) / 2} color="var(--chalk-200)"/>
           <path d={zigzagH(G.topY, G.ltX + 40, G.midX - 40, G.zig)}
                 stroke="var(--amber-400)" strokeWidth={2.4} fill="none"
                 strokeLinecap="round" strokeLinejoin="round"/>
-          {/* Second branch (top wire to rtX, R2 zig) */}
-          <path d={`M ${G.midX} ${G.topY} L ${G.rtX} ${G.topY} L ${G.rtX} ${G.midY}`}
-                stroke="var(--chalk-200)" strokeWidth={2} fill="none"/>
           <path d={zigzagH(G.topY, G.midX + 40, G.rtX - 40, G.zig)}
                 stroke="var(--amber-400)" strokeWidth={2.4} fill="none"
                 strokeLinecap="round" strokeLinejoin="round"/>
           <BatterySymbolV cx={G.rtX} cy={(G.topY + G.midY) / 2 + 12} color="var(--chalk-200)" shortFirst={true}/>
-          {/* R3 vertical */}
+          {/* R_3 stubs and zigzag */}
+          <path d={`M ${G.midX} ${G.topY} L ${G.midX} ${G.topY + 14}`}
+                stroke="var(--chalk-200)" strokeWidth={2} fill="none"/>
+          <path d={`M ${G.midX} ${G.botY - 14} L ${G.midX} ${G.botY}`}
+                stroke="var(--chalk-200)" strokeWidth={2} fill="none"/>
           <path d={zigzag(G.midX, G.topY + 14, G.botY - 14, G.zig)}
                 stroke="var(--amber-400)" strokeWidth={2.4} fill="none"
                 strokeLinecap="round" strokeLinejoin="round"/>
-          {/* Bottom rail */}
-          <path d={`M ${G.ltX} ${G.botY} L ${G.midX} ${G.botY} L ${G.loadX - 30} ${G.botY}`}
+          {/* Bottom rail to terminal b column */}
+          <path d={`M ${G.ltX} ${G.botY} L ${G.loadX - 30} ${G.botY}`}
                 stroke="var(--chalk-200)" strokeWidth={2} fill="none"/>
-          {/* Open terminal stub (top + bot to a/b dots) */}
+          {/* Open terminal stub from rtX/midY to terminal a */}
           <path d={`M ${G.rtX} ${G.midY} L ${G.loadX - 30} ${G.midY}`}
                 stroke="var(--chalk-200)" strokeWidth={2} fill="none"/>
         </SvgFadeIn>
@@ -415,22 +428,29 @@ function ZeroSourcesBeat() {
     }}>
       <svg width={G.vbW} height={G.vbH} viewBox={`0 0 ${G.vbW} ${G.vbH}`}
            style={{ overflow: 'visible' }}>
-        {/* Static rails */}
+        {/* Static rails — top rail split around R_1 and R_2; R_3 has
+            explicit stubs joining it to both rails. */}
         <SvgFadeIn duration={0.3} delay={0}>
-          <path d={`M ${G.ltX} ${G.botY} L ${G.ltX} ${G.topY} L ${G.midX} ${G.topY}`}
+          <path d={`M ${G.ltX} ${G.botY} L ${G.ltX} ${G.topY} L ${G.ltX + 40} ${G.topY}`}
+                stroke="var(--chalk-200)" strokeWidth={2} fill="none"/>
+          <path d={`M ${G.midX - 40} ${G.topY} L ${G.midX + 40} ${G.topY}`}
+                stroke="var(--chalk-200)" strokeWidth={2} fill="none"/>
+          <path d={`M ${G.rtX - 40} ${G.topY} L ${G.rtX} ${G.topY} L ${G.rtX} ${G.midY}`}
                 stroke="var(--chalk-200)" strokeWidth={2} fill="none"/>
           <path d={zigzagH(G.topY, G.ltX + 40, G.midX - 40, G.zig)}
                 stroke="var(--amber-400)" strokeWidth={2.4} fill="none"
                 strokeLinecap="round" strokeLinejoin="round"/>
-          <path d={`M ${G.midX} ${G.topY} L ${G.rtX} ${G.topY} L ${G.rtX} ${G.midY}`}
-                stroke="var(--chalk-200)" strokeWidth={2} fill="none"/>
           <path d={zigzagH(G.topY, G.midX + 40, G.rtX - 40, G.zig)}
                 stroke="var(--amber-400)" strokeWidth={2.4} fill="none"
                 strokeLinecap="round" strokeLinejoin="round"/>
+          <path d={`M ${G.midX} ${G.topY} L ${G.midX} ${G.topY + 14}`}
+                stroke="var(--chalk-200)" strokeWidth={2} fill="none"/>
+          <path d={`M ${G.midX} ${G.botY - 14} L ${G.midX} ${G.botY}`}
+                stroke="var(--chalk-200)" strokeWidth={2} fill="none"/>
           <path d={zigzag(G.midX, G.topY + 14, G.botY - 14, G.zig)}
                 stroke="var(--amber-400)" strokeWidth={2.4} fill="none"
                 strokeLinecap="round" strokeLinejoin="round"/>
-          <path d={`M ${G.ltX} ${G.botY} L ${G.midX} ${G.botY} L ${G.loadX - 30} ${G.botY}`}
+          <path d={`M ${G.ltX} ${G.botY} L ${G.loadX - 30} ${G.botY}`}
                 stroke="var(--chalk-200)" strokeWidth={2} fill="none"/>
           <path d={`M ${G.rtX} ${G.midY} L ${G.loadX - 30} ${G.midY}`}
                 stroke="var(--chalk-200)" strokeWidth={2} fill="none"/>
@@ -601,9 +621,9 @@ function MiniNetwork({ x, y, w, h, variant, phase, numDots, fontMain }) {
   const botY = y + h - 60;
   const midY = (topY + botY) / 2;
 
-  // Charge dots travel down R_L (y from midY+6 to botY-6).
-  const yTop = midY + 8;
-  const yBot = botY - 8;
+  // R_L spans the full rail-to-rail height; dots stay inside the body.
+  const dotTop = topY + 14;
+  const dotBot = botY - 14;
 
   return (
     <g>
@@ -623,13 +643,22 @@ function MiniNetwork({ x, y, w, h, variant, phase, numDots, fontMain }) {
       {/* Inside of the box: variant-specific content */}
       {variant === 'original' ? (
         <g>
-          {/* A small "messy" network — 2 batteries, a couple of zigzags */}
-          <line x1={x + 20} y1={topY} x2={x + padL + innerW - 30} y2={topY}
+          {/* Top rail in three pieces around R_1 and R_2 zigzags */}
+          <line x1={x + 20} y1={topY} x2={x + 50} y2={topY}
+                stroke="var(--chalk-200)" strokeWidth={1.6}/>
+          <line x1={x + 110} y1={topY} x2={x + 130} y2={topY}
+                stroke="var(--chalk-200)" strokeWidth={1.6}/>
+          <line x1={x + 190} y1={topY} x2={x + padL + innerW - 30} y2={topY}
                 stroke="var(--chalk-200)" strokeWidth={1.6}/>
           <path d={zigzagH(topY, x + 50, x + 110, 8)}
                 stroke="var(--amber-400)" strokeWidth={1.8} fill="none"/>
           <path d={zigzagH(topY, x + 130, x + 190, 8)}
                 stroke="var(--amber-400)" strokeWidth={1.8} fill="none"/>
+          {/* R_3 vertical zigzag with stubs joining it to both rails */}
+          <line x1={x + 215} y1={topY} x2={x + 215} y2={topY + 10}
+                stroke="var(--chalk-200)" strokeWidth={1.6}/>
+          <line x1={x + 215} y1={botY - 10} x2={x + 215} y2={botY}
+                stroke="var(--chalk-200)" strokeWidth={1.6}/>
           <path d={zigzag(x + 215, topY + 10, botY - 10, 10)}
                 stroke="var(--amber-400)" strokeWidth={1.8} fill="none"/>
           <BatterySymbolV cx={x + 20} cy={(topY + midY) / 2}
@@ -643,8 +672,10 @@ function MiniNetwork({ x, y, w, h, variant, phase, numDots, fontMain }) {
         </g>
       ) : (
         <g>
-          {/* V_th symbol on left, R_th zigzag on top wire */}
-          <line x1={x + 20} y1={topY} x2={loadX - 20} y2={topY}
+          {/* Top rail split around R_th */}
+          <line x1={x + 20} y1={topY} x2={x + 80} y2={topY}
+                stroke="var(--chalk-200)" strokeWidth={1.6}/>
+          <line x1={x + 160} y1={topY} x2={loadX - 20} y2={topY}
                 stroke="var(--chalk-200)" strokeWidth={1.6}/>
           <BatterySymbolV cx={x + 20} cy={midY} color="var(--chalk-100)"/>
           <line x1={x + 20} y1={topY} x2={x + 20} y2={midY - 10}
@@ -668,7 +699,8 @@ function MiniNetwork({ x, y, w, h, variant, phase, numDots, fontMain }) {
         </g>
       )}
 
-      {/* Right-side terminal stubs + load (R_L) */}
+      {/* Right-side terminal stubs + load (R_L). R_L spans the full
+          rail-to-rail height so it connects cleanly to both rails. */}
       <line x1={x + padL + innerW - 30} y1={topY}
             x2={loadX - 10} y2={topY}
             stroke="var(--chalk-200)" strokeWidth={1.6}/>
@@ -679,7 +711,7 @@ function MiniNetwork({ x, y, w, h, variant, phase, numDots, fontMain }) {
             stroke="var(--chalk-200)" strokeWidth={1.6}/>
       <line x1={loadX - 10} y1={botY} x2={loadX + 10} y2={botY}
             stroke="var(--chalk-200)" strokeWidth={1.6}/>
-      <path d={zigzag(loadX, yTop, yBot, 10)}
+      <path d={zigzag(loadX, topY, botY, 10)}
             stroke="var(--rose-400)" strokeWidth={2.2} fill="none"
             strokeLinecap="round" strokeLinejoin="round"/>
       <text x={loadX + 16} y={midY + 6}
@@ -691,7 +723,7 @@ function MiniNetwork({ x, y, w, h, variant, phase, numDots, fontMain }) {
       {/* Charge dots flowing down R_L — phase shared across both panels */}
       {Array.from({ length: numDots }).map((_, i) => {
         const u = ((phase + i / numDots) % 1);
-        const yy = yTop + (yBot - yTop) * u;
+        const yy = dotTop + (dotBot - dotTop) * u;
         return (
           <circle key={i} cx={loadX} cy={yy} r={3.5}
                   fill="var(--rose-300)" opacity={0.95}/>
