@@ -121,6 +121,9 @@ const initialScenes = [
   { id: 'live-subspace-test', kind: 'live', kindLabel: 'Live', cardTitle: 'Subspaces: Why the Origin Matters', duration: '0:48', html: '../../motion/mat2b/subspace-test.html' },
   { id: 'live-linear-combination-recipe', kind: 'live', kindLabel: 'Live', cardTitle: 'Linear Combinations: Mix Two Arrows', duration: '0:44', html: '../../motion/mat2b/linear-combination-recipe.html' },
   { id: 'live-determinant-as-area', kind: 'live', kindLabel: 'Live', cardTitle: 'The Determinant as Area', duration: '0:46', html: '../../motion/mat2b/determinant-as-area.html' },
+  { id: 'live-emitter-follower', kind: 'live', kindLabel: 'Live', cardTitle: 'The Emitter Follower', duration: '0:45', html: '../../motion/ade/emitter-follower.html' },
+  { id: 'live-schmitt-trigger', kind: 'live', kindLabel: 'Live', cardTitle: 'The Schmitt Trigger', duration: '0:57', html: '../../motion/ade/schmitt-trigger.html' },
+  { id: 'live-t-flip-flop', kind: 'live', kindLabel: 'Live', cardTitle: 'T Flip-Flop', duration: '0:45', html: '../../motion/ade/t-flip-flop.html' },
 ];
 
 function loadJSON(key, fallback) {

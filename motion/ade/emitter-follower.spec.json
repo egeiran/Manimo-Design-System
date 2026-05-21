@@ -1,0 +1,177 @@
+{
+  "id": "emitter-follower",
+  "title": "The Emitter Follower: Gain of One, Current to Spare",
+  "eyebrow": "transistors",
+  "language": "en",
+  "duration": 47,
+  "topic": "BJT common-collector amplifier — output sits one V_BE below the input, so the voltage gain is about one, but the transistor delivers β times the input current; the canonical low-impedance buffer.",
+  "subject_id": "ade",
+  "chapter_number": 6,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.77,
+      "narration": "An amplifier with a voltage gain of one — what could that possibly be good for?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Gain of one — yet every audio stage ends with one of these.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "centre serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "schematic",
+      "start": 4.77,
+      "end": 13.35,
+      "narration": "Drive the base, take the output off the emitter. The collector ties straight to V C C, and an emitter resistor pulls the emitter down to ground.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "NPN transistor centred; V_CC rail at top, R_E from emitter to ground",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "V_in source wire feeding the base",
+            "delay": 1,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "V_out tapped off the emitter node",
+            "delay": 1.8,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "V_in / V_out labels with arrows showing the path",
+            "delay": 2.4,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "common-collector — collector is the shared terminal",
+            "delay": 5.5,
+            "color": "var(--chalk-300)",
+            "position": "below the schematic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "voltageRelation",
+      "start": 13.35,
+      "end": 23.13,
+      "narration": "The base-emitter junction always drops about zero point seven volts when conducting. So the emitter voltage tracks the base — just shifted down by V B E.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "V_out = V_in − V_BE",
+            "delay": 0.4,
+            "color": "var(--amber-300)",
+            "position": "centre, large"
+          },
+          {
+            "type": "text-caption",
+            "content": "V_BE ≈ 0.7 V (silicon)",
+            "delay": 1.8,
+            "color": "var(--chalk-300)",
+            "position": "below formula"
+          },
+          {
+            "type": "text-caption",
+            "content": "the output 'follows' the input — that's where the name comes from",
+            "delay": 3.4,
+            "color": "var(--chalk-200)",
+            "position": "small sans below"
+          }
+        ]
+      }
+    },
+    {
+      "id": "followingMotion",
+      "start": 23.13,
+      "end": 35.6,
+      "narration": "Wiggle the input. The output traces the same wiggle, half a volt below it. Voltage gain is one — but the current swung into the load is beta times bigger than the current the source had to give.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Time axis, voltage axis, two stacked traces V_in (chalk) and V_out (amber)",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "V_in sinusoid traces left-to-right with cursor",
+            "delay": 0.6,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "V_out tracks V_in, offset down by V_BE — same wiggle, lower DC",
+            "delay": 0.6,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Live readout: V_out = V_in - 0.7 V as cursor sweeps",
+            "delay": 0.6,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-caption",
+            "content": "voltage gain ≈ 1, current gain ≈ β — the transistor delivers the muscle",
+            "delay": 10,
+            "color": "var(--chalk-200)",
+            "position": "below the scope"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 35.6,
+      "end": 47,
+      "narration": "High input impedance, low output impedance, current to spare — the emitter follower is the buffer that drives the speaker, the cable, the next stage.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Hi-Z in, Lo-Z out — the buffer at the end of every signal chain.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre serif italic"
+          },
+          {
+            "type": "text-caption",
+            "content": "audio output stages · op-amp followers · line drivers",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "small mono below"
+          }
+        ]
+      }
+    }
+  ]
+}

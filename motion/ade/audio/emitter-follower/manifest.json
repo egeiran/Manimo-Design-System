@@ -1,0 +1,36 @@
+{
+  "sceneId": "emitter-follower",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/emitter-follower/scene.mp3",
+  "durationSec": 45.14,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "An amplifier with a voltage gain of one — what could that possibly be good for?"
+    },
+    {
+      "id": "schematic",
+      "audioStart": 4.77,
+      "narration": "Drive the base, take the output off the emitter. The collector ties straight to V C C, and an emitter resistor pulls the emitter down to ground."
+    },
+    {
+      "id": "voltageRelation",
+      "audioStart": 13.35,
+      "narration": "The base-emitter junction always drops about zero point seven volts when conducting. So the emitter voltage tracks the base — just shifted down by V B E."
+    },
+    {
+      "id": "followingMotion",
+      "audioStart": 23.13,
+      "narration": "Wiggle the input. The output traces the same wiggle, half a volt below it. Voltage gain is one — but the current swung into the load is beta times bigger than the current the source had to give."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 35.6,
+      "narration": "High input impedance, low output impedance, current to spare — the emitter follower is the buffer that drives the speaker, the cable, the next stage."
+    }
+  ]
+}

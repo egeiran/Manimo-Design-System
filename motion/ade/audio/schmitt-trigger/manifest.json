@@ -1,0 +1,36 @@
+{
+  "sceneId": "schmitt-trigger",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/schmitt-trigger/scene.mp3",
+  "durationSec": 56.75,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "A plain comparator chatters when a noisy input crosses the reference. How do you give it a backbone?"
+    },
+    {
+      "id": "schematic",
+      "audioStart": 6.32,
+      "narration": "Take an op-amp and wire feedback from the output back to the plus input through a resistor divider. That's positive feedback — the opposite of what you used for an amplifier."
+    },
+    {
+      "id": "twoThresholds",
+      "audioStart": 16.56,
+      "narration": "When the output is high, the divider pushes the plus input up — the trip threshold V T H climbs. When the output is low, V plus drops, and the threshold falls to V T L. Two different thresholds for the same circuit."
+    },
+    {
+      "id": "hysteresisMotion",
+      "audioStart": 31.73,
+      "narration": "Now sweep the input slowly up then back down. The output sits low until V in passes V T H — only then does it snap up. On the way back, V in must drop all the way to V T L before it snaps back. Two thresholds, one loop, no chatter."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 48.99,
+      "narration": "That gap is the hysteresis band. Any noise smaller than the band can't toggle the output — one clean edge per real crossing."
+    }
+  ]
+}

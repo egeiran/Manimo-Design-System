@@ -1,0 +1,172 @@
+{
+  "id": "schmitt-trigger",
+  "title": "The Schmitt Trigger: Why a Comparator Needs Hysteresis",
+  "eyebrow": "operational amplifiers",
+  "language": "en",
+  "duration": 58,
+  "topic": "Inverting op-amp with positive feedback creates two thresholds V_TH and V_TL — once the output snaps, the trigger ignores small input wiggles around the original level. Cleans up noisy crossings that a plain comparator chatters on.",
+  "subject_id": "ade",
+  "chapter_number": 9,
+  "prerequisites": [
+    "op-amp-comparator"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.32,
+      "narration": "A plain comparator chatters when a noisy input crosses the reference. How do you give it a backbone?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Noisy crossing → output chatter. Hysteresis is the fix.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "centre serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "schematic",
+      "start": 6.32,
+      "end": 16.56,
+      "narration": "Take an op-amp and wire feedback from the output back to the plus input through a resistor divider. That's positive feedback — the opposite of what you used for an amplifier.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Op-amp triangle, V_in to the V- input, divider R1/R2 from output to V+",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "R1, R2 labels; V_in, V_out, V_ref labels at pins",
+            "delay": 1.6,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Arrow from output back to V+ highlighted in rose — 'positive feedback'",
+            "delay": 3.2,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the output now helps decide what the threshold is",
+            "delay": 5.5,
+            "color": "var(--chalk-300)",
+            "position": "below the schematic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "twoThresholds",
+      "start": 16.56,
+      "end": 31.73,
+      "narration": "When the output is high, the divider pushes the plus input up — the trip threshold V T H climbs. When the output is low, V plus drops, and the threshold falls to V T L. Two different thresholds for the same circuit.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "V_TH = +V_sat · R1/(R1+R2)",
+            "delay": 0.4,
+            "color": "var(--teal-400)",
+            "position": "left column"
+          },
+          {
+            "type": "text-formula",
+            "content": "V_TL = −V_sat · R1/(R1+R2)",
+            "delay": 1.2,
+            "color": "var(--rose-300)",
+            "position": "right column"
+          },
+          {
+            "type": "graph-axes",
+            "content": "Transfer V_out vs V_in plot with two thresholds marked",
+            "delay": 2.5,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Hysteresis loop traces — first the lower edge L→R, then the upper edge R→L",
+            "delay": 3,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hysteresisMotion",
+      "start": 31.73,
+      "end": 48.99,
+      "narration": "Now sweep the input slowly up then back down. The output sits low until V in passes V T H — only then does it snap up. On the way back, V in must drop all the way to V T L before it snaps back. Two thresholds, one loop, no chatter.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "V_in vs time scope above, V_out vs time scope below, third pane: V_out vs V_in loop",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "V_in sweep up and back down (triangle), V_out as square that snaps at V_TH and V_TL",
+            "delay": 0.5,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Dot on the loop pane tracking (V_in, V_out) — traces the hysteresis loop",
+            "delay": 0.5,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the gap between V_TH and V_TL is the noise the trigger ignores",
+            "delay": 11,
+            "color": "var(--chalk-200)",
+            "position": "below loop"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 48.99,
+      "end": 58,
+      "narration": "That gap is the hysteresis band. Any noise smaller than the band can't toggle the output — one clean edge per real crossing.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "V_TH − V_TL = hysteresis band ≫ noise floor",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre"
+          },
+          {
+            "type": "text-caption",
+            "content": "USB bus receivers · zero-crossing detectors · 555 timers · every digital input pin",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "small mono below"
+          }
+        ]
+      }
+    }
+  ]
+}
