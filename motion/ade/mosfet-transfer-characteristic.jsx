@@ -455,13 +455,15 @@ function SweepCurveBeat() {
                 strokeDasharray="3 4" opacity={0.55}/>
         )}
 
-        {/* Region badges along the axis */}
+        {/* Region badges along the axis — placed just above the plot
+            (between the plot title and the axis top) so they never collide
+            with the climbing curve or the Q operating-point label. */}
         <SvgFadeIn duration={0.35} delay={0.8}>
-          <text x={G.gx + (vthX - G.gx) / 2} y={G.gy + G.gh - 14}
+          <text x={G.gx + (vthX - G.gx) / 2} y={G.gy - 6}
                 textAnchor="middle"
                 fill="var(--chalk-300)" fontFamily="var(--font-mono)"
                 fontSize={10} letterSpacing="0.14em">CUTOFF</text>
-          <text x={vthX + (G.gx + G.gw - vthX) / 2} y={G.gy + G.gh - 14}
+          <text x={vthX + (G.gx + G.gw - vthX) / 2} y={G.gy - 6}
                 textAnchor="middle"
                 fill="var(--amber-300)" fontFamily="var(--font-mono)"
                 fontSize={10} letterSpacing="0.14em">SATURATION (square law)</text>
