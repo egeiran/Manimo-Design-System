@@ -109,10 +109,10 @@ function signalToD(fn, x0, yHigh, yLow, width, samples = 480) {
 function SymbolBeat() {
   const portrait = usePortrait();
   const G = portrait
-    ? { vbW: 600, vbH: 480, boxX: 200, boxY: 160, boxW: 200, boxH: 200,
-        pinLen: 70, fontPin: 22, captionY: 450 }
-    : { vbW: 720, vbH: 380, boxX: 260, boxY: 90, boxW: 200, boxH: 200,
-        pinLen: 70, fontPin: 22, captionY: 360 };
+    ? { vbW: 600, vbH: 540, boxX: 200, boxY: 130, boxW: 200, boxH: 200,
+        pinLen: 70, fontPin: 22, captionY: 510 }
+    : { vbW: 720, vbH: 440, boxX: 260, boxY: 70, boxW: 200, boxH: 200,
+        pinLen: 70, fontPin: 22, captionY: 420 };
 
   const tPinX = G.boxX + G.boxW / 2;
   const clkPinX = G.boxX + G.boxW / 2;
