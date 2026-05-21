@@ -1,0 +1,36 @@
+{
+  "sceneId": "voltage-doubler",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/voltage-doubler/scene.mp3",
+  "durationSec": 66.73,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Two diodes, two capacitors, one A C source — and the output sits at almost twice the input peak. How does it pull that off?"
+    },
+    {
+      "id": "schematic",
+      "audioStart": 8.48,
+      "narration": "Here is the Greinacher half-wave doubler. The A C source feeds the junction between C1 and D1. D2 sits between that junction and the output, where C2 holds the doubled D C."
+    },
+    {
+      "id": "negativeHalf",
+      "audioStart": 20.9,
+      "narration": "Start with the negative half-cycle. The source pulls its junction low. D1 conducts, D2 is reverse-biased. Current flows from ground through D1, charging C1 up to the peak voltage V p with the polarity shown."
+    },
+    {
+      "id": "positiveHalf",
+      "audioStart": 36.12,
+      "narration": "Now flip to the positive half-cycle. The source swings up to plus V p. C1 still holds its V p across it, in series with the source — so the junction sits at two V p. D2 turns on, D1 turns off, and that two V p charges C2 through D2."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 53.72,
+      "narration": "After a few cycles the output settles. C2 holds two V p minus two diode drops. Cascade more stages and you multiply by three, four, however many — that is the Cockcroft Walton multiplier."
+    }
+  ]
+}

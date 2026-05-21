@@ -1,0 +1,195 @@
+{
+  "id": "ac-impedance-triangle",
+  "title": "Impedance Triangle: R + jX as One Phasor",
+  "eyebrow": "ac analysis",
+  "language": "en",
+  "duration": 89,
+  "topic": "AC impedance for a series R-L-C — resistors carry pure R, inductors give +jωL, capacitors give −j/(ωC). Stack them on the complex plane and the net impedance Z = R + jX is one phasor with magnitude √(R² + X²) and angle arctan(X/R). Sweep ω and Z rotates from capacitive (below the axis) through resonance (on the axis) to inductive (above).",
+  "subject_id": "ade",
+  "chapter_number": 8,
+  "prerequisites": [
+    "phasor-rotation",
+    "rlc-resonance"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 10.44,
+      "narration": "Resistors live on the real axis. Inductors and capacitors live on the imaginary axis. So how does a series R L C even have one impedance?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Stack R, jωL and −j/ωC — and Z drops out as one phasor.",
+            "delay": 0.9,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "components",
+      "start": 10.44,
+      "end": 27.25,
+      "narration": "Three elements in series. The resistor has impedance R, a real number. The inductor adds j times omega L — purely imaginary, pointing up. The capacitor adds minus j over omega C — also imaginary, pointing down.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Series R-L-C circuit drawn on the left",
+            "delay": 0.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Z_R = R label next to resistor (real axis)",
+            "delay": 1.4,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Z_L = jωL label next to inductor (imaginary, +up)",
+            "delay": 2.2,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Z_C = −j/(ωC) label next to capacitor (imaginary, −down)",
+            "delay": 3,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "real for the resistor, imaginary for L and C",
+            "delay": 9,
+            "color": "var(--chalk-300)",
+            "position": "below"
+          }
+        ]
+      }
+    },
+    {
+      "id": "triangleBuild",
+      "start": 27.25,
+      "end": 48.45,
+      "narration": "Plot them on the complex plane. R is the horizontal leg. Stack the inductive arrow up and the capacitive arrow down — their difference is the net reactance X. The hypotenuse from origin to the tip is the total impedance Z, with magnitude root R squared plus X squared and angle arctan X over R.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Complex plane with real (Re) and imaginary (Im) axes labelled",
+            "delay": 0.2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Horizontal arrow of length R along +Re (amber)",
+            "delay": 1,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Vertical arrow of length jωL upward stacked at the R-tip (teal)",
+            "delay": 2.4,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Vertical arrow of length 1/(ωC) downward stacked at top of the jωL arrow (rose)",
+            "delay": 3.6,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Net reactance X = ωL − 1/(ωC) annotated on the y-leg",
+            "delay": 4.6,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Z phasor — hypotenuse from origin to the stacked tip, with magnitude and angle labelled (genuine motion: it draws in)",
+            "delay": 5.6,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "|Z| = √(R² + X²)   tan(φ) = X/R",
+            "delay": 9,
+            "color": "var(--amber-300)",
+            "position": "right of triangle"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweepFreq",
+      "start": 48.45,
+      "end": 76.35,
+      "narration": "Now sweep omega from low to high. At low frequency the capacitor's huge impedance dominates, so X is negative and Z dips below the real axis — the circuit looks capacitive. Push omega up and the two reactances cross at resonance, where X equals zero and Z lies flat on the real axis. Above resonance the inductor wins, X goes positive, and Z swings up — the circuit looks inductive.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Same complex plane axes from previous beat",
+            "delay": 0.1,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Z phasor live-rotating as omega sweeps — tip traces the vertical line x=R as X changes from negative to positive (genuine value-driven motion)",
+            "delay": 0.3,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Live omega readout + phase angle φ readout updating each frame",
+            "delay": 0.5,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Region badges: CAPACITIVE, RESONANT, INDUCTIVE — light up as Z passes them",
+            "delay": 0.7,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 76.35,
+      "end": 89,
+      "narration": "Impedance is one complex number — real part the resistor, imaginary part the reactance. Magnitude tells you the size, angle tells you the phase between voltage and current.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Z = R + jX — one phasor, two truths about an AC circuit.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic large"
+          },
+          {
+            "type": "text-caption",
+            "content": "|Z| sets the current. arg(Z) sets the lag.",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "small caption below"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "id": "voltage-doubler",
+  "title": "Voltage Doubler: Two Diodes Pump V Twice",
+  "eyebrow": "diodes",
+  "language": "en",
+  "duration": 68,
+  "topic": "Half-wave Greinacher voltage doubler — an AC source feeds C1 through D1 during the negative half-cycle (charging C1 to V_p) and then drives C2 through D2 during the positive half-cycle, where the source and C1 are in series, lifting the output to ≈ 2V_p. Charge-pump animation across the two half-cycles makes the doubling concrete.",
+  "subject_id": "ade",
+  "chapter_number": 4,
+  "prerequisites": [
+    "half-wave-rectifier",
+    "diode-iv-curve"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 8.48,
+      "narration": "Two diodes, two capacitors, one A C source — and the output sits at almost twice the input peak. How does it pull that off?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Two half-cycles, one charge pump, double the voltage.",
+            "delay": 0.9,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "schematic",
+      "start": 8.48,
+      "end": 20.9,
+      "narration": "Here is the Greinacher half-wave doubler. The A C source feeds the junction between C1 and D1. D2 sits between that junction and the output, where C2 holds the doubled D C.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "AC source on the left, C1 series in the top wire, D1 from junction to ground, D2 from junction to V_out, C2 from V_out to ground",
+            "delay": 0.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "V_in (sinusoid, peak V_p), C1, D1, D2, C2, V_out labels on each element",
+            "delay": 1.6,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-caption",
+            "content": "two diodes, two caps — the charge pump topology",
+            "delay": 8,
+            "color": "var(--chalk-300)",
+            "position": "below schematic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "negativeHalf",
+      "start": 20.9,
+      "end": 36.12,
+      "narration": "Start with the negative half-cycle. The source pulls its junction low. D1 conducts, D2 is reverse-biased. Current flows from ground through D1, charging C1 up to the peak voltage V p with the polarity shown.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Highlight the negative half-cycle current loop: source → C1 → D1 → ground",
+            "delay": 0.3,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "D1 lights up (forward), D2 dims (reverse)",
+            "delay": 1,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Charge dots animate from ground through D1 into C1's bottom plate, accumulating + on top plate (genuine motion)",
+            "delay": 1.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "V_C1 readout climbs from 0 to V_p live",
+            "delay": 2,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "C1 charges to V_p through D1 — D2 is off",
+            "delay": 9,
+            "color": "var(--chalk-200)",
+            "position": "below"
+          }
+        ]
+      }
+    },
+    {
+      "id": "positiveHalf",
+      "start": 36.12,
+      "end": 53.72,
+      "narration": "Now flip to the positive half-cycle. The source swings up to plus V p. C1 still holds its V p across it, in series with the source — so the junction sits at two V p. D2 turns on, D1 turns off, and that two V p charges C2 through D2.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Highlight positive half-cycle current loop: source + C1 → D2 → C2 → ground",
+            "delay": 0.3,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "D2 lights up (forward), D1 dims (reverse)",
+            "delay": 1,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Charge dots flow from junction through D2 to C2's top plate, leaving ground (genuine motion)",
+            "delay": 1.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "V_out readout climbs toward 2V_p as cycles repeat",
+            "delay": 2,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "source + C1 in series → 2V_p across C2",
+            "delay": 10,
+            "color": "var(--chalk-200)",
+            "position": "below"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 53.72,
+      "end": 68,
+      "narration": "After a few cycles the output settles. C2 holds two V p minus two diode drops. Cascade more stages and you multiply by three, four, however many — that is the Cockcroft Walton multiplier.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "V_out ≈ 2·V_p − 2·V_D",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre large serif italic"
+          },
+          {
+            "type": "text-caption",
+            "content": "two diode drops cost a little — cascade for higher multiples",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "below formula"
+          }
+        ]
+      }
+    }
+  ]
+}

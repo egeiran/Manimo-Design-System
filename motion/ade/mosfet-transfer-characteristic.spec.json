@@ -1,0 +1,180 @@
+{
+  "id": "mosfet-transfer-characteristic",
+  "title": "MOSFET Transfer Characteristic: A Quadratic Turns On at Threshold",
+  "eyebrow": "transistors",
+  "language": "en",
+  "duration": 73,
+  "topic": "N-channel MOSFET transfer characteristic — below V_th the channel is off and I_D = 0; above V_th the saturation drain current grows as I_D = (k/2)(V_GS - V_th)². Sweep V_GS and watch the operating point trace the I_D vs V_GS curve from cutoff into saturation.",
+  "subject_id": "ade",
+  "chapter_number": 6,
+  "prerequisites": [
+    "mosfet-switch",
+    "bjt-load-line"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.73,
+      "narration": "Crank the gate voltage on a MOSFET — when does the channel actually turn on, and how fast does the current climb after that?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Below threshold: dark. Above threshold: a quadratic.",
+            "delay": 0.9,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "deviceCrossSection",
+      "start": 7.73,
+      "end": 30.31,
+      "narration": "An n-channel MOSFET has a gate on top, separated from the bulk by a thin oxide. When V G S is below the threshold V th, the gap between source and drain is depleted — no channel, no current. Push V G S above V th and the oxide pulls in enough electrons to form a thin inversion layer connecting source to drain.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "P-type bulk substrate, two N+ wells for source and drain, polysilicon gate on top with oxide layer between",
+            "delay": 0.2,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "S, D, G, B terminal labels",
+            "delay": 1.4,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-label",
+            "content": "V_GS slider value displayed above gate (sweeping live across the beat)",
+            "delay": 2.6,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Inversion-layer band that grows under the oxide as V_GS crosses threshold (genuine motion)",
+            "delay": 4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "channel forms when V_GS clears V_th",
+            "delay": 9,
+            "color": "var(--chalk-300)",
+            "position": "below diagram"
+          }
+        ]
+      }
+    },
+    {
+      "id": "saturationEquation",
+      "start": 30.31,
+      "end": 44.57,
+      "narration": "In saturation, the drain current follows a clean quadratic — I D equals one half k times V G S minus V th, squared. Below V th the equation gives zero, so the device is off.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "I_D = (k/2)·(V_GS − V_th)²",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre, large serif italic"
+          },
+          {
+            "type": "text-caption",
+            "content": "cutoff: V_GS < V_th  →  I_D = 0",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "below formula, left column"
+          },
+          {
+            "type": "text-caption",
+            "content": "saturation: V_GS > V_th  →  quadratic climb",
+            "delay": 2.4,
+            "color": "var(--chalk-200)",
+            "position": "below formula, right column"
+          },
+          {
+            "type": "text-caption",
+            "content": "k = µ·C_ox·(W/L) — the transconductance parameter",
+            "delay": 5,
+            "color": "var(--chalk-300)",
+            "position": "small mono caption"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweepCurve",
+      "start": 44.57,
+      "end": 62.88,
+      "narration": "Now sweep V G S from zero upward and watch the operating point. Below threshold it sits glued to the axis. The instant V G S clears V th, current lifts and then climbs faster and faster — that is the quadratic curve, traced out live as the cursor advances.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "I_D (vertical) vs V_GS (horizontal) with V_th tick highlighted",
+            "delay": 0.2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "I_D = (k/2)(V_GS − V_th)² traced from V_GS = V_th to V_GS_max as the sweep cursor advances (value-driven motion)",
+            "delay": 0.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Operating point Q on the curve, position computed from live V_GS sweep — flat on the axis below V_th, rising along the quadratic above (genuine motion)",
+            "delay": 1,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Live V_GS and I_D readout under the plot updating every frame",
+            "delay": 1.2,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 62.88,
+      "end": 73,
+      "narration": "Threshold is the on-switch; saturation is a clean square law. Two numbers — V th and k — tell you the whole curve.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "V_th decides when. k decides how fast.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic large"
+          },
+          {
+            "type": "text-caption",
+            "content": "(square law in saturation; flat in cutoff)",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "small mono below"
+          }
+        ]
+      }
+    }
+  ]
+}
