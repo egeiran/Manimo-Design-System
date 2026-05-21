@@ -1,0 +1,36 @@
+{
+  "sceneId": "t-flip-flop",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/t-flip-flop/scene.mp3",
+  "durationSec": 44.81,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "What if a flip-flop had just one rule — flip on every tick?"
+    },
+    {
+      "id": "symbol",
+      "audioStart": 4.38,
+      "narration": "Here's a T flip-flop. T on top — the toggle enable. Clock on the bottom with the edge-trigger triangle. Q on the output side."
+    },
+    {
+      "id": "truthTable",
+      "audioStart": 14.01,
+      "narration": "The truth table has two rows. With T at zero, Q stays put. With T at one, Q becomes the inverse of its previous value on every clock edge."
+    },
+    {
+      "id": "timingMotion",
+      "audioStart": 24.59,
+      "narration": "Watch what happens with T held high. Every time the clock ticks up, Q flips. The output frequency is exactly half the clock — one T flip-flop is a divide-by-two."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 36.11,
+      "narration": "Stack three T flip-flops with each one's Q driving the next one's clock — the ripple counter. Eight binary states from three toggling bits."
+    }
+  ]
+}

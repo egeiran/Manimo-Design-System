@@ -2533,6 +2533,78 @@
       ],
       "subject_id": "mat2b",
       "chapter_number": 2
+    },
+    {
+      "id": "emitter-follower",
+      "file": "emitter-follower.jsx",
+      "html": "emitter-follower.html",
+      "spec": "emitter-follower.spec.json",
+      "title": "The Emitter Follower: Gain of One, Current to Spare",
+      "eyebrow": "transistors",
+      "topic": "BJT common-collector amplifier — output sits one V_BE below the input, so voltage gain is about one, but the transistor delivers β times the input current. The canonical low-impedance buffer used at the end of audio output stages, op-amp followers, and line drivers.",
+      "duration": 47,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": [
+        "emitter follower",
+        "common-collector",
+        "BJT",
+        "V_BE drop",
+        "voltage gain",
+        "current gain",
+        "impedance buffer"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 6
+    },
+    {
+      "id": "schmitt-trigger",
+      "file": "schmitt-trigger.jsx",
+      "html": "schmitt-trigger.html",
+      "spec": "schmitt-trigger.spec.json",
+      "title": "The Schmitt Trigger: Why a Comparator Needs Hysteresis",
+      "eyebrow": "operational amplifiers",
+      "topic": "Inverting op-amp with positive feedback through R1/R2 creates two thresholds V_TH and V_TL — once the output snaps, the trigger ignores small input wiggles inside the band. The cure for chattering comparators that has to deal with noisy crossings.",
+      "duration": 58,
+      "language": "en",
+      "prerequisites": [
+        "op-amp-comparator"
+      ],
+      "concepts": [
+        "Schmitt trigger",
+        "hysteresis",
+        "positive feedback",
+        "comparator",
+        "noise immunity",
+        "threshold"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 9
+    },
+    {
+      "id": "t-flip-flop",
+      "file": "t-flip-flop.jsx",
+      "html": "t-flip-flop.html",
+      "spec": "t-flip-flop.spec.json",
+      "title": "T Flip-Flop: One Input, One Toggle per Edge",
+      "eyebrow": "sequential logic",
+      "topic": "Toggle flip-flop — when T=1, Q inverts on every rising clock edge; when T=0, Q holds. The frequency-divide-by-two building block of every binary counter and clock prescaler.",
+      "duration": 46,
+      "language": "en",
+      "prerequisites": [
+        "d-flip-flop",
+        "jk-flip-flop"
+      ],
+      "concepts": [
+        "T flip-flop",
+        "toggle",
+        "divide-by-two",
+        "ripple counter",
+        "edge-triggered",
+        "sequential logic"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 7
     }
   ]
 }

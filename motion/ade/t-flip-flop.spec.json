@@ -1,0 +1,159 @@
+{
+  "id": "t-flip-flop",
+  "title": "T Flip-Flop: One Input, One Toggle per Edge",
+  "eyebrow": "sequential logic",
+  "language": "en",
+  "duration": 46,
+  "topic": "Toggle flip-flop — when T=1, Q flips on every rising clock edge; when T=0, Q holds. The frequency-divide-by-two building block of every binary counter.",
+  "subject_id": "ade",
+  "chapter_number": 7,
+  "prerequisites": [
+    "d-flip-flop",
+    "jk-flip-flop"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.38,
+      "narration": "What if a flip-flop had just one rule — flip on every tick?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "One input, one rule — Q flips on every rising edge.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "centre serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "symbol",
+      "start": 4.38,
+      "end": 14.01,
+      "narration": "Here's a T flip-flop. T on top — the toggle enable. Clock on the bottom with the edge-trigger triangle. Q on the output side.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Rectangular FF block with T input on top, CLK input with triangle on bottom, Q output on right",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "T, CLK, Q labels with edge-trigger triangle on CLK",
+            "delay": 1.2,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "two rows: T=0 → Q holds, T=1 → Q toggles",
+            "delay": 4.5,
+            "color": "var(--chalk-300)",
+            "position": "below the symbol"
+          }
+        ]
+      }
+    },
+    {
+      "id": "truthTable",
+      "start": 14.01,
+      "end": 24.59,
+      "narration": "The truth table has two rows. With T at zero, Q stays put. With T at one, Q becomes the inverse of its previous value on every clock edge.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-title",
+            "content": "T flip-flop truth table",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "T = 0 → Q_next = Q   (hold)",
+            "delay": 0.6,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-formula",
+            "content": "T = 1 → Q_next = ¬Q  (toggle)",
+            "delay": 1.6,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "timingMotion",
+      "start": 24.59,
+      "end": 36.11,
+      "narration": "Watch what happens with T held high. Every time the clock ticks up, Q flips. The output frequency is exactly half the clock — one T flip-flop is a divide-by-two.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Three timing rows: CLK, T (held high), Q (toggles)",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "CLK square wave traces left to right, T constant high, Q toggles on each rising CLK edge",
+            "delay": 0.6,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Cursor sweeps with toggle-pulses lighting up at each rising edge",
+            "delay": 0.6,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "f_out = f_clk / 2 — one T flip-flop divides the clock in half",
+            "delay": 9.5,
+            "color": "var(--chalk-200)",
+            "position": "below the scope"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 36.11,
+      "end": 46,
+      "narration": "Stack three T flip-flops with each one's Q driving the next one's clock — the ripple counter. Eight binary states from three toggling bits.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Chain N of them → divide-by-2^N → binary counter",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre"
+          },
+          {
+            "type": "text-caption",
+            "content": "clock dividers · async counters · frequency prescalers",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "small mono below"
+          }
+        ]
+      }
+    }
+  ]
+}
