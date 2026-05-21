@@ -124,6 +124,9 @@ const initialScenes = [
   { id: 'live-emitter-follower', kind: 'live', kindLabel: 'Live', cardTitle: 'The Emitter Follower', duration: '0:45', html: '../../motion/ade/emitter-follower.html' },
   { id: 'live-schmitt-trigger', kind: 'live', kindLabel: 'Live', cardTitle: 'The Schmitt Trigger', duration: '0:57', html: '../../motion/ade/schmitt-trigger.html' },
   { id: 'live-t-flip-flop', kind: 'live', kindLabel: 'Live', cardTitle: 'T Flip-Flop', duration: '0:45', html: '../../motion/ade/t-flip-flop.html' },
+  { id: 'live-mosfet-transfer-characteristic', kind: 'live', kindLabel: 'Live', cardTitle: 'MOSFET Transfer Characteristic', duration: '1:13', html: '../../motion/ade/mosfet-transfer-characteristic.html' },
+  { id: 'live-voltage-doubler', kind: 'live', kindLabel: 'Live', cardTitle: 'Voltage Doubler', duration: '1:08', html: '../../motion/ade/voltage-doubler.html' },
+  { id: 'live-ac-impedance-triangle', kind: 'live', kindLabel: 'Live', cardTitle: 'Impedance Triangle', duration: '1:29', html: '../../motion/ade/ac-impedance-triangle.html' },
 ];
 
 function loadJSON(key, fallback) {

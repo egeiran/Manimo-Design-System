@@ -1,0 +1,36 @@
+{
+  "sceneId": "ac-impedance-triangle",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/ac-impedance-triangle/scene.mp3",
+  "durationSec": 87.59,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Resistors live on the real axis. Inductors and capacitors live on the imaginary axis. So how does a series R L C even have one impedance?"
+    },
+    {
+      "id": "components",
+      "audioStart": 10.44,
+      "narration": "Three elements in series. The resistor has impedance R, a real number. The inductor adds j times omega L — purely imaginary, pointing up. The capacitor adds minus j over omega C — also imaginary, pointing down."
+    },
+    {
+      "id": "triangleBuild",
+      "audioStart": 27.25,
+      "narration": "Plot them on the complex plane. R is the horizontal leg. Stack the inductive arrow up and the capacitive arrow down — their difference is the net reactance X. The hypotenuse from origin to the tip is the total impedance Z, with magnitude root R squared plus X squared and angle arctan X over R."
+    },
+    {
+      "id": "sweepFreq",
+      "audioStart": 48.45,
+      "narration": "Now sweep omega from low to high. At low frequency the capacitor's huge impedance dominates, so X is negative and Z dips below the real axis — the circuit looks capacitive. Push omega up and the two reactances cross at resonance, where X equals zero and Z lies flat on the real axis. Above resonance the inductor wins, X goes positive, and Z swings up — the circuit looks inductive."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 76.35,
+      "narration": "Impedance is one complex number — real part the resistor, imaginary part the reactance. Magnitude tells you the size, angle tells you the phase between voltage and current."
+    }
+  ]
+}

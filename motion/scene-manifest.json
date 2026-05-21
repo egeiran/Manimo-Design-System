@@ -2605,6 +2605,87 @@
       ],
       "subject_id": "ade",
       "chapter_number": 7
+    },
+    {
+      "id": "mosfet-transfer-characteristic",
+      "file": "mosfet-transfer-characteristic.jsx",
+      "html": "mosfet-transfer-characteristic.html",
+      "spec": "mosfet-transfer-characteristic.spec.json",
+      "title": "MOSFET Transfer Characteristic: A Quadratic Turns On at Threshold",
+      "eyebrow": "transistors",
+      "topic": "N-channel MOSFET transfer characteristic — below V_th the channel is off and I_D = 0; above V_th the saturation drain current grows as I_D = (k/2)(V_GS − V_th)². Sweep V_GS and watch the operating point trace the I_D vs V_GS curve from cutoff into saturation.",
+      "duration": 73,
+      "language": "en",
+      "prerequisites": [
+        "mosfet-switch",
+        "bjt-load-line"
+      ],
+      "concepts": [
+        "MOSFET",
+        "NMOS",
+        "transfer characteristic",
+        "threshold voltage",
+        "saturation",
+        "cutoff",
+        "square law",
+        "transconductance"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 6
+    },
+    {
+      "id": "voltage-doubler",
+      "file": "voltage-doubler.jsx",
+      "html": "voltage-doubler.html",
+      "spec": "voltage-doubler.spec.json",
+      "title": "Voltage Doubler: Two Diodes Pump V Twice",
+      "eyebrow": "diodes",
+      "topic": "Half-wave Greinacher voltage doubler — on the negative half-cycle D1 conducts and C1 charges to V_p; on the positive half-cycle the source and C1 sit in series at 2V_p, D2 turns on, and C2 charges toward 2V_p. Cascading the same pair gives the Cockcroft–Walton multiplier.",
+      "duration": 68,
+      "language": "en",
+      "prerequisites": [
+        "half-wave-rectifier",
+        "diode-iv-curve"
+      ],
+      "concepts": [
+        "voltage doubler",
+        "Greinacher",
+        "Cockcroft-Walton",
+        "charge pump",
+        "diode rectification",
+        "AC to DC",
+        "capacitor stacking"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 4
+    },
+    {
+      "id": "ac-impedance-triangle",
+      "file": "ac-impedance-triangle.jsx",
+      "html": "ac-impedance-triangle.html",
+      "spec": "ac-impedance-triangle.spec.json",
+      "title": "Impedance Triangle: R + jX as One Phasor",
+      "eyebrow": "ac analysis",
+      "topic": "AC impedance for a series R-L-C — resistors carry pure R, inductors give +jωL, capacitors give −j/(ωC). Stack them on the complex plane and the net impedance Z = R + jX is one phasor with magnitude √(R² + X²) and angle arctan(X/R). Sweep ω and Z rotates from capacitive (below the axis) through resonance (on the axis) to inductive (above).",
+      "duration": 89,
+      "language": "en",
+      "prerequisites": [
+        "phasor-rotation",
+        "rlc-resonance"
+      ],
+      "concepts": [
+        "impedance",
+        "reactance",
+        "complex plane",
+        "phasor",
+        "series RLC",
+        "resonance",
+        "capacitive",
+        "inductive",
+        "magnitude and angle"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 8
     }
   ]
 }

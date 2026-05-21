@@ -1,0 +1,36 @@
+{
+  "sceneId": "mosfet-transfer-characteristic",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/mosfet-transfer-characteristic/scene.mp3",
+  "durationSec": 71.33,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Crank the gate voltage on a MOSFET — when does the channel actually turn on, and how fast does the current climb after that?"
+    },
+    {
+      "id": "deviceCrossSection",
+      "audioStart": 7.73,
+      "narration": "An n-channel MOSFET has a gate on top, separated from the bulk by a thin oxide. When V G S is below the threshold V th, the gap between source and drain is depleted — no channel, no current. Push V G S above V th and the oxide pulls in enough electrons to form a thin inversion layer connecting source to drain."
+    },
+    {
+      "id": "saturationEquation",
+      "audioStart": 30.31,
+      "narration": "In saturation, the drain current follows a clean quadratic — I D equals one half k times V G S minus V th, squared. Below V th the equation gives zero, so the device is off."
+    },
+    {
+      "id": "sweepCurve",
+      "audioStart": 44.57,
+      "narration": "Now sweep V G S from zero upward and watch the operating point. Below threshold it sits glued to the axis. The instant V G S clears V th, current lifts and then climbs faster and faster — that is the quadratic curve, traced out live as the cursor advances."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 62.88,
+      "narration": "Threshold is the on-switch; saturation is a clean square law. Two numbers — V th and k — tell you the whole curve."
+    }
+  ]
+}
