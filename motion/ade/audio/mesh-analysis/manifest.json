@@ -1,0 +1,36 @@
+{
+  "sceneId": "mesh-analysis",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/mesh-analysis/scene.mp3",
+  "durationSec": 47.69,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Two loops sharing a wire — how do we find the current through the middle branch?"
+    },
+    {
+      "id": "circuitSetup",
+      "audioStart": 4.41,
+      "narration": "Here's a two-mesh circuit. A battery on the left, another on the right, and a resistor in the middle shared between both loops."
+    },
+    {
+      "id": "assignMeshCurrents",
+      "audioStart": 11.6,
+      "narration": "Assign a clockwise current to each loop — I one in the left mesh, I two in the right. Both currents pass through the shared resistor — but in opposite directions."
+    },
+    {
+      "id": "kvlEquations",
+      "audioStart": 21.87,
+      "narration": "Write KVL around each loop. Left loop: V one equals I one R one plus I one minus I two times R three. Right loop: minus V two equals I two R two plus I two minus I one times R three."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 39.22,
+      "narration": "One mesh current per loop, KVL applied loop by loop — that's mesh analysis. For n loops you get n equations and n unknowns."
+    }
+  ]
+}

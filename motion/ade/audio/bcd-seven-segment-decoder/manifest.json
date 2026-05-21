@@ -1,0 +1,36 @@
+{
+  "sceneId": "bcd-seven-segment-decoder",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/bcd-seven-segment-decoder/scene.mp3",
+  "durationSec": 53.64,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "How do four bits drive a seven-segment display? Each of the seven segments has its own logic equation."
+    },
+    {
+      "id": "displaySetup",
+      "audioStart": 6.71,
+      "narration": "Here's the seven-segment display, with segments labelled a through g. The four BCD inputs D three through D zero give us sixteen possible values, of which we use ten — zero through nine."
+    },
+    {
+      "id": "segmentEquations",
+      "audioStart": 20.09,
+      "narration": "Each segment is its own Boolean function of D three through D zero. For instance, segment a is on for every digit except 1 and 4. Karnaugh maps simplify each of the seven equations."
+    },
+    {
+      "id": "countCycle",
+      "audioStart": 33.09,
+      "narration": "Cycle the input from zero up to nine. Each new BCD code lights the segments that draw that digit — and the display reads the value."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 42.56,
+      "narration": "Seven small logic networks plus four input bits give you any decimal digit on a numeric display — the building block behind every clock, calculator and meter readout."
+    }
+  ]
+}

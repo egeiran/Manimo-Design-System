@@ -1,0 +1,173 @@
+{
+  "id": "delta-y-conversion",
+  "title": "Delta–Y Conversion: A Triangle Becomes a Star",
+  "eyebrow": "circuit analysis",
+  "language": "en",
+  "duration": 55,
+  "topic": "Delta (Δ) to Y (T) conversion — three resistors arranged as a triangle between nodes A, B, C are equivalent to three resistors meeting at a central node N. The Y resistor opposite each Δ branch carries the product of its two adjacent Δ resistors over the sum of all three. Used to unsnarl bridge circuits that have no series/parallel reduction.",
+  "subject_id": "ade",
+  "chapter_number": 3,
+  "prerequisites": [
+    "thevenin-equivalent",
+    "wheatstone-bridge"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 9.42,
+      "narration": "When a circuit has no series or parallel pairs to collapse, sometimes you can convert a triangle of resistors into a star — same terminals, simpler shape.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo enters",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Stuck on a circuit? Turn the triangle into a star.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "deltaSetup",
+      "start": 9.42,
+      "end": 22.3,
+      "narration": "Three nodes A, B, C with a resistor between every pair — that's a delta. Each branch carries the two-node label R sub A B, R sub B C, R sub C A.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-circle",
+            "content": "Node A top, node B bottom-right, node C bottom-left",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Resistor R_AB between A and B (right side of triangle)",
+            "delay": 0.5,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Resistor R_BC between B and C (bottom of triangle)",
+            "delay": 1,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Resistor R_CA between C and A (left side of triangle)",
+            "delay": 1.5,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Node labels A, B, C and resistor labels R_AB, R_BC, R_CA",
+            "delay": 2,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "morph",
+      "start": 22.3,
+      "end": 33.41,
+      "narration": "Hold the three corner terminals fixed. Slide the three resistors inward — now they meet at a single point N. Same three nodes, same external behaviour, but Y-shaped.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Three resistors morph from triangle sides to spokes meeting at centre N",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Centre node N appears once morph completes",
+            "delay": 4,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Spoke labels R_A, R_B, R_C",
+            "delay": 5,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "formulas",
+      "start": 33.41,
+      "end": 45.19,
+      "narration": "Each Y spoke equals the product of its two adjacent delta sides divided by the sum of all three. R sub A is the product of the two branches meeting at A — divided by the total.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Let S = R_AB + R_BC + R_CA",
+            "delay": 0.3,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "R_A = R_AB · R_CA / S",
+            "delay": 1,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "R_B = R_AB · R_BC / S",
+            "delay": 2.2,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "R_C = R_BC · R_CA / S",
+            "delay": 3.4,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "spoke = product of adjacent branches over total",
+            "delay": 5,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 45.19,
+      "end": 55,
+      "narration": "Now any bridge or mesh that defeated series-parallel reduction is back in play. Convert the awkward triangle and the rest collapses.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Triangle → Star. Same terminals, simpler topology.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the rescue trick for any bridge circuit",
+            "delay": 1.8,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "sceneId": "delta-y-conversion",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/delta-y-conversion/scene.mp3",
+  "durationSec": 53.31,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "When a circuit has no series or parallel pairs to collapse, sometimes you can convert a triangle of resistors into a star — same terminals, simpler shape."
+    },
+    {
+      "id": "deltaSetup",
+      "audioStart": 9.42,
+      "narration": "Three nodes A, B, C with a resistor between every pair — that's a delta. Each branch carries the two-node label R sub A B, R sub B C, R sub C A."
+    },
+    {
+      "id": "morph",
+      "audioStart": 22.3,
+      "narration": "Hold the three corner terminals fixed. Slide the three resistors inward — now they meet at a single point N. Same three nodes, same external behaviour, but Y-shaped."
+    },
+    {
+      "id": "formulas",
+      "audioStart": 33.41,
+      "narration": "Each Y spoke equals the product of its two adjacent delta sides divided by the sum of all three. R sub A is the product of the two branches meeting at A — divided by the total."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 45.19,
+      "narration": "Now any bridge or mesh that defeated series-parallel reduction is back in play. Convert the awkward triangle and the rest collapses."
+    }
+  ]
+}

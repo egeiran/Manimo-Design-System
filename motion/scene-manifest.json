@@ -2686,6 +2686,82 @@
       ],
       "subject_id": "ade",
       "chapter_number": 8
+    },
+    {
+      "id": "mesh-analysis",
+      "file": "mesh-analysis.jsx",
+      "html": "mesh-analysis.html",
+      "spec": "mesh-analysis.spec.json",
+      "title": "Mesh Analysis: KVL Loop by Loop",
+      "eyebrow": "circuit analysis",
+      "topic": "Mesh analysis — assign a clockwise current to every independent loop, write KVL around each, and solve the resulting linear system. The shared branch between two adjacent loops carries the difference of the two mesh currents.",
+      "duration": 49,
+      "language": "en",
+      "prerequisites": [
+        "kirchhoff-voltage-law",
+        "ohms-law"
+      ],
+      "concepts": [
+        "mesh analysis",
+        "Kirchhoff voltage law",
+        "loop current",
+        "circuit analysis",
+        "linear system",
+        "shared branch"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 1
+    },
+    {
+      "id": "delta-y-conversion",
+      "file": "delta-y-conversion.jsx",
+      "html": "delta-y-conversion.html",
+      "spec": "delta-y-conversion.spec.json",
+      "title": "Delta–Y Conversion: A Triangle Becomes a Star",
+      "eyebrow": "circuit analysis",
+      "topic": "Delta (Δ) to Y (T) conversion — three resistors arranged as a triangle between nodes A, B, C are equivalent to three resistors meeting at a central node N. The Y resistor opposite each Δ branch carries the product of its two adjacent Δ resistors over the sum of all three. Used to unsnarl bridge circuits that have no series/parallel reduction.",
+      "duration": 55,
+      "language": "en",
+      "prerequisites": [
+        "thevenin-equivalent",
+        "wheatstone-bridge"
+      ],
+      "concepts": [
+        "delta-Y conversion",
+        "delta-wye transform",
+        "network equivalence",
+        "bridge circuit",
+        "topology",
+        "series-parallel reduction"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 3
+    },
+    {
+      "id": "bcd-seven-segment-decoder",
+      "file": "bcd-seven-segment-decoder.jsx",
+      "html": "bcd-seven-segment-decoder.html",
+      "spec": "bcd-seven-segment-decoder.spec.json",
+      "title": "BCD to 7-Segment: Four Bits, Seven Lamps",
+      "eyebrow": "combinational logic",
+      "topic": "BCD-to-seven-segment decoder — a 4-bit binary-coded-decimal input (0000 through 1001) drives seven independent Boolean outputs, one per segment of a digit display. Each segment lights up for the set of digits where it should be on. Cycling through 0–9 makes the segment activation pattern visible.",
+      "duration": 55,
+      "language": "en",
+      "prerequisites": [
+        "karnaugh-map",
+        "nand-universality"
+      ],
+      "concepts": [
+        "BCD",
+        "seven-segment display",
+        "decoder",
+        "combinational logic",
+        "Karnaugh map",
+        "Boolean function",
+        "decimal digit"
+      ],
+      "subject_id": "ade",
+      "chapter_number": 5
     }
   ]
 }
