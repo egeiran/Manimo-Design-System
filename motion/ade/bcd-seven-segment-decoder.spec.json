@@ -1,0 +1,154 @@
+{
+  "id": "bcd-seven-segment-decoder",
+  "title": "BCD to 7-Segment: Four Bits, Seven Lamps",
+  "eyebrow": "combinational logic",
+  "language": "en",
+  "duration": 55,
+  "topic": "BCD-to-seven-segment decoder — a 4-bit binary-coded-decimal input (0000 through 1001) drives seven independent Boolean outputs, one per segment of a digit display. Each segment lights up for the set of digits where it should be on. Cycling through 0–9 makes the segment activation pattern visible.",
+  "subject_id": "ade",
+  "chapter_number": 5,
+  "prerequisites": [
+    "karnaugh-map",
+    "nand-universality"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.71,
+      "narration": "How do four bits drive a seven-segment display? Each of the seven segments has its own logic equation.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo enters",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Four bits in — seven segments out.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "displaySetup",
+      "start": 6.71,
+      "end": 20.09,
+      "narration": "Here's the seven-segment display, with segments labelled a through g. The four BCD inputs D three through D zero give us sixteen possible values, of which we use ten — zero through nine.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Seven-segment digit on the right with segments labelled a–g",
+            "delay": 0.3,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "BCD input panel on the left — D3 D2 D1 D0",
+            "delay": 1,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-caption",
+            "content": "ten valid codes — zero through nine",
+            "delay": 2.5,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "segmentEquations",
+      "start": 20.09,
+      "end": 33.09,
+      "narration": "Each segment is its own Boolean function of D three through D zero. For instance, segment a is on for every digit except 1 and 4. Karnaugh maps simplify each of the seven equations.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "a = on for {0, 2, 3, 5, 6, 7, 8, 9}",
+            "delay": 0.3,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-formula",
+            "content": "b = on for {0, 1, 2, 3, 4, 7, 8, 9}",
+            "delay": 1.1,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-formula",
+            "content": "g = on for {2, 3, 4, 5, 6, 8, 9}",
+            "delay": 1.9,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-caption",
+            "content": "seven Boolean functions, simplified by K-maps",
+            "delay": 3.4,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "countCycle",
+      "start": 33.09,
+      "end": 42.56,
+      "narration": "Cycle the input from zero up to nine. Each new BCD code lights the segments that draw that digit — and the display reads the value.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "BCD input bits flip 0000 → 0001 → … → 1001",
+            "delay": 0,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Seven-segment display redraws each digit in sync",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "one digit per second — segments follow",
+            "delay": 5,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 42.56,
+      "end": 55,
+      "narration": "Seven small logic networks plus four input bits give you any decimal digit on a numeric display — the building block behind every clock, calculator and meter readout.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Seven Boolean functions = one digit display.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "every calculator, every clock, every digital meter",
+            "delay": 1.8,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    }
+  ]
+}

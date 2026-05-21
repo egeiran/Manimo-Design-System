@@ -1,0 +1,191 @@
+{
+  "id": "mesh-analysis",
+  "title": "Mesh Analysis: KVL Loop by Loop",
+  "eyebrow": "circuit analysis",
+  "language": "en",
+  "duration": 49,
+  "topic": "Mesh analysis — assign a clockwise current to every independent loop, write KVL around each, and solve the resulting linear system. The shared branch between two adjacent loops carries the difference of the two mesh currents.",
+  "subject_id": "ade",
+  "chapter_number": 1,
+  "prerequisites": [
+    "kirchhoff-voltage-law",
+    "ohms-law"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.41,
+      "narration": "Two loops sharing a wire — how do we find the current through the middle branch?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo enters centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Two loops, one shared wire — what flows in the middle?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "circuitSetup",
+      "start": 4.41,
+      "end": 11.6,
+      "narration": "Here's a two-mesh circuit. A battery on the left, another on the right, and a resistor in the middle shared between both loops.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Outer rectangle with shared vertical middle branch (two adjacent loops)",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Battery V1 in left mesh",
+            "delay": 0.3,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Resistor R1 in left mesh top",
+            "delay": 0.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Shared resistor R3 in middle branch",
+            "delay": 0.9,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Resistor R2 in right mesh top",
+            "delay": 1.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Battery V2 in right mesh",
+            "delay": 1.5,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Labels: V1=12V, R1=4Ω, R3=6Ω, R2=2Ω, V2=6V",
+            "delay": 2,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "assignMeshCurrents",
+      "start": 11.6,
+      "end": 21.87,
+      "narration": "Assign a clockwise current to each loop — I one in the left mesh, I two in the right. Both currents pass through the shared resistor — but in opposite directions.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Rotating arrows showing I1 clockwise around left mesh",
+            "delay": 0.5,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Rotating arrows showing I2 clockwise around right mesh",
+            "delay": 1.5,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "I1 label inside left mesh",
+            "delay": 1,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "I2 label inside right mesh",
+            "delay": 2,
+            "color": "var(--teal-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "in the middle branch the net current is I1 − I2",
+            "delay": 4,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kvlEquations",
+      "start": 21.87,
+      "end": 39.22,
+      "narration": "Write KVL around each loop. Left loop: V one equals I one R one plus I one minus I two times R three. Right loop: minus V two equals I two R two plus I two minus I one times R three.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "Left mesh: V₁ = I₁R₁ + (I₁ − I₂)R₃",
+            "delay": 0.3,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "Right mesh: −V₂ = I₂R₂ + (I₂ − I₁)R₃",
+            "delay": 1.6,
+            "color": "var(--teal-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "two linear equations in two unknowns",
+            "delay": 3,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "Solve: I₁ ≈ 1.5 A, I₂ ≈ 0 A",
+            "delay": 4.5,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 39.22,
+      "end": 49,
+      "narration": "One mesh current per loop, KVL applied loop by loop — that's mesh analysis. For n loops you get n equations and n unknowns.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "One mesh current per loop. KVL each loop. Solve.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "n loops → n equations, n unknowns",
+            "delay": 1.6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    }
+  ]
+}
