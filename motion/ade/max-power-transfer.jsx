@@ -58,21 +58,33 @@ function Scene() {
 function CircuitSetupBeat() {
   const portrait = usePortrait();
 
-  // Geometry: source(V_s) + R_s on left, terminals, R_L on right with arrow
-  // making it a variable resistor.
+  // Geometry: rectangular current loop with explicit top and bottom rails.
+  // R_s sits on the top rail; R_L is a tall vertical box whose top and bottom
+  // edges meet the rails exactly, so the wires connect at the rect corners
+  // instead of cutting through the box. SOURCE / LOAD labels clarify what
+  // R_L is independently of the narration.
   const G = portrait
-    ? { vbW: 600, vbH: 580, srcX: 130, srcY: 220,
-        rsX: 280, rsY: 220, rsW: 70, rsH: 30,
-        termX: 420, termTopY: 180, termBotY: 320,
-        rlX: 480, rlY: 240, rlW: 56, rlH: 90,
-        formulaY1: 390, formulaY2: 460,
-        fontFormula: 24, captionY: 540 }
-    : { vbW: 1000, vbH: 480, srcX: 180, srcY: 220,
-        rsX: 360, rsY: 220, rsW: 90, rsH: 36,
-        termX: 540, termTopY: 170, termBotY: 280,
-        rlX: 620, rlY: 240, rlW: 70, rlH: 110,
-        formulaY1: 370, formulaY2: 425,
-        fontFormula: 26, captionY: 0 };
+    ? { vbW: 600, vbH: 580,
+        topY: 230, botY: 350,
+        srcX: 150, srcY: 290,
+        rsX: 280, rsW: 70, rsH: 28,
+        termX: 420,
+        rlX: 480, rlW: 56,
+        formulaY1: 420, formulaY2: 480,
+        fontFormula: 24,
+        sourceLabelX: 230, loadLabelX: 508 }
+    : { vbW: 1000, vbH: 480,
+        topY: 190, botY: 290,
+        srcX: 200, srcY: 240,
+        rsX: 380, rsW: 90, rsH: 30,
+        termX: 580,
+        rlX: 660, rlW: 70,
+        formulaY1: 380, formulaY2: 432,
+        fontFormula: 26,
+        sourceLabelX: 300, loadLabelX: 695 };
+
+  const rlMidX = G.rlX + G.rlW / 2;
+  const rlMidY = (G.topY + G.botY) / 2;
 
   return (
     <div style={{
@@ -92,65 +104,70 @@ function CircuitSetupBeat() {
                 fontStyle="italic" fontSize={18}>V<tspan baselineShift="sub" fontSize="0.7em">s</tspan></text>
         </SvgFadeIn>
 
-        {/* Wires: V_s top → R_s left; R_s right → top terminal; bottom return
-            from bottom terminal → V_s−. */}
-        <TraceIn d={`M ${G.srcX + 14} ${G.srcY - 10} L ${G.srcX + 28} ${G.srcY - 10} L ${G.srcX + 28} ${G.rsY} L ${G.rsX} ${G.rsY}`}
+        {/* Wires: three segments, one per rail edge. */}
+        {/*   1. V_s+ up to top rail, then right toward R_s. */}
+        <TraceIn d={`M ${G.srcX + 14} ${G.srcY - 10} L ${G.srcX + 28} ${G.srcY - 10} L ${G.srcX + 28} ${G.topY} L ${G.rsX} ${G.topY}`}
                  stroke="var(--chalk-200)" strokeWidth={2}
                  duration={0.5} delay={0.3}/>
-        <TraceIn d={`M ${G.rsX + G.rsW} ${G.rsY} L ${G.termX} ${G.rsY} L ${G.termX} ${G.termTopY}`}
+        {/*   2. R_s right → top terminal → top of R_L (straight along top rail). */}
+        <TraceIn d={`M ${G.rsX + G.rsW} ${G.topY} L ${rlMidX} ${G.topY}`}
                  stroke="var(--chalk-200)" strokeWidth={2}
                  duration={0.5} delay={0.7}/>
-        <TraceIn d={`M ${G.srcX + 7} ${G.srcY + 10} L ${G.srcX + 28} ${G.srcY + 10} L ${G.srcX + 28} ${G.termBotY} L ${G.termX} ${G.termBotY}`}
+        {/*   3. V_s− down to bottom rail, then right to bottom of R_L. */}
+        <TraceIn d={`M ${G.srcX + 7} ${G.srcY + 10} L ${G.srcX + 28} ${G.srcY + 10} L ${G.srcX + 28} ${G.botY} L ${rlMidX} ${G.botY}`}
                  stroke="var(--chalk-200)" strokeWidth={2}
-                 duration={0.5} delay={0.9}/>
+                 duration={0.6} delay={0.9}/>
 
-        {/* R_s box */}
+        {/* R_s box (on top rail) */}
         <SvgFadeIn duration={0.4} delay={0.6}>
-          <rect x={G.rsX} y={G.rsY - G.rsH / 2}
+          <rect x={G.rsX} y={G.topY - G.rsH / 2}
                 width={G.rsW} height={G.rsH}
                 fill="none" stroke="var(--amber-400)" strokeWidth={2.2}
                 rx={2}/>
-          <text x={G.rsX + G.rsW / 2} y={G.rsY - G.rsH / 2 - 8} textAnchor="middle"
+          <text x={G.rsX + G.rsW / 2} y={G.topY - G.rsH / 2 - 8} textAnchor="middle"
                 fill="var(--amber-300)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={18}>R<tspan baselineShift="sub" fontSize="0.7em">s</tspan></text>
         </SvgFadeIn>
 
-        {/* Terminal dots */}
+        {/* Terminal dots — at the rail crossings between source and load. */}
         <SvgFadeIn duration={0.3} delay={1.0}>
-          <circle cx={G.termX} cy={G.termTopY} r={4} fill="var(--chalk-100)"/>
-          <circle cx={G.termX} cy={G.termBotY} r={4} fill="var(--chalk-100)"/>
+          <circle cx={G.termX} cy={G.topY} r={4} fill="var(--chalk-100)"/>
+          <circle cx={G.termX} cy={G.botY} r={4} fill="var(--chalk-100)"/>
         </SvgFadeIn>
 
-        {/* R_L — variable resistor (rect + diagonal arrow through it) */}
+        {/* R_L — variable resistor. Box spans the full rail height so the
+            wires meet its top and bottom edges cleanly. */}
         <SvgFadeIn duration={0.4} delay={1.4}>
-          <rect x={G.rlX} y={G.rlY - G.rlH / 2 + 10}
-                width={G.rlW} height={G.rlH - 20}
+          <rect x={G.rlX} y={G.topY}
+                width={G.rlW} height={G.botY - G.topY}
                 fill="none" stroke="var(--amber-400)" strokeWidth={2.2}
                 rx={2}/>
           {/* Arrow through box — marks "variable" */}
-          <line x1={G.rlX - 6} y1={G.rlY + G.rlH / 2 - 4}
-                x2={G.rlX + G.rlW + 6} y2={G.rlY - G.rlH / 2 + 4}
+          <line x1={G.rlX - 6} y1={G.botY + 6}
+                x2={G.rlX + G.rlW + 6} y2={G.topY - 6}
                 stroke="var(--amber-300)" strokeWidth={1.6}/>
-          <path d={`M ${G.rlX + G.rlW + 6} ${G.rlY - G.rlH / 2 + 4}
-                    L ${G.rlX + G.rlW - 2} ${G.rlY - G.rlH / 2 + 2}
-                    L ${G.rlX + G.rlW + 2} ${G.rlY - G.rlH / 2 + 12} Z`}
+          <path d={`M ${G.rlX + G.rlW + 6} ${G.topY - 6}
+                    L ${G.rlX + G.rlW - 2} ${G.topY - 4}
+                    L ${G.rlX + G.rlW + 2} ${G.topY + 6} Z`}
                 fill="var(--amber-300)"/>
-          <text x={G.rlX + G.rlW + 18} y={G.rlY + 6}
+          <text x={G.rlX + G.rlW + 18} y={rlMidY + 6}
                 fill="var(--amber-300)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={20}>R<tspan baselineShift="sub" fontSize="0.7em">L</tspan></text>
-          {/* Wires from terminals to R_L */}
-          <line x1={G.termX} y1={G.termTopY}
-                x2={G.rlX + G.rlW / 2} y2={G.termTopY}
-                stroke="var(--chalk-200)" strokeWidth={2}/>
-          <line x1={G.rlX + G.rlW / 2} y1={G.termTopY}
-                x2={G.rlX + G.rlW / 2} y2={G.rlY - G.rlH / 2 + 10}
-                stroke="var(--chalk-200)" strokeWidth={2}/>
-          <line x1={G.termX} y1={G.termBotY}
-                x2={G.rlX + G.rlW / 2} y2={G.termBotY}
-                stroke="var(--chalk-200)" strokeWidth={2}/>
-          <line x1={G.rlX + G.rlW / 2} y1={G.termBotY}
-                x2={G.rlX + G.rlW / 2} y2={G.rlY + G.rlH / 2 - 10}
-                stroke="var(--chalk-200)" strokeWidth={2}/>
+        </SvgFadeIn>
+
+        {/* SOURCE / LOAD annotations: faint dashed divider at the terminals,
+            plus a mono caption under each half. Makes R_L unambiguous on
+            first glance without waiting for the narration. */}
+        <SvgFadeIn duration={0.4} delay={1.9}>
+          <line x1={G.termX} y1={G.topY - 18} x2={G.termX} y2={G.botY + 18}
+                stroke="var(--chalk-300)" strokeWidth={1}
+                strokeDasharray="3 5" opacity={0.32}/>
+          <text x={G.sourceLabelX} y={G.botY + 32} textAnchor="middle"
+                fill="var(--chalk-300)" fontFamily="var(--font-mono)"
+                fontSize={11} letterSpacing="0.14em">SOURCE</text>
+          <text x={G.loadLabelX} y={G.botY + 32} textAnchor="middle"
+                fill="var(--chalk-300)" fontFamily="var(--font-mono)"
+                fontSize={11} letterSpacing="0.14em">LOAD</text>
         </SvgFadeIn>
 
         {/* Formulas */}
