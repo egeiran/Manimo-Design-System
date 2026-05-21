@@ -1,0 +1,41 @@
+{
+  "sceneId": "lagrange-multipliers",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/lagrange-multipliers/scene.mp3",
+  "durationSec": 57.21,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Where does f get its biggest value if we are forced to stay on a curve?"
+    },
+    {
+      "id": "setup",
+      "audioStart": 4.3,
+      "narration": "Take f equals x plus y, and constrain to the circle x squared plus y squared equals two. The level lines of f are diagonal — every step northeast pushes f up."
+    },
+    {
+      "id": "sliding",
+      "audioStart": 16.63,
+      "narration": "Slide a point along the circle. The gradient of f is fixed — it points northeast everywhere. The gradient of g rotates with the point, always pointing straight out from the origin."
+    },
+    {
+      "id": "alignment",
+      "audioStart": 28.22,
+      "narration": "At the constrained maximum the two arrows line up. At the constrained minimum they point opposite ways. So at every constrained extremum, the gradient of f is a scalar multiple of the gradient of g."
+    },
+    {
+      "id": "solving",
+      "audioStart": 41.02,
+      "narration": "Set ∇f equal to lambda times ∇g and solve. The system gives x equals y and lambda equals plus or minus one half, landing exactly on the two candidates."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 52.36,
+      "narration": "At every constrained extremum, the gradients align — that is the whole trick."
+    }
+  ]
+}

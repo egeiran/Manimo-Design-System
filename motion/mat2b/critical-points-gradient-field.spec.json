@@ -1,0 +1,194 @@
+{
+  "id": "critical-points-gradient-field",
+  "title": "Critical Points: Where the Gradient Vanishes",
+  "eyebrow": "interior critical points",
+  "language": "en",
+  "duration": 50,
+  "topic": "Finding interior critical points by setting the gradient equal to zero. For f(x, y) = x³/3 − x + y² − 2y, plot the contour map plus the gradient vector field; sweep a scanner along the line y = 1 and watch |∇f| dip to zero at exactly two locations — x = −1 and x = +1. Solving the system ∇f = (x² − 1, 2y − 2) = (0, 0) recovers the same pair, with one a local minimum and one a saddle. Classification waits for the Hesse test.",
+  "subject_id": "mat2b",
+  "chapter_number": 6,
+  "prerequisites": [
+    "gradient-and-level-curves",
+    "hessian-test"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.63,
+      "narration": "Before classifying any extremum, you have to find it. Where is the gradient zero?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Where is the ground flat?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "field",
+      "start": 5.63,
+      "end": 19.08,
+      "narration": "Here is a function with hills and valleys: f equals x cubed over three, minus x, plus y squared, minus two y. The gradient field shows the uphill direction at every point.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "xy axes",
+            "delay": 0.2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Level curves of f",
+            "delay": 0.6,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Gradient vector field arrows on a coarse grid",
+            "delay": 1.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "f(x, y) = x³/3 − x + y² − 2y",
+            "delay": 2.4,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-formula",
+            "content": "∇f = (x² − 1, 2y − 2)",
+            "delay": 3.4,
+            "color": "var(--amber-400)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "Arrows shrink where the surface flattens.",
+            "delay": 4.2,
+            "color": "var(--chalk-300)",
+            "position": "right panel — sans caption"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scan",
+      "start": 19.08,
+      "end": 30.8,
+      "narration": "Sweep a scanner across the line y equals one. The magnitude of the gradient drops to zero at exactly two places — x equals minus one and x equals plus one.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "Contour map held lit",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Horizontal scanline at y = 1",
+            "delay": 0.3,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Scanner point sliding along y = 1",
+            "delay": 0.5,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Gradient arrow at the scanner — length tracks |∇f|",
+            "delay": 0.7,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Magnitude bar in the right panel — collapses at x = ±1",
+            "delay": 1,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "Watch |∇f| collapse at the critical points.",
+            "delay": 1.4,
+            "color": "var(--chalk-300)",
+            "position": "right panel — sans caption"
+          }
+        ]
+      }
+    },
+    {
+      "id": "solve",
+      "start": 30.8,
+      "end": 43.99,
+      "narration": "Solve the system: set ∇f equal to zero. The first component gives x squared equals one, so x is plus or minus one. The second gives y equals one. Two critical points fall out.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "∇f = (x² − 1, 2y − 2) = (0, 0)",
+            "delay": 0.2,
+            "color": "var(--chalk-200)",
+            "position": "step one"
+          },
+          {
+            "type": "text-formula",
+            "content": "x² = 1,  y = 1",
+            "delay": 1.2,
+            "color": "var(--chalk-200)",
+            "position": "step two"
+          },
+          {
+            "type": "text-formula",
+            "content": "(1, 1)  and  (−1, 1)",
+            "delay": 2.4,
+            "color": "var(--amber-300)",
+            "position": "two candidates"
+          },
+          {
+            "type": "text-caption",
+            "content": "Classifying min vs saddle is the Hesse test.",
+            "delay": 3.6,
+            "color": "var(--chalk-300)",
+            "position": "small caption"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 43.99,
+      "end": 50,
+      "narration": "Critical points are zeros of the gradient. Find them first, then classify.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Critical points are zeros of the gradient field.",
+            "delay": 0.1,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          }
+        ]
+      }
+    }
+  ]
+}

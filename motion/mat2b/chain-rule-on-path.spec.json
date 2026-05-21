@@ -1,0 +1,244 @@
+{
+  "id": "chain-rule-on-path",
+  "title": "Chain Rule on a Path: Gradient Dot Velocity",
+  "eyebrow": "multivariable chain rule",
+  "language": "en",
+  "duration": 55,
+  "topic": "The multivariable chain rule visualised. A particle moves along a parametric curve γ(t) on a contour map of f. As it crosses level curves the altitude z = f(γ(t)) rises and falls; the instantaneous rate dz/dt equals the gradient of f dotted with the velocity γ'(t). Concrete example: f(x, y) = x² + y², γ(t) = (cos t + 1, sin t). The particle traces a unit circle offset right; the live dot product ∇f · γ' tracks against the analytic value −2 sin t.",
+  "subject_id": "mat2b",
+  "chapter_number": 5,
+  "prerequisites": [
+    "gradient-and-level-curves",
+    "directional-derivative"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.89,
+      "narration": "Walking a winding path across a hill — how fast does your altitude change?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "A path across a hill — how fast does z change?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "setup",
+      "start": 5.89,
+      "end": 20.67,
+      "narration": "Take f equals x squared plus y squared. The level curves are concentric circles. Walk the path gamma of t equals cos t plus one, sin t — a unit circle offset to the right.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "xy axes",
+            "delay": 0.2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Concentric level circles of f around origin",
+            "delay": 0.6,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Path γ(t) — unit circle centred at (1, 0)",
+            "delay": 1.6,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "f(x, y) = x² + y²",
+            "delay": 2.4,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-formula",
+            "content": "γ(t) = (cos t + 1, sin t)",
+            "delay": 3,
+            "color": "var(--teal-400)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "The particle will sweep around this loop.",
+            "delay": 4,
+            "color": "var(--chalk-300)",
+            "position": "right panel — sans caption"
+          }
+        ]
+      }
+    },
+    {
+      "id": "particle",
+      "start": 20.67,
+      "end": 32.67,
+      "narration": "As the particle moves, the gradient of f points outward from the origin, and the velocity gamma prime of t is tangent to the path. Their dot product is the rate of change of altitude.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "Contour map held lit",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Path γ(t) held lit",
+            "delay": 0,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Particle P at γ(t), sweeping t from 0 to 2π",
+            "delay": 0.5,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "svg-path",
+            "content": "∇f arrow at P, radial outward",
+            "delay": 0.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "γ'(t) arrow at P, tangent to path",
+            "delay": 0.8,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "∇f = (2x, 2y)",
+            "delay": 1,
+            "color": "var(--amber-400)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-formula",
+            "content": "γ'(t) = (−sin t, cos t)",
+            "delay": 1.6,
+            "color": "var(--violet-400)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "Live dot-product readout updates with t.",
+            "delay": 2.2,
+            "color": "var(--chalk-300)",
+            "position": "right panel — sans caption"
+          }
+        ]
+      }
+    },
+    {
+      "id": "match",
+      "start": 32.67,
+      "end": 42.23,
+      "narration": "Below the diagram, plot the altitude z of t against time. Its slope at every instant exactly matches the gradient dotted with velocity.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Small axes below — t vs z",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Trace of z(t) = 2 + 2 cos t as t sweeps",
+            "delay": 0.3,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Marker on z(t) tracking the particle's current t",
+            "delay": 0.5,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-formula",
+            "content": "dz/dt = ∇f · γ'(t) = −2 sin t",
+            "delay": 3,
+            "color": "var(--amber-300)",
+            "position": "below z(t) plot, serif italic, large"
+          },
+          {
+            "type": "text-caption",
+            "content": "The slope of z(t) matches the dot product, point for point.",
+            "delay": 4,
+            "color": "var(--chalk-300)",
+            "position": "small caption"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rule",
+      "start": 42.23,
+      "end": 49.34,
+      "narration": "The multivariable chain rule is this: take the gradient at the point, dot it with the velocity along the path.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "z(t) = f(γ(t))",
+            "delay": 0.2,
+            "color": "var(--chalk-100)",
+            "position": "step one"
+          },
+          {
+            "type": "text-formula",
+            "content": "dz/dt = ∇f(γ(t)) · γ'(t)",
+            "delay": 1.2,
+            "color": "var(--amber-300)",
+            "position": "payoff line, large serif"
+          },
+          {
+            "type": "text-caption",
+            "content": "Gradient times velocity. That's the whole chain rule.",
+            "delay": 2.6,
+            "color": "var(--chalk-300)",
+            "position": "centre, sans"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 49.34,
+      "end": 55,
+      "narration": "Gradient dot velocity. Slope along any path.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Gradient · velocity = slope along the path.",
+            "delay": 0.1,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          }
+        ]
+      }
+    }
+  ]
+}
