@@ -234,7 +234,7 @@ function SweepABeat() {
 
   // Sweep window: start at t=1.0s, end at t=8.5s; total 7.5s for a smooth
   // back-and-forth motion. Eases give a "drag the dial" feel.
-  const aMin = -2, aMax = 2;
+  const aMin = -1.6, aMax = 1.6;
   const sweepStart = 1.0, sweepEnd = 8.5;
   const phase = clamp((localTime - sweepStart) / (sweepEnd - sweepStart), 0, 1);
   // Use a triangle wave for one round trip then settle in middle:

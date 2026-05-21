@@ -141,7 +141,7 @@ function WalkBeat() {
   // Process order: lsb (index 3) first, then 2, 1, 0.
 
   const G = portrait
-    ? { vbW: 600, vbH: 740, cellW: 90, cellH: 78, top: 130, gapX: 6,
+    ? { vbW: 600, vbH: 420, cellW: 90, cellH: 78, top: 80, gapX: 6,
         fontBit: 38, fontLabel: 16, fontRes: 22, leftPad: 80 }
     : { vbW: 980, vbH: 480, cellW: 120, cellH: 96, top: 90, gapX: 8,
         fontBit: 48, fontLabel: 17, fontRes: 24, leftPad: 200 };

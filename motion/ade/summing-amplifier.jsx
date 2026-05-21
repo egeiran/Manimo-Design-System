@@ -321,7 +321,7 @@ function CurrentsBeat() {
         {/* i_k formula */}
         <SvgFadeIn duration={0.4} delay={3.6}>
           <text x={portrait ? G.vbW / 2 - 130 : G.rInLeftX - 20}
-                y={portrait ? G.captionY - 36 : G.rInY[1]}
+                y={portrait ? G.captionY - 36 : G.rInY[0] - 28}
                 textAnchor={portrait ? 'middle' : 'end'}
                 fill="var(--chalk-100)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={portrait ? 18 : 20}>
@@ -379,9 +379,9 @@ function FormulaBeat() {
       <FadeUp duration={0.6} delay={0.4} distance={14}
         style={{
           fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-          fontSize: portrait ? 26 : 38, color: 'var(--amber-300)',
+          fontSize: portrait ? 22 : 38, color: 'var(--amber-300)',
           letterSpacing: '0.02em', lineHeight: 1.25,
-          maxWidth: portrait ? '20ch' : 'none',
+          maxWidth: portrait ? '24ch' : 'none',
         }}>
         V<sub>out</sub> = −R<sub>f</sub> · (V₁/R₁ + V₂/R₂ + V₃/R₃)
       </FadeUp>

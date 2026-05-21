@@ -406,8 +406,8 @@ function PhasorsBeat() {
     // size×size box. Without this cap V_L would punch through the header
     // text above on the rightmost phasor diagram.
     const len = size * 0.24;
-    const lVR = len;
     const maxArm = c - 18;                // leave room for the arrow label
+    const lVR = Math.min(maxArm, len);
     const lVL = Math.min(maxArm, len * ratio);
     const lVC = Math.min(maxArm, len / ratio);
     return (

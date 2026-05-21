@@ -359,7 +359,8 @@ function LinePassBeat() {
               <text x={cPt.sx + (cValue > 0 ? 14 : -14)}
                     y={cPt.sy + (cValue > 0 ? -10 : 18)}
                     fill="var(--rose-300)" fontFamily="var(--font-mono)"
-                    fontSize={14} textAnchor={cValue > 0 ? 'start' : 'end'}>
+                    fontSize={14} textAnchor={cValue > 0 ? 'start' : 'end'}
+                    opacity={clamp((Math.abs(cValue) - 0.18) / 0.12, 0, 1)}>
                 c = {cValue.toFixed(2)}
               </text>
             </g>

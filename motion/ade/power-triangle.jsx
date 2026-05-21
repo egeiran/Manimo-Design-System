@@ -325,9 +325,9 @@ function DecomposeBeat() {
           {/* The in-phase part along V */}
           <line x1={G.origX} y1={G.origY} x2={projXOnV} y2={projYOnV}
                 stroke="var(--teal-400)" strokeWidth={4} opacity={0.95}/>
-          {/* Label sits ~75% of the way from origin to the projection foot
-              so it clears the φ-arc label that lives near the origin. */}
-          <text x={G.origX + (projXOnV - G.origX) * 0.75} y={G.origY - 12} textAnchor="middle"
+          {/* Label sits below the +x axis (the wedge above already holds the
+              φ-arc glyph, so anchoring there avoided overlap with it). */}
+          <text x={G.origX + (projXOnV - G.origX) * 0.75} y={G.origY + 18} textAnchor="middle"
                 fill="var(--teal-400)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={G.fontLabel}>
             I cos φ

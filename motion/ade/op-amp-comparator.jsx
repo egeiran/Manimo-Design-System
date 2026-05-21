@@ -268,7 +268,7 @@ function TransferCurveBeat() {
         <SvgFadeIn duration={0.35} delay={1.0}>
           <line x1={G.axMid - 5} y1={G.ay1 + 20} x2={G.axMid + 5} y2={G.ay1 + 20}
                 stroke="var(--chalk-300)" strokeWidth={1.5}/>
-          <text x={G.axMid - 12} y={G.ay1 + 12}
+          <text x={G.axMid - 12} y={G.ay1 - 4}
                 fill="var(--teal-400)" fontFamily="var(--font-mono)"
                 fontSize={12} textAnchor="end">+V_sat</text>
           <line x1={G.axMid - 5} y1={G.ay0 - 20} x2={G.axMid + 5} y2={G.ay0 - 20}
@@ -413,10 +413,10 @@ function RampToSquareBeat() {
           </text>
           {/* +V_sat / -V_sat rail markers on the output scope — placed
               outside the frame edges so they don't collide with V_out. */}
-          <text x={G.scopeR + 8} y={G.botY0 - 6}
+          <text x={G.scopeR + 8} y={G.botY0 - 18}
                 fill="var(--teal-400)" fontFamily="var(--font-mono)"
                 fontSize={11}>+V_sat</text>
-          <text x={G.scopeR + 8} y={G.botY1 + 16}
+          <text x={G.scopeR + 8} y={G.botY1 + 24}
                 fill="var(--rose-300)" fontFamily="var(--font-mono)"
                 fontSize={11}>−V_sat</text>
         </SvgFadeIn>

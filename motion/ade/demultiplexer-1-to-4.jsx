@@ -99,12 +99,12 @@ function SchematicBeat() {
         boxX: 200, boxY: 200, boxW: 200, boxH: 320,
         yX: 540, yY0: 240, yDy: 80,
         font: 18, fontSmall: 12, captionY: 680 }
-    : { vbW: 1020, vbH: 460,
+    : { vbW: 1020, vbH: 490,
         dX: 130, dY: 230,
         s1X: 460, s1Y: 410, s0X: 540, s0Y: 410,
         boxX: 320, boxY: 90, boxW: 380, boxH: 260,
         yX: 880, yY0: 130, yDy: 65,
-        font: 18, fontSmall: 12, captionY: 440 };
+        font: 18, fontSmall: 12, captionY: 470 };
 
   return (
     <div style={{
