@@ -108,21 +108,28 @@ function resistorVerticalD(cx, yTop, yBot, amp = 9, n = 6) {
   return pts.join(' ');
 }
 
-// Voltage source: long plate (+) + short plate (−), centred at (cx, cy).
+// Voltage source — vertical orientation. Long plate (+) on top, short
+// plate (−) below. Designed to sit between the top and bottom rails with
+// short vertical stubs drawn outside this symbol joining the plates to
+// the rails.
 function BatterySymbol({ cx, cy, label = 'V₁' }) {
   return (
     <g>
-      <line x1={cx - 12} y1={cy - 14} x2={cx - 12} y2={cy + 14}
+      {/* + plate (long, top) */}
+      <line x1={cx - 14} y1={cy - 5} x2={cx + 14} y2={cy - 5}
             stroke="var(--chalk-100)" strokeWidth={3}/>
-      <line x1={cx + 4} y1={cy - 8} x2={cx + 4} y2={cy + 8}
+      {/* − plate (short, bottom) */}
+      <line x1={cx - 8} y1={cy + 7} x2={cx + 8} y2={cy + 7}
             stroke="var(--chalk-100)" strokeWidth={2.4}/>
-      <text x={cx - 26} y={cy + 5} textAnchor="end"
+      {/* Source name to the left of the symbol */}
+      <text x={cx - 22} y={cy + 5} textAnchor="end"
             fill="var(--chalk-100)" fontFamily="var(--font-serif)"
             fontStyle="italic" fontSize={18}>{label}</text>
-      <text x={cx - 12} y={cy - 22} textAnchor="middle"
+      {/* Polarity markers to the right */}
+      <text x={cx + 22} y={cy - 1}
             fill="var(--chalk-300)" fontFamily="var(--font-mono)"
             fontSize={11}>+</text>
-      <text x={cx + 4} y={cy - 18} textAnchor="middle"
+      <text x={cx + 22} y={cy + 17}
             fill="var(--chalk-300)" fontFamily="var(--font-mono)"
             fontSize={11}>−</text>
     </g>
@@ -158,46 +165,52 @@ function KillX({ cx, cy, size = 18 }) {
   );
 }
 
-// Render the shared schematic with optional per-source killing. When
-// `killCurrent` is true the I2 is shown opened (gap in the right arm);
-// when `killVoltage` is true V1 is shown shorted (a wire replaces it).
+// Render the shared schematic with optional per-source killing. Both V1
+// and I2 sit vertically between the top and bottom rails so the symbols'
+// natural orientation (battery long-plate on top, current source arrow
+// up) lines up with the actual current direction. When `killCurrent` is
+// true I2 is shown as an open gap; when `killVoltage` is true V1 is
+// shown shorted (a wire bridges the source body).
 function CircuitDiagram({ G, beatDelay = 0, killCurrent = false, killVoltage = false }) {
+  const mid = (G.topY + G.botY) / 2;
   return (
     <g>
-      {/* Top rail and bottom rail wires */}
-      <TraceIn d={`M ${G.v1X + 4} ${G.topY} L ${G.r1X1} ${G.topY}`}
+      {/* Top rail — drawn in three segments around R1 and R2 zigzags so
+          the chalk rail line doesn't show through the amber resistors. */}
+      <TraceIn d={`M ${G.v1X} ${G.topY} L ${G.r1X1} ${G.topY}`}
                stroke="var(--chalk-200)" strokeWidth={2}
                duration={0.4} delay={beatDelay + 0.4}/>
       <TraceIn d={`M ${G.r1X2} ${G.topY} L ${G.rlX} ${G.topY} L ${G.r2X1} ${G.topY}`}
                stroke="var(--chalk-200)" strokeWidth={2}
                duration={0.6} delay={beatDelay + 0.6}/>
-      <TraceIn d={`M ${G.r2X2} ${G.topY} L ${G.i2X - 22} ${G.topY}`}
+      <TraceIn d={`M ${G.r2X2} ${G.topY} L ${G.i2X} ${G.topY}`}
                stroke="var(--chalk-200)" strokeWidth={2}
                duration={0.4} delay={beatDelay + 0.7}/>
-      <TraceIn d={`M ${G.v1X - 12} ${G.botY} L ${G.i2X + 22} ${G.botY}`}
+
+      {/* Bottom rail */}
+      <TraceIn d={`M ${G.v1X} ${G.botY} L ${G.i2X} ${G.botY}`}
                stroke="var(--chalk-200)" strokeWidth={2}
                duration={0.7} delay={beatDelay + 0.8}/>
 
-      {/* Vertical wires from source bodies to rails */}
-      <TraceIn d={`M ${G.v1X - 12} ${G.topY} L ${G.v1X - 12} ${G.botY}`}
+      {/* V1 stubs (always drawn). Source body or short overlay decides
+          what fills the gap between the stubs. */}
+      <TraceIn d={`M ${G.v1X} ${G.topY} L ${G.v1X} ${mid - 5}`}
                stroke="var(--chalk-200)" strokeWidth={2}
-               duration={0.4} delay={beatDelay + 0.2}/>
-      <TraceIn d={`M ${G.i2X + 22} ${G.topY} L ${G.i2X + 22} ${G.botY}`}
+               duration={0.3} delay={beatDelay + 0.2}/>
+      <TraceIn d={`M ${G.v1X} ${mid + 7} L ${G.v1X} ${G.botY}`}
                stroke="var(--chalk-200)" strokeWidth={2}
-               duration={0.4} delay={beatDelay + 0.2}/>
-
-      {/* V1 voltage source — shown as a wire (short) when killed */}
+               duration={0.3} delay={beatDelay + 0.2}/>
       {killVoltage ? (
         <SvgFadeIn duration={0.4} delay={beatDelay + 0.0}>
-          <line x1={G.v1X - 12} y1={G.topY} x2={G.v1X - 12} y2={G.botY}
+          <line x1={G.v1X} y1={mid - 5} x2={G.v1X} y2={mid + 7}
                 stroke="var(--rose-300)" strokeWidth={2.4}/>
-          <text x={G.v1X - 26} y={(G.topY + G.botY) / 2 + 4} textAnchor="end"
+          <text x={G.v1X - 22} y={mid + 4} textAnchor="end"
                 fill="var(--rose-300)" fontFamily="var(--font-mono)"
                 fontSize={11} letterSpacing="0.14em">V₁ → 0</text>
         </SvgFadeIn>
       ) : (
         <SvgFadeIn duration={0.4} delay={beatDelay + 0.0}>
-          <BatterySymbol cx={G.v1X} cy={(G.topY + G.botY) / 2} label="V₁"/>
+          <BatterySymbol cx={G.v1X} cy={mid} label="V₁"/>
         </SvgFadeIn>
       )}
 
@@ -237,21 +250,29 @@ function CircuitDiagram({ G, beatDelay = 0, killCurrent = false, killVoltage = f
               fontStyle="italic" fontSize={18}>R₂</text>
       </SvgFadeIn>
 
-      {/* I2 current source — shown as an open gap when killed */}
+      {/* I2 stubs (always drawn). The source body or open marker fills
+          the gap between the stubs. Body height: r=18. */}
+      <TraceIn d={`M ${G.i2X} ${G.topY} L ${G.i2X} ${mid - 18}`}
+               stroke="var(--chalk-200)" strokeWidth={2}
+               duration={0.3} delay={beatDelay + 0.2}/>
+      <TraceIn d={`M ${G.i2X} ${mid + 18} L ${G.i2X} ${G.botY}`}
+               stroke="var(--chalk-200)" strokeWidth={2}
+               duration={0.3} delay={beatDelay + 0.2}/>
       {killCurrent ? (
         <SvgFadeIn duration={0.4} delay={beatDelay + 0.0}>
-          {/* Two short stubs on either side with a gap */}
-          <line x1={G.i2X - 22} y1={G.topY} x2={G.i2X - 8} y2={G.topY}
+          {/* Open-circuit indicator: stubs end short, leaving a visible
+              gap where the source was. */}
+          <line x1={G.i2X} y1={mid - 18} x2={G.i2X} y2={mid - 8}
                 stroke="var(--rose-300)" strokeWidth={2}/>
-          <line x1={G.i2X + 8} y1={G.topY} x2={G.i2X + 22} y2={G.topY}
+          <line x1={G.i2X} y1={mid + 8} x2={G.i2X} y2={mid + 18}
                 stroke="var(--rose-300)" strokeWidth={2}/>
-          <text x={G.i2X} y={G.topY - 18} textAnchor="middle"
+          <text x={G.i2X + 22} y={mid + 4}
                 fill="var(--rose-300)" fontFamily="var(--font-mono)"
                 fontSize={11} letterSpacing="0.14em">I₂ → 0 (open)</text>
         </SvgFadeIn>
       ) : (
         <SvgFadeIn duration={0.4} delay={beatDelay + 0.0}>
-          <CurrentSourceSymbol cx={G.i2X} cy={G.topY} label="I₂"/>
+          <CurrentSourceSymbol cx={G.i2X} cy={mid} label="I₂"/>
         </SvgFadeIn>
       )}
     </g>
@@ -334,17 +355,15 @@ function KillCurrentBeat() {
   const { localTime } = useSprite();
   const G = circuitGeometry(portrait);
 
-  // Current loop with only V1 live: V1(+) → topRail → R1 → through R_L
-  // (downward) → bottom rail → back to V1(−). I2 branch is open.
-  const mid = (G.topY + G.botY) / 2;
+  // Current loop with only V1 live: V1(+) → top rail → R1 → down through
+  // R_L → bottom rail → back into V1(−) → up through V1 body to close.
+  // Every waypoint sits on a visible wire so the dots always travel
+  // along something the viewer can see.
   const loopV1 = [
     { x: G.v1X, y: G.topY },
-    { x: G.r1X1, y: G.topY },
-    { x: G.r1X2, y: G.topY },
     { x: G.rlX, y: G.topY },
     { x: G.rlX, y: G.botY },
-    { x: G.v1X - 12, y: G.botY },
-    { x: G.v1X - 12, y: G.topY },
+    { x: G.v1X, y: G.botY },
     { x: G.v1X, y: G.topY },
   ];
 
@@ -413,17 +432,16 @@ function KillVoltageBeat() {
   const G = circuitGeometry(portrait);
 
   // With V1 shorted, the network is a current source I2 feeding into
-  // R2 || (R1, R_L). Through R_L, current flows UPWARD (opposite of beat 3).
-  // Approximate loop: I2 → top rail (right→left) → R2 (right→left) →
-  // junction → down through R_L → bottom rail (left→right) → up to I2.
+  // R2 in series with R_L (and R1 in parallel — we visualise the R_L
+  // branch). I2's arrow points up, so current flows out of I2's top into
+  // the top rail, leftward through R2 to the R_L node, down through R_L,
+  // and right along the bottom rail back into I2's bottom.
   const loopI2 = [
-    { x: G.i2X + 22, y: G.topY },
-    { x: G.r2X2, y: G.topY },
-    { x: G.r2X1, y: G.topY },
+    { x: G.i2X, y: G.topY },
     { x: G.rlX, y: G.topY },
     { x: G.rlX, y: G.botY },
-    { x: G.i2X + 22, y: G.botY },
-    { x: G.i2X + 22, y: G.topY },
+    { x: G.i2X, y: G.botY },
+    { x: G.i2X, y: G.topY },
   ];
 
   const NUM = 8;
