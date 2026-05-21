@@ -1,0 +1,253 @@
+{
+  "id": "lagrange-multipliers",
+  "title": "Lagrange Multipliers: When Gradients Align",
+  "eyebrow": "constrained extrema",
+  "language": "en",
+  "duration": 59,
+  "topic": "Constrained extrema by Lagrange multipliers — at a maximum or minimum of f along a constraint g(x, y) = c, the gradient of f and the gradient of g are parallel. Slide a point along x² + y² = 2 with f = x + y; ∇f stays fixed pointing northeast, ∇g rotates with the point; the two vectors lock parallel at (1, 1) (max) and antiparallel at (−1, −1) (min). ∇f = λ∇g picks out the candidates.",
+  "subject_id": "mat2b",
+  "chapter_number": 6,
+  "prerequisites": [
+    "gradient-and-level-curves",
+    "directional-derivative"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.3,
+      "narration": "Where does f get its biggest value if we are forced to stay on a curve?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Pin a point on a curve — when is f largest?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "setup",
+      "start": 4.3,
+      "end": 16.63,
+      "narration": "Take f equals x plus y, and constrain to the circle x squared plus y squared equals two. The level lines of f are diagonal — every step northeast pushes f up.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "xy axes",
+            "delay": 0.2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Family of diagonal level lines x + y = c",
+            "delay": 0.6,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Constraint circle x² + y² = 2 (radius √2)",
+            "delay": 1.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "f(x, y) = x + y",
+            "delay": 2.2,
+            "color": "var(--chalk-100)",
+            "position": "right panel — display formula"
+          },
+          {
+            "type": "text-formula",
+            "content": "g(x, y) = x² + y² = 2",
+            "delay": 3,
+            "color": "var(--amber-300)",
+            "position": "right panel — constraint"
+          },
+          {
+            "type": "text-caption",
+            "content": "Stay on the amber circle. Where is f biggest?",
+            "delay": 4,
+            "color": "var(--chalk-300)",
+            "position": "right panel — sans caption"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sliding",
+      "start": 16.63,
+      "end": 28.22,
+      "narration": "Slide a point along the circle. The gradient of f is fixed — it points northeast everywhere. The gradient of g rotates with the point, always pointing straight out from the origin.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "Constraint circle held lit",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Point P = (√2 cos θ, √2 sin θ) sliding around circle",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "svg-path",
+            "content": "∇f arrow at P, constant direction (1, 1)",
+            "delay": 0.5,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "∇g arrow at P, radial (2x, 2y)",
+            "delay": 0.7,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "∇f = (1, 1)",
+            "delay": 1,
+            "color": "var(--violet-400)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-formula",
+            "content": "∇g = (2x, 2y)",
+            "delay": 1.6,
+            "color": "var(--rose-400)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "Live readout: angle between ∇f and ∇g updates as P moves",
+            "delay": 2,
+            "color": "var(--chalk-300)",
+            "position": "right panel — sans caption"
+          }
+        ]
+      }
+    },
+    {
+      "id": "alignment",
+      "start": 28.22,
+      "end": 41.02,
+      "narration": "At the constrained maximum the two arrows line up. At the constrained minimum they point opposite ways. So at every constrained extremum, the gradient of f is a scalar multiple of the gradient of g.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-marker",
+            "content": "Point P snaps to (1, 1) — both arrows parallel",
+            "delay": 0.3,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "P = (1, 1)  f = 2  ←  max",
+            "delay": 1,
+            "color": "var(--amber-300)",
+            "position": "right panel — large"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Point P slides to (-1, -1) — arrows antiparallel",
+            "delay": 3,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "P = (−1, −1)  f = −2  ←  min",
+            "delay": 3.8,
+            "color": "var(--rose-300)",
+            "position": "right panel — large"
+          },
+          {
+            "type": "text-formula",
+            "content": "∇f = λ ∇g",
+            "delay": 5.5,
+            "color": "var(--amber-300)",
+            "position": "right panel — payoff line, serif italic, large"
+          },
+          {
+            "type": "text-caption",
+            "content": "λ is the Lagrange multiplier",
+            "delay": 6.4,
+            "color": "var(--chalk-300)",
+            "position": "right panel — sans caption"
+          }
+        ]
+      }
+    },
+    {
+      "id": "solving",
+      "start": 41.02,
+      "end": 52.36,
+      "narration": "Set ∇f equal to lambda times ∇g and solve. The system gives x equals y and lambda equals plus or minus one half, landing exactly on the two candidates.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "(1, 1) = λ (2x, 2y)",
+            "delay": 0.2,
+            "color": "var(--chalk-200)",
+            "position": "step one"
+          },
+          {
+            "type": "text-formula",
+            "content": "x = y,  λ = 1/(2x)",
+            "delay": 1.2,
+            "color": "var(--chalk-200)",
+            "position": "step two"
+          },
+          {
+            "type": "text-formula",
+            "content": "x² + y² = 2  →  x = ±1",
+            "delay": 2.2,
+            "color": "var(--chalk-100)",
+            "position": "constraint substituted"
+          },
+          {
+            "type": "text-formula",
+            "content": "(1, 1),  λ = ½     (−1, −1),  λ = −½",
+            "delay": 3.4,
+            "color": "var(--amber-300)",
+            "position": "two candidates"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 52.36,
+      "end": 59,
+      "narration": "At every constrained extremum, the gradients align — that is the whole trick.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Gradients align at the constrained extremum.",
+            "delay": 0.1,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic ~28px"
+          }
+        ]
+      }
+    }
+  ]
+}

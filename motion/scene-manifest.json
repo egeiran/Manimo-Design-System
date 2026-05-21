@@ -2760,6 +2760,79 @@
       ],
       "subject_id": "mat2b",
       "chapter_number": 3
+    },
+    {
+      "id": "lagrange-multipliers",
+      "file": "lagrange-multipliers.jsx",
+      "html": "lagrange-multipliers.html",
+      "spec": "lagrange-multipliers.spec.json",
+      "title": "Lagrange Multipliers: When Gradients Align",
+      "eyebrow": "constrained extrema",
+      "topic": "Constrained extrema by Lagrange multipliers — at a maximum or minimum of f along a constraint g(x, y) = c, the gradient of f is parallel to the gradient of g. Sliding a point along x² + y² = 2 with f = x + y, ∇f stays fixed pointing northeast while ∇g rotates with the point; the two arrows lock parallel at (1, 1) (max) and antiparallel at (−1, −1) (min). ∇f = λ∇g picks out the candidates.",
+      "duration": 59,
+      "language": "en",
+      "prerequisites": [
+        "gradient-and-level-curves",
+        "directional-derivative"
+      ],
+      "concepts": [
+        "Lagrange multiplier",
+        "constrained extremum",
+        "gradient alignment",
+        "constraint curve",
+        "method of multipliers"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 6
+    },
+    {
+      "id": "chain-rule-on-path",
+      "file": "chain-rule-on-path.jsx",
+      "html": "chain-rule-on-path.html",
+      "spec": "chain-rule-on-path.spec.json",
+      "title": "Chain Rule on a Path: Gradient · Velocity",
+      "eyebrow": "multivariable chain rule",
+      "topic": "Multivariable chain rule visualised. A particle moves along a parametric curve γ(t) on a contour map of f. As it crosses level curves the altitude z = f(γ(t)) rises and falls; the instantaneous rate dz/dt equals the gradient of f dotted with the velocity γ'(t). Concrete example: f(x, y) = x² + y², γ(t) = (cos t + 1, sin t). The particle traces a unit circle offset right; the live dot product ∇f · γ' tracks against the analytic value −2 sin t.",
+      "duration": 55,
+      "language": "en",
+      "prerequisites": [
+        "gradient-and-level-curves",
+        "directional-derivative"
+      ],
+      "concepts": [
+        "multivariable chain rule",
+        "parametric curve",
+        "gradient",
+        "velocity vector",
+        "dot product",
+        "level curve"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 5
+    },
+    {
+      "id": "critical-points-gradient-field",
+      "file": "critical-points-gradient-field.jsx",
+      "html": "critical-points-gradient-field.html",
+      "spec": "critical-points-gradient-field.spec.json",
+      "title": "Critical Points: Where ∇f Vanishes",
+      "eyebrow": "interior critical points",
+      "topic": "Finding interior critical points by setting the gradient to zero. For f(x, y) = x³/3 − x + y² − 2y, plot the contour map plus the gradient vector field; sweep a scanner along y = 1 and watch |∇f| dip to zero at exactly x = −1 and x = +1. Solving the system ∇f = (x² − 1, 2y − 2) = (0, 0) recovers the same pair. Classification waits for the Hesse test.",
+      "duration": 50,
+      "language": "en",
+      "prerequisites": [
+        "gradient-and-level-curves",
+        "hessian-test"
+      ],
+      "concepts": [
+        "critical point",
+        "gradient field",
+        "interior extremum",
+        "stationary point",
+        "system of equations"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 6
     }
   ]
 }

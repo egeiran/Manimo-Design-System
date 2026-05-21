@@ -1,0 +1,41 @@
+{
+  "sceneId": "chain-rule-on-path",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/chain-rule-on-path/scene.mp3",
+  "durationSec": 53.13,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Walking a winding path across a hill — how fast does your altitude change?"
+    },
+    {
+      "id": "setup",
+      "audioStart": 5.89,
+      "narration": "Take f equals x squared plus y squared. The level curves are concentric circles. Walk the path gamma of t equals cos t plus one, sin t — a unit circle offset to the right."
+    },
+    {
+      "id": "particle",
+      "audioStart": 20.67,
+      "narration": "As the particle moves, the gradient of f points outward from the origin, and the velocity gamma prime of t is tangent to the path. Their dot product is the rate of change of altitude."
+    },
+    {
+      "id": "match",
+      "audioStart": 32.67,
+      "narration": "Below the diagram, plot the altitude z of t against time. Its slope at every instant exactly matches the gradient dotted with velocity."
+    },
+    {
+      "id": "rule",
+      "audioStart": 42.23,
+      "narration": "The multivariable chain rule is this: take the gradient at the point, dot it with the velocity along the path."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 49.34,
+      "narration": "Gradient dot velocity. Slope along any path."
+    }
+  ]
+}
