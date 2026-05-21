@@ -431,28 +431,38 @@ function KillVoltageBeat() {
   const { localTime } = useSprite();
   const G = circuitGeometry(portrait);
 
-  // With V1 shorted, the network is a current source I2 feeding into
-  // R2 in series with R_L (and R1 in parallel — we visualise the R_L
-  // branch). I2's arrow points up, so current flows out of I2's top into
-  // the top rail, leftward through R2 to the R_L node, down through R_L,
-  // and right along the bottom rail back into I2's bottom.
-  const loopI2 = [
+  // With V1 shorted, R_1 and R_L are in parallel between the top node
+  // and the bottom rail, so I_2 splits between them. We draw two loops:
+  // one through R_L (right path) and one through R_1 + the shorted V_1
+  // (left path). Both share the segments along the rails between I_2
+  // and the nearest split point, which is where dots from the two
+  // streams overlap — visually showing the combined I_2 there.
+  const loopRL = [
     { x: G.i2X, y: G.topY },
     { x: G.rlX, y: G.topY },
     { x: G.rlX, y: G.botY },
     { x: G.i2X, y: G.botY },
     { x: G.i2X, y: G.topY },
   ];
+  const loopR1 = [
+    { x: G.i2X, y: G.topY },
+    { x: G.v1X, y: G.topY },
+    { x: G.v1X, y: G.botY },
+    { x: G.i2X, y: G.botY },
+    { x: G.i2X, y: G.topY },
+  ];
 
-  const NUM = 8;
+  const NUM = 6;
   const phase = Math.max(0, localTime - 2.2) / 4.0;
-  const dots = [];
+  const dotsRL = [];
+  const dotsR1 = [];
   for (let i = 0; i < NUM; i++) {
-    // Note: phase advances in the same direction as we wrote the waypoints;
-    // we wrote them right→left along the top rail and down through R_L,
-    // so the dots correctly flow from I2 back through R_L.
     const u = ((phase + i / NUM) % 1);
-    dots.push(sampleAt(loopI2, u));
+    // R_1 stream gets a half-step phase offset so the streams interleave
+    // in the shared rail segments instead of stacking on the same dot.
+    const uR1 = ((phase + (i + 0.5) / NUM) % 1);
+    dotsRL.push(sampleAt(loopRL, u));
+    dotsR1.push(sampleAt(loopR1, uR1));
   }
 
   return (
@@ -464,9 +474,14 @@ function KillVoltageBeat() {
            style={{ overflow: 'visible' }}>
         <CircuitDiagram G={G} killVoltage/>
 
-        {/* Charge dots flowing along I2-only loop */}
-        {localTime > 2.0 && dots.map((d, i) => (
-          <circle key={i} cx={d.x} cy={d.y} r={3.5}
+        {/* Charge dots — R_L branch (right) and R_1 branch (left), both
+            driven by I_2. */}
+        {localTime > 2.0 && dotsRL.map((d, i) => (
+          <circle key={`rl-${i}`} cx={d.x} cy={d.y} r={3.5}
+                  fill="var(--teal-400)" opacity={0.95}/>
+        ))}
+        {localTime > 2.0 && dotsR1.map((d, i) => (
+          <circle key={`r1-${i}`} cx={d.x} cy={d.y} r={3.5}
                   fill="var(--teal-400)" opacity={0.95}/>
         ))}
 
