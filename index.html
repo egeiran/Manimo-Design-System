@@ -15,7 +15,7 @@
     min-height: 100vh;
   }
   main {
-    max-width: 880px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 64px 32px 96px;
   }
@@ -44,9 +44,102 @@
     display: grid;
     gap: 14px;
   }
-  section.subject { margin-bottom: 36px; }
-  section.subject:last-of-type { margin-bottom: 0; }
-  .subject-heading {
+
+  /* ── Subject grid (front page) ─────────────────────────────── */
+  .subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  a.subject-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px 26px 22px;
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    background: var(--bg-elevated);
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 120ms ease, transform 120ms ease, background-color 120ms ease;
+    min-height: 140px;
+  }
+  a.subject-card:hover {
+    border-color: var(--border-strong);
+    background: var(--bg-raised);
+    transform: translateY(-1px);
+  }
+  .subject-card .code {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+  }
+  .subject-card .name {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    font-weight: 500;
+    color: var(--chalk-50);
+    line-height: 1.2;
+    margin: 0;
+  }
+  .subject-card .stats {
+    margin-top: auto;
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--fg-3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .subject-card .stats .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--fg-4);
+    display: inline-block;
+  }
+
+  /* ── Subject detail (chapter view) ─────────────────────────── */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+    text-decoration: none;
+    margin-bottom: 20px;
+  }
+  .back-link:hover { color: var(--chalk-50); }
+  .subject-header {
+    margin-bottom: 36px;
+  }
+  .subject-header .code {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+    margin: 0 0 8px;
+  }
+  .subject-header h1 {
+    font-size: 44px;
+    margin: 0 0 8px;
+  }
+  .subject-header .summary {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--fg-3);
+    margin: 0;
+  }
+
+  section.chapter { margin-bottom: 32px; }
+  section.chapter:last-of-type { margin-bottom: 0; }
+  .chapter-heading {
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     letter-spacing: 0.08em;
@@ -57,10 +150,11 @@
     align-items: baseline;
     gap: 10px;
   }
-  .subject-heading .count {
+  .chapter-heading .count {
     color: var(--fg-4);
     font-size: 11px;
   }
+
   a.card {
     display: block;
     padding: 20px 24px;
@@ -124,14 +218,7 @@
 </head>
 <body>
 <main>
-  <header>
-    <h1>Manimo</h1>
-    <p class="lede">
-      Chalkboard-style physics scenes — narrated, animated, rendered live in
-      your browser. Each scene is self-contained HTML.
-    </p>
-  </header>
-  <div id="scenes" aria-busy="true"><p class="empty">Loading scenes…</p></div>
+  <div id="root" aria-busy="true"><p class="empty">Loading scenes…</p></div>
   <footer>
     Brand and motion library: <a href="ui_kits/studio/">studio</a> ·
     <a href="preview/">design system preview</a>
@@ -148,14 +235,92 @@
     const sec = Math.round(s - m * 60).toString().padStart(2, '0');
     return m + ':' + sec;
   }
-  // Preferred display order — matches kort-forklart's subject ids.
-  // Subjects not listed sort alphabetically after; unattached scenes go last.
-  const SUBJECT_ORDER = ['fysikk', 'matematikk1', 'mat2b', 'statistikk', 'algoritmer', 'ade', 'operativsystemer'];
+
+  // Subject display metadata. Keys are subject_id values from the manifest;
+  // anything not listed here falls back to id-as-name and no course code.
+  // Order here is the order subjects appear on the front page.
+  const SUBJECTS = [
+    { id: 'fysikk',           code: 'TFY4125',  name: 'Fysikk' },
+    { id: 'mat2b',            code: 'Mat2B',    name: 'Matematikk 2' },
+    { id: 'ade',              code: 'TTT4203',  name: 'Analog og digital elektronikk' },
+    { id: 'operativsystemer', code: '',         name: 'Operativsystemer' },
+  ];
   const UNATTACHED = '__unattached__';
 
+  function subjectMeta(id) {
+    if (id === UNATTACHED) return { id, code: '', name: 'Sandbox' };
+    const known = SUBJECTS.find(s => s.id === id);
+    if (known) return known;
+    return { id, code: '', name: id };
+  }
+
+  function groupBySubject(scenes) {
+    const groups = new Map();
+    for (const s of scenes) {
+      const key = s.subject_id || UNATTACHED;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(s);
+    }
+    // Sort: known subjects in SUBJECTS order, then unknowns alpha, then sandbox.
+    const order = SUBJECTS.map(s => s.id);
+    const keys = [...groups.keys()].sort((a, b) => {
+      if (a === UNATTACHED) return 1;
+      if (b === UNATTACHED) return -1;
+      const ai = order.indexOf(a);
+      const bi = order.indexOf(b);
+      if (ai !== -1 && bi !== -1) return ai - bi;
+      if (ai !== -1) return -1;
+      if (bi !== -1) return 1;
+      return a.localeCompare(b);
+    });
+    return keys.map(k => [k, groups.get(k)]);
+  }
+
+  function chapterSpan(scenes) {
+    const nums = scenes.map(s => s.chapter_number).filter(n => Number.isInteger(n));
+    if (nums.length === 0) return null;
+    const lo = Math.min(...nums);
+    const hi = Math.max(...nums);
+    return lo === hi ? `ch. ${lo}` : `ch. ${lo}–${hi}`;
+  }
+
+  // ── Views ────────────────────────────────────────────────────
+  function renderSubjectGrid(scenes) {
+    const groups = groupBySubject(scenes);
+    const cards = groups.map(([key, list]) => {
+      const meta = subjectMeta(key);
+      const span = chapterSpan(list);
+      const stats = [
+        `${list.length} scene${list.length === 1 ? '' : 's'}`,
+        span,
+      ].filter(Boolean);
+      return `
+        <li>
+          <a class="subject-card" href="#${encodeURIComponent(key)}">
+            ${meta.code ? `<p class="code">${escapeHtml(meta.code)}</p>` : '<p class="code">&nbsp;</p>'}
+            <h2 class="name">${escapeHtml(meta.name)}</h2>
+            <p class="stats">${stats.map(escapeHtml).join(' <span class="dot"></span> ')}</p>
+          </a>
+        </li>
+      `;
+    }).join('');
+
+    return `
+      <header>
+        <h1>Manimo</h1>
+        <p class="lede">
+          Chalkboard-style scenes — narrated, animated, rendered live in your
+          browser. Pick a subject to browse by chapter.
+        </p>
+      </header>
+      <ul class="subjects-grid">${cards}</ul>
+    `;
+  }
+
   function sceneCard(s) {
-    const path = s.subject_id
-      ? `motion/${s.subject_id}/${s.html}`
+    const subj = s.subject_id;
+    const path = subj
+      ? `motion/${subj}/${s.html}`
       : `motion/${s.html}`;
     return `
       <li>
@@ -171,51 +336,108 @@
     `;
   }
 
-  function groupBySubject(scenes) {
-    const groups = new Map();
-    for (const s of scenes) {
-      const key = s.subject_id || UNATTACHED;
-      if (!groups.has(key)) groups.set(key, []);
-      groups.get(key).push(s);
+  function renderSubjectDetail(subjectId, scenes) {
+    const meta = subjectMeta(subjectId);
+    const ofSubject = scenes.filter(s => (s.subject_id || UNATTACHED) === subjectId);
+
+    if (ofSubject.length === 0) {
+      return `
+        <a class="back-link" href="#">← All subjects</a>
+        <header class="subject-header">
+          <p class="code">${escapeHtml(meta.code || meta.id)}</p>
+          <h1>${escapeHtml(meta.name)}</h1>
+        </header>
+        <p class="empty">No scenes for this subject yet.</p>
+      `;
     }
-    const keys = [...groups.keys()];
-    keys.sort((a, b) => {
-      if (a === UNATTACHED) return 1;
-      if (b === UNATTACHED) return -1;
-      const ai = SUBJECT_ORDER.indexOf(a);
-      const bi = SUBJECT_ORDER.indexOf(b);
-      if (ai !== -1 && bi !== -1) return ai - bi;
-      if (ai !== -1) return -1;
-      if (bi !== -1) return 1;
-      return a.localeCompare(b);
+
+    // Group by chapter_number; null/undefined chapters bucket together at end.
+    const chapters = new Map();
+    for (const s of ofSubject) {
+      const ch = Number.isInteger(s.chapter_number) ? s.chapter_number : null;
+      if (!chapters.has(ch)) chapters.set(ch, []);
+      chapters.get(ch).push(s);
+    }
+    const chapterKeys = [...chapters.keys()].sort((a, b) => {
+      if (a === null) return 1;
+      if (b === null) return -1;
+      return a - b;
     });
-    return keys.map(k => [k, groups.get(k)]);
+
+    // Sort scenes within a chapter by title for stable display.
+    for (const list of chapters.values()) {
+      list.sort((a, b) => a.title.localeCompare(b.title));
+    }
+
+    const totalSec = ofSubject.reduce((acc, s) => acc + (s.duration || 0), 0);
+    const totalMin = Math.round(totalSec / 60);
+    const span = chapterSpan(ofSubject);
+    const summaryBits = [
+      `${ofSubject.length} scene${ofSubject.length === 1 ? '' : 's'}`,
+      span,
+      `${totalMin} min total`,
+    ].filter(Boolean).join(' · ');
+
+    const sections = chapterKeys.map(ch => {
+      const label = ch === null ? 'Unassigned' : `Chapter ${ch}`;
+      const list = chapters.get(ch);
+      return `
+        <section class="chapter">
+          <h2 class="chapter-heading">
+            ${escapeHtml(label)}
+            <span class="count">${list.length} scene${list.length === 1 ? '' : 's'}</span>
+          </h2>
+          <ul>${list.map(sceneCard).join('')}</ul>
+        </section>
+      `;
+    }).join('');
+
+    return `
+      <a class="back-link" href="#">← All subjects</a>
+      <header class="subject-header">
+        <p class="code">${escapeHtml(meta.code || meta.id)}</p>
+        <h1>${escapeHtml(meta.name)}</h1>
+        <p class="summary">${escapeHtml(summaryBits)}</p>
+      </header>
+      ${sections}
+    `;
   }
 
-  function subjectHeading(key, count) {
-    const label = key === UNATTACHED ? 'sandbox' : key;
-    return `<h2 class="subject-heading">${escapeHtml(label)} <span class="count">${count} scene${count === 1 ? '' : 's'}</span></h2>`;
+  // ── Routing ──────────────────────────────────────────────────
+  let SCENES = null;
+
+  function currentSubject() {
+    const h = window.location.hash.replace(/^#/, '');
+    if (!h) return null;
+    try { return decodeURIComponent(h); } catch { return h; }
   }
+
+  function render() {
+    const root = document.getElementById('root');
+    if (!SCENES) return;
+    const subj = currentSubject();
+    root.innerHTML = subj
+      ? renderSubjectDetail(subj, SCENES)
+      : renderSubjectGrid(SCENES);
+    root.removeAttribute('aria-busy');
+    window.scrollTo(0, 0);
+  }
+
+  window.addEventListener('hashchange', render);
 
   fetch('motion/scene-manifest.json')
     .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(({ scenes }) => {
-      const root = document.getElementById('scenes');
-      if (!scenes || scenes.length === 0) {
-        root.innerHTML = '<p class="empty">No scenes published yet.</p>';
+      SCENES = scenes || [];
+      if (SCENES.length === 0) {
+        document.getElementById('root').innerHTML =
+          '<p class="empty">No scenes published yet.</p>';
         return;
       }
-      const sections = groupBySubject(scenes).map(([key, list]) => `
-        <section class="subject">
-          ${subjectHeading(key, list.length)}
-          <ul>${list.map(sceneCard).join('')}</ul>
-        </section>
-      `).join('');
-      root.innerHTML = sections;
-      root.removeAttribute('aria-busy');
+      render();
     })
     .catch(err => {
-      document.getElementById('scenes').innerHTML =
+      document.getElementById('root').innerHTML =
         '<p class="err">Failed to load scene manifest: ' + escapeHtml(err.message) + '</p>';
     });
 </script>
