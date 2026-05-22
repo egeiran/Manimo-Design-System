@@ -165,8 +165,9 @@ function Scene() {
 function MatrixSetupBeat() {
   const portrait = usePortrait();
   const G = geom(portrait);
-  // Image line direction (1, 2). Endpoints inside grid.
-  const imgT = 2.6;
+  // Image line direction (1, 2). Endpoints kept inside the visible grid:
+  // y=2x means imgT * 2 must stay within gridYMax.
+  const imgT = Math.min(G.gridXMax * 0.9, G.gridYMax * 0.45);
   const imgA = toSvgF(G, -imgT, -2 * imgT);
   const imgB = toSvgF(G,  imgT,  2 * imgT);
   return (
@@ -195,8 +196,11 @@ function MatrixSetupBeat() {
             </text>
           </SvgFadeIn>
 
-          {/* A few sample x vectors mapped to show they all land on the line */}
-          {[[1.6, 0.4], [-1.0, 1.0], [0.6, 1.4]].map(([px, py], i) => {
+          {/* A few sample x vectors mapped to show they all land on the line.
+              Chosen so M·x = (x+2y, 2x+4y) stays inside both aspects' grids
+              (landscape gridYMax = 4, portrait gridYMax = 5) AND so the
+              amber image dots spread along the image line, not cluster. */}
+          {[[0.5, -1.0], [1.5, -0.5], [-0.5, 1.0]].map(([px, py], i) => {
             const [qx, qy] = applyM(px, py);
             const a = toSvgF(G, px, py);
             const b = toSvgF(G, qx, qy);
@@ -408,8 +412,8 @@ function OffTheLineBeat() {
   const xy = r * Math.sin(theta);
   const [mxx, mxy] = applyM(xx, xy);
 
-  // Image line for context.
-  const imgT = 2.6;
+  // Image line for context — clamped to stay inside the visible grid.
+  const imgT = Math.min(G.gridXMax * 0.9, G.gridYMax * 0.45);
   const imgA = toSvgF(G, -imgT, -2 * imgT);
   const imgB = toSvgF(G,  imgT,  2 * imgT);
   // Faded null line for orientation.
