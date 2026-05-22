@@ -133,6 +133,9 @@ const initialScenes = [
   { id: 'live-basis-uniqueness', kind: 'live', kindLabel: 'Live', cardTitle: 'Coordinates in a Basis Are Unique', duration: '0:52', html: '../../motion/mat2b/basis-uniqueness.html' },
   { id: 'live-null-space-as-line', kind: 'live', kindLabel: 'Live', cardTitle: 'The Null Space Is a Line Through the Origin', duration: '0:50', html: '../../motion/mat2b/null-space-as-line.html' },
   { id: 'live-polynomial-vectors', kind: 'live', kindLabel: 'Live', cardTitle: 'Polynomials Are Vectors Too', duration: '0:49', html: '../../motion/mat2b/polynomial-vectors.html' },
+  { id: 'live-separable-variables-circles', kind: 'live', kindLabel: 'Live', cardTitle: 'Separable Variables: Circles', duration: '1:11', html: '../../motion/mat2b/separable-variables-circles.html' },
+  { id: 'live-newtons-law-of-cooling', kind: 'live', kindLabel: 'Live', cardTitle: "Newton's Law of Cooling", duration: '1:16', html: '../../motion/mat2b/newtons-law-of-cooling.html' },
+  { id: 'live-characteristic-roots-regimes', kind: 'live', kindLabel: 'Live', cardTitle: 'Characteristic Roots: Three Regimes', duration: '1:22', html: '../../motion/mat2b/characteristic-roots-regimes.html' },
 ];
 
 function loadJSON(key, fallback) {

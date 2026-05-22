@@ -1,0 +1,204 @@
+{
+  "id": "separable-variables-circles",
+  "title": "Separable Variables: The Circle Family",
+  "eyebrow": "first-order ODEs",
+  "language": "en",
+  "duration": 71,
+  "topic": "Separable first-order ODE technique — for dy/dx = -x/y, move all y's to one side and all x's to the other, integrate each side, and the family of solutions is a one-parameter family of circles x² + y² = C centred at the origin.",
+  "subject_id": "mat2b",
+  "chapter_number": 4,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7,
+      "narration": "Sometimes the x's and the y's want to live on different sides of an equation. When they do, integration is easy.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Separate, then integrate.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "theOde",
+      "start": 7,
+      "end": 21.36,
+      "narration": "Take the equation d y by d x equals minus x over y. At every point, the slope is minus x over y — a tangent that turns with the position. What family of curves matches that slope everywhere?",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "x-y plane",
+            "delay": 0.2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Slope-field strokes at a grid of points, slope = -x/y at each",
+            "delay": 0.6,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "dy/dx = -x/y",
+            "delay": 1.5,
+            "color": "var(--violet-400)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "what curves have this slope everywhere?",
+            "delay": 2.5,
+            "color": "var(--chalk-300)",
+            "position": "below formula"
+          }
+        ]
+      }
+    },
+    {
+      "id": "separate",
+      "start": 21.36,
+      "end": 31.89,
+      "narration": "Cross-multiply: y d y equals minus x d x. Every y has crossed to the left side, every x to the right. The variables are separated.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "dy/dx = -x/y",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-formula",
+            "content": "y dy = -x dx",
+            "delay": 1.5,
+            "color": "var(--amber-300)",
+            "note": "animate y sliding to the left, x to the right"
+          },
+          {
+            "type": "text-caption",
+            "content": "variables separated — each side depends on only one letter",
+            "delay": 3,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "integrate",
+      "start": 31.89,
+      "end": 46.61,
+      "narration": "Now integrate both sides. The integral of y d y is y squared over two; the integral of minus x d x is minus x squared over two. Bundle the constants: x squared plus y squared equals C.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "∫ y dy = ∫ -x dx",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-formula",
+            "content": "y²/2 = -x²/2 + C₁",
+            "delay": 1.4,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-formula",
+            "content": "x² + y² = C",
+            "delay": 3,
+            "color": "var(--amber-300)",
+            "position": "centre payoff"
+          },
+          {
+            "type": "text-caption",
+            "content": "one constant — one parameter family",
+            "delay": 4.6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "circleFamily",
+      "start": 46.61,
+      "end": 60.27,
+      "narration": "And the family is circles, centred at the origin. Pick a value for C; that picks one circle. Slide C, and the whole family materialises — each curve riding its own slope field tangent at every point.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Slope-field strokes for dy/dx = -x/y",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Active circle of radius sqrt(C), C swept from 0.5 to 4",
+            "delay": 0.5,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION: scrub C, circle grows; tangent ticks always agree with circle slope"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Trail of all visited C values, drawn as faint amber arcs",
+            "delay": 1,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "x² + y² = C",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "C grows → circle grows",
+            "delay": 1,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 60.27,
+      "end": 71,
+      "narration": "If you can factor the equation so x's live with d x and y's live with d y, you can integrate side by side. That is the separable trick.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "f(y) dy = g(x) dx  →  integrate both sides",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "(works when the ODE factors into a y-piece and an x-piece)",
+            "delay": 1.6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    }
+  ]
+}

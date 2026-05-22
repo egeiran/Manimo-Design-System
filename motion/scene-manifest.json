@@ -2907,6 +2907,76 @@
       ],
       "subject_id": "mat2b",
       "chapter_number": 1
+    },
+    {
+      "id": "separable-variables-circles",
+      "file": "separable-variables-circles.jsx",
+      "html": "separable-variables-circles.html",
+      "spec": "separable-variables-circles.spec.json",
+      "title": "Separable Variables: The Circle Family",
+      "eyebrow": "first-order ODEs",
+      "topic": "Separable first-order ODE technique — for dy/dx = -x/y, move all y's to one side and all x's to the other, integrate each side, and the family of solutions is a one-parameter family of circles x² + y² = C centred at the origin. Sweeping C traces out the whole family; every visible tangent in the slope field agrees with the active circle's tangent.",
+      "duration": 71,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": [
+        "separable ODE",
+        "first-order ODE",
+        "slope field",
+        "implicit solution",
+        "one-parameter family"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 4
+    },
+    {
+      "id": "newtons-law-of-cooling",
+      "file": "newtons-law-of-cooling.jsx",
+      "html": "newtons-law-of-cooling.html",
+      "spec": "newtons-law-of-cooling.spec.json",
+      "title": "Newton's Law of Cooling: Exponential Approach",
+      "eyebrow": "first-order linear ODEs",
+      "topic": "Newton's law of cooling — the rate of temperature change is proportional to the gap from ambient: T'(t) = -k(T - T_a). Solve by separation to get T(t) = T_a + (T_0 - T_a)e^(-kt). Cooling curves from different starting temperatures all converge exponentially to the asymptote T_a — the universal 'rate proportional to gap' shape.",
+      "duration": 76,
+      "language": "en",
+      "prerequisites": [
+        "separable-variables-circles"
+      ],
+      "concepts": [
+        "Newton's law of cooling",
+        "first-order linear ODE",
+        "exponential decay",
+        "asymptote",
+        "equilibrium",
+        "rate proportional to gap"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 4
+    },
+    {
+      "id": "characteristic-roots-regimes",
+      "file": "characteristic-roots-regimes.jsx",
+      "html": "characteristic-roots-regimes.html",
+      "spec": "characteristic-roots-regimes.spec.json",
+      "title": "Characteristic Roots: Three Regimes of a 2nd-Order ODE",
+      "eyebrow": "second-order linear ODEs",
+      "topic": "Constant-coefficient 2nd-order linear ODE y'' + 2γy' + ω²y = 0. The ansatz y = e^(rt) gives the characteristic polynomial r² + 2γr + ω² = 0; its discriminant Δ = γ² − ω² classifies solutions into three regimes — overdamped, critically damped, underdamped. Sweep γ from 0 past ω and the solution morphs smoothly through all three.",
+      "duration": 82,
+      "language": "en",
+      "prerequisites": [
+        "second-order-to-system"
+      ],
+      "concepts": [
+        "characteristic polynomial",
+        "discriminant",
+        "second-order linear ODE",
+        "underdamped",
+        "critically damped",
+        "overdamped",
+        "ansatz"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 4
     }
   ]
 }

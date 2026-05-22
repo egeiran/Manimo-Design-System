@@ -1,0 +1,41 @@
+{
+  "sceneId": "newtons-law-of-cooling",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/newtons-law-of-cooling/scene.mp3",
+  "durationSec": 74.63,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "A hot coffee cools fast at first, then slower and slower. One simple ODE captures all of that."
+    },
+    {
+      "id": "theOde",
+      "audioStart": 7.11,
+      "narration": "Newton said: the rate of change of temperature is proportional to how far you are from the room's temperature. T prime equals minus k times the quantity T minus T sub a. The bigger the gap, the faster the change."
+    },
+    {
+      "id": "separateAndIntegrate",
+      "audioStart": 21.75,
+      "narration": "Separate variables: d T over T minus T sub a equals minus k d t. Integrate: log of the absolute gap equals minus k t plus a constant. Exponentiate and the gap becomes a decaying exponential."
+    },
+    {
+      "id": "solutionFormula",
+      "audioStart": 37.85,
+      "narration": "Apply the initial condition T of zero equals T sub zero. The constant A is just the starting gap. Add T sub a back and you have the full solution."
+    },
+    {
+      "id": "curvesConverge",
+      "audioStart": 49.27,
+      "narration": "Plot the cooling curves. Hot coffee falls fast at first, then levels off. A cold drink rises from below. The ambient line is the asymptote — every solution closes in on it, no matter where it started."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 63.94,
+      "narration": "Whenever the rate of change is proportional to a gap, you get exponential approach to equilibrium. Cooling, heating, charging, draining — same shape, different names."
+    }
+  ]
+}

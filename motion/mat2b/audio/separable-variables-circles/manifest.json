@@ -1,0 +1,41 @@
+{
+  "sceneId": "separable-variables-circles",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/separable-variables-circles/scene.mp3",
+  "durationSec": 69.24,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Sometimes the x's and the y's want to live on different sides of an equation. When they do, integration is easy."
+    },
+    {
+      "id": "theOde",
+      "audioStart": 7,
+      "narration": "Take the equation d y by d x equals minus x over y. At every point, the slope is minus x over y — a tangent that turns with the position. What family of curves matches that slope everywhere?"
+    },
+    {
+      "id": "separate",
+      "audioStart": 21.36,
+      "narration": "Cross-multiply: y d y equals minus x d x. Every y has crossed to the left side, every x to the right. The variables are separated."
+    },
+    {
+      "id": "integrate",
+      "audioStart": 31.89,
+      "narration": "Now integrate both sides. The integral of y d y is y squared over two; the integral of minus x d x is minus x squared over two. Bundle the constants: x squared plus y squared equals C."
+    },
+    {
+      "id": "circleFamily",
+      "audioStart": 46.61,
+      "narration": "And the family is circles, centred at the origin. Pick a value for C; that picks one circle. Slide C, and the whole family materialises — each curve riding its own slope field tangent at every point."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 60.27,
+      "narration": "If you can factor the equation so x's live with d x and y's live with d y, you can integrate side by side. That is the separable trick."
+    }
+  ]
+}
