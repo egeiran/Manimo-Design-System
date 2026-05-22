@@ -1,0 +1,36 @@
+{
+  "sceneId": "basis-uniqueness",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/basis-uniqueness/scene.mp3",
+  "durationSec": 50.2,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Two basis arrows, one target vector — how many recipes mix to that target?"
+    },
+    {
+      "id": "setup",
+      "audioStart": 5.39,
+      "narration": "Here is a basis b one and b two, and here is a vector v we want to build. We are searching for two scalars a and b so that a b one plus b b two equals v."
+    },
+    {
+      "id": "sweepCoordinates",
+      "audioStart": 16.59,
+      "narration": "Try guessing. As we sweep a and b, the trial point a b one plus b b two wanders the plane. Almost every guess misses. Exactly one pair lands the trial point on v — those are the coordinates of v in this basis."
+    },
+    {
+      "id": "differentBasis",
+      "audioStart": 31.77,
+      "narration": "Same v, brand new basis c one and c two. Now the unique coordinates are different numbers — same vector, two different addresses, one in each basis."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 42.43,
+      "narration": "Fix a basis, and every vector has exactly one coordinate tuple. The basis is the language — the coordinates are the word."
+    }
+  ]
+}

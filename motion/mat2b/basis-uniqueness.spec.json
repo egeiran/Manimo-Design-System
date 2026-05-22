@@ -1,0 +1,203 @@
+{
+  "id": "basis-uniqueness",
+  "title": "Coordinates in a Basis Are Unique",
+  "eyebrow": "vector spaces",
+  "language": "en",
+  "duration": 52,
+  "topic": "Pick a basis {b₁, b₂} for the plane. Every vector v has exactly one coordinate pair (a, b) with v = a·b₁ + b·b₂. Sweeping trial (a, b) values shows only one combination lands on v. Switch to a different basis {c₁, c₂} and the same v gets new coordinates — but again, exactly one pair.",
+  "subject_id": "mat2b",
+  "chapter_number": 1,
+  "prerequisites": [
+    "linear-combination-recipe"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.39,
+      "narration": "Two basis arrows, one target vector — how many recipes mix to that target?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo enters centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Two basis arrows. One target v. How many recipes hit it?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "below Manimo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "setup",
+      "start": 5.39,
+      "end": 16.59,
+      "narration": "Here is a basis b one and b two, and here is a vector v we want to build. We are searching for two scalars a and b so that a b one plus b b two equals v.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Coordinate grid + axes",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Basis arrow b₁ from origin",
+            "delay": 0.4,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Basis arrow b₂ from origin",
+            "delay": 0.8,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Target vector v in amber",
+            "delay": 1.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "v = a·b₁ + b·b₂",
+            "delay": 2.4,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "find the scalars a and b",
+            "delay": 3.2,
+            "color": "var(--chalk-300)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweepCoordinates",
+      "start": 16.59,
+      "end": 31.77,
+      "narration": "Try guessing. As we sweep a and b, the trial point a b one plus b b two wanders the plane. Almost every guess misses. Exactly one pair lands the trial point on v — those are the coordinates of v in this basis.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Grid + axes + faded basis arrows",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Target v stays fixed in amber",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Trial point a·b₁ + b·b₂ sweeps",
+            "delay": 0.6,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Parallelogram construction (a·b₁ leg, then b·b₂ leg)",
+            "delay": 0.6,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-formula",
+            "content": "live a, b readout",
+            "delay": 1,
+            "color": "var(--amber-300)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "snap — coordinates (a*, b*) are unique",
+            "delay": 9,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "differentBasis",
+      "start": 31.77,
+      "end": 42.43,
+      "narration": "Same v, brand new basis c one and c two. Now the unique coordinates are different numbers — same vector, two different addresses, one in each basis.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Grid + axes",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "New basis c₁ in rose, c₂ in amber-light",
+            "delay": 0.4,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Target v stays fixed",
+            "delay": 0.8,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Parallelogram completion in new basis",
+            "delay": 1.6,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-formula",
+            "content": "v = a' c₁ + b' c₂ with new (a', b')",
+            "delay": 3,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 42.43,
+      "end": 52,
+      "narration": "Fix a basis, and every vector has exactly one coordinate tuple. The basis is the language — the coordinates are the word.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-title",
+            "content": "One basis, one address.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre"
+          },
+          {
+            "type": "text-caption",
+            "content": "the basis is the language, the coordinates are the word",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "below"
+          }
+        ]
+      }
+    }
+  ]
+}

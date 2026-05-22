@@ -1,0 +1,36 @@
+{
+  "sceneId": "null-space-as-line",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/null-space-as-line/scene.mp3",
+  "durationSec": 48.16,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Some matrices squash a whole line down to a single point — the origin. Which vectors get sent there?"
+    },
+    {
+      "id": "matrixSetup",
+      "audioStart": 6.57,
+      "narration": "Take the matrix M with rows one two and two four. The second row is twice the first, so M is singular — it collapses the plane onto a single line through the origin."
+    },
+    {
+      "id": "sweepOnNullLine",
+      "audioStart": 17.19,
+      "narration": "Now sweep x along the direction d equals two negative one. As x moves up and down that line, M times x stays pinned to the origin — every one of those vectors lands on zero."
+    },
+    {
+      "id": "offTheLine",
+      "audioStart": 29.48,
+      "narration": "Step x off that line. Now M times x is no longer zero — the image point jumps onto the image line. Only the direction d sits in the null space; everything else is mapped elsewhere."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 42.3,
+      "narration": "The null space of M is exactly the line spanned by d — a one-dimensional subspace of the plane."
+    }
+  ]
+}

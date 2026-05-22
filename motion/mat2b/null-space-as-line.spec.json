@@ -1,0 +1,186 @@
+{
+  "id": "null-space-as-line",
+  "title": "The Null Space Is a Line Through the Origin",
+  "eyebrow": "vector spaces",
+  "language": "en",
+  "duration": 50,
+  "topic": "For the singular matrix M = [[1, 2], [2, 4]], the rows are multiples of each other so M is not invertible. Sweep a vector x along the direction d = (2, −1) and watch M·x stay glued at the origin — every point on that line is in the null space. Step x off the line and M·x jumps away from zero. The null space {x : M·x = 0} forms a subspace — here, the line through the origin spanned by d.",
+  "subject_id": "mat2b",
+  "chapter_number": 1,
+  "prerequisites": [
+    "subspace-test",
+    "linear-combination-recipe"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.57,
+      "narration": "Some matrices squash a whole line down to a single point — the origin. Which vectors get sent there?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo enters",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Which vectors does this matrix squash to zero?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "below Manimo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "matrixSetup",
+      "start": 6.57,
+      "end": 17.19,
+      "narration": "Take the matrix M with rows one two and two four. The second row is twice the first, so M is singular — it collapses the plane onto a single line through the origin.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "M = [[1, 2], [2, 4]]",
+            "delay": 0.4,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          },
+          {
+            "type": "svg-path",
+            "content": "Coordinate grid; image-of-M line y = 2x shown faintly",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Highlight the image line where every M·x lands",
+            "delay": 1,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the image of M is a single line",
+            "delay": 2.6,
+            "color": "var(--chalk-300)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweepOnNullLine",
+      "start": 17.19,
+      "end": 29.48,
+      "narration": "Now sweep x along the direction d equals two negative one. As x moves up and down that line, M times x stays pinned to the origin — every one of those vectors lands on zero.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Grid + axes",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Null direction line d = (2, -1) drawn dashed through origin",
+            "delay": 0.4,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Vector x sliding along d",
+            "delay": 1,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Image point M·x stays at origin (highlight)",
+            "delay": 1,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "live x and Mx readout",
+            "delay": 1.2,
+            "color": "var(--amber-300)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "every x on this line is in the null space",
+            "delay": 10,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "offTheLine",
+      "start": 29.48,
+      "end": 42.3,
+      "narration": "Step x off that line. Now M times x is no longer zero — the image point jumps onto the image line. Only the direction d sits in the null space; everything else is mapped elsewhere.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Grid + axes + null-direction line faded",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Vector x sweeping in an arc OFF the null line",
+            "delay": 0.4,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Image point M·x sliding along the image line",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "live |Mx| readout — nonzero",
+            "delay": 1,
+            "color": "var(--amber-300)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 42.3,
+      "end": 50,
+      "narration": "The null space of M is exactly the line spanned by d — a one-dimensional subspace of the plane.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-title",
+            "content": "null(M) = span(d)",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre"
+          },
+          {
+            "type": "text-caption",
+            "content": "a subspace — line through the origin",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "below"
+          }
+        ]
+      }
+    }
+  ]
+}
