@@ -130,6 +130,9 @@ const initialScenes = [
   { id: 'live-inner-product-geometry', kind: 'live', kindLabel: 'Live', cardTitle: 'The Dot Product: Length, Length, Cosine', duration: '0:35', html: '../../motion/mat2b/inner-product-geometry.html' },
   { id: 'live-orthogonal-complement', kind: 'live', kindLabel: 'Live', cardTitle: 'Orthogonal Complement', duration: '0:52', html: '../../motion/mat2b/orthogonal-complement.html' },
   { id: 'live-least-squares-normal-equations', kind: 'live', kindLabel: 'Live', cardTitle: "Least Squares: Project, Don't Solve", duration: '0:55', html: '../../motion/mat2b/least-squares-normal-equations.html' },
+  { id: 'live-basis-uniqueness', kind: 'live', kindLabel: 'Live', cardTitle: 'Coordinates in a Basis Are Unique', duration: '0:52', html: '../../motion/mat2b/basis-uniqueness.html' },
+  { id: 'live-null-space-as-line', kind: 'live', kindLabel: 'Live', cardTitle: 'The Null Space Is a Line Through the Origin', duration: '0:50', html: '../../motion/mat2b/null-space-as-line.html' },
+  { id: 'live-polynomial-vectors', kind: 'live', kindLabel: 'Live', cardTitle: 'Polynomials Are Vectors Too', duration: '0:49', html: '../../motion/mat2b/polynomial-vectors.html' },
 ];
 
 function loadJSON(key, fallback) {

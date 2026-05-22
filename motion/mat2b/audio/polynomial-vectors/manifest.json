@@ -1,0 +1,36 @@
+{
+  "sceneId": "polynomial-vectors",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/polynomial-vectors/scene.mp3",
+  "durationSec": 47.79,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "What if a vector were not an arrow at all — but a polynomial?"
+    },
+    {
+      "id": "setup",
+      "audioStart": 4.4,
+      "narration": "A polynomial of degree at most two is a plus b x plus c x squared. Three numbers a, b, c spell out the whole curve. Those three numbers are its coordinates in the basis one, x, and x squared."
+    },
+    {
+      "id": "scrubCoefficients",
+      "audioStart": 19.38,
+      "narration": "Now turn the dials. As a moves the curve up and down, b tilts it, and c bends it. Three numbers, one curve — they move together."
+    },
+    {
+      "id": "addPolynomials",
+      "audioStart": 28.42,
+      "narration": "Add two polynomials by adding their coordinate triples one row at a time. The graph of p plus q is exactly the curve whose coordinates are the sum."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 38.16,
+      "narration": "Polynomials of degree at most two form a three-dimensional vector space. The basis is one, x, x squared — the coordinates are the polynomial."
+    }
+  ]
+}

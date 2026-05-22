@@ -2833,6 +2833,80 @@
       ],
       "subject_id": "mat2b",
       "chapter_number": 6
+    },
+    {
+      "id": "basis-uniqueness",
+      "file": "basis-uniqueness.jsx",
+      "html": "basis-uniqueness.html",
+      "spec": "basis-uniqueness.spec.json",
+      "title": "Coordinates in a Basis Are Unique",
+      "eyebrow": "vector spaces",
+      "topic": "Given a basis {b₁, b₂} for the plane, every vector v has exactly one coordinate pair (a, b) with v = a·b₁ + b·b₂. Sweeping trial (a, b) values shows almost every guess misses; only one pair lands the trial point on v. Switch to a different basis {c₁, c₂} and the same v gets a new but again unique coordinate pair — the basis is the language, the coordinates are the word.",
+      "duration": 52,
+      "language": "en",
+      "prerequisites": [
+        "linear-combination-recipe"
+      ],
+      "concepts": [
+        "basis",
+        "coordinates",
+        "uniqueness",
+        "linear combination",
+        "parallelogram rule",
+        "change of basis"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 1
+    },
+    {
+      "id": "null-space-as-line",
+      "file": "null-space-as-line.jsx",
+      "html": "null-space-as-line.html",
+      "spec": "null-space-as-line.spec.json",
+      "title": "The Null Space Is a Line Through the Origin",
+      "eyebrow": "vector spaces",
+      "topic": "For the singular matrix M = [[1, 2], [2, 4]] the rows are multiples of each other, so M is not invertible. Sweeping a vector x along the direction d = (2, −1) shows M·x stays glued at the origin — every point on that line is in the null space. Stepping x off the line makes M·x jump along the image line y = 2x. The null space {x : M·x = 0} forms a one-dimensional subspace.",
+      "duration": 50,
+      "language": "en",
+      "prerequisites": [
+        "subspace-test",
+        "linear-combination-recipe"
+      ],
+      "concepts": [
+        "null space",
+        "singular matrix",
+        "kernel",
+        "subspace",
+        "linear map",
+        "image"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 1
+    },
+    {
+      "id": "polynomial-vectors",
+      "file": "polynomial-vectors.jsx",
+      "html": "polynomial-vectors.html",
+      "spec": "polynomial-vectors.spec.json",
+      "title": "Polynomials Are Vectors Too",
+      "eyebrow": "abstract vector spaces",
+      "topic": "A polynomial p(x) = a + b·x + c·x² is built from three numbers — its coordinates in the basis {1, x, x²}. Scrubbing the (a, b, c) triple morphs the coordinate vector and the polynomial graph in sync. Adding two polynomials adds their coordinate triples component-by-component. The space P₂ of polynomials of degree at most two is a three-dimensional vector space, with vectors that are not arrows at all.",
+      "duration": 49,
+      "language": "en",
+      "prerequisites": [
+        "dimension-intuition",
+        "linear-combination-recipe"
+      ],
+      "concepts": [
+        "abstract vector space",
+        "polynomial space",
+        "basis",
+        "coordinates",
+        "dimension",
+        "vector addition"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 1
     }
   ]
 }
