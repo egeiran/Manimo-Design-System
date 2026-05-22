@@ -230,7 +230,7 @@ function OdeBeat() {
                 rx={18}
                 fill="none" stroke="var(--chalk-300)" strokeWidth={1.4}
                 strokeDasharray="6 6" opacity={0.55}/>
-          <text x={G.mugCx - G.mugW * 0.92} y={G.mugCy + G.mugH * 0.86}
+          <text x={G.mugCx - G.mugW * 0.92} y={G.mugCy + G.mugH * 1.04}
                 fill="var(--chalk-300)" fontFamily="var(--font-mono)"
                 fontSize={12} letterSpacing="0.1em">room: Tₐ = 22 °C</text>
         </SvgFadeIn>
@@ -410,8 +410,9 @@ function FormulaBeat() {
       <FadeUp duration={0.7} delay={1.0} distance={16}
         style={{
           fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-          fontSize: portrait ? 40 : 54, color: 'var(--amber-300)',
+          fontSize: portrait ? 30 : 54, color: 'var(--amber-300)',
           letterSpacing: '0.02em', marginTop: 4,
+          whiteSpace: 'nowrap',
         }}>
         T(t) = Tₐ + (T₀ − Tₐ) e<sup style={{ fontSize: '0.55em' }}>−kt</sup>
       </FadeUp>

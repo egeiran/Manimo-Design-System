@@ -84,7 +84,8 @@ function graphGeom(portrait) {
   return portrait
     // Portrait: panel sits to the right of the bottom-left Manimo mascot;
     // the discriminant number line below the graph fits within graph width.
-    ? { ox: 96,  oy: 720, w: 580, h: 480,
+    // oy chosen so NL_Y = oy + 56 stays within the 0–720 SVG viewBox.
+    ? { ox: 96,  oy: 640, w: 580, h: 420,
         panelW: 500, panelLeft: 140, panelBottom: 96 }
     : { ox: 130, oy: 540, w: 680, h: 360,
         panelW: 400, panelRight: 56, panelTop: 200 };
