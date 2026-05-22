@@ -1,0 +1,207 @@
+{
+  "id": "implicit-curve-slope",
+  "title": "Implicit Curve Slope: dy/dx = −F_x / F_y",
+  "eyebrow": "implicit differentiation",
+  "language": "en",
+  "duration": 61,
+  "topic": "When a curve is given implicitly by F(x, y) = c, you cannot always solve for y. But the tangent slope at any point is still computable: differentiate the relation, get F_x + F_y · dy/dx = 0, so dy/dx = −F_x / F_y. Slide a point around the level curve and watch the tangent rotate, with the formula's two partials updating live.",
+  "subject_id": "mat2b",
+  "chapter_number": 5,
+  "prerequisites": [
+    "gradient-and-level-curves"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.91,
+      "narration": "When y is tangled up with x — no clean formula y of x — can we still get the slope? Yes.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo enters centre",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Tangled? Differentiate anyway.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "setup",
+      "start": 6.91,
+      "end": 20.24,
+      "narration": "Take an example. F of x and y equals x squared plus x y plus y squared. Set it equal to three. The solution set is a closed curve — a tilted ellipse.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "xy axes centred",
+            "delay": 0.3,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Tilted ellipse F(x,y) = 3",
+            "delay": 1,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "F(x, y) = x² + x y + y²",
+            "delay": 1.8,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-formula",
+            "content": "F(x, y) = 3",
+            "delay": 2.8,
+            "color": "var(--amber-300)",
+            "position": "right panel below F"
+          },
+          {
+            "type": "text-caption",
+            "content": "no clean y = …(x)",
+            "delay": 4,
+            "color": "var(--chalk-300)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "derive",
+      "start": 20.24,
+      "end": 36.14,
+      "narration": "Differentiate both sides with respect to x, treating y as a function of x. The partial in x plus the partial in y times dy by dx equals zero. Solve: dy by dx equals minus the partial in x over the partial in y.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-marker",
+            "content": "Point P on the curve at one example position",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Tangent line at P, slope = -F_x / F_y",
+            "delay": 3.2,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "F_x + F_y · dy/dx = 0",
+            "delay": 1,
+            "color": "var(--chalk-200)",
+            "position": "right panel — derivation step 1"
+          },
+          {
+            "type": "text-formula",
+            "content": "dy/dx = −F_x / F_y",
+            "delay": 3.8,
+            "color": "var(--amber-300)",
+            "position": "right panel — payoff"
+          },
+          {
+            "type": "text-formula",
+            "content": "F_x = 2x + y",
+            "delay": 5,
+            "color": "var(--violet-400)",
+            "position": "right panel — derivative table"
+          },
+          {
+            "type": "text-formula",
+            "content": "F_y = x + 2y",
+            "delay": 5.6,
+            "color": "var(--teal-400)",
+            "position": "right panel — derivative table"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweep",
+      "start": 36.14,
+      "end": 52.01,
+      "narration": "Now slide the point all the way around the curve. The tangent rotates with it. Where the partial in y vanishes the tangent is vertical — undefined slope. Where the partial in x vanishes the tangent is flat. The formula handles every position.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-marker",
+            "content": "P moves around the ellipse",
+            "delay": 0,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Tangent line rotating with P",
+            "delay": 0,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "live readout: F_x, F_y, dy/dx",
+            "delay": 0.4,
+            "color": "var(--amber-300)",
+            "position": "right panel — values update each frame"
+          },
+          {
+            "type": "svg-label",
+            "content": "Annotate vertical tangent at F_y = 0",
+            "delay": 4,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Annotate horizontal tangent at F_x = 0",
+            "delay": 8,
+            "color": "var(--teal-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 52.01,
+      "end": 61,
+      "narration": "The level curve hides the function y of x. Implicit differentiation reads the slope without ever isolating it.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-title",
+            "content": "Slope without solving.",
+            "delay": 0.2,
+            "color": "var(--chalk-100)",
+            "position": "centre serif italic large"
+          },
+          {
+            "type": "text-formula",
+            "content": "dy/dx = −F_x / F_y",
+            "delay": 1,
+            "color": "var(--amber-300)",
+            "position": "centre large"
+          },
+          {
+            "type": "text-caption",
+            "content": "Two partial derivatives, one ratio, every tangent.",
+            "delay": 2.4,
+            "color": "var(--chalk-300)",
+            "position": "centre below"
+          }
+        ]
+      }
+    }
+  ]
+}

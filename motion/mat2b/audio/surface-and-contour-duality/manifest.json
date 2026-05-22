@@ -1,0 +1,36 @@
+{
+  "sceneId": "surface-and-contour-duality",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/surface-and-contour-duality/scene.mp3",
+  "durationSec": 46.72,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "How do you draw a hill on a flat page? A contour map. Let us see why it works."
+    },
+    {
+      "id": "setup",
+      "audioStart": 5.88,
+      "narration": "Here is the hill — a surface z equals f of x and y. Below it, a blank xy plane, ready to receive its shadow."
+    },
+    {
+      "id": "sweep",
+      "audioStart": 15,
+      "narration": "Slice the surface with a horizontal plane at height h. The cross section is a closed curve — the level set. Drop it straight down to the floor and you have one contour. Sweep h upward and the contour map fills in."
+    },
+    {
+      "id": "spacing",
+      "audioStart": 29.21,
+      "narration": "Tight contours, steep slope. Loose contours, gentle slope. The map reads height changes from line spacing."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 37.36,
+      "narration": "A surface and its contour map are the same picture — one folded up into 3D, the other flat. The map is just the surface, seen from above."
+    }
+  ]
+}

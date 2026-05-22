@@ -2977,6 +2977,71 @@
       ],
       "subject_id": "mat2b",
       "chapter_number": 4
+    },
+    {
+      "id": "partial-derivatives-as-slices",
+      "file": "partial-derivatives-as-slices.jsx",
+      "html": "partial-derivatives-as-slices.html",
+      "spec": "partial-derivatives-as-slices.spec.json",
+      "title": "Partial Derivatives Are Slopes of Slices",
+      "eyebrow": "partial derivatives",
+      "topic": "Define ∂f/∂x and ∂f/∂y for a two-variable function by slicing the surface z = f(x, y) with planes of constant y, then constant x. The intersection is a one-variable curve and its slope at the chosen point is the partial derivative. The pair forms the gradient.",
+      "duration": 52,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": [
+        "partial derivative",
+        "cross-section curve",
+        "slope of a slice",
+        "gradient",
+        "function of two variables"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 5
+    },
+    {
+      "id": "surface-and-contour-duality",
+      "file": "surface-and-contour-duality.jsx",
+      "html": "surface-and-contour-duality.html",
+      "spec": "surface-and-contour-duality.spec.json",
+      "title": "Surface ↔ Contour: One Hill, Two Views",
+      "eyebrow": "level curves",
+      "topic": "A 2D contour plot encodes a 3D surface. Sweeping a horizontal cutting plane upward through z = f(x, y) traces level curves on the surface; projected straight down they form the contour map. Tight contours mean steep slopes.",
+      "duration": 48,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": [
+        "level curve",
+        "contour plot",
+        "surface plot",
+        "level set",
+        "slope vs spacing"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 5
+    },
+    {
+      "id": "implicit-curve-slope",
+      "file": "implicit-curve-slope.jsx",
+      "html": "implicit-curve-slope.html",
+      "spec": "implicit-curve-slope.spec.json",
+      "title": "Implicit Curve Slope: dy/dx = −F_x / F_y",
+      "eyebrow": "implicit differentiation",
+      "topic": "When a curve is given by F(x, y) = c, differentiating with respect to x gives F_x + F_y · dy/dx = 0. Solve for the slope: dy/dx = −F_x / F_y. Slide a point around the level curve and the tangent rotates; vertical tangents appear where F_y vanishes, horizontal where F_x vanishes.",
+      "duration": 61,
+      "language": "en",
+      "prerequisites": [
+        "gradient-and-level-curves"
+      ],
+      "concepts": [
+        "implicit differentiation",
+        "level curve tangent",
+        "partial derivative",
+        "vertical tangent",
+        "horizontal tangent"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 5
     }
   ]
 }

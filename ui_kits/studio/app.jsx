@@ -136,6 +136,9 @@ const initialScenes = [
   { id: 'live-separable-variables-circles', kind: 'live', kindLabel: 'Live', cardTitle: 'Separable Variables: Circles', duration: '1:11', html: '../../motion/mat2b/separable-variables-circles.html' },
   { id: 'live-newtons-law-of-cooling', kind: 'live', kindLabel: 'Live', cardTitle: "Newton's Law of Cooling", duration: '1:16', html: '../../motion/mat2b/newtons-law-of-cooling.html' },
   { id: 'live-characteristic-roots-regimes', kind: 'live', kindLabel: 'Live', cardTitle: 'Characteristic Roots: Three Regimes', duration: '1:22', html: '../../motion/mat2b/characteristic-roots-regimes.html' },
+  { id: 'live-partial-derivatives-as-slices', kind: 'live', kindLabel: 'Live', cardTitle: 'Partial Derivatives: Slopes of Slices', duration: '0:52', html: '../../motion/mat2b/partial-derivatives-as-slices.html' },
+  { id: 'live-surface-and-contour-duality', kind: 'live', kindLabel: 'Live', cardTitle: 'Surface ↔ Contour Duality', duration: '0:48', html: '../../motion/mat2b/surface-and-contour-duality.html' },
+  { id: 'live-implicit-curve-slope', kind: 'live', kindLabel: 'Live', cardTitle: 'Implicit Curve Slope', duration: '1:01', html: '../../motion/mat2b/implicit-curve-slope.html' },
 ];
 
 function loadJSON(key, fallback) {
