@@ -1,0 +1,36 @@
+{
+  "sceneId": "implicit-curve-slope",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/implicit-curve-slope/scene.mp3",
+  "durationSec": 59.35,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "When y is tangled up with x — no clean formula y of x — can we still get the slope? Yes."
+    },
+    {
+      "id": "setup",
+      "audioStart": 6.91,
+      "narration": "Take an example. F of x and y equals x squared plus x y plus y squared. Set it equal to three. The solution set is a closed curve — a tilted ellipse."
+    },
+    {
+      "id": "derive",
+      "audioStart": 20.24,
+      "narration": "Differentiate both sides with respect to x, treating y as a function of x. The partial in x plus the partial in y times dy by dx equals zero. Solve: dy by dx equals minus the partial in x over the partial in y."
+    },
+    {
+      "id": "sweep",
+      "audioStart": 36.14,
+      "narration": "Now slide the point all the way around the curve. The tangent rotates with it. Where the partial in y vanishes the tangent is vertical — undefined slope. Where the partial in x vanishes the tangent is flat. The formula handles every position."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 52.01,
+      "narration": "The level curve hides the function y of x. Implicit differentiation reads the slope without ever isolating it."
+    }
+  ]
+}

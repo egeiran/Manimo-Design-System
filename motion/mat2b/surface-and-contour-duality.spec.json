@@ -1,0 +1,189 @@
+{
+  "id": "surface-and-contour-duality",
+  "title": "Surface ↔ Contour: One Hill, Two Views",
+  "eyebrow": "level curves",
+  "language": "en",
+  "duration": 48,
+  "topic": "A 2D contour plot encodes a 3D surface. Sweeping a horizontal cutting plane up through z=f(x,y) traces level curves on the surface; project them straight down to the xy-plane to get the contour map. Tight contours mean steep slopes.",
+  "subject_id": "mat2b",
+  "chapter_number": 5,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.88,
+      "narration": "How do you draw a hill on a flat page? A contour map. Let us see why it works.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo enters centre",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "One hill, two views.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "setup",
+      "start": 5.88,
+      "end": 15,
+      "narration": "Here is the hill — a surface z equals f of x and y. Below it, a blank xy plane, ready to receive its shadow.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Oblique 3D axes and surface wireframe",
+            "delay": 0.3,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "f(x, y) = 1.2 − 0.3 x² − 0.2 y²",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "near surface"
+          },
+          {
+            "type": "svg-path",
+            "content": "Empty contour plot pane (axes only)",
+            "delay": 2,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the xy plane — waiting for level curves",
+            "delay": 3,
+            "color": "var(--chalk-300)",
+            "position": "below contour pane"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweep",
+      "start": 15,
+      "end": 29.21,
+      "narration": "Slice the surface with a horizontal plane at height h. The cross section is a closed curve — the level set. Drop it straight down to the floor and you have one contour. Sweep h upward and the contour map fills in.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Horizontal cutting plane at z=h, sweeping upward",
+            "delay": 0.4,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Highlighted intersection ellipse on the surface",
+            "delay": 0.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Dashed projection lines from intersection down to the xy-plane",
+            "delay": 1,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Contour curve drawn in the xy-pane in sync with the plane height",
+            "delay": 1.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "f(x, y) = h",
+            "delay": 2,
+            "color": "var(--amber-300)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "every height becomes a level curve below",
+            "delay": 3.4,
+            "color": "var(--chalk-300)",
+            "position": "right panel sub-caption"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spacing",
+      "start": 29.21,
+      "end": 37.36,
+      "narration": "Tight contours, steep slope. Loose contours, gentle slope. The map reads height changes from line spacing.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Full contour map (all levels persistent)",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Two annotation circles — one over tight contours, one over loose contours",
+            "delay": 0.6,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "STEEP label over tight cluster",
+            "delay": 1.4,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "GENTLE label over loose cluster",
+            "delay": 1.6,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "spacing = inverse of slope",
+            "delay": 2.4,
+            "color": "var(--chalk-200)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 37.36,
+      "end": 48,
+      "narration": "A surface and its contour map are the same picture — one folded up into 3D, the other flat. The map is just the surface, seen from above.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-title",
+            "content": "Same hill, seen from above.",
+            "delay": 0.2,
+            "color": "var(--chalk-100)",
+            "position": "centre serif italic large"
+          },
+          {
+            "type": "text-caption",
+            "content": "Each contour is one height — the surface flattened, not lost.",
+            "delay": 1.6,
+            "color": "var(--chalk-300)",
+            "position": "centre below title"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "sceneId": "partial-derivatives-as-slices",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/partial-derivatives-as-slices/scene.mp3",
+  "durationSec": 50.06,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Two inputs, one output — so which slope are we even talking about?"
+    },
+    {
+      "id": "surfaceAndSlice",
+      "audioStart": 4.71,
+      "narration": "Here is a surface z equals f of x and y. To talk about slope, freeze one input. Hold y at one fixed value — the surface intersected with that plane is a single curve in x and z."
+    },
+    {
+      "id": "partialX",
+      "audioStart": 18.22,
+      "narration": "Sweep the slice plane through different y values. Each y gives its own curve. The slope of that curve at the chosen x is the partial derivative of f with respect to x."
+    },
+    {
+      "id": "partialY",
+      "audioStart": 29.93,
+      "narration": "Now swap roles. Freeze x at x zero and slice the surface the other way. The intersection curve runs along y, and its slope is the partial derivative of f with respect to y."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 42.47,
+      "narration": "Two slopes through the same point — one along each axis. Together they make the gradient. Slicing was the whole trick."
+    }
+  ]
+}
