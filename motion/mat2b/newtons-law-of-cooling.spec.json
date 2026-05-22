@@ -1,0 +1,207 @@
+{
+  "id": "newtons-law-of-cooling",
+  "title": "Newton's Law of Cooling: Exponential Approach",
+  "eyebrow": "first-order linear ODEs",
+  "language": "en",
+  "duration": 76,
+  "topic": "Newton's law of cooling — the rate of temperature change is proportional to the gap from ambient: T'(t) = -k(T - T_a). Solve by separation to get T(t) = T_a + (T_0 - T_a)e^(-kt). Curves from different starting temperatures all converge exponentially to the asymptote T_a.",
+  "subject_id": "mat2b",
+  "chapter_number": 4,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.11,
+      "narration": "A hot coffee cools fast at first, then slower and slower. One simple ODE captures all of that.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Why does the cooling slow down?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "theOde",
+      "start": 7.11,
+      "end": 21.75,
+      "narration": "Newton said: the rate of change of temperature is proportional to how far you are from the room's temperature. T prime equals minus k times the quantity T minus T sub a. The bigger the gap, the faster the change.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Coffee mug pictogram on left, ambient room dotted outline",
+            "delay": 0.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Vertical thermometer scale on right with T_a marker",
+            "delay": 0.6,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "T'(t) = -k(T - T_a)",
+            "delay": 1.4,
+            "color": "var(--violet-400)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "rate ∝ gap from ambient",
+            "delay": 2.6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "separateAndIntegrate",
+      "start": 21.75,
+      "end": 37.85,
+      "narration": "Separate variables: d T over T minus T sub a equals minus k d t. Integrate: log of the absolute gap equals minus k t plus a constant. Exponentiate and the gap becomes a decaying exponential.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "dT/(T - T_a) = -k dt",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-formula",
+            "content": "ln|T - T_a| = -kt + C₁",
+            "delay": 1.6,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-formula",
+            "content": "T - T_a = A e^(-kt)",
+            "delay": 3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the gap shrinks exponentially",
+            "delay": 4.4,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "solutionFormula",
+      "start": 37.85,
+      "end": 49.27,
+      "narration": "Apply the initial condition T of zero equals T sub zero. The constant A is just the starting gap. Add T sub a back and you have the full solution.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "T(t) = T_a + (T_0 − T_a) e^(-kt)",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre payoff"
+          },
+          {
+            "type": "text-caption",
+            "content": "ambient + (initial gap) × exponential decay",
+            "delay": 1.6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "curvesConverge",
+      "start": 49.27,
+      "end": 63.94,
+      "narration": "Plot the cooling curves. Hot coffee falls fast at first, then levels off. A cold drink rises from below. The ambient line is the asymptote — every solution closes in on it, no matter where it started.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "t-T axes",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Horizontal dashed line at T = T_a (ambient asymptote)",
+            "delay": 0.4,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Hot-coffee curve T_0 = 90, decaying to T_a = 22",
+            "delay": 0.8,
+            "color": "var(--rose-400)",
+            "note": "GENUINE MOTION: trace progresses with localTime"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Warm curve T_0 = 50, decaying to T_a = 22",
+            "delay": 1.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Cold curve T_0 = 4, rising to T_a = 22",
+            "delay": 2.4,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Moving dot riding the hot-coffee curve as time progresses",
+            "delay": 0.8,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "all converge to T_a",
+            "delay": 4,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 63.94,
+      "end": 76,
+      "narration": "Whenever the rate of change is proportional to a gap, you get exponential approach to equilibrium. Cooling, heating, charging, draining — same shape, different names.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "rate ∝ gap → exponential approach to equilibrium",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "same shape: cooling, heating, charging, draining",
+            "delay": 1.6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    }
+  ]
+}

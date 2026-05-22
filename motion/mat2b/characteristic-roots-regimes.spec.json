@@ -1,0 +1,209 @@
+{
+  "id": "characteristic-roots-regimes",
+  "title": "Characteristic Roots: Three Regimes of a 2nd-Order ODE",
+  "eyebrow": "second-order linear ODEs",
+  "language": "en",
+  "duration": 82,
+  "topic": "Constant-coefficient 2nd-order linear ODE y'' + 2γy' + ω²y = 0. The ansatz y = e^(rt) gives the characteristic polynomial r² + 2γr + ω² = 0. Its discriminant γ² − ω² classifies solutions into three regimes — overdamped (Δ > 0, two real roots), critically damped (Δ = 0, repeated root), underdamped (Δ < 0, complex conjugate roots).",
+  "subject_id": "mat2b",
+  "chapter_number": 4,
+  "prerequisites": [
+    "second-order-to-system"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.29,
+      "narration": "A second-order linear ODE has three kinds of solution. One small number decides which.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Three regimes. One discriminant.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ansatzAndCharPoly",
+      "start": 6.29,
+      "end": 25.83,
+      "narration": "Try the ansatz y equals e to the r t. Plug into y double prime plus two gamma y prime plus omega squared y equals zero, and the exponential factors out. What's left is the characteristic polynomial: r squared plus two gamma r plus omega squared equals zero.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "y'' + 2γ y' + ω² y = 0",
+            "delay": 0.3,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-formula",
+            "content": "ansatz: y = e^(rt)",
+            "delay": 1.4,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "r² + 2γ r + ω² = 0",
+            "delay": 3,
+            "color": "var(--amber-300)",
+            "position": "centre payoff"
+          }
+        ]
+      }
+    },
+    {
+      "id": "discriminantThreeCases",
+      "start": 25.83,
+      "end": 42.39,
+      "narration": "Solve with the quadratic formula. The roots are minus gamma plus or minus the square root of gamma squared minus omega squared. The thing under the root — the discriminant — decides everything. Positive, zero, or negative gives three completely different solutions.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "r = −γ ± √(γ² − ω²)",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-formula",
+            "content": "Δ = γ² − ω²",
+            "delay": 1.6,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "Δ > 0  two distinct real roots  →  overdamped",
+            "delay": 3,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "Δ = 0  one repeated real root  →  critically damped",
+            "delay": 4.2,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "Δ < 0  complex conjugate roots  →  underdamped",
+            "delay": 5.4,
+            "color": "var(--rose-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "threeCurves",
+      "start": 42.39,
+      "end": 58.64,
+      "narration": "Visualise each one. Underdamped: oscillating decay, the wave envelope shrinks like e to the minus gamma t. Critically damped: the fastest decay without crossing zero. Overdamped: slow decay, no oscillation at all.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "t-y axes spanning t ∈ [0, 6], y ∈ [-0.5, 1.2]",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Underdamped curve (rose) — envelope-modulated cosine",
+            "delay": 0.4,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Critically damped curve (amber) — (1 + ω t) e^(-ω t)",
+            "delay": 1.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Overdamped curve (teal) — sum of two real exponentials",
+            "delay": 2.4,
+            "color": "var(--teal-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweepDamping",
+      "start": 58.64,
+      "end": 72.57,
+      "narration": "Now sweep gamma from zero up past omega. Watch the solution morph through all three regimes — undamped sine wave, then ringing decay, then the critical edge, then the slow droop of overdamping.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "t-y axes",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Solution curve y(t) re-rendered each frame as γ sweeps from 0 to 1.6·ω",
+            "delay": 0,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION: parameter sweep of γ"
+          },
+          {
+            "type": "svg-path",
+            "content": "Discriminant indicator on a number line: ●─────●  with current γ position",
+            "delay": 0.2,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "γ = sweeping live",
+            "delay": 0.5,
+            "color": "var(--amber-300)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "regime label updates live",
+            "delay": 1,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 72.57,
+      "end": 82,
+      "narration": "Three regimes, one discriminant. Underdamped rings; critical is the fastest no-overshoot; overdamped lags.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Δ = γ² − ω²",
+            "delay": 0.3,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "underdamped • critical • overdamped — discriminant decides",
+            "delay": 1,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    }
+  ]
+}

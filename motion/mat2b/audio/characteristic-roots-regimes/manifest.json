@@ -1,0 +1,41 @@
+{
+  "sceneId": "characteristic-roots-regimes",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/characteristic-roots-regimes/scene.mp3",
+  "durationSec": 80.76,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "A second-order linear ODE has three kinds of solution. One small number decides which."
+    },
+    {
+      "id": "ansatzAndCharPoly",
+      "audioStart": 6.29,
+      "narration": "Try the ansatz y equals e to the r t. Plug into y double prime plus two gamma y prime plus omega squared y equals zero, and the exponential factors out. What's left is the characteristic polynomial: r squared plus two gamma r plus omega squared equals zero."
+    },
+    {
+      "id": "discriminantThreeCases",
+      "audioStart": 25.83,
+      "narration": "Solve with the quadratic formula. The roots are minus gamma plus or minus the square root of gamma squared minus omega squared. The thing under the root — the discriminant — decides everything. Positive, zero, or negative gives three completely different solutions."
+    },
+    {
+      "id": "threeCurves",
+      "audioStart": 42.39,
+      "narration": "Visualise each one. Underdamped: oscillating decay, the wave envelope shrinks like e to the minus gamma t. Critically damped: the fastest decay without crossing zero. Overdamped: slow decay, no oscillation at all."
+    },
+    {
+      "id": "sweepDamping",
+      "audioStart": 58.64,
+      "narration": "Now sweep gamma from zero up past omega. Watch the solution morph through all three regimes — undamped sine wave, then ringing decay, then the critical edge, then the slow droop of overdamping."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 72.57,
+      "narration": "Three regimes, one discriminant. Underdamped rings; critical is the fastest no-overshoot; overdamped lags."
+    }
+  ]
+}
