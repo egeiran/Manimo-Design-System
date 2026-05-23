@@ -221,7 +221,7 @@ function RectangleBeat() {
   const G = portrait
     ? { ox: 130, oy: 620, ux: 230, uy: 230, vbW: 720, vbH: 980,
         xMin: 0, xMax: 2.0, yMin: 0, yMax: 1.6,
-        panelLeft: 50, panelBottom: 140, panelW: 620 }
+        panelLeft: 50, panelBottom: 210, panelW: 620 }
     : { ox: 250, oy: 440, ux: 200, uy: 200, vbW: 1280, vbH: 720,
         xMin: 0, xMax: 2.0, yMin: 0, yMax: 1.6,
         panelRight: 64, panelTop: 130, panelW: 460 };

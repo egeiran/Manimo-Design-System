@@ -147,7 +147,7 @@ function UnivariateBeat() {
   const G = portrait
     ? { ox: 360, oy: 660, ux: 130, uy: 130, vbW: 720, vbH: 1100,
         xMin: -0.4, xMax: 2.4, yMin: -0.6, yMax: 2.2,
-        panelLeft: 60, panelBottom: 100, panelW: 600 }
+        panelLeft: 60, panelBottom: 210, panelW: 600 }
     : { ox: 380, oy: 420, ux: 130, uy: 130, vbW: 1280, vbH: 720,
         xMin: -0.4, xMax: 2.4, yMin: -0.6, yMax: 2.2,
         panelRight: 64, panelTop: 200, panelW: 410 };

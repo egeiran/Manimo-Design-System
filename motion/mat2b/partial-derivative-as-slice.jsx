@@ -66,7 +66,7 @@ function surfaceGeom(portrait) {
     ? { ox: 360, oy: 540, ux: 105, uy: 95, uz: 130,
         angX: 0.18, angY: -0.55,
         vbW: 720, vbH: 1100,
-        panelLeft: 50, panelBottom: 140, panelW: 620 }
+        panelLeft: 50, panelBottom: 210, panelW: 620 }
     : { ox: 420, oy: 460, ux: 105, uy: 95, uz: 130,
         angX: 0.18, angY: -0.55,
         vbW: 1280, vbH: 720,
