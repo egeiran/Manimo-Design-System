@@ -1,0 +1,144 @@
+{
+  "id": "cauchy-schwarz-inequality",
+  "title": "Cauchy–Schwarz: The Dot Product Has a Ceiling",
+  "eyebrow": "inner product spaces",
+  "language": "en",
+  "duration": 44,
+  "topic": "The Cauchy–Schwarz inequality |⟨u,v⟩| ≤ ‖u‖·‖v‖ caps the dot product by the product of lengths. Sweeping the angle between u and v traces ⟨u,v⟩ between ±‖u‖·‖v‖, with equality exactly when u and v are parallel. The bound is what makes cos θ = ⟨u,v⟩/(‖u‖·‖v‖) a number in [−1, 1].",
+  "subject_id": "mat2b",
+  "chapter_number": 3,
+  "prerequisites": [
+    "inner-product-geometry"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 3.47,
+      "narration": "How big can the dot product of two vectors get?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "How big can u dot v get?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lengthsAndCeiling",
+      "start": 3.47,
+      "end": 12.66,
+      "narration": "Fix the lengths of u and v. The lengths of u and v multiplied set a ceiling — the dot product can never exceed it in size.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Two arrows u (amber, length 3) and v (teal, length 2) drawn from origin on a grid",
+            "delay": 0.2
+          },
+          {
+            "type": "text-formula",
+            "content": "|u · v| ≤ ‖u‖ · ‖v‖",
+            "delay": 1.6,
+            "color": "var(--amber-300)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "the inequality holds for any two vectors — and the ceiling is the product of their lengths",
+            "delay": 2.6,
+            "color": "var(--chalk-300)",
+            "position": "right panel below formula"
+          }
+        ]
+      }
+    },
+    {
+      "id": "angleSweep",
+      "start": 12.66,
+      "end": 24.14,
+      "narration": "Spin v around. The dot product rises and falls, but the trace stays bounded between plus and minus the ceiling — it kisses the bound exactly when v lines up with u.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "u fixed along +x, v rotates 0 to 2π; arc shows angle",
+            "delay": 0.2
+          },
+          {
+            "type": "graph-curve",
+            "content": "Right panel chart: horizontal lines at +‖u‖·‖v‖ and −‖u‖·‖v‖; trace of u·v plotted as θ sweeps",
+            "delay": 0.8
+          },
+          {
+            "type": "text-caption",
+            "content": "live readout of θ, cos θ and u·v",
+            "delay": 1.4,
+            "color": "var(--chalk-200)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "equalityCondition",
+      "start": 24.14,
+      "end": 33.94,
+      "narration": "Equality holds when u and v are parallel — same direction gives plus the ceiling, opposite directions give minus. Anything in between misses.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Three small tiles: u and v parallel (= +max), antiparallel (= −max), generic (strict < max)",
+            "delay": 0.3
+          },
+          {
+            "type": "text-caption",
+            "content": "equality iff v is a scalar multiple of u",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below tiles"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 33.94,
+      "end": 44,
+      "narration": "Cauchy and Schwarz: the dot product is squeezed by the lengths. That is what makes cosine of theta a real number between minus one and one.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "−1 ≤ cos θ = (u · v) / (‖u‖ · ‖v‖) ≤ 1",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre"
+          },
+          {
+            "type": "text-caption",
+            "content": "the bound that lets the angle exist",
+            "delay": 1.4,
+            "color": "var(--chalk-300)",
+            "position": "below formula"
+          }
+        ]
+      }
+    }
+  ]
+}

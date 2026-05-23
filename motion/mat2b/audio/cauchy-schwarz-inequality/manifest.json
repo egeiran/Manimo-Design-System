@@ -1,0 +1,36 @@
+{
+  "sceneId": "cauchy-schwarz-inequality",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/cauchy-schwarz-inequality/scene.mp3",
+  "durationSec": 42.59,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "How big can the dot product of two vectors get?"
+    },
+    {
+      "id": "lengthsAndCeiling",
+      "audioStart": 3.47,
+      "narration": "Fix the lengths of u and v. The lengths of u and v multiplied set a ceiling — the dot product can never exceed it in size."
+    },
+    {
+      "id": "angleSweep",
+      "audioStart": 12.66,
+      "narration": "Spin v around. The dot product rises and falls, but the trace stays bounded between plus and minus the ceiling — it kisses the bound exactly when v lines up with u."
+    },
+    {
+      "id": "equalityCondition",
+      "audioStart": 24.14,
+      "narration": "Equality holds when u and v are parallel — same direction gives plus the ceiling, opposite directions give minus. Anything in between misses."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 33.94,
+      "narration": "Cauchy and Schwarz: the dot product is squeezed by the lengths. That is what makes cosine of theta a real number between minus one and one."
+    }
+  ]
+}

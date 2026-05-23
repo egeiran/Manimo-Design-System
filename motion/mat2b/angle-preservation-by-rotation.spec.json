@@ -1,0 +1,156 @@
+{
+  "id": "angle-preservation-by-rotation",
+  "title": "Rotations Preserve the Dot Product",
+  "eyebrow": "orthogonal transformations",
+  "language": "en",
+  "duration": 42,
+  "topic": "An orthogonal matrix preserves the inner product: ⟨Ru, Rv⟩ = ⟨u, v⟩ for every pair of vectors. Sweep the rotation angle and watch the live dot product readout stay rock-steady while the two vectors swing together. This is what makes rotations 'rigid motions' — lengths, angles, and the geometric content of the inner product are invariant.",
+  "subject_id": "mat2b",
+  "chapter_number": 3,
+  "prerequisites": [
+    "inner-product-geometry",
+    "rotation-matrix-family"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 3.88,
+      "narration": "Rotate the whole picture. Does the dot product change?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Spin the plane — does u · v survive?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "setup",
+      "start": 3.88,
+      "end": 9.61,
+      "narration": "Start with two vectors u and v. Compute their dot product and note the angle between them.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "u = (2.5, 0.5), v = (1.0, 2.0) on grid; arc shows angle between them",
+            "delay": 0.3
+          },
+          {
+            "type": "text-formula",
+            "content": "u · v = 2.5·1 + 0.5·2 = 3.5",
+            "delay": 1.4,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-formula",
+            "content": "angle θ ≈ 50°",
+            "delay": 2.2,
+            "color": "var(--chalk-200)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rotationSweep",
+      "start": 9.61,
+      "end": 21.64,
+      "narration": "Multiply both vectors by the rotation matrix R of alpha. As alpha sweeps, both vectors swing together. Their dot product holds steady — the angle between them never changes.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Both u and v rotated by R(α); α sweeps 0 → 2π smoothly",
+            "delay": 0.3
+          },
+          {
+            "type": "text-formula",
+            "content": "R(α) u  and  R(α) v",
+            "delay": 0.6,
+            "color": "var(--amber-300)",
+            "position": "right panel"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Live readout: ⟨Ru, Rv⟩ = 3.50 (constant); ‖Ru‖, ‖Rv‖ constant; angle between them constant",
+            "delay": 1.2,
+            "color": "var(--teal-300)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "all three readings hold steady as α changes",
+            "delay": 2,
+            "color": "var(--chalk-300)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "whyItHolds",
+      "start": 21.64,
+      "end": 31.7,
+      "narration": "Why? Because R transpose R equals the identity. The dot product is u transpose v — and the R cancels itself out inside.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "⟨R u, R v⟩ = (R u)ᵀ (R v) = uᵀ Rᵀ R v = uᵀ I v = ⟨u, v⟩",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre"
+          },
+          {
+            "type": "text-caption",
+            "content": "the rotation cancels itself out — R is orthogonal",
+            "delay": 1.5,
+            "color": "var(--amber-300)",
+            "position": "below"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 31.7,
+      "end": 42,
+      "narration": "Rotations are rigid motions. Lengths, angles, dot products — all invariant. The geometry travels with the vectors.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "RᵀR = I  ⇒  ⟨Ru, Rv⟩ = ⟨u, v⟩",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre"
+          },
+          {
+            "type": "text-caption",
+            "content": "rigid motion — the geometry rides along",
+            "delay": 1.3,
+            "color": "var(--chalk-300)",
+            "position": "below"
+          }
+        ]
+      }
+    }
+  ]
+}

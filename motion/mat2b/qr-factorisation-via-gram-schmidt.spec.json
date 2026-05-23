@@ -1,0 +1,200 @@
+{
+  "id": "qr-factorisation-via-gram-schmidt",
+  "title": "QR: Gram–Schmidt as a Matrix Factorisation",
+  "eyebrow": "QR decomposition",
+  "language": "en",
+  "duration": 55,
+  "topic": "QR factorisation packages Gram–Schmidt as a clean matrix decomposition: A = QR, where Q has orthonormal columns and R is upper triangular. The columns of Q come from the Gram–Schmidt process applied to the columns of A; the entries of R are the projection coefficients and remaining lengths produced along the way.",
+  "subject_id": "mat2b",
+  "chapter_number": 3,
+  "prerequisites": [
+    "gram-schmidt-2d-then-3d",
+    "projection-onto-line"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.85,
+      "narration": "Gram–Schmidt cleans up the columns of a matrix — what is left behind?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Gram–Schmidt on the columns — and what is left behind?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "matrixA",
+      "start": 4.85,
+      "end": 11.66,
+      "narration": "Take a matrix A. Read it column by column — these two columns are the vectors we will orthogonalise.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Two arrows a₁ = (3, 1), a₂ = (1, 2) on a grid",
+            "delay": 0.3
+          },
+          {
+            "type": "text-formula",
+            "content": "A = [ a₁  a₂ ]",
+            "delay": 1.2,
+            "color": "var(--amber-300)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "the columns of A are the input vectors to Gram–Schmidt",
+            "delay": 2.2,
+            "color": "var(--chalk-300)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "step1q1",
+      "start": 11.66,
+      "end": 19.01,
+      "narration": "Step one: normalise a one. Divide by its length. That is q one — a unit vector pointing along a one.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Animate a₁ shrinking to unit length along its own direction → q₁",
+            "delay": 0.4
+          },
+          {
+            "type": "text-formula",
+            "content": "q₁ = a₁ / ‖a₁‖",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-formula",
+            "content": "r₁₁ = ‖a₁‖",
+            "delay": 2.4,
+            "color": "var(--chalk-200)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "step2q2",
+      "start": 19.01,
+      "end": 29.63,
+      "narration": "Step two: subtract from a two the part that lies along q one. The residual is perpendicular to q one. Normalise it — that is q two.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Show projection of a₂ on q₁ in violet, draw residual a₂ − proj as teal vector, then shrink to unit q₂",
+            "delay": 0.3
+          },
+          {
+            "type": "text-formula",
+            "content": "e₂ = a₂ − (q₁ · a₂) q₁",
+            "delay": 1.8,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-formula",
+            "content": "q₂ = e₂ / ‖e₂‖",
+            "delay": 4.5,
+            "color": "var(--teal-300)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "the residual is perpendicular to q₁ by construction",
+            "delay": 6,
+            "color": "var(--chalk-300)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "matrixR",
+      "start": 29.63,
+      "end": 43.35,
+      "narration": "Read off the matrix R. Down the diagonal sit the lengths r one one and r two two. Above the diagonal sits r one two — the projection coefficient. Zero below. R is upper triangular.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "A = Q R",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre top"
+          },
+          {
+            "type": "svg-label",
+            "content": "Q matrix shown as [q₁ q₂] (orthonormal columns)",
+            "delay": 0.8,
+            "color": "var(--teal-300)",
+            "position": "left"
+          },
+          {
+            "type": "svg-label",
+            "content": "R matrix shown as 2x2 upper triangular: [r₁₁ r₁₂; 0 r₂₂]",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "right"
+          },
+          {
+            "type": "text-caption",
+            "content": "r₁₂ = q₁ · a₂ (projection coefficient); r₂₂ = ‖e₂‖",
+            "delay": 3,
+            "color": "var(--chalk-300)",
+            "position": "below"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 43.35,
+      "end": 55,
+      "narration": "Q carries the geometry — orthonormal directions. R carries the bookkeeping — the lengths and the projections. Together they rebuild A.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "Q orthonormal  ·  R upper triangular  =  A",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre"
+          },
+          {
+            "type": "text-caption",
+            "content": "Gram–Schmidt as a matrix decomposition",
+            "delay": 1.2,
+            "color": "var(--chalk-300)",
+            "position": "below formula"
+          }
+        ]
+      }
+    }
+  ]
+}
