@@ -1,0 +1,134 @@
+{
+  "id": "rotation-matrix-family",
+  "title": "Rotation Matrices Add Their Angles",
+  "eyebrow": "rotation matrices",
+  "language": "en",
+  "duration": 56,
+  "topic": "R(θ) parametrises rotations of the plane. Sweeping θ rotates the basis. Composing R(α) and R(β) gives R(α + β) — matrix multiplication becomes angle addition.",
+  "subject_id": "mat2b",
+  "chapter_number": 2,
+  "prerequisites": [
+    "linear-transformation-grid",
+    "matrix-product-as-composition"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.63,
+      "narration": "What does a rotation matrix actually do — and what happens when you multiply two of them?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Two rotations, one matrix.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "definition",
+      "start": 5.63,
+      "end": 18.16,
+      "narration": "The rotation matrix R of theta has cosine on the diagonal and sine off it, with one minus sign. Its columns are where e one and e two land after rotating by theta.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Standard grid with e1 (violet) and e2 (teal) basis vectors at θ=0",
+            "delay": 0.5,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "R(θ) matrix shown in panel: [[cos θ, -sin θ], [sin θ, cos θ]]",
+            "delay": 1.5,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweepTheta",
+      "start": 18.16,
+      "end": 29.56,
+      "narration": "Sweep theta from zero all the way around. The basis vectors trace circles. Both columns rotate together, locked ninety degrees apart — that is what keeps R orthogonal.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "θ sweeps from 0 to 2π. e1 traces a unit circle (violet trail). e2 traces the same circle, always 90° ahead (teal trail).",
+            "delay": 0.5,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Live readout: θ = current angle. Matrix entries update to cos θ / sin θ.",
+            "delay": 0,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "angleAddition",
+      "start": 29.56,
+      "end": 44.8,
+      "narration": "Apply R of thirty degrees, then R of forty-five degrees. The grid rotates by seventy-five — the angles add. So the matrix product equals R of alpha plus beta. Matrix multiplication becomes angle addition.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "Unit square rotates by 30° first (intermediate), then by another 45° to reach 75°",
+            "delay": 1,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "R(30°) · R(45°) = R(75°) equation revealed once arrival angle is reached",
+            "delay": 8,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 44.8,
+      "end": 56,
+      "narration": "A rotation matrix turns the plane by its angle. Multiplying two rotations adds their angles — geometry hiding inside matrix arithmetic.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "R(α) · R(β) = R(α + β)",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "centre, large serif italic"
+          },
+          {
+            "type": "text-caption",
+            "content": "Matrix multiplication, written as angle addition.",
+            "delay": 1.7,
+            "color": "var(--chalk-200)",
+            "position": "below"
+          }
+        ]
+      }
+    }
+  ]
+}

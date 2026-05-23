@@ -1,0 +1,191 @@
+{
+  "id": "gaussian-elimination-2d",
+  "title": "Gaussian Elimination: Two Lines, One Point",
+  "eyebrow": "row reduction",
+  "language": "en",
+  "duration": 51,
+  "topic": "Geometric meaning of row operations: the lines change, but the intersection point — the unique solution — stays fixed.",
+  "subject_id": "mat2b",
+  "chapter_number": 2,
+  "prerequisites": [
+    "linear-transformation-grid"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.06,
+      "narration": "Two equations, two unknowns — what does row reduction do to the picture?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Two lines, one solution.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "setup",
+      "start": 5.06,
+      "end": 12.28,
+      "narration": "Here is a system. Two lines on the plane. They cross at one point — that crossing is the unique solution.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "x-y plane with grid",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Line 1: 2x + y = 5 (rose)",
+            "delay": 0.6,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Line 2: x + 3y = 5 (teal)",
+            "delay": 1.4,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Intersection dot at (2, 1) with pulse",
+            "delay": 2.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Augmented matrix [2 1 | 5; 1 3 | 5] in right panel",
+            "delay": 3.2,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rowOp1",
+      "start": 12.28,
+      "end": 21.22,
+      "narration": "Swap the rows so the small leading coefficient is on top. The lines didn't move — we only renamed which equation we call row one.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "Lines stay in same positions — colours swap to reflect new row order",
+            "delay": 0.8,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Intersection dot stays pinned at (2, 1)",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Matrix rows swap; R1 ↔ R2 chip flashes",
+            "delay": 1,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rowOp2",
+      "start": 21.22,
+      "end": 31.46,
+      "narration": "Now replace row two with row two minus two times row one. The second line tilts and shifts — but watch the intersection. It does not move.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "Second line continuously morphs to a horizontal line through (2, 1) — slope and intercept animate together",
+            "delay": 0.8,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Intersection dot pinned at (2, 1), pulses to draw attention as the line moves",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Matrix: row 2 updates entry-by-entry to [0, -5, -5]; R2 ← R2 - 2·R1 chip flashes",
+            "delay": 1,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "the intersection is invariant under row operations",
+            "delay": 11.5,
+            "color": "var(--chalk-300)",
+            "position": "below diagram"
+          }
+        ]
+      }
+    },
+    {
+      "id": "echelon",
+      "start": 31.46,
+      "end": 41.02,
+      "narration": "One more step — divide and back-substitute. The lines become axis-aligned. The matrix is upper triangular. The solution is just read off.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "Both lines morph: second line becomes y = 1 (horizontal); first line becomes x = 2 (vertical) after back-substitution sweep",
+            "delay": 0.6,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Intersection still at (2, 1) — now the axis-cross IS the answer",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Matrix in row-reduced echelon form, with (x, y) = (2, 1) highlighted",
+            "delay": 1.5,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 41.02,
+      "end": 51,
+      "narration": "Row operations slide and tilt the lines, but they cannot move the answer. Elimination is a change of view, not a change of truth.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Row operations change the picture — never the solution.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          }
+        ]
+      }
+    }
+  ]
+}

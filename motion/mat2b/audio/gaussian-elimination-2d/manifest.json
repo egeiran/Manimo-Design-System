@@ -1,0 +1,41 @@
+{
+  "sceneId": "gaussian-elimination-2d",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/gaussian-elimination-2d/scene.mp3",
+  "durationSec": 49.18,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Two equations, two unknowns — what does row reduction do to the picture?"
+    },
+    {
+      "id": "setup",
+      "audioStart": 5.06,
+      "narration": "Here is a system. Two lines on the plane. They cross at one point — that crossing is the unique solution."
+    },
+    {
+      "id": "rowOp1",
+      "audioStart": 12.28,
+      "narration": "Swap the rows so the small leading coefficient is on top. The lines didn't move — we only renamed which equation we call row one."
+    },
+    {
+      "id": "rowOp2",
+      "audioStart": 21.22,
+      "narration": "Now replace row two with row two minus two times row one. The second line tilts and shifts — but watch the intersection. It does not move."
+    },
+    {
+      "id": "echelon",
+      "audioStart": 31.46,
+      "narration": "One more step — divide and back-substitute. The lines become axis-aligned. The matrix is upper triangular. The solution is just read off."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 41.02,
+      "narration": "Row operations slide and tilt the lines, but they cannot move the answer. Elimination is a change of view, not a change of truth."
+    }
+  ]
+}
