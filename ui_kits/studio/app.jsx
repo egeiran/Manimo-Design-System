@@ -136,6 +136,9 @@ const initialScenes = [
   { id: 'live-separable-variables-circles', kind: 'live', kindLabel: 'Live', cardTitle: 'Separable Variables: Circles', duration: '1:11', html: '../../motion/mat2b/separable-variables-circles.html' },
   { id: 'live-newtons-law-of-cooling', kind: 'live', kindLabel: 'Live', cardTitle: "Newton's Law of Cooling", duration: '1:16', html: '../../motion/mat2b/newtons-law-of-cooling.html' },
   { id: 'live-characteristic-roots-regimes', kind: 'live', kindLabel: 'Live', cardTitle: 'Characteristic Roots: Three Regimes', duration: '1:22', html: '../../motion/mat2b/characteristic-roots-regimes.html' },
+  { id: 'live-quadratic-taylor-approximation', kind: 'live', kindLabel: 'Live', cardTitle: 'Quadratic Taylor: A Plane Curves Into a Bowl', duration: '1:01', html: '../../motion/mat2b/quadratic-taylor-approximation.html' },
+  { id: 'live-partial-derivative-as-slice', kind: 'live', kindLabel: 'Live', cardTitle: 'Partial Derivatives: Slice the Surface', duration: '0:49', html: '../../motion/mat2b/partial-derivative-as-slice.html' },
+  { id: 'live-clairaut-mixed-partials', kind: 'live', kindLabel: 'Live', cardTitle: "Clairaut's Theorem: Order Doesn't Matter", duration: '1:08', html: '../../motion/mat2b/clairaut-mixed-partials.html' },
 ];
 
 function loadJSON(key, fallback) {

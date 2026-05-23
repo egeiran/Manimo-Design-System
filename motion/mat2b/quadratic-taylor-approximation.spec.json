@@ -1,0 +1,178 @@
+{
+  "id": "quadratic-taylor-approximation",
+  "title": "Quadratic Taylor: A Plane Curves Into a Bowl",
+  "eyebrow": "second-order approximation",
+  "language": "en",
+  "duration": 61,
+  "topic": "Two-variable Taylor expansion to second order. The tangent plane (order 1) matches value + slopes; adding the Hessian quadratic form (order 2) matches curvature. As a sweep moves from order 0 → 1 → 2 the approximation surface fits the underlying function visibly tighter and the residual |f − T_k| collapses.",
+  "subject_id": "mat2b",
+  "chapter_number": 6,
+  "prerequisites": [
+    "tangent-plane-linearisation",
+    "hessian-test"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.49,
+      "narration": "The tangent plane gets the slope right. To get the curvature right, add the Hessian.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Plane catches slope. Bowl catches curvature.",
+            "delay": 0.6,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "univariateRecap",
+      "start": 5.49,
+      "end": 20.26,
+      "narration": "Start in one variable. Pick a point. The constant approximation just holds f of a. The linear one adds the slope. The quadratic one adds one half f double prime, and the curve and the parabola lock together at the point.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "x–y axes with curve f(x)",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Curve f(x) in violet, marker at point a",
+            "delay": 0.3,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Order 0: horizontal line f(a)",
+            "delay": 1.5,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Order 1: tangent line f(a)+f'(a)(x−a) in amber",
+            "delay": 3,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Order 2: parabola adding ½f''(a)(x−a)² in rose",
+            "delay": 5,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "T₂(x) = f(a) + f'(a)(x−a) + ½f''(a)(x−a)²",
+            "delay": 6.4,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "twoVarFormula",
+      "start": 20.26,
+      "end": 34.23,
+      "narration": "In two variables, replace the slope with the gradient and replace the second derivative with the Hessian matrix. The quadratic term reads h transpose H h over two, where h is the displacement from the centre.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "T₂(x, y) = f(a, b) + ∇f(a,b)·h + ½ hᵀ H(a,b) h",
+            "delay": 0.4,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "h = (x − a, y − b)",
+            "delay": 1.6,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "H = [[f_xx, f_xy], [f_xy, f_yy]]   (the Hessian)",
+            "delay": 3,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "value · slopes · curvatures — all locked in at (a, b)",
+            "delay": 5,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "orderSweep",
+      "start": 34.23,
+      "end": 50.49,
+      "narration": "Pick a saddle-shaped surface and watch the approximation snap into focus. Order zero is flat. Order one tilts the plane to match the gradient — already much better. Order two adds the Hessian bowl, and the surface and the approximation hug the centre.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "3D-style projected wireframe of f(x,y) at base",
+            "delay": 0.2,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Sliced cross-section of f and T_k across the diagonal (genuine value-driven motion)",
+            "delay": 0.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Order indicator k = 0, 1, 2 — stepped over time",
+            "delay": 0,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Live residual bar |f − T_k| at the sample displacement",
+            "delay": 0.8,
+            "color": "var(--rose-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 50.49,
+      "end": 61,
+      "narration": "First order locks in slope. Second order locks in curvature. That is why the Hessian decides whether a critical point is a hill, a hollow, or a saddle.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "1st order → slope. 2nd order → curvature.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "The Hessian classifies the bowl.",
+            "delay": 1.6,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    }
+  ]
+}

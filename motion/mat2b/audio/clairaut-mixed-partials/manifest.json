@@ -1,0 +1,36 @@
+{
+  "sceneId": "clairaut-mixed-partials",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/clairaut-mixed-partials/scene.mp3",
+  "durationSec": 66.46,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Mixed partials: differentiate in x, then in y. Or do it the other way round. The order should not matter — and for smooth functions, it doesn't."
+    },
+    {
+      "id": "twoPathsCompute",
+      "audioStart": 9.73,
+      "narration": "Pick a function: f equals x squared y, plus sine of x y. Walk the left path: differentiate in x first, then in y. Walk the right path: differentiate in y first, then in x. Two different intermediate expressions, but the second derivative lands on the same place."
+    },
+    {
+      "id": "rectangleAnimation",
+      "audioStart": 29.74,
+      "narration": "Why does this happen? Take a tiny rectangle of width h and height k anchored at the point. Add the corners of f with alternating signs and divide by h k. As the rectangle shrinks, the two ways to slice it — rows first or columns first — give the same limit. That limit is the mixed partial."
+    },
+    {
+      "id": "smoothnessNote",
+      "audioStart": 49.67,
+      "narration": "The theorem needs a continuity condition. If both mixed partials exist and are continuous, they agree. For polynomials, exponentials, sines, and almost everything you meet in this course, that holds."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 62.59,
+      "narration": "Mixed partials commute. The Hessian matrix is symmetric."
+    }
+  ]
+}

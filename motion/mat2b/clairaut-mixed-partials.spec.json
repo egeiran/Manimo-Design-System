@@ -1,0 +1,169 @@
+{
+  "id": "clairaut-mixed-partials",
+  "title": "Clairaut's Theorem: Order Doesn't Matter",
+  "eyebrow": "mixed partials commute",
+  "language": "en",
+  "duration": 68,
+  "topic": "Clairaut's (Schwarz's) theorem for smooth functions: ∂²f/∂x∂y = ∂²f/∂y∂x. The two computation paths — differentiate x then y, or y then x — converge to the same expression. The geometric reading: take a small rectangle of side h × k, the corner-sum (f(x+h,y+k) − f(x,y+k) − f(x+h,y) + f(x,y))/(h·k) approaches the mixed partial from both sides as the rectangle shrinks.",
+  "subject_id": "mat2b",
+  "chapter_number": 5,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 9.73,
+      "narration": "Mixed partials: differentiate in x, then in y. Or do it the other way round. The order should not matter — and for smooth functions, it doesn't.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "x then y, or y then x — same answer.",
+            "delay": 0.6,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "twoPathsCompute",
+      "start": 9.73,
+      "end": 29.74,
+      "narration": "Pick a function: f equals x squared y, plus sine of x y. Walk the left path: differentiate in x first, then in y. Walk the right path: differentiate in y first, then in x. Two different intermediate expressions, but the second derivative lands on the same place.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "f(x, y) = x²y + sin(xy)",
+            "delay": 0.2,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-formula",
+            "content": "Left path: ∂/∂x then ∂/∂y",
+            "delay": 1.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "f_x = 2xy + y cos(xy)",
+            "delay": 3,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "f_xy = 2x + cos(xy) − xy sin(xy)",
+            "delay": 5.5,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-formula",
+            "content": "Right path: ∂/∂y then ∂/∂x",
+            "delay": 1.4,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "f_y = x² + x cos(xy)",
+            "delay": 3,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "f_yx = 2x + cos(xy) − xy sin(xy)",
+            "delay": 5.5,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "f_xy = f_yx ✓",
+            "delay": 10,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rectangleAnimation",
+      "start": 29.74,
+      "end": 49.67,
+      "narration": "Why does this happen? Take a tiny rectangle of width h and height k anchored at the point. Add the corners of f with alternating signs and divide by h k. As the rectangle shrinks, the two ways to slice it — rows first or columns first — give the same limit. That limit is the mixed partial.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "An x–y grid with a small rectangle h × k at the chosen point (GENUINE MORPHING MOTION as the rectangle shrinks)",
+            "delay": 0.2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Corner values f(x,y), f(x+h,y), f(x,y+k), f(x+h,y+k) labelled with + and − signs",
+            "delay": 1.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Live readout of the corner-sum approximation to f_xy as the rectangle shrinks",
+            "delay": 0,
+            "color": "var(--rose-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "smoothnessNote",
+      "start": 49.67,
+      "end": 62.59,
+      "narration": "The theorem needs a continuity condition. If both mixed partials exist and are continuous, they agree. For polynomials, exponentials, sines, and almost everything you meet in this course, that holds.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "If f_xy and f_yx are continuous near (a, b), then f_xy(a, b) = f_yx(a, b).",
+            "delay": 0.2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-caption",
+            "content": "Holds for every smooth function in this course.",
+            "delay": 2,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 62.59,
+      "end": 68,
+      "narration": "Mixed partials commute. The Hessian matrix is symmetric.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "∂x ∂y = ∂y ∂x",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "The Hessian is symmetric.",
+            "delay": 1.6,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    }
+  ]
+}
