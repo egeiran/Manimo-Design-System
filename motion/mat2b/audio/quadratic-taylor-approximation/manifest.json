@@ -1,0 +1,36 @@
+{
+  "sceneId": "quadratic-taylor-approximation",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/quadratic-taylor-approximation/scene.mp3",
+  "durationSec": 59.72,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "The tangent plane gets the slope right. To get the curvature right, add the Hessian."
+    },
+    {
+      "id": "univariateRecap",
+      "audioStart": 5.49,
+      "narration": "Start in one variable. Pick a point. The constant approximation just holds f of a. The linear one adds the slope. The quadratic one adds one half f double prime, and the curve and the parabola lock together at the point."
+    },
+    {
+      "id": "twoVarFormula",
+      "audioStart": 20.26,
+      "narration": "In two variables, replace the slope with the gradient and replace the second derivative with the Hessian matrix. The quadratic term reads h transpose H h over two, where h is the displacement from the centre."
+    },
+    {
+      "id": "orderSweep",
+      "audioStart": 34.23,
+      "narration": "Pick a saddle-shaped surface and watch the approximation snap into focus. Order zero is flat. Order one tilts the plane to match the gradient — already much better. Order two adds the Hessian bowl, and the surface and the approximation hug the centre."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 50.49,
+      "narration": "First order locks in slope. Second order locks in curvature. That is why the Hessian decides whether a critical point is a hill, a hollow, or a saddle."
+    }
+  ]
+}

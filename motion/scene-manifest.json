@@ -2977,6 +2977,74 @@
       ],
       "subject_id": "mat2b",
       "chapter_number": 4
+    },
+    {
+      "id": "quadratic-taylor-approximation",
+      "file": "quadratic-taylor-approximation.jsx",
+      "html": "quadratic-taylor-approximation.html",
+      "spec": "quadratic-taylor-approximation.spec.json",
+      "title": "Quadratic Taylor: A Plane Curves Into a Bowl",
+      "eyebrow": "second-order Taylor",
+      "topic": "Two-variable Taylor expansion to second order. The tangent plane (order 1) matches value + slopes; adding the Hessian quadratic form (order 2) matches curvature. A live order sweep k = 0 → 1 → 2 on a saddle slice shows the approximation snap into the true function and the residual |f − T_k| collapse.",
+      "duration": 61,
+      "language": "en",
+      "prerequisites": [
+        "tangent-plane-linearisation",
+        "hessian-test"
+      ],
+      "concepts": [
+        "Taylor expansion",
+        "tangent plane",
+        "Hessian",
+        "second-order approximation",
+        "quadratic form",
+        "linearisation"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 6
+    },
+    {
+      "id": "partial-derivative-as-slice",
+      "file": "partial-derivative-as-slice.jsx",
+      "html": "partial-derivative-as-slice.html",
+      "spec": "partial-derivative-as-slice.spec.json",
+      "title": "Partial Derivatives: Slice the Surface, Read the Slope",
+      "eyebrow": "what a partial actually is",
+      "topic": "The geometric meaning of a partial derivative. Holding one variable fixed cuts the graph of f with a plane and leaves a one-variable curve; the partial is the slope of that curve at the point. As the slicing plane y = y₀ scrubs across the surface, the slice curve and the live slope readout update in sync — the partial is itself a function of position.",
+      "duration": 49,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": [
+        "partial derivative",
+        "slice",
+        "surface",
+        "slope",
+        "function of two variables"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 5
+    },
+    {
+      "id": "clairaut-mixed-partials",
+      "file": "clairaut-mixed-partials.jsx",
+      "html": "clairaut-mixed-partials.html",
+      "spec": "clairaut-mixed-partials.spec.json",
+      "title": "Clairaut's Theorem: Order Doesn't Matter",
+      "eyebrow": "mixed partials commute",
+      "topic": "Clairaut's (Schwarz's) theorem: for a smooth function f, the mixed partials commute — ∂²f/∂x∂y = ∂²f/∂y∂x. The two computation paths land on the same expression; geometrically, the corner-sum (f(x+h,y+k) − f(x,y+k) − f(x+h,y) + f(x,y))/(h·k) converges to the mixed partial regardless of slicing order as the rectangle shrinks. The Hessian is symmetric.",
+      "duration": 68,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": [
+        "Clairaut's theorem",
+        "Schwarz's theorem",
+        "mixed partial derivative",
+        "Hessian",
+        "symmetry",
+        "second-order partials"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 5
     }
   ]
 }

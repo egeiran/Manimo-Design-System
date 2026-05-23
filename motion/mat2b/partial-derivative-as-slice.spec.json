@@ -1,0 +1,157 @@
+{
+  "id": "partial-derivative-as-slice",
+  "title": "Partial Derivatives: Slice the Surface, Read the Slope",
+  "eyebrow": "what a partial actually is",
+  "language": "en",
+  "duration": 49,
+  "topic": "The geometric meaning of a partial derivative. Holding one variable fixed cuts the graph of f with a plane and leaves a one-variable curve; the partial is the slope of that curve at the point. As the slice plane y = y₀ scrubs across the surface, the curve and its slope value update in sync, showing that the partial is itself a function of position.",
+  "subject_id": "mat2b",
+  "chapter_number": 5,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.91,
+      "narration": "What does a partial derivative actually mean? Freeze one variable, and slice.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Freeze one variable, slice the surface, read the slope.",
+            "delay": 0.6,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "surfaceAndPlane",
+      "start": 5.91,
+      "end": 17.46,
+      "narration": "Here is a surface. To compute the partial of f with respect to x at a point, hold y fixed at the y-value of that point. That horizontal plane cuts the surface in a curve.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Projected wireframe of z = f(x, y) — saddle-shaped to be visually rich",
+            "delay": 0.2,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Horizontal slicing plane y = y₀ shown as a parallelogram cut",
+            "delay": 1.8,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Resulting slice curve highlighted along the plane",
+            "delay": 3,
+            "color": "var(--amber-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sliceCurveZoom",
+      "start": 17.46,
+      "end": 28.02,
+      "narration": "Look at the slice on its own. It is a curve in one variable — height versus x — and the partial of f with respect to x is just the slope of that curve at the point.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Mini x–z axes for the slice's own coordinate system",
+            "delay": 0,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Slice curve f(·, y₀) drawn in amber",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Point at the selected x₀ on the slice",
+            "delay": 1.6,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Tangent line at the point — slope = f_x(x₀, y₀)",
+            "delay": 2.4,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "f_x(x₀, y₀) = limit of (f(x₀+h, y₀) − f(x₀, y₀))/h",
+            "delay": 4,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scrubSlicePlane",
+      "start": 28.02,
+      "end": 38.59,
+      "narration": "Now scrub the slice plane up and down. The slice curve changes shape and the slope at the point changes with it. The partial f_x is itself a function of where you stand.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Slicing plane y = y₀ animated up and down across the surface (GENUINE VALUE-DRIVEN MOTION)",
+            "delay": 0,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Slice curve re-renders each frame as y₀ scrubs",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Live readout: y₀ = …  f_x(x₀, y₀) = …  updates each frame",
+            "delay": 0,
+            "color": "var(--rose-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 38.59,
+      "end": 49,
+      "narration": "Partial of f with respect to x: freeze y, slice, read the slope. The other partial just swaps which axis you freeze.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Freeze the other variable. Take the ordinary derivative.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "text-caption",
+            "content": "That is what f_x and f_y are.",
+            "delay": 1.6,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    }
+  ]
+}

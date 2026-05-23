@@ -1,0 +1,36 @@
+{
+  "sceneId": "partial-derivative-as-slice",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/partial-derivative-as-slice/scene.mp3",
+  "durationSec": 47.55,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "What does a partial derivative actually mean? Freeze one variable, and slice."
+    },
+    {
+      "id": "surfaceAndPlane",
+      "audioStart": 5.91,
+      "narration": "Here is a surface. To compute the partial of f with respect to x at a point, hold y fixed at the y-value of that point. That horizontal plane cuts the surface in a curve."
+    },
+    {
+      "id": "sliceCurveZoom",
+      "audioStart": 17.46,
+      "narration": "Look at the slice on its own. It is a curve in one variable — height versus x — and the partial of f with respect to x is just the slope of that curve at the point."
+    },
+    {
+      "id": "scrubSlicePlane",
+      "audioStart": 28.02,
+      "narration": "Now scrub the slice plane up and down. The slice curve changes shape and the slope at the point changes with it. The partial f_x is itself a function of where you stand."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 38.59,
+      "narration": "Partial of f with respect to x: freeze y, slice, read the slope. The other partial just swaps which axis you freeze."
+    }
+  ]
+}
