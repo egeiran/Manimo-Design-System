@@ -1,0 +1,36 @@
+{
+  "sceneId": "angle-preservation-by-rotation",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/angle-preservation-by-rotation/scene.mp3",
+  "durationSec": 40.03,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Rotate the whole picture. Does the dot product change?"
+    },
+    {
+      "id": "setup",
+      "audioStart": 3.88,
+      "narration": "Start with two vectors u and v. Compute their dot product and note the angle between them."
+    },
+    {
+      "id": "rotationSweep",
+      "audioStart": 9.61,
+      "narration": "Multiply both vectors by the rotation matrix R of alpha. As alpha sweeps, both vectors swing together. Their dot product holds steady — the angle between them never changes."
+    },
+    {
+      "id": "whyItHolds",
+      "audioStart": 21.64,
+      "narration": "Why? Because R transpose R equals the identity. The dot product is u transpose v — and the R cancels itself out inside."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 31.7,
+      "narration": "Rotations are rigid motions. Lengths, angles, dot products — all invariant. The geometry travels with the vectors."
+    }
+  ]
+}

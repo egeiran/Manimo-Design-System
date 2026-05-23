@@ -1,0 +1,41 @@
+{
+  "sceneId": "qr-factorisation-via-gram-schmidt",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/qr-factorisation-via-gram-schmidt/scene.mp3",
+  "durationSec": 53.13,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Gram–Schmidt cleans up the columns of a matrix — what is left behind?"
+    },
+    {
+      "id": "matrixA",
+      "audioStart": 4.85,
+      "narration": "Take a matrix A. Read it column by column — these two columns are the vectors we will orthogonalise."
+    },
+    {
+      "id": "step1q1",
+      "audioStart": 11.66,
+      "narration": "Step one: normalise a one. Divide by its length. That is q one — a unit vector pointing along a one."
+    },
+    {
+      "id": "step2q2",
+      "audioStart": 19.01,
+      "narration": "Step two: subtract from a two the part that lies along q one. The residual is perpendicular to q one. Normalise it — that is q two."
+    },
+    {
+      "id": "matrixR",
+      "audioStart": 29.63,
+      "narration": "Read off the matrix R. Down the diagonal sit the lengths r one one and r two two. Above the diagonal sits r one two — the projection coefficient. Zero below. R is upper triangular."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 43.35,
+      "narration": "Q carries the geometry — orthonormal directions. R carries the bookkeeping — the lengths and the projections. Together they rebuild A."
+    }
+  ]
+}

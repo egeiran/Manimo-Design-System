@@ -3119,6 +3119,80 @@
       ],
       "subject_id": "mat2b",
       "chapter_number": 2
+    },
+    {
+      "id": "cauchy-schwarz-inequality",
+      "file": "cauchy-schwarz-inequality.jsx",
+      "html": "cauchy-schwarz-inequality.html",
+      "spec": "cauchy-schwarz-inequality.spec.json",
+      "title": "Cauchy–Schwarz: The Dot Product Has a Ceiling",
+      "eyebrow": "inner product spaces",
+      "topic": "The Cauchy–Schwarz inequality caps the dot product by the product of lengths: |u·v| ≤ ‖u‖·‖v‖. Sweeping the angle traces u·v between the two horizontal ceilings ±‖u‖·‖v‖ and shows equality at θ = 0 and θ = π. This is the bound that lets cos θ live in [−1, 1].",
+      "duration": 44,
+      "language": "en",
+      "prerequisites": [
+        "inner-product-geometry"
+      ],
+      "concepts": [
+        "Cauchy–Schwarz inequality",
+        "inner product bound",
+        "cosine of angle",
+        "parallel vectors",
+        "norm product",
+        "equality condition"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 3
+    },
+    {
+      "id": "qr-factorisation-via-gram-schmidt",
+      "file": "qr-factorisation-via-gram-schmidt.jsx",
+      "html": "qr-factorisation-via-gram-schmidt.html",
+      "spec": "qr-factorisation-via-gram-schmidt.spec.json",
+      "title": "QR: Gram–Schmidt as a Matrix Factorisation",
+      "eyebrow": "QR decomposition",
+      "topic": "Gram–Schmidt packaged as a matrix factorisation A = QR. Normalise a₁ to q₁; subtract the projection of a₂ onto q₁ to get a perpendicular residual e₂; normalise e₂ to q₂. The lengths and projection coefficients pile up into an upper-triangular R; the orthonormal directions go into Q. A is rebuilt as Q times R.",
+      "duration": 55,
+      "language": "en",
+      "prerequisites": [
+        "gram-schmidt-2d-then-3d",
+        "projection-onto-line"
+      ],
+      "concepts": [
+        "QR factorisation",
+        "Gram–Schmidt process",
+        "orthonormal columns",
+        "upper triangular matrix",
+        "projection coefficient",
+        "matrix decomposition"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 3
+    },
+    {
+      "id": "angle-preservation-by-rotation",
+      "file": "angle-preservation-by-rotation.jsx",
+      "html": "angle-preservation-by-rotation.html",
+      "spec": "angle-preservation-by-rotation.spec.json",
+      "title": "Rotations Preserve the Dot Product",
+      "eyebrow": "orthogonal transformations",
+      "topic": "An orthogonal matrix R satisfies RᵀR = I, so ⟨Ru, Rv⟩ = uᵀRᵀRv = ⟨u, v⟩. Sweep the rotation angle continuously and watch the live dot product stay constant while both vectors swing together — lengths, the angle between them, and the inner product all invariant. The algebraic chain (Ru)ᵀ(Rv) = uᵀIv = ⟨u,v⟩ closes the argument.",
+      "duration": 42,
+      "language": "en",
+      "prerequisites": [
+        "inner-product-geometry",
+        "rotation-matrix-family"
+      ],
+      "concepts": [
+        "orthogonal matrix",
+        "inner product invariance",
+        "rigid motion",
+        "angle preservation",
+        "length preservation",
+        "RᵀR = I"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 3
     }
   ]
 }

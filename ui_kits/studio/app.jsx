@@ -142,6 +142,9 @@ const initialScenes = [
   { id: 'live-gaussian-elimination-2d', kind: 'live', kindLabel: 'Live', cardTitle: 'Gaussian Elimination: Two Lines, One Point', duration: '0:49', html: '../../motion/mat2b/gaussian-elimination-2d.html' },
   { id: 'live-matrix-product-as-composition', kind: 'live', kindLabel: 'Live', cardTitle: 'AB Means B First, Then A', duration: '0:44', html: '../../motion/mat2b/matrix-product-as-composition.html' },
   { id: 'live-rotation-matrix-family', kind: 'live', kindLabel: 'Live', cardTitle: 'Rotation Matrices Add Their Angles', duration: '0:54', html: '../../motion/mat2b/rotation-matrix-family.html' },
+  { id: 'live-cauchy-schwarz-inequality', kind: 'live', kindLabel: 'Live', cardTitle: 'Cauchy–Schwarz: The Dot Product Has a Ceiling', duration: '0:43', html: '../../motion/mat2b/cauchy-schwarz-inequality.html' },
+  { id: 'live-qr-factorisation-via-gram-schmidt', kind: 'live', kindLabel: 'Live', cardTitle: 'QR: Gram–Schmidt as a Matrix Factorisation', duration: '0:54', html: '../../motion/mat2b/qr-factorisation-via-gram-schmidt.html' },
+  { id: 'live-angle-preservation-by-rotation', kind: 'live', kindLabel: 'Live', cardTitle: 'Rotations Preserve the Dot Product', duration: '0:41', html: '../../motion/mat2b/angle-preservation-by-rotation.html' },
 ];
 
 function loadJSON(key, fallback) {
