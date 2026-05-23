@@ -139,6 +139,9 @@ const initialScenes = [
   { id: 'live-quadratic-taylor-approximation', kind: 'live', kindLabel: 'Live', cardTitle: 'Quadratic Taylor: A Plane Curves Into a Bowl', duration: '1:01', html: '../../motion/mat2b/quadratic-taylor-approximation.html' },
   { id: 'live-partial-derivative-as-slice', kind: 'live', kindLabel: 'Live', cardTitle: 'Partial Derivatives: Slice the Surface', duration: '0:49', html: '../../motion/mat2b/partial-derivative-as-slice.html' },
   { id: 'live-clairaut-mixed-partials', kind: 'live', kindLabel: 'Live', cardTitle: "Clairaut's Theorem: Order Doesn't Matter", duration: '1:08', html: '../../motion/mat2b/clairaut-mixed-partials.html' },
+  { id: 'live-gaussian-elimination-2d', kind: 'live', kindLabel: 'Live', cardTitle: 'Gaussian Elimination: Two Lines, One Point', duration: '0:49', html: '../../motion/mat2b/gaussian-elimination-2d.html' },
+  { id: 'live-matrix-product-as-composition', kind: 'live', kindLabel: 'Live', cardTitle: 'AB Means B First, Then A', duration: '0:44', html: '../../motion/mat2b/matrix-product-as-composition.html' },
+  { id: 'live-rotation-matrix-family', kind: 'live', kindLabel: 'Live', cardTitle: 'Rotation Matrices Add Their Angles', duration: '0:54', html: '../../motion/mat2b/rotation-matrix-family.html' },
 ];
 
 function loadJSON(key, fallback) {

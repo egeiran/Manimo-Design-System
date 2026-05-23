@@ -1,0 +1,36 @@
+{
+  "sceneId": "matrix-product-as-composition",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/matrix-product-as-composition/scene.mp3",
+  "durationSec": 44.44,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Two transformations, two orders. Does it matter which one you do first?"
+    },
+    {
+      "id": "setup",
+      "audioStart": 4.97,
+      "narration": "Take matrix A — a rotation by forty-five degrees. And matrix B — a stretch along x, a squeeze along y."
+    },
+    {
+      "id": "BthenA",
+      "audioStart": 13.53,
+      "narration": "Apply B first — the unit square stretches and squashes. Then apply A — the deformed square rotates. The single matrix A B captures both steps at once."
+    },
+    {
+      "id": "AthenB",
+      "audioStart": 24.6,
+      "narration": "Now swap the order. Apply A first, then B. The square rotates, then stretches — and lands somewhere different. The matrix B A is not the same as A B."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 35.89,
+      "narration": "A B means B first, then A — A acts last on whatever B produced. And in general, A B does not equal B A."
+    }
+  ]
+}

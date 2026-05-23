@@ -3045,6 +3045,80 @@
       ],
       "subject_id": "mat2b",
       "chapter_number": 5
+    },
+    {
+      "id": "gaussian-elimination-2d",
+      "file": "gaussian-elimination-2d.jsx",
+      "html": "gaussian-elimination-2d.html",
+      "spec": "gaussian-elimination-2d.spec.json",
+      "title": "Gaussian Elimination: Two Lines, One Point",
+      "eyebrow": "row reduction",
+      "topic": "Geometric meaning of Gaussian row reduction on a 2x2 system. The two lines tilt, slide, and become axis-aligned as row swaps and R2 ← R2 − 2·R1 are applied — but their intersection point, the unique solution (2, 1), stays pinned. Row operations change the picture of the lines without changing the truth they encode.",
+      "duration": 51,
+      "language": "en",
+      "prerequisites": [
+        "linear-transformation-grid"
+      ],
+      "concepts": [
+        "Gaussian elimination",
+        "row operations",
+        "augmented matrix",
+        "linear system",
+        "row-reduced echelon form",
+        "invariance of the solution"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 2
+    },
+    {
+      "id": "matrix-product-as-composition",
+      "file": "matrix-product-as-composition.jsx",
+      "html": "matrix-product-as-composition.html",
+      "spec": "matrix-product-as-composition.spec.json",
+      "title": "AB Means B First, Then A",
+      "eyebrow": "matrix multiplication",
+      "topic": "Matrix multiplication is function composition. Applying B then A to the unit square gives the same result as applying the single matrix AB. Swapping the order gives BA — a different parallelogram. Order is part of the operation: AB ≠ BA in general, and AB acts right-to-left (B first, then A).",
+      "duration": 46,
+      "language": "en",
+      "prerequisites": [
+        "matrix-as-function",
+        "linear-transformation-grid"
+      ],
+      "concepts": [
+        "matrix multiplication",
+        "function composition",
+        "non-commutativity",
+        "order of operations",
+        "rotation",
+        "scaling"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 2
+    },
+    {
+      "id": "rotation-matrix-family",
+      "file": "rotation-matrix-family.jsx",
+      "html": "rotation-matrix-family.html",
+      "spec": "rotation-matrix-family.spec.json",
+      "title": "Rotation Matrices Add Their Angles",
+      "eyebrow": "rotation matrices",
+      "topic": "The rotation matrix R(θ) parametrises plane rotations. Sweeping θ from 0 to 2π rotates the basis around the unit circle with the matrix entries updating live to cos θ / sin θ. Composing R(30°) and R(45°) lands at R(75°): the matrix product equals R(α + β). Matrix multiplication, written as angle addition — geometry hiding inside arithmetic.",
+      "duration": 56,
+      "language": "en",
+      "prerequisites": [
+        "linear-transformation-grid",
+        "matrix-product-as-composition"
+      ],
+      "concepts": [
+        "rotation matrix",
+        "orthogonal matrix",
+        "matrix multiplication",
+        "angle addition",
+        "unit circle",
+        "cos / sin parametrisation"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 2
     }
   ]
 }

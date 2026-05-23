@@ -1,0 +1,151 @@
+{
+  "id": "matrix-product-as-composition",
+  "title": "AB Means B First, Then A",
+  "eyebrow": "matrix multiplication",
+  "language": "en",
+  "duration": 46,
+  "topic": "Matrix multiplication is function composition. Applying B then A gives AB. Order matters: AB ≠ BA in general.",
+  "subject_id": "mat2b",
+  "chapter_number": 2,
+  "prerequisites": [
+    "matrix-as-function",
+    "linear-transformation-grid"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.97,
+      "narration": "Two transformations, two orders. Does it matter which one you do first?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Which order matters?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "setup",
+      "start": 4.97,
+      "end": 13.53,
+      "narration": "Take matrix A — a rotation by forty-five degrees. And matrix B — a stretch along x, a squeeze along y.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Standard grid with unit square highlighted",
+            "delay": 0,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Matrix A (rotation) panel — top right",
+            "delay": 1.2,
+            "color": "var(--violet-300)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Matrix B (stretch/squeeze) panel — below A",
+            "delay": 3.2,
+            "color": "var(--teal-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "BthenA",
+      "start": 13.53,
+      "end": 24.6,
+      "narration": "Apply B first — the unit square stretches and squashes. Then apply A — the deformed square rotates. The single matrix A B captures both steps at once.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "Unit square morphs from identity → B (stretched parallelogram)",
+            "delay": 1,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Then morphs from B → BA-applied (rotated stretched parallelogram)",
+            "delay": 6.5,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "AB matrix appears alongside, highlighting it equals the same final result",
+            "delay": 12,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "AthenB",
+      "start": 24.6,
+      "end": 35.89,
+      "narration": "Now swap the order. Apply A first, then B. The square rotates, then stretches — and lands somewhere different. The matrix B A is not the same as A B.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "Left pane: AB result (parallelogram from previous beat) shown faded",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Right pane: A then B sequence — unit square rotates then stretches, ending in different shape",
+            "delay": 1.5,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-label",
+            "content": "Side-by-side comparison: AB vs BA, both parallelograms shown together",
+            "delay": 9,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 35.89,
+      "end": 46,
+      "narration": "A B means B first, then A — A acts last on whatever B produced. And in general, A B does not equal B A.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "AB acts right-to-left: B first, then A.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-caption",
+            "content": "AB ≠ BA in general — order is part of the operation.",
+            "delay": 2.5,
+            "color": "var(--amber-300)",
+            "position": "centre, smaller"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "sceneId": "rotation-matrix-family",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/rotation-matrix-family/scene.mp3",
+  "durationSec": 54.06,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "What does a rotation matrix actually do — and what happens when you multiply two of them?"
+    },
+    {
+      "id": "definition",
+      "audioStart": 5.63,
+      "narration": "The rotation matrix R of theta has cosine on the diagonal and sine off it, with one minus sign. Its columns are where e one and e two land after rotating by theta."
+    },
+    {
+      "id": "sweepTheta",
+      "audioStart": 18.16,
+      "narration": "Sweep theta from zero all the way around. The basis vectors trace circles. Both columns rotate together, locked ninety degrees apart — that is what keeps R orthogonal."
+    },
+    {
+      "id": "angleAddition",
+      "audioStart": 29.56,
+      "narration": "Apply R of thirty degrees, then R of forty-five degrees. The grid rotates by seventy-five — the angles add. So the matrix product equals R of alpha plus beta. Matrix multiplication becomes angle addition."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 44.8,
+      "narration": "A rotation matrix turns the plane by its angle. Multiplying two rotations adds their angles — geometry hiding inside matrix arithmetic."
+    }
+  ]
+}
