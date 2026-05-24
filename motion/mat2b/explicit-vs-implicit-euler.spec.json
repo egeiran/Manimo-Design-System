@@ -1,0 +1,186 @@
+{
+  "id": "explicit-vs-implicit-euler",
+  "subject_id": "mat2b",
+  "chapter_number": 4,
+  "week": 9,
+  "title": "Explicit vs Implicit: Why Backward Euler Stays Stable",
+  "eyebrow": "numerical ODEs",
+  "language": "en",
+  "duration": 75,
+  "topic": "Forward (explicit) Euler reads the slope at the current point; backward (implicit) Euler reads it at the next point, so the unknown appears on both sides and must be solved for. On the test problem y' = -λy, forward Euler multiplies by (1 - hλ) each step and blows up once h exceeds 2/λ, while backward Euler divides by (1 + hλ) and decays for any step. Implicitness costs a solve per step but buys unconditional stability — the reason implicit methods exist for stiff problems.",
+  "concepts": [
+    "explicit method",
+    "implicit method",
+    "forward Euler",
+    "backward Euler",
+    "numerical stability",
+    "stiff equation"
+  ],
+  "pairs_with": [
+    "chapter_concepts: Eulers metoder",
+    "chapter_concepts: konvergens av numeriske metoder",
+    "chapter_concepts: stabilitet"
+  ],
+  "prerequisites": [
+    "euler-step"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 9.39,
+      "narration": "A solution that decays fast should fade quietly to zero. Push the step size, though, and one method blows up while the other stays calm.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs centre",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Hook: same equation, two fates.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "forwardSlope",
+      "start": 9.39,
+      "end": 18.51,
+      "narration": "Forward Euler reads the slope where you are right now, then steps. It is explicit and cheap, and for a small step it tracks the decay nicely.",
+      "visuals": {
+        "layout": "graph + side panel",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "True decay e^{-λt} in violet",
+            "delay": 0.3,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Forward Euler polyline in rose, small step, tracking the decay",
+            "delay": 1,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "yₙ₊₁ = yₙ + h·f(tₙ, yₙ)",
+            "delay": 1.4,
+            "color": "var(--rose-300)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "implicitIdea",
+      "start": 18.51,
+      "end": 34.9,
+      "narration": "Backward Euler instead uses the slope at the point you are stepping to. Now the unknown appears on both sides, so you must solve for the landing point — slide it until the slope there is consistent. For this decay the answer is simply the old value divided by one plus h lambda.",
+      "visuals": {
+        "layout": "single-step zoom",
+        "elements": [
+          {
+            "type": "svg-arrow",
+            "content": "Forward step uses the slope at the start; backward step uses the slope at the (unknown) end",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "The landing point slides until the chord's slope matches the slope field at the endpoint",
+            "delay": 2,
+            "color": "var(--teal-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "stabilitySweep",
+      "start": 34.9,
+      "end": 50.65,
+      "narration": "Now raise the step size. Past the stability limit, forward Euler's growth factor is bigger than one in size, so it overshoots, flips sign, and the swing grows. Backward Euler divides by something larger than one every step, so it can only shrink.",
+      "visuals": {
+        "layout": "graph + side panel",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "Sweep h upward; forward Euler (rose) oscillates with growing amplitude while backward Euler (teal) stays glued to the decay",
+            "delay": 0.4,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Live readout of h and the forward growth factor 1 - hλ, flagged stable or unstable",
+            "delay": 0.6,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "factors",
+      "start": 50.65,
+      "end": 64.96,
+      "narration": "Each forward step multiplies by one minus h lambda. Each backward step divides by one plus h lambda. The first can exceed one in size; the second never can, so backward Euler is stable for any step.",
+      "visuals": {
+        "layout": "two-card compare",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "forward: yₙ₊₁ = (1 − hλ) yₙ",
+            "delay": 0.4,
+            "color": "var(--rose-300)",
+            "position": "left card"
+          },
+          {
+            "type": "text-formula",
+            "content": "backward: yₙ₊₁ = yₙ / (1 + hλ)",
+            "delay": 1.2,
+            "color": "var(--teal-400)",
+            "position": "right card"
+          }
+        ]
+      }
+    },
+    {
+      "id": "heroOutro",
+      "start": 64.96,
+      "end": 75,
+      "narration": "Implicit methods cost a solve each step, but they buy stability with no limit on the step. That is why they exist for stiff problems.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-title",
+            "content": "STABILITY, NOT JUST ACCURACY",
+            "delay": 0,
+            "color": "var(--amber-300)",
+            "position": "centre-top eyebrow"
+          },
+          {
+            "type": "text-title",
+            "content": "Implicit costs a solve — and buys any step size.",
+            "delay": 0.35,
+            "color": "var(--chalk-100)",
+            "position": "centre"
+          },
+          {
+            "type": "text-caption",
+            "content": "The reason backward methods exist for stiff problems.",
+            "delay": 1.4,
+            "color": "var(--chalk-200)",
+            "position": "below hero"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "id": "numerical-orbit-energy-drift",
+  "subject_id": "mat2b",
+  "chapter_number": 4,
+  "week": 10,
+  "title": "Numerical Orbits: Why Euler Spirals Off",
+  "eyebrow": "numerical ODEs · systems",
+  "language": "en",
+  "duration": 67,
+  "topic": "Integrating a system of ODEs in the phase plane. The undamped oscillator x' = v, v' = -x has circular orbits of constant energy x^2 + v^2. Forward Euler steps along the tangent, which points just outside the circle, so each step multiplies the radius by sqrt(1 + h^2) > 1 and the orbit spirals outward — the method silently injects energy. A fourth-order RK step at the same step size lands back on the circle lap after lap. Local accuracy is not the whole story; a method's geometry decides whether an invariant like energy is preserved.",
+  "concepts": [
+    "system of ODEs",
+    "phase plane",
+    "energy drift",
+    "forward Euler",
+    "Runge-Kutta",
+    "harmonic oscillator"
+  ],
+  "pairs_with": [
+    "chapter_concepts: numeriske metoder for systemer",
+    "chapter_concepts: Eulers metoder",
+    "chapter_concepts: Runge-Kutta"
+  ],
+  "prerequisites": [
+    "second-order-to-system",
+    "euler-step"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.41,
+      "narration": "A frictionless oscillator should trace the very same loop forever. Step it carelessly, though, and the loop slowly inflates.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs centre",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Hook: the loop that won't stay put.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "systemSetup",
+      "start": 7.41,
+      "end": 21.9,
+      "narration": "Write the swing as a system. The rate of position is the velocity, and the rate of velocity is minus the position. In the phase plane of position against velocity, the true motion is a circle, and its radius, the energy, never changes.",
+      "visuals": {
+        "layout": "phase plane + side panel",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Phase-plane axes x (horizontal), v (vertical)",
+            "delay": 0.2,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "True circular orbit (radius = energy) in violet, with a dot orbiting it",
+            "delay": 0.8,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "x′ = v,  v′ = −x   |   E = x² + v²",
+            "delay": 1.4,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "eulerOrbit",
+      "start": 21.9,
+      "end": 34.18,
+      "narration": "Step it with forward Euler. Each step darts along the tangent, which points a touch outside the circle, so the orbit creeps outward, lap after lap. The method is quietly pumping in energy.",
+      "visuals": {
+        "layout": "phase plane + side panel",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "Forward Euler orbit spiralling outward from the unit circle (rose)",
+            "delay": 0.4,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Live energy readout x² + v² climbing above 1",
+            "delay": 0.6,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "compareRK4",
+      "start": 34.18,
+      "end": 45.65,
+      "narration": "Switch to a fourth order step at the very same step size. It samples the field across the interval and lands back on the circle every lap. Same number of steps, almost no drift.",
+      "visuals": {
+        "layout": "phase plane + side panel",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "RK4 orbit (teal) staying on the true circle while the Euler spiral (rose, faded) drifts out",
+            "delay": 0.4,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Energy readout: RK4 stays near 1, Euler keeps climbing",
+            "delay": 0.6,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "why",
+      "start": 45.65,
+      "end": 56.48,
+      "narration": "Each forward Euler step multiplies the distance from the origin by the square root of one plus h squared. Just over one, so the radius grows a sliver every single step.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "‖(xₙ₊₁, vₙ₊₁)‖ = √(1 + h²) · ‖(xₙ, vₙ)‖",
+            "delay": 0.4,
+            "color": "var(--amber-300)",
+            "position": "centre payoff"
+          },
+          {
+            "type": "text-caption",
+            "content": "√(1 + h²) > 1 → radius grows every step",
+            "delay": 1.6,
+            "color": "var(--chalk-200)",
+            "position": "below formula"
+          }
+        ]
+      }
+    },
+    {
+      "id": "heroOutro",
+      "start": 56.48,
+      "end": 67,
+      "narration": "Local accuracy is not the whole story. The geometry of a method decides whether energy is kept. Match the method to the structure of the problem.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-title",
+            "content": "GEOMETRY, NOT JUST ACCURACY",
+            "delay": 0,
+            "color": "var(--amber-300)",
+            "position": "centre-top eyebrow"
+          },
+          {
+            "type": "text-title",
+            "content": "A method can conserve — or quietly destroy.",
+            "delay": 0.35,
+            "color": "var(--chalk-100)",
+            "position": "centre"
+          },
+          {
+            "type": "text-caption",
+            "content": "Match the method to the structure of the problem.",
+            "delay": 1.4,
+            "color": "var(--chalk-200)",
+            "position": "below hero"
+          }
+        ]
+      }
+    }
+  ]
+}

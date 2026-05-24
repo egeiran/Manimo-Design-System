@@ -148,6 +148,9 @@ const initialScenes = [
   { id: 'live-gradient-descent-on-contours', kind: 'live', kindLabel: 'Live', cardTitle: 'Gradient Descent: Walking Downhill', duration: '0:47', html: '../../motion/mat2b/gradient-descent-on-contours.html' },
   { id: 'live-extrema-on-a-circle', kind: 'live', kindLabel: 'Live', cardTitle: 'Extrema on a Circle: Sweep the Boundary', duration: '0:44', html: '../../motion/mat2b/extrema-on-a-circle.html' },
   { id: 'live-the-saddle-point', kind: 'live', kindLabel: 'Live', cardTitle: 'The Saddle Point: Up One Way, Down the Other', duration: '0:50', html: '../../motion/mat2b/the-saddle-point.html' },
+  { id: 'live-heun-improved-euler', kind: 'live', kindLabel: 'Live', cardTitle: "Heun's Method: Predict, Then Correct", duration: '1:04', html: '../../motion/mat2b/heun-improved-euler.html' },
+  { id: 'live-explicit-vs-implicit-euler', kind: 'live', kindLabel: 'Live', cardTitle: 'Explicit vs Implicit: Backward Euler Stays Stable', duration: '1:15', html: '../../motion/mat2b/explicit-vs-implicit-euler.html' },
+  { id: 'live-numerical-orbit-energy-drift', kind: 'live', kindLabel: 'Live', cardTitle: 'Numerical Orbits: Why Euler Spirals Off', duration: '1:07', html: '../../motion/mat2b/numerical-orbit-energy-drift.html' },
 ];
 
 function loadJSON(key, fallback) {

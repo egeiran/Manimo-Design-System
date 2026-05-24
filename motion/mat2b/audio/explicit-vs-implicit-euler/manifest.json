@@ -1,0 +1,41 @@
+{
+  "sceneId": "explicit-vs-implicit-euler",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/explicit-vs-implicit-euler/scene.mp3",
+  "durationSec": 73.28,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "A solution that decays fast should fade quietly to zero. Push the step size, though, and one method blows up while the other stays calm."
+    },
+    {
+      "id": "forwardSlope",
+      "audioStart": 9.39,
+      "narration": "Forward Euler reads the slope where you are right now, then steps. It is explicit and cheap, and for a small step it tracks the decay nicely."
+    },
+    {
+      "id": "implicitIdea",
+      "audioStart": 18.51,
+      "narration": "Backward Euler instead uses the slope at the point you are stepping to. Now the unknown appears on both sides, so you must solve for the landing point — slide it until the slope there is consistent. For this decay the answer is simply the old value divided by one plus h lambda."
+    },
+    {
+      "id": "stabilitySweep",
+      "audioStart": 34.9,
+      "narration": "Now raise the step size. Past the stability limit, forward Euler's growth factor is bigger than one in size, so it overshoots, flips sign, and the swing grows. Backward Euler divides by something larger than one every step, so it can only shrink."
+    },
+    {
+      "id": "factors",
+      "audioStart": 50.65,
+      "narration": "Each forward step multiplies by one minus h lambda. Each backward step divides by one plus h lambda. The first can exceed one in size; the second never can, so backward Euler is stable for any step."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 64.96,
+      "narration": "Implicit methods cost a solve each step, but they buy stability with no limit on the step. That is why they exist for stiff problems."
+    }
+  ]
+}

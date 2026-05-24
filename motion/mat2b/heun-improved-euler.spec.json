@@ -1,0 +1,199 @@
+{
+  "id": "heun-improved-euler",
+  "subject_id": "mat2b",
+  "chapter_number": 4,
+  "week": 11,
+  "title": "Heun's Method: Predict, Then Correct",
+  "eyebrow": "numerical ODEs",
+  "language": "en",
+  "duration": 64,
+  "topic": "Heun's method (improved Euler, explicit trapezoidal rule, Runge-Kutta of order 2). Plain Euler reads the slope only at the start of a step and drifts on a curving solution. Heun first predicts the endpoint with an ordinary Euler step, then evaluates the slope there and averages the two slopes to take the real step: k1 = f(t_n, y_n), k2 = f(t_n + h, y_n + h k1), y_{n+1} = y_n + (h/2)(k1 + k2). One extra slope evaluation lifts the order from one to two.",
+  "concepts": [
+    "Heun's method",
+    "improved Euler",
+    "predictor-corrector",
+    "Runge-Kutta order 2",
+    "explicit trapezoidal rule",
+    "slope averaging"
+  ],
+  "pairs_with": [
+    "chapter_concepts: Runge-Kutta",
+    "chapter_concepts: Eulers metoder",
+    "chapter_concepts: orden"
+  ],
+  "prerequisites": [
+    "euler-step"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.58,
+      "narration": "Euler takes one slope per step, and on a curving solution it drifts. What if we looked ahead before committing to a step?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs centre",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Hook: look ahead before you step.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "eulerDrift",
+      "start": 7.58,
+      "end": 17.5,
+      "narration": "Here Euler reads the slope only at the start of each step. Because the true curve keeps bending away, every step lands a little short, and the gap grows.",
+      "visuals": {
+        "layout": "graph + side panel",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "True solution y = e^t in violet",
+            "delay": 0.3,
+            "color": "var(--violet-400)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Euler polyline in rose, three steps, drifting below the true curve",
+            "delay": 1,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "Euler uses the start-of-step slope only.",
+            "delay": 2.4,
+            "color": "var(--chalk-200)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "predictCorrect",
+      "start": 17.5,
+      "end": 30.65,
+      "narration": "Heun's idea has two stages. First, predict the endpoint with an ordinary Euler step. Then read the slope at that predicted point, average it with the starting slope, and take the real step with that average.",
+      "visuals": {
+        "layout": "single-step zoom",
+        "elements": [
+          {
+            "type": "svg-arrow",
+            "content": "Predictor: Euler tangent from the start point reaching a ghost point at the interval end",
+            "delay": 0.6,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-arrow",
+            "content": "Slope sample at the predicted point",
+            "delay": 3.5,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-arrow",
+            "content": "Averaged-slope chord landing the corrected point near the true curve",
+            "delay": 6.5,
+            "color": "var(--teal-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "formula",
+      "start": 30.65,
+      "end": 45.57,
+      "narration": "Write it down. k one is the slope at the start, k two the slope at the predicted point, and the step adds h times their average. One extra evaluation, and the accuracy jumps to order two, a Runge Kutta method of order two.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "k₁ = f(tₙ, yₙ)",
+            "delay": 0.4,
+            "color": "var(--chalk-200)",
+            "position": "centre"
+          },
+          {
+            "type": "text-formula",
+            "content": "k₂ = f(tₙ + h, yₙ + h k₁)",
+            "delay": 1.2,
+            "color": "var(--chalk-200)",
+            "position": "centre"
+          },
+          {
+            "type": "text-formula",
+            "content": "yₙ₊₁ = yₙ + (h/2)(k₁ + k₂)",
+            "delay": 2.2,
+            "color": "var(--amber-300)",
+            "position": "centre payoff"
+          }
+        ]
+      }
+    },
+    {
+      "id": "marchHeun",
+      "start": 45.57,
+      "end": 55.67,
+      "narration": "Now march the whole interval with that averaged slope. Heun's points hug the true curve while plain Euler keeps falling behind, at the very same step size.",
+      "visuals": {
+        "layout": "graph + side panel",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "True curve in violet with Heun's points marching along it (teal) and Euler drifting below (rose)",
+            "delay": 0.4,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Live readout of the error of each method at the current step",
+            "delay": 0.6,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "heroOutro",
+      "start": 55.67,
+      "end": 64,
+      "narration": "Predict with one slope, correct with the average of two. A little more work each step, a much closer fit.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-title",
+            "content": "PREDICT, THEN CORRECT",
+            "delay": 0,
+            "color": "var(--amber-300)",
+            "position": "centre-top eyebrow"
+          },
+          {
+            "type": "text-title",
+            "content": "One average of two slopes — order two.",
+            "delay": 0.35,
+            "color": "var(--chalk-100)",
+            "position": "centre"
+          },
+          {
+            "type": "text-caption",
+            "content": "Heun = improved Euler = explicit trapezoidal rule.",
+            "delay": 1.4,
+            "color": "var(--chalk-200)",
+            "position": "below hero"
+          }
+        ]
+      }
+    }
+  ]
+}
