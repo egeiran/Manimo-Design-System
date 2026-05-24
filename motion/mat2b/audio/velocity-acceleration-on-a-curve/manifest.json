@@ -1,0 +1,36 @@
+{
+  "sceneId": "velocity-acceleration-on-a-curve",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/velocity-acceleration-on-a-curve/scene.mp3",
+  "durationSec": 39.43,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "A dot races around a track. How do we capture its motion at a single instant?"
+    },
+    {
+      "id": "trace",
+      "audioStart": 4.89,
+      "narration": "A vector function r of t gives the position at each time t. As t runs forward, the tip sweeps out the whole curve."
+    },
+    {
+      "id": "velocity",
+      "audioStart": 13.46,
+      "narration": "The derivative r prime of t is the velocity. It always points along the path, tangent to the curve, and its length is the speed, which rises and falls as the dot goes around."
+    },
+    {
+      "id": "acceleration",
+      "audioStart": 24.85,
+      "narration": "The second derivative is the acceleration. For this loop it always points inward, toward the centre — that inward pull is what bends the straight-line motion into a curve."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 35.06,
+      "narration": "Velocity points along the path; acceleration points inward and bends it."
+    }
+  ]
+}

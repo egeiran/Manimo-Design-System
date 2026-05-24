@@ -1,0 +1,167 @@
+{
+  "id": "velocity-acceleration-on-a-curve",
+  "subject_id": "mat2b",
+  "chapter_number": 5,
+  "title": "Vector Functions: Velocity and Acceleration",
+  "eyebrow": "vector-valued functions",
+  "language": "en",
+  "duration": 41,
+  "topic": "A vector function r(t) = (x(t), y(t)) traces a curve. Its derivative r'(t) is the velocity — always tangent to the path, with length equal to the speed. The second derivative r''(t) is the acceleration. On the ellipse r(t) = (2.4 cos t, 1.4 sin t) the acceleration equals -r(t), so it always points back toward the centre, bending the motion into the loop.",
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 4.89,
+      "narration": "A dot races around a track. How do we capture its motion at a single instant?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs centre",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Position, velocity, acceleration — from one r(t).",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "trace",
+      "start": 4.89,
+      "end": 13.46,
+      "narration": "A vector function r of t gives the position at each time t. As t runs forward, the tip sweeps out the whole curve.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Ellipse traced out by a moving dot, amber",
+            "delay": 0.3,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "r(t) = (2.4 cos t, 1.4 sin t)",
+            "delay": 1.2,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "The tip draws the curve as t advances.",
+            "delay": 3,
+            "color": "var(--chalk-300)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "velocity",
+      "start": 13.46,
+      "end": 24.85,
+      "narration": "The derivative r prime of t is the velocity. It always points along the path, tangent to the curve, and its length is the speed, which rises and falls as the dot goes around.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Particle moving along the ellipse",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Velocity arrow r'(t) at the particle, tangent, teal",
+            "delay": 0.4,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "r'(t) = (−2.4 sin t, 1.4 cos t)",
+            "delay": 1,
+            "color": "var(--teal-400)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "Live speed |r'(t)| shown as a bar.",
+            "delay": 2.2,
+            "color": "var(--chalk-300)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "acceleration",
+      "start": 24.85,
+      "end": 35.06,
+      "narration": "The second derivative is the acceleration. For this loop it always points inward, toward the centre — that inward pull is what bends the straight-line motion into a curve.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Particle moving; faint velocity arrow + bold acceleration arrow pointing inward",
+            "delay": 0,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "r''(t) = −r(t) → points to centre",
+            "delay": 1,
+            "color": "var(--rose-300)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "Acceleration bends the path.",
+            "delay": 2.4,
+            "color": "var(--chalk-300)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 35.06,
+      "end": 41,
+      "narration": "Velocity points along the path; acceleration points inward and bends it.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-eyebrow",
+            "content": "'VECTOR FUNCTIONS' mono eyebrow",
+            "delay": 0,
+            "color": "var(--amber-300)",
+            "position": "centre-top"
+          },
+          {
+            "type": "text-hero",
+            "content": "'Velocity along, acceleration inward.' serif italic",
+            "delay": 0.35,
+            "color": "var(--chalk-100)",
+            "position": "centre"
+          },
+          {
+            "type": "text-caption",
+            "content": "Differentiate the position once for velocity, twice for acceleration.",
+            "delay": 1.4,
+            "color": "var(--chalk-200)",
+            "position": "below hero"
+          }
+        ]
+      }
+    }
+  ]
+}

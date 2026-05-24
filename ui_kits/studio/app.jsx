@@ -151,6 +151,9 @@ const initialScenes = [
   { id: 'live-heun-improved-euler', kind: 'live', kindLabel: 'Live', cardTitle: "Heun's Method: Predict, Then Correct", duration: '1:04', html: '../../motion/mat2b/heun-improved-euler.html' },
   { id: 'live-explicit-vs-implicit-euler', kind: 'live', kindLabel: 'Live', cardTitle: 'Explicit vs Implicit: Backward Euler Stays Stable', duration: '1:15', html: '../../motion/mat2b/explicit-vs-implicit-euler.html' },
   { id: 'live-numerical-orbit-energy-drift', kind: 'live', kindLabel: 'Live', cardTitle: 'Numerical Orbits: Why Euler Spirals Off', duration: '1:07', html: '../../motion/mat2b/numerical-orbit-energy-drift.html' },
+  { id: 'live-implicit-slope-on-a-level-curve', kind: 'live', kindLabel: 'Live', cardTitle: 'Implicit Differentiation: Slope Along a Level Curve', duration: '0:48', html: '../../motion/mat2b/implicit-slope-on-a-level-curve.html' },
+  { id: 'live-velocity-acceleration-on-a-curve', kind: 'live', kindLabel: 'Live', cardTitle: 'Vector Functions: Velocity and Acceleration', duration: '0:41', html: '../../motion/mat2b/velocity-acceleration-on-a-curve.html' },
+  { id: 'live-gradient-steepest-ascent', kind: 'live', kindLabel: 'Live', cardTitle: 'Why the Gradient Is Steepest: A Cosine of Heading', duration: '0:43', html: '../../motion/mat2b/gradient-steepest-ascent.html' },
 ];
 
 function loadJSON(key, fallback) {

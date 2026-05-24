@@ -3343,6 +3343,77 @@
       ],
       "subject_id": "mat2b",
       "chapter_number": 4
+    },
+    {
+      "id": "implicit-slope-on-a-level-curve",
+      "file": "implicit-slope-on-a-level-curve.jsx",
+      "html": "implicit-slope-on-a-level-curve.html",
+      "spec": "implicit-slope-on-a-level-curve.spec.json",
+      "title": "Implicit Differentiation: Slope Along a Level Curve",
+      "eyebrow": "implicit differentiation",
+      "topic": "A curve defined implicitly by f(x, y) = c has slope dy/dx = -f_x / f_y, because along the curve f is constant so its total differential vanishes (f_x dx + f_y dy = 0). The tangent is perpendicular to the gradient. Demonstrated on the tilted ellipse x^2 + xy + y^2 = 2 by sliding a point around it while the tangent and live slope readout track it.",
+      "duration": 48,
+      "language": "en",
+      "prerequisites": [
+        "gradient-and-level-curves"
+      ],
+      "concepts": [
+        "implicit differentiation",
+        "level curve",
+        "gradient",
+        "tangent line",
+        "partial derivative",
+        "total differential"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 5
+    },
+    {
+      "id": "velocity-acceleration-on-a-curve",
+      "file": "velocity-acceleration-on-a-curve.jsx",
+      "html": "velocity-acceleration-on-a-curve.html",
+      "spec": "velocity-acceleration-on-a-curve.spec.json",
+      "title": "Vector Functions: Velocity and Acceleration",
+      "eyebrow": "vector-valued functions",
+      "topic": "A vector function r(t) = (x(t), y(t)) traces a curve. The first derivative r'(t) is the velocity — always tangent to the path, with length equal to the speed; the second derivative r''(t) is the acceleration. On the ellipse r(t) = (2.4 cos t, 1.4 sin t) the acceleration equals -r(t), so it always points back toward the centre and bends the motion into the loop.",
+      "duration": 41,
+      "language": "en",
+      "prerequisites": [],
+      "concepts": [
+        "vector-valued function",
+        "parametrised curve",
+        "velocity",
+        "acceleration",
+        "tangent vector",
+        "speed"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 5
+    },
+    {
+      "id": "gradient-steepest-ascent",
+      "file": "gradient-steepest-ascent.jsx",
+      "html": "gradient-steepest-ascent.html",
+      "spec": "gradient-steepest-ascent.spec.json",
+      "title": "Why the Gradient Is Steepest: A Cosine of Heading",
+      "eyebrow": "steepest ascent",
+      "topic": "At a point, the directional derivative in unit heading u is D_u f = grad f . u = |grad f| cos(theta). As the heading rotates a full turn, the climb rate traces a cosine: maximum when u aligns with the gradient (steepest ascent), zero along the level curve, minimum opposite (steepest descent). That cosine is why the gradient is the direction of fastest increase.",
+      "duration": 43,
+      "language": "en",
+      "prerequisites": [
+        "gradient-and-level-curves",
+        "directional-derivative"
+      ],
+      "concepts": [
+        "gradient",
+        "directional derivative",
+        "steepest ascent",
+        "cosine",
+        "dot product",
+        "level curve"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 5
     }
   ]
 }
