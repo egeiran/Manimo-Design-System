@@ -3270,6 +3270,79 @@
       ],
       "subject_id": "mat2b",
       "chapter_number": 6
+    },
+    {
+      "id": "heun-improved-euler",
+      "file": "heun-improved-euler.jsx",
+      "html": "heun-improved-euler.html",
+      "spec": "heun-improved-euler.spec.json",
+      "title": "Heun's Method: Predict, Then Correct",
+      "eyebrow": "numerical ODEs",
+      "topic": "Heun's method (improved Euler / explicit trapezoidal rule / Runge-Kutta order 2). Plain Euler reads only the start-of-step slope and drifts on a curving solution; Heun predicts the endpoint with an Euler step, samples the slope there, and steps with the average of the two slopes — one extra evaluation lifts the order from one to two.",
+      "duration": 64,
+      "language": "en",
+      "prerequisites": [
+        "euler-step"
+      ],
+      "concepts": [
+        "Heun's method",
+        "improved Euler",
+        "predictor-corrector",
+        "Runge-Kutta order 2",
+        "explicit trapezoidal rule",
+        "slope averaging"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 4
+    },
+    {
+      "id": "explicit-vs-implicit-euler",
+      "file": "explicit-vs-implicit-euler.jsx",
+      "html": "explicit-vs-implicit-euler.html",
+      "spec": "explicit-vs-implicit-euler.spec.json",
+      "title": "Explicit vs Implicit: Why Backward Euler Stays Stable",
+      "eyebrow": "numerical ODEs",
+      "topic": "Forward (explicit) Euler reads the slope at the current point; backward (implicit) Euler reads it at the next point, so the unknown appears on both sides and must be solved. On y' = -λy, forward Euler multiplies by (1 - hλ) and blows up once h exceeds 2/λ, while backward Euler divides by (1 + hλ) and decays for any step — implicitness costs a solve per step but buys unconditional stability for stiff problems.",
+      "duration": 75,
+      "language": "en",
+      "prerequisites": [
+        "euler-step"
+      ],
+      "concepts": [
+        "explicit method",
+        "implicit method",
+        "forward Euler",
+        "backward Euler",
+        "numerical stability",
+        "stiff equation"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 4
+    },
+    {
+      "id": "numerical-orbit-energy-drift",
+      "file": "numerical-orbit-energy-drift.jsx",
+      "html": "numerical-orbit-energy-drift.html",
+      "spec": "numerical-orbit-energy-drift.spec.json",
+      "title": "Numerical Orbits: Why Euler Spirals Off",
+      "eyebrow": "numerical ODEs · systems",
+      "topic": "Integrating a system of ODEs in the phase plane. The oscillator x' = v, v' = -x has circular orbits of constant energy x^2 + v^2. Forward Euler steps along the tangent and multiplies the radius by sqrt(1 + h^2) > 1 each step, so the orbit spirals outward (energy injected); a fourth-order RK step at the same h stays on the circle. A method's geometry, not just its local accuracy, decides whether an invariant like energy is preserved.",
+      "duration": 67,
+      "language": "en",
+      "prerequisites": [
+        "second-order-to-system",
+        "euler-step"
+      ],
+      "concepts": [
+        "system of ODEs",
+        "phase plane",
+        "energy drift",
+        "forward Euler",
+        "Runge-Kutta",
+        "harmonic oscillator"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 4
     }
   ]
 }

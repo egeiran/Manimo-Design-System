@@ -1,0 +1,41 @@
+{
+  "sceneId": "numerical-orbit-energy-drift",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/numerical-orbit-energy-drift/scene.mp3",
+  "durationSec": 65.48,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "A frictionless oscillator should trace the very same loop forever. Step it carelessly, though, and the loop slowly inflates."
+    },
+    {
+      "id": "systemSetup",
+      "audioStart": 7.41,
+      "narration": "Write the swing as a system. The rate of position is the velocity, and the rate of velocity is minus the position. In the phase plane of position against velocity, the true motion is a circle, and its radius, the energy, never changes."
+    },
+    {
+      "id": "eulerOrbit",
+      "audioStart": 21.9,
+      "narration": "Step it with forward Euler. Each step darts along the tangent, which points a touch outside the circle, so the orbit creeps outward, lap after lap. The method is quietly pumping in energy."
+    },
+    {
+      "id": "compareRK4",
+      "audioStart": 34.18,
+      "narration": "Switch to a fourth order step at the very same step size. It samples the field across the interval and lands back on the circle every lap. Same number of steps, almost no drift."
+    },
+    {
+      "id": "why",
+      "audioStart": 45.65,
+      "narration": "Each forward Euler step multiplies the distance from the origin by the square root of one plus h squared. Just over one, so the radius grows a sliver every single step."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 56.48,
+      "narration": "Local accuracy is not the whole story. The geometry of a method decides whether energy is kept. Match the method to the structure of the problem."
+    }
+  ]
+}

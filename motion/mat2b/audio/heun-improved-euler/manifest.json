@@ -1,0 +1,41 @@
+{
+  "sceneId": "heun-improved-euler",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/heun-improved-euler/scene.mp3",
+  "durationSec": 62.14,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Euler takes one slope per step, and on a curving solution it drifts. What if we looked ahead before committing to a step?"
+    },
+    {
+      "id": "eulerDrift",
+      "audioStart": 7.58,
+      "narration": "Here Euler reads the slope only at the start of each step. Because the true curve keeps bending away, every step lands a little short, and the gap grows."
+    },
+    {
+      "id": "predictCorrect",
+      "audioStart": 17.5,
+      "narration": "Heun's idea has two stages. First, predict the endpoint with an ordinary Euler step. Then read the slope at that predicted point, average it with the starting slope, and take the real step with that average."
+    },
+    {
+      "id": "formula",
+      "audioStart": 30.65,
+      "narration": "Write it down. k one is the slope at the start, k two the slope at the predicted point, and the step adds h times their average. One extra evaluation, and the accuracy jumps to order two, a Runge Kutta method of order two."
+    },
+    {
+      "id": "marchHeun",
+      "audioStart": 45.57,
+      "narration": "Now march the whole interval with that averaged slope. Heun's points hug the true curve while plain Euler keeps falling behind, at the very same step size."
+    },
+    {
+      "id": "heroOutro",
+      "audioStart": 55.67,
+      "narration": "Predict with one slope, correct with the average of two. A little more work each step, a much closer fit."
+    }
+  ]
+}
