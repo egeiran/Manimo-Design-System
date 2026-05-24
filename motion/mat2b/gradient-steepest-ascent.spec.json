@@ -1,0 +1,161 @@
+{
+  "id": "gradient-steepest-ascent",
+  "subject_id": "mat2b",
+  "chapter_number": 5,
+  "title": "Why the Gradient Is Steepest: A Cosine of Heading",
+  "eyebrow": "steepest ascent",
+  "language": "en",
+  "duration": 43,
+  "topic": "At a point, the directional derivative in unit heading u is D_u f = grad f . u = |grad f| cos(theta), where theta is the angle between u and the gradient. As the heading rotates a full turn, the climb rate traces a cosine: maximum when u aligns with the gradient (steepest ascent), zero when perpendicular (along the level curve), minimum when opposite (steepest descent). That is why the gradient is the direction of fastest increase.",
+  "prerequisites": [
+    "gradient-and-level-curves",
+    "directional-derivative"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 6.05,
+      "narration": "From one spot on a hill you can step in any direction. Which heading climbs the fastest?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs centre",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Every heading has a climb rate — which is biggest?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "setup",
+      "start": 6.05,
+      "end": 17.15,
+      "narration": "The gradient is one fixed arrow. Pick a heading u; the climb rate is the gradient dotted with u — which is the gradient's length times the cosine of the angle between them.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Point P with fixed gradient arrow ∇f (amber) and a heading u (teal); dashed level-curve direction",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "D_u f = ∇f · u = |∇f| cos θ",
+            "delay": 1.4,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "θ is the angle from the gradient to your heading.",
+            "delay": 3,
+            "color": "var(--chalk-300)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweep",
+      "start": 17.15,
+      "end": 25.31,
+      "narration": "Turn the heading all the way around. The climb rate traces a cosine — highest when you face along the gradient, and it sinks from there.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Heading u rotates 360° around P; angle arc θ from the gradient",
+            "delay": 0,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Response plot D_u f vs θ traced in sync as u rotates, amber cosine",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Marker on the cosine tracking the current heading",
+            "delay": 0,
+            "color": "var(--chalk-100)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "peaks",
+      "start": 25.31,
+      "end": 35.84,
+      "narration": "Straight along the gradient is steepest ascent. Ninety degrees off, you are walking the level curve and the rate is zero. Turn fully around and you get the steepest descent.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Heading aligned with ∇f (steepest ascent)",
+            "delay": 0,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Full cosine with three marks: max (ascent), zero (along contour), min (descent)",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "max = +|∇f|,  zero at 90°,  min = −|∇f|",
+            "delay": 1.6,
+            "color": "var(--chalk-200)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 35.84,
+      "end": 43,
+      "narration": "So the gradient is not just perpendicular to the contour — it is the single heading of fastest climb.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-eyebrow",
+            "content": "'STEEPEST ASCENT' mono eyebrow",
+            "delay": 0,
+            "color": "var(--amber-300)",
+            "position": "centre-top"
+          },
+          {
+            "type": "text-hero",
+            "content": "'The gradient is the heading of fastest climb.' serif italic",
+            "delay": 0.35,
+            "color": "var(--chalk-100)",
+            "position": "centre"
+          },
+          {
+            "type": "text-caption",
+            "content": "Every other heading is just a cosine slice of it.",
+            "delay": 1.4,
+            "color": "var(--chalk-200)",
+            "position": "below hero"
+          }
+        ]
+      }
+    }
+  ]
+}

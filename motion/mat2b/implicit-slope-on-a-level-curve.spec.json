@@ -1,0 +1,182 @@
+{
+  "id": "implicit-slope-on-a-level-curve",
+  "subject_id": "mat2b",
+  "chapter_number": 5,
+  "title": "Implicit Differentiation: Slope Along a Level Curve",
+  "eyebrow": "implicit differentiation",
+  "language": "en",
+  "duration": 48,
+  "topic": "A curve defined implicitly by f(x, y) = c has slope dy/dx = -f_x / f_y. Because f stays constant along the curve, its total differential vanishes: f_x dx + f_y dy = 0. Geometrically the tangent is perpendicular to the gradient, so the slope is read straight off the partial derivatives. Demonstrated on the tilted ellipse x^2 + xy + y^2 = 2 by sliding a point around it and tracking the live slope.",
+  "prerequisites": [
+    "gradient-and-level-curves"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.78,
+      "narration": "Some curves twist so much you can never solve for y. Can we still find their slope?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs centre",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "A curve you can't solve — what's its slope?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "right of Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "curveSetup",
+      "start": 5.78,
+      "end": 15.08,
+      "narration": "Here is a curve where f of x and y stays equal to a constant. The gradient of f points straight across it, at a right angle everywhere.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Tilted ellipse f(x,y)=2 in amber, axes in chalk-200",
+            "delay": 0.3,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Gradient arrow at one sample point, perpendicular to the curve, rose",
+            "delay": 2.2,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "f(x, y) = x² + xy + y² = c",
+            "delay": 1,
+            "color": "var(--chalk-100)",
+            "position": "right panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "∇f crosses the curve at a right angle.",
+            "delay": 3,
+            "color": "var(--chalk-300)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "derive",
+      "start": 15.08,
+      "end": 30.33,
+      "narration": "Walk a tiny step along the curve and f does not change. So f sub x times d x plus f sub y times d y is zero, which rearranges to d y by d x equals minus f sub x over f sub y.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "f stays constant  ⇒  df = 0",
+            "delay": 0.3,
+            "color": "var(--chalk-200)",
+            "position": "step one"
+          },
+          {
+            "type": "text-formula",
+            "content": "f_x dx + f_y dy = 0",
+            "delay": 1.4,
+            "color": "var(--chalk-100)",
+            "position": "step two"
+          },
+          {
+            "type": "text-formula",
+            "content": "dy/dx = −f_x / f_y",
+            "delay": 2.8,
+            "color": "var(--amber-300)",
+            "position": "payoff, large serif"
+          },
+          {
+            "type": "text-caption",
+            "content": "No need to solve for y — just take partials.",
+            "delay": 4.2,
+            "color": "var(--chalk-300)",
+            "position": "below"
+          }
+        ]
+      }
+    },
+    {
+      "id": "slide",
+      "start": 30.33,
+      "end": 40.12,
+      "narration": "Slide the point around the curve. At every spot the tangent slope is exactly minus f sub x over f sub y, and it turns as the gradient turns.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Ellipse held lit; a point P slides around it",
+            "delay": 0,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Tangent line at P (perpendicular to gradient) rotating as P moves",
+            "delay": 0.6,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Gradient arrow ∇f at P, perpendicular to tangent",
+            "delay": 0.6,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "Live readout: dy/dx = −f_x/f_y updates with P",
+            "delay": 1,
+            "color": "var(--amber-300)",
+            "position": "right panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 40.12,
+      "end": 48,
+      "narration": "Constant along the curve means the change cancels — so the slope is minus the x partial over the y partial.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-eyebrow",
+            "content": "'IMPLICIT SLOPE' mono eyebrow",
+            "delay": 0,
+            "color": "var(--amber-300)",
+            "position": "centre-top"
+          },
+          {
+            "type": "text-hero",
+            "content": "'The slope is just minus f_x over f_y.' serif italic",
+            "delay": 0.35,
+            "color": "var(--chalk-100)",
+            "position": "centre"
+          },
+          {
+            "type": "text-caption",
+            "content": "Differentiate the constraint, not the curve.",
+            "delay": 1.4,
+            "color": "var(--chalk-200)",
+            "position": "below hero"
+          }
+        ]
+      }
+    }
+  ]
+}

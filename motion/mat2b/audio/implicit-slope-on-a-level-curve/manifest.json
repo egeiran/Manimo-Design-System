@@ -1,0 +1,36 @@
+{
+  "sceneId": "implicit-slope-on-a-level-curve",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/implicit-slope-on-a-level-curve/scene.mp3",
+  "durationSec": 46.67,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Some curves twist so much you can never solve for y. Can we still find their slope?"
+    },
+    {
+      "id": "curveSetup",
+      "audioStart": 5.78,
+      "narration": "Here is a curve where f of x and y stays equal to a constant. The gradient of f points straight across it, at a right angle everywhere."
+    },
+    {
+      "id": "derive",
+      "audioStart": 15.08,
+      "narration": "Walk a tiny step along the curve and f does not change. So f sub x times d x plus f sub y times d y is zero, which rearranges to d y by d x equals minus f sub x over f sub y."
+    },
+    {
+      "id": "slide",
+      "audioStart": 30.33,
+      "narration": "Slide the point around the curve. At every spot the tangent slope is exactly minus f sub x over f sub y, and it turns as the gradient turns."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 40.12,
+      "narration": "Constant along the curve means the change cancels — so the slope is minus the x partial over the y partial."
+    }
+  ]
+}

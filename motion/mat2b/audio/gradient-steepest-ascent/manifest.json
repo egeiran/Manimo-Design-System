@@ -1,0 +1,36 @@
+{
+  "sceneId": "gradient-steepest-ascent",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/gradient-steepest-ascent/scene.mp3",
+  "durationSec": 41.8,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "From one spot on a hill you can step in any direction. Which heading climbs the fastest?"
+    },
+    {
+      "id": "setup",
+      "audioStart": 6.05,
+      "narration": "The gradient is one fixed arrow. Pick a heading u; the climb rate is the gradient dotted with u — which is the gradient's length times the cosine of the angle between them."
+    },
+    {
+      "id": "sweep",
+      "audioStart": 17.15,
+      "narration": "Turn the heading all the way around. The climb rate traces a cosine — highest when you face along the gradient, and it sinks from there."
+    },
+    {
+      "id": "peaks",
+      "audioStart": 25.31,
+      "narration": "Straight along the gradient is steepest ascent. Ninety degrees off, you are walking the level curve and the rate is zero. Turn fully around and you get the steepest descent."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 35.84,
+      "narration": "So the gradient is not just perpendicular to the contour — it is the single heading of fastest climb."
+    }
+  ]
+}
