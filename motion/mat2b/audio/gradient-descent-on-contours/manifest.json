@@ -1,0 +1,36 @@
+{
+  "sceneId": "gradient-descent-on-contours",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/gradient-descent-on-contours/scene.mp3",
+  "durationSec": 45.47,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "To find the lowest point of a surface, you don't need a formula — you can just keep walking downhill."
+    },
+    {
+      "id": "setup",
+      "audioStart": 5.96,
+      "narration": "Here is a bowl that is stretched along one axis. The gradient points uphill, so its negative points the fastest way down, and each step moves a little in that downhill direction."
+    },
+    {
+      "id": "descent",
+      "audioStart": 17.1,
+      "narration": "Watch the path step down the contours. It dives quickly down the steep direction onto the valley floor, then inches along toward the minimum, and the height drops at every single step."
+    },
+    {
+      "id": "shape",
+      "audioStart": 28.32,
+      "narration": "The trajectory bends because the surface is steep one way and shallow the other. Take steps that are too large and you overshoot; keep them small and downhill is always safe."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 39.38,
+      "narration": "Gradient descent: step against the gradient, again and again, and you slide into a minimum."
+    }
+  ]
+}

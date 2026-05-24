@@ -1,0 +1,168 @@
+{
+  "id": "extrema-on-a-circle",
+  "title": "Extrema on a Circle: Sweep the Boundary",
+  "eyebrow": "constrained extrema",
+  "language": "en",
+  "duration": 44,
+  "topic": "Maximise and minimise f(x, y) = x² + 2y² on the unit circle by parametrising the boundary as (cos θ, sin θ). Then g(θ) = 1 + sin²θ traces a one-variable curve whose peaks and troughs are the constrained max (0, ±1) and min (±1, 0). At each extreme the level curve of f is tangent to the circle and ∇f points along the radius — the Lagrange condition.",
+  "subject_id": "mat2b",
+  "chapter_number": 6,
+  "prerequisites": [
+    "lagrange-multipliers",
+    "global-extrema-triangle"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 3.74,
+      "narration": "How large can a function get if you are trapped on a circle?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Stuck on a circle — where is f biggest?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "setup",
+      "start": 3.74,
+      "end": 15.76,
+      "narration": "The function f equals x squared plus two y squared grows without bound in the plane. But restrict it to the unit circle, and there is a largest value and a smallest value.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Plane with elliptical contours of f = x² + 2y²",
+            "delay": 0.2,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Unit circle constraint x² + y² = 1, drawn with TraceIn",
+            "delay": 1,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "(x, y) = (cos θ, sin θ)",
+            "delay": 2,
+            "color": "var(--chalk-100)",
+            "position": "parametrise the boundary"
+          },
+          {
+            "type": "graph-axes",
+            "content": "Empty g(θ) axes (θ from 0 to 2π) with dashed min/max reference lines",
+            "delay": 2.6,
+            "color": "var(--chalk-300)",
+            "position": "right / below"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweep",
+      "start": 15.76,
+      "end": 26.88,
+      "narration": "Walk around the circle with the angle theta. The value rises to its maximum at the top and bottom, and falls to its minimum at the left and right, tracing a smooth curve below.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-marker",
+            "content": "Point orbits the circle at (cos θ, sin θ) with a radial spoke",
+            "delay": 0.4,
+            "color": "var(--rose-400)",
+            "note": "GENUINE MOTION — swept parameter θ"
+          },
+          {
+            "type": "graph-curve",
+            "content": "g(θ) = 1 + sin²θ traces in synchronously below the orbiting point",
+            "delay": 0.4,
+            "color": "var(--amber-400)",
+            "position": "right / below graph"
+          },
+          {
+            "type": "text-caption",
+            "content": "live readout: θ and f value",
+            "delay": 0.4,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tangency",
+      "start": 26.88,
+      "end": 37.24,
+      "narration": "At each extreme, the level curve of f just grazes the circle — the gradient of f points straight along the radius. That is exactly the Lagrange condition.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-marker",
+            "content": "Freeze at max (0, ±1) and min (±1, 0)",
+            "delay": 0.3,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Tangent f-contours through the extrema, grazing the circle",
+            "delay": 1,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "∇f arrows pointing radially at the four extrema",
+            "delay": 1.8,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "∇f = λ∇g",
+            "delay": 2.6,
+            "color": "var(--amber-300)",
+            "position": "Lagrange condition"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 37.24,
+      "end": 44,
+      "narration": "To optimise on a boundary, parametrise it and turn a two variable problem into a single one.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "On a closed curve: parametrise, then optimise one variable.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "max/min on the circle: g(θ) = 1 + sin²θ",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono"
+          }
+        ]
+      }
+    }
+  ]
+}

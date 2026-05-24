@@ -3193,6 +3193,83 @@
       ],
       "subject_id": "mat2b",
       "chapter_number": 3
+    },
+    {
+      "id": "gradient-descent-on-contours",
+      "file": "gradient-descent-on-contours.jsx",
+      "html": "gradient-descent-on-contours.html",
+      "spec": "gradient-descent-on-contours.spec.json",
+      "title": "Gradient Descent: Walking Downhill",
+      "eyebrow": "iterative minimisation",
+      "topic": "Steepest descent finds a minimum by repeatedly stepping against the gradient, x_{k+1} = x_k − η∇f(x_k). On the anisotropic bowl f = ½(x² + 2.2y²) the iterate dives down the steep direction onto the valley floor, then crawls toward the minimum, and f decreases at every step. A value staircase tracks the monotone decrease.",
+      "duration": 47,
+      "language": "en",
+      "prerequisites": [
+        "critical-points-gradient-field",
+        "gradient-and-level-curves"
+      ],
+      "concepts": [
+        "gradient descent",
+        "steepest descent",
+        "iterative minimisation",
+        "negative gradient direction",
+        "step size",
+        "convergence to a minimum",
+        "anisotropic bowl"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 6
+    },
+    {
+      "id": "extrema-on-a-circle",
+      "file": "extrema-on-a-circle.jsx",
+      "html": "extrema-on-a-circle.html",
+      "spec": "extrema-on-a-circle.spec.json",
+      "title": "Extrema on a Circle: Sweep the Boundary",
+      "eyebrow": "constrained extrema",
+      "topic": "To optimise f = x² + 2y² on the unit circle, parametrise the boundary as (cos θ, sin θ); the two-variable constrained problem collapses to g(θ) = 1 + sin²θ. Its peaks at (0, ±1) are the constrained maxima, its troughs at (±1, 0) the minima, and at each extreme ∇f points along the radius — the Lagrange condition ∇f = λ∇g.",
+      "duration": 44,
+      "language": "en",
+      "prerequisites": [
+        "lagrange-multipliers",
+        "global-extrema-triangle"
+      ],
+      "concepts": [
+        "constrained optimisation",
+        "boundary parametrisation",
+        "Lagrange multipliers",
+        "level curve tangency",
+        "extrema on a curve",
+        "reducing two variables to one"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 6
+    },
+    {
+      "id": "the-saddle-point",
+      "file": "the-saddle-point.jsx",
+      "html": "the-saddle-point.html",
+      "spec": "the-saddle-point.spec.json",
+      "title": "The Saddle Point: Up One Way, Down the Other",
+      "eyebrow": "saddle points",
+      "topic": "At the origin of z = x² − y² the gradient vanishes but it is no extremum. Rotating a cutting plane through the centre morphs the cross-section z = r²·cos(2φ) from an upward parabola (a valley) through flat to a downward parabola (a ridge). Opposite curvature in the two principal directions means Hesse eigenvalues +2, −2 of opposite sign and discriminant D < 0 — the signature of a saddle.",
+      "duration": 50,
+      "language": "en",
+      "prerequisites": [
+        "critical-points-gradient-field",
+        "hessian-test"
+      ],
+      "concepts": [
+        "saddle point",
+        "indefinite Hessian",
+        "principal directions",
+        "second-derivative test",
+        "discriminant",
+        "cross-section curvature",
+        "critical point classification"
+      ],
+      "subject_id": "mat2b",
+      "chapter_number": 6
     }
   ]
 }

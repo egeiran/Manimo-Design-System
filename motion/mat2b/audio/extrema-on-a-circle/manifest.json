@@ -1,0 +1,36 @@
+{
+  "sceneId": "extrema-on-a-circle",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/extrema-on-a-circle/scene.mp3",
+  "durationSec": 42.91,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "How large can a function get if you are trapped on a circle?"
+    },
+    {
+      "id": "setup",
+      "audioStart": 3.74,
+      "narration": "The function f equals x squared plus two y squared grows without bound in the plane. But restrict it to the unit circle, and there is a largest value and a smallest value."
+    },
+    {
+      "id": "sweep",
+      "audioStart": 15.76,
+      "narration": "Walk around the circle with the angle theta. The value rises to its maximum at the top and bottom, and falls to its minimum at the left and right, tracing a smooth curve below."
+    },
+    {
+      "id": "tangency",
+      "audioStart": 26.88,
+      "narration": "At each extreme, the level curve of f just grazes the circle — the gradient of f points straight along the radius. That is exactly the Lagrange condition."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 37.24,
+      "narration": "To optimise on a boundary, parametrise it and turn a two variable problem into a single one."
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "id": "the-saddle-point",
+  "title": "The Saddle Point: Up One Way, Down the Other",
+  "eyebrow": "saddle points",
+  "language": "en",
+  "duration": 50,
+  "topic": "At the origin of z = x² − y² the gradient vanishes, but it is no extremum. Rotate a cutting plane through the centre: the cross-section z = r²·cos(2φ) morphs from an upward parabola (a valley, φ = 0) through flat (φ = 45°) to a downward parabola (a ridge, φ = 90°). Opposite curvature in the two principal directions means Hesse eigenvalues of opposite sign and discriminant D < 0 — the signature of a saddle.",
+  "subject_id": "mat2b",
+  "chapter_number": 6,
+  "prerequisites": [
+    "critical-points-gradient-field",
+    "hessian-test"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.29,
+      "narration": "The ground is perfectly flat here, yet it is neither a hilltop nor the bottom of a valley.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Flat ground — but no peak and no pit. What is this?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "setup",
+      "start": 5.29,
+      "end": 17.27,
+      "narration": "Take the surface z equals x squared minus y squared. At the origin the gradient is zero, so it is a critical point — but the surface curves up along one axis and down along the other.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Plane with the hyperbolic level curves of z = x² − y² and the y = ±x asymptotes",
+            "delay": 0.2,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Critical point at the origin where ∇z = 0",
+            "delay": 1.4,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "z = x² − y²,  ∇z = (2x, −2y) = 0",
+            "delay": 2.2,
+            "color": "var(--chalk-100)",
+            "position": "panel / caption"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rotate",
+      "start": 17.27,
+      "end": 30.66,
+      "narration": "Spin a cutting plane through the centre. Along one direction the slice is a valley that curves upward; rotate by ninety degrees and it becomes a ridge that curves downward; halfway between, the slice is perfectly flat.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Cutting line rotates through the origin, angle φ from 0 to 90°",
+            "delay": 0.4,
+            "color": "var(--teal-400)",
+            "note": "GENUINE MOTION — swept slice angle φ"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Cross-section parabola z = r²·cos(2φ) morphs valley → flat → ridge",
+            "delay": 0.4,
+            "color": "var(--amber-400)",
+            "position": "right / below"
+          },
+          {
+            "type": "text-caption",
+            "content": "live readout: slice angle φ and curvature sign",
+            "delay": 0.4,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "classify",
+      "start": 30.66,
+      "end": 40.68,
+      "narration": "Opposite curvature in the two principal directions means the Hesse eigenvalues have opposite signs, and the discriminant is negative. That is the signature of a saddle.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "along x: min (+)   ·   along y: max (−)",
+            "delay": 0.3,
+            "color": "var(--chalk-200)"
+          },
+          {
+            "type": "text-formula",
+            "content": "eigenvalues +2, −2   →   D = f_xx f_yy − f_xy² = −4 < 0",
+            "delay": 1.4,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "opposite signs ⇒ saddle",
+            "delay": 2.6,
+            "color": "var(--rose-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 40.68,
+      "end": 50,
+      "narration": "A saddle point is a minimum one way and a maximum the other — so a zero gradient alone never guarantees an extremum.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "A saddle: a minimum one way, a maximum the other.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "∇f = 0 is necessary, never sufficient",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono"
+          }
+        ]
+      }
+    }
+  ]
+}
