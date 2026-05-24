@@ -1,0 +1,166 @@
+{
+  "id": "gradient-descent-on-contours",
+  "title": "Gradient Descent: Walking Downhill",
+  "eyebrow": "iterative minimisation",
+  "language": "en",
+  "duration": 47,
+  "topic": "Steepest descent finds a minimum by repeatedly stepping against the gradient: x_{k+1} = x_k − η∇f(x_k). On an anisotropic bowl f = ½(x² + 2.2y²) the path dives down the steep direction onto the valley floor, then inches toward the minimum, and f decreases at every step.",
+  "subject_id": "mat2b",
+  "chapter_number": 6,
+  "prerequisites": [
+    "critical-points-gradient-field",
+    "gradient-and-level-curves"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.96,
+      "narration": "To find the lowest point of a surface, you don't need a formula — you can just keep walking downhill.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Lost on a hillside — which way is down?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "setup",
+      "start": 5.96,
+      "end": 17.1,
+      "narration": "Here is a bowl that is stretched along one axis. The gradient points uphill, so its negative points the fastest way down, and each step moves a little in that downhill direction.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "Plane with elliptical contours of f = ½(x² + 2.2y²)",
+            "delay": 0.2,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Start point x₀ = (2.1, 1.6) on an outer contour",
+            "delay": 1.4,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Negative-gradient arrow at x₀ pointing downhill toward the centre",
+            "delay": 2.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "xₖ₊₁ = xₖ − η∇f(xₖ)",
+            "delay": 3,
+            "color": "var(--chalk-100)",
+            "position": "panel, the update rule"
+          }
+        ]
+      }
+    },
+    {
+      "id": "descent",
+      "start": 17.1,
+      "end": 28.32,
+      "narration": "Watch the path step down the contours. It dives quickly down the steep direction onto the valley floor, then inches along toward the minimum, and the height drops at every single step.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Descent path drawn segment by segment from x₀ toward the origin, each segment along −∇f",
+            "delay": 0.4,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — iterates appear one per step, leading point interpolates along the current segment"
+          },
+          {
+            "type": "graph-marker",
+            "content": "Current iterate dot riding the path",
+            "delay": 0.4,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "Value staircase: bar per step, heights ∝ f(xₖ), filling in as steps land — monotone decreasing",
+            "delay": 0.4,
+            "color": "var(--amber-400)",
+            "position": "panel right / below"
+          },
+          {
+            "type": "text-caption",
+            "content": "live readout: step k and f value",
+            "delay": 0.4,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "shape",
+      "start": 28.32,
+      "end": 39.38,
+      "narration": "The trajectory bends because the surface is steep one way and shallow the other. Take steps that are too large and you overshoot; keep them small and downhill is always safe.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Completed descent path highlighted, steep first leg vs shallow valley-floor crawl annotated",
+            "delay": 0.3,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "steep direction first → then crawl along the shallow valley",
+            "delay": 1.2,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "η too large → overshoot · η small → safe descent",
+            "delay": 2.4,
+            "color": "var(--rose-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 39.38,
+      "end": 47,
+      "narration": "Gradient descent: step against the gradient, again and again, and you slide into a minimum.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Step against ∇f — and a minimum pulls you in.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "xₖ₊₁ = xₖ − η∇f(xₖ)",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}

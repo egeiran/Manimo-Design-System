@@ -145,6 +145,9 @@ const initialScenes = [
   { id: 'live-cauchy-schwarz-inequality', kind: 'live', kindLabel: 'Live', cardTitle: 'Cauchy–Schwarz: The Dot Product Has a Ceiling', duration: '0:43', html: '../../motion/mat2b/cauchy-schwarz-inequality.html' },
   { id: 'live-qr-factorisation-via-gram-schmidt', kind: 'live', kindLabel: 'Live', cardTitle: 'QR: Gram–Schmidt as a Matrix Factorisation', duration: '0:54', html: '../../motion/mat2b/qr-factorisation-via-gram-schmidt.html' },
   { id: 'live-angle-preservation-by-rotation', kind: 'live', kindLabel: 'Live', cardTitle: 'Rotations Preserve the Dot Product', duration: '0:41', html: '../../motion/mat2b/angle-preservation-by-rotation.html' },
+  { id: 'live-gradient-descent-on-contours', kind: 'live', kindLabel: 'Live', cardTitle: 'Gradient Descent: Walking Downhill', duration: '0:47', html: '../../motion/mat2b/gradient-descent-on-contours.html' },
+  { id: 'live-extrema-on-a-circle', kind: 'live', kindLabel: 'Live', cardTitle: 'Extrema on a Circle: Sweep the Boundary', duration: '0:44', html: '../../motion/mat2b/extrema-on-a-circle.html' },
+  { id: 'live-the-saddle-point', kind: 'live', kindLabel: 'Live', cardTitle: 'The Saddle Point: Up One Way, Down the Other', duration: '0:50', html: '../../motion/mat2b/the-saddle-point.html' },
 ];
 
 function loadJSON(key, fallback) {

@@ -1,0 +1,36 @@
+{
+  "sceneId": "the-saddle-point",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "audio": "audio/the-saddle-point/scene.mp3",
+  "durationSec": 48.39,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "The ground is perfectly flat here, yet it is neither a hilltop nor the bottom of a valley."
+    },
+    {
+      "id": "setup",
+      "audioStart": 5.29,
+      "narration": "Take the surface z equals x squared minus y squared. At the origin the gradient is zero, so it is a critical point — but the surface curves up along one axis and down along the other."
+    },
+    {
+      "id": "rotate",
+      "audioStart": 17.27,
+      "narration": "Spin a cutting plane through the centre. Along one direction the slice is a valley that curves upward; rotate by ninety degrees and it becomes a ridge that curves downward; halfway between, the slice is perfectly flat."
+    },
+    {
+      "id": "classify",
+      "audioStart": 30.66,
+      "narration": "Opposite curvature in the two principal directions means the Hesse eigenvalues have opposite signs, and the discriminant is negative. That is the signature of a saddle."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 40.68,
+      "narration": "A saddle point is a minimum one way and a maximum the other — so a zero gradient alone never guarantees an extremum."
+    }
+  ]
+}
