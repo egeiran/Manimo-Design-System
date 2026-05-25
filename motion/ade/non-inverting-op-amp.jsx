@@ -134,11 +134,15 @@ function circuitGeometry(portrait) {
         r1Y1: 410, r1Y2: 480, gndY: 510,
         // R_f loops above the op-amp from V_minus_node UP, ACROSS, DOWN to V_out
         rfY: 130, rfX1: 260, rfX2: 420,
+        // V_out terminal is RIGHT of the R_f drop so the output wire shows a
+        // clear continuation past the feedback tap before reaching the load.
+        vOutTermDx: 90,
         captionY: 680 }
     : { vbW: 1100, vbH: 540,
         ampCx: 580, ampCy: 230, ampW: 180,
         r1Y1: 320, r1Y2: 380, gndY: 410,
         rfY: 70, rfX1: 460, rfX2: 760,
+        vOutTermDx: 130,
         captionY: 520 };
 }
 
@@ -246,16 +250,33 @@ function CircuitDiagram({ G, beatDelay = 0, accent = false }) {
               fontStyle="italic" fontSize={18}>R<tspan baselineShift="sub" fontSize={11}>f</tspan></text>
       </SvgFadeIn>
 
-      {/* Output wire from op-amp tip → V_out node, with V_out label */}
-      <TraceIn d={`M ${ampRightX} ${G.ampCy} L ${vOutNodeX} ${vOutNodeY}`}
-               stroke="var(--chalk-200)" strokeWidth={2}
-               duration={0.5} delay={beatDelay + 2.4}/>
-      <SvgFadeIn duration={0.4} delay={beatDelay + 2.8}>
-        <circle cx={vOutNodeX} cy={vOutNodeY} r={3.5} fill="var(--chalk-100)"/>
-        <text x={vOutNodeX + 14} y={vOutNodeY + 6}
-              fill="var(--amber-300)" fontFamily="var(--font-serif)"
-              fontStyle="italic" fontSize={20}>V<tspan baselineShift="sub" fontSize={12}>out</tspan></text>
-      </SvgFadeIn>
+      {/* Output rail: op-amp tip → V_out node (where R_f taps) → V_out
+          terminal further right. Drawing the wire CONTINUOUSLY past the
+          feedback tap makes it clear that V_out is delivered to the load,
+          and R_f branches up from a junction along the way (not from the
+          terminal itself). */}
+      {(() => {
+        const termX = vOutNodeX + G.vOutTermDx;
+        return (
+          <>
+            <TraceIn d={`M ${ampRightX} ${G.ampCy} L ${termX} ${vOutNodeY}`}
+                     stroke="var(--chalk-200)" strokeWidth={2}
+                     duration={0.6} delay={beatDelay + 2.4}/>
+            {/* Junction dot where R_f drops onto the output rail */}
+            <SvgFadeIn duration={0.4} delay={beatDelay + 2.8}>
+              <circle cx={vOutNodeX} cy={vOutNodeY} r={3.5}
+                      fill="var(--chalk-200)"/>
+            </SvgFadeIn>
+            {/* V_out terminal dot + label at the end of the rail */}
+            <SvgFadeIn duration={0.4} delay={beatDelay + 3.0}>
+              <circle cx={termX} cy={vOutNodeY} r={3.5} fill="var(--chalk-100)"/>
+              <text x={termX + 14} y={vOutNodeY + 6}
+                    fill="var(--amber-300)" fontFamily="var(--font-serif)"
+                    fontStyle="italic" fontSize={20}>V<tspan baselineShift="sub" fontSize={12}>out</tspan></text>
+            </SvgFadeIn>
+          </>
+        );
+      })()}
     </g>
   );
 }

@@ -119,25 +119,25 @@ function CircuitBeat() {
   // For NpnSymbol(cx, cy, scale=1): collector pin at (cx + 0.7u, cy - 1.5u),
   // base pin at (cx - 1.4u, cy), emitter pin at (cx + 0.7u, cy + 1.5u),
   // where u = 22.
-  const SCALE = 1.0;
+  const SCALE = 1.4;
   const U = 22 * SCALE;
   const COL_DX = U * 0.7;     // collector/emitter x-offset from cx
   const COL_DY = U * 1.5;     // collector/emitter y-offset from cy
   const BASE_DX = U * 1.4;    // base x-offset from cx
 
   const G = portrait
-    ? { vbW: 560, vbH: 700,
+    ? { vbW: 560, vbH: 720,
         leftCx: 180, rightCx: 400,
-        vccY: 110, refTop: 150, refBot: 270, colTopY: 270,
-        symY: 380, gndY: 530,
-        rLTop: 150, rLBot: 270,
-        captionY: 680, fontMain: 18 }
-    : { vbW: 940, vbH: 440,
-        leftCx: 340, rightCx: 620,
-        vccY: 60, refTop: 90, refBot: 200, colTopY: 200,
-        symY: 290, gndY: 400,
-        rLTop: 90, rLBot: 200,
-        captionY: 420, fontMain: 18 };
+        vccY: 100, refTop: 140, refBot: 250, colTopY: 250,
+        symY: 380, gndY: 540,
+        rLTop: 140, rLBot: 250,
+        captionY: 700, fontMain: 18 }
+    : { vbW: 980, vbH: 460,
+        leftCx: 340, rightCx: 660,
+        vccY: 55, refTop: 90, refBot: 195, colTopY: 195,
+        symY: 290, gndY: 410,
+        rLTop: 90, rLBot: 195,
+        captionY: 440, fontMain: 18 };
 
   // Useful derived pin coords.
   const q1ColX = G.leftCx + COL_DX;
@@ -289,10 +289,10 @@ function CircuitBeat() {
                    fill="var(--amber-300)"/>
         </SvgFadeIn>
 
-        {/* V_BE annotation BELOW the shared base rail so it doesn't crowd
-            the Q1/Q2 labels above the symbols. */}
+        {/* V_BE annotation just ABOVE the shared base rail so it doesn't
+            collide with the body bars (which extend below the base line). */}
         <SvgFadeIn duration={0.3} delay={4.4}>
-          <text x={(G.leftCx + G.rightCx) / 2} y={G.symY + 22} textAnchor="middle"
+          <text x={(G.leftCx + G.rightCx) / 2} y={G.symY - 12} textAnchor="middle"
                 fill="var(--rose-300)" fontFamily="var(--font-mono)"
                 fontSize={12} letterSpacing="0.12em">
             shared V_BE

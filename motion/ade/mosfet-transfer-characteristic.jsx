@@ -84,15 +84,15 @@ function CrossSectionBeat() {
   // stacks them vertically with a smaller device.
   const G = portrait
     ? { vbW: 640, vbH: 720,
-        deviceX: 80, deviceY: 110, deviceW: 480, deviceH: 200,
-        oxideH: 16, gateH: 26, gateGapL: 130, gateGapR: 350,
-        sourceX: 110, drainX: 530, contactW: 70, contactH: 56,
-        bulkLabelY: 350, sliderY: 430, sliderW: 460, captionY: 660 }
-    : { vbW: 1180, vbH: 460,
-        deviceX: 140, deviceY: 90, deviceW: 620, deviceH: 220,
-        oxideH: 18, gateH: 30, gateGapL: 170, gateGapR: 450,
-        sourceX: 180, drainX: 700, contactW: 86, contactH: 64,
-        bulkLabelY: 350, sliderY: 80, sliderW: 320, captionY: 440 };
+        deviceX: 80, deviceY: 130, deviceW: 480, deviceH: 240,
+        oxideH: 18, gateH: 28, gateGapL: 130, gateGapR: 350,
+        sourceX: 110, drainX: 530, contactW: 70, contactH: 60,
+        bulkLabelDy: 60, sliderY: 460, sliderW: 460, captionY: 680 }
+    : { vbW: 1180, vbH: 480,
+        deviceX: 140, deviceY: 110, deviceW: 620, deviceH: 240,
+        oxideH: 20, gateH: 32, gateGapL: 170, gateGapR: 450,
+        sourceX: 180, drainX: 700, contactW: 86, contactH: 68,
+        bulkLabelDy: 60, sliderY: 110, sliderW: 340, captionY: 460 };
 
   // Sweep schedule: 1 s setup, then linear ramp 0 → VGS_MAX over the rest.
   const SETUP = 1.2;
@@ -135,10 +135,12 @@ function CrossSectionBeat() {
                 width={G.deviceW} height={bulkBottom - bulkTop}
                 fill="rgba(232,220,193,0.04)"
                 stroke="var(--chalk-300)" strokeWidth={1.4}/>
-          <text x={G.deviceX + G.deviceW / 2} y={G.bulkLabelY}
+          {/* Label sits INSIDE the bulk, well below the source/drain wells */}
+          <text x={G.deviceX + G.deviceW / 2}
+                y={bulkTop + G.contactH + G.bulkLabelDy}
                 textAnchor="middle"
                 fill="var(--chalk-300)" fontFamily="var(--font-mono)"
-                fontSize={11} letterSpacing="0.14em">P-TYPE BULK</text>
+                fontSize={12} letterSpacing="0.14em">P-TYPE BULK</text>
         </SvgFadeIn>
 
         {/* N+ source well */}
@@ -252,17 +254,19 @@ function CrossSectionBeat() {
                 fontStyle="italic" fontSize={13}>V_th</text>
         </SvgFadeIn>
 
-        {/* Live cursor + readout — drawn unconditionally once sweep starts */}
+        {/* Live cursor on the slider; readout anchored to a FIXED centre so
+            the text doesn't slide along with the cursor (which previously
+            made the readout zone feel chaotic). */}
         {t > 0 && (
           <g>
             <circle cx={vgsCursorX} cy={sliderTop} r={5}
                     fill={onChannel ? 'var(--amber-400)' : 'var(--chalk-200)'}/>
-            <text x={vgsCursorX} y={sliderTop + 38} textAnchor="middle"
+            <text x={sliderX + sliderInnerW / 2} y={sliderTop + 44} textAnchor="middle"
                   fill={onChannel ? 'var(--amber-300)' : 'var(--chalk-200)'}
                   fontFamily="var(--font-mono)" fontSize={13}>
               V_GS = {vgs.toFixed(2)} V
             </text>
-            <text x={vgsCursorX} y={sliderTop + 56} textAnchor="middle"
+            <text x={sliderX + sliderInnerW / 2} y={sliderTop + 62} textAnchor="middle"
                   fill={onChannel ? 'var(--amber-400)' : 'var(--chalk-300)'}
                   fontFamily="var(--font-mono)" fontSize={11} letterSpacing="0.10em">
               {onChannel ? 'CHANNEL ON' : 'CUTOFF'}

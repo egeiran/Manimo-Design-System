@@ -146,23 +146,26 @@ function ComplexPlaneBeat() {
                  color="var(--amber-400)" width={3}/>
         </SvgFadeIn>
 
-        {/* V_m magnitude label, parallel to arrow, midway */}
+        {/* V_m magnitude label, offset PERPENDICULAR to the arrow so the
+            text doesn't sit on top of the arrow line. Phasor goes up-right
+            for phi = -45°, so we push the label up-LEFT of the midpoint. */}
         <SvgFadeIn duration={0.4} delay={2.0}>
-          <text x={(G.cx + tipX) / 2 + 12}
-                y={(G.cy + tipY) / 2 - 14}
+          <text x={(G.cx + tipX) / 2 - 26}
+                y={(G.cy + tipY) / 2 - 12}
+                textAnchor="end"
                 fill="var(--amber-300)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={22}>
             V<tspan baselineShift="sub" fontSize={14}>m</tspan>
           </text>
         </SvgFadeIn>
 
-        {/* φ angle: small arc from positive x-axis to phasor */}
+        {/* φ angle: small arc from positive x-axis up to the phasor.
+            phiRad is in SVG sin-convention (negative = UP). The phasor sits
+            in the UPPER-right quadrant, so the arc bows up-right (SVG
+            sweep flag 0 = counter-clockwise in screen coords). */}
         <SvgFadeIn duration={0.4} delay={2.4}>
-          {/* Arc from 0° down to φ (negative in SVG y-down means rotating
-              clockwise, but mathematically that's a positive-rotation arrow
-              into the lower-right quadrant since we render Im upward). */}
           <path d={`M ${G.cx + 56} ${G.cy}
-                    A 56 56 0 0 1 ${G.cx + 56 * Math.cos(phiRad)} ${G.cy + 56 * Math.sin(phiRad)}`}
+                    A 56 56 0 0 0 ${G.cx + 56 * Math.cos(phiRad)} ${G.cy + 56 * Math.sin(phiRad)}`}
                 fill="none" stroke="var(--rose-400)" strokeWidth={1.6}/>
           <text x={G.cx + 36} y={G.cy - 14}
                 fill="var(--rose-300)" fontFamily="var(--font-serif)"

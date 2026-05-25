@@ -141,7 +141,12 @@ function CircuitBeat() {
 
   const symCx = G.cx;
   const symCy = (G.colY + G.emiY) / 2;
-  const u = 22 * 1.05;
+  const SCALE = 1.05;
+  const u = 22 * SCALE;
+  // NPN pin x: collector and emitter both sit at cx + 0.7u.
+  const pinX = G.cx + u * 0.7;
+  const colPinY = symCy - u * 1.5;
+  const emiPinY = symCy + u * 1.5;
 
   return (
     <div style={{
@@ -151,62 +156,62 @@ function CircuitBeat() {
       <svg width={G.vbW} height={G.vbH} viewBox={`0 0 ${G.vbW} ${G.vbH}`}
            style={{ overflow: 'visible' }}>
         {/* V_CC rail */}
-        <TraceIn d={`M ${G.cx - 80} ${G.vccY} L ${G.cx + 80} ${G.vccY}`}
+        <TraceIn d={`M ${pinX - 80} ${G.vccY} L ${pinX + 80} ${G.vccY}`}
                  stroke="var(--chalk-200)" strokeWidth={2}
                  duration={0.5} delay={0.2}/>
         <SvgFadeIn duration={0.4} delay={0.6}>
-          <text x={G.cx + 90} y={G.vccY + 5}
+          <text x={pinX + 90} y={G.vccY + 5}
                 fill="var(--chalk-100)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={18}>V<tspan baselineShift="sub" fontSize={11}>CC</tspan></text>
         </SvgFadeIn>
 
-        {/* R_C zigzag */}
-        <TraceIn d={resistorVerticalD(G.cx, G.vccY + 4, G.colY - 4)}
+        {/* R_C zigzag — centered on the collector-pin x */}
+        <TraceIn d={resistorVerticalD(pinX, G.vccY + 4, G.colY - 4)}
                  stroke="var(--amber-400)" strokeWidth={2.4}
                  duration={0.6} delay={0.5}/>
         <SvgFadeIn duration={0.4} delay={1.0}>
-          <text x={G.cx + 22} y={(G.vccY + G.colY) / 2 + 5}
+          <text x={pinX + 22} y={(G.vccY + G.colY) / 2 + 5}
                 fill="var(--chalk-200)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={16}>R<tspan baselineShift="sub" fontSize={11}>C</tspan></text>
         </SvgFadeIn>
 
         {/* Output tap (V_out) at the collector node */}
         <SvgFadeIn duration={0.3} delay={1.2}>
-          <circle cx={G.cx} cy={G.colY} r={3.5} fill="var(--amber-300)"/>
-          <line x1={G.cx} y1={G.colY} x2={G.cx + 80} y2={G.colY}
+          <circle cx={pinX} cy={G.colY} r={3.5} fill="var(--amber-300)"/>
+          <line x1={pinX} y1={G.colY} x2={pinX + 80} y2={G.colY}
                 stroke="var(--chalk-200)" strokeWidth={2}/>
-          <text x={G.cx + 88} y={G.colY + 5}
+          <text x={pinX + 88} y={G.colY + 5}
                 fill="var(--amber-300)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={16}>V<tspan baselineShift="sub" fontSize={11}>out</tspan></text>
         </SvgFadeIn>
 
         {/* V_CE label across the transistor (on the right side) */}
         <SvgFadeIn duration={0.3} delay={1.4}>
-          <text x={G.cx + 90} y={(G.colY + G.emiY) / 2 + 5}
+          <text x={pinX + 90} y={(G.colY + G.emiY) / 2 + 5}
                 fill="var(--chalk-300)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={15}>V<tspan baselineShift="sub" fontSize={10}>CE</tspan></text>
         </SvgFadeIn>
 
         {/* NPN symbol */}
         <SvgFadeIn duration={0.5} delay={1.0}>
-          <NpnSymbol cx={symCx} cy={symCy} scale={1.05}/>
+          <NpnSymbol cx={symCx} cy={symCy} scale={SCALE}/>
         </SvgFadeIn>
 
-        {/* Wire from R_C-end → collector */}
-        <TraceIn d={`M ${G.cx} ${G.colY} L ${G.cx} ${symCy - u * 1.5}`}
+        {/* Wire from R_C bottom → collector pin (drops to the pin's x) */}
+        <TraceIn d={`M ${pinX} ${G.colY} L ${pinX} ${colPinY}`}
                  stroke="var(--chalk-200)" strokeWidth={2}
                  duration={0.4} delay={1.0}/>
-        {/* Wire from emitter → ground */}
-        <TraceIn d={`M ${G.cx + u * 0.7 * 1.05} ${symCy + u * 1.5 * 1.05} L ${G.cx + u * 0.7 * 1.05} ${G.gndY - 6}`}
+        {/* Wire from emitter pin → ground */}
+        <TraceIn d={`M ${pinX} ${emiPinY} L ${pinX} ${G.gndY - 6}`}
                  stroke="var(--chalk-200)" strokeWidth={2}
                  duration={0.4} delay={1.4}/>
         {/* Ground */}
         <SvgFadeIn duration={0.3} delay={1.8}>
-          <line x1={G.cx + u * 0.7 * 1.05 - 14} y1={G.gndY} x2={G.cx + u * 0.7 * 1.05 + 14} y2={G.gndY}
+          <line x1={pinX - 14} y1={G.gndY} x2={pinX + 14} y2={G.gndY}
                 stroke="var(--chalk-200)" strokeWidth={2.2}/>
-          <line x1={G.cx + u * 0.7 * 1.05 - 9} y1={G.gndY + 6} x2={G.cx + u * 0.7 * 1.05 + 9} y2={G.gndY + 6}
+          <line x1={pinX - 9} y1={G.gndY + 6} x2={pinX + 9} y2={G.gndY + 6}
                 stroke="var(--chalk-200)" strokeWidth={2}/>
-          <line x1={G.cx + u * 0.7 * 1.05 - 5} y1={G.gndY + 12} x2={G.cx + u * 0.7 * 1.05 + 5} y2={G.gndY + 12}
+          <line x1={pinX - 5} y1={G.gndY + 12} x2={pinX + 5} y2={G.gndY + 12}
                 stroke="var(--chalk-200)" strokeWidth={1.8}/>
         </SvgFadeIn>
 
@@ -223,7 +228,7 @@ function CircuitBeat() {
 
         {/* I_C arrow on the collector wire */}
         <SvgFadeIn duration={0.3} delay={2.0}>
-          <text x={G.cx - 36} y={(G.vccY + G.colY) / 2 + 5}
+          <text x={pinX - 22} y={(G.vccY + G.colY) / 2 + 5}
                 textAnchor="end"
                 fill="var(--rose-300)" fontFamily="var(--font-mono)"
                 fontSize={12} letterSpacing="0.1em">I_C ↓</text>

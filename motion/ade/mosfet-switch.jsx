@@ -488,14 +488,23 @@ function InverterBeat() {
   const voutD = buildSquare(true);
 
   // Schematic geometry (relative to the circuit panel).
+  // Pin positions come from NmosSymbol (scale=0.95): drain/source on the
+  // right rail at cx + 0.6u, gate on the left at cx - 1.6u. We anchor every
+  // wire to those pin coordinates so nothing floats.
+  const SYM_SCALE = 0.95;
+  const SYM_U = 24 * SYM_SCALE;            // = 22.8
   const cx = G.circX + G.circW * 0.55;
   const vddY = G.circY + 20;
-  const drainY = G.circY + G.circH * 0.32;
-  const sourceY = G.circY + G.circH * 0.78;
-  const gndY = sourceY + 50;
-  const inX = G.circX + 30;
   const symCx = cx;
-  const symCy = (drainY + sourceY) / 2;
+  const symCy = G.circY + G.circH * 0.50;
+  const pinX = symCx + SYM_U * 0.6;        // drain & source x
+  const gatePinX = symCx - SYM_U * 1.6;    // gate stub-left
+  const drainPinY = symCy - SYM_U * 1.4;
+  const sourcePinY = symCy + SYM_U * 1.4;
+  const drainY = drainPinY;                // alias used downstream
+  const sourceY = sourcePinY;
+  const gndY = sourcePinY + 56;
+  const inX = G.circX + 30;
 
   return (
     <div style={{
@@ -517,43 +526,42 @@ function InverterBeat() {
         </SvgFadeIn>
 
         {/* V_DD rail + label */}
-        <TraceIn d={`M ${G.circX + 80} ${vddY} L ${G.circX + G.circW - 40} ${vddY}`}
+        <TraceIn d={`M ${pinX - 80} ${vddY} L ${pinX + 80} ${vddY}`}
                  stroke="var(--chalk-200)" strokeWidth={2}
                  duration={0.5} delay={0.2}/>
         <SvgFadeIn duration={0.3} delay={0.6}>
-          <text x={G.circX + G.circW - 40} y={vddY - 8}
-                textAnchor="end"
+          <text x={pinX + 88} y={vddY + 5}
                 fill="var(--chalk-200)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={16}>V<tspan baselineShift="sub" fontSize={10}>DD</tspan></text>
         </SvgFadeIn>
 
-        {/* Pull-up resistor (zigzag) */}
-        <TraceIn d={resistorVerticalD(cx, vddY + 4, drainY - 4)}
+        {/* Pull-up resistor (zigzag) on the drain-pin column */}
+        <TraceIn d={resistorVerticalD(pinX, vddY + 4, drainPinY - 4)}
                  stroke="var(--amber-400)" strokeWidth={2.2}
                  duration={0.5} delay={0.5}/>
         <SvgFadeIn duration={0.3} delay={0.9}>
-          <text x={cx + 18} y={(vddY + drainY) / 2 + 5}
+          <text x={pinX + 18} y={(vddY + drainPinY) / 2 + 5}
                 fill="var(--chalk-200)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={14}>R<tspan baselineShift="sub" fontSize={10}>D</tspan></text>
         </SvgFadeIn>
 
         {/* V_out tap (between R_D and drain) */}
         <SvgFadeIn duration={0.3} delay={1.0}>
-          <circle cx={cx} cy={drainY} r={3.5} fill="var(--amber-300)"/>
-          <line x1={cx} y1={drainY} x2={cx + 80} y2={drainY}
+          <circle cx={pinX} cy={drainPinY} r={3.5} fill="var(--amber-300)"/>
+          <line x1={pinX} y1={drainPinY} x2={pinX + 80} y2={drainPinY}
                 stroke="var(--chalk-200)" strokeWidth={2}/>
-          <text x={cx + 86} y={drainY + 5}
+          <text x={pinX + 86} y={drainPinY + 5}
                 fill="var(--amber-300)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={16}>V<tspan baselineShift="sub" fontSize={10}>out</tspan></text>
         </SvgFadeIn>
 
         {/* NMOS symbol */}
         <SvgFadeIn duration={0.5} delay={0.8}>
-          <NmosSymbol cx={symCx} cy={symCy} scale={0.95}/>
+          <NmosSymbol cx={symCx} cy={symCy} scale={SYM_SCALE}/>
         </SvgFadeIn>
 
         {/* V_in stub to the gate */}
-        <TraceIn d={`M ${inX} ${symCy} L ${symCx - 24 * 0.95 * 1.6} ${symCy}`}
+        <TraceIn d={`M ${inX} ${symCy} L ${gatePinX} ${symCy}`}
                  stroke="var(--chalk-200)" strokeWidth={2}
                  duration={0.5} delay={1.0}/>
         <SvgFadeIn duration={0.3} delay={1.4}>
@@ -563,24 +571,25 @@ function InverterBeat() {
           <circle cx={inX + 4} cy={symCy} r={3.5} fill="var(--chalk-200)"/>
         </SvgFadeIn>
 
-        {/* Source-to-ground */}
-        <TraceIn d={`M ${cx + 24 * 0.95 * 0.6} ${sourceY} L ${cx + 24 * 0.95 * 0.6} ${gndY}`}
+        {/* Source-to-ground (anchored to the actual source pin) */}
+        <TraceIn d={`M ${pinX} ${sourcePinY} L ${pinX} ${gndY - 6}`}
                  stroke="var(--chalk-200)" strokeWidth={2}
                  duration={0.4} delay={1.2}/>
         <SvgFadeIn duration={0.3} delay={1.6}>
-          <line x1={cx + 24 * 0.95 * 0.6 - 14} y1={gndY} x2={cx + 24 * 0.95 * 0.6 + 14} y2={gndY}
+          <line x1={pinX - 14} y1={gndY} x2={pinX + 14} y2={gndY}
                 stroke="var(--chalk-200)" strokeWidth={2.2}/>
-          <line x1={cx + 24 * 0.95 * 0.6 - 9} y1={gndY + 6} x2={cx + 24 * 0.95 * 0.6 + 9} y2={gndY + 6}
+          <line x1={pinX - 9} y1={gndY + 6} x2={pinX + 9} y2={gndY + 6}
                 stroke="var(--chalk-200)" strokeWidth={2}/>
-          <line x1={cx + 24 * 0.95 * 0.6 - 5} y1={gndY + 12} x2={cx + 24 * 0.95 * 0.6 + 5} y2={gndY + 12}
+          <line x1={pinX - 5} y1={gndY + 12} x2={pinX + 5} y2={gndY + 12}
                 stroke="var(--chalk-200)" strokeWidth={1.8}/>
         </SvgFadeIn>
 
-        {/* Drain-on lamp: glow ring around the V_out tap when V_out is HIGH
-            (transistor OFF), which is when current is *not* draining. */}
-        {voutHigh && tSig > 0.1 && (
-          <circle cx={cx} cy={drainY} r={10} fill="none"
-                  stroke="var(--amber-300)" strokeWidth={1.5} opacity={0.8}/>
+        {/* Drain-on lamp: persistent ring whose opacity tracks V_out logic
+            level so it doesn't strobe between HIGH and LOW. */}
+        {tSig > 0.1 && (
+          <circle cx={pinX} cy={drainPinY} r={10} fill="none"
+                  stroke="var(--amber-300)" strokeWidth={1.5}
+                  opacity={voutHigh ? 0.8 : 0.18}/>
         )}
 
         {/* Live state badge — beneath the schematic */}

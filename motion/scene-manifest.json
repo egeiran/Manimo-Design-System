@@ -2137,7 +2137,7 @@
       "title": "Binary Addition: How the Carry Walks Left",
       "eyebrow": "digital arithmetic",
       "topic": "4-bit binary addition column-by-column with the carry walking right-to-left — visualises 0101 + 0111 = 1100 (5 + 7 = 12) one column at a time, then motivates ripple-carry's worst-case delay in hardware.",
-      "duration": 65,
+      "duration": 55,
       "language": "en",
       "prerequisites": [
         "hexadecimal-counting"

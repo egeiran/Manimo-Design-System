@@ -101,19 +101,17 @@ function ConfigurationBeat() {
   const G = portrait
     ? { vbW: 600, vbH: 760,
         ampCx: 360, ampCy: 290, ampW: 140,
-        rInLeftX: 70, rInRightX: 210, rInY: 232,
-        vMinusNodeX: 290,
+        rInLeftX: 70, rInRightX: 220,
         cX1: 290, cX2: 430, cY: 110,
         vOutNodeX: 430, vOutLabelX: 530,
-        gndX: 290, gndY: 360,
+        gndY: 380,
         captionY: 480, noteY: 580, fontLabel: 18 }
     : { vbW: 1100, vbH: 460,
         ampCx: 620, ampCy: 230, ampW: 180,
-        rInLeftX: 220, rInRightX: 400, rInY: 158,
-        vMinusNodeX: 530,
+        rInLeftX: 220, rInRightX: 420,
         cX1: 530, cX2: 820, cY: 70,
         vOutNodeX: 820, vOutLabelX: 940,
-        gndX: 530, gndY: 360,
+        gndY: 380,
         captionY: 430, noteY: null, fontLabel: 20 };
 
   const ampH = G.ampW * 0.95;
@@ -121,6 +119,12 @@ function ConfigurationBeat() {
   const vPlusY = G.ampCy + ampH * 0.32;
   const ampLeftX = G.ampCx - G.ampW / 2;
   const ampRightX = G.ampCx + G.ampW / 2;
+  // Align R_in horizontally with the V− pin and seat the V− node a touch
+  // LEFT of the op-amp so the input wire approaches the pin from the left
+  // instead of dropping straight down onto it.
+  G.rInY = vMinusY;
+  G.vMinusNodeX = ampLeftX - (portrait ? 30 : 36);
+  G.gndX = ampLeftX - (portrait ? 40 : 50);
 
   return (
     <div style={{

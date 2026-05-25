@@ -5,7 +5,7 @@
   "voice": "JBFqnCBsd6RMkjVDRZzb",
   "model": "eleven_multilingual_v2",
   "audio": "audio/binary-addition/scene.mp3",
-  "durationSec": 63.3,
+  "durationSec": 53.17,
   "tracks": [
     {
       "id": "manimoIntro",
@@ -14,22 +14,22 @@
     },
     {
       "id": "rules",
-      "audioStart": 9.68,
+      "audioStart": 9.49,
       "narration": "Four cases per column. Zero plus zero gives zero. Zero plus one gives one. One plus one — and now it overflows: the sum bit drops to zero and a carry pops out the top."
     },
     {
       "id": "walk",
-      "audioStart": 22.73,
-      "narration": "Add zero one zero one and zero one one one. Column zero: one plus one is zero, carry out one. Column one: zero plus one plus the carry is zero again, carry out one. Column two: one plus one plus the carry is one, carry out one. Column three: zero plus zero plus the carry is one — and we're done. Eleven hundred — twelve in decimal."
+      "audioStart": 22.61,
+      "narration": "Add zero one zero one and zero one one one, right to left. Each one plus one rolls over and a carry slides up to the next column. After four columns we land on one one zero zero — twelve in decimal."
     },
     {
       "id": "longestPath",
-      "audioStart": 48.38,
+      "audioStart": 37.09,
       "narration": "In hardware, that left-walking carry is the bottleneck. The most significant bit cannot settle until every carry below it has settled. The longest carry chain sets the clock."
     },
     {
       "id": "takeaway",
-      "audioStart": 58.53,
+      "audioStart": 47.74,
       "narration": "Same algorithm, different alphabet — and carries are how the columns talk to each other."
     }
   ]

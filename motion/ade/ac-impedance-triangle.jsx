@@ -385,7 +385,7 @@ function TriangleBuildBeat() {
                   fill="var(--amber-300)" fontFamily="var(--font-serif)"
                   fontStyle="italic" fontSize={18}>Z</text>
             {/* Angle arc at the origin */}
-            <path d={describeArc(P.origX, P.origY, 36, 0, -phiDeg)}
+            <path d={describeArc(P.origX, P.origY, 36, 0, phiDeg)}
                   fill="none" stroke="var(--amber-300)" strokeWidth={1.4}/>
             <text x={P.origX + 44} y={P.origY - 8}
                   fill="var(--amber-300)" fontFamily="var(--font-serif)"
@@ -513,7 +513,7 @@ function SweepFreqBeat() {
                   fill="var(--amber-300)" fontFamily="var(--font-serif)"
                   fontStyle="italic" fontSize={18}>Z</text>
             {/* Angle arc */}
-            <path d={describeArc(P.origX, P.origY, 36, 0, -phiDeg)}
+            <path d={describeArc(P.origX, P.origY, 36, 0, phiDeg)}
                   fill="none" stroke="var(--amber-300)" strokeWidth={1.4}/>
             <text x={P.origX + 44} y={P.origY + (X >= 0 ? -8 : 18)}
                   fill="var(--amber-300)" fontFamily="var(--font-serif)"

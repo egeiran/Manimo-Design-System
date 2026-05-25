@@ -101,25 +101,34 @@ function resistorHorizontalD(xLeft, xRight, cy, amp = 9, n = 6) {
 // Shared layout helper for the three "circuit" beats. Returns the geometry
 // the diagram needs in both aspects.
 function circuitGeometry(portrait) {
-  return portrait
-    ? { vbW: 600, vbH: 600,
-        ampCx: 360, ampCy: 280, ampW: 140,
-        rInLeftX: 70, rInRightX: 200, rInY: 218,
-        vMinusNodeX: 290,
-        vInLabelX: 70, vInLabelY: 200,
-        rfX1: 290, rfX2: 430, rfY: 100,
-        vOutNodeX: 430, vOutLabelX: 530,
-        gndX: 290, gndY: 360,
-        captionY: 540 }
-    : { vbW: 1100, vbH: 460,
-        ampCx: 620, ampCy: 220, ampW: 180,
-        rInLeftX: 220, rInRightX: 400, rInY: 150,
-        vMinusNodeX: 530,
-        vInLabelX: 130, vInLabelY: 130,
-        rfX1: 530, rfX2: 820, rfY: 60,
-        vOutNodeX: 820, vOutLabelX: 940,
-        gndX: 530, gndY: 320,
-        captionY: 440 };
+  // Op-amp V−/V+ pins sit at ampCy ± ampW * 0.95 * 0.32 from ampCy.
+  // We anchor rInY to V−'s y and gndX to a column LEFT of the V+ pin so the
+  // input wires arrive at the op-amp horizontally from the left rather than
+  // dropping straight down onto the pin.
+  const land = {
+    vbW: 1100, vbH: 460,
+    ampCx: 620, ampCy: 220, ampW: 180,
+    rInLeftX: 220, rInRightX: 400,
+    rfX1: 530, rfX2: 820, rfY: 60,
+    vOutNodeX: 820, vOutLabelX: 940,
+    captionY: 440,
+  };
+  const port = {
+    vbW: 600, vbH: 600,
+    ampCx: 360, ampCy: 280, ampW: 140,
+    rInLeftX: 70, rInRightX: 200,
+    rfX1: 290, rfX2: 430, rfY: 100,
+    vOutNodeX: 430, vOutLabelX: 530,
+    captionY: 540,
+  };
+  const G = portrait ? port : land;
+  const inputOff = G.ampW * 0.95 * 0.32;
+  const ampLeftX = G.ampCx - G.ampW / 2;
+  G.rInY = G.ampCy - inputOff;            // R_in horizontal → into V− pin
+  G.vMinusNodeX = ampLeftX - 36;          // node sits a bit LEFT of the pin
+  G.gndX = ampLeftX - 48;                 // ground column LEFT of V+ pin
+  G.gndY = G.ampCy + inputOff + (portrait ? 70 : 90);
+  return G;
 }
 
 // Draw the inverting-op-amp circuit. Optional callbacks let the caller
@@ -169,11 +178,12 @@ function CircuitDiagram({ G, beatDelay = 0, showLabels = true, accent = false })
                stroke="var(--chalk-200)" strokeWidth={2}
                duration={0.6} delay={beatDelay + 1.4}/>
 
-      {/* V− node dot */}
+      {/* V− node dot — label sits BELOW the wire so it doesn't crowd the
+          R_f vertical leg that climbs from this same node. */}
       <SvgFadeIn duration={0.3} delay={beatDelay + 2.0}>
         <circle cx={G.vMinusNodeX} cy={G.rInY} r={3.5}
                 fill={accent ? 'var(--amber-300)' : 'var(--chalk-100)'}/>
-        <text x={G.vMinusNodeX + 12} y={G.rInY + 6}
+        <text x={G.vMinusNodeX} y={G.rInY + 22} textAnchor="middle"
               fill="var(--chalk-100)" fontFamily="var(--font-serif)"
               fontStyle="italic" fontSize={18}>V<tspan baselineShift="sub" fontSize={11}>−</tspan></text>
       </SvgFadeIn>

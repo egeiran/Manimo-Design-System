@@ -3,7 +3,7 @@
   "title": "Binary Addition: How the Carry Walks Left",
   "eyebrow": "digital arithmetic",
   "language": "en",
-  "duration": 65,
+  "duration": 55,
   "topic": "Adding two 4-bit binary numbers column-by-column from the least significant bit up — the carry-out from one column slides left to become the carry-in of the next.",
   "subject_id": "ade",
   "chapter_number": 5,
@@ -14,7 +14,7 @@
     {
       "id": "manimoIntro",
       "start": 0,
-      "end": 9.68,
+      "end": 9.49,
       "narration": "Computers add the way you do — column by column, right to left, carrying when you overflow. The only difference is the alphabet has just two letters.",
       "visuals": {
         "layout": "center",
@@ -36,8 +36,8 @@
     },
     {
       "id": "rules",
-      "start": 9.68,
-      "end": 22.73,
+      "start": 9.49,
+      "end": 22.61,
       "narration": "Four cases per column. Zero plus zero gives zero. Zero plus one gives one. One plus one — and now it overflows: the sum bit drops to zero and a carry pops out the top.",
       "visuals": {
         "layout": "center",
@@ -89,9 +89,9 @@
     },
     {
       "id": "walk",
-      "start": 22.73,
-      "end": 48.38,
-      "narration": "Add zero one zero one and zero one one one. Column zero: one plus one is zero, carry out one. Column one: zero plus one plus the carry is zero again, carry out one. Column two: one plus one plus the carry is one, carry out one. Column three: zero plus zero plus the carry is one — and we're done. Eleven hundred — twelve in decimal.",
+      "start": 22.61,
+      "end": 37.09,
+      "narration": "Add zero one zero one and zero one one one, right to left. Each one plus one rolls over and a carry slides up to the next column. After four columns we land on one one zero zero — twelve in decimal.",
       "visuals": {
         "layout": "center",
         "elements": [
@@ -132,8 +132,8 @@
     },
     {
       "id": "longestPath",
-      "start": 48.38,
-      "end": 58.53,
+      "start": 37.09,
+      "end": 47.74,
       "narration": "In hardware, that left-walking carry is the bottleneck. The most significant bit cannot settle until every carry below it has settled. The longest carry chain sets the clock.",
       "visuals": {
         "layout": "center",
@@ -169,8 +169,8 @@
     },
     {
       "id": "takeaway",
-      "start": 58.53,
-      "end": 65,
+      "start": 47.74,
+      "end": 55,
       "narration": "Same algorithm, different alphabet — and carries are how the columns talk to each other.",
       "visuals": {
         "layout": "center",

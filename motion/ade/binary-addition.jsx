@@ -21,12 +21,12 @@
 //     drive the highlight, the sum-bit reveal, and the carry slide.
 //   • SvgFadeIn inside <svg>, FadeUp for HTML/DOM.
 
-const SCENE_DURATION = 65;
+const SCENE_DURATION = 55;
 
 const NARRATION = [
   /*  0.00– 5.00 */ 'Computers add the way you do — column by column, right to left, carrying when you overflow. The only difference is the alphabet has just two letters.',
   /*  5.00–14.00 */ 'Four cases per column. Zero plus zero gives zero. Zero plus one gives one. One plus one — and now it overflows: the sum bit drops to zero and a carry pops out the top.',
-  /* 14.00–36.00 */ "Add zero one zero one and zero one one one. Column zero: one plus one is zero, carry out one. Column one: zero plus one plus the carry is zero again, carry out one. Column two: one plus one plus the carry is one, carry out one. Column three: zero plus zero plus the carry is one — and we're done. Eleven hundred — twelve in decimal.",
+  /* walk */ "Add zero one zero one and zero one one one, right to left. Each one plus one rolls over and a carry slides up to the next column. After four columns we land on one one zero zero — twelve in decimal.",
   /* 36.00–44.00 */ 'In hardware, that left-walking carry is the bottleneck. The most significant bit cannot settle until every carry below it has settled. The longest carry chain sets the clock.',
   /* 44.00–50.00 */ 'Same algorithm, different alphabet — and carries are how the columns talk to each other.',
 ];
@@ -39,24 +39,24 @@ function Scene() {
       eyebrow="digital arithmetic"
       title="Binary Addition: How the Carry Walks Left"
       duration={SCENE_DURATION}
-      introEnd={9.68}
+      introEnd={9.49}
       introCaption="Same long addition you learned in school — in base two."
     >
       <SceneNarration src={NARRATION_AUDIO} />
 
-      <Sprite start={9.68} end={22.73}>
+      <Sprite start={9.49} end={22.61}>
         <RulesBeat />
       </Sprite>
 
-      <Sprite start={22.73} end={48.38}>
+      <Sprite start={22.61} end={37.09}>
         <WalkBeat />
       </Sprite>
 
-      <Sprite start={48.38} end={58.53}>
+      <Sprite start={37.09} end={47.74}>
         <LongestPathBeat />
       </Sprite>
 
-      <Sprite start={58.53} end={SCENE_DURATION}>
+      <Sprite start={47.74} end={SCENE_DURATION}>
         <TakeawayBeat />
       </Sprite>
     </SceneChrome>
@@ -160,11 +160,10 @@ function WalkBeat() {
   // Carry row sits above A
   const yCarry = yA - G.cellH / 2 - 14;
 
-  // Per-column processing window. localTime windows: 1.5s → start sweep,
-  // 0.9s each column. So col-LSB starts at 1.5, ends at 2.4; col 2 starts 3.0,
-  // ...
-  const colStart = 1.5;
-  const colDur = 1.4;          // seconds per column (cursor window)
+  // Per-column processing window. Sweep is tightened (1 s per column)
+  // because the shortened narration no longer announces each column.
+  const colStart = 1.0;
+  const colDur = 1.0;          // seconds per column (cursor window)
   // visCol 0=MSB,1,2,3=LSB. Processing order: 3,2,1,0. The kth processed
   // column (k=0,1,2,3) maps to visCol = 3 - k.
   const procIndexFor = (visCol) => 3 - visCol; // 0=LSB processed first
@@ -310,8 +309,8 @@ function WalkBeat() {
                 fontSize={G.fontLabel} letterSpacing="0.1em">Σ</text>
         </SvgFadeIn>
 
-        {/* Decimal check appears at the very end */}
-        <SvgFadeIn duration={0.5} delay={20.0}>
+        {/* Decimal check appears just after the cursor finishes sweeping */}
+        <SvgFadeIn duration={0.5} delay={6.0}>
           <text x={G.vbW / 2} y={ySum + G.cellH + 36} textAnchor="middle"
                 fill="var(--amber-300)" fontFamily="var(--font-serif)"
                 fontStyle="italic" fontSize={G.fontRes}>
