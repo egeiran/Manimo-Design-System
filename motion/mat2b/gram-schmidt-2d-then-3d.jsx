@@ -148,8 +148,12 @@ function ArrowFrom({ from, to, color, strokeWidth = 3.6, headLen = 13, headHalf 
   );
 }
 
-function Vector({ x, y, color, ...rest }) {
-  return <ArrowFrom from={[0, 0]} to={[x, y]} color={color} {...rest}/>;
+function Vector(props) {
+  // NB: no object-rest destructuring here. Babel-standalone hoists `...rest`
+  // to a top-level `const _excluded`, which collides with the identical helper
+  // emitted by manimo-motion.jsx (ManimoEnter) since the Babel <script>s share
+  // global scope — and the whole scene fails to mount. Spread props instead.
+  return <ArrowFrom {...props} from={[0, 0]} to={[props.x, props.y]}/>;
 }
 
 function SoftPanel({ children, right = 64, top = 196, width = 380, left, bottom, transform }) {
