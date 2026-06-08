@@ -39,7 +39,8 @@
           "h":         { "type": "number", "description": "Box height (SVG instances only)." },
           "start":     { "type": "number", "description": "Sprite start time in seconds (default 0)." },
           "end":       { "type": "number", "description": "Sprite end time in seconds (default scene end)." },
-          "props":     { "type": "object", "description": "Per-instance prop overrides; anything unset falls back to the registry default." }
+          "props":     { "type": "object", "description": "Per-instance prop overrides; anything unset falls back to the registry default." },
+          "groupId":   { "type": "string", "description": "Optional. Instances sharing a groupId form a group — selected, moved, and deleted together in the builder." }
         }
       }
     }

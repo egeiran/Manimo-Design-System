@@ -95,6 +95,21 @@ function builderUid(prefix) {
 const clampNum = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
 const round1 = (v) => Math.round(v * 10) / 10;
 
+// ── Grouping helpers ─────────────────────────────────────────────────────
+// Instances that share a `groupId` form a group: selecting any member selects
+// them all, and they move/delete together.
+function bGroupMembers(doc, id) {
+  const inst = (doc.instances || []).find((i) => i.id === id);
+  if (!inst || !inst.groupId) return [id];
+  return doc.instances.filter((i) => i.groupId === inst.groupId).map((i) => i.id);
+}
+function bHasGroup(doc, ids) {
+  return ids.some((id) => {
+    const inst = (doc.instances || []).find((i) => i.id === id);
+    return inst && inst.groupId;
+  });
+}
+
 // Seed document: the pendulum scene, identical to poc.jsx but now editable.
 const BUILDER_DEFAULT_DOC = {
   id: 'builder-scene',
@@ -373,16 +388,23 @@ function EditorCanvas({ doc, selectedIds, onSelect, onMoveBatch, onTransform, on
   }, [onMoveBatch]);
 
   // Selection + drag-start on instance press.
+  //   plain click  → select the whole group (or just this instance)
+  //   Alt-click    → select only this instance (reach inside a group)
+  //   Cmd/Ctrl-click → toggle this group in/out of the selection (no drag)
   const handleSelect = (id, e) => {
     const meta = e.metaKey || e.ctrlKey;
-    let next;
+    const members = e.altKey ? [id] : bGroupMembers(doc, id);
     if (meta) {
-      // Toggle membership; no drag on a modifier-click.
-      next = selectedIds.indexOf(id) !== -1 ? selectedIds.filter((x) => x !== id) : [...selectedIds, id];
+      const allIn = members.every((m) => selectedIds.indexOf(m) !== -1);
+      const next = allIn
+        ? selectedIds.filter((x) => members.indexOf(x) === -1)
+        : [...new Set([...selectedIds, ...members])];
       onSelect(next);
       return;
     }
-    next = selectedIds.indexOf(id) !== -1 ? selectedIds : [id];
+    // Keep the current selection if clicking something already in it (so you
+    // can drag an existing multi/group); otherwise select this group.
+    const next = selectedIds.indexOf(id) !== -1 ? selectedIds : members;
     onSelect(next);
     const items = next
       .map((sid) => { const ins = doc.instances.find((i) => i.id === sid); return ins ? { id: sid, x0: ins.x || 0, y0: ins.y || 0 } : null; })
@@ -566,7 +588,7 @@ function PropField({ spec, value, onChange }) {
 }
 
 // ── Inspector ──────────────────────────────────────────────────────────
-function Inspector({ doc, selectedIds, onPatchInstance, onPatchProp, onPatchChrome, onPatchDoc, onDelete, onDeleteMany, onSelect }) {
+function Inspector({ doc, selectedIds, onPatchInstance, onPatchProp, onPatchChrome, onPatchDoc, onDelete, onDeleteMany, onSelect, onGroup, onUngroup }) {
   const registry = window.ManimoRegistry || {};
   const single = selectedIds.length === 1 ? doc.instances.find((i) => i.id === selectedIds[0]) : null;
   const entry = single ? registry[single.component] : null;
@@ -594,7 +616,15 @@ function Inspector({ doc, selectedIds, onPatchInstance, onPatchProp, onPatchChro
       {selectedIds.length > 1 && (
         <>
           <div className="b-section-label">{selectedIds.length} components selected</div>
-          <div className="b-empty">Drag any one on the canvas to move them all together.</div>
+          <div className="b-empty">
+            Drag any one on the canvas to move them all together.
+            {bHasGroup(doc, selectedIds) ? ' This is a group.' : ' Group them to keep them together.'}
+          </div>
+          <div className="b-field" style={{ marginTop: 8, gap: 6 }}>
+            <button className="b-btn" onClick={() => onGroup(selectedIds)} title="Group (Cmd/Ctrl+G)">Group</button>
+            {bHasGroup(doc, selectedIds) &&
+              <button className="b-btn" onClick={() => onUngroup(selectedIds)} title="Ungroup (Cmd/Ctrl+Shift+G)">Ungroup</button>}
+          </div>
           <div className="b-divider" />
           <button className="b-btn danger" onClick={() => onDeleteMany(selectedIds)}>Delete selected</button>
         </>
@@ -646,10 +676,16 @@ function Inspector({ doc, selectedIds, onPatchInstance, onPatchProp, onPatchChro
             className={`b-layer ${selectedIds.indexOf(i.id) !== -1 ? 'selected' : ''}`}
             onClick={(ev) => {
               const meta = ev.metaKey || ev.ctrlKey;
-              if (meta) onSelect(selectedIds.indexOf(i.id) !== -1 ? selectedIds.filter((x) => x !== i.id) : [...selectedIds, i.id]);
-              else onSelect([i.id]);
+              const members = ev.altKey ? [i.id] : bGroupMembers(doc, i.id);
+              if (meta) {
+                const allIn = members.every((m) => selectedIds.indexOf(m) !== -1);
+                onSelect(allIn ? selectedIds.filter((x) => members.indexOf(x) === -1) : [...new Set([...selectedIds, ...members])]);
+              } else {
+                onSelect(members);
+              }
             }}
           >
+            {i.groupId && <span title="Grouped" style={{ flex: '0 0 auto', width: 6, height: 6, borderRadius: 2, background: 'var(--accent-violet)' }} />}
             <span className="b-layer-name">{(e && e.label) || i.component}</span>
             <button className="b-layer-del" title="Delete"
               onClick={(ev) => { ev.stopPropagation(); onDelete(i.id); }}>×</button>
@@ -854,6 +890,29 @@ function BuilderApp() {
     setSelectedIds([]);
   };
 
+  // Group the current selection under one fresh groupId; ungroup removes it.
+  const groupSelected = () => {
+    const ids = selRef.current;
+    if (ids.length < 2) return;
+    const gid = builderUid('grp');
+    const set = new Set(ids);
+    commit((d) => ({ ...d, instances: d.instances.map((i) => set.has(i.id) ? { ...i, groupId: gid } : i) }));
+  };
+  const ungroupSelected = () => {
+    const ids = selRef.current;
+    if (!ids.length) return;
+    const set = new Set(ids);
+    commit((d) => ({
+      ...d,
+      instances: d.instances.map((i) => {
+        if (!set.has(i.id) || i.groupId == null) return i;
+        const copy = { ...i };       // object-rest would emit a global `_excluded`
+        delete copy.groupId;          // that collides with manimo-motion.jsx (shared scope)
+        return copy;
+      }),
+    }));
+  };
+
   const resetDoc = () => {
     past.current = []; future.current = [];
     setDoc(JSON.parse(JSON.stringify(BUILDER_DEFAULT_DOC)));
@@ -919,6 +978,7 @@ function BuilderApp() {
       if (meta && (e.key === 'z' || e.key === 'Z')) { block(); if (e.shiftKey) redo(); else undo(); return; }
       if (meta && (e.key === 'y' || e.key === 'Y')) { block(); redo(); return; }
       if (meta && (e.key === 'd' || e.key === 'D')) { block(); duplicateSelected(); return; }
+      if (meta && (e.key === 'g' || e.key === 'G')) { block(); if (e.shiftKey) ungroupSelected(); else groupSelected(); return; }
       if (e.key === 'Backspace' || e.key === 'Delete') {
         if (selRef.current.length) { block(); deleteMany(selRef.current); }
         return;
@@ -1033,6 +1093,8 @@ function BuilderApp() {
         onDelete={deleteInstance}
         onDeleteMany={deleteMany}
         onSelect={setSelectedIds}
+        onGroup={groupSelected}
+        onUngroup={ungroupSelected}
       />
 
       <Timeline

@@ -70,6 +70,9 @@ the scripts load via relative paths).
 | Cmd/Ctrl+Z | Undo (coalesces rapid edits into one step) |
 | Cmd/Ctrl+Shift+Z, Cmd/Ctrl+Y | Redo |
 | Cmd/Ctrl+D | Duplicate selected |
+| Cmd/Ctrl+G | Group selected |
+| Cmd/Ctrl+Shift+G | Ungroup selected |
+| Alt/Option-click | Select one member inside a group |
 | Esc | Deselect |
 | Space | Play / pause (handled by the Stage) |
 
@@ -103,11 +106,18 @@ for SVG instances (it scales the whole drawing via the viewBox) and a literal
   still the existing `npm run audio` + `rewire-scene.js` flow, not yet wired
   into the builder.
 
-## Planned
+## Grouping
 
-- **Grouping.** Combine several instances into one movable/transformable group
-  (a `groupId` on instances, or nested groups) with ungroup. For the common
-  "box + value" case, use the `LabeledBox` component (one object already).
+Select several instances and **Group** them (Cmd/Ctrl+G, or the inspector
+button) — they share a `groupId`, so clicking any member selects the whole
+group and dragging moves them together; a dashed outline marks the group.
+**Ungroup** with Cmd/Ctrl+Shift+G. **Alt/Option-click** reaches a single member
+inside a group (e.g. to edit its props). Group membership is saved in the scene
+document. For the common "box + value" case, prefer the `LabeledBox` component
+(one object already).
+
+Not yet: resizing/rotating a whole group as one (group move + the per-element
+transform handle cover most needs).
 
 ## Coordinate model
 

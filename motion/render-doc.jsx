@@ -242,6 +242,44 @@ function BuilderGuideLines({ guides }) {
   );
 }
 
+// A dashed bounding box around a multi-selection (and thus around a selected
+// group), so several instances read as one object. Editor-only. Unions the
+// visual bounds of the selected instances that are on screen right now.
+function GroupOutline({ doc, ids }) {
+  const { time } = useTimeline();
+  const registry = window.ManimoRegistry || {};
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity, count = 0;
+  (ids || []).forEach((id) => {
+    const inst = (doc.instances || []).find((i) => i.id === id);
+    if (!inst) return;
+    const entry = registry[inst.component];
+    if (!entry) return;
+    const s = inst.start != null ? inst.start : 0;
+    const e = inst.end != null ? inst.end : Infinity;
+    if (time < s || time > e) return;
+    const box = entry.defaultBox || { w: 200, h: 200 };
+    const bw = inst.w != null ? inst.w : box.w;
+    const bh = inst.h != null ? inst.h : box.h;
+    const sc = inst.scale != null ? inst.scale : 1;
+    const cx = (inst.x || 0) + bw / 2;
+    const cy = (inst.y || 0) + bh / 2;
+    const vw = bw * sc, vh = bh * sc;
+    minX = Math.min(minX, cx - vw / 2); maxX = Math.max(maxX, cx + vw / 2);
+    minY = Math.min(minY, cy - vh / 2); maxY = Math.max(maxY, cy + vh / 2);
+    count++;
+  });
+  if (count < 2) return null;
+  const pad = 6;
+  return (
+    <div style={{
+      position: 'absolute', left: minX - pad, top: minY - pad,
+      width: (maxX - minX) + pad * 2, height: (maxY - minY) + pad * 2,
+      border: '1.5px dashed var(--accent-violet)', borderRadius: 6,
+      pointerEvents: 'none', zIndex: 40,
+    }} />
+  );
+}
+
 function RenderDoc({ doc, selectedIds = [], onSelect, onTransform, guides }) {
   if (!doc) return null;
   const instances = doc.instances || [];
@@ -260,6 +298,10 @@ function RenderDoc({ doc, selectedIds = [], onSelect, onTransform, guides }) {
     : null;
   if (overlayInst) {
     body.push(<SelectionOverlay key="__overlay" inst={overlayInst} onTransform={onTransform} />);
+  }
+  // Multi-selection (incl. a selected group): dashed union outline.
+  if (onTransform && sel.length > 1) {
+    body.push(<GroupOutline key="__group" doc={doc} ids={sel} />);
   }
   if (guides && guides.length) {
     body.push(<BuilderGuideLines key="__guides" guides={guides} />);
