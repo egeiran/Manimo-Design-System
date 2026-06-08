@@ -951,9 +951,12 @@ function BuilderApp() {
             className="b-lib-select"
             value={librarySel}
             onChange={(e) => loadFromLibrary(e.target.value)}
-            title="Load a saved scene"
+            disabled={Object.keys(library).length === 0}
+            title={Object.keys(library).length === 0 ? 'No saved scenes yet — use “Save as…”' : 'Load a saved scene'}
           >
-            <option value="">Library…</option>
+            <option value="">
+              {Object.keys(library).length === 0 ? 'Library (empty)' : 'Library…'}
+            </option>
             {Object.keys(library).sort().map((name) => (
               <option key={name} value={name}>{name}</option>
             ))}
