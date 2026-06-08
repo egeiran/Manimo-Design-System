@@ -57,6 +57,7 @@ primitive below reads from that, so timing composes naturally.
 | Vector / force / velocity arrow     | `Arrow`         |
 | 2D coordinate axes                  | `Axes`          |
 | Math symbol/label inside an `<svg>` | `Label`         |
+| Code / pseudocode panel             | `CodeBlock`     |
 | Erase a chalk element off-screen    | `ChalkWipe`     |
 | Square label bracket on a diagram   | `Bracket`       |
 | Wheel rolling without slipping      | `RollingWheel`  |
@@ -259,6 +260,19 @@ graph points, intersections, vertices.
 ### `<Label x y text color fontFamily fontSize italic anchor duration delay />`
 A single line of SVG `<text>` that fades in. Use for math symbols/labels that
 must sit at a precise point *inside* an SVG figure (`WriteOn` is for DOM text).
+Pass `fontFamily="var(--font-mono)"` for numeric labels (project convention).
+
+### `<CodeBlock code title highlight reveal fontSize accent duration delay />`
+A monospace code / pseudocode panel (DOM — positioned by its instance box).
+`code` is a string with `\n` between lines. Two reveal modes:
+- `reveal="lines"` — lines type on one-by-one over `duration` (intro a block).
+- `reveal="all"` — whole block shown; `highlight` (comma-separated 1-based line
+  numbers, e.g. `"4,5,6"`) spotlights lines with an accent bar while the rest
+  dim.
+
+To **walk through code**, stack several `CodeBlock` instances with the *same*
+`code` but different `highlight`, sequenced on the timeline at the same x/y —
+each beat lights up the lines the narration is explaining.
 
 ### `<Rect x y w h fill stroke strokeWidth rounded mode duration delay />`
 A rectangle (SVG) that reveals via `mode`: `'fade'` grows opacity, `'draw'`

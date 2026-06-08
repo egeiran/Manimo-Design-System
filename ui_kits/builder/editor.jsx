@@ -151,6 +151,7 @@ function PaletteIcon({ kind }) {
   switch (kind) {
     case 'text':     return <svg {...s}><path d="M3 6h14M3 10h10M3 14h12" /></svg>;
     case 'label':    return <svg {...s}><path d="M4 4h7l5 5-7 7-5-5z" /><circle cx="8" cy="8" r="1.2" fill="currentColor" stroke="none" /></svg>;
+    case 'code':     return <svg {...s}><path d="M7 6l-4 4 4 4" /><path d="M13 6l4 4-4 4" /></svg>;
     case 'path':     return <svg {...s}><path d="M3 15 C 7 3, 13 3, 17 15" /></svg>;
     case 'arrow':    return <svg {...s}><path d="M4 16 L16 4" /><path d="M10 4h6v6" /></svg>;
     case 'axes':     return <svg {...s}><path d="M5 3v12h12" /><path d="M14 13l3 2-3 2" /><path d="M3 6l2-3 2 3" /></svg>;

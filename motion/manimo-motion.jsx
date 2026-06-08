@@ -1227,6 +1227,86 @@ function Capacitor({
   );
 }
 
+// ─── CodeBlock ──────────────────────────────────────────────────────────
+// A monospace code/pseudocode panel. Two reveal modes:
+//   reveal="lines" — lines type on one-by-one over `duration` (intro a block)
+//   reveal="all"   — whole block shown; use `highlight` to spotlight lines
+// `highlight` is a comma-separated list of 1-based line numbers; highlighted
+// lines stay bright with an accent bar, the rest dim. To "walk" through code,
+// place several CodeBlock instances with the SAME code + different `highlight`
+// at the same x/y, sequenced on the timeline — each beat lights up new lines.
+// DOM component: positioned + width come from the instance box.
+function CodeBlock({
+  code = '',
+  fontSize = 18,
+  lineHeight = 1.55,
+  color = 'var(--chalk-100)',
+  dim = 'var(--fg-3)',
+  accent = 'var(--amber-400)',
+  highlight = '',
+  title = null,
+  reveal = 'all',
+  duration = 1.2,
+  delay = 0,
+  padding = 18,
+  bg = 'var(--bg-overlay)',
+  style: styleProp = {},
+}) {
+  const { localTime } = useSprite();
+  const lines = String(code).replace(/\t/g, '  ').split('\n');
+  const t = clamp((localTime - delay) / duration, 0, 1);
+  const shown = reveal === 'lines'
+    ? Math.ceil(Easing.easeOutCubic(t) * lines.length)
+    : lines.length;
+  const hi = new Set(
+    String(highlight).split(',').map((s) => parseInt(s, 10)).filter((x) => !isNaN(x))
+  );
+  const anyHi = hi.size > 0;
+  const panelOp = reveal === 'lines' ? 1 : clamp(t / 0.15, 0, 1);
+
+  return (
+    <div style={{
+      ...styleProp,
+      opacity: panelOp,
+      background: bg,
+      border: '1px solid rgba(255,255,255,0.08)', /* white-on-dark panel edge */
+      borderRadius: 10,
+      padding,
+      fontFamily: 'var(--font-mono)',
+      fontSize,
+      lineHeight,
+      color,
+      boxShadow: '0 10px 30px rgba(0,0,0,0.35)',
+      whiteSpace: 'pre',
+      overflow: 'hidden',
+    }}>
+      {title && (
+        <div style={{
+          fontFamily: 'var(--font-mono)', fontSize: Math.round(fontSize * 0.7),
+          color: 'var(--amber-300)', letterSpacing: '0.12em',
+          textTransform: 'uppercase', marginBottom: 10,
+        }}>{title}</div>
+      )}
+      {lines.map((ln, i) => {
+        const isHi = hi.has(i + 1);
+        return (
+          <div key={i} style={{
+            opacity: i < shown ? 1 : 0,
+            color: anyHi ? (isHi ? color : dim) : color,
+            borderLeft: `3px solid ${isHi ? accent : 'transparent'}`,
+            background: isHi ? 'rgba(244,184,96,0.10)' : 'transparent', /* amber-400 glow */
+            paddingLeft: 10,
+            marginLeft: -padding,
+            paddingRight: padding,
+          }}>
+            {ln === '' ? ' ' : ln}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 // ─── Export to global scope ───────────────────────────────────────────────
 Object.assign(window, {
   TraceIn, FadeUp, WriteOn, PulseMark, ChalkWipe,
@@ -1236,5 +1316,6 @@ Object.assign(window, {
   Pendulum, SwingingPendulum,
   Arrow, Axes, Dot, Label,
   Rect, NumberLine, FunctionCurve, Resistor, Capacitor,
+  CodeBlock,
   SceneChrome, SceneNarration,
 });

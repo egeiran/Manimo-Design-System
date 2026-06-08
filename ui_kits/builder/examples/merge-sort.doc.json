@@ -1,25 +1,25 @@
 {
   "id": "merge-sort",
-  "title": "Merge Sort: Split, Merge, and Why It’s O(n log n)",
+  "title": "Merge Sort: How It Works & Why It’s O(n log n)",
   "language": "en",
-  "duration": 31,
+  "duration": 46,
   "subject_id": "sandbox",
   "chrome": {
     "eyebrow": "algorithms",
-    "title": "Merge Sort: Split, Merge, and Why It’s O(n log n)",
+    "title": "Merge Sort: How It Works & Why It’s O(n log n)",
     "introEnd": 4.5,
     "introCaption": "How do you sort a list by splitting it?"
   },
   "instances": [
     {
       "id": "rect-1",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 4.6,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 534,
         "y": 96,
@@ -35,19 +35,20 @@
       }
     },
     {
-      "id": "lbl-2",
-      "component": "label",
+      "id": "label-2",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 4.6,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 556,
         "y": 126,
         "text": "5",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -57,13 +58,13 @@
     },
     {
       "id": "rect-3",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 4.6,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 590,
         "y": 96,
@@ -79,19 +80,20 @@
       }
     },
     {
-      "id": "lbl-4",
-      "component": "label",
+      "id": "label-4",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 4.6,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 612,
         "y": 126,
         "text": "2",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -101,13 +103,13 @@
     },
     {
       "id": "rect-5",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 4.6,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 646,
         "y": 96,
@@ -123,19 +125,20 @@
       }
     },
     {
-      "id": "lbl-6",
-      "component": "label",
+      "id": "label-6",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 4.6,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 668,
         "y": 126,
         "text": "8",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -145,13 +148,13 @@
     },
     {
       "id": "rect-7",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 4.6,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 702,
         "y": 96,
@@ -167,19 +170,20 @@
       }
     },
     {
-      "id": "lbl-8",
-      "component": "label",
+      "id": "label-8",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 4.6,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 724,
         "y": 126,
         "text": "1",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -189,13 +193,13 @@
     },
     {
       "id": "rect-9",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 7,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 442,
         "y": 196,
@@ -211,19 +215,20 @@
       }
     },
     {
-      "id": "lbl-10",
-      "component": "label",
+      "id": "label-10",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 7,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 464,
         "y": 226,
         "text": "5",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -233,13 +238,13 @@
     },
     {
       "id": "rect-11",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 7,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 498,
         "y": 196,
@@ -255,19 +260,20 @@
       }
     },
     {
-      "id": "lbl-12",
-      "component": "label",
+      "id": "label-12",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 7,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 520,
         "y": 226,
         "text": "2",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -277,13 +283,13 @@
     },
     {
       "id": "rect-13",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 7,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 782,
         "y": 196,
@@ -299,19 +305,20 @@
       }
     },
     {
-      "id": "lbl-14",
-      "component": "label",
+      "id": "label-14",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 7,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 804,
         "y": 226,
         "text": "8",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -321,13 +328,13 @@
     },
     {
       "id": "rect-15",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 7,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 838,
         "y": 196,
@@ -343,19 +350,20 @@
       }
     },
     {
-      "id": "lbl-16",
-      "component": "label",
+      "id": "label-16",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 7,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 860,
         "y": 226,
         "text": "1",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -365,13 +373,13 @@
     },
     {
       "id": "rect-17",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 9.3,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 414,
         "y": 296,
@@ -387,19 +395,20 @@
       }
     },
     {
-      "id": "lbl-18",
-      "component": "label",
+      "id": "label-18",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 9.3,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 436,
         "y": 326,
         "text": "5",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -409,13 +418,13 @@
     },
     {
       "id": "rect-19",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 9.3,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 498,
         "y": 296,
@@ -431,19 +440,20 @@
       }
     },
     {
-      "id": "lbl-20",
-      "component": "label",
+      "id": "label-20",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 9.3,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 520,
         "y": 326,
         "text": "2",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -453,13 +463,13 @@
     },
     {
       "id": "rect-21",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 9.3,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 782,
         "y": 296,
@@ -475,19 +485,20 @@
       }
     },
     {
-      "id": "lbl-22",
-      "component": "label",
+      "id": "label-22",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 9.3,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 804,
         "y": 326,
         "text": "8",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -497,13 +508,13 @@
     },
     {
       "id": "rect-23",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 9.3,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 866,
         "y": 296,
@@ -519,19 +530,20 @@
       }
     },
     {
-      "id": "lbl-24",
-      "component": "label",
+      "id": "label-24",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 9.3,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 888,
         "y": 326,
         "text": "1",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -541,13 +553,13 @@
     },
     {
       "id": "rect-25",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 12,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 442,
         "y": 400,
@@ -563,19 +575,20 @@
       }
     },
     {
-      "id": "lbl-26",
-      "component": "label",
+      "id": "label-26",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 12,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 464,
         "y": 430,
         "text": "2",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -585,13 +598,13 @@
     },
     {
       "id": "rect-27",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 12,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 498,
         "y": 400,
@@ -607,19 +620,20 @@
       }
     },
     {
-      "id": "lbl-28",
-      "component": "label",
+      "id": "label-28",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 12,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 520,
         "y": 430,
         "text": "5",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -629,13 +643,13 @@
     },
     {
       "id": "rect-29",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 12,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 782,
         "y": 400,
@@ -651,19 +665,20 @@
       }
     },
     {
-      "id": "lbl-30",
-      "component": "label",
+      "id": "label-30",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 12,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 804,
         "y": 430,
         "text": "1",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -673,13 +688,13 @@
     },
     {
       "id": "rect-31",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 12,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 838,
         "y": 400,
@@ -695,19 +710,20 @@
       }
     },
     {
-      "id": "lbl-32",
-      "component": "label",
+      "id": "label-32",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 12,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 860,
         "y": 430,
         "text": "8",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -717,13 +733,13 @@
     },
     {
       "id": "rect-33",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 15.2,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 534,
         "y": 504,
@@ -739,19 +755,20 @@
       }
     },
     {
-      "id": "lbl-34",
-      "component": "label",
+      "id": "label-34",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 15.2,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 556,
         "y": 534,
         "text": "1",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -761,13 +778,13 @@
     },
     {
       "id": "rect-35",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 15.2,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 590,
         "y": 504,
@@ -783,19 +800,20 @@
       }
     },
     {
-      "id": "lbl-36",
-      "component": "label",
+      "id": "label-36",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 15.2,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 612,
         "y": 534,
         "text": "2",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -805,13 +823,13 @@
     },
     {
       "id": "rect-37",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 15.2,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 646,
         "y": 504,
@@ -827,19 +845,20 @@
       }
     },
     {
-      "id": "lbl-38",
-      "component": "label",
+      "id": "label-38",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 15.2,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 668,
         "y": 534,
         "text": "5",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -849,13 +868,13 @@
     },
     {
       "id": "rect-39",
-      "component": "rect",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "rect",
       "start": 15.2,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 702,
         "y": 504,
@@ -871,19 +890,20 @@
       }
     },
     {
-      "id": "lbl-40",
-      "component": "label",
+      "id": "label-40",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "label",
       "start": 15.2,
-      "end": 24.5,
+      "end": 18.5,
       "props": {
         "x": 724,
         "y": 534,
         "text": "8",
         "color": "var(--chalk-100)",
+        "fontFamily": "var(--font-mono)",
         "fontSize": 22,
         "italic": false,
         "anchor": "middle",
@@ -892,12 +912,12 @@
       }
     },
     {
-      "id": "p-41",
-      "component": "pulse-mark",
+      "id": "pulse-mark-41",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "pulse-mark",
       "start": 15,
       "end": 18.5,
       "props": {
@@ -910,12 +930,12 @@
       }
     },
     {
-      "id": "p-42",
-      "component": "pulse-mark",
+      "id": "pulse-mark-42",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
+      "component": "pulse-mark",
       "start": 15,
       "end": 18.5,
       "props": {
@@ -930,9 +950,9 @@
     {
       "id": "cap-43",
       "component": "caption",
-      "x": 290,
-      "y": 632,
-      "w": 700,
+      "x": 280,
+      "y": 636,
+      "w": 720,
       "start": 5,
       "end": 6.9,
       "props": {
@@ -940,15 +960,15 @@
         "fontSize": 23,
         "italic": true,
         "color": "var(--chalk-100)",
-        "duration": 0.85
+        "duration": 0.8
       }
     },
     {
       "id": "cap-44",
       "component": "caption",
-      "x": 290,
-      "y": 632,
-      "w": 700,
+      "x": 280,
+      "y": 636,
+      "w": 720,
       "start": 7,
       "end": 9.2,
       "props": {
@@ -956,15 +976,15 @@
         "fontSize": 23,
         "italic": true,
         "color": "var(--chalk-100)",
-        "duration": 0.85
+        "duration": 0.8
       }
     },
     {
       "id": "cap-45",
       "component": "caption",
-      "x": 290,
-      "y": 632,
-      "w": 700,
+      "x": 280,
+      "y": 636,
+      "w": 720,
       "start": 9.3,
       "end": 11.9,
       "props": {
@@ -972,66 +992,275 @@
         "fontSize": 23,
         "italic": true,
         "color": "var(--chalk-100)",
-        "duration": 0.85
+        "duration": 0.8
       }
     },
     {
       "id": "cap-46",
       "component": "caption",
-      "x": 290,
-      "y": 632,
-      "w": 700,
+      "x": 280,
+      "y": 636,
+      "w": 720,
       "start": 12,
       "end": 15.1,
       "props": {
-        "text": "Merge each pair: compare the fronts, take the smaller one first.",
+        "text": "Merge each pair: compare the fronts, take the smaller first.",
         "fontSize": 23,
         "italic": true,
         "color": "var(--chalk-100)",
-        "duration": 0.85
+        "duration": 0.8
       }
     },
     {
       "id": "cap-47",
       "component": "caption",
-      "x": 290,
-      "y": 632,
-      "w": 700,
+      "x": 280,
+      "y": 636,
+      "w": 720,
       "start": 15.2,
-      "end": 19,
+      "end": 18.2,
       "props": {
         "text": "Merge the two sorted halves the same way → one sorted list.",
         "fontSize": 23,
         "italic": true,
         "color": "var(--chalk-100)",
-        "duration": 0.85
+        "duration": 0.8
       }
     },
     {
-      "id": "cap-48",
-      "component": "caption",
-      "x": 290,
-      "y": 632,
-      "w": 700,
-      "start": 19.1,
-      "end": 24.2,
-      "props": {
-        "text": "Comparing 1 and 2, the 1 goes first — then 2, then 5, then 8.",
-        "fontSize": 23,
-        "italic": true,
-        "color": "var(--chalk-100)",
-        "duration": 0.85
-      }
-    },
-    {
-      "id": "big-49",
-      "component": "label",
+      "id": "label-48",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
-      "start": 25,
-      "end": 31,
+      "component": "label",
+      "start": 18.6,
+      "end": 39,
+      "props": {
+        "x": 640,
+        "y": 92,
+        "text": "sorts  [5, 2, 8, 1]  →  [1, 2, 5, 8]",
+        "color": "var(--chalk-300)",
+        "fontSize": 18,
+        "italic": false,
+        "anchor": "middle",
+        "duration": 0.5,
+        "fontFamily": "var(--font-mono)"
+      }
+    },
+    {
+      "id": "code-49",
+      "component": "code-block",
+      "x": 360,
+      "y": 110,
+      "w": 600,
+      "start": 18.7,
+      "end": 21,
+      "props": {
+        "code": "mergeSort(a):\n  if len(a) <= 1:          # already sorted\n    return a\n  mid = len(a) // 2\n  L = mergeSort(a[:mid])   # split + recurse\n  R = mergeSort(a[mid:])\n  return merge(L, R)       # combine\n\nmerge(L, R):\n  out = []\n  while L and R:           # compare fronts\n    if L[0] <= R[0]: out += [L.pop(0)]\n    else:            out += [R.pop(0)]\n  return out + L + R       # leftovers",
+        "title": "merge sort · pseudocode",
+        "highlight": "",
+        "reveal": "lines",
+        "fontSize": 19,
+        "duration": 2,
+        "accent": "var(--amber-400)"
+      }
+    },
+    {
+      "id": "cap-50",
+      "component": "caption",
+      "x": 280,
+      "y": 636,
+      "w": 720,
+      "start": 18.7,
+      "end": 20.8,
+      "props": {
+        "text": "The whole algorithm — two functions: split in mergeSort, combine in merge.",
+        "fontSize": 23,
+        "italic": true,
+        "color": "var(--chalk-100)",
+        "duration": 0.8
+      }
+    },
+    {
+      "id": "code-51",
+      "component": "code-block",
+      "x": 360,
+      "y": 110,
+      "w": 600,
+      "start": 21,
+      "end": 24.5,
+      "props": {
+        "code": "mergeSort(a):\n  if len(a) <= 1:          # already sorted\n    return a\n  mid = len(a) // 2\n  L = mergeSort(a[:mid])   # split + recurse\n  R = mergeSort(a[mid:])\n  return merge(L, R)       # combine\n\nmerge(L, R):\n  out = []\n  while L and R:           # compare fronts\n    if L[0] <= R[0]: out += [L.pop(0)]\n    else:            out += [R.pop(0)]\n  return out + L + R       # leftovers",
+        "title": "merge sort · pseudocode",
+        "highlight": "2,3",
+        "reveal": "all",
+        "fontSize": 19,
+        "duration": 0.3,
+        "accent": "var(--amber-400)"
+      }
+    },
+    {
+      "id": "cap-52",
+      "component": "caption",
+      "x": 280,
+      "y": 636,
+      "w": 720,
+      "start": 21,
+      "end": 24.3,
+      "props": {
+        "text": "Base case: a list of one element is already sorted.",
+        "fontSize": 23,
+        "italic": true,
+        "color": "var(--chalk-100)",
+        "duration": 0.8
+      }
+    },
+    {
+      "id": "code-53",
+      "component": "code-block",
+      "x": 360,
+      "y": 110,
+      "w": 600,
+      "start": 24.5,
+      "end": 28.5,
+      "props": {
+        "code": "mergeSort(a):\n  if len(a) <= 1:          # already sorted\n    return a\n  mid = len(a) // 2\n  L = mergeSort(a[:mid])   # split + recurse\n  R = mergeSort(a[mid:])\n  return merge(L, R)       # combine\n\nmerge(L, R):\n  out = []\n  while L and R:           # compare fronts\n    if L[0] <= R[0]: out += [L.pop(0)]\n    else:            out += [R.pop(0)]\n  return out + L + R       # leftovers",
+        "title": "merge sort · pseudocode",
+        "highlight": "4,5,6",
+        "reveal": "all",
+        "fontSize": 19,
+        "duration": 0.3,
+        "accent": "var(--amber-400)"
+      }
+    },
+    {
+      "id": "cap-54",
+      "component": "caption",
+      "x": 280,
+      "y": 636,
+      "w": 720,
+      "start": 24.5,
+      "end": 28.3,
+      "props": {
+        "text": "Otherwise split in half and recursively sort each side.",
+        "fontSize": 23,
+        "italic": true,
+        "color": "var(--chalk-100)",
+        "duration": 0.8
+      }
+    },
+    {
+      "id": "code-55",
+      "component": "code-block",
+      "x": 360,
+      "y": 110,
+      "w": 600,
+      "start": 28.5,
+      "end": 31.5,
+      "props": {
+        "code": "mergeSort(a):\n  if len(a) <= 1:          # already sorted\n    return a\n  mid = len(a) // 2\n  L = mergeSort(a[:mid])   # split + recurse\n  R = mergeSort(a[mid:])\n  return merge(L, R)       # combine\n\nmerge(L, R):\n  out = []\n  while L and R:           # compare fronts\n    if L[0] <= R[0]: out += [L.pop(0)]\n    else:            out += [R.pop(0)]\n  return out + L + R       # leftovers",
+        "title": "merge sort · pseudocode",
+        "highlight": "7",
+        "reveal": "all",
+        "fontSize": 19,
+        "duration": 0.3,
+        "accent": "var(--amber-400)"
+      }
+    },
+    {
+      "id": "cap-56",
+      "component": "caption",
+      "x": 280,
+      "y": 636,
+      "w": 720,
+      "start": 28.5,
+      "end": 31.3,
+      "props": {
+        "text": "Then merge the two sorted halves into one.",
+        "fontSize": 23,
+        "italic": true,
+        "color": "var(--chalk-100)",
+        "duration": 0.8
+      }
+    },
+    {
+      "id": "code-57",
+      "component": "code-block",
+      "x": 360,
+      "y": 110,
+      "w": 600,
+      "start": 31.5,
+      "end": 36,
+      "props": {
+        "code": "mergeSort(a):\n  if len(a) <= 1:          # already sorted\n    return a\n  mid = len(a) // 2\n  L = mergeSort(a[:mid])   # split + recurse\n  R = mergeSort(a[mid:])\n  return merge(L, R)       # combine\n\nmerge(L, R):\n  out = []\n  while L and R:           # compare fronts\n    if L[0] <= R[0]: out += [L.pop(0)]\n    else:            out += [R.pop(0)]\n  return out + L + R       # leftovers",
+        "title": "merge sort · pseudocode",
+        "highlight": "11,12,13",
+        "reveal": "all",
+        "fontSize": 19,
+        "duration": 0.3,
+        "accent": "var(--amber-400)"
+      }
+    },
+    {
+      "id": "cap-58",
+      "component": "caption",
+      "x": 280,
+      "y": 636,
+      "w": 720,
+      "start": 31.5,
+      "end": 35.8,
+      "props": {
+        "text": "Merge: while both sides have items, take the smaller front.",
+        "fontSize": 23,
+        "italic": true,
+        "color": "var(--chalk-100)",
+        "duration": 0.8
+      }
+    },
+    {
+      "id": "code-59",
+      "component": "code-block",
+      "x": 360,
+      "y": 110,
+      "w": 600,
+      "start": 36,
+      "end": 39,
+      "props": {
+        "code": "mergeSort(a):\n  if len(a) <= 1:          # already sorted\n    return a\n  mid = len(a) // 2\n  L = mergeSort(a[:mid])   # split + recurse\n  R = mergeSort(a[mid:])\n  return merge(L, R)       # combine\n\nmerge(L, R):\n  out = []\n  while L and R:           # compare fronts\n    if L[0] <= R[0]: out += [L.pop(0)]\n    else:            out += [R.pop(0)]\n  return out + L + R       # leftovers",
+        "title": "merge sort · pseudocode",
+        "highlight": "14",
+        "reveal": "all",
+        "fontSize": 19,
+        "duration": 0.3,
+        "accent": "var(--amber-400)"
+      }
+    },
+    {
+      "id": "cap-60",
+      "component": "caption",
+      "x": 280,
+      "y": 636,
+      "w": 720,
+      "start": 36,
+      "end": 38.8,
+      "props": {
+        "text": "When one side empties, append the rest — it is already sorted.",
+        "fontSize": 23,
+        "italic": true,
+        "color": "var(--chalk-100)",
+        "duration": 0.8
+      }
+    },
+    {
+      "id": "label-61",
+      "x": 0,
+      "y": 0,
+      "w": 1280,
+      "h": 720,
+      "component": "label",
+      "start": 39.4,
+      "end": 46,
       "props": {
         "x": 640,
         "y": 250,
@@ -1044,14 +1273,14 @@
       }
     },
     {
-      "id": "big-50",
-      "component": "label",
+      "id": "label-62",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
-      "start": 25.4,
-      "end": 31,
+      "component": "label",
+      "start": 39.9,
+      "end": 46,
       "props": {
         "x": 640,
         "y": 330,
@@ -1064,14 +1293,14 @@
       }
     },
     {
-      "id": "big-51",
-      "component": "label",
+      "id": "label-63",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
-      "start": 26,
-      "end": 31,
+      "component": "label",
+      "start": 40.4,
+      "end": 46,
       "props": {
         "x": 640,
         "y": 372,
@@ -1084,14 +1313,14 @@
       }
     },
     {
-      "id": "brk-52",
-      "component": "bracket",
+      "id": "bracket-64",
       "x": 0,
       "y": 0,
       "w": 1280,
       "h": 720,
-      "start": 26.4,
-      "end": 31,
+      "component": "bracket",
+      "start": 40.8,
+      "end": 46,
       "props": {
         "x1": 470,
         "y1": 300,
@@ -1104,19 +1333,19 @@
       }
     },
     {
-      "id": "cap-53",
+      "id": "cap-65",
       "component": "caption",
-      "x": 290,
-      "y": 632,
-      "w": 700,
-      "start": 27,
-      "end": 31,
+      "x": 280,
+      "y": 636,
+      "w": 720,
+      "start": 41,
+      "end": 46,
       "props": {
-        "text": "Halving the list gives only log n levels — so it stays fast even on huge inputs.",
+        "text": "log n levels × n work each. Simple sorts are O(n²) — merge sort scales far better.",
         "fontSize": 23,
         "italic": true,
         "color": "var(--chalk-100)",
-        "duration": 0.85
+        "duration": 0.8
       }
     }
   ]
