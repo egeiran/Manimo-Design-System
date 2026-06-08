@@ -159,6 +159,7 @@ function PaletteIcon({ kind }) {
     case 'pulse':    return <svg {...s}><circle cx="10" cy="10" r="2.4" fill="currentColor" stroke="none" /><circle cx="10" cy="10" r="7" /></svg>;
     case 'bracket':  return <svg {...s}><path d="M13 3H6v14h7" /></svg>;
     case 'rect':       return <svg {...s}><rect x="3" y="5" width="14" height="10" rx="1.5" /></svg>;
+    case 'labeledbox': return <svg {...s}><rect x="3" y="5" width="14" height="10" rx="2" /><path d="M7 10h6" /></svg>;
     case 'numberline': return <svg {...s}><path d="M3 10h14" /><path d="M5 8v4M9 8v4M13 8v4M17 8v4" /></svg>;
     case 'curve':      return <svg {...s}><path d="M3 16 C 7 16, 8 4, 12 4 C 15 4, 16 12, 17 13" /></svg>;
     case 'resistor':   return <svg {...s}><path d="M2 10h3l1.5-4 3 8 3-8 1.5 4h3" /></svg>;

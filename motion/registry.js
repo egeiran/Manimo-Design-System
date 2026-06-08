@@ -212,6 +212,32 @@ window.ManimoRegistry = {
     },
   },
 
+  'labeled-box': {
+    componentName: 'LabeledBox',
+    label: 'Labeled box',
+    category: 'Geometry', icon: 'labeledbox',
+    keywords: ['box', 'cell', 'node', 'state', 'token', 'array', 'tile', 'text box', 'value'],
+    description: 'A rounded box with centred text — one object (array cell, node, state).',
+    container: 'svg',
+    defaultBox: { w: 120, h: 64 },
+    props: {
+      text:        { type: 'string', default: '5', control: 'text', label: 'Text' },
+      w:           { type: 'number', default: 120, control: 'number', label: 'Width', min: 8, max: 1280, step: 1 },
+      h:           { type: 'number', default: 64,  control: 'number', label: 'Height', min: 8, max: 720, step: 1 },
+      fill:        { type: 'color',  default: 'none', control: 'token', label: 'Fill' },
+      stroke:      { type: 'color',  default: 'var(--amber-400)', control: 'token', label: 'Stroke' },
+      strokeWidth: { type: 'number', default: 2.5, control: 'number', label: 'Border', min: 0, max: 20, step: 0.5 },
+      rounded:     { type: 'number', default: 8,  control: 'number', label: 'Corner r', min: 0, max: 120, step: 1 },
+      textColor:   { type: 'color',  default: 'var(--chalk-100)', control: 'token', label: 'Text color' },
+      fontSize:    { type: 'number', default: 22, control: 'number', label: 'Font size', min: 8, max: 80, step: 1 },
+      fontFamily:  { type: 'string', default: 'var(--font-mono)', control: 'text', label: 'Font (mono/serif/sans)' },
+      italic:      { type: 'boolean', default: false, control: 'toggle', label: 'Italic' },
+      mode:        { type: 'string', default: 'draw', control: 'text', label: 'Mode (fade/draw)' },
+      duration:    { type: 'number', default: 0.5, control: 'number', label: 'Reveal (s)', min: 0, max: 6, step: 0.1 },
+      delay:       { type: 'number', default: 0, control: 'number', label: 'Delay (s)', min: 0, max: 10, step: 0.1 },
+    },
+  },
+
   'number-line': {
     componentName: 'NumberLine',
     label: 'Number line',

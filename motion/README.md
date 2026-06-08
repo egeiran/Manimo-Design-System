@@ -58,6 +58,7 @@ primitive below reads from that, so timing composes naturally.
 | 2D coordinate axes                  | `Axes`          |
 | Math symbol/label inside an `<svg>` | `Label`         |
 | Code / pseudocode panel             | `CodeBlock`     |
+| Box with a value/word inside        | `LabeledBox`    |
 | Erase a chalk element off-screen    | `ChalkWipe`     |
 | Square label bracket on a diagram   | `Bracket`       |
 | Wheel rolling without slipping      | `RollingWheel`  |
@@ -279,6 +280,13 @@ A rectangle (SVG) that reveals via `mode`: `'fade'` grows opacity, `'draw'`
 traces the perimeter with the `TraceIn` stroke-dashoffset reveal. `rounded` sets
 the corner radius. Use for panels, highlight boxes, bars, framed regions. Pass
 `fill="none"` (the default) for an outline-only box.
+
+### `<LabeledBox text w h fill stroke strokeWidth rounded textColor fontSize fontFamily mode duration delay />`
+A rounded box with centred text — **one object** instead of a separate `Rect` +
+`Label`. The everyday "box with a value/word inside": array cells, graph nodes,
+state-diagram states, table cells. Size the instance box to the same `w`/`h` so
+selection wraps it; resize with the transform handle. Numeric `fontFamily`
+defaults to Mono.
 
 ### `<NumberLine ox oy length min max step color label duration delay />`
 A horizontal axis with evenly spaced ticks and Mono numeric labels, fading in.

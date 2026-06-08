@@ -12,8 +12,8 @@
   },
   "instances": [
     {
-      "id": "rect-1",
-      "component": "rect",
+      "id": "labeled-box-1",
+      "component": "labeled-box",
       "x": 534,
       "y": 96,
       "w": 44,
@@ -21,67 +21,25 @@
       "start": 4.6,
       "end": 18.5,
       "props": {
-        "x": 0,
-        "y": 0,
-        "w": 44,
-        "h": 44,
-        "fill": "none",
-        "stroke": "var(--amber-400)",
-        "strokeWidth": 2.5,
-        "rounded": 8,
-        "mode": "draw",
-        "duration": 0.5,
-        "delay": 0
-      }
-    },
-    {
-      "id": "label-2",
-      "component": "label",
-      "x": 534,
-      "y": 96,
-      "w": 44,
-      "h": 44,
-      "start": 4.6,
-      "end": 18.5,
-      "props": {
-        "x": 22,
-        "y": 30,
         "text": "5",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
-        "fontSize": 22,
-        "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.3
-      }
-    },
-    {
-      "id": "rect-3",
-      "component": "rect",
-      "x": 590,
-      "y": 96,
-      "w": 44,
-      "h": 44,
-      "start": 4.6,
-      "end": 18.5,
-      "props": {
-        "x": 0,
-        "y": 0,
         "w": 44,
         "h": 44,
         "fill": "none",
         "stroke": "var(--amber-400)",
         "strokeWidth": 2.5,
         "rounded": 8,
+        "textColor": "var(--chalk-100)",
+        "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
+        "italic": false,
         "mode": "draw",
         "duration": 0.5,
         "delay": 0
       }
     },
     {
-      "id": "label-4",
-      "component": "label",
+      "id": "labeled-box-2",
+      "component": "labeled-box",
       "x": 590,
       "y": 96,
       "w": 44,
@@ -89,21 +47,25 @@
       "start": 4.6,
       "end": 18.5,
       "props": {
-        "x": 22,
-        "y": 30,
         "text": "2",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
+        "w": 44,
+        "h": 44,
+        "fill": "none",
+        "stroke": "var(--amber-400)",
+        "strokeWidth": 2.5,
+        "rounded": 8,
+        "textColor": "var(--chalk-100)",
         "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
         "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.3
+        "mode": "draw",
+        "duration": 0.5,
+        "delay": 0
       }
     },
     {
-      "id": "rect-5",
-      "component": "rect",
+      "id": "labeled-box-3",
+      "component": "labeled-box",
       "x": 646,
       "y": 96,
       "w": 44,
@@ -111,44 +73,25 @@
       "start": 4.6,
       "end": 18.5,
       "props": {
-        "x": 0,
-        "y": 0,
+        "text": "8",
         "w": 44,
         "h": 44,
         "fill": "none",
         "stroke": "var(--amber-400)",
         "strokeWidth": 2.5,
         "rounded": 8,
+        "textColor": "var(--chalk-100)",
+        "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
+        "italic": false,
         "mode": "draw",
         "duration": 0.5,
         "delay": 0
       }
     },
     {
-      "id": "label-6",
-      "component": "label",
-      "x": 646,
-      "y": 96,
-      "w": 44,
-      "h": 44,
-      "start": 4.6,
-      "end": 18.5,
-      "props": {
-        "x": 22,
-        "y": 30,
-        "text": "8",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
-        "fontSize": 22,
-        "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.3
-      }
-    },
-    {
-      "id": "rect-7",
-      "component": "rect",
+      "id": "labeled-box-4",
+      "component": "labeled-box",
       "x": 702,
       "y": 96,
       "w": 44,
@@ -156,67 +99,25 @@
       "start": 4.6,
       "end": 18.5,
       "props": {
-        "x": 0,
-        "y": 0,
-        "w": 44,
-        "h": 44,
-        "fill": "none",
-        "stroke": "var(--amber-400)",
-        "strokeWidth": 2.5,
-        "rounded": 8,
-        "mode": "draw",
-        "duration": 0.5,
-        "delay": 0
-      }
-    },
-    {
-      "id": "label-8",
-      "component": "label",
-      "x": 702,
-      "y": 96,
-      "w": 44,
-      "h": 44,
-      "start": 4.6,
-      "end": 18.5,
-      "props": {
-        "x": 22,
-        "y": 30,
         "text": "1",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
-        "fontSize": 22,
-        "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.3
-      }
-    },
-    {
-      "id": "rect-9",
-      "component": "rect",
-      "x": 442,
-      "y": 196,
-      "w": 44,
-      "h": 44,
-      "start": 7,
-      "end": 18.5,
-      "props": {
-        "x": 0,
-        "y": 0,
         "w": 44,
         "h": 44,
         "fill": "none",
         "stroke": "var(--amber-400)",
         "strokeWidth": 2.5,
         "rounded": 8,
+        "textColor": "var(--chalk-100)",
+        "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
+        "italic": false,
         "mode": "draw",
         "duration": 0.5,
         "delay": 0
       }
     },
     {
-      "id": "label-10",
-      "component": "label",
+      "id": "labeled-box-5",
+      "component": "labeled-box",
       "x": 442,
       "y": 196,
       "w": 44,
@@ -224,44 +125,25 @@
       "start": 7,
       "end": 18.5,
       "props": {
-        "x": 22,
-        "y": 30,
         "text": "5",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
-        "fontSize": 22,
-        "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.3
-      }
-    },
-    {
-      "id": "rect-11",
-      "component": "rect",
-      "x": 498,
-      "y": 196,
-      "w": 44,
-      "h": 44,
-      "start": 7,
-      "end": 18.5,
-      "props": {
-        "x": 0,
-        "y": 0,
         "w": 44,
         "h": 44,
         "fill": "none",
         "stroke": "var(--amber-400)",
         "strokeWidth": 2.5,
         "rounded": 8,
+        "textColor": "var(--chalk-100)",
+        "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
+        "italic": false,
         "mode": "draw",
         "duration": 0.5,
         "delay": 0
       }
     },
     {
-      "id": "label-12",
-      "component": "label",
+      "id": "labeled-box-6",
+      "component": "labeled-box",
       "x": 498,
       "y": 196,
       "w": 44,
@@ -269,44 +151,25 @@
       "start": 7,
       "end": 18.5,
       "props": {
-        "x": 22,
-        "y": 30,
         "text": "2",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
-        "fontSize": 22,
-        "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.3
-      }
-    },
-    {
-      "id": "rect-13",
-      "component": "rect",
-      "x": 782,
-      "y": 196,
-      "w": 44,
-      "h": 44,
-      "start": 7,
-      "end": 18.5,
-      "props": {
-        "x": 0,
-        "y": 0,
         "w": 44,
         "h": 44,
         "fill": "none",
         "stroke": "var(--amber-400)",
         "strokeWidth": 2.5,
         "rounded": 8,
+        "textColor": "var(--chalk-100)",
+        "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
+        "italic": false,
         "mode": "draw",
         "duration": 0.5,
         "delay": 0
       }
     },
     {
-      "id": "label-14",
-      "component": "label",
+      "id": "labeled-box-7",
+      "component": "labeled-box",
       "x": 782,
       "y": 196,
       "w": 44,
@@ -314,44 +177,25 @@
       "start": 7,
       "end": 18.5,
       "props": {
-        "x": 22,
-        "y": 30,
         "text": "8",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
-        "fontSize": 22,
-        "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.3
-      }
-    },
-    {
-      "id": "rect-15",
-      "component": "rect",
-      "x": 838,
-      "y": 196,
-      "w": 44,
-      "h": 44,
-      "start": 7,
-      "end": 18.5,
-      "props": {
-        "x": 0,
-        "y": 0,
         "w": 44,
         "h": 44,
         "fill": "none",
         "stroke": "var(--amber-400)",
         "strokeWidth": 2.5,
         "rounded": 8,
+        "textColor": "var(--chalk-100)",
+        "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
+        "italic": false,
         "mode": "draw",
         "duration": 0.5,
         "delay": 0
       }
     },
     {
-      "id": "label-16",
-      "component": "label",
+      "id": "labeled-box-8",
+      "component": "labeled-box",
       "x": 838,
       "y": 196,
       "w": 44,
@@ -359,21 +203,25 @@
       "start": 7,
       "end": 18.5,
       "props": {
-        "x": 22,
-        "y": 30,
         "text": "1",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
+        "w": 44,
+        "h": 44,
+        "fill": "none",
+        "stroke": "var(--amber-400)",
+        "strokeWidth": 2.5,
+        "rounded": 8,
+        "textColor": "var(--chalk-100)",
         "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
         "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.3
+        "mode": "draw",
+        "duration": 0.5,
+        "delay": 0
       }
     },
     {
-      "id": "rect-17",
-      "component": "rect",
+      "id": "labeled-box-9",
+      "component": "labeled-box",
       "x": 414,
       "y": 296,
       "w": 44,
@@ -381,67 +229,25 @@
       "start": 9.3,
       "end": 18.5,
       "props": {
-        "x": 0,
-        "y": 0,
-        "w": 44,
-        "h": 44,
-        "fill": "none",
-        "stroke": "var(--amber-300)",
-        "strokeWidth": 2.5,
-        "rounded": 8,
-        "mode": "draw",
-        "duration": 0.5,
-        "delay": 0
-      }
-    },
-    {
-      "id": "label-18",
-      "component": "label",
-      "x": 414,
-      "y": 296,
-      "w": 44,
-      "h": 44,
-      "start": 9.3,
-      "end": 18.5,
-      "props": {
-        "x": 22,
-        "y": 30,
         "text": "5",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
-        "fontSize": 22,
-        "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.3
-      }
-    },
-    {
-      "id": "rect-19",
-      "component": "rect",
-      "x": 498,
-      "y": 296,
-      "w": 44,
-      "h": 44,
-      "start": 9.3,
-      "end": 18.5,
-      "props": {
-        "x": 0,
-        "y": 0,
         "w": 44,
         "h": 44,
         "fill": "none",
         "stroke": "var(--amber-300)",
         "strokeWidth": 2.5,
         "rounded": 8,
+        "textColor": "var(--chalk-100)",
+        "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
+        "italic": false,
         "mode": "draw",
         "duration": 0.5,
         "delay": 0
       }
     },
     {
-      "id": "label-20",
-      "component": "label",
+      "id": "labeled-box-10",
+      "component": "labeled-box",
       "x": 498,
       "y": 296,
       "w": 44,
@@ -449,44 +255,25 @@
       "start": 9.3,
       "end": 18.5,
       "props": {
-        "x": 22,
-        "y": 30,
         "text": "2",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
-        "fontSize": 22,
-        "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.3
-      }
-    },
-    {
-      "id": "rect-21",
-      "component": "rect",
-      "x": 782,
-      "y": 296,
-      "w": 44,
-      "h": 44,
-      "start": 9.3,
-      "end": 18.5,
-      "props": {
-        "x": 0,
-        "y": 0,
         "w": 44,
         "h": 44,
         "fill": "none",
         "stroke": "var(--amber-300)",
         "strokeWidth": 2.5,
         "rounded": 8,
+        "textColor": "var(--chalk-100)",
+        "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
+        "italic": false,
         "mode": "draw",
         "duration": 0.5,
         "delay": 0
       }
     },
     {
-      "id": "label-22",
-      "component": "label",
+      "id": "labeled-box-11",
+      "component": "labeled-box",
       "x": 782,
       "y": 296,
       "w": 44,
@@ -494,21 +281,25 @@
       "start": 9.3,
       "end": 18.5,
       "props": {
-        "x": 22,
-        "y": 30,
         "text": "8",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
+        "w": 44,
+        "h": 44,
+        "fill": "none",
+        "stroke": "var(--amber-300)",
+        "strokeWidth": 2.5,
+        "rounded": 8,
+        "textColor": "var(--chalk-100)",
         "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
         "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.3
+        "mode": "draw",
+        "duration": 0.5,
+        "delay": 0
       }
     },
     {
-      "id": "rect-23",
-      "component": "rect",
+      "id": "labeled-box-12",
+      "component": "labeled-box",
       "x": 866,
       "y": 296,
       "w": 44,
@@ -516,67 +307,25 @@
       "start": 9.3,
       "end": 18.5,
       "props": {
-        "x": 0,
-        "y": 0,
+        "text": "1",
         "w": 44,
         "h": 44,
         "fill": "none",
         "stroke": "var(--amber-300)",
         "strokeWidth": 2.5,
         "rounded": 8,
-        "mode": "draw",
-        "duration": 0.5,
-        "delay": 0
-      }
-    },
-    {
-      "id": "label-24",
-      "component": "label",
-      "x": 866,
-      "y": 296,
-      "w": 44,
-      "h": 44,
-      "start": 9.3,
-      "end": 18.5,
-      "props": {
-        "x": 22,
-        "y": 30,
-        "text": "1",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
+        "textColor": "var(--chalk-100)",
         "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
         "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.3
-      }
-    },
-    {
-      "id": "rect-25",
-      "component": "rect",
-      "x": 442,
-      "y": 400,
-      "w": 44,
-      "h": 44,
-      "start": 12,
-      "end": 18.5,
-      "props": {
-        "x": 0,
-        "y": 0,
-        "w": 44,
-        "h": 44,
-        "fill": "none",
-        "stroke": "var(--teal-400)",
-        "strokeWidth": 2.5,
-        "rounded": 8,
         "mode": "draw",
         "duration": 0.5,
         "delay": 0
       }
     },
     {
-      "id": "label-26",
-      "component": "label",
+      "id": "labeled-box-13",
+      "component": "labeled-box",
       "x": 442,
       "y": 400,
       "w": 44,
@@ -584,44 +333,25 @@
       "start": 12,
       "end": 18.5,
       "props": {
-        "x": 22,
-        "y": 30,
         "text": "2",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
-        "fontSize": 22,
-        "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.3
-      }
-    },
-    {
-      "id": "rect-27",
-      "component": "rect",
-      "x": 498,
-      "y": 400,
-      "w": 44,
-      "h": 44,
-      "start": 12,
-      "end": 18.5,
-      "props": {
-        "x": 0,
-        "y": 0,
         "w": 44,
         "h": 44,
         "fill": "none",
         "stroke": "var(--teal-400)",
         "strokeWidth": 2.5,
         "rounded": 8,
+        "textColor": "var(--chalk-100)",
+        "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
+        "italic": false,
         "mode": "draw",
         "duration": 0.5,
         "delay": 0
       }
     },
     {
-      "id": "label-28",
-      "component": "label",
+      "id": "labeled-box-14",
+      "component": "labeled-box",
       "x": 498,
       "y": 400,
       "w": 44,
@@ -629,44 +359,25 @@
       "start": 12,
       "end": 18.5,
       "props": {
-        "x": 22,
-        "y": 30,
         "text": "5",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
-        "fontSize": 22,
-        "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.3
-      }
-    },
-    {
-      "id": "rect-29",
-      "component": "rect",
-      "x": 782,
-      "y": 400,
-      "w": 44,
-      "h": 44,
-      "start": 12,
-      "end": 18.5,
-      "props": {
-        "x": 0,
-        "y": 0,
         "w": 44,
         "h": 44,
         "fill": "none",
         "stroke": "var(--teal-400)",
         "strokeWidth": 2.5,
         "rounded": 8,
+        "textColor": "var(--chalk-100)",
+        "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
+        "italic": false,
         "mode": "draw",
         "duration": 0.5,
         "delay": 0
       }
     },
     {
-      "id": "label-30",
-      "component": "label",
+      "id": "labeled-box-15",
+      "component": "labeled-box",
       "x": 782,
       "y": 400,
       "w": 44,
@@ -674,44 +385,25 @@
       "start": 12,
       "end": 18.5,
       "props": {
-        "x": 22,
-        "y": 30,
         "text": "1",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
-        "fontSize": 22,
-        "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.3
-      }
-    },
-    {
-      "id": "rect-31",
-      "component": "rect",
-      "x": 838,
-      "y": 400,
-      "w": 44,
-      "h": 44,
-      "start": 12,
-      "end": 18.5,
-      "props": {
-        "x": 0,
-        "y": 0,
         "w": 44,
         "h": 44,
         "fill": "none",
         "stroke": "var(--teal-400)",
         "strokeWidth": 2.5,
         "rounded": 8,
+        "textColor": "var(--chalk-100)",
+        "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
+        "italic": false,
         "mode": "draw",
         "duration": 0.5,
         "delay": 0
       }
     },
     {
-      "id": "label-32",
-      "component": "label",
+      "id": "labeled-box-16",
+      "component": "labeled-box",
       "x": 838,
       "y": 400,
       "w": 44,
@@ -719,44 +411,25 @@
       "start": 12,
       "end": 18.5,
       "props": {
-        "x": 22,
-        "y": 30,
         "text": "8",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
-        "fontSize": 22,
-        "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.3
-      }
-    },
-    {
-      "id": "rect-33",
-      "component": "rect",
-      "x": 534,
-      "y": 504,
-      "w": 44,
-      "h": 44,
-      "start": 15.2,
-      "end": 18.5,
-      "props": {
-        "x": 0,
-        "y": 0,
         "w": 44,
         "h": 44,
         "fill": "none",
         "stroke": "var(--teal-400)",
         "strokeWidth": 2.5,
         "rounded": 8,
+        "textColor": "var(--chalk-100)",
+        "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
+        "italic": false,
         "mode": "draw",
         "duration": 0.5,
         "delay": 0
       }
     },
     {
-      "id": "label-34",
-      "component": "label",
+      "id": "labeled-box-17",
+      "component": "labeled-box",
       "x": 534,
       "y": 504,
       "w": 44,
@@ -764,21 +437,25 @@
       "start": 15.2,
       "end": 18.5,
       "props": {
-        "x": 22,
-        "y": 30,
         "text": "1",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
+        "w": 44,
+        "h": 44,
+        "fill": "none",
+        "stroke": "var(--teal-400)",
+        "strokeWidth": 2.5,
+        "rounded": 8,
+        "textColor": "var(--chalk-100)",
         "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
         "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.3
+        "mode": "draw",
+        "duration": 0.5,
+        "delay": 0
       }
     },
     {
-      "id": "rect-35",
-      "component": "rect",
+      "id": "labeled-box-18",
+      "component": "labeled-box",
       "x": 590,
       "y": 504,
       "w": 44,
@@ -786,44 +463,25 @@
       "start": 15.2,
       "end": 18.5,
       "props": {
-        "x": 0,
-        "y": 0,
+        "text": "2",
         "w": 44,
         "h": 44,
         "fill": "none",
         "stroke": "var(--teal-400)",
         "strokeWidth": 2.5,
         "rounded": 8,
+        "textColor": "var(--chalk-100)",
+        "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
+        "italic": false,
         "mode": "draw",
         "duration": 0.5,
         "delay": 0.15
       }
     },
     {
-      "id": "label-36",
-      "component": "label",
-      "x": 590,
-      "y": 504,
-      "w": 44,
-      "h": 44,
-      "start": 15.2,
-      "end": 18.5,
-      "props": {
-        "x": 22,
-        "y": 30,
-        "text": "2",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
-        "fontSize": 22,
-        "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.44999999999999996
-      }
-    },
-    {
-      "id": "rect-37",
-      "component": "rect",
+      "id": "labeled-box-19",
+      "component": "labeled-box",
       "x": 646,
       "y": 504,
       "w": 44,
@@ -831,44 +489,25 @@
       "start": 15.2,
       "end": 18.5,
       "props": {
-        "x": 0,
-        "y": 0,
+        "text": "5",
         "w": 44,
         "h": 44,
         "fill": "none",
         "stroke": "var(--teal-400)",
         "strokeWidth": 2.5,
         "rounded": 8,
+        "textColor": "var(--chalk-100)",
+        "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
+        "italic": false,
         "mode": "draw",
         "duration": 0.5,
         "delay": 0.3
       }
     },
     {
-      "id": "label-38",
-      "component": "label",
-      "x": 646,
-      "y": 504,
-      "w": 44,
-      "h": 44,
-      "start": 15.2,
-      "end": 18.5,
-      "props": {
-        "x": 22,
-        "y": 30,
-        "text": "5",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
-        "fontSize": 22,
-        "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.6
-      }
-    },
-    {
-      "id": "rect-39",
-      "component": "rect",
+      "id": "labeled-box-20",
+      "component": "labeled-box",
       "x": 702,
       "y": 504,
       "w": 44,
@@ -876,43 +515,24 @@
       "start": 15.2,
       "end": 18.5,
       "props": {
-        "x": 0,
-        "y": 0,
+        "text": "8",
         "w": 44,
         "h": 44,
         "fill": "none",
         "stroke": "var(--teal-400)",
         "strokeWidth": 2.5,
         "rounded": 8,
+        "textColor": "var(--chalk-100)",
+        "fontSize": 22,
+        "fontFamily": "var(--font-mono)",
+        "italic": false,
         "mode": "draw",
         "duration": 0.5,
         "delay": 0.44999999999999996
       }
     },
     {
-      "id": "label-40",
-      "component": "label",
-      "x": 702,
-      "y": 504,
-      "w": 44,
-      "h": 44,
-      "start": 15.2,
-      "end": 18.5,
-      "props": {
-        "x": 22,
-        "y": 30,
-        "text": "8",
-        "color": "var(--chalk-100)",
-        "fontFamily": "var(--font-mono)",
-        "fontSize": 22,
-        "italic": false,
-        "anchor": "middle",
-        "duration": 0.4,
-        "delay": 0.75
-      }
-    },
-    {
-      "id": "pulse-mark-41",
+      "id": "pulse-mark-21",
       "component": "pulse-mark",
       "x": 434,
       "y": 392,
@@ -930,7 +550,7 @@
       }
     },
     {
-      "id": "pulse-mark-42",
+      "id": "pulse-mark-22",
       "component": "pulse-mark",
       "x": 774,
       "y": 392,
@@ -948,7 +568,7 @@
       }
     },
     {
-      "id": "caption-43",
+      "id": "caption-23",
       "component": "caption",
       "x": 280,
       "y": 636,
@@ -965,7 +585,7 @@
       }
     },
     {
-      "id": "caption-44",
+      "id": "caption-24",
       "component": "caption",
       "x": 280,
       "y": 636,
@@ -982,7 +602,7 @@
       }
     },
     {
-      "id": "caption-45",
+      "id": "caption-25",
       "component": "caption",
       "x": 280,
       "y": 636,
@@ -999,7 +619,7 @@
       }
     },
     {
-      "id": "caption-46",
+      "id": "caption-26",
       "component": "caption",
       "x": 280,
       "y": 636,
@@ -1016,7 +636,7 @@
       }
     },
     {
-      "id": "caption-47",
+      "id": "caption-27",
       "component": "caption",
       "x": 280,
       "y": 636,
@@ -1033,7 +653,7 @@
       }
     },
     {
-      "id": "label-48",
+      "id": "label-28",
       "component": "label",
       "x": 400,
       "y": 73,
@@ -1054,7 +674,7 @@
       }
     },
     {
-      "id": "code-block-49",
+      "id": "code-block-29",
       "component": "code-block",
       "x": 360,
       "y": 110,
@@ -1073,7 +693,7 @@
       }
     },
     {
-      "id": "caption-50",
+      "id": "caption-30",
       "component": "caption",
       "x": 280,
       "y": 636,
@@ -1090,7 +710,7 @@
       }
     },
     {
-      "id": "code-block-51",
+      "id": "code-block-31",
       "component": "code-block",
       "x": 360,
       "y": 110,
@@ -1109,7 +729,7 @@
       }
     },
     {
-      "id": "caption-52",
+      "id": "caption-32",
       "component": "caption",
       "x": 280,
       "y": 636,
@@ -1126,7 +746,7 @@
       }
     },
     {
-      "id": "code-block-53",
+      "id": "code-block-33",
       "component": "code-block",
       "x": 360,
       "y": 110,
@@ -1145,7 +765,7 @@
       }
     },
     {
-      "id": "caption-54",
+      "id": "caption-34",
       "component": "caption",
       "x": 280,
       "y": 636,
@@ -1162,7 +782,7 @@
       }
     },
     {
-      "id": "code-block-55",
+      "id": "code-block-35",
       "component": "code-block",
       "x": 360,
       "y": 110,
@@ -1181,7 +801,7 @@
       }
     },
     {
-      "id": "caption-56",
+      "id": "caption-36",
       "component": "caption",
       "x": 280,
       "y": 636,
@@ -1198,7 +818,7 @@
       }
     },
     {
-      "id": "code-block-57",
+      "id": "code-block-37",
       "component": "code-block",
       "x": 360,
       "y": 110,
@@ -1217,7 +837,7 @@
       }
     },
     {
-      "id": "caption-58",
+      "id": "caption-38",
       "component": "caption",
       "x": 280,
       "y": 636,
@@ -1234,7 +854,7 @@
       }
     },
     {
-      "id": "code-block-59",
+      "id": "code-block-39",
       "component": "code-block",
       "x": 360,
       "y": 110,
@@ -1253,7 +873,7 @@
       }
     },
     {
-      "id": "caption-60",
+      "id": "caption-40",
       "component": "caption",
       "x": 280,
       "y": 636,
@@ -1270,7 +890,7 @@
       }
     },
     {
-      "id": "label-61",
+      "id": "label-41",
       "component": "label",
       "x": 450,
       "y": 187,
@@ -1290,7 +910,7 @@
       }
     },
     {
-      "id": "label-62",
+      "id": "label-42",
       "component": "label",
       "x": 400,
       "y": 305,
@@ -1310,7 +930,7 @@
       }
     },
     {
-      "id": "label-63",
+      "id": "label-43",
       "component": "label",
       "x": 400,
       "y": 347,
@@ -1330,7 +950,7 @@
       }
     },
     {
-      "id": "bracket-64",
+      "id": "bracket-44",
       "component": "bracket",
       "x": 470,
       "y": 286,
@@ -1350,7 +970,7 @@
       }
     },
     {
-      "id": "caption-65",
+      "id": "caption-45",
       "component": "caption",
       "x": 280,
       "y": 636,

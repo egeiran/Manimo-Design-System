@@ -1307,6 +1307,40 @@ function CodeBlock({
   );
 }
 
+// ─── LabeledBox ───────────────────────────────────────────────────────────
+// A rounded box with centred text — one object instead of a separate Rect +
+// Label. The everyday "box with a value/word inside": array cells, graph nodes,
+// state-diagram states, table cells. Composes the existing Rect + Label so it
+// inherits their reveal behaviour. Content fills [0,w]×[0,h]; size the instance
+// box to the same w/h so selection wraps it (resize via the transform handle).
+function LabeledBox({
+  text = '',
+  w = 120, h = 64,
+  fill = 'none',
+  stroke = 'var(--amber-400)',
+  strokeWidth = 2.5,
+  rounded = 8,
+  textColor = 'var(--chalk-100)',
+  fontSize = 22,
+  fontFamily = 'var(--font-mono)',
+  italic = false,
+  mode = 'draw',
+  duration = 0.5,
+  delay = 0,
+}) {
+  return (
+    <g>
+      <Rect x={0} y={0} w={w} h={h} fill={fill} stroke={stroke}
+            strokeWidth={strokeWidth} rounded={rounded} mode={mode}
+            duration={duration} delay={delay}/>
+      <Label x={w / 2} y={h / 2 + fontSize * 0.35} text={text}
+             color={textColor} fontSize={fontSize} fontFamily={fontFamily}
+             italic={italic} anchor="middle"
+             duration={Math.max(0.3, duration * 0.6)} delay={delay + duration * 0.5}/>
+    </g>
+  );
+}
+
 // ─── Export to global scope ───────────────────────────────────────────────
 Object.assign(window, {
   TraceIn, FadeUp, WriteOn, PulseMark, ChalkWipe,
@@ -1316,6 +1350,6 @@ Object.assign(window, {
   Pendulum, SwingingPendulum,
   Arrow, Axes, Dot, Label,
   Rect, NumberLine, FunctionCurve, Resistor, Capacitor,
-  CodeBlock,
+  CodeBlock, LabeledBox,
   SceneChrome, SceneNarration,
 });

@@ -99,12 +99,15 @@ for SVG instances (it scales the whole drawing via the viewBox) and a literal
 - You can only select/drag an instance on the canvas while the playhead is
   inside its `[start, end]` window (outside it, `<Sprite>` unmounts the box).
   Use the layer list or the timeline to select any instance, or scrub first.
-- Add-from-palette drops at canvas centre; drag-from-palette onto a point is
-  a later nicety.
-- The color/token fields are plain text inputs — a token picker comes later.
 - Audio: a document can carry `narrationSrc`, but generating narration is
   still the existing `npm run audio` + `rewire-scene.js` flow, not yet wired
   into the builder.
+
+## Planned
+
+- **Grouping.** Combine several instances into one movable/transformable group
+  (a `groupId` on instances, or nested groups) with ungroup. For the common
+  "box + value" case, use the `LabeledBox` component (one object already).
 
 ## Coordinate model
 
