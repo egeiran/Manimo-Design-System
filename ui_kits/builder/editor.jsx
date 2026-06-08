@@ -29,6 +29,48 @@ function bValidateDoc(obj) {
   return null;
 }
 
+// Extract a scene document from pasted/loaded text. Accepts either a raw
+// scene-document JSON, OR a builder-exported scene .jsx (which embeds the
+// document as `const SCENE_DOC = { … };` — written by scripts/export-doc.js).
+// Returns { doc } on success or { error } with a message.
+// NOTE: this does NOT understand hand-authored scenes (bespoke JSX without a
+// SCENE_DOC literal) — those have no data model to import.
+function bExtractDoc(raw) {
+  const text = String(raw || '');
+  try { return { doc: JSON.parse(text) }; } catch { /* not plain JSON — try SCENE_DOC */ }
+
+  const marker = text.indexOf('SCENE_DOC');
+  if (marker === -1) {
+    return { error: 'Not JSON, and no SCENE_DOC found. Paste a scene-document JSON, or a builder-exported .jsx.' };
+  }
+  const eq = text.indexOf('=', marker);
+  const start = text.indexOf('{', eq);
+  if (eq === -1 || start === -1) return { error: 'Found SCENE_DOC but no object literal after it.' };
+
+  // Balance braces, skipping over string contents (the export is JSON, but a
+  // caption/path string could contain a stray brace).
+  let depth = 0, inStr = false, esc = false;
+  for (let i = start; i < text.length; i++) {
+    const c = text[i];
+    if (inStr) {
+      if (esc) esc = false;
+      else if (c === '\\') esc = true;
+      else if (c === '"') inStr = false;
+      continue;
+    }
+    if (c === '"') inStr = true;
+    else if (c === '{') depth++;
+    else if (c === '}') {
+      depth--;
+      if (depth === 0) {
+        try { return { doc: JSON.parse(text.slice(start, i + 1)) }; }
+        catch (e) { return { error: 'Found SCENE_DOC but could not parse it: ' + (e && e.message ? e.message : 'parse error') }; }
+      }
+    }
+  }
+  return { error: 'Found SCENE_DOC but its object literal is unterminated.' };
+}
+
 // Named scene library persisted as { [name]: doc } under LS_LIBRARY.
 function bLoadLibrary() {
   try {
@@ -625,16 +667,11 @@ function BuilderImportModal({ onConfirm, onClose }) {
   const fileRef = useRef(null);
 
   const tryImport = (raw) => {
-    let parsed;
-    try {
-      parsed = JSON.parse(raw);
-    } catch (err) {
-      setError('Invalid JSON: ' + (err && err.message ? err.message : 'could not parse.'));
-      return;
-    }
-    const problem = bValidateDoc(parsed);
+    const res = bExtractDoc(raw);
+    if (res.error) { setError(res.error); return; }
+    const problem = bValidateDoc(res.doc);
     if (problem) { setError(problem); return; }
-    onConfirm(parsed);
+    onConfirm(res.doc);
   };
 
   const onFile = (e) => {
@@ -654,14 +691,14 @@ function BuilderImportModal({ onConfirm, onClose }) {
     <div className="b-modal-backdrop" onMouseDown={onClose}>
       <div className="b-modal" onMouseDown={(e) => e.stopPropagation()}>
         <div className="b-modal-head">
-          <span className="b-modal-title">Import scene document</span>
+          <span className="b-modal-title">Import scene</span>
           <button className="b-modal-close" onClick={onClose} title="Close">×</button>
         </div>
         <div className="b-modal-body">
-          <div className="b-section-label">Paste JSON</div>
+          <div className="b-section-label">Paste JSON or a builder-exported .jsx</div>
           <textarea
             className="b-modal-textarea"
-            placeholder="Paste a scene-document JSON here…"
+            placeholder="Paste a scene-document JSON, or the contents of a builder-exported .jsx…"
             value={text}
             onChange={(e) => { setText(e.target.value); setError(''); }}
           />
@@ -670,7 +707,7 @@ function BuilderImportModal({ onConfirm, onClose }) {
             ref={fileRef}
             className="b-modal-file"
             type="file"
-            accept="application/json,.json"
+            accept="application/json,.json,.jsx,text/javascript"
             onChange={onFile}
           />
           {error && <div className="b-modal-error">{error}</div>}
