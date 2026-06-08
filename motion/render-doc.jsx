@@ -67,16 +67,15 @@ function DocInstance({ inst, selected = false, onSelect }) {
   const scale = inst.scale != null ? inst.scale : 1;
   const rotation = inst.rotation || 0;
 
-  // Box is rendered at intrinsic size; `scale` and `rotation` are applied as a
-  // CSS transform about the centre (uniform, undistorted, and identical for
-  // SVG and DOM instances). SVG content lives in a fixed viewBox.
-  let w, h, viewBox;
-  if (entry.container === 'svg') {
-    w = box.w; h = box.h; viewBox = `0 0 ${box.w} ${box.h}`;
-  } else {
-    w = inst.w != null ? inst.w : box.w;
-    h = inst.h != null ? inst.h : box.h;
-  }
+  // The instance box IS the element's bounds: an SVG instance's viewBox matches
+  // its w/h, so content is authored in [0,w]×[0,h] and the selection overlay
+  // wraps it correctly. (Authoring with a full-stage box + absolute coords put
+  // the selection box in the top-left corner — instead give each element a tight
+  // box at its location.) `scale`/`rotation` apply as a CSS transform about the
+  // centre, identical for SVG and DOM.
+  const w = inst.w != null ? inst.w : box.w;
+  const h = inst.h != null ? inst.h : box.h;
+  const viewBox = `0 0 ${w} ${h}`;
 
   // Editor affordance: a selectable outline. In pure playback (onSelect
   // absent) the box is fully transparent and ignores pointer events.
@@ -169,8 +168,8 @@ function SelectionOverlay({ inst, onTransform }) {
   if (time < start || time > end) return null;
 
   const box = entry.defaultBox || { w: 200, h: 200 };
-  const baseW = entry.container === 'svg' ? box.w : (inst.w != null ? inst.w : box.w);
-  const baseH = entry.container === 'svg' ? box.h : (inst.h != null ? inst.h : box.h);
+  const baseW = inst.w != null ? inst.w : box.w;
+  const baseH = inst.h != null ? inst.h : box.h;
   const scale = inst.scale != null ? inst.scale : 1;
   const rot = inst.rotation || 0;
   const cx = (inst.x || 0) + baseW / 2;
