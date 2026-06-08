@@ -486,28 +486,26 @@ function PlaybackBar({ time, duration, playing, onPlayPause, onReset, onSeek, on
     if (!dragging) onHover(null);
   };
 
+  // Attach the drag listeners synchronously on mousedown — NOT via an effect
+  // keyed on `dragging`. A quick click's mouseup can fire before a post-render
+  // effect attaches its listener, leaving `dragging` stuck true so the playhead
+  // follows the cursor forever ("can't get the mouse off the scrub bar").
   const onTrackDown = (e) => {
-    setDragging(true);
-    const t = timeFromEvent(e);
-    onSeek(t);
+    onSeek(timeFromEvent(e));
     onHover(null);
-  };
-
-  React.useEffect(() => {
-    if (!dragging) return;
-    const onUp = () => setDragging(false);
-    const onMove = (e) => {
+    setDragging(true);
+    const onMove = (ev) => {
       if (!trackRef.current) return;
-      const t = timeFromEvent(e);
-      onSeek(t);
+      onSeek(timeFromEvent(ev));
     };
-    window.addEventListener('mouseup', onUp);
-    window.addEventListener('mousemove', onMove);
-    return () => {
-      window.removeEventListener('mouseup', onUp);
+    const onUp = () => {
+      setDragging(false);
       window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseup', onUp);
     };
-  }, [dragging, timeFromEvent, onSeek]);
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+  };
 
   const pct = duration > 0 ? (time / duration) * 100 : 0;
   const fmt = (t) => {
@@ -567,6 +565,7 @@ function PlaybackBar({ time, duration, playing, onPlayPause, onReset, onSeek, on
 
       {/* Scrub track */}
       <div
+        className="manimo-scrub"
         ref={trackRef}
         onMouseMove={onTrackMove}
         onMouseLeave={onTrackLeave}
