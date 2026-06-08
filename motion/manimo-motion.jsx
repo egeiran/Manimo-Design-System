@@ -985,6 +985,248 @@ function Label({
   );
 }
 
+// ─── Rect ─────────────────────────────────────────────────────────────────
+// A rectangle that either fades in or draws its outline in (stroke-dashoffset).
+// Use for panels, highlight boxes, bars, framed regions. `mode` picks the
+// reveal: 'fade' grows opacity, 'draw' traces the perimeter. `rounded` sets the
+// corner radius (rx/ry). Coordinates are in the box's local SVG space.
+function Rect({
+  x = 0, y = 0, w = 120, h = 80,
+  fill = 'none',
+  stroke = 'var(--amber-400)',
+  strokeWidth = 3,
+  rounded = 0,
+  mode = 'fade', // 'fade' | 'draw'
+  duration = MM_DEFAULT_DUR,
+  delay = 0,
+  ease = MM_DEFAULT_EASE,
+}) {
+  const { localTime } = useSprite();
+  const t = clamp((localTime - delay) / duration, 0, 1);
+  const eased = ease(t);
+  if (mode === 'draw') {
+    // pathLength normalises the perimeter to 1000 so the dash reveal stays
+    // proportional regardless of w/h or rounded corners.
+    return (
+      <rect
+        x={x} y={y} width={w} height={h} rx={rounded} ry={rounded}
+        fill={fill} stroke={stroke} strokeWidth={strokeWidth}
+        pathLength={1000}
+        strokeDasharray={1000}
+        strokeDashoffset={1000 * (1 - eased)}
+        strokeLinecap="round" strokeLinejoin="round"
+      />
+    );
+  }
+  return (
+    <rect
+      x={x} y={y} width={w} height={h} rx={rounded} ry={rounded}
+      fill={fill} stroke={stroke} strokeWidth={strokeWidth}
+      opacity={eased}
+    />
+  );
+}
+
+// ─── NumberLine ─────────────────────────────────────────────────────────────
+// A horizontal axis with evenly spaced ticks and numeric labels, fading in.
+// `ox`/`oy` is the left end (local SVG coords), `length` the pixel width.
+// Values run from `min` to `max` in increments of `step`; each tick gets a
+// JetBrains-Mono numeric label below it. Optional `label` rides at the right end.
+function NumberLine({
+  ox = 20, oy = 60,
+  length = 360,
+  min = 0, max = 10, step = 1,
+  color = 'var(--chalk-300)',
+  label = null,
+  duration = 0.6, delay = 0,
+}) {
+  const { localTime } = useSprite();
+  const t = clamp((localTime - delay) / duration, 0, 1);
+  const opacity = Easing.easeOutCubic(t);
+  const span = (max - min) || 1;
+  const ticks = [];
+  // Build inclusive tick set, guarding against a zero/negative step.
+  const stp = step > 0 ? step : span;
+  for (let v = min; v <= max + 1e-9; v += stp) {
+    const frac = (v - min) / span;
+    const tx = ox + frac * length;
+    // Trim float drift on labels (e.g. 0.30000004 → 0.3).
+    const val = Math.round(v * 1e6) / 1e6;
+    ticks.push({ tx, val });
+  }
+  return (
+    <g opacity={opacity}>
+      <line x1={ox} y1={oy} x2={ox + length} y2={oy}
+            stroke={color} strokeWidth={2} strokeLinecap="round"/>
+      {ticks.map((tk, i) => (
+        <g key={i}>
+          <line x1={tk.tx} y1={oy - 6} x2={tk.tx} y2={oy + 6}
+                stroke={color} strokeWidth={1.5} strokeLinecap="round"/>
+          <text x={tk.tx} y={oy + 22} textAnchor="middle"
+                fill={color} fontFamily="var(--font-mono)" fontSize={13}>
+            {tk.val}
+          </text>
+        </g>
+      ))}
+      {label != null && (
+        <text x={ox + length + 14} y={oy + 5}
+              fill={color} fontFamily="var(--font-serif)" fontStyle="italic" fontSize={18}>
+          {label}
+        </text>
+      )}
+    </g>
+  );
+}
+
+// ─── FunctionCurve ──────────────────────────────────────────────────────────
+// Plots y = f(x) over [xMin, xMax] and draws itself in (stroke-dashoffset, the
+// TraceIn reveal). The function is chosen by `fn` and parameterised by a/b/c —
+// no eval, so it's safe to drive from scene specs. The sampled value range is
+// auto-scaled to fit `yLen`; the domain is mapped across `xLen`. Origin
+// `(ox, oy)` is the bottom-left of the plot box, in local SVG coords (y-down).
+function FunctionCurve({
+  ox = 20, oy = 200,
+  xLen = 240, yLen = 180,
+  fn = 'parabola', // 'line' | 'parabola' | 'sine' | 'cubic'
+  a = 1, b = 0, c = 0,
+  xMin = -3, xMax = 3,
+  color = 'var(--amber-400)',
+  strokeWidth = 3,
+  duration = 1.0, delay = 0,
+  samples = 80,
+  ease = MM_DEFAULT_EASE,
+}) {
+  const { localTime } = useSprite();
+  const t = clamp((localTime - delay) / duration, 0, 1);
+  const eased = ease(t);
+
+  const evalFn = (x) => {
+    switch (fn) {
+      case 'line':     return a * x + b;
+      case 'sine':     return a * Math.sin(b * x + c);
+      case 'cubic':    return a * x * x * x + b * x + c;
+      case 'parabola':
+      default:         return a * x * x + b * x + c;
+    }
+  };
+
+  const n = Math.max(2, samples);
+  const dom = (xMax - xMin) || 1;
+  const pts = [];
+  let yLo = Infinity, yHi = -Infinity;
+  for (let i = 0; i < n; i++) {
+    const x = xMin + (dom * i) / (n - 1);
+    const y = evalFn(x);
+    pts.push({ x, y });
+    if (y < yLo) yLo = y;
+    if (y > yHi) yHi = y;
+  }
+  const yRange = (yHi - yLo) || 1;
+  // Map sample → screen: x across xLen, value auto-scaled across yLen (y-up).
+  const d = pts.map((p, i) => {
+    const sx = ox + ((p.x - xMin) / dom) * xLen;
+    const sy = oy - ((p.y - yLo) / yRange) * yLen;
+    return `${i === 0 ? 'M' : 'L'} ${sx.toFixed(2)} ${sy.toFixed(2)}`;
+  }).join(' ');
+
+  return (
+    <path
+      d={d}
+      pathLength={1000}
+      stroke={color}
+      strokeWidth={strokeWidth}
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeDasharray={1000}
+      strokeDashoffset={1000 * (1 - eased)}
+    />
+  );
+}
+
+// ─── Resistor ───────────────────────────────────────────────────────────────
+// A zigzag resistor symbol with two straight lead lines and an optional label
+// above it. Horizontal: `(x, y)` is the left lead endpoint, `length` the total
+// span. Use inside circuit diagrams. Draws/fades in via SvgFadeIn-style opacity.
+function Resistor({
+  x = 10, y = 40,
+  length = 120,
+  color = 'var(--amber-400)',
+  label = null,
+  strokeWidth = 2.5,
+  duration = 0.5, delay = 0,
+}) {
+  const { localTime } = useSprite();
+  const t = clamp((localTime - delay) / duration, 0, 1);
+  const opacity = Easing.easeOutCubic(t);
+  // Layout: lead | zigzag (6 segments) | lead.
+  const leadLen = length * 0.22;
+  const zigLen = length - 2 * leadLen;
+  const x0 = x + leadLen;          // zigzag start
+  const x1 = x0 + zigLen;          // zigzag end
+  const peak = 9;                  // zigzag amplitude
+  const segs = 6;
+  const seg = zigLen / segs;
+  let d = `M ${x0} ${y}`;
+  for (let i = 1; i <= segs; i++) {
+    const px = x0 + seg * i - seg / 2;
+    const py = y + (i % 2 === 0 ? peak : -peak);
+    d += ` L ${px} ${py}`;
+  }
+  d += ` L ${x1} ${y}`;
+  return (
+    <g opacity={opacity}>
+      <line x1={x} y1={y} x2={x0} y2={y} stroke={color} strokeWidth={strokeWidth} strokeLinecap="round"/>
+      <path d={d} fill="none" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
+      <line x1={x1} y1={y} x2={x + length} y2={y} stroke={color} strokeWidth={strokeWidth} strokeLinecap="round"/>
+      {label != null && (
+        <text x={(x0 + x1) / 2} y={y - peak - 8} textAnchor="middle"
+              fill={color} fontFamily="var(--font-serif)" fontStyle="italic" fontSize={18}>
+          {label}
+        </text>
+      )}
+    </g>
+  );
+}
+
+// ─── Capacitor ──────────────────────────────────────────────────────────────
+// A two-plate capacitor symbol: leads in from both sides meeting two short
+// parallel plates separated by `gap`. `(x, y)` is the left lead endpoint, the
+// drawing is horizontal and centred on `y`. Optional label sits above.
+function Capacitor({
+  x = 10, y = 40,
+  gap = 12,
+  color = 'var(--amber-400)',
+  label = null,
+  plateHalf = 16, // half-height of each plate
+  leadLen = 44,
+  strokeWidth = 2.5,
+  duration = 0.5, delay = 0,
+}) {
+  const { localTime } = useSprite();
+  const t = clamp((localTime - delay) / duration, 0, 1);
+  const opacity = Easing.easeOutCubic(t);
+  const plateL = x + leadLen;            // left plate x
+  const plateR = plateL + gap;           // right plate x
+  const rightEnd = plateR + leadLen;     // right lead endpoint
+  return (
+    <g opacity={opacity}>
+      {/* leads */}
+      <line x1={x} y1={y} x2={plateL} y2={y} stroke={color} strokeWidth={strokeWidth} strokeLinecap="round"/>
+      <line x1={plateR} y1={y} x2={rightEnd} y2={y} stroke={color} strokeWidth={strokeWidth} strokeLinecap="round"/>
+      {/* plates */}
+      <line x1={plateL} y1={y - plateHalf} x2={plateL} y2={y + plateHalf} stroke={color} strokeWidth={strokeWidth} strokeLinecap="round"/>
+      <line x1={plateR} y1={y - plateHalf} x2={plateR} y2={y + plateHalf} stroke={color} strokeWidth={strokeWidth} strokeLinecap="round"/>
+      {label != null && (
+        <text x={(plateL + plateR) / 2} y={y - plateHalf - 8} textAnchor="middle"
+              fill={color} fontFamily="var(--font-serif)" fontStyle="italic" fontSize={18}>
+          {label}
+        </text>
+      )}
+    </g>
+  );
+}
+
 // ─── Export to global scope ───────────────────────────────────────────────
 Object.assign(window, {
   TraceIn, FadeUp, WriteOn, PulseMark, ChalkWipe,
@@ -993,5 +1235,6 @@ Object.assign(window, {
   RollingWheel,
   Pendulum, SwingingPendulum,
   Arrow, Axes, Dot, Label,
+  Rect, NumberLine, FunctionCurve, Resistor, Capacitor,
   SceneChrome, SceneNarration,
 });

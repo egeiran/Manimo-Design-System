@@ -225,7 +225,25 @@ function SelectionOverlay({ inst, onTransform }) {
 // Editor props (all optional — omit for pure playback):
 //   selectedIds  string[]   currently selected instance ids (multi-select)
 //   onSelect     fn(id, e)  called when an instance box is pressed
-function RenderDoc({ doc, selectedIds = [], onSelect, onTransform }) {
+//   guides       array      editor-only drag-time alignment guide lines
+
+// Editor-only alignment guides drawn in stage coordinates so they ride the
+// Stage's auto-scale. `guides` is an array of { axis:'v'|'h', pos } in stage
+// px, supplied by the editor's drag path only — playback/export never pass it.
+function BuilderGuideLines({ guides }) {
+  if (!guides || !guides.length) return null;
+  return (
+    <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 60 }}>
+      {guides.map((g, i) => (
+        g.axis === 'v'
+          ? <div key={i} style={{ position: 'absolute', left: g.pos, top: 0, bottom: 0, width: 1, background: 'var(--accent-violet)', opacity: 0.85 }} />
+          : <div key={i} style={{ position: 'absolute', top: g.pos, left: 0, right: 0, height: 1, background: 'var(--accent-violet)', opacity: 0.85 }} />
+      ))}
+    </div>
+  );
+}
+
+function RenderDoc({ doc, selectedIds = [], onSelect, onTransform, guides }) {
   if (!doc) return null;
   const instances = doc.instances || [];
   const sel = Array.isArray(selectedIds) ? selectedIds : [selectedIds];
@@ -243,6 +261,9 @@ function RenderDoc({ doc, selectedIds = [], onSelect, onTransform }) {
     : null;
   if (overlayInst) {
     body.push(<SelectionOverlay key="__overlay" inst={overlayInst} onTransform={onTransform} />);
+  }
+  if (guides && guides.length) {
+    body.push(<BuilderGuideLines key="__guides" guides={guides} />);
   }
 
   if (doc.chrome) {
@@ -268,4 +289,4 @@ function RenderDoc({ doc, selectedIds = [], onSelect, onTransform }) {
   );
 }
 
-Object.assign(window, { RenderDoc, DocInstance, docInstanceProps });
+Object.assign(window, { RenderDoc, DocInstance, docInstanceProps, BuilderGuideLines });

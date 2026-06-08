@@ -260,6 +260,35 @@ graph points, intersections, vertices.
 A single line of SVG `<text>` that fades in. Use for math symbols/labels that
 must sit at a precise point *inside* an SVG figure (`WriteOn` is for DOM text).
 
+### `<Rect x y w h fill stroke strokeWidth rounded mode duration delay />`
+A rectangle (SVG) that reveals via `mode`: `'fade'` grows opacity, `'draw'`
+traces the perimeter with the `TraceIn` stroke-dashoffset reveal. `rounded` sets
+the corner radius. Use for panels, highlight boxes, bars, framed regions. Pass
+`fill="none"` (the default) for an outline-only box.
+
+### `<NumberLine ox oy length min max step color label duration delay />`
+A horizontal axis with evenly spaced ticks and Mono numeric labels, fading in.
+`(ox, oy)` is the left end (local SVG coords), `length` the pixel width; values
+run `min`→`max` in `step` increments. Optional serif `label` rides past the
+right end.
+
+### `<FunctionCurve ox oy xLen yLen fn a b c xMin xMax color strokeWidth duration delay />`
+Plots `y = f(x)` over `[xMin, xMax]` and draws itself in (stroke-dashoffset).
+`fn` is one of `'line'` (`a·x+b`), `'parabola'` (`a·x²+b·x+c`), `'sine'`
+(`a·sin(b·x+c)`), `'cubic'` (`a·x³+b·x+c`) — sampled in JS, **no eval**. The
+domain maps across `xLen`; the sampled value range auto-scales across `yLen`.
+`(ox, oy)` is the plot's bottom-left in local SVG coords (y-down).
+
+### `<Resistor x y length color label duration delay />`
+A zigzag resistor symbol (SVG) with two straight leads and an optional
+serif-italic `label` above. Horizontal: `(x, y)` is the left lead endpoint,
+`length` the total span. For circuit diagrams.
+
+### `<Capacitor x y gap color label duration delay />`
+A two-plate capacitor symbol (SVG): leads in from both sides meeting two short
+parallel plates separated by `gap`. `(x, y)` is the left lead endpoint, centred
+on `y`; optional `label` sits above. For circuit diagrams.
+
 ### `<SceneNarration src tracks volume playbackRate />`
 Plays narration audio in sync with Stage time. Two modes:
 

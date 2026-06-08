@@ -168,6 +168,77 @@ window.ManimoRegistry = {
     },
   },
 
+  'rect': {
+    componentName: 'Rect',
+    label: 'Rectangle',
+    category: 'Geometry', icon: 'rect',
+    keywords: ['rect', 'rectangle', 'box', 'panel', 'frame', 'bar', 'square'],
+    description: 'A rectangle that fades in or draws its outline (rounded corners optional).',
+    container: 'svg',
+    defaultBox: { w: 200, h: 140 },
+    props: {
+      x:           { type: 'number', default: 10, control: 'number', label: 'X' },
+      y:           { type: 'number', default: 10, control: 'number', label: 'Y' },
+      w:           { type: 'number', default: 180, control: 'number', label: 'Width', min: 2, max: 1280, step: 1 },
+      h:           { type: 'number', default: 120, control: 'number', label: 'Height', min: 2, max: 720, step: 1 },
+      fill:        { type: 'color',  default: 'none', control: 'token', label: 'Fill' },
+      stroke:      { type: 'color',  default: 'var(--amber-400)', control: 'token', label: 'Stroke' },
+      strokeWidth: { type: 'number', default: 3, control: 'number', label: 'Width', min: 0, max: 20, step: 0.5 },
+      rounded:     { type: 'number', default: 0, control: 'number', label: 'Corner r', min: 0, max: 120, step: 1 },
+      mode:        { type: 'string', default: 'fade', control: 'text', label: 'Mode (fade/draw)' },
+      duration:    { type: 'number', default: 0.8, control: 'number', label: 'Reveal (s)', min: 0, max: 6, step: 0.1 },
+      delay:       { type: 'number', default: 0, control: 'number', label: 'Delay (s)', min: 0, max: 10, step: 0.1 },
+    },
+  },
+
+  'number-line': {
+    componentName: 'NumberLine',
+    label: 'Number line',
+    category: 'Geometry', icon: 'numberline',
+    keywords: ['number', 'line', 'axis', 'ticks', 'scale', 'ruler', 'numberline'],
+    description: 'A horizontal line with evenly spaced ticks and numeric labels.',
+    container: 'svg',
+    defaultBox: { w: 420, h: 80 },
+    props: {
+      ox:       { type: 'number', default: 20,  control: 'number', label: 'Origin X' },
+      oy:       { type: 'number', default: 40,  control: 'number', label: 'Origin Y' },
+      length:   { type: 'number', default: 360, control: 'number', label: 'Length', min: 20, max: 1200, step: 5 },
+      min:      { type: 'number', default: 0,   control: 'number', label: 'Min' },
+      max:      { type: 'number', default: 10,  control: 'number', label: 'Max' },
+      step:     { type: 'number', default: 1,   control: 'number', label: 'Step', min: 0.01, max: 100, step: 0.1 },
+      color:    { type: 'color',  default: 'var(--chalk-300)', control: 'token', label: 'Color' },
+      label:    { type: 'string', default: 'x', control: 'text', label: 'Label' },
+      duration: { type: 'number', default: 0.6, control: 'number', label: 'Fade (s)', min: 0, max: 4, step: 0.1 },
+      delay:    { type: 'number', default: 0,   control: 'number', label: 'Delay (s)', min: 0, max: 10, step: 0.1 },
+    },
+  },
+
+  'function-curve': {
+    componentName: 'FunctionCurve',
+    label: 'Function curve',
+    category: 'Geometry', icon: 'curve',
+    keywords: ['function', 'curve', 'plot', 'graph', 'parabola', 'sine', 'cubic', 'line', 'fn'],
+    description: 'Plots y=f(x) (line/parabola/sine/cubic) and draws itself in.',
+    container: 'svg',
+    defaultBox: { w: 280, h: 240 },
+    props: {
+      ox:          { type: 'number', default: 24,  control: 'number', label: 'Origin X' },
+      oy:          { type: 'number', default: 210, control: 'number', label: 'Origin Y' },
+      xLen:        { type: 'number', default: 230, control: 'number', label: 'X length', min: 20, max: 1000, step: 5 },
+      yLen:        { type: 'number', default: 180, control: 'number', label: 'Y length', min: 20, max: 1000, step: 5 },
+      fn:          { type: 'string', default: 'parabola', control: 'text', label: 'Fn (line/parabola/sine/cubic)' },
+      a:           { type: 'number', default: 1, control: 'number', label: 'a', step: 0.1 },
+      b:           { type: 'number', default: 0, control: 'number', label: 'b', step: 0.1 },
+      c:           { type: 'number', default: 0, control: 'number', label: 'c', step: 0.1 },
+      xMin:        { type: 'number', default: -3, control: 'number', label: 'x min', step: 0.5 },
+      xMax:        { type: 'number', default: 3,  control: 'number', label: 'x max', step: 0.5 },
+      color:       { type: 'color',  default: 'var(--amber-400)', control: 'token', label: 'Color' },
+      strokeWidth: { type: 'number', default: 3, control: 'number', label: 'Width', min: 1, max: 16, step: 0.5 },
+      duration:    { type: 'number', default: 1.0, control: 'number', label: 'Draw (s)', min: 0, max: 6, step: 0.1 },
+      delay:       { type: 'number', default: 0, control: 'number', label: 'Delay (s)', min: 0, max: 10, step: 0.1 },
+    },
+  },
+
   // ─── Annotation ──────────────────────────────────────────────────────
   'pulse-mark': {
     componentName: 'PulseMark',
@@ -267,6 +338,45 @@ window.ManimoRegistry = {
     },
   },
 
+  // ─── Circuit ─────────────────────────────────────────────────────────
+  'resistor': {
+    componentName: 'Resistor',
+    label: 'Resistor',
+    category: 'Circuit', icon: 'resistor',
+    keywords: ['resistor', 'circuit', 'zigzag', 'ohm', 'component', 'R'],
+    description: 'A zigzag resistor with two leads and an optional label.',
+    container: 'svg',
+    defaultBox: { w: 160, h: 80 },
+    props: {
+      x:        { type: 'number', default: 10,  control: 'number', label: 'X' },
+      y:        { type: 'number', default: 40,  control: 'number', label: 'Y' },
+      length:   { type: 'number', default: 140, control: 'number', label: 'Length', min: 20, max: 800, step: 5 },
+      color:    { type: 'color',  default: 'var(--amber-400)', control: 'token', label: 'Color' },
+      label:    { type: 'string', default: 'R', control: 'text', label: 'Label' },
+      duration: { type: 'number', default: 0.5, control: 'number', label: 'Fade (s)', min: 0, max: 4, step: 0.1 },
+      delay:    { type: 'number', default: 0,   control: 'number', label: 'Delay (s)', min: 0, max: 10, step: 0.1 },
+    },
+  },
+
+  'capacitor': {
+    componentName: 'Capacitor',
+    label: 'Capacitor',
+    category: 'Circuit', icon: 'capacitor',
+    keywords: ['capacitor', 'circuit', 'plates', 'farad', 'component', 'C'],
+    description: 'Two parallel plates with leads and an optional label.',
+    container: 'svg',
+    defaultBox: { w: 140, h: 80 },
+    props: {
+      x:        { type: 'number', default: 10, control: 'number', label: 'X' },
+      y:        { type: 'number', default: 40, control: 'number', label: 'Y' },
+      gap:      { type: 'number', default: 12, control: 'number', label: 'Plate gap', min: 2, max: 80, step: 1 },
+      color:    { type: 'color',  default: 'var(--amber-400)', control: 'token', label: 'Color' },
+      label:    { type: 'string', default: 'C', control: 'text', label: 'Label' },
+      duration: { type: 'number', default: 0.5, control: 'number', label: 'Fade (s)', min: 0, max: 4, step: 0.1 },
+      delay:    { type: 'number', default: 0,   control: 'number', label: 'Delay (s)', min: 0, max: 10, step: 0.1 },
+    },
+  },
+
   // ─── Character ───────────────────────────────────────────────────────
   'mascot-enter': {
     componentName: 'ManimoEnter',
@@ -300,4 +410,4 @@ window.ManimoRegistry = {
 };
 
 // Category order for the palette (anything not listed falls to the end).
-window.ManimoRegistryCategories = ['Text', 'Geometry', 'Annotation', 'Physics', 'Character'];
+window.ManimoRegistryCategories = ['Text', 'Geometry', 'Annotation', 'Physics', 'Circuit', 'Character'];

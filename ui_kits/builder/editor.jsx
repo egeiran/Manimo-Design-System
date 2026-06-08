@@ -18,6 +18,31 @@
 const { useState, useEffect, useRef } = React;
 
 const LS_DOC = 'manimo.builder.doc';
+const LS_LIBRARY = 'manimo.builder.library';
+
+// A scene document is well-formed enough to load if it carries a numeric
+// `duration` and an `instances` array. Used by both Import and the library.
+function bValidateDoc(obj) {
+  if (!obj || typeof obj !== 'object') return 'Not a JSON object.';
+  if (typeof obj.duration !== 'number' || !isFinite(obj.duration)) return 'Missing a numeric "duration".';
+  if (!Array.isArray(obj.instances)) return 'Missing an "instances" array.';
+  return null;
+}
+
+// Named scene library persisted as { [name]: doc } under LS_LIBRARY.
+function bLoadLibrary() {
+  try {
+    const v = localStorage.getItem(LS_LIBRARY);
+    if (v) {
+      const parsed = JSON.parse(v);
+      if (parsed && typeof parsed === 'object') return parsed;
+    }
+  } catch { /* fall through */ }
+  return {};
+}
+function bSaveLibrary(lib) {
+  try { localStorage.setItem(LS_LIBRARY, JSON.stringify(lib)); } catch { /* ignore quota */ }
+}
 
 let _idSeq = 0;
 function builderUid(prefix) {
@@ -90,6 +115,11 @@ function PaletteIcon({ kind }) {
     case 'dot':      return <svg {...s}><circle cx="10" cy="10" r="4" fill="currentColor" stroke="none" /></svg>;
     case 'pulse':    return <svg {...s}><circle cx="10" cy="10" r="2.4" fill="currentColor" stroke="none" /><circle cx="10" cy="10" r="7" /></svg>;
     case 'bracket':  return <svg {...s}><path d="M13 3H6v14h7" /></svg>;
+    case 'rect':       return <svg {...s}><rect x="3" y="5" width="14" height="10" rx="1.5" /></svg>;
+    case 'numberline': return <svg {...s}><path d="M3 10h14" /><path d="M5 8v4M9 8v4M13 8v4M17 8v4" /></svg>;
+    case 'curve':      return <svg {...s}><path d="M3 16 C 7 16, 8 4, 12 4 C 15 4, 16 12, 17 13" /></svg>;
+    case 'resistor':   return <svg {...s}><path d="M2 10h3l1.5-4 3 8 3-8 1.5 4h3" /></svg>;
+    case 'capacitor':  return <svg {...s}><path d="M2 10h6M12 10h6" /><path d="M8 5v10M12 5v10" /></svg>;
     case 'pendulum': return <svg {...s}><path d="M5 3h10" /><path d="M10 3v9" /><circle cx="10" cy="15" r="3" fill="currentColor" stroke="none" /></svg>;
     case 'wheel':    return <svg {...s}><circle cx="10" cy="10" r="6" /><path d="M10 10h5" /></svg>;
     case 'mascot':   return <svg {...s}><path d="M4 15 Q6 8 11 8 Q16 8 14 13" /><circle cx="10.5" cy="10" r="0.9" fill="currentColor" stroke="none" /></svg>;
@@ -138,7 +168,18 @@ function Palette({ onAdd }) {
                 <span className="b-cat-count">{byCat[cat].length}</span>
               </button>
               {open && byCat[cat].map((e) => (
-                <button key={e.key} className="b-card" onClick={() => onAdd(e.key)} title={e.description}>
+                <button
+                  key={e.key}
+                  className="b-card"
+                  onClick={() => onAdd(e.key)}
+                  title={e.description}
+                  draggable
+                  onDragStart={(ev) => {
+                    ev.dataTransfer.setData('application/x-manimo-component', e.key);
+                    ev.dataTransfer.setData('text/plain', e.key);
+                    ev.dataTransfer.effectAllowed = 'copy';
+                  }}
+                >
                   <span className="b-card-icon"><PaletteIcon kind={e.icon} /></span>
                   <span className="b-card-text">
                     <span className="b-card-name">{e.label}</span>
@@ -154,9 +195,112 @@ function Palette({ onAdd }) {
   );
 }
 
+// ── Canvas drag snapping ─────────────────────────────────────────────────
+const BUILDER_STAGE_W = 1280;
+const BUILDER_STAGE_H = 720;
+const BUILDER_SNAP_TOL = 6; // stage px
+
+// Visual bounding box of an instance (top-left + size), scale-aware. Mirrors
+// the geometry render-doc.jsx uses for the selection overlay.
+function bInstanceBox(inst) {
+  const registry = window.ManimoRegistry || {};
+  const entry = registry[inst.component] || {};
+  const box = entry.defaultBox || { w: 200, h: 200 };
+  const baseW = entry.container === 'svg' ? box.w : (inst.w != null ? inst.w : box.w);
+  const baseH = entry.container === 'svg' ? box.h : (inst.h != null ? inst.h : box.h);
+  const scale = inst.scale != null ? inst.scale : 1;
+  const visW = baseW * scale;
+  const visH = baseH * scale;
+  const cx = (inst.x || 0) + baseW / 2;
+  const cy = (inst.y || 0) + baseH / 2;
+  return { left: cx - visW / 2, right: cx + visW / 2, cx, top: cy - visH / 2, bottom: cy + visH / 2, cy, w: visW, h: visH };
+}
+
+// Given the dragged group's proposed top-left positions, snap the group so its
+// outer left/center/right (x) and top/middle/bottom (y) align to the canvas
+// centre lines and to other instances' edges/centres. Returns the snap delta
+// and the active guide lines (in stage coords) to draw.
+function bComputeSnap(doc, dragIds, proposed) {
+  const idSet = new Set(dragIds);
+  // Outer visual bounds of the proposed group (use proposed x/y).
+  let gl = Infinity, gr = -Infinity, gt = Infinity, gb = -Infinity;
+  proposed.forEach((p) => {
+    const inst = doc.instances.find((i) => i.id === p.id);
+    if (!inst) return;
+    const b = bInstanceBox({ ...inst, x: p.x, y: p.y });
+    gl = Math.min(gl, b.left); gr = Math.max(gr, b.right);
+    gt = Math.min(gt, b.top); gb = Math.max(gb, b.bottom);
+  });
+  if (!isFinite(gl)) return { dx: 0, dy: 0, guides: [] };
+  const gcx = (gl + gr) / 2, gcy = (gt + gb) / 2;
+
+  // Candidate target lines from the canvas centre and every other instance.
+  const xTargets = [BUILDER_STAGE_W / 2];
+  const yTargets = [BUILDER_STAGE_H / 2];
+  doc.instances.forEach((inst) => {
+    if (idSet.has(inst.id)) return;
+    const b = bInstanceBox(inst);
+    xTargets.push(b.left, b.cx, b.right);
+    yTargets.push(b.top, b.cy, b.bottom);
+  });
+
+  // For each of the group's three x anchors, find the nearest target.
+  const pickX = [gl, gcx, gr];
+  const pickY = [gt, gcy, gb];
+  let bestDx = 0, bestDxErr = BUILDER_SNAP_TOL + 1, guideX = null;
+  pickX.forEach((src) => {
+    xTargets.forEach((t) => {
+      const err = Math.abs(t - src);
+      if (err < bestDxErr) { bestDxErr = err; bestDx = t - src; guideX = t; }
+    });
+  });
+  let bestDy = 0, bestDyErr = BUILDER_SNAP_TOL + 1, guideY = null;
+  pickY.forEach((src) => {
+    yTargets.forEach((t) => {
+      const err = Math.abs(t - src);
+      if (err < bestDyErr) { bestDyErr = err; bestDy = t - src; guideY = t; }
+    });
+  });
+
+  const dx = bestDxErr <= BUILDER_SNAP_TOL ? bestDx : 0;
+  const dy = bestDyErr <= BUILDER_SNAP_TOL ? bestDy : 0;
+  const guides = [];
+  if (bestDxErr <= BUILDER_SNAP_TOL && guideX != null) guides.push({ axis: 'v', pos: guideX });
+  if (bestDyErr <= BUILDER_SNAP_TOL && guideY != null) guides.push({ axis: 'h', pos: guideY });
+  return { dx, dy, guides };
+}
+
 // ── Canvas ─────────────────────────────────────────────────────────────
-function EditorCanvas({ doc, selectedIds, onSelect, onMoveBatch, onTransform }) {
+function EditorCanvas({ doc, selectedIds, onSelect, onMoveBatch, onTransform, onAddAt }) {
   const drag = useRef(null);
+  const [guides, setGuides] = useState([]);
+  const docRef = useRef(doc); docRef.current = doc;
+
+  // Convert a screen-space drop point to stage coords using the same math the
+  // instance drag path uses (canvas rect + stage width).
+  const screenToStage = (clientX, clientY) => {
+    const stage = window.__manimoStage;
+    const el = stage && stage.getCanvasEl && stage.getCanvasEl();
+    if (!el) return null;
+    const rect = el.getBoundingClientRect();
+    const sw = (stage && stage.width) || BUILDER_STAGE_W;
+    const scale = rect.width / sw || 1;
+    return { x: (clientX - rect.left) / scale, y: (clientY - rect.top) / scale };
+  };
+
+  const onCanvasDragOver = (e) => {
+    if (e.dataTransfer && Array.prototype.indexOf.call(e.dataTransfer.types || [], 'application/x-manimo-component') !== -1) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'copy';
+    }
+  };
+  const onCanvasDrop = (e) => {
+    const key = e.dataTransfer && e.dataTransfer.getData('application/x-manimo-component');
+    if (!key) return;
+    e.preventDefault();
+    const p = screenToStage(e.clientX, e.clientY);
+    if (p && onAddAt) onAddAt(key, p.x, p.y);
+  };
 
   useEffect(() => {
     const onMoveEvt = (e) => {
@@ -166,13 +310,16 @@ function EditorCanvas({ doc, selectedIds, onSelect, onMoveBatch, onTransform }) 
       const el = stage && stage.getCanvasEl && stage.getCanvasEl();
       if (!el) return;
       const rect = el.getBoundingClientRect();
-      const sw = (stage && stage.width) || 1280;
+      const sw = (stage && stage.width) || BUILDER_STAGE_W;
       const scale = rect.width / sw || 1;
       const dx = (e.clientX - d.mx) / scale;
       const dy = (e.clientY - d.my) / scale;
-      onMoveBatch(d.items.map((it) => ({ id: it.id, x: Math.round(it.x0 + dx), y: Math.round(it.y0 + dy) })));
+      const proposed = d.items.map((it) => ({ id: it.id, x: it.x0 + dx, y: it.y0 + dy }));
+      const snap = bComputeSnap(docRef.current, d.items.map((it) => it.id), proposed);
+      setGuides(snap.guides);
+      onMoveBatch(proposed.map((p) => ({ id: p.id, x: Math.round(p.x + snap.dx), y: Math.round(p.y + snap.dy) })));
     };
-    const onUp = () => { drag.current = null; };
+    const onUp = () => { drag.current = null; setGuides([]); };
     window.addEventListener('mousemove', onMoveEvt);
     window.addEventListener('mouseup', onUp);
     return () => {
@@ -200,9 +347,9 @@ function EditorCanvas({ doc, selectedIds, onSelect, onMoveBatch, onTransform }) 
   };
 
   return (
-    <div className="b-canvas" onMouseDown={() => onSelect([])}>
+    <div className="b-canvas" onMouseDown={() => onSelect([])} onDragOver={onCanvasDragOver} onDrop={onCanvasDrop}>
       <Stage width={1280} height={720} duration={doc.duration} background="var(--bg-canvas)">
-        <RenderDoc doc={doc} selectedIds={selectedIds} onSelect={handleSelect} onTransform={onTransform} />
+        <RenderDoc doc={doc} selectedIds={selectedIds} onSelect={handleSelect} onTransform={onTransform} guides={guides} />
       </Stage>
     </div>
   );
@@ -324,11 +471,53 @@ function ToggleField({ label, value, onChange }) {
     </div>
   );
 }
+// A small brand palette offered as clickable swatches in the token picker.
+// Each entry is a design-token string; the swatch's background is set to the
+// token itself (no raw hex in this file — the var() resolves at paint time).
+const BUILDER_TOKEN_SWATCHES = [
+  'var(--amber-400)', 'var(--amber-300)', 'var(--rose-400)',
+  'var(--teal-400)', 'var(--teal-300)', 'var(--violet-400)',
+  'var(--chalk-100)', 'var(--chalk-300)', 'var(--chalk-50)', 'var(--bg-canvas)',
+];
+
+// Color/token control: a row of clickable swatches over the brand palette plus
+// a free-text input so any custom token string can still be typed.
+function BuilderTokenField({ label, value, onChange }) {
+  const cur = value == null ? '' : value;
+  return (
+    <div className="b-field b-token-field">
+      <label>{label}</label>
+      <div className="b-token-body">
+        <div className="b-swatches">
+          {BUILDER_TOKEN_SWATCHES.map((tok) => (
+            <button
+              key={tok}
+              type="button"
+              className={`b-swatch ${cur === tok ? 'selected' : ''}`}
+              style={{ background: tok }}
+              title={tok}
+              onClick={() => onChange(tok)}
+            />
+          ))}
+        </div>
+        <input
+          type="text"
+          className="b-token-input"
+          value={cur}
+          placeholder="var(--token)"
+          onChange={(e) => onChange(e.target.value)}
+        />
+      </div>
+    </div>
+  );
+}
+
 function PropField({ spec, value, onChange }) {
   const v = value == null ? spec.default : value;
   if (spec.control === 'slider') return <SliderField label={spec.label} value={v} onChange={onChange} min={spec.min} max={spec.max} step={spec.step} />;
   if (spec.control === 'toggle') return <ToggleField label={spec.label} value={v} onChange={onChange} />;
   if (spec.control === 'number') return <NumberField label={spec.label} value={v} onChange={onChange} min={spec.min} max={spec.max} step={spec.step} />;
+  if (spec.control === 'token') return <BuilderTokenField label={spec.label} value={v} onChange={onChange} />;
   return <TextField label={spec.label} value={v} onChange={onChange} />;
 }
 
@@ -427,10 +616,81 @@ function Inspector({ doc, selectedIds, onPatchInstance, onPatchProp, onPatchChro
   );
 }
 
+// ── Import modal ─────────────────────────────────────────────────────────
+// Paste a scene-document JSON or pick a .doc.json file, then validate and
+// hand the parsed doc to onConfirm. Validation errors stay inline.
+function BuilderImportModal({ onConfirm, onClose }) {
+  const [text, setText] = useState('');
+  const [error, setError] = useState('');
+  const fileRef = useRef(null);
+
+  const tryImport = (raw) => {
+    let parsed;
+    try {
+      parsed = JSON.parse(raw);
+    } catch (err) {
+      setError('Invalid JSON: ' + (err && err.message ? err.message : 'could not parse.'));
+      return;
+    }
+    const problem = bValidateDoc(parsed);
+    if (problem) { setError(problem); return; }
+    onConfirm(parsed);
+  };
+
+  const onFile = (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const content = String(reader.result || '');
+      setText(content);
+      tryImport(content);
+    };
+    reader.onerror = () => setError('Could not read the file.');
+    reader.readAsText(file);
+  };
+
+  return (
+    <div className="b-modal-backdrop" onMouseDown={onClose}>
+      <div className="b-modal" onMouseDown={(e) => e.stopPropagation()}>
+        <div className="b-modal-head">
+          <span className="b-modal-title">Import scene document</span>
+          <button className="b-modal-close" onClick={onClose} title="Close">×</button>
+        </div>
+        <div className="b-modal-body">
+          <div className="b-section-label">Paste JSON</div>
+          <textarea
+            className="b-modal-textarea"
+            placeholder="Paste a scene-document JSON here…"
+            value={text}
+            onChange={(e) => { setText(e.target.value); setError(''); }}
+          />
+          <div className="b-section-label" style={{ marginTop: 12 }}>…or load a file</div>
+          <input
+            ref={fileRef}
+            className="b-modal-file"
+            type="file"
+            accept="application/json,.json"
+            onChange={onFile}
+          />
+          {error && <div className="b-modal-error">{error}</div>}
+        </div>
+        <div className="b-modal-foot">
+          <button className="b-btn" onClick={onClose}>Cancel</button>
+          <button className="b-btn primary" onClick={() => tryImport(text)} disabled={!text.trim()}>Import</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── App ────────────────────────────────────────────────────────────────
 function BuilderApp() {
   const [doc, setDoc] = useState(loadBuilderDoc);
   const [selectedIds, setSelectedIds] = useState([]);
+  const [importOpen, setImportOpen] = useState(false);
+  const [library, setLibrary] = useState(bLoadLibrary);
+  const [librarySel, setLibrarySel] = useState('');
 
   useEffect(() => {
     try { localStorage.setItem(LS_DOC, JSON.stringify(doc)); } catch { /* ignore quota */ }
@@ -506,15 +766,20 @@ function BuilderApp() {
 
   const patchDoc = (patch) => commit((d) => ({ ...d, ...patch }));
 
-  const addComponent = (componentKey) => {
+  // Add a component with its box centred on (centerX, centerY) in stage coords.
+  // Defaults to the canvas centre (click-to-add); drag-from-palette passes the
+  // drop point.
+  const addComponentAt = (componentKey, centerX, centerY) => {
     const entry = (window.ManimoRegistry || {})[componentKey];
     if (!entry) return;
     const box = entry.defaultBox || { w: 200, h: 200 };
+    const cx = centerX == null ? 640 : centerX;
+    const cy = centerY == null ? 360 : centerY;
     const id = builderUid(componentKey);
     const inst = {
       id, component: componentKey,
-      x: Math.round(640 - box.w / 2),
-      y: Math.round(360 - box.h / 2),
+      x: Math.round(cx - box.w / 2),
+      y: Math.round(cy - box.h / 2),
       w: box.w, h: box.h,
       start: 0, end: docRef.current.duration,
       props: {},
@@ -522,6 +787,7 @@ function BuilderApp() {
     commit((d) => ({ ...d, instances: [...d.instances, inst] }));
     setSelectedIds([id]);
   };
+  const addComponent = (componentKey) => addComponentAt(componentKey, null, null);
 
   const duplicateSelected = () => {
     const set = new Set(selRef.current);
@@ -553,6 +819,53 @@ function BuilderApp() {
     past.current = []; future.current = [];
     setDoc(JSON.parse(JSON.stringify(BUILDER_DEFAULT_DOC)));
     setSelectedIds([]);
+  };
+
+  // History-aware whole-document load (Import + library "load"). Pushes the
+  // current doc onto the undo stack and clears redo, so Cmd+Z restores it.
+  const loadDoc = (next) => {
+    setDoc((prev) => {
+      past.current.push(prev);
+      if (past.current.length > 100) past.current.shift();
+      future.current = [];
+      lastCommit.current = 0;
+      return JSON.parse(JSON.stringify(next));
+    });
+    setSelectedIds([]);
+  };
+
+  const confirmImport = (next) => {
+    loadDoc(next);
+    setImportOpen(false);
+  };
+
+  // Save the current doc into the named library under a prompted name.
+  const saveToLibrary = () => {
+    const name = window.prompt('Save scene as…', doc.title || 'Untitled scene');
+    if (name == null) return;
+    const key = name.trim();
+    if (!key) return;
+    const next = { ...library, [key]: JSON.parse(JSON.stringify(doc)) };
+    setLibrary(next);
+    bSaveLibrary(next);
+    setLibrarySel(key);
+  };
+
+  const loadFromLibrary = (name) => {
+    setLibrarySel(name);
+    if (!name) return;
+    const saved = library[name];
+    if (saved) loadDoc(saved);
+  };
+
+  const deleteFromLibrary = () => {
+    if (!librarySel || !library[librarySel]) return;
+    if (!window.confirm(`Delete saved scene "${librarySel}"?`)) return;
+    const next = { ...library };
+    delete next[librarySel];
+    setLibrary(next);
+    bSaveLibrary(next);
+    setLibrarySel('');
   };
 
   // ── Keyboard shortcuts ─────────────────────────────────────────────────
@@ -633,9 +946,29 @@ function BuilderApp() {
           onChange={(e) => setDoc((d) => ({ ...d, title: e.target.value }))}
         />
         <span className="b-spacer" />
+        <div className="b-library">
+          <select
+            className="b-lib-select"
+            value={librarySel}
+            onChange={(e) => loadFromLibrary(e.target.value)}
+            title="Load a saved scene"
+          >
+            <option value="">Library…</option>
+            {Object.keys(library).sort().map((name) => (
+              <option key={name} value={name}>{name}</option>
+            ))}
+          </select>
+          <button className="b-btn" onClick={deleteFromLibrary} disabled={!librarySel} title="Delete the selected saved scene">Delete</button>
+        </div>
+        <button className="b-btn" onClick={saveToLibrary} title="Save the current scene into the library">Save as…</button>
+        <button className="b-btn" onClick={() => setImportOpen(true)} title="Import a scene document from JSON or a file">Import</button>
         <button className="b-btn" onClick={exportDoc} title="Download the scene document JSON (and copy to clipboard)">Export document</button>
         <button className="b-btn" onClick={resetDoc}>Reset</button>
       </div>
+
+      {importOpen && (
+        <BuilderImportModal onConfirm={confirmImport} onClose={() => setImportOpen(false)} />
+      )}
 
       <Palette onAdd={addComponent} />
 
@@ -645,6 +978,7 @@ function BuilderApp() {
         onSelect={setSelectedIds}
         onMoveBatch={moveBatch}
         onTransform={patchInstance}
+        onAddAt={addComponentAt}
       />
 
       <Inspector
