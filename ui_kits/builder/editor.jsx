@@ -1,0 +1,672 @@
+// ui_kits/builder/editor.jsx — Visual scene builder (Phase 3 + 4 + 5).
+// ===========================================================================
+// A four-region editor over the data-driven scene model:
+//   • Palette (left)     — searchable component registry; click to add.
+//   • Canvas (center)    — live <Stage>; click to select, drag to move.
+//                          Cmd/Ctrl-click adds to the selection (multi-select);
+//                          dragging any selected box moves the whole group.
+//   • Inspector (right)  — props auto-generated from the registry schema,
+//                          plus position/timing fields and a layer list.
+//   • Timeline (bottom)  — one track per instance; drag the bar to shift its
+//                          [start, end], drag the edges to resize. A playhead
+//                          tracks the Stage clock; click the ruler to seek.
+//
+// The scene is a document (motion/scene-doc.schema.json) held in React state
+// and persisted to localStorage. RenderDoc renders it into the same React
+// tree as the editor, which is what makes selection and drag work.
+
+const { useState, useEffect, useRef } = React;
+
+const LS_DOC = 'manimo.builder.doc';
+
+let _idSeq = 0;
+function builderUid(prefix) {
+  _idSeq += 1;
+  return `${prefix}-${_idSeq}-${performance.now() | 0}`;
+}
+
+const clampNum = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+const round1 = (v) => Math.round(v * 10) / 10;
+
+// Seed document: the pendulum scene, identical to poc.jsx but now editable.
+const BUILDER_DEFAULT_DOC = {
+  id: 'builder-scene',
+  title: 'Untitled scene',
+  language: 'en',
+  duration: 14,
+  chrome: {
+    eyebrow: 'pendulum motion',
+    title: 'The Simple Pendulum',
+    introEnd: 4.5,
+    introCaption: 'Pull a weight on a string — what sets the rhythm?',
+  },
+  instances: [
+    { id: 'pivot-line', component: 'trace-path', x: 470, y: 150, w: 340, h: 30, start: 4.5, end: 14,
+      props: { d: 'M 0 15 L 340 15', stroke: 'var(--chalk-300)', strokeWidth: 3, duration: 0.8 } },
+    { id: 'pendulum', component: 'swinging-pendulum', x: 480, y: 150, w: 320, h: 440, start: 4.5, end: 14,
+      props: { pivX: 160, pivY: 16, L: 300, maxAngle: 24, period: 2.4, bobLabel: 'm', color: 'var(--amber-400)' } },
+    { id: 'pivot-mark', component: 'pulse-mark', x: 480, y: 150, w: 320, h: 60, start: 5.4, end: 14,
+      props: { cx: 160, cy: 16, color: 'var(--amber-300)', radius: 4, pulseRadius: 22, delay: 0.2 } },
+    { id: 'caption', component: 'caption', x: 340, y: 612, w: 600, start: 6.0, end: 14,
+      props: { text: 'The period depends on length and gravity — not the mass.', fontSize: 26, italic: true, color: 'var(--chalk-100)', duration: 1.0 } },
+  ],
+};
+
+function loadBuilderDoc() {
+  try {
+    const v = localStorage.getItem(LS_DOC);
+    if (v) return JSON.parse(v);
+  } catch { /* fall through */ }
+  return JSON.parse(JSON.stringify(BUILDER_DEFAULT_DOC));
+}
+
+// Subscribe to the live Stage clock (set up by animations.jsx after mount).
+function useStageTime() {
+  const [t, setT] = useState(0);
+  useEffect(() => {
+    let unsub = null, raf = null, cancelled = false;
+    const attach = () => {
+      if (cancelled) return;
+      const s = window.__manimoStage;
+      if (s && s.subscribe) unsub = s.subscribe(({ time }) => setT(time));
+      else raf = requestAnimationFrame(attach);
+    };
+    attach();
+    return () => { cancelled = true; if (unsub) unsub(); if (raf) cancelAnimationFrame(raf); };
+  }, []);
+  return t;
+}
+
+// ── Palette ────────────────────────────────────────────────────────────
+// A small monochrome glyph per component, so the list is scannable at a glance.
+function PaletteIcon({ kind }) {
+  const s = { width: 20, height: 20, viewBox: '0 0 20 20', fill: 'none', stroke: 'currentColor', strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round' };
+  switch (kind) {
+    case 'text':     return <svg {...s}><path d="M3 6h14M3 10h10M3 14h12" /></svg>;
+    case 'label':    return <svg {...s}><path d="M4 4h7l5 5-7 7-5-5z" /><circle cx="8" cy="8" r="1.2" fill="currentColor" stroke="none" /></svg>;
+    case 'path':     return <svg {...s}><path d="M3 15 C 7 3, 13 3, 17 15" /></svg>;
+    case 'arrow':    return <svg {...s}><path d="M4 16 L16 4" /><path d="M10 4h6v6" /></svg>;
+    case 'axes':     return <svg {...s}><path d="M5 3v12h12" /><path d="M14 13l3 2-3 2" /><path d="M3 6l2-3 2 3" /></svg>;
+    case 'dot':      return <svg {...s}><circle cx="10" cy="10" r="4" fill="currentColor" stroke="none" /></svg>;
+    case 'pulse':    return <svg {...s}><circle cx="10" cy="10" r="2.4" fill="currentColor" stroke="none" /><circle cx="10" cy="10" r="7" /></svg>;
+    case 'bracket':  return <svg {...s}><path d="M13 3H6v14h7" /></svg>;
+    case 'pendulum': return <svg {...s}><path d="M5 3h10" /><path d="M10 3v9" /><circle cx="10" cy="15" r="3" fill="currentColor" stroke="none" /></svg>;
+    case 'wheel':    return <svg {...s}><circle cx="10" cy="10" r="6" /><path d="M10 10h5" /></svg>;
+    case 'mascot':   return <svg {...s}><path d="M4 15 Q6 8 11 8 Q16 8 14 13" /><circle cx="10.5" cy="10" r="0.9" fill="currentColor" stroke="none" /></svg>;
+    default:         return <svg {...s}><rect x="4" y="4" width="12" height="12" rx="2" /></svg>;
+  }
+}
+
+function Palette({ onAdd }) {
+  const [q, setQ] = useState('');
+  const [collapsed, setCollapsed] = useState({});
+  const registry = window.ManimoRegistry || {};
+  const cats = window.ManimoRegistryCategories || [];
+
+  const entries = Object.keys(registry).map((key) => ({ key, ...registry[key] }));
+  const needle = q.trim().toLowerCase();
+  const searching = needle.length > 0;
+  const matches = entries.filter((e) => {
+    if (!searching) return true;
+    const hay = [e.label, e.category, e.description, ...(e.keywords || [])].join(' ').toLowerCase();
+    return hay.includes(needle);
+  });
+
+  const order = (c) => { const i = cats.indexOf(c); return i === -1 ? 999 : i; };
+  const byCat = {};
+  matches.forEach((e) => { (byCat[e.category] = byCat[e.category] || []).push(e); });
+  const catNames = Object.keys(byCat).sort((a, b) => order(a) - order(b));
+  const toggle = (c) => setCollapsed((m) => ({ ...m, [c]: !m[c] }));
+
+  return (
+    <div className="b-palette">
+      <input
+        className="b-search"
+        placeholder="Search components…"
+        value={q}
+        onChange={(e) => setQ(e.target.value)}
+      />
+      <div className="b-palette-scroll">
+        {catNames.length === 0 && <div className="b-empty" style={{ padding: 8 }}>No matches.</div>}
+        {catNames.map((cat) => {
+          const open = searching || !collapsed[cat];
+          return (
+            <div key={cat}>
+              <button className="b-cat-header" onClick={() => toggle(cat)}>
+                <span className={`b-chev ${open ? 'open' : ''}`}>▸</span>
+                <span className="b-cat-name">{cat}</span>
+                <span className="b-cat-count">{byCat[cat].length}</span>
+              </button>
+              {open && byCat[cat].map((e) => (
+                <button key={e.key} className="b-card" onClick={() => onAdd(e.key)} title={e.description}>
+                  <span className="b-card-icon"><PaletteIcon kind={e.icon} /></span>
+                  <span className="b-card-text">
+                    <span className="b-card-name">{e.label}</span>
+                    <span className="b-card-desc">{e.description}</span>
+                  </span>
+                </button>
+              ))}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ── Canvas ─────────────────────────────────────────────────────────────
+function EditorCanvas({ doc, selectedIds, onSelect, onMoveBatch, onTransform }) {
+  const drag = useRef(null);
+
+  useEffect(() => {
+    const onMoveEvt = (e) => {
+      const d = drag.current;
+      if (!d) return;
+      const stage = window.__manimoStage;
+      const el = stage && stage.getCanvasEl && stage.getCanvasEl();
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const sw = (stage && stage.width) || 1280;
+      const scale = rect.width / sw || 1;
+      const dx = (e.clientX - d.mx) / scale;
+      const dy = (e.clientY - d.my) / scale;
+      onMoveBatch(d.items.map((it) => ({ id: it.id, x: Math.round(it.x0 + dx), y: Math.round(it.y0 + dy) })));
+    };
+    const onUp = () => { drag.current = null; };
+    window.addEventListener('mousemove', onMoveEvt);
+    window.addEventListener('mouseup', onUp);
+    return () => {
+      window.removeEventListener('mousemove', onMoveEvt);
+      window.removeEventListener('mouseup', onUp);
+    };
+  }, [onMoveBatch]);
+
+  // Selection + drag-start on instance press.
+  const handleSelect = (id, e) => {
+    const meta = e.metaKey || e.ctrlKey;
+    let next;
+    if (meta) {
+      // Toggle membership; no drag on a modifier-click.
+      next = selectedIds.indexOf(id) !== -1 ? selectedIds.filter((x) => x !== id) : [...selectedIds, id];
+      onSelect(next);
+      return;
+    }
+    next = selectedIds.indexOf(id) !== -1 ? selectedIds : [id];
+    onSelect(next);
+    const items = next
+      .map((sid) => { const ins = doc.instances.find((i) => i.id === sid); return ins ? { id: sid, x0: ins.x || 0, y0: ins.y || 0 } : null; })
+      .filter(Boolean);
+    drag.current = { items, mx: e.clientX, my: e.clientY };
+  };
+
+  return (
+    <div className="b-canvas" onMouseDown={() => onSelect([])}>
+      <Stage width={1280} height={720} duration={doc.duration} background="var(--bg-canvas)">
+        <RenderDoc doc={doc} selectedIds={selectedIds} onSelect={handleSelect} onTransform={onTransform} />
+      </Stage>
+    </div>
+  );
+}
+
+// ── Timeline ───────────────────────────────────────────────────────────
+function Timeline({ doc, selectedIds, onSelect, onPatchInstance }) {
+  const time = useStageTime();
+  const dur = doc.duration || 1;
+  const ref = useRef(null);
+  const drag = useRef(null);
+
+  useEffect(() => {
+    const move = (e) => {
+      const d = drag.current;
+      if (!d) return;
+      const el = ref.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const dSec = ((e.clientX - d.mx) / rect.width) * dur;
+      let s = d.s0, en = d.e0;
+      if (d.mode === 'move') {
+        s = d.s0 + dSec; en = d.e0 + dSec;
+        if (s < 0) { en -= s; s = 0; }
+        if (en > dur) { s -= (en - dur); en = dur; }
+      } else if (d.mode === 'start') {
+        s = clampNum(d.s0 + dSec, 0, d.e0 - 0.1);
+      } else {
+        en = clampNum(d.e0 + dSec, d.s0 + 0.1, dur);
+      }
+      onPatchInstance(d.id, { start: round1(s), end: round1(en) });
+    };
+    const up = () => { drag.current = null; };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+    return () => { window.removeEventListener('mousemove', move); window.removeEventListener('mouseup', up); };
+  }, [dur, onPatchInstance]);
+
+  const startDrag = (inst, mode, e) => {
+    e.stopPropagation();
+    onSelect([inst.id]);
+    drag.current = { id: inst.id, mode, mx: e.clientX, s0: inst.start != null ? inst.start : 0, e0: inst.end != null ? inst.end : dur };
+  };
+
+  const seek = (e) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const s = window.__manimoStage;
+    if (s && s.setTime) s.setTime(clampNum(x * dur, 0, dur));
+  };
+
+  const registry = window.ManimoRegistry || {};
+
+  return (
+    <div className="b-timeline">
+      <div className="b-timeline-head">timeline · {dur}s</div>
+      <div className="b-tl-tracks" ref={ref} onMouseDown={seek}>
+        <div className="b-tl-playhead" style={{ left: `${(time / dur) * 100}%` }} />
+        {doc.instances.map((inst) => {
+          const s = inst.start != null ? inst.start : 0;
+          const en = inst.end != null ? inst.end : dur;
+          const reg = registry[inst.component];
+          const sel = selectedIds.indexOf(inst.id) !== -1;
+          return (
+            <div key={inst.id} className="b-tl-row">
+              <div
+                className={`b-tl-bar ${sel ? 'selected' : ''}`}
+                style={{ left: `${(s / dur) * 100}%`, width: `${((en - s) / dur) * 100}%` }}
+                onMouseDown={(e) => startDrag(inst, 'move', e)}
+                title={(reg && reg.label) || inst.component}
+              >
+                <span className="b-tl-handle l" onMouseDown={(e) => startDrag(inst, 'start', e)} />
+                <span className="b-tl-label">{(reg && reg.label) || inst.component}</span>
+                <span className="b-tl-handle r" onMouseDown={(e) => startDrag(inst, 'end', e)} />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ── Inspector fields ───────────────────────────────────────────────────
+function NumberField({ label, value, onChange, min, max, step }) {
+  return (
+    <div className="b-field">
+      <label>{label}</label>
+      <input type="number" value={value} min={min} max={max} step={step || 'any'}
+        onChange={(e) => onChange(e.target.value === '' ? '' : Number(e.target.value))} />
+    </div>
+  );
+}
+function SliderField({ label, value, onChange, min, max, step }) {
+  return (
+    <div className="b-field">
+      <label>{label}</label>
+      <input type="range" value={value} min={min} max={max} step={step || 1}
+        onChange={(e) => onChange(Number(e.target.value))} />
+      <span className="b-range-val">{value}</span>
+    </div>
+  );
+}
+function TextField({ label, value, onChange }) {
+  return (
+    <div className="b-field">
+      <label>{label}</label>
+      <input type="text" value={value == null ? '' : value} onChange={(e) => onChange(e.target.value)} />
+    </div>
+  );
+}
+function ToggleField({ label, value, onChange }) {
+  return (
+    <div className="b-field">
+      <label>{label}</label>
+      <input type="checkbox" checked={!!value} onChange={(e) => onChange(e.target.checked)} />
+    </div>
+  );
+}
+function PropField({ spec, value, onChange }) {
+  const v = value == null ? spec.default : value;
+  if (spec.control === 'slider') return <SliderField label={spec.label} value={v} onChange={onChange} min={spec.min} max={spec.max} step={spec.step} />;
+  if (spec.control === 'toggle') return <ToggleField label={spec.label} value={v} onChange={onChange} />;
+  if (spec.control === 'number') return <NumberField label={spec.label} value={v} onChange={onChange} min={spec.min} max={spec.max} step={spec.step} />;
+  return <TextField label={spec.label} value={v} onChange={onChange} />;
+}
+
+// ── Inspector ──────────────────────────────────────────────────────────
+function Inspector({ doc, selectedIds, onPatchInstance, onPatchProp, onPatchChrome, onPatchDoc, onDelete, onDeleteMany, onSelect }) {
+  const registry = window.ManimoRegistry || {};
+  const single = selectedIds.length === 1 ? doc.instances.find((i) => i.id === selectedIds[0]) : null;
+  const entry = single ? registry[single.component] : null;
+  const chrome = doc.chrome || {};
+
+  return (
+    <div className="b-inspector">
+      {selectedIds.length === 0 && (
+        <>
+          <div className="b-section-label">Scene</div>
+          <NumberField label="Duration (s)" value={doc.duration} min={1} step={0.5}
+            onChange={(v) => onPatchDoc({ duration: v === '' ? 1 : v })} />
+          <TextField label="Eyebrow" value={chrome.eyebrow} onChange={(v) => onPatchChrome({ eyebrow: v })} />
+          <TextField label="Heading" value={chrome.title} onChange={(v) => onPatchChrome({ title: v })} />
+          <TextField label="Intro text" value={chrome.introCaption} onChange={(v) => onPatchChrome({ introCaption: v })} />
+          <NumberField label="Intro end (s)" value={chrome.introEnd != null ? chrome.introEnd : 0} min={0} step={0.1}
+            onChange={(v) => onPatchChrome({ introEnd: v === '' ? 0 : v })} />
+          <div className="b-empty" style={{ marginTop: 10 }}>
+            Select a component on the canvas or in the layers below to edit it.
+            Cmd/Ctrl-click to select several.
+          </div>
+        </>
+      )}
+
+      {selectedIds.length > 1 && (
+        <>
+          <div className="b-section-label">{selectedIds.length} components selected</div>
+          <div className="b-empty">Drag any one on the canvas to move them all together.</div>
+          <div className="b-divider" />
+          <button className="b-btn danger" onClick={() => onDeleteMany(selectedIds)}>Delete selected</button>
+        </>
+      )}
+
+      {single && entry && (
+        <>
+          <div className="b-section-label">{entry.label}</div>
+
+          <div className="b-section-label" style={{ marginTop: 12 }}>Position &amp; size</div>
+          <NumberField label="X" value={single.x || 0} onChange={(v) => onPatchInstance(single.id, { x: v })} />
+          <NumberField label="Y" value={single.y || 0} onChange={(v) => onPatchInstance(single.id, { y: v })} />
+          {entry.container !== 'svg' && (
+            <NumberField label="Width" value={single.w != null ? single.w : (entry.defaultBox || {}).w}
+              onChange={(v) => onPatchInstance(single.id, { w: v })} />
+          )}
+          <SliderField label="Scale" value={single.scale != null ? single.scale : 1} min={0.2} max={3} step={0.05}
+            onChange={(v) => onPatchInstance(single.id, { scale: v })} />
+          <NumberField label="Rotation°" value={single.rotation || 0} step={1}
+            onChange={(v) => onPatchInstance(single.id, { rotation: v === '' ? 0 : v })} />
+
+          <div className="b-section-label" style={{ marginTop: 12 }}>Timing</div>
+          <NumberField label="Start" value={single.start != null ? single.start : 0} onChange={(v) => onPatchInstance(single.id, { start: v })} min={0} step={0.1} />
+          <NumberField label="End" value={single.end != null ? single.end : doc.duration} onChange={(v) => onPatchInstance(single.id, { end: v })} min={0} step={0.1} />
+
+          <div className="b-section-label" style={{ marginTop: 12 }}>Properties</div>
+          {Object.keys(entry.props || {}).map((key) => (
+            <PropField
+              key={key}
+              spec={entry.props[key]}
+              value={single.props ? single.props[key] : undefined}
+              onChange={(v) => onPatchProp(single.id, key, v)}
+            />
+          ))}
+
+          <div className="b-divider" />
+          <button className="b-btn danger" onClick={() => onDelete(single.id)}>Delete component</button>
+        </>
+      )}
+
+      <div className="b-divider" />
+      <div className="b-section-label">Layers</div>
+      {doc.instances.length === 0 && <div className="b-empty">No components yet.</div>}
+      {doc.instances.map((i) => {
+        const e = registry[i.component];
+        return (
+          <div
+            key={i.id}
+            className={`b-layer ${selectedIds.indexOf(i.id) !== -1 ? 'selected' : ''}`}
+            onClick={(ev) => {
+              const meta = ev.metaKey || ev.ctrlKey;
+              if (meta) onSelect(selectedIds.indexOf(i.id) !== -1 ? selectedIds.filter((x) => x !== i.id) : [...selectedIds, i.id]);
+              else onSelect([i.id]);
+            }}
+          >
+            <span className="b-layer-name">{(e && e.label) || i.component}</span>
+            <button className="b-layer-del" title="Delete"
+              onClick={(ev) => { ev.stopPropagation(); onDelete(i.id); }}>×</button>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// ── App ────────────────────────────────────────────────────────────────
+function BuilderApp() {
+  const [doc, setDoc] = useState(loadBuilderDoc);
+  const [selectedIds, setSelectedIds] = useState([]);
+
+  useEffect(() => {
+    try { localStorage.setItem(LS_DOC, JSON.stringify(doc)); } catch { /* ignore quota */ }
+  }, [doc]);
+
+  // Refs mirror the latest state so the (once-registered) hotkey handler and
+  // the ensure-visible effect always read current values without re-binding.
+  const docRef = useRef(doc); docRef.current = doc;
+  const selRef = useRef(selectedIds); selRef.current = selectedIds;
+
+  // ── Undo / redo history ────────────────────────────────────────────────
+  const past = useRef([]);
+  const future = useRef([]);
+  const lastCommit = useRef(0);
+
+  // Apply a mutation through coalesced history: rapid edits (typing, dragging)
+  // within 400ms collapse into a single undo step.
+  const commit = (mutator) => {
+    setDoc((prev) => {
+      const now = performance.now();
+      if (now - lastCommit.current > 400) {
+        past.current.push(prev);
+        if (past.current.length > 100) past.current.shift();
+        future.current = [];
+      }
+      lastCommit.current = now;
+      return mutator(prev);
+    });
+  };
+  const undo = () => setDoc((prev) => {
+    if (!past.current.length) return prev;
+    future.current.push(prev);
+    lastCommit.current = 0;
+    return past.current.pop();
+  });
+  const redo = () => setDoc((prev) => {
+    if (!future.current.length) return prev;
+    past.current.push(prev);
+    lastCommit.current = 0;
+    return future.current.pop();
+  });
+
+  const patchInstance = (id, patch) =>
+    commit((d) => ({ ...d, instances: d.instances.map((i) => i.id === id ? { ...i, ...patch } : i) }));
+
+  const patchProp = (id, key, value) =>
+    commit((d) => ({
+      ...d,
+      instances: d.instances.map((i) =>
+        i.id === id ? { ...i, props: { ...(i.props || {}), [key]: value } } : i),
+    }));
+
+  const moveBatch = (updates) =>
+    commit((d) => ({
+      ...d,
+      instances: d.instances.map((i) => {
+        const u = updates.find((u2) => u2.id === i.id);
+        return u ? { ...i, x: u.x, y: u.y } : i;
+      }),
+    }));
+
+  const nudge = (dx, dy) => {
+    const set = new Set(selRef.current);
+    if (!set.size) return;
+    commit((d) => ({
+      ...d,
+      instances: d.instances.map((i) => set.has(i.id) ? { ...i, x: (i.x || 0) + dx, y: (i.y || 0) + dy } : i),
+    }));
+  };
+
+  const patchChrome = (patch) =>
+    commit((d) => ({ ...d, chrome: { ...(d.chrome || {}), ...patch } }));
+
+  const patchDoc = (patch) => commit((d) => ({ ...d, ...patch }));
+
+  const addComponent = (componentKey) => {
+    const entry = (window.ManimoRegistry || {})[componentKey];
+    if (!entry) return;
+    const box = entry.defaultBox || { w: 200, h: 200 };
+    const id = builderUid(componentKey);
+    const inst = {
+      id, component: componentKey,
+      x: Math.round(640 - box.w / 2),
+      y: Math.round(360 - box.h / 2),
+      w: box.w, h: box.h,
+      start: 0, end: docRef.current.duration,
+      props: {},
+    };
+    commit((d) => ({ ...d, instances: [...d.instances, inst] }));
+    setSelectedIds([id]);
+  };
+
+  const duplicateSelected = () => {
+    const set = new Set(selRef.current);
+    if (!set.size) return;
+    const clones = [];
+    const additions = [];
+    docRef.current.instances.forEach((i) => {
+      if (!set.has(i.id)) return;
+      const id = builderUid(i.component);
+      clones.push(id);
+      additions.push({ ...i, id, x: (i.x || 0) + 20, y: (i.y || 0) + 20, props: { ...(i.props || {}) } });
+    });
+    if (!additions.length) return;
+    commit((d) => ({ ...d, instances: [...d.instances, ...additions] }));
+    setSelectedIds(clones);
+  };
+
+  const deleteInstance = (id) => {
+    commit((d) => ({ ...d, instances: d.instances.filter((i) => i.id !== id) }));
+    setSelectedIds((s) => s.filter((x) => x !== id));
+  };
+  const deleteMany = (ids) => {
+    const set = new Set(ids);
+    commit((d) => ({ ...d, instances: d.instances.filter((i) => !set.has(i.id)) }));
+    setSelectedIds([]);
+  };
+
+  const resetDoc = () => {
+    past.current = []; future.current = [];
+    setDoc(JSON.parse(JSON.stringify(BUILDER_DEFAULT_DOC)));
+    setSelectedIds([]);
+  };
+
+  // ── Keyboard shortcuts ─────────────────────────────────────────────────
+  // Registered in the capture phase so we can stop the events we own from
+  // reaching the Stage's own arrow-seek / handlers; Space is left for Stage.
+  useEffect(() => {
+    const onKey = (e) => {
+      const t = e.target, tag = t && t.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || (t && t.isContentEditable)) return;
+      const meta = e.metaKey || e.ctrlKey;
+      const block = () => { e.preventDefault(); e.stopPropagation(); };
+      if (meta && (e.key === 'z' || e.key === 'Z')) { block(); if (e.shiftKey) redo(); else undo(); return; }
+      if (meta && (e.key === 'y' || e.key === 'Y')) { block(); redo(); return; }
+      if (meta && (e.key === 'd' || e.key === 'D')) { block(); duplicateSelected(); return; }
+      if (e.key === 'Backspace' || e.key === 'Delete') {
+        if (selRef.current.length) { block(); deleteMany(selRef.current); }
+        return;
+      }
+      if (e.key === 'Escape') { setSelectedIds([]); return; }
+      if (selRef.current.length && e.key.indexOf('Arrow') === 0) {
+        block();
+        const step = e.shiftKey ? 10 : 1;
+        if (e.key === 'ArrowLeft') nudge(-step, 0);
+        else if (e.key === 'ArrowRight') nudge(step, 0);
+        else if (e.key === 'ArrowUp') nudge(0, -step);
+        else if (e.key === 'ArrowDown') nudge(0, step);
+      }
+    };
+    window.addEventListener('keydown', onKey, true);
+    return () => window.removeEventListener('keydown', onKey, true);
+  }, []);
+
+  // When a single component is selected, pause and (if needed) seek the
+  // playhead into its [start, end] window so edits are immediately visible.
+  useEffect(() => {
+    if (selectedIds.length !== 1) return;
+    const inst = docRef.current.instances.find((i) => i.id === selectedIds[0]);
+    const s = window.__manimoStage;
+    if (!inst || !s) return;
+    const start = inst.start != null ? inst.start : 0;
+    const end = inst.end != null ? inst.end : docRef.current.duration;
+    try {
+      s.setPlaying(false);
+      const now = s.getTime ? s.getTime() : 0;
+      if (now < start || now > end) {
+        s.setTime(Math.min(end, start + Math.min(0.8, Math.max(0.1, (end - start) / 2))));
+      }
+    } catch { /* stage not ready */ }
+  }, [selectedIds]);
+
+  // Export the live document as a .doc.json download (feed it to
+  // scripts/export-doc.js to emit a runnable, publishable scene) and copy to
+  // the clipboard for convenience.
+  const exportDoc = () => {
+    const json = JSON.stringify(doc, null, 2);
+    try { navigator.clipboard.writeText(json); } catch { /* ignore */ }
+    try {
+      const blob = new Blob([json], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${doc.id || 'scene'}.doc.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch { /* ignore */ }
+    console.log('[builder] scene document:\n' + json);
+  };
+
+  return (
+    <div className="builder">
+      <div className="b-topbar">
+        <span className="b-mark">Manimo</span>
+        <input
+          className="b-doc-title"
+          value={doc.title || ''}
+          onChange={(e) => setDoc((d) => ({ ...d, title: e.target.value }))}
+        />
+        <span className="b-spacer" />
+        <button className="b-btn" onClick={exportDoc} title="Download the scene document JSON (and copy to clipboard)">Export document</button>
+        <button className="b-btn" onClick={resetDoc}>Reset</button>
+      </div>
+
+      <Palette onAdd={addComponent} />
+
+      <EditorCanvas
+        doc={doc}
+        selectedIds={selectedIds}
+        onSelect={setSelectedIds}
+        onMoveBatch={moveBatch}
+        onTransform={patchInstance}
+      />
+
+      <Inspector
+        doc={doc}
+        selectedIds={selectedIds}
+        onPatchInstance={patchInstance}
+        onPatchProp={patchProp}
+        onPatchChrome={patchChrome}
+        onPatchDoc={patchDoc}
+        onDelete={deleteInstance}
+        onDeleteMany={deleteMany}
+        onSelect={setSelectedIds}
+      />
+
+      <Timeline
+        doc={doc}
+        selectedIds={selectedIds}
+        onSelect={setSelectedIds}
+        onPatchInstance={patchInstance}
+      />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<BuilderApp />);

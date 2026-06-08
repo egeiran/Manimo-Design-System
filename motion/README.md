@@ -52,7 +52,11 @@ primitive below reads from that, so timing composes naturally.
 | Draw an SVG path (curve, axis, glyph stroke) | `TraceIn`       |
 | HTML/DOM text or block appears      | `FadeUp`        |
 | Handwritten left→right text reveal  | `WriteOn`       |
-| Mark a point on a graph             | `PulseMark`     |
+| Mark a point on a graph (pulse)     | `PulseMark`     |
+| Persistent labeled point/vertex     | `Dot`           |
+| Vector / force / velocity arrow     | `Arrow`         |
+| 2D coordinate axes                  | `Axes`          |
+| Math symbol/label inside an `<svg>` | `Label`         |
 | Erase a chalk element off-screen    | `ChalkWipe`     |
 | Square label bracket on a diagram   | `Bracket`       |
 | Wheel rolling without slipping      | `RollingWheel`  |
@@ -235,6 +239,26 @@ Drives `<Pendulum>` with simple-harmonic motion:
   bobR={20} color="var(--amber-400)"
 />
 ```
+
+### `<Arrow x1 y1 x2 y2 color strokeWidth headSize label duration delay />`
+A vector arrow that draws from `(x1,y1)` toward `(x2,y2)`, grows an arrowhead
+as it lands, and optionally writes a serif-italic `label` at the tip. Use for
+force/velocity vectors and "maps-to" pointers — the reusable replacement for
+the per-scene `Vector` components.
+
+### `<Axes ox oy xLen yLen color xLabel yLabel duration delay />`
+A 2D coordinate frame: x-axis right + y-axis up from origin `(ox, oy)`, drawing
+in with arrowheads and optional axis labels. `y` is SVG-down, so the y-axis runs
+to `oy − yLen`. The reusable replacement for per-scene axis helpers.
+
+### `<Dot cx cy r color label labelDx labelDy duration delay />`
+A filled point that pops in (easeOutBack) with an optional label beside it.
+Unlike `PulseMark` (which pulses for attention), `Dot` is a persistent marker —
+graph points, intersections, vertices.
+
+### `<Label x y text color fontFamily fontSize italic anchor duration delay />`
+A single line of SVG `<text>` that fades in. Use for math symbols/labels that
+must sit at a precise point *inside* an SVG figure (`WriteOn` is for DOM text).
 
 ### `<SceneNarration src tracks volume playbackRate />`
 Plays narration audio in sync with Stage time. Two modes:

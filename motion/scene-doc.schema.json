@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "manimo-scene-doc",
+  "title": "Manimo Scene Document",
+  "description": "Editable, round-trippable representation of a scene as a flat list of component instances. Unlike scene-spec.schema.json (a one-way LLM intermediate with freeform position hints), a scene document carries numeric x/y/start/end and per-instance prop overrides, so a visual editor can drag, configure, and re-render it without code generation. motion/render-doc.jsx renders a document; motion/registry.js defines which components and props are valid.",
+  "type": "object",
+  "required": ["id", "duration", "instances"],
+  "additionalProperties": false,
+  "properties": {
+    "id":       { "type": "string", "description": "Kebab-case scene id." },
+    "title":    { "type": "string", "description": "Display title." },
+    "language": { "type": "string", "enum": ["no", "en"], "description": "Scene language (TTS/subtitle source of truth)." },
+    "duration": { "type": "number", "description": "Total scene length in seconds." },
+    "narrationSrc": { "type": "string", "description": "Optional path to a single-track narration mp3." },
+    "chrome": {
+      "type": "object",
+      "description": "Optional SceneChrome wrapper (grid, watermark, title block, corner/journey mascot). Omit for a bare canvas.",
+      "additionalProperties": false,
+      "properties": {
+        "eyebrow":       { "type": "string" },
+        "title":         { "type": "string" },
+        "introEnd":      { "type": "number", "description": "If set, Manimo enters centre then glides to the corner by this time." },
+        "introCaption":  { "type": "string" }
+      }
+    },
+    "instances": {
+      "type": "array",
+      "description": "Placed component instances, in paint order (later = on top).",
+      "items": {
+        "type": "object",
+        "required": ["id", "component"],
+        "additionalProperties": false,
+        "properties": {
+          "id":        { "type": "string", "description": "Unique instance id within the document." },
+          "component": { "type": "string", "description": "Key into window.ManimoRegistry (motion/registry.js), e.g. 'swinging-pendulum'." },
+          "x":         { "type": "number", "description": "Box left, in 1280x720 stage coords." },
+          "y":         { "type": "number", "description": "Box top, in stage coords." },
+          "w":         { "type": "number", "description": "Box width (defaults to the registry entry's defaultBox.w)." },
+          "h":         { "type": "number", "description": "Box height (SVG instances only)." },
+          "start":     { "type": "number", "description": "Sprite start time in seconds (default 0)." },
+          "end":       { "type": "number", "description": "Sprite end time in seconds (default scene end)." },
+          "props":     { "type": "object", "description": "Per-instance prop overrides; anything unset falls back to the registry default." }
+        }
+      }
+    }
+  }
+}

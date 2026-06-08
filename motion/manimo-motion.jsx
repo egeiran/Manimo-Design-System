@@ -838,6 +838,153 @@ function SwingingPendulum({
   );
 }
 
+// ─── Arrow / Vector ───────────────────────────────────────────────────────
+// A straight arrow that draws itself from (x1,y1) toward (x2,y2), grows an
+// arrowhead as it lands, and optionally writes a label at the tip. Use for
+// force/velocity vectors, pointers, "this maps to that" annotations. (Replaces
+// the per-scene Vector components that were duplicated across scenes.)
+function Arrow({
+  x1, y1, x2, y2,
+  color = 'var(--amber-400)',
+  strokeWidth = 3,
+  headSize = 12,
+  duration = MM_DEFAULT_DUR,
+  delay = 0,
+  ease = MM_DEFAULT_EASE,
+  label = null,
+  labelColor = null,
+  labelDx = 10,
+  labelDy = -10,
+  labelSize = 20,
+}) {
+  const { localTime } = useSprite();
+  const t = clamp((localTime - delay) / duration, 0, 1);
+  const eased = ease(t);
+  const tipX = x1 + (x2 - x1) * eased;
+  const tipY = y1 + (y2 - y1) * eased;
+  const ang = Math.atan2(y2 - y1, x2 - x1);
+  const headT = clamp((eased - 0.85) / 0.15, 0, 1); // head appears as shaft lands
+  const hs = headSize * headT;
+  const aLx = tipX - hs * Math.cos(ang - Math.PI / 6);
+  const aLy = tipY - hs * Math.sin(ang - Math.PI / 6);
+  const aRx = tipX - hs * Math.cos(ang + Math.PI / 6);
+  const aRy = tipY - hs * Math.sin(ang + Math.PI / 6);
+  const lc = labelColor || color;
+  return (
+    <g>
+      <line x1={x1} y1={y1} x2={tipX} y2={tipY} stroke={color} strokeWidth={strokeWidth} strokeLinecap="round"/>
+      {headT > 0 && (
+        <path d={`M ${aLx} ${aLy} L ${tipX} ${tipY} L ${aRx} ${aRy}`}
+              fill="none" stroke={color} strokeWidth={strokeWidth}
+              strokeLinecap="round" strokeLinejoin="round"/>
+      )}
+      {label != null && eased > 0.9 && (
+        <text x={x2 + labelDx} y={y2 + labelDy} fill={lc}
+              fontFamily="var(--font-serif)" fontStyle="italic" fontSize={labelSize}
+              opacity={clamp((eased - 0.9) / 0.1, 0, 1)}>
+          {label}
+        </text>
+      )}
+    </g>
+  );
+}
+
+// ─── Axes ───────────────────────────────────────────────────────────────
+// A 2D coordinate frame: x-axis right + y-axis up from an origin (ox, oy),
+// drawing in with arrowheads and optional axis labels. (Replaces the per-scene
+// axis helpers.) y is SVG-down, so the y-axis runs to oy − yLen.
+function Axes({
+  ox = 20, oy = 200,
+  xLen = 240, yLen = 180,
+  color = 'var(--chalk-300)',
+  strokeWidth = 2,
+  duration = 0.8,
+  delay = 0,
+  xLabel = null, yLabel = null,
+  headSize = 9,
+}) {
+  const { localTime } = useSprite();
+  const t = clamp((localTime - delay) / duration, 0, 1);
+  const eased = Easing.easeOutCubic(t);
+  const xEnd = ox + xLen * eased;
+  const yEnd = oy - yLen * eased;
+  const headT = clamp((eased - 0.8) / 0.2, 0, 1);
+  const hs = headSize * headT;
+  const labelOp = clamp((eased - 0.9) / 0.1, 0, 1);
+  return (
+    <g>
+      <line x1={ox} y1={oy} x2={xEnd} y2={oy} stroke={color} strokeWidth={strokeWidth} strokeLinecap="round"/>
+      <line x1={ox} y1={oy} x2={ox} y2={yEnd} stroke={color} strokeWidth={strokeWidth} strokeLinecap="round"/>
+      {headT > 0 && (
+        <g>
+          <path d={`M ${ox + xLen - hs} ${oy - hs * 0.6} L ${ox + xLen} ${oy} L ${ox + xLen - hs} ${oy + hs * 0.6}`}
+                fill="none" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
+          <path d={`M ${ox - hs * 0.6} ${oy - yLen + hs} L ${ox} ${oy - yLen} L ${ox + hs * 0.6} ${oy - yLen + hs}`}
+                fill="none" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
+        </g>
+      )}
+      {xLabel != null && (
+        <text x={ox + xLen} y={oy + 22} fill={color} fontFamily="var(--font-serif)" fontStyle="italic"
+              fontSize={18} textAnchor="middle" opacity={labelOp}>{xLabel}</text>
+      )}
+      {yLabel != null && (
+        <text x={ox - 16} y={oy - yLen + 4} fill={color} fontFamily="var(--font-serif)" fontStyle="italic"
+              fontSize={18} textAnchor="middle" opacity={labelOp}>{yLabel}</text>
+      )}
+    </g>
+  );
+}
+
+// ─── Dot (labeled point) ──────────────────────────────────────────────────
+// A filled point that pops in, with an optional label beside it. Unlike
+// PulseMark (which pulses for attention), Dot is a persistent marker — graph
+// points, intersections, vertices.
+function Dot({
+  cx, cy, r = 6,
+  color = 'var(--amber-400)',
+  label = null,
+  labelColor = 'var(--chalk-100)',
+  labelDx = 12, labelDy = 5,
+  labelSize = 18,
+  duration = 0.4, delay = 0,
+}) {
+  const { localTime } = useSprite();
+  const t = clamp((localTime - delay) / duration, 0, 1);
+  const eased = Easing.easeOutBack(t);
+  return (
+    <g opacity={clamp(t / 0.3, 0, 1)}>
+      <circle cx={cx} cy={cy} r={r * eased} fill={color}/>
+      {label != null && (
+        <text x={cx + labelDx} y={cy + labelDy} fill={labelColor}
+              fontFamily="var(--font-serif)" fontStyle="italic" fontSize={labelSize}>{label}</text>
+      )}
+    </g>
+  );
+}
+
+// ─── Label (SVG text) ─────────────────────────────────────────────────────
+// A single line of SVG text that fades in. Use for math symbols / labels that
+// must sit at a precise point inside an SVG figure (WriteOn is for DOM text).
+function Label({
+  x, y, text,
+  color = 'var(--chalk-100)',
+  fontFamily = 'var(--font-serif)',
+  fontSize = 22,
+  italic = true,
+  anchor = 'start',
+  duration = 0.4, delay = 0,
+}) {
+  const { localTime } = useSprite();
+  const t = clamp((localTime - delay) / duration, 0, 1);
+  return (
+    <text x={x} y={y} fill={color} textAnchor={anchor}
+          fontFamily={fontFamily} fontStyle={italic ? 'italic' : 'normal'} fontSize={fontSize}
+          opacity={Easing.easeOutCubic(t)}>
+      {text}
+    </text>
+  );
+}
+
 // ─── Export to global scope ───────────────────────────────────────────────
 Object.assign(window, {
   TraceIn, FadeUp, WriteOn, PulseMark, ChalkWipe,
@@ -845,5 +992,6 @@ Object.assign(window, {
   Manimo, ManimoEnter, ChalkTip, Bracket,
   RollingWheel,
   Pendulum, SwingingPendulum,
+  Arrow, Axes, Dot, Label,
   SceneChrome, SceneNarration,
 });

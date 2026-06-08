@@ -1,0 +1,271 @@
+// motion/render-doc.jsx — Generic data-driven scene renderer (Phase 2).
+// =========================================================================
+// Reads a "scene document" (see motion/scene-doc.schema.json) and renders
+// every component instance from motion/registry.js into the live <Stage>
+// tree. This is the runtime counterpart to a hand-authored scene .jsx: a
+// scene becomes DATA (instances with x/y/start/end/props) instead of code,
+// which is what makes the visual builder — search, drag, configure — possible.
+//
+// Usage (inside an HTML that already loaded animations.jsx + manimo-motion.jsx
+// + registry.js):
+//
+//   <Stage width={1280} height={720} duration={doc.duration}>
+//     <RenderDoc doc={doc} />
+//   </Stage>
+//
+// Same React tree as the editor (no iframe), so the editor can attach click /
+// drag handlers to each instance's box directly.
+
+// Resolve an instance's final props: registry defaults overlaid with the
+// instance's own overrides. (The inspector edits inst.props; everything
+// unset falls back to the schema default.)
+function docInstanceProps(entry, inst) {
+  const out = {};
+  const schema = (entry && entry.props) || {};
+  Object.keys(schema).forEach((k) => { out[k] = schema[k].default; });
+  return Object.assign(out, (inst && inst.props) || {});
+}
+
+// One placed component. Looks up its registry entry, resolves the global
+// component, applies props, and wraps it in a positioned box + a <Sprite>
+// so it only renders inside its [start, end] window.
+function DocInstance({ inst, selected = false, onSelect }) {
+  const { time } = useTimeline();
+  const registry = window.ManimoRegistry || {};
+  const entry = registry[inst.component];
+  if (!entry) {
+    console.warn('[render-doc] unknown component:', inst.component);
+    return null;
+  }
+  const Comp = window[entry.componentName];
+  if (typeof Comp !== 'function') {
+    console.warn('[render-doc] component not on window:', entry.componentName);
+    return null;
+  }
+
+  // Gate the whole instance — box included — on its time window. This keeps
+  // the (otherwise invisible) selectable box from existing, and being
+  // clickable, when the element isn't actually on screen.
+  const startT = inst.start != null ? inst.start : 0;
+  const endT = inst.end != null ? inst.end : Infinity;
+  if (time < startT || time > endT) return null;
+
+  const props = docInstanceProps(entry, inst);
+
+  // A string prop can map to the component's children (WriteOn/FadeUp text).
+  let children = null;
+  if (entry.childrenProp && props[entry.childrenProp] != null) {
+    children = props[entry.childrenProp];
+    delete props[entry.childrenProp];
+  }
+
+  const start = inst.start != null ? inst.start : 0;
+  const end = inst.end != null ? inst.end : Infinity;
+  const box = entry.defaultBox || { w: 200, h: 200 };
+  const x = inst.x || 0;
+  const y = inst.y || 0;
+  const scale = inst.scale != null ? inst.scale : 1;
+  const rotation = inst.rotation || 0;
+
+  // Box is rendered at intrinsic size; `scale` and `rotation` are applied as a
+  // CSS transform about the centre (uniform, undistorted, and identical for
+  // SVG and DOM instances). SVG content lives in a fixed viewBox.
+  let w, h, viewBox;
+  if (entry.container === 'svg') {
+    w = box.w; h = box.h; viewBox = `0 0 ${box.w} ${box.h}`;
+  } else {
+    w = inst.w != null ? inst.w : box.w;
+    h = inst.h != null ? inst.h : box.h;
+  }
+
+  // Editor affordance: a selectable outline. In pure playback (onSelect
+  // absent) the box is fully transparent and ignores pointer events.
+  const boxStyle = {
+    position: 'absolute',
+    left: x,
+    top: y,
+    width: w,
+    height: entry.container === 'svg' ? h : undefined,
+    transform: (scale !== 1 || rotation) ? `rotate(${rotation}deg) scale(${scale})` : undefined,
+    transformOrigin: 'center center',
+    outline: selected ? '1.5px solid var(--accent-violet)' : 'none',
+    outlineOffset: 2,
+    cursor: onSelect ? 'move' : 'default',
+    pointerEvents: onSelect ? 'auto' : 'none',
+  };
+
+  const handleDown = onSelect ? (e) => { e.stopPropagation(); onSelect(inst.id, e); } : undefined;
+
+  if (entry.container === 'svg') {
+    return (
+      <svg
+        width={w}
+        height={h}
+        viewBox={viewBox}
+        style={{ ...boxStyle, overflow: 'visible' }}
+        onMouseDown={handleDown}
+      >
+        <Sprite start={start} end={end}>
+          <Comp {...props}>{children}</Comp>
+        </Sprite>
+      </svg>
+    );
+  }
+
+  return (
+    <div style={boxStyle} onMouseDown={handleDown}>
+      <Sprite start={start} end={end}>
+        <Comp {...props}>{children}</Comp>
+      </Sprite>
+    </div>
+  );
+}
+
+// Canva-style transform overlay for the single selected instance: corner
+// handles resize (uniform `scale`, from the centre), a knob above rotates.
+// Rendered inside the Stage (canvas coord space) so it tracks the scene's
+// auto-scale. Only the handles capture pointer events — the element body
+// underneath stays grabbable for moving.
+function SelectionOverlay({ inst, onTransform }) {
+  const { time } = useTimeline();
+  const drag = React.useRef(null);
+
+  React.useEffect(() => {
+    const toStage = (e) => {
+      const el = window.__manimoStage && window.__manimoStage.getCanvasEl && window.__manimoStage.getCanvasEl();
+      if (!el) return null;
+      const rect = el.getBoundingClientRect();
+      const sw = (window.__manimoStage && window.__manimoStage.width) || 1280;
+      const sc = rect.width / sw || 1;
+      return { mx: (e.clientX - rect.left) / sc, my: (e.clientY - rect.top) / sc };
+    };
+    const move = (e) => {
+      const d = drag.current;
+      if (!d) return;
+      const m = toStage(e);
+      if (!m) return;
+      if (d.mode === 'resize') {
+        const dist = Math.hypot(m.mx - d.cx, m.my - d.cy);
+        let ns = d.scale0 * (dist / d.dist0);
+        ns = Math.max(0.2, Math.min(5, Math.round(ns * 100) / 100));
+        onTransform(d.id, { scale: ns });
+      } else if (d.mode === 'rotate') {
+        let deg = Math.atan2(m.my - d.cy, m.mx - d.cx) * 180 / Math.PI + 90;
+        if (e.shiftKey) deg = Math.round(deg / 15) * 15;
+        onTransform(d.id, { rotation: Math.round(deg) });
+      }
+    };
+    const up = () => { drag.current = null; };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+    return () => { window.removeEventListener('mousemove', move); window.removeEventListener('mouseup', up); };
+  }, [onTransform]);
+
+  const registry = window.ManimoRegistry || {};
+  const entry = registry[inst.component];
+  if (!entry) return null;
+  const start = inst.start != null ? inst.start : 0;
+  const end = inst.end != null ? inst.end : Infinity;
+  if (time < start || time > end) return null;
+
+  const box = entry.defaultBox || { w: 200, h: 200 };
+  const baseW = entry.container === 'svg' ? box.w : (inst.w != null ? inst.w : box.w);
+  const baseH = entry.container === 'svg' ? box.h : (inst.h != null ? inst.h : box.h);
+  const scale = inst.scale != null ? inst.scale : 1;
+  const rot = inst.rotation || 0;
+  const cx = (inst.x || 0) + baseW / 2;
+  const cy = (inst.y || 0) + baseH / 2;
+  const visW = baseW * scale;
+  const visH = baseH * scale;
+
+  const startResize = (e) => {
+    e.stopPropagation();
+    drag.current = { mode: 'resize', id: inst.id, cx, cy, scale0: scale, dist0: Math.max(1, Math.hypot(visW / 2, visH / 2)) };
+  };
+  const startRotate = (e) => {
+    e.stopPropagation();
+    drag.current = { mode: 'rotate', id: inst.id, cx, cy };
+  };
+
+  const handle = (left, top, cursor, onDown) => (
+    <div className="b-tf-handle" onMouseDown={onDown} style={{
+      position: 'absolute', left: left - 5, top: top - 5, width: 10, height: 10,
+      background: 'var(--chalk-50)', border: '1px solid var(--accent-violet)',
+      borderRadius: 2, cursor, pointerEvents: 'auto',
+    }} />
+  );
+
+  return (
+    <div style={{ position: 'absolute', left: cx, top: cy, width: 0, height: 0, pointerEvents: 'none', zIndex: 50 }}>
+      <div style={{
+        position: 'absolute', left: -visW / 2, top: -visH / 2, width: visW, height: visH,
+        transform: `rotate(${rot}deg)`, transformOrigin: 'center center',
+        border: '1px solid var(--accent-violet)', boxSizing: 'border-box', pointerEvents: 'none',
+      }}>
+        {handle(0, 0, 'nwse-resize', startResize)}
+        {handle(visW, 0, 'nesw-resize', startResize)}
+        {handle(0, visH, 'nesw-resize', startResize)}
+        {handle(visW, visH, 'nwse-resize', startResize)}
+        {/* rotation arm + knob, above top-centre */}
+        <div style={{ position: 'absolute', left: visW / 2 - 1, top: -26, width: 2, height: 26, background: 'var(--accent-violet)', pointerEvents: 'none' }} />
+        <div className="b-tf-rotate" onMouseDown={startRotate} title="Rotate (Shift = snap 15°)" style={{
+          position: 'absolute', left: visW / 2 - 7, top: -40, width: 14, height: 14,
+          background: 'var(--chalk-50)', border: '1px solid var(--accent-violet)',
+          borderRadius: '50%', cursor: 'grab', pointerEvents: 'auto',
+        }} />
+      </div>
+    </div>
+  );
+}
+
+// Render a whole document. If doc.chrome is set, the instances are placed
+// inside <SceneChrome> (grid + watermark + title + corner mascot), matching
+// how hand-authored scenes look. Otherwise they sit on a plain canvas.
+//
+// Editor props (all optional — omit for pure playback):
+//   selectedIds  string[]   currently selected instance ids (multi-select)
+//   onSelect     fn(id, e)  called when an instance box is pressed
+function RenderDoc({ doc, selectedIds = [], onSelect, onTransform }) {
+  if (!doc) return null;
+  const instances = doc.instances || [];
+  const sel = Array.isArray(selectedIds) ? selectedIds : [selectedIds];
+  const body = instances.map((inst) => (
+    <DocInstance
+      key={inst.id}
+      inst={inst}
+      selected={sel.indexOf(inst.id) !== -1}
+      onSelect={onSelect}
+    />
+  ));
+  // Transform handles for exactly one selected instance (editor mode only).
+  const overlayInst = (onTransform && sel.length === 1)
+    ? instances.find((i) => i.id === sel[0])
+    : null;
+  if (overlayInst) {
+    body.push(<SelectionOverlay key="__overlay" inst={overlayInst} onTransform={onTransform} />);
+  }
+
+  if (doc.chrome) {
+    return (
+      <SceneChrome
+        eyebrow={doc.chrome.eyebrow}
+        title={doc.chrome.title}
+        duration={doc.duration}
+        introEnd={doc.chrome.introEnd}
+        introCaption={doc.chrome.introCaption}
+      >
+        {doc.narrationSrc && <SceneNarration src={doc.narrationSrc} />}
+        {body}
+      </SceneChrome>
+    );
+  }
+
+  return (
+    <div style={{ position: 'absolute', inset: 0, background: 'var(--bg-canvas)' }}>
+      {doc.narrationSrc && <SceneNarration src={doc.narrationSrc} />}
+      {body}
+    </div>
+  );
+}
+
+Object.assign(window, { RenderDoc, DocInstance, docInstanceProps });
