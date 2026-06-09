@@ -58,8 +58,8 @@ function layoutGeom(portrait) {
   if (portrait) {
     return {
       codeLeft: 60, codeTop: 180, codeFont: 19,
-      stackX: 90, stackW: 540, frameH: 64, frameGap: 10, bottomY: 1010,
-      outX: 90, outY: 1100, outW: 540,
+      stackX: 90, stackW: 540, frameH: 64, frameGap: 10, bottomY: 940,
+      outX: 90, outY: 1024, outW: 540,
       svgW: 720, svgH: 1280,
     };
   }

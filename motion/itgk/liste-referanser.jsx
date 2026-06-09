@@ -55,8 +55,8 @@ function layoutGeom(portrait) {
   if (portrait) {
     return {
       codeLeft: 96, codeTop: 190, codeFont: 22,
-      rx: 200, ry: 660, ry2: 880, cell: 50, pitch: 58,
-      tagDx: -46, outX: 70, outY: 1060, outW: 580, outFont: 20,
+      rx: 200, ry: 620, ry2: 820, cell: 50, pitch: 58,
+      tagDx: -46, outX: 70, outY: 980, outW: 580, outFont: 20,
       svgW: 720, svgH: 1280,
     };
   }
