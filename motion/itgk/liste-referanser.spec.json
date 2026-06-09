@@ -1,0 +1,157 @@
+{
+  "id": "liste-referanser",
+  "title": "To navn, én liste",
+  "eyebrow": "lister",
+  "language": "no",
+  "duration": 57,
+  "topic": "Klassikeren «b = a lager vel en kopi?»: lista bor ett sted i minnet, navnene er lapper med piler. b = a lager en ny pil, ikke en ny liste — så append gjennom b synes i a. En ekte kopi krever list(a). Vist med et levende minnediagram der celler tegnes, piler pulser og en ny rad bygges for kopien.",
+  "subject_id": "itgk",
+  "chapter_number": 8,
+  "prerequisites": [
+    "while-lokke-trace"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 9.94,
+      "narration": "Du kopierer en liste med et likhetstegn, tror du. Så endrer du kopien — og originalen endrer seg også. Hva er det som skjer?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Er b en kopi av a?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "enListe",
+      "start": 9.94,
+      "end": 25.82,
+      "narration": "a er en liste med tre tall. Selve lista bor ett sted i minnet, og navnet a er bare en lapp som peker dit. Når vi skriver b er lik a, lages det ingen ny liste — bare en lapp til, som peker på den samme.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "a = [1, 2, 3]\nb = a\nb.append(4)\nprint(a)\n\nc = list(a)\nc.append(9)\nprint(a, c)",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left",
+            "note": "highlight follows the narration: line 1, then line 2"
+          },
+          {
+            "type": "diagram-box",
+            "content": "tre celler 1 2 3 tegnes som én rad — lista i minnet",
+            "delay": 1.5,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "navnelapp a med pil til rada; så navnelapp b med pil til SAMME rad",
+            "delay": 4,
+            "color": "var(--chalk-200)",
+            "note": "GENUINE MOTION — second arrow draws to the same row, no new cells appear"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sjokket",
+      "start": 25.82,
+      "end": 36.84,
+      "narration": "Nå legger vi til et firetall gjennom b. Men det finnes jo bare én liste. Så når vi etterpå skriver ut a, er firetallet der — selv om a aldri ble nevnt.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "en fjerde celle med 4 vokser ut av rada",
+            "delay": 1.5,
+            "color": "var(--rose-400)",
+            "note": "GENUINE MOTION — the row physically grows; both arrows pulse afterwards"
+          },
+          {
+            "type": "diagram-box",
+            "content": "utskrift-panel: [1, 2, 3, 4]",
+            "delay": 6,
+            "color": "var(--amber-300)",
+            "position": "panel, mono payoff"
+          },
+          {
+            "type": "text-caption",
+            "content": "én liste — to navn ser den samme endringen",
+            "delay": 9,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ekteKopi",
+      "start": 36.84,
+      "end": 49.66,
+      "narration": "Vil du ha en ekte kopi, må du be om den. List bygger en helt ny liste med de samme verdiene, og c peker på den nye. Nå havner nitallet bare hos c — og a er trygg.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "en NY rad celler 1 2 3 4 tegnes under den første; navnelapp c med pil til den nye",
+            "delay": 1,
+            "color": "var(--teal-400)",
+            "note": "GENUINE MOTION — a second row materialises cell by cell"
+          },
+          {
+            "type": "diagram-box",
+            "content": "celle 9 vokser ut av KUN den nye rada",
+            "delay": 6,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "diagram-box",
+            "content": "utskrift-panel: [1, 2, 3, 4]  [1, 2, 3, 4, 9]",
+            "delay": 10,
+            "color": "var(--amber-300)",
+            "position": "panel, mono payoff"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 49.66,
+      "end": 57,
+      "narration": "Likhetstegnet kopierer pila, ikke lista. Husk det, så slutter lister å overraske deg.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Likhetstegnet kopierer pila — ikke lista.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "b = a deler · c = list(a) kopierer",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}

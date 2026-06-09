@@ -201,8 +201,14 @@ const sceneLanguage = spec.language || 'en';
 // ─── Defaults ──────────────────────────────────────────────────────────
 // ElevenLabs voice `JBFqnCBsd6RMkjVDRZzb` is "George", a calm British male
 // from the default library. Pairs well with multilingual_v2.
-const ELEVENLABS_VOICE = flags.voice || 'JBFqnCBsd6RMkjVDRZzb';
-const ELEVENLABS_MODEL = 'eleven_multilingual_v2';
+// Norwegian scenes (`spec.language === 'no'`) instead use "Liam"
+// (`TX3LPaxmHKxFdv7VOQHJ`) on eleven_turbo_v2_5 with language_code pinned
+// to "no" — multilingual_v2 cannot enforce language and reads bokmål as
+// Danish (voice test, 2026-06-09).
+const NORWEGIAN = sceneLanguage === 'no';
+const ELEVENLABS_VOICE = flags.voice || (NORWEGIAN ? 'TX3LPaxmHKxFdv7VOQHJ' : 'JBFqnCBsd6RMkjVDRZzb');
+const ELEVENLABS_MODEL = NORWEGIAN ? 'eleven_turbo_v2_5' : 'eleven_multilingual_v2';
+const ELEVENLABS_LANGUAGE_CODE = NORWEGIAN ? 'no' : undefined;
 const ELEVENLABS_FORMAT = 'mp3_44100_128';
 const MISTRAL_MODEL = 'voxtral-mini-tts-2603';
 const MISTRAL_BASE = 'https://api.mistral.ai/v1';
@@ -356,7 +362,7 @@ async function runElevenLabsSingleTrack() {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     },
-    body: JSON.stringify({ text: fullText, model_id: ELEVENLABS_MODEL }),
+    body: JSON.stringify({ text: fullText, model_id: ELEVENLABS_MODEL, ...(ELEVENLABS_LANGUAGE_CODE ? { language_code: ELEVENLABS_LANGUAGE_CODE } : {}) }),
   });
   if (!res.ok) {
     const errText = await res.text();
@@ -383,6 +389,7 @@ async function runElevenLabsSingleTrack() {
     engine: 'elevenlabs',
     voice: ELEVENLABS_VOICE,
     model: ELEVENLABS_MODEL,
+    ...(ELEVENLABS_LANGUAGE_CODE ? { languageCode: ELEVENLABS_LANGUAGE_CODE } : {}),
     audio: `audio/${sceneId}/scene.mp3`,
     durationSec: totalSec,
     tracks,
@@ -423,7 +430,7 @@ async function runElevenLabsLegacy() {
         'Content-Type': 'application/json',
         'Accept': 'audio/mpeg',
       },
-      body: JSON.stringify({ text: b.narration, model_id: ELEVENLABS_MODEL }),
+      body: JSON.stringify({ text: b.narration, model_id: ELEVENLABS_MODEL, ...(ELEVENLABS_LANGUAGE_CODE ? { language_code: ELEVENLABS_LANGUAGE_CODE } : {}) }),
     });
     if (!res.ok) {
       const errText = await res.text();
@@ -441,6 +448,7 @@ async function runElevenLabsLegacy() {
     engine: 'elevenlabs',
     voice: ELEVENLABS_VOICE,
     model: ELEVENLABS_MODEL,
+    ...(ELEVENLABS_LANGUAGE_CODE ? { languageCode: ELEVENLABS_LANGUAGE_CODE } : {}),
     tracks,
   }, null, 2) + '\n');
 

@@ -1,0 +1,157 @@
+{
+  "id": "while-lokke-trace",
+  "title": "Inni en while-løkke",
+  "eyebrow": "løkker",
+  "language": "no",
+  "duration": 59,
+  "topic": "En while-løkke leses ikke ovenfra og ned én gang — kjøringen hopper tilbake. Programmet sjekker betingelsen, kjører kroppen, og hopper til toppen igjen, runde etter runde, til betingelsen blir usann. Vist ved å trace sum av tallene én til fem linje for linje med levende variabelbokser.",
+  "subject_id": "itgk",
+  "chapter_number": 5,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 10.15,
+      "narration": "Hvordan får du en datamaskin til å gjøre det samme om og om igjen? Du skriver oppskriften én gang, og lar den gå i løkke.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Samme jobb, fem ganger — men skrevet bare én gang.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kode",
+      "start": 10.15,
+      "end": 24.64,
+      "narration": "Her er et lite program som legger sammen tallene fra én til fem. Først settes i til én, og summen til null. Så kommer selve løkka: så lenge i er mindre enn eller lik fem, legger vi i til summen, og øker i med én.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "i = 1\nsum = 0\nwhile i <= 5:\n    sum = sum + i\n    i = i + 1\nprint(sum)",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left, reveal lines one by one",
+            "note": "CodeBlock reveal='lines'"
+          },
+          {
+            "type": "text-formula",
+            "content": "1 + 2 + 3 + 4 + 5 = ?",
+            "delay": 2.6,
+            "color": "var(--chalk-100)",
+            "position": "panel right: the goal, serif italic"
+          },
+          {
+            "type": "text-caption",
+            "content": "to variabler: i teller, sum samler",
+            "delay": 4,
+            "color": "var(--chalk-300)",
+            "position": "panel right"
+          }
+        ]
+      }
+    },
+    {
+      "id": "trace",
+      "start": 24.64,
+      "end": 38.99,
+      "narration": "Følg den lyse linja. Programmet sjekker betingelsen, kjører kroppen, og hopper tilbake til toppen. Runde etter runde vokser summen, mens i teller seg oppover mot fem. Koden står stille, men kjøringen går i ring.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "samme kode, men nå med en kjøre-markør som sykler linje tre, fire, fem, tilbake til tre",
+            "delay": 0.3,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — CodeBlock highlight driven by localTime through a precomputed execution schedule, scaled to sprite duration"
+          },
+          {
+            "type": "diagram-box",
+            "content": "variabelbokser i og sum som tikker oppover når linja deres kjører, med glød ved hver endring",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "panel right / below"
+          },
+          {
+            "type": "text-caption",
+            "content": "betingelses-badge: i ≤ 5 → sann (teal) per runde, pluss rundeteller",
+            "delay": 0.3,
+            "color": "var(--teal-400)",
+            "position": "panel right / below"
+          }
+        ]
+      }
+    },
+    {
+      "id": "exit",
+      "start": 38.99,
+      "end": 49.26,
+      "narration": "Til slutt blir i seks. Da er betingelsen usann, løkka er ferdig, og programmet hopper forbi kroppen, videre til neste linje, og skriver ut femten.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "markøren står på while-linja, betingelsen slår usann, markøren hopper forbi kroppen til print",
+            "delay": 0.3,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "badge: 6 ≤ 5 → usann (rose)",
+            "delay": 0.8,
+            "color": "var(--rose-300)",
+            "position": "panel"
+          },
+          {
+            "type": "diagram-box",
+            "content": "utskrift-panel: 15",
+            "delay": 3.2,
+            "color": "var(--amber-300)",
+            "position": "panel, mono payoff"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 49.26,
+      "end": 59,
+      "narration": "Det er hele hemmeligheten bak en while-løkke. Betingelsen sjekkes før hver eneste runde, og kroppen kjører bare så lenge den er sann.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Betingelsen sjekkes før hver eneste runde.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "sjekk → kjør kroppen → hopp tilbake",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}

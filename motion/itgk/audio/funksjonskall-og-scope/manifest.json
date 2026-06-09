@@ -1,0 +1,37 @@
+{
+  "sceneId": "funksjonskall-og-scope",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/funksjonskall-og-scope/scene.mp3",
+  "durationSec": 65.25,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Her er en felle nesten alle går i: du sender variabelen din inn i en funksjon, funksjonen endrer den — og etterpå er variabelen helt uendret. Hva skjedde?"
+    },
+    {
+      "id": "kode",
+      "audioStart": 11.65,
+      "narration": "Funksjonen dobler tar imot et tall, ganger det med to, og returnerer resultatet. Under definisjonen setter vi n til fem, kaller funksjonen med n som argument, og skriver ut både n og svaret."
+    },
+    {
+      "id": "kallet",
+      "audioStart": 25.95,
+      "narration": "Se på kallet. Funksjonen får sin egen lille verden, og verdien fem kopieres inn i parameteren x. Det er en kopi som reiser — ikke variabelen selv. Inne i verdenen dobles x til ti, mens n der ute ikke merker noen ting."
+    },
+    {
+      "id": "retur",
+      "audioStart": 43.23,
+      "narration": "Return sender verdien ti tilbake til den som kalte, og den lander i svar. Så er funksjonen ferdig — hele den lille verdenen forsvinner, med x i den. Utskriften viser fem og ti. n er urørt."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 57.88,
+      "narration": "Funksjonen får en kopi av verdien, ikke selve variabelen. Vil du ha noe ut av en funksjon, må du returnere det."
+    }
+  ]
+}

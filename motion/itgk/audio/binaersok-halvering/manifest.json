@@ -1,0 +1,37 @@
+{
+  "sceneId": "binaersok-halvering",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/binaersok-halvering/scene.mp3",
+  "durationSec": 66.87,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du leter etter ett tall blant femten sorterte. Hvor mange forsøk trenger du? Femten? Eller holder det med fire?"
+    },
+    {
+      "id": "lineart",
+      "audioStart": 8.1,
+      "narration": "Den enkle måten starter til venstre og sjekker én og én: er det deg? Er det deg? Førtito står langt ute i lista, så telleren rekker å bli elleve før vi finner den."
+    },
+    {
+      "id": "binart",
+      "audioStart": 20.83,
+      "narration": "Binærsøk bruker at lista er sortert, og starter i midten. Tjueseks er for lite — da kan hele venstre halvdel kastes i ett jafs. Ny midte: førtisju er for stort, bort med toppen. Så trettiåtte — for lite. Og der står førtito. Fire forsøk."
+    },
+    {
+      "id": "kontrast",
+      "audioStart": 43.68,
+      "narration": "Elleve forsøk mot fire. Og forspranget vokser: dobler du lista, trenger binærsøket bare ett forsøk til. En million sorterte tall? Omtrent tjue forsøk. Det er derfor det lønner seg å holde lister sortert."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 59.9,
+      "narration": "Halvér søkerommet, igjen og igjen. Det er hele trikset — og grunnen til at sortering er gull verdt."
+    }
+  ]
+}

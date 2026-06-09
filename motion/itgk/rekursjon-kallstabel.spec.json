@@ -1,0 +1,144 @@
+{
+  "id": "rekursjon-kallstabel",
+  "title": "Rekursjon: stabelen bak svaret",
+  "eyebrow": "rekursjon",
+  "language": "no",
+  "duration": 65,
+  "topic": "Rekursjon ser ut som sirkelresonnement helt til man ser kallstabelen: fakultet av fire stabler fire rammer oppå hverandre ned til basistilfellet, og så faller returverdiene hjem igjen — én ganger to, ganger tre, ganger fire — til tjuefire lander i print. Vist med en levende stabel der rammer bygges, venter, og løses opp med flygende returverdier.",
+  "subject_id": "itgk",
+  "chapter_number": 11,
+  "prerequisites": [
+    "funksjonskall-og-scope"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 12.03,
+      "narration": "En funksjon som kaller seg selv — er ikke det å gå i sirkel? Nei. Hvert kall er litt mindre enn det forrige, helt til ett av dem er så lite at svaret er opplagt.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Kan en funksjon kalle seg selv?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kode",
+      "start": 12.03,
+      "end": 27.62,
+      "narration": "Fakultet av n er n ganger fakultet av n minus én. Og fakultet av én er bare én — det er basistilfellet. Legg merke til linje fire: funksjonen kaller seg selv, men alltid med et mindre tall.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "def fakultet(n):\n    if n == 1:\n        return 1\n    return n * fakultet(n - 1)\n\nprint(fakultet(4))",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left, reveal lines one by one",
+            "note": "CodeBlock reveal='lines'; highlight moves to line 4 when narration reaches it"
+          },
+          {
+            "type": "text-caption",
+            "content": "basistilfellet stopper fallet · det rekursive kallet krymper problemet",
+            "delay": 5,
+            "color": "var(--chalk-300)",
+            "position": "panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nedover",
+      "start": 27.62,
+      "end": 42.61,
+      "narration": "Fakultet av fire kan ikke svare med en gang — den trenger fakultet av tre først. Som trenger fakultet av to. Som trenger fakultet av én. Hvert kall får sin egen ramme, og rammene venter i kø, stablet oppå hverandre.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "rammer stables oppover: fakultet(4) nederst, så fakultet(3), fakultet(2), fakultet(1) — hver ny ramme dimmer den under til «venter»",
+            "delay": 1,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — the stack physically grows upward, milestones scaled to sprite duration"
+          },
+          {
+            "type": "text-caption",
+            "content": "stabel-etikett: kallstabelen",
+            "delay": 1,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "oppover",
+      "start": 42.61,
+      "end": 55.89,
+      "narration": "Fakultet av én treffer basistilfellet og svarer én, uten nye kall. Da løsner stabelen. To ganger én er to. Tre ganger to er seks. Fire ganger seks er tjuefire — og svaret faller hele veien ned til print.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "toppramma blinker teal (basistilfellet) og svarer 1",
+            "delay": 1,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "returverdi-brikker flyr nedover: 1 → ramma for fakultet(2) som viser 2 · 1 = 2; 2 → 3 · 2 = 6; 6 → 4 · 6 = 24; rammene over forsvinner én etter én",
+            "delay": 3,
+            "color": "var(--amber-300)",
+            "note": "GENUINE MOTION — the stack unwinds with flying chips and live products"
+          },
+          {
+            "type": "diagram-box",
+            "content": "utskrift-panel: 24",
+            "delay": 13,
+            "color": "var(--amber-300)",
+            "position": "panel, mono payoff"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 55.89,
+      "end": 65,
+      "narration": "Rekursjon er ikke magi. Det er ramme på ramme ned til basistilfellet — og så ett svar om gangen, hele veien hjem.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Ned til basistilfellet — så svar hele veien hjem.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "fakultet(4) → 4 · 3 · 2 · 1 = 24",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "id": "binaersok-halvering",
+  "title": "Binærsøk: halvér søkerommet",
+  "eyebrow": "søk",
+  "language": "no",
+  "duration": 68,
+  "topic": "Hvorfor lønner det seg at lister er sortert? Lineært søk sjekker én og én celle og bruker elleve forsøk på å finne førtito; binærsøk starter i midten og kaster en halvpart per forsøk — fire forsøk. Og forspranget eksploderer: en million sorterte tall trenger bare rundt tjue forsøk. Vist med femten levende celler, vandrende peker, pulserende midtpunkt og halvdeler som dør i ett jafs.",
+  "subject_id": "itgk",
+  "chapter_number": 11,
+  "prerequisites": [
+    "while-lokke-trace"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 8.1,
+      "narration": "Du leter etter ett tall blant femten sorterte. Hvor mange forsøk trenger du? Femten? Eller holder det med fire?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Finn tallet — på færrest mulig forsøk.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lineart",
+      "start": 8.1,
+      "end": 20.83,
+      "narration": "Den enkle måten starter til venstre og sjekker én og én: er det deg? Er det deg? Førtito står langt ute i lista, så telleren rekker å bli elleve før vi finner den.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "femten sorterte celler på rad + mål-badge «mål: 42»",
+            "delay": 0.5,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "en peker vandrer celle for celle fra venstre; besøkte celler dimmes; forsøks-teller tikker 1 til 11",
+            "delay": 2,
+            "color": "var(--chalk-200)",
+            "note": "GENUINE MOTION — pointer walk scaled to sprite duration, counter ticks live"
+          }
+        ]
+      }
+    },
+    {
+      "id": "binart",
+      "start": 20.83,
+      "end": 43.68,
+      "narration": "Binærsøk bruker at lista er sortert, og starter i midten. Tjueseks er for lite — da kan hele venstre halvdel kastes i ett jafs. Ny midte: førtisju er for stort, bort med toppen. Så trettiåtte — for lite. Og der står førtito. Fire forsøk.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "lav/høy-brakett under raden viser søkerommet; midtcella pulser, sjekk-badge viser sammenligningen",
+            "delay": 1,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — fire faser: mid 26 → kast venstre, mid 47 → kast høyre, mid 38 → kast venstre, 42 funnet; døde celler faller til lav opasitet i ett jafs"
+          },
+          {
+            "type": "text-caption",
+            "content": "forsøks-teller tikker 1 til 4",
+            "delay": 1,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kontrast",
+      "start": 43.68,
+      "end": 59.9,
+      "narration": "Elleve forsøk mot fire. Og forspranget vokser: dobler du lista, trenger binærsøket bare ett forsøk til. En million sorterte tall? Omtrent tjue forsøk. Det er derfor det lønner seg å holde lister sortert.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "to teller-bokser side om side: lineært 11 forsøk (chalk) mot binært 4 forsøk (amber)",
+            "delay": 0.5,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "dobbelt så lang liste → bare ett forsøk til · en million tall → omtrent tjue",
+            "delay": 4,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 59.9,
+      "end": 68,
+      "narration": "Halvér søkerommet, igjen og igjen. Det er hele trikset — og grunnen til at sortering er gull verdt.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Halvér søkerommet — igjen og igjen.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "15 → 7 → 3 → 1",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}

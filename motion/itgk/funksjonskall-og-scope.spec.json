@@ -1,0 +1,157 @@
+{
+  "id": "funksjonskall-og-scope",
+  "title": "Funksjonskall: kopien og den lille verdenen",
+  "eyebrow": "funksjoner",
+  "language": "no",
+  "duration": 67,
+  "topic": "Klassikeren «hvorfor endret ikke variabelen min seg?»: et funksjonskall kopierer verdien inn i parameteren, kroppen jobber i sin egen ramme (scope), og bare return sender noe tilbake. Vist med en levende minne-scene der verdien fem flyr fra n inn i dobler sin ramme, dobles til ti, flyr tilbake til svar — og ramma forsvinner med x i seg.",
+  "subject_id": "itgk",
+  "chapter_number": 6,
+  "prerequisites": [
+    "while-lokke-trace"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 11.65,
+      "narration": "Her er en felle nesten alle går i: du sender variabelen din inn i en funksjon, funksjonen endrer den — og etterpå er variabelen helt uendret. Hva skjedde?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Hvorfor endret ikke variabelen min seg?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kode",
+      "start": 11.65,
+      "end": 25.95,
+      "narration": "Funksjonen dobler tar imot et tall, ganger det med to, og returnerer resultatet. Under definisjonen setter vi n til fem, kaller funksjonen med n som argument, og skriver ut både n og svaret.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "def dobler(x):\n    x = x * 2\n    return x\n\nn = 5\nsvar = dobler(n)\nprint(n, svar)",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left, reveal lines one by one",
+            "note": "CodeBlock reveal='lines'"
+          },
+          {
+            "type": "text-caption",
+            "content": "spørsmålet: hva skriver print ut — og hvorfor?",
+            "delay": 3,
+            "color": "var(--chalk-300)",
+            "position": "panel"
+          },
+          {
+            "type": "diagram-box",
+            "content": "global ramme «programmet» med boksene n = 5 og svar = –",
+            "delay": 5,
+            "color": "var(--amber-300)",
+            "position": "panel"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kallet",
+      "start": 25.95,
+      "end": 43.23,
+      "narration": "Se på kallet. Funksjonen får sin egen lille verden, og verdien fem kopieres inn i parameteren x. Det er en kopi som reiser — ikke variabelen selv. Inne i verdenen dobles x til ti, mens n der ute ikke merker noen ting.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "ny ramme «dobler sin verden» tegnes opp under den globale",
+            "delay": 1,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "verdi-brikken 5 flyr fra n-boksen ned i x-boksen (kopi)",
+            "delay": 2.5,
+            "color": "var(--amber-300)",
+            "note": "GENUINE MOTION — DOM chip interpolated along an eased path, milestones scaled to sprite duration"
+          },
+          {
+            "type": "text-caption",
+            "content": "x dobles til 10 med glød; n står urørt på 5",
+            "delay": 7,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "retur",
+      "start": 43.23,
+      "end": 57.88,
+      "narration": "Return sender verdien ti tilbake til den som kalte, og den lander i svar. Så er funksjonen ferdig — hele den lille verdenen forsvinner, med x i den. Utskriften viser fem og ti. n er urørt.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "verdi-brikken 10 flyr fra x-boksen opp i svar-boksen",
+            "delay": 1,
+            "color": "var(--amber-300)",
+            "note": "GENUINE MOTION — return flight, then the dobler frame fades away"
+          },
+          {
+            "type": "diagram-box",
+            "content": "dobler-ramma tones bort — lokale variabler dør med den",
+            "delay": 5,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "diagram-box",
+            "content": "utskrift-panel: 5 10",
+            "delay": 8,
+            "color": "var(--amber-300)",
+            "position": "panel, mono payoff"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 57.88,
+      "end": 67,
+      "narration": "Funksjonen får en kopi av verdien, ikke selve variabelen. Vil du ha noe ut av en funksjon, må du returnere det.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Funksjonen får en kopi — ikke variabelen.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "inn: en kopi av verdien · ut: det du returnerer",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}

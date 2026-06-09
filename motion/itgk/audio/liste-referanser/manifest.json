@@ -1,0 +1,37 @@
+{
+  "sceneId": "liste-referanser",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/liste-referanser/scene.mp3",
+  "durationSec": 55.59,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du kopierer en liste med et likhetstegn, tror du. Så endrer du kopien — og originalen endrer seg også. Hva er det som skjer?"
+    },
+    {
+      "id": "enListe",
+      "audioStart": 9.94,
+      "narration": "a er en liste med tre tall. Selve lista bor ett sted i minnet, og navnet a er bare en lapp som peker dit. Når vi skriver b er lik a, lages det ingen ny liste — bare en lapp til, som peker på den samme."
+    },
+    {
+      "id": "sjokket",
+      "audioStart": 25.82,
+      "narration": "Nå legger vi til et firetall gjennom b. Men det finnes jo bare én liste. Så når vi etterpå skriver ut a, er firetallet der — selv om a aldri ble nevnt."
+    },
+    {
+      "id": "ekteKopi",
+      "audioStart": 36.84,
+      "narration": "Vil du ha en ekte kopi, må du be om den. List bygger en helt ny liste med de samme verdiene, og c peker på den nye. Nå havner nitallet bare hos c — og a er trygg."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 49.66,
+      "narration": "Likhetstegnet kopierer pila, ikke lista. Husk det, så slutter lister å overraske deg."
+    }
+  ]
+}

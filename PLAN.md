@@ -95,6 +95,24 @@ invent a chapter number to make the FK happy.
 
 ### [AGENT] — safe for the next nightly run
 
+- **Next ITGK batch — second wave after the 2026-06-09 founding five.**
+  The first five ITGK scenes (see ITGK chapter map below) covered ch.5,
+  ch.6, ch.8 and ch.11×2. Strongest next topics, in priority order:
+  `klasse-og-objekt` (ch.14 — class as blueprint stamping out two
+  instances, `self` as the "this one here" arrow; beat sketch already
+  approved in the 2026-06-09 plan), if/elif/else as a railway switch
+  (ch.4 — a value rolls through the branch points, only one path
+  lights), for-løkke + range (ch.5 — companion to `while-lokke-trace`),
+  slicing-mekanikk (ch.7 — indices live *between* characters),
+  dict-oppslag vs liste-søk (ch.9 — hash bucket teleport vs walking),
+  try/except-flyt (ch.10 — exception bubbles up past frames until a
+  handler catches). All ITGK scenes are Norwegian (`language: "no"`) —
+  generate-audio.js automatically uses voice Liam (`TX3LPaxmHKxFdv7VOQHJ`)
+  on `eleven_turbo_v2_5` with `language_code: "no"`; never multilingual_v2
+  (it reads bokmål as Danish). Match the founding five's house pattern:
+  CodeBlock with `fontVariantLigatures: 'none'`, milestones as fractions
+  of sprite duration, VarBox/chip/frame vocabulary.
+
 - **Next Mat2B run — remaining genuine-motion gaps.** ch.4 numerical follow-ups still open: trapezoidal / Crank–Nicolson as a distinct *implicit RK2* (the 2026-05-24 PM run did backward Euler only), Butcher-tableau notation + explicit-vs-implicit reading (Plenum 5 oppg. 1b/2b), and local-vs-global truncation error / order via Taylor (Plenum 5 oppg. 3 — distinct from `euler-vs-rk4`'s log-log plot). After the 2026-05-24 ch.5 run (`implicit-slope-on-a-level-curve`, `velocity-acceleration-on-a-curve`, `gradient-steepest-ascent`), **ch.1 Vektorrom (7) is now the lone most under-served chapter** — but it is saturated on 2D span / basis / dependence; the strongest remaining genuine-motion topic there is span-of-two-vectors-as-a-plane in R³ (sweep the two coefficients to fill the plane, then collapse one vector onto the other's line to show dependence). ch.2 still wants shear-decomposition (every 2×2 = rotation × scaling × rotation via SVD).
 
 - **binary-addition longestPath portrait — four FA blocks compress into a thin horizontal strip on the 720-wide canvas.** In `motion/ade/binary-addition.jsx` `LongestPathBeat`, the portrait branch keeps the chain horizontal (`vbW=600`, four 110-px blocks + 16-px gaps = 488 px) which fits but uses only ~90 px of vertical space, leaving big empty bands above and below. Consider rotating the chain to vertical in portrait (FA0 on top → FA3 on bottom, carry connectors as short vertical lines between) so the diagram fills more of the canvas. Reviewer flagged on 2026-05-18 PM; carried forward 2026-05-18 PM2, 2026-05-20, 2026-05-21, 2026-05-21 PM.
@@ -127,6 +145,30 @@ invent a chapter number to make the FK happy.
 - **ADE chapter map** (Supabase `public.chapters` for `subject_id='ade'`, 10 chapters as of 2026-05-13): ch.1 Kretsteori, ch.2 Energi og effekt, ch.3 Superposisjon og Thévenin, ch.4 Dioder, ch.5 Digital elektronikk, ch.6 Transistorer, ch.7 Minne og register, ch.8 Reaktive elementer, ch.9 Operasjonsforsterker, ch.10 Digital design. Current scene coverage (after the 2026-05-21 PM run): ch.1 (KVL, voltage-divider, KCL, ohms-law, current-divider — 5), ch.2 (capacitor-energy, inductor-energy, max-power-transfer, joule-heating, power-triangle — 5), ch.3 (Thévenin, Norton, superposition, source-transformations, wheatstone-bridge — 5), ch.4 (half-wave-rectifier, full-wave-bridge-rectifier, zener-clipper, diode-iv-curve, diode-clamper, **voltage-doubler** — added tonight — 6), ch.5 (NAND universality, two's-complement, hexadecimal-counting, binary-addition, full-adder — 5), ch.6 (mosfet-switch, bjt-load-line, cmos-inverter, bjt-current-mirror, emitter-follower, **mosfet-transfer-characteristic** — added tonight — 6), ch.7 (D flip-flop, shift-register, SR latch, jk-flip-flop, ripple-counter, t-flip-flop — 6), ch.8 (phasor-rotation, low-pass-bode, rc-charging, rl-transient, rlc-resonance, high-pass-bode, **ac-impedance-triangle** — added tonight — 7), ch.9 (inverting op-amp, non-inverting op-amp, summing-amplifier, integrator-op-amp, op-amp-comparator, schmitt-trigger — 6), ch.10 (K-map, FSM, multiplexer-4-to-1, 2-to-4 decoder, demultiplexer-1-to-4, priority-encoder — 6). Most under-served now: ch.1, ch.2, ch.3, ch.5 (tied at 5). Strongest follow-ups: mesh/nodal analysis (ch.1), AC power-factor correction or apparent-vs-real-power distinct from the existing power-triangle (ch.2), Millman's theorem or delta-Y conversion (ch.3), BCD/seven-segment decoder (ch.5), Schottky diode I-V (ch.4 if more wanted), JFET as an alternative transistor topic (ch.6), 555-timer architecture (ch.10 or new chapter).
 
 - **Mat2B chapter map** (Supabase `public.chapters` for `subject_id='mat2b'`, 6 chapters): ch.1 Vektorrom, ch.2 Lineærtransformasjoner, ch.3 Indreproduktrom, ch.4 Differensialligninger, ch.5 Funksjoner og derivasjon, ch.6 Ekstremalpunkter. Coverage after 2026-05-23 evening nightly: ch.1 (span-and-dependence, dimension-intuition, subspace-test, linear-combination-recipe, basis-uniqueness, null-space-as-line, polynomial-vectors — 7), ch.2 (rank-nullity-visual, change-of-basis-matrix, basis-change-grid, matrix-as-function, linear-transformation-grid, determinant-as-area, gaussian-elimination-2d, matrix-product-as-composition, rotation-matrix-family — 9), ch.3 (projection-onto-line, best-approximation, gram-schmidt-2d-then-3d, inner-product-geometry, orthogonal-complement, least-squares-normal-equations, **cauchy-schwarz-inequality**, **qr-factorisation-via-gram-schmidt**, **angle-preservation-by-rotation** — added tonight — 9), ch.4 (euler-step, euler-vs-rk4, second-order-to-system, diagonalisation-eigenaxes, phase-portrait-2x2, separable-variables-circles, newtons-law-of-cooling, characteristic-roots-regimes, **heun-improved-euler**, **explicit-vs-implicit-euler**, **numerical-orbit-energy-drift** — added 2026-05-24 PM numerical run — 11), ch.5 (gradient-and-level-curves, directional-derivative, tangent-plane-linearisation, multivariable-limit-paths, chain-rule-on-path, partial-derivative-as-slice, clairaut-mixed-partials, **implicit-slope-on-a-level-curve**, **velocity-acceleration-on-a-curve**, **gradient-steepest-ascent** — added 2026-05-24 ch.5 run — 10), ch.6 (global-extrema-triangle, hesse-eigenvalues, hessian-test, lagrange-multipliers, critical-points-gradient-field, quadratic-taylor-approximation, **gradient-descent-on-contours**, **extrema-on-a-circle**, **the-saddle-point** — added 2026-05-24 — 9). Most under-served now: ch.1 (7) alone, then ch.2/ch.3/ch.6 (9 each), ch.5 (10); ch.4 is the deepest (11). Strongest follow-ups: span-of-two-vectors-as-a-plane in R³ (ch.1 — sweep the two coefficients to fill the plane, collapse to a line for dependence; the lone strong motion-topic left in an otherwise saturated chapter), shear-decomposition (ch.2 — every 2×2 matrix factors as rotation × scaling × rotation via SVD). The 2026-05-24 ch.5 run closed the implicit-differentiation, vector-functions, and steepest-ascent-cosine gaps. **Curriculum correction (verified against the Nøkkelbegrep wiki + Plenum 5/6, 2026-05-24 PM):** TMA4411's ch.4 is a *numerical-methods* chapter (Uke 8–10: Euler, trapes/Crank–Nicolson, convergence, lokal feil, Runge–Kutta + Butcher-tablå, ordens-analyse, systemer/høyere orden) — it is NOT analytic ODE classification, so the old "exact-ODE / integrating-factor (ch.4 last classification slot)" follow-up does not match this course and was removed. Remaining ch.4 numerical gaps for a future run: trapezoidal / Crank–Nicolson as a distinct *implicit RK2* (this run did backward Euler only), the Butcher-tableau notation + explicit-vs-implicit reading (Plenum 5 oppg. 1b/2b), and local-vs-global truncation error / order via Taylor (Plenum 5 oppg. 3 — distinct from euler-vs-rk4's log-log comparison). Note: the 2026-05-24 ch.6 run covered boundary-parametrisation (`extrema-on-a-circle`), saddle geometry (`the-saddle-point`) and iterative minimisation (`gradient-descent-on-contours`); the 2026-05-24 PM run added the three ch.4 numerical scenes above. A KKT / inequality-constrained-on-a-closed-region scene is still open for ch.6 if more are wanted.
+
+- **ITGK chapter map** (Supabase `public.chapters` for `subject_id='itgk'`,
+  15 chapters, TDT4110/TDT4109): ch.1 Introduksjon: programmer og Python,
+  ch.2 Variabler/datatyper/tallrepresentasjon, ch.3 Inn-/utdata og
+  strengformatering, ch.4 Betingelser og logiske uttrykk, ch.5 Løkker,
+  ch.6 Funksjoner/moduler/scope, ch.7 Strenger, ch.8 Lister og tupler,
+  ch.9 Dictionaries og sets, ch.10 Filbehandling og unntak, ch.11
+  Rekursjon/sortering/søk, ch.12 NumPy, ch.13 Matplotlib, ch.14
+  Objektorientering (TDT4109), ch.15 IKT-teori: maskinvare/binært/Git
+  (TDT4109). Coverage after the 2026-06-09 founding batch (depth-first
+  on the hardest chapters, all Norwegian, **not yet published** —
+  awaiting user approval): ch.5 (`while-lokke-trace`), ch.6
+  (`funksjonskall-og-scope`), ch.8 (`liste-referanser`), ch.11
+  (`rekursjon-kallstabel`, `binaersok-halvering`). **Norwegian audio
+  pin:** voice Liam `TX3LPaxmHKxFdv7VOQHJ`, model `eleven_turbo_v2_5`,
+  `language_code: "no"` — wired as automatic default in
+  generate-audio.js for `language: "no"`; multilingual_v2 renders bokmål
+  as Danish and must not be used. Liam has a slight sørlandsk accent;
+  the user has accepted it for now and may swap to human-recorded
+  narration later. Follow-up topics live in the [AGENT] queue item
+  above. Note ch.15 overlaps existing ADE scenes (binary-addition,
+  hexadecimal-counting, twos-complement) — reuse the idea, don't
+  duplicate scenes; ch.12/13 (NumPy/Matplotlib) suit value-driven graph
+  scenes once the core-Python chapters feel complete.
 
 - **Subject focus is now Innføring i analog og digital elektronikk (TTT4203).** Fysikk and Operativsystemer topics are paused — the nightly author picks three ADE topics per run from `uploads/ade/`. To reopen fysikk or OS later, edit the author trigger (`trig_01W4V9M7fWvGN7J989JBeQsh`) and swap the `uploads/...` source pointer + chapter list back. (Note: tonight's 2026-05-20 nightly was a Mat2B run on `uploads/matte2/` — the prompt explicitly targeted ch.1 Vektorrom + ch.2 Lineærtransformasjoner. ADE remains the default for subsequent runs unless the prompt switches.)
 

@@ -3414,6 +3414,116 @@
       ],
       "subject_id": "mat2b",
       "chapter_number": 5
+    },
+    {
+      "id": "while-lokke-trace",
+      "file": "while-lokke-trace.jsx",
+      "html": "while-lokke-trace.html",
+      "spec": "while-lokke-trace.spec.json",
+      "title": "Inni en while-løkke",
+      "eyebrow": "løkker",
+      "topic": "En while-løkke leses ikke ovenfra og ned én gang — kjøringen hopper tilbake. Programmet sjekker betingelsen, kjører kroppen, og hopper til toppen igjen, runde etter runde, til betingelsen blir usann. Vist ved å trace sum av tallene én til fem linje for linje med levende variabelbokser.",
+      "duration": 59,
+      "language": "no",
+      "prerequisites": [],
+      "concepts": [
+        "while-løkke",
+        "betingelse",
+        "akkumulator",
+        "kontrollflyt"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 5
+    },
+    {
+      "id": "funksjonskall-og-scope",
+      "file": "funksjonskall-og-scope.jsx",
+      "html": "funksjonskall-og-scope.html",
+      "spec": "funksjonskall-og-scope.spec.json",
+      "title": "Funksjonskall: kopien og den lille verdenen",
+      "eyebrow": "funksjoner",
+      "topic": "Klassikeren «hvorfor endret ikke variabelen min seg?»: et funksjonskall kopierer verdien inn i parameteren, kroppen jobber i sin egen ramme (scope), og bare return sender noe tilbake. Vist med en levende minne-scene der verdien fem flyr fra n inn i dobler sin ramme, dobles til ti, flyr tilbake til svar — og ramma forsvinner med x i seg.",
+      "duration": 67,
+      "language": "no",
+      "prerequisites": [
+        "while-lokke-trace"
+      ],
+      "concepts": [
+        "funksjon",
+        "parameter",
+        "argument",
+        "return",
+        "scope"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 6
+    },
+    {
+      "id": "liste-referanser",
+      "file": "liste-referanser.jsx",
+      "html": "liste-referanser.html",
+      "spec": "liste-referanser.spec.json",
+      "title": "To navn, én liste",
+      "eyebrow": "lister",
+      "topic": "Klassikeren «b = a lager vel en kopi?»: lista bor ett sted i minnet, navnene er lapper med piler. b = a lager en ny pil, ikke en ny liste — så append gjennom b synes i a. En ekte kopi krever list(a). Vist med et levende minnediagram der celler tegnes, piler pulser og en ny rad bygges for kopien.",
+      "duration": 57,
+      "language": "no",
+      "prerequisites": [
+        "while-lokke-trace"
+      ],
+      "concepts": [
+        "liste",
+        "referanse",
+        "mutabilitet",
+        "append",
+        "kopi"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 8
+    },
+    {
+      "id": "rekursjon-kallstabel",
+      "file": "rekursjon-kallstabel.jsx",
+      "html": "rekursjon-kallstabel.html",
+      "spec": "rekursjon-kallstabel.spec.json",
+      "title": "Rekursjon: stabelen bak svaret",
+      "eyebrow": "rekursjon",
+      "topic": "Rekursjon ser ut som sirkelresonnement helt til man ser kallstabelen: fakultet av fire stabler fire rammer oppå hverandre ned til basistilfellet, og så faller returverdiene hjem igjen — én ganger to, ganger tre, ganger fire — til tjuefire lander i print. Vist med en levende stabel der rammer bygges, venter, og løses opp med flygende returverdier.",
+      "duration": 65,
+      "language": "no",
+      "prerequisites": [
+        "funksjonskall-og-scope"
+      ],
+      "concepts": [
+        "rekursjon",
+        "basistilfelle",
+        "kallstabel",
+        "returverdi"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 11
+    },
+    {
+      "id": "binaersok-halvering",
+      "file": "binaersok-halvering.jsx",
+      "html": "binaersok-halvering.html",
+      "spec": "binaersok-halvering.spec.json",
+      "title": "Binærsøk: halvér søkerommet",
+      "eyebrow": "søk",
+      "topic": "Hvorfor lønner det seg at lister er sortert? Lineært søk sjekker én og én celle og bruker elleve forsøk på å finne førtito; binærsøk starter i midten og kaster en halvpart per forsøk — fire forsøk. Og forspranget eksploderer: en million sorterte tall trenger bare rundt tjue forsøk. Vist med femten levende celler, vandrende peker, pulserende midtpunkt og halvdeler som dør i ett jafs.",
+      "duration": 68,
+      "language": "no",
+      "prerequisites": [
+        "while-lokke-trace"
+      ],
+      "concepts": [
+        "binærsøk",
+        "sortering",
+        "kompleksitet",
+        "logaritmisk vekst"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 11
     }
   ]
 }

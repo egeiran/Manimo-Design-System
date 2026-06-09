@@ -1,0 +1,37 @@
+{
+  "sceneId": "rekursjon-kallstabel",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/rekursjon-kallstabel/scene.mp3",
+  "durationSec": 63.58,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "En funksjon som kaller seg selv — er ikke det å gå i sirkel? Nei. Hvert kall er litt mindre enn det forrige, helt til ett av dem er så lite at svaret er opplagt."
+    },
+    {
+      "id": "kode",
+      "audioStart": 12.03,
+      "narration": "Fakultet av n er n ganger fakultet av n minus én. Og fakultet av én er bare én — det er basistilfellet. Legg merke til linje fire: funksjonen kaller seg selv, men alltid med et mindre tall."
+    },
+    {
+      "id": "nedover",
+      "audioStart": 27.62,
+      "narration": "Fakultet av fire kan ikke svare med en gang — den trenger fakultet av tre først. Som trenger fakultet av to. Som trenger fakultet av én. Hvert kall får sin egen ramme, og rammene venter i kø, stablet oppå hverandre."
+    },
+    {
+      "id": "oppover",
+      "audioStart": 42.61,
+      "narration": "Fakultet av én treffer basistilfellet og svarer én, uten nye kall. Da løsner stabelen. To ganger én er to. Tre ganger to er seks. Fire ganger seks er tjuefire — og svaret faller hele veien ned til print."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 55.89,
+      "narration": "Rekursjon er ikke magi. Det er ramme på ramme ned til basistilfellet — og så ett svar om gangen, hele veien hjem."
+    }
+  ]
+}

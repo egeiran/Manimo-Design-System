@@ -1,0 +1,37 @@
+{
+  "sceneId": "while-lokke-trace",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/while-lokke-trace/scene.mp3",
+  "durationSec": 57.68,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Hvordan får du en datamaskin til å gjøre det samme om og om igjen? Du skriver oppskriften én gang, og lar den gå i løkke."
+    },
+    {
+      "id": "kode",
+      "audioStart": 10.15,
+      "narration": "Her er et lite program som legger sammen tallene fra én til fem. Først settes i til én, og summen til null. Så kommer selve løkka: så lenge i er mindre enn eller lik fem, legger vi i til summen, og øker i med én."
+    },
+    {
+      "id": "trace",
+      "audioStart": 24.64,
+      "narration": "Følg den lyse linja. Programmet sjekker betingelsen, kjører kroppen, og hopper tilbake til toppen. Runde etter runde vokser summen, mens i teller seg oppover mot fem. Koden står stille, men kjøringen går i ring."
+    },
+    {
+      "id": "exit",
+      "audioStart": 38.99,
+      "narration": "Til slutt blir i seks. Da er betingelsen usann, løkka er ferdig, og programmet hopper forbi kroppen, videre til neste linje, og skriver ut femten."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 49.26,
+      "narration": "Det er hele hemmeligheten bak en while-løkke. Betingelsen sjekkes før hver eneste runde, og kroppen kjører bare så lenge den er sann."
+    }
+  ]
+}
