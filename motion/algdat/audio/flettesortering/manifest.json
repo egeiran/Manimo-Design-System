@@ -1,0 +1,37 @@
+{
+  "sceneId": "flettesortering",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/flettesortering/scene.mp3",
+  "durationSec": 75.56,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Hvordan sorterer du åtte tall raskt? Tricket er gammelt og enkelt: splitt problemet i to mindre, løs dem hver for seg, og flett svarene sammen."
+    },
+    {
+      "id": "splitt",
+      "audioStart": 10.88,
+      "narration": "Vi starter med åtte tall i tilfeldig rekkefølge. Del lista i to. Del hver halvdel i to igjen. Og enda en gang — nå har vi åtte små lister med ett tall i hver. Hver av dem er allerede sortert, helt gratis."
+    },
+    {
+      "id": "flett",
+      "audioStart": 27.46,
+      "narration": "Nå skal vi flette to ferdig-sorterte halvdeler. Sett én peker øverst i hver. Sammenlign det de viser på — det minste tallet glir ned i utgangslista, og pekeren over hopper ett hakk fram. Igjen og igjen, helt til begge halvdeler er tømt. Åtte sammenligninger, åtte tall i riktig rekkefølge."
+    },
+    {
+      "id": "kompleksitet",
+      "audioStart": 50.72,
+      "narration": "Hvorfor er dette raskt? Hvert nivå i treet fletter alle n tallene én gang — det er n arbeid per nivå. Treet er log to av n nivåer dypt. Til sammen blir det n ganger log n, langt mindre enn de n i andre når lista vokser."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 67.87,
+      "narration": "Splitt en gang, flett en gang. Det er hele flettesorteringen — og grunnen til at den slår enkle sorteringer flat når lista vokser."
+    }
+  ]
+}

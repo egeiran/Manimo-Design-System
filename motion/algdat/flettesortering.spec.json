@@ -1,0 +1,134 @@
+{
+  "id": "flettesortering",
+  "title": "Flettesortering: splitt og hersk",
+  "eyebrow": "splitt og hersk",
+  "language": "no",
+  "duration": 77,
+  "topic": "Flettesortering deler en liste på åtte tall i halvdeler, igjen og igjen, til hver bit har bare ett element — som per definisjon er sortert. Så fletter den parene tilbake: to pekere ser på toppen av hver halvdel og drar det minste tallet inn i utgangslista, om og om igjen. Vist med et rekursjonstre som vokser nedover, to løpende pekere som plukker fra to ferdig-sorterte halvdeler, og det klassiske n log n-regnskapet.",
+  "subject_id": "algdat",
+  "chapter_number": 3,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 10.88,
+      "narration": "Hvordan sorterer du åtte tall raskt? Tricket er gammelt og enkelt: splitt problemet i to mindre, løs dem hver for seg, og flett svarene sammen.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Splitt — hersk — flett.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "splitt",
+      "start": 10.88,
+      "end": 27.46,
+      "narration": "Vi starter med åtte tall i tilfeldig rekkefølge. Del lista i to. Del hver halvdel i to igjen. Og enda en gang — nå har vi åtte små lister med ett tall i hver. Hver av dem er allerede sortert, helt gratis.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "rekursjonstre som vokser nedover: rotnoden [38,27,43,3,9,82,10,36] deler seg i to firere, fire toere, åtte enere",
+            "delay": 0.4,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — recursion tree expands level by level, each split flashes amber as it appears, base case (1-element nodes) lights up teal"
+          },
+          {
+            "type": "text-caption",
+            "content": "lengde 8 → 4 → 2 → 1",
+            "delay": 8,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "flett",
+      "start": 27.46,
+      "end": 50.72,
+      "narration": "Nå skal vi flette to ferdig-sorterte halvdeler. Sett én peker øverst i hver. Sammenlign det de viser på — det minste tallet glir ned i utgangslista, og pekeren over hopper ett hakk fram. Igjen og igjen, helt til begge halvdeler er tømt. Åtte sammenligninger, åtte tall i riktig rekkefølge.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "to sorterte halvdeler [3,27,38,43] og [9,10,36,82] side om side; to pekere som peker på første ledige element i hver halvdel",
+            "delay": 0.5,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — eight merge steps: at each step the smaller-headed value glides into the output row, that pointer advances by one cell; consumed cells dim, output cells light up amber"
+          },
+          {
+            "type": "text-caption",
+            "content": "minste vinner — gli, hopp, gjenta",
+            "delay": 2,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kompleksitet",
+      "start": 50.72,
+      "end": 67.87,
+      "narration": "Hvorfor er dette raskt? Hvert nivå i treet fletter alle n tallene én gang — det er n arbeid per nivå. Treet er log to av n nivåer dypt. Til sammen blir det n ganger log n, langt mindre enn de n i andre når lista vokser.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "rekursjonstre med høyderegnskap til høyre: hver av de tre nivåene merket «n arbeid», dybde merket «log₂ n», totalsum «n · log n»",
+            "delay": 0.4,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — level highlight sweeps top-down, each level pulses amber while a «n» tag fades in beside it, then the depth bracket draws on the right, then the total formula reveals"
+          },
+          {
+            "type": "text-formula",
+            "content": "T(n) = 2 T(n/2) + n  →  O(n log n)",
+            "delay": 8,
+            "color": "var(--amber-300)",
+            "position": "bottom centre"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 67.87,
+      "end": 77,
+      "narration": "Splitt en gang, flett en gang. Det er hele flettesorteringen — og grunnen til at den slår enkle sorteringer flat når lista vokser.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Splitt. Flett. Sortert.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "n² → n log n",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}

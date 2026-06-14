@@ -3524,6 +3524,26 @@
       ],
       "subject_id": "itgk",
       "chapter_number": 11
+    },
+    {
+      "id": "flettesortering",
+      "file": "flettesortering.jsx",
+      "html": "flettesortering.html",
+      "spec": "flettesortering.spec.json",
+      "title": "Flettesortering: splitt og hersk",
+      "eyebrow": "splitt og hersk",
+      "topic": "Flettesortering deler en liste på åtte tall i halvdeler, igjen og igjen, til hver bit har bare ett element — som per definisjon er sortert. Så fletter den parene tilbake: to pekere ser på toppen av hver halvdel og drar det minste tallet inn i utgangslista, om og om igjen. Vist med et rekursjonstre som vokser nedover, to løpende pekere som plukker fra to ferdig-sorterte halvdeler, og det klassiske n log n-regnskapet.",
+      "duration": 77,
+      "language": "no",
+      "prerequisites": [],
+      "concepts": [
+        "flettesortering",
+        "splitt og hersk",
+        "rekursjon",
+        "asymptotisk kompleksitet"
+      ],
+      "subject_id": "algdat",
+      "chapter_number": 3
     }
   ]
 }
