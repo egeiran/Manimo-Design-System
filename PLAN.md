@@ -95,6 +95,25 @@ invent a chapter number to make the FK happy.
 
 ### [AGENT] — safe for the next nightly run
 
+- **Next algdat batch — second scene after the 2026-06-15 founding `asymptotisk-vekst` (ch.1).**
+  ch.1 now has its anchor scene (five growth curves on one axis, the
+  n-sweep separation, dominant-term reveal). Strongest follow-ups in
+  priority order: `flettesortering` (ch.3 Splitt og hersk — recursion
+  tree splitting an array into halves on the way down, two-pointer
+  merge on the way up; the classic algdat motion piece), `binærhaug-
+  sift` (ch.5 Hauger og binære søketrær — heap as tree + array twin
+  views, sift-up bubbling an element to its place), `dp-fylling-fib`
+  (ch.6 Dynamisk programmering — Fibonacci or LCS DP table filling
+  cell by cell, each cell pulling from predecessors), `bfs-frontier`
+  (ch.8 Grafer og traversering — BFS frontier expanding across nodes
+  with the queue updating). Skip ch.13 / ch.14 (NP-classes) — they
+  animate poorly. All algdat scenes are Norwegian (`language: "no"`);
+  generate-audio.js automatically routes to voice Liam
+  (`TX3LPaxmHKxFdv7VOQHJ`) on `eleven_turbo_v2_5`. Match the ITGK
+  house pattern (CodeBlock with `fontVariantLigatures: 'none'` for
+  pseudocode, milestones as fractions of sprite duration, array cells
+  + pointers + VarBox vocabulary).
+
 - **Next ITGK batch — second wave after the 2026-06-09 founding five.**
   The first five ITGK scenes (see ITGK chapter map below) covered ch.5,
   ch.6, ch.8 and ch.11×2. Strongest next topics, in priority order:
@@ -145,6 +164,22 @@ invent a chapter number to make the FK happy.
 - **ADE chapter map** (Supabase `public.chapters` for `subject_id='ade'`, 10 chapters as of 2026-05-13): ch.1 Kretsteori, ch.2 Energi og effekt, ch.3 Superposisjon og Thévenin, ch.4 Dioder, ch.5 Digital elektronikk, ch.6 Transistorer, ch.7 Minne og register, ch.8 Reaktive elementer, ch.9 Operasjonsforsterker, ch.10 Digital design. Current scene coverage (after the 2026-05-21 PM run): ch.1 (KVL, voltage-divider, KCL, ohms-law, current-divider — 5), ch.2 (capacitor-energy, inductor-energy, max-power-transfer, joule-heating, power-triangle — 5), ch.3 (Thévenin, Norton, superposition, source-transformations, wheatstone-bridge — 5), ch.4 (half-wave-rectifier, full-wave-bridge-rectifier, zener-clipper, diode-iv-curve, diode-clamper, **voltage-doubler** — added tonight — 6), ch.5 (NAND universality, two's-complement, hexadecimal-counting, binary-addition, full-adder — 5), ch.6 (mosfet-switch, bjt-load-line, cmos-inverter, bjt-current-mirror, emitter-follower, **mosfet-transfer-characteristic** — added tonight — 6), ch.7 (D flip-flop, shift-register, SR latch, jk-flip-flop, ripple-counter, t-flip-flop — 6), ch.8 (phasor-rotation, low-pass-bode, rc-charging, rl-transient, rlc-resonance, high-pass-bode, **ac-impedance-triangle** — added tonight — 7), ch.9 (inverting op-amp, non-inverting op-amp, summing-amplifier, integrator-op-amp, op-amp-comparator, schmitt-trigger — 6), ch.10 (K-map, FSM, multiplexer-4-to-1, 2-to-4 decoder, demultiplexer-1-to-4, priority-encoder — 6). Most under-served now: ch.1, ch.2, ch.3, ch.5 (tied at 5). Strongest follow-ups: mesh/nodal analysis (ch.1), AC power-factor correction or apparent-vs-real-power distinct from the existing power-triangle (ch.2), Millman's theorem or delta-Y conversion (ch.3), BCD/seven-segment decoder (ch.5), Schottky diode I-V (ch.4 if more wanted), JFET as an alternative transistor topic (ch.6), 555-timer architecture (ch.10 or new chapter).
 
 - **Mat2B chapter map** (Supabase `public.chapters` for `subject_id='mat2b'`, 6 chapters): ch.1 Vektorrom, ch.2 Lineærtransformasjoner, ch.3 Indreproduktrom, ch.4 Differensialligninger, ch.5 Funksjoner og derivasjon, ch.6 Ekstremalpunkter. Coverage after 2026-05-23 evening nightly: ch.1 (span-and-dependence, dimension-intuition, subspace-test, linear-combination-recipe, basis-uniqueness, null-space-as-line, polynomial-vectors — 7), ch.2 (rank-nullity-visual, change-of-basis-matrix, basis-change-grid, matrix-as-function, linear-transformation-grid, determinant-as-area, gaussian-elimination-2d, matrix-product-as-composition, rotation-matrix-family — 9), ch.3 (projection-onto-line, best-approximation, gram-schmidt-2d-then-3d, inner-product-geometry, orthogonal-complement, least-squares-normal-equations, **cauchy-schwarz-inequality**, **qr-factorisation-via-gram-schmidt**, **angle-preservation-by-rotation** — added tonight — 9), ch.4 (euler-step, euler-vs-rk4, second-order-to-system, diagonalisation-eigenaxes, phase-portrait-2x2, separable-variables-circles, newtons-law-of-cooling, characteristic-roots-regimes, **heun-improved-euler**, **explicit-vs-implicit-euler**, **numerical-orbit-energy-drift** — added 2026-05-24 PM numerical run — 11), ch.5 (gradient-and-level-curves, directional-derivative, tangent-plane-linearisation, multivariable-limit-paths, chain-rule-on-path, partial-derivative-as-slice, clairaut-mixed-partials, **implicit-slope-on-a-level-curve**, **velocity-acceleration-on-a-curve**, **gradient-steepest-ascent** — added 2026-05-24 ch.5 run — 10), ch.6 (global-extrema-triangle, hesse-eigenvalues, hessian-test, lagrange-multipliers, critical-points-gradient-field, quadratic-taylor-approximation, **gradient-descent-on-contours**, **extrema-on-a-circle**, **the-saddle-point** — added 2026-05-24 — 9). Most under-served now: ch.1 (7) alone, then ch.2/ch.3/ch.6 (9 each), ch.5 (10); ch.4 is the deepest (11). Strongest follow-ups: span-of-two-vectors-as-a-plane in R³ (ch.1 — sweep the two coefficients to fill the plane, collapse to a line for dependence; the lone strong motion-topic left in an otherwise saturated chapter), shear-decomposition (ch.2 — every 2×2 matrix factors as rotation × scaling × rotation via SVD). The 2026-05-24 ch.5 run closed the implicit-differentiation, vector-functions, and steepest-ascent-cosine gaps. **Curriculum correction (verified against the Nøkkelbegrep wiki + Plenum 5/6, 2026-05-24 PM):** TMA4411's ch.4 is a *numerical-methods* chapter (Uke 8–10: Euler, trapes/Crank–Nicolson, convergence, lokal feil, Runge–Kutta + Butcher-tablå, ordens-analyse, systemer/høyere orden) — it is NOT analytic ODE classification, so the old "exact-ODE / integrating-factor (ch.4 last classification slot)" follow-up does not match this course and was removed. Remaining ch.4 numerical gaps for a future run: trapezoidal / Crank–Nicolson as a distinct *implicit RK2* (this run did backward Euler only), the Butcher-tableau notation + explicit-vs-implicit reading (Plenum 5 oppg. 1b/2b), and local-vs-global truncation error / order via Taylor (Plenum 5 oppg. 3 — distinct from euler-vs-rk4's log-log comparison). Note: the 2026-05-24 ch.6 run covered boundary-parametrisation (`extrema-on-a-circle`), saddle geometry (`the-saddle-point`) and iterative minimisation (`gradient-descent-on-contours`); the 2026-05-24 PM run added the three ch.4 numerical scenes above. A KKT / inequality-constrained-on-a-closed-region scene is still open for ch.6 if more are wanted.
+
+- **algdat chapter map** (Supabase `public.chapters` for
+  `subject_id='algdat'`, 15 chapters, NTNU TDT4120): ch.0 Verktøykassa,
+  ch.1 Algoritmer/kjøretid/asymptotisk notasjon, ch.2 Problemer og
+  reduksjoner, ch.3 Splitt og hersk, ch.4 Sortering i lineær tid, ch.5
+  Hauger og binære søketrær, ch.6 Dynamisk programmering, ch.7 Grådige
+  algoritmer, ch.8 Grafer og traversering, ch.9 Minimale spenntrær,
+  ch.10 Korteste vei fra én kilde, ch.11 Korteste vei mellom alle par,
+  ch.12 Maksimal flyt, ch.13 Kompleksitetsklasser/NP, ch.14 NP-komplette
+  problemer. Coverage after the 2026-06-15 founding scene (Norwegian,
+  not yet published): ch.1 (`asymptotisk-vekst`). Strongest motion
+  follow-ups (priority order): ch.3 merge-sort recursion-tree + two-
+  pointer merge, ch.5 binary-heap sift-up/down, ch.6 DP-table fill,
+  ch.8 BFS frontier. Skip ch.13/ch.14 (theory, animates poorly) for
+  now. Norwegian audio pin same as ITGK — voice Liam
+  `TX3LPaxmHKxFdv7VOQHJ`, model `eleven_turbo_v2_5`, `language_code: "no"`.
 
 - **ITGK chapter map** (Supabase `public.chapters` for `subject_id='itgk'`,
   15 chapters, TDT4110/TDT4109): ch.1 Introduksjon: programmer og Python,

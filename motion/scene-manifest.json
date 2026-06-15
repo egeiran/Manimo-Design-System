@@ -3524,6 +3524,27 @@
       ],
       "subject_id": "itgk",
       "chapter_number": 11
+    },
+    {
+      "id": "asymptotisk-vekst",
+      "file": "asymptotisk-vekst.jsx",
+      "html": "asymptotisk-vekst.html",
+      "spec": "asymptotisk-vekst.spec.json",
+      "title": "Asymptotisk vekst: Stor O",
+      "eyebrow": "kjøretid",
+      "topic": "Hvorfor styrer en 'O' og ikke stoppeklokka hvor lenge en algoritme bruker? Fem klassiske vekstrater — konstant, logaritmisk, lineær, lineær ganger logaritmisk, kvadratisk — tegnes på samme plott. En glidende n-markør viser hvordan kurver som lå tett i bunnen river seg fra hverandre når n vokser. Den kvadratiske skyter ut av rammen først, den logaritmiske beveger seg knapt. Det er nettopp dette stor O fanger.",
+      "duration": 59,
+      "language": "no",
+      "prerequisites": [],
+      "concepts": [
+        "asymptotisk notasjon",
+        "stor O",
+        "vekstrater",
+        "kjøretid",
+        "dominant ledd"
+      ],
+      "subject_id": "algdat",
+      "chapter_number": 1
     }
   ]
 }

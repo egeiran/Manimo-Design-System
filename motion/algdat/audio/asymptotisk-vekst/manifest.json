@@ -1,0 +1,37 @@
+{
+  "sceneId": "asymptotisk-vekst",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/asymptotisk-vekst/scene.mp3",
+  "durationSec": 57.4,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Hvor lenge bruker en algoritme før den blir umulig å vente på? Det avhenger ikke av maskinen — det avhenger av hvor fort kjøretiden vokser med problemstørrelsen."
+    },
+    {
+      "id": "kurveneTegnes",
+      "audioStart": 11.09,
+      "narration": "Her er fem klassiske vekstrater. Konstant. Logaritmisk. Lineær. Lineær ganger logaritmisk. Og kvadratisk. Tegnet inn ettersom n vokser."
+    },
+    {
+      "id": "nSveepet",
+      "audioStart": 23,
+      "narration": "Følg markøren. Når n er liten, ligger alle kurvene tett sammen. Men allerede ved tjue er den kvadratiske ute av rammen, mens den logaritmiske knapt har beveget seg."
+    },
+    {
+      "id": "dominans",
+      "audioStart": 35.02,
+      "narration": "Det er det stor O fanger. Når n vokser, dominerer det største leddet — alt annet drukner i støy. Tre n i andre pluss fem n pluss ti blir til orden n i andre."
+    },
+    {
+      "id": "hierarkiTakeaway",
+      "audioStart": 48.51,
+      "narration": "Stor O rangerer algoritmer etter hvor de havner — ikke hvor de starter. Det er hele ideen bak asymptotisk notasjon."
+    }
+  ]
+}
