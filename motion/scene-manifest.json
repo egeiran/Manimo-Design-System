@@ -3524,6 +3524,29 @@
       ],
       "subject_id": "itgk",
       "chapter_number": 11
+    },
+    {
+      "id": "slicing-mellom-tegnene",
+      "file": "slicing-mellom-tegnene.jsx",
+      "html": "slicing-mellom-tegnene.html",
+      "spec": "slicing-mellom-tegnene.spec.json",
+      "title": "Slicing: indeksene bor mellom tegnene",
+      "eyebrow": "strenger",
+      "topic": "Klassikeren «hvorfor får jeg ikke det jeg trodde?»: indeksene sitter ikke på bokstavene, men i mellomrommene mellom dem. En streng på seks tegn har syv mellomrom, fra null til seks. Et utsnitt med klammeparenteser plukker alt mellom to skiller — start opp til, men ikke med, stopp. Vist ved at indeksene lander i gapene mellom bokstavene i Python, et glødende vindu strekker seg fra én til fire, og delstrengen letter ut og lander i en resultatboks. Tomme ender og sømmen ved skille tre rundes av.",
+      "duration": 65,
+      "language": "no",
+      "prerequisites": [
+        "liste-referanser"
+      ],
+      "concepts": [
+        "streng",
+        "indeks",
+        "slicing",
+        "delstreng",
+        "halvåpent intervall"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 7
     }
   ]
 }
