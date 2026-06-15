@@ -1,0 +1,140 @@
+{
+  "id": "asymptotisk-vekst",
+  "title": "Asymptotisk vekst: Stor O",
+  "eyebrow": "kjøretid",
+  "language": "no",
+  "duration": 59,
+  "topic": "Hvorfor styrer en 'O' og ikke stoppeklokka hvor lenge en algoritme bruker? Fem klassiske vekstrater — konstant, logaritmisk, lineær, lineær ganger logaritmisk, kvadratisk — tegnes på samme plott. En glidende n-markør viser hvordan kurver som lå tett i bunnen river seg fra hverandre når n vokser. Den kvadratiske skyter ut av rammen først, den logaritmiske beveger seg knapt. Det er nettopp dette stor O fanger.",
+  "subject_id": "algdat",
+  "chapter_number": 1,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 11.09,
+      "narration": "Hvor lenge bruker en algoritme før den blir umulig å vente på? Det avhenger ikke av maskinen — det avhenger av hvor fort kjøretiden vokser med problemstørrelsen.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Hvor fort vokser kjøretiden med n?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kurveneTegnes",
+      "start": 11.09,
+      "end": 23,
+      "narration": "Her er fem klassiske vekstrater. Konstant. Logaritmisk. Lineær. Lineær ganger logaritmisk. Og kvadratisk. Tegnet inn ettersom n vokser.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "graph-axes",
+            "content": "n på x-aksen, antall steg på y-aksen, mono ticks",
+            "delay": 0.3,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "fem kurver tracer seg inn én etter én: O(1) chalk, O(log n) teal, O(n) violet, O(n log n) amber, O(n²) rose",
+            "delay": 1.4,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — five TraceIn curves sequenced ~2.6s apart, each labelled at the right edge"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nSveepet",
+      "start": 23,
+      "end": 35.02,
+      "narration": "Følg markøren. Når n er liten, ligger alle kurvene tett sammen. Men allerede ved tjue er den kvadratiske ute av rammen, mens den logaritmiske knapt har beveget seg.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "vertikal n-markør glir fra n lik to til n lik tjueto",
+            "delay": 0.6,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — vertical sweep scaled to sprite duration; five dots track curves; live readout panel ticks the y-values"
+          },
+          {
+            "type": "graph-marker",
+            "content": "fem fargede dots følger kurvene; live readout-panel viser y-verdiene per kurve",
+            "delay": 0.6,
+            "color": "var(--rose-400)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dominans",
+      "start": 35.02,
+      "end": 48.51,
+      "narration": "Det er det stor O fanger. Når n vokser, dominerer det største leddet — alt annet drukner i støy. Tre n i andre pluss fem n pluss ti blir til orden n i andre.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "graph-curve",
+            "content": "samme fem kurver vises, men kun den kvadratiske er bright; de andre dimmes til lav opasitet",
+            "delay": 0.3,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "3n² + 5n + 10 → O(n²) — mono formel i sidepanel",
+            "delay": 1.6,
+            "color": "var(--amber-300)",
+            "position": "right side panel"
+          },
+          {
+            "type": "text-caption",
+            "content": "Største ledd vinner.",
+            "delay": 3.6,
+            "color": "var(--chalk-100)",
+            "position": "right side panel, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hierarkiTakeaway",
+      "start": 48.51,
+      "end": 59,
+      "narration": "Stor O rangerer algoritmer etter hvor de havner — ikke hvor de starter. Det er hele ideen bak asymptotisk notasjon.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "O(1) < O(log n) < O(n) < O(n log n) < O(n²)",
+            "delay": 0.4,
+            "color": "var(--amber-300)",
+            "position": "centre, mono ladder"
+          },
+          {
+            "type": "text-caption",
+            "content": "Hvor algoritmen havner — ikke hvor den starter.",
+            "delay": 1.6,
+            "color": "var(--chalk-100)",
+            "position": "below, serif italic"
+          }
+        ]
+      }
+    }
+  ]
+}
