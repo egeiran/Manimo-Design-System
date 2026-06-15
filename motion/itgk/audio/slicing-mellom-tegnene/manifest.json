@@ -1,0 +1,37 @@
+{
+  "sceneId": "slicing-mellom-tegnene",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/slicing-mellom-tegnene/scene.mp3",
+  "durationSec": 63.76,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Slicing virker som magi helt til du innser hvor tallene egentlig sitter. Hint: ikke på bokstavene."
+    },
+    {
+      "id": "mellomTegnene",
+      "audioStart": 7.15,
+      "narration": "Når Python teller seg gjennom en streng, sitter ikke tallene på selve bokstavene. De sitter i mellomrommene mellom dem. Null er foran første bokstav, ett mellom P og y, og slik fortsetter det. Seks bokstaver gir syv mellomrom — fra null til seks."
+    },
+    {
+      "id": "slicingVindu",
+      "audioStart": 25.04,
+      "narration": "Med skarpe klammer plukker vi ut en bit. Skriv ett, kolon, fire mellom klammene, og Python finner alt som ligger mellom skille én og skille fire. Vinduet strekker seg mellom dem, og y, t og h letter ut og lander i den nye delstrengen."
+    },
+    {
+      "id": "utenfor",
+      "audioStart": 42.24,
+      "narration": "Lar du endene være tomme, betyr det fra starten eller ut til slutten. Kolon tre tar de tre første bokstavene. Tre kolon tar resten. Sømmen sitter akkurat ved skille tre, og lagt sammen får du hele strengen igjen."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 57.17,
+      "narration": "Indeksene bor i mellomrommene. Tegn dem mellom tegnene i hodet, så slutter slicing å overraske deg."
+    }
+  ]
+}

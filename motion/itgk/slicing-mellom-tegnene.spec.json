@@ -1,0 +1,161 @@
+{
+  "id": "slicing-mellom-tegnene",
+  "title": "Slicing: indeksene bor mellom tegnene",
+  "eyebrow": "strenger",
+  "language": "no",
+  "duration": 65,
+  "topic": "Klassikeren «hvorfor får jeg ikke det jeg trodde?»: indeksene sitter ikke på bokstavene, men i mellomrommene mellom dem. En streng på seks tegn har syv mellomrom, fra null til seks. Et utsnitt med klammeparenteser plukker alt mellom to skiller — start opp til, men ikke med, stopp. Vist ved at indeksene lander i gapene mellom bokstavene i Python, et glødende vindu strekker seg fra én til fire, og delstrengen letter ut og lander i en resultatboks. Tomme ender og sømmen ved skille tre rundes av.",
+  "subject_id": "itgk",
+  "chapter_number": 7,
+  "prerequisites": [
+    "liste-referanser"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.15,
+      "narration": "Slicing virker som magi helt til du innser hvor tallene egentlig sitter. Hint: ikke på bokstavene.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Hvor sitter egentlig indeksene?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mellomTegnene",
+      "start": 7.15,
+      "end": 25.04,
+      "narration": "Når Python teller seg gjennom en streng, sitter ikke tallene på selve bokstavene. De sitter i mellomrommene mellom dem. Null er foran første bokstav, ett mellom P og y, og slik fortsetter det. Seks bokstaver gir syv mellomrom — fra null til seks.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "s = \"Python\"",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left, reveal lines one by one",
+            "note": "CodeBlock reveal='lines'"
+          },
+          {
+            "type": "diagram-box",
+            "content": "bokstavene P y t h o n tegnes på rad; deretter dukker små vertikale tikkmarkør og tallene 0 til 6 opp i mellomrommene mellom bokstavene, fra venstre mot høyre",
+            "delay": 0.8,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — indices 0..6 land one by one IN THE GAPS between characters, not on them"
+          },
+          {
+            "type": "text-caption",
+            "content": "seks tegn — syv mellomrom",
+            "delay": 6,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "slicingVindu",
+      "start": 25.04,
+      "end": 42.24,
+      "narration": "Med skarpe klammer plukker vi ut en bit. Skriv ett, kolon, fire mellom klammene, og Python finner alt som ligger mellom skille én og skille fire. Vinduet strekker seg mellom dem, og y, t og h letter ut og lander i den nye delstrengen.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "s = \"Python\"\ndel = s[1:4]\nprint(del)",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left",
+            "note": "highlight line 2"
+          },
+          {
+            "type": "diagram-box",
+            "content": "et glødende vindu vokser fra midten ut til å spenne fra skille 1 til skille 4 over bokstavene",
+            "delay": 2,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — the slice window expands from collapsed center out to indices 1 and 4"
+          },
+          {
+            "type": "diagram-box",
+            "content": "y, t og h letter opp fra kildraden og lander i en resultatboks merket s[1:4]",
+            "delay": 6,
+            "color": "var(--amber-300)",
+            "note": "GENUINE MOTION — substring chars translate from source row up/over to destination box and settle there"
+          }
+        ]
+      }
+    },
+    {
+      "id": "utenfor",
+      "start": 42.24,
+      "end": 57.17,
+      "narration": "Lar du endene være tomme, betyr det fra starten eller ut til slutten. Kolon tre tar de tre første bokstavene. Tre kolon tar resten. Sømmen sitter akkurat ved skille tre, og lagt sammen får du hele strengen igjen.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "s = \"Python\"\na = s[:3]\nb = s[3:]",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left",
+            "note": "highlight line 2, then line 3"
+          },
+          {
+            "type": "diagram-box",
+            "content": "to vinduer tegnes — det venstre fra 0 til 3 (teal), det høyre fra 3 til 6 (rose) — og indeks 3 pulserer som sømmen mellom dem",
+            "delay": 1.5,
+            "color": "var(--teal-400)",
+            "note": "GENUINE MOTION — both windows materialise, splitting the row at index 3"
+          },
+          {
+            "type": "diagram-box",
+            "content": "Pyt letter ned i en teal resultatboks; hon letter ned i en rose resultatboks; ingen overlapp",
+            "delay": 5,
+            "color": "var(--rose-400)",
+            "note": "GENUINE MOTION — two ghost substrings translate from source row to two destination boxes simultaneously"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 57.17,
+      "end": 65,
+      "narration": "Indeksene bor i mellomrommene. Tegn dem mellom tegnene i hodet, så slutter slicing å overraske deg.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Indeksene bor mellom tegnene.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "s[a:b] · fra skille a opp til skille b",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -114,15 +114,14 @@ invent a chapter number to make the FK happy.
   pseudocode, milestones as fractions of sprite duration, array cells
   + pointers + VarBox vocabulary).
 
-- **Next ITGK batch — second wave after the 2026-06-09 founding five.**
-  The first five ITGK scenes (see ITGK chapter map below) covered ch.5,
-  ch.6, ch.8 and ch.11×2. Strongest next topics, in priority order:
-  `klasse-og-objekt` (ch.14 — class as blueprint stamping out two
+- **Next ITGK batch — continuing after the 2026-06-15 ch.7 slicing scene.**
+  Six ITGK scenes are now in the manifest (founding five plus tonight's
+  `slicing-mellom-tegnene` for ch.7). Strongest next topics, in priority
+  order: `klasse-og-objekt` (ch.14 — class as blueprint stamping out two
   instances, `self` as the "this one here" arrow; beat sketch already
   approved in the 2026-06-09 plan), if/elif/else as a railway switch
   (ch.4 — a value rolls through the branch points, only one path
   lights), for-løkke + range (ch.5 — companion to `while-lokke-trace`),
-  slicing-mekanikk (ch.7 — indices live *between* characters),
   dict-oppslag vs liste-søk (ch.9 — hash bucket teleport vs walking),
   try/except-flyt (ch.10 — exception bubbles up past frames until a
   handler catches). All ITGK scenes are Norwegian (`language: "no"`) —
@@ -189,10 +188,11 @@ invent a chapter number to make the FK happy.
   ch.9 Dictionaries og sets, ch.10 Filbehandling og unntak, ch.11
   Rekursjon/sortering/søk, ch.12 NumPy, ch.13 Matplotlib, ch.14
   Objektorientering (TDT4109), ch.15 IKT-teori: maskinvare/binært/Git
-  (TDT4109). Coverage after the 2026-06-09 founding batch (depth-first
+  (TDT4109). Coverage after the 2026-06-15 ch.7 nightly (depth-first
   on the hardest chapters, all Norwegian, **not yet published** —
   awaiting user approval): ch.5 (`while-lokke-trace`), ch.6
-  (`funksjonskall-og-scope`), ch.8 (`liste-referanser`), ch.11
+  (`funksjonskall-og-scope`), ch.7 (`slicing-mellom-tegnene` — added
+  2026-06-15), ch.8 (`liste-referanser`), ch.11
   (`rekursjon-kallstabel`, `binaersok-halvering`). **Norwegian audio
   pin:** voice Liam `TX3LPaxmHKxFdv7VOQHJ`, model `eleven_turbo_v2_5`,
   `language_code: "no"` — wired as automatic default in
