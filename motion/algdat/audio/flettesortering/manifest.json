@@ -1,0 +1,37 @@
+{
+  "sceneId": "flettesortering",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/flettesortering/scene.mp3",
+  "durationSec": 58.61,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du har en uordnet liste. Kan du sortere den raskere enn å sammenligne hvert eneste par? Del og hersk sier ja."
+    },
+    {
+      "id": "splitt",
+      "audioStart": 8.95,
+      "narration": "Først deler vi lista i to. Så deler vi hver halvdel i to. Slik fortsetter vi helt til hver bit bare har ett tall — og en liste på ett tall er allerede sortert i seg selv."
+    },
+    {
+      "id": "flette",
+      "audioStart": 21.64,
+      "narration": "Nå skal vi flette to sorterte halvdeler tilbake til én. To pekere starter på første tall i hver halvdel. Vi sammenligner, tar det minste, og rykker den pekeren videre. Slik strømmer tallene én etter én inn i den sorterte utlista."
+    },
+    {
+      "id": "fletteOpp",
+      "audioStart": 38.25,
+      "narration": "Samme triks gjør jobben hele veien opp i treet. To og to sorterte halvdeler smelter sammen, lag etter lag, til hele lista står sortert på toppen."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 48.51,
+      "narration": "Log to av n nivåer å fly gjennom, og n forsøk på hvert nivå. Det blir orden n log n — knust mot orden n i andre når n blir stor."
+    }
+  ]
+}

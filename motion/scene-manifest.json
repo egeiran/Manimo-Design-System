@@ -3591,6 +3591,29 @@
       ],
       "subject_id": "itgk",
       "chapter_number": 9
+    },
+    {
+      "id": "flettesortering",
+      "file": "flettesortering.jsx",
+      "html": "flettesortering.html",
+      "spec": "flettesortering.spec.json",
+      "title": "Flettesortering: del og hersk",
+      "eyebrow": "splitt og hersk",
+      "topic": "Hvorfor kan vi sortere åtte tall — eller en million — så mye raskere enn å sammenligne alle par? Splitt og hersk: del lista i to igjen og igjen til hver bit er ett tall, og en liste på ett tall er allerede sortert. Flett så halvdelene tilbake med to pekere som beiter på hvert sitt minste tall. Rekursjonstreet vokser nedover, en nær-på flett fyller utlista celle for celle, og hele treet smelter oppover lag for lag — landingen er kjøretiden orden n log n.",
+      "duration": 60,
+      "language": "no",
+      "prerequisites": [
+        "asymptotisk-vekst"
+      ],
+      "concepts": [
+        "splitt og hersk",
+        "flettesortering",
+        "rekursjonstre",
+        "to-peker fletting",
+        "n log n"
+      ],
+      "subject_id": "algdat",
+      "chapter_number": 3
     }
   ]
 }
