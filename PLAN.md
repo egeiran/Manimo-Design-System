@@ -95,18 +95,18 @@ invent a chapter number to make the FK happy.
 
 ### [AGENT] — safe for the next nightly run
 
-- **Next algdat batch — second scene after the 2026-06-15 founding `asymptotisk-vekst` (ch.1).**
-  ch.1 now has its anchor scene (five growth curves on one axis, the
-  n-sweep separation, dominant-term reveal). Strongest follow-ups in
-  priority order: `flettesortering` (ch.3 Splitt og hersk — recursion
-  tree splitting an array into halves on the way down, two-pointer
-  merge on the way up; the classic algdat motion piece), `binærhaug-
-  sift` (ch.5 Hauger og binære søketrær — heap as tree + array twin
-  views, sift-up bubbling an element to its place), `dp-fylling-fib`
-  (ch.6 Dynamisk programmering — Fibonacci or LCS DP table filling
-  cell by cell, each cell pulling from predecessors), `bfs-frontier`
-  (ch.8 Grafer og traversering — BFS frontier expanding across nodes
-  with the queue updating). Skip ch.13 / ch.14 (NP-classes) — they
+- **Next algdat batch — third scene after the 2026-06-16 `flettesortering` (ch.3).**
+  Coverage so far: ch.1 `asymptotisk-vekst`, ch.3 `flettesortering`
+  (this run — split tree down, two-pointer merge close-up, tree
+  flettes opp, n log n payoff). Strongest follow-ups in priority
+  order: `binærhaug-sift` (ch.5 Hauger og binære søketrær — heap as
+  tree + array twin views, sift-up bubbling an element to its place),
+  `dp-fylling-fib` (ch.6 Dynamisk programmering — Fibonacci or LCS DP
+  table filling cell by cell, each cell pulling from predecessors),
+  `bfs-frontier` (ch.8 Grafer og traversering — BFS frontier expanding
+  across nodes with the queue updating), `dijkstra-relaxation` (ch.10
+  Korteste vei fra én kilde — relaxing distance labels as the frontier
+  grows from the source). Skip ch.13 / ch.14 (NP-classes) — they
   animate poorly. All algdat scenes are Norwegian (`language: "no"`);
   generate-audio.js automatically routes to voice Liam
   (`TX3LPaxmHKxFdv7VOQHJ`) on `eleven_turbo_v2_5`. Match the ITGK
@@ -172,12 +172,14 @@ invent a chapter number to make the FK happy.
   algoritmer, ch.8 Grafer og traversering, ch.9 Minimale spenntrær,
   ch.10 Korteste vei fra én kilde, ch.11 Korteste vei mellom alle par,
   ch.12 Maksimal flyt, ch.13 Kompleksitetsklasser/NP, ch.14 NP-komplette
-  problemer. Coverage after the 2026-06-15 founding scene (Norwegian,
-  not yet published): ch.1 (`asymptotisk-vekst`). Strongest motion
-  follow-ups (priority order): ch.3 merge-sort recursion-tree + two-
-  pointer merge, ch.5 binary-heap sift-up/down, ch.6 DP-table fill,
-  ch.8 BFS frontier. Skip ch.13/ch.14 (theory, animates poorly) for
-  now. Norwegian audio pin same as ITGK — voice Liam
+  problemer. Coverage after the 2026-06-16 nightly (Norwegian, not yet
+  published): ch.1 (`asymptotisk-vekst`), ch.3 (`flettesortering` —
+  added tonight, 8-cell recursion tree splitting down, two-pointer
+  close-up merging [2,5,8] with [1,3,7], full tree merging back up, n
+  log n payoff). Strongest motion follow-ups (priority order): ch.5
+  binary-heap sift-up/down, ch.6 DP-table fill, ch.8 BFS frontier,
+  ch.10 Dijkstra relaxation. Skip ch.13/ch.14 (theory, animates
+  poorly) for now. Norwegian audio pin same as ITGK — voice Liam
   `TX3LPaxmHKxFdv7VOQHJ`, model `eleven_turbo_v2_5`, `language_code: "no"`.
 
 - **ITGK chapter map** (Supabase `public.chapters` for `subject_id='itgk'`,

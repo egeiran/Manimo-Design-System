@@ -1,0 +1,131 @@
+{
+  "id": "flettesortering",
+  "title": "Flettesortering: del og hersk",
+  "eyebrow": "splitt og hersk",
+  "language": "no",
+  "duration": 60,
+  "topic": "Hvorfor kan vi sortere åtte tall — eller en million — så mye raskere enn å sammenligne alle par? Splitt og hersk: del lista i to igjen og igjen til hver bit er ett tall, og en liste på ett tall er allerede sortert. Flett så halvdelene tilbake til én sortert liste med to pekere som beiter på hvert sitt minste tall. Vist med rekursjonstreet som vokser nedover, en nær-på flett der to pekere fyller en utboks tall for tall, og hele treet som smelter oppover lag for lag — landingen er kjøretiden orden n log n, knust mot orden n i andre når n blir stor.",
+  "subject_id": "algdat",
+  "chapter_number": 3,
+  "prerequisites": [
+    "asymptotisk-vekst"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 8.95,
+      "narration": "Du har en uordnet liste. Kan du sortere den raskere enn å sammenligne hvert eneste par? Del og hersk sier ja.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Sorter raskere enn n i andre.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "splitt",
+      "start": 8.95,
+      "end": 21.64,
+      "narration": "Først deler vi lista i to. Så deler vi hver halvdel i to. Slik fortsetter vi helt til hver bit bare har ett tall — og en liste på ett tall er allerede sortert i seg selv.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "rekursjonstre vokser nedover: åtte ublandede tall på topp, deles til to halvdeler, fire kvartdeler, og åtte singletoner",
+            "delay": 0.6,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — fire nivåer av subarray-bokser dukker opp etter tur, med tegnede splitt-linjer fra forelder til barn; samme cell-pitch på alle nivåer så hver celle står rett under sin forfar"
+          },
+          {
+            "type": "text-caption",
+            "content": "én bit, ett tall — allerede sortert",
+            "delay": 8,
+            "color": "var(--teal-400)",
+            "position": "under nederste rad"
+          }
+        ]
+      }
+    },
+    {
+      "id": "flette",
+      "start": 21.64,
+      "end": 38.25,
+      "narration": "Nå skal vi flette to sorterte halvdeler tilbake til én. To pekere starter på første tall i hver halvdel. Vi sammenligner, tar det minste, og rykker den pekeren videre. Slik strømmer tallene én etter én inn i den sorterte utlista.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "to sorterte halvdeler øverst og venstre — to og fem til venstre, en, tre og sju til høyre — med pekertrekanter over første ubehandlede celle",
+            "delay": 0.4,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — pekertrekant glir fra celle til celle ved hvert sammenligningstrinn; sammenlignings-badge viser «to mot en — ta én»; utboks fylles celle for celle nederst"
+          },
+          {
+            "type": "text-formula",
+            "content": "ta minst av A[i] og B[j] · rykk pekeren videre",
+            "delay": 6,
+            "color": "var(--amber-300)",
+            "position": "sidepanel, mono"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fletteOpp",
+      "start": 38.25,
+      "end": 48.51,
+      "narration": "Samme triks gjør jobben hele veien opp i treet. To og to sorterte halvdeler smelter sammen, lag etter lag, til hele lista står sortert på toppen.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "rekursjonstreet fra splitt-beaten gjenoppstår, men nå smelter sibling-boksene sammen oppover: singletoner gir sorterte par, par gir sorterte kvartdeler, kvartdeler gir den endelige sorterte lista",
+            "delay": 0.5,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — tre merge-bølger oppover, med tall som strømmer fra barnebokser inn i forelder-boks; hver bølge har en kort glød på den nye sorterte raden"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 48.51,
+      "end": 60,
+      "narration": "Log to av n nivåer å fly gjennom, og n forsøk på hvert nivå. Det blir orden n log n — knust mot orden n i andre når n blir stor.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "log₂ n nivåer · n flettinger per nivå · O(n log n)",
+            "delay": 0.5,
+            "color": "var(--amber-300)",
+            "position": "center, mono"
+          },
+          {
+            "type": "text-caption",
+            "content": "Del og hersk — sortér åtte tall, eller en million.",
+            "delay": 2.2,
+            "color": "var(--chalk-100)",
+            "position": "under, serif italic"
+          }
+        ]
+      }
+    }
+  ]
+}
