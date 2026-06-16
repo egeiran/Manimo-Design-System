@@ -114,22 +114,23 @@ invent a chapter number to make the FK happy.
   pseudocode, milestones as fractions of sprite duration, array cells
   + pointers + VarBox vocabulary).
 
-- **Next ITGK batch — continuing after the 2026-06-15 ch.7 slicing scene.**
-  Six ITGK scenes are now in the manifest (founding five plus tonight's
-  `slicing-mellom-tegnene` for ch.7). Strongest next topics, in priority
-  order: `klasse-og-objekt` (ch.14 — class as blueprint stamping out two
-  instances, `self` as the "this one here" arrow; beat sketch already
-  approved in the 2026-06-09 plan), if/elif/else as a railway switch
-  (ch.4 — a value rolls through the branch points, only one path
-  lights), for-løkke + range (ch.5 — companion to `while-lokke-trace`),
-  dict-oppslag vs liste-søk (ch.9 — hash bucket teleport vs walking),
-  try/except-flyt (ch.10 — exception bubbles up past frames until a
-  handler catches). All ITGK scenes are Norwegian (`language: "no"`) —
-  generate-audio.js automatically uses voice Liam (`TX3LPaxmHKxFdv7VOQHJ`)
-  on `eleven_turbo_v2_5` with `language_code: "no"`; never multilingual_v2
-  (it reads bokmål as Danish). Match the founding five's house pattern:
-  CodeBlock with `fontVariantLigatures: 'none'`, milestones as fractions
-  of sprite duration, VarBox/chip/frame vocabulary.
+- **Next ITGK batch — continuing after the 2026-06-16 ch.9 dict scene.**
+  Seven ITGK scenes are now in the manifest (founding five, plus
+  `slicing-mellom-tegnene` for ch.7 on 2026-06-15, plus tonight's
+  `dict-oppslag-vs-liste-sok` for ch.9). Strongest next topics, in
+  priority order: `klasse-og-objekt` (ch.14 — class as blueprint
+  stamping out two instances, `self` as the "this one here" arrow; beat
+  sketch already approved in the 2026-06-09 plan), if/elif/else as a
+  railway switch (ch.4 — a value rolls through the branch points, only
+  one path lights), for-løkke + range (ch.5 — companion to
+  `while-lokke-trace`), try/except-flyt (ch.10 — exception bubbles up
+  past frames until a handler catches). All ITGK scenes are Norwegian
+  (`language: "no"`) — generate-audio.js automatically uses voice Liam
+  (`TX3LPaxmHKxFdv7VOQHJ`) on `eleven_turbo_v2_5` with
+  `language_code: "no"`; never multilingual_v2 (it reads bokmål as
+  Danish). Match the founding five's house pattern: CodeBlock with
+  `fontVariantLigatures: 'none'`, milestones as fractions of sprite
+  duration, VarBox/chip/frame vocabulary.
 
 - **Next Mat2B run — remaining genuine-motion gaps.** ch.4 numerical follow-ups still open: trapezoidal / Crank–Nicolson as a distinct *implicit RK2* (the 2026-05-24 PM run did backward Euler only), Butcher-tableau notation + explicit-vs-implicit reading (Plenum 5 oppg. 1b/2b), and local-vs-global truncation error / order via Taylor (Plenum 5 oppg. 3 — distinct from `euler-vs-rk4`'s log-log plot). After the 2026-05-24 ch.5 run (`implicit-slope-on-a-level-curve`, `velocity-acceleration-on-a-curve`, `gradient-steepest-ascent`), **ch.1 Vektorrom (7) is now the lone most under-served chapter** — but it is saturated on 2D span / basis / dependence; the strongest remaining genuine-motion topic there is span-of-two-vectors-as-a-plane in R³ (sweep the two coefficients to fill the plane, then collapse one vector onto the other's line to show dependence). ch.2 still wants shear-decomposition (every 2×2 = rotation × scaling × rotation via SVD).
 
@@ -190,11 +191,12 @@ invent a chapter number to make the FK happy.
   ch.9 Dictionaries og sets, ch.10 Filbehandling og unntak, ch.11
   Rekursjon/sortering/søk, ch.12 NumPy, ch.13 Matplotlib, ch.14
   Objektorientering (TDT4109), ch.15 IKT-teori: maskinvare/binært/Git
-  (TDT4109). Coverage after the 2026-06-15 ch.7 nightly (depth-first
+  (TDT4109). Coverage after the 2026-06-16 ch.9 nightly (depth-first
   on the hardest chapters, all Norwegian, **not yet published** —
   awaiting user approval): ch.5 (`while-lokke-trace`), ch.6
   (`funksjonskall-og-scope`), ch.7 (`slicing-mellom-tegnene` — added
-  2026-06-15), ch.8 (`liste-referanser`), ch.11
+  2026-06-15), ch.8 (`liste-referanser`), ch.9
+  (`dict-oppslag-vs-liste-sok` — added 2026-06-16), ch.11
   (`rekursjon-kallstabel`, `binaersok-halvering`). **Norwegian audio
   pin:** voice Liam `TX3LPaxmHKxFdv7VOQHJ`, model `eleven_turbo_v2_5`,
   `language_code: "no"` — wired as automatic default in

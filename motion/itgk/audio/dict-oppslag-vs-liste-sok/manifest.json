@@ -1,0 +1,37 @@
+{
+  "sceneId": "dict-oppslag-vs-liste-sok",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/dict-oppslag-vs-liste-sok/scene.mp3",
+  "durationSec": 59.16,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du har en haug med kontakter, og du leter etter telefonnummeret til Per. Du kan bla deg gjennom listen din til du finner ham — eller du kan slå opp direkte. Hva er forskjellen egentlig?"
+    },
+    {
+      "id": "oppsettet",
+      "audioStart": 12.09,
+      "narration": "Vi har seks kontakter i to varianter: først som en liste med par av navn og nummer, så som en ordbok der navnet er nøkkelen. Begge formene holder akkurat samme data — vi vil finne nummeret til Per."
+    },
+    {
+      "id": "listeSok",
+      "audioStart": 24.52,
+      "narration": "Med listen må vi sjekke en og en. Vi sammenligner Ada med Per — nei. Ben — nei. Slik fortsetter vi nedover, og Per ligger sist i den sjette cellen. Seks sammenligninger for seks kontakter."
+    },
+    {
+      "id": "dictOppslag",
+      "audioStart": 39.87,
+      "narration": "Med en ordbok trenger vi ikke å lete. Nøkkelen Per fører oss rett til riktig celle. Ett oppslag, uansett om vi har seks eller seks millioner kontakter."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 51.05,
+      "narration": "Vil du slå opp en verdi gjennom en nøkkel, bruk en ordbok. Da går du fra orden n til konstant tid."
+    }
+  ]
+}

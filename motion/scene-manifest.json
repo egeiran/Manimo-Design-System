@@ -3570,6 +3570,29 @@
       "chapter_number": 1
     },
     {
+      "id": "dict-oppslag-vs-liste-sok",
+      "file": "dict-oppslag-vs-liste-sok.jsx",
+      "html": "dict-oppslag-vs-liste-sok.html",
+      "spec": "dict-oppslag-vs-liste-sok.spec.json",
+      "title": "Dict eller liste? Ett oppslag mot mange",
+      "eyebrow": "ordbøker",
+      "topic": "Hvorfor finnes ordbøker når lister kan holde samme data? En live oppslagsstrid: seks kontakter ligger først som liste, så som dict. En 'Per'-brikke vandrer ned listen og teller seks sammenligninger før den finner riktig rad — selve definisjonen av lineær søking. På dict-siden flyr nøkkel-brikken gjennom et hash-gadget og lander rett på Per-cellen. Ett oppslag. Forskjellen fra orden n til konstant tid blir et bilde, ikke en formel.",
+      "duration": 61,
+      "language": "no",
+      "prerequisites": [
+        "liste-referanser"
+      ],
+      "concepts": [
+        "dictionary",
+        "hash-oppslag",
+        "lineær søking",
+        "orden n",
+        "konstant tid"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 9
+    },
+    {
       "id": "flettesortering",
       "file": "flettesortering.jsx",
       "html": "flettesortering.html",
