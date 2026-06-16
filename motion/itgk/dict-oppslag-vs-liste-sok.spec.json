@@ -1,0 +1,165 @@
+{
+  "id": "dict-oppslag-vs-liste-sok",
+  "title": "Dict eller liste? Ett oppslag mot mange",
+  "eyebrow": "ordbøker",
+  "language": "no",
+  "duration": 61,
+  "topic": "Hvorfor finnes ordbøker når lister kan holde samme data? En live oppslagsstrid: seks kontakter ligger først som liste, så som dict. En pil vandrer ned listen og teller seks sammenligninger før den finner Per — selve definisjonen av lineær søking. På dict-siden hopper en nøkkel-brikke gjennom et hash-gadget og lander rett på Per-cellen. Ett oppslag. Forskjellen fra orden n til konstant tid blir et bilde, ikke en formel.",
+  "subject_id": "itgk",
+  "chapter_number": 9,
+  "prerequisites": [
+    "liste-referanser"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 12.09,
+      "narration": "Du har en haug med kontakter, og du leter etter telefonnummeret til Per. Du kan bla deg gjennom listen din til du finner ham — eller du kan slå opp direkte. Hva er forskjellen egentlig?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Leter etter Per. Hvilken vei er kjappere?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "oppsettet",
+      "start": 12.09,
+      "end": 24.52,
+      "narration": "Vi har seks kontakter i to varianter: først som en liste med par av navn og nummer, så som en ordbok der navnet er nøkkelen. Begge formene holder akkurat samme data — vi vil finne nummeret til Per.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "# Som liste — gå gjennom\nfor navn, tlf in kontakter:\n    if navn == 'Per':\n        print(tlf)\n\n# Som dict — slå opp\nprint(kontakter['Per'])",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left, reveal lines one by one",
+            "note": "CodeBlock reveal='lines'"
+          },
+          {
+            "type": "diagram-box",
+            "content": "stack of six name|tlf cells appears on the right, staggered",
+            "delay": 3,
+            "color": "var(--amber-300)",
+            "position": "right column"
+          },
+          {
+            "type": "text-caption",
+            "content": "Mål: finn tlf der navn er Per.",
+            "delay": 7,
+            "color": "var(--chalk-300)",
+            "position": "below cells"
+          }
+        ]
+      }
+    },
+    {
+      "id": "listeSok",
+      "start": 24.52,
+      "end": 39.87,
+      "narration": "Med listen må vi sjekke en og en. Vi sammenligner Ada med Per — nei. Ben — nei. Slik fortsetter vi nedover, og Per ligger sist i den sjette cellen. Seks sammenligninger for seks kontakter.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "amber arrow steps down from cell 0 to cell 5; each non-match cell flashes rose then settles; final cell flashes amber",
+            "delay": 0.5,
+            "color": "var(--amber-400)",
+            "note": "GENUINE DATA-MODEL MOTION — pointer sweeps through the list cell by cell, comparison counter increments 1→2→3→4→5→6"
+          },
+          {
+            "type": "text-formula",
+            "content": "sammenligninger: N",
+            "delay": 1,
+            "color": "var(--amber-300)",
+            "position": "below cells, mono live counter"
+          },
+          {
+            "type": "diagram-box",
+            "content": "match cell glows amber; output panel shows tlf: 615",
+            "delay": 10,
+            "color": "var(--amber-300)",
+            "position": "below"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dictOppslag",
+      "start": 39.87,
+      "end": 51.05,
+      "narration": "Med en ordbok trenger vi ikke å lete. Nøkkelen Per fører oss rett til riktig celle. Ett oppslag, uansett om vi har seks eller seks millioner kontakter.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "key chip 'Per' enters from the left, passes through a small hash gadget",
+            "delay": 0.6,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "single teal arrow shoots directly from hash gadget to the Per row — no walking",
+            "delay": 1.4,
+            "color": "var(--teal-400)",
+            "note": "GENUINE DATA-MODEL MOTION — direct hash-to-bucket teleport, contrasts the previous beat's linear walk"
+          },
+          {
+            "type": "text-formula",
+            "content": "oppslag: 1",
+            "delay": 2.5,
+            "color": "var(--teal-300)",
+            "position": "below cells, mono live counter"
+          },
+          {
+            "type": "diagram-box",
+            "content": "Per row glows teal; output panel shows tlf: 615",
+            "delay": 3.3,
+            "color": "var(--teal-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 51.05,
+      "end": 61,
+      "narration": "Vil du slå opp en verdi gjennom en nøkkel, bruk en ordbok. Da går du fra orden n til konstant tid.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Slår du opp med en nøkkel — bruk en dict.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "liste: orden n · dict: konstant tid",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}
