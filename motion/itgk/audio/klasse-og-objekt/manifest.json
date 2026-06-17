@@ -1,0 +1,42 @@
+{
+  "sceneId": "klasse-og-objekt",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/klasse-og-objekt/scene.mp3",
+  "durationSec": 73.05,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du vil ha to ulike hunder med ulike navn og aldre — uten å skrive samme kode to ganger. En klasse hjelper oss her: én mal, mange objekter."
+    },
+    {
+      "id": "malen",
+      "audioStart": 10.75,
+      "narration": "Klassen Hund er som en mal. Den sier hvilke felter hver hund skal ha — et navn og en alder — og hvilke metoder den kan svare på, som bjeff. Selve malen lagrer ingen verdier ennå."
+    },
+    {
+      "id": "stempleRex",
+      "audioStart": 24.04,
+      "narration": "Når vi skriver rex er lik Hund med Rex og fire, stempler malen ut et nytt objekt. Argumentene reiser inn i init og lander i selvets felter: navnet blir Rex, alderen blir fire."
+    },
+    {
+      "id": "stempleLuna",
+      "audioStart": 37.19,
+      "narration": "Vi gjør det samme én gang til. Luna og to lander i et helt nytt objekt med sine egne felter. Nå finnes to hunder side om side, hver med sin egen navnelapp og sin egen alder."
+    },
+    {
+      "id": "selvPeker",
+      "audioStart": 50.33,
+      "narration": "Når vi sier rex punkt bjeff, kjører metoden — men selv peker på rex sitt objekt, og leser Rex fra rex sitt navnefelt. For luna punkt bjeff svinger selv over til Luna. Samme metode, ulike svar."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 66.06,
+      "narration": "Klassen er malen, objektet er en utgave som lever sitt eget liv, og selv peker alltid på dette objektet her."
+    }
+  ]
+}

@@ -114,17 +114,21 @@ invent a chapter number to make the FK happy.
   pseudocode, milestones as fractions of sprite duration, array cells
   + pointers + VarBox vocabulary).
 
-- **Next ITGK batch — continuing after the 2026-06-16 ch.9 dict scene.**
-  Seven ITGK scenes are now in the manifest (founding five, plus
-  `slicing-mellom-tegnene` for ch.7 on 2026-06-15, plus tonight's
-  `dict-oppslag-vs-liste-sok` for ch.9). Strongest next topics, in
-  priority order: `klasse-og-objekt` (ch.14 — class as blueprint
-  stamping out two instances, `self` as the "this one here" arrow; beat
-  sketch already approved in the 2026-06-09 plan), if/elif/else as a
-  railway switch (ch.4 — a value rolls through the branch points, only
-  one path lights), for-løkke + range (ch.5 — companion to
-  `while-lokke-trace`), try/except-flyt (ch.10 — exception bubbles up
-  past frames until a handler catches). All ITGK scenes are Norwegian
+- **Next ITGK batch — continuing after the 2026-06-17 ch.14 klasse-og-objekt scene.**
+  Eight ITGK scenes are now in the manifest (founding five, plus
+  `slicing-mellom-tegnene` for ch.7 on 2026-06-15, `dict-oppslag-vs-liste-sok`
+  for ch.9 on 2026-06-16, and tonight's `klasse-og-objekt` for ch.14 —
+  blueprint card stamping out two object frames side by side, `self`
+  arrow swings between rex and luna when methods are called). Strongest
+  next topics, in priority order: if/elif/else as a railway switch
+  (ch.4 — a value rolls through the branch points, only one path
+  lights up; ch.4 still at 0 scenes), for-løkke + range (ch.5 —
+  companion to `while-lokke-trace`, the index marches through the
+  range, the accumulator updates), try/except-flyt (ch.10 — exception
+  bubbles up past stack frames until a handler catches; ch.10 still at
+  0 scenes). After that, ch.2 (variabler/datatyper) admits a
+  reference-vs-value model and ch.3 (inn-/utdata) only animates as
+  a print-flow trace — both weaker. All ITGK scenes are Norwegian
   (`language: "no"`) — generate-audio.js automatically uses voice Liam
   (`TX3LPaxmHKxFdv7VOQHJ`) on `eleven_turbo_v2_5` with
   `language_code: "no"`; never multilingual_v2 (it reads bokmål as
@@ -191,13 +195,15 @@ invent a chapter number to make the FK happy.
   ch.9 Dictionaries og sets, ch.10 Filbehandling og unntak, ch.11
   Rekursjon/sortering/søk, ch.12 NumPy, ch.13 Matplotlib, ch.14
   Objektorientering (TDT4109), ch.15 IKT-teori: maskinvare/binært/Git
-  (TDT4109). Coverage after the 2026-06-16 ch.9 nightly (depth-first
+  (TDT4109). Coverage after the 2026-06-17 ch.14 nightly (depth-first
   on the hardest chapters, all Norwegian, **not yet published** —
   awaiting user approval): ch.5 (`while-lokke-trace`), ch.6
   (`funksjonskall-og-scope`), ch.7 (`slicing-mellom-tegnene` — added
   2026-06-15), ch.8 (`liste-referanser`), ch.9
   (`dict-oppslag-vs-liste-sok` — added 2026-06-16), ch.11
-  (`rekursjon-kallstabel`, `binaersok-halvering`). **Norwegian audio
+  (`rekursjon-kallstabel`, `binaersok-halvering`), ch.14
+  (`klasse-og-objekt` — added 2026-06-17, blueprint mal card stamping
+  out rex and luna with the self pointer swinging between them). **Norwegian audio
   pin:** voice Liam `TX3LPaxmHKxFdv7VOQHJ`, model `eleven_turbo_v2_5`,
   `language_code: "no"` — wired as automatic default in
   generate-audio.js for `language: "no"`; multilingual_v2 renders bokmål

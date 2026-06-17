@@ -1,0 +1,196 @@
+{
+  "id": "klasse-og-objekt",
+  "title": "Klassen som mal, objektet som tegning",
+  "eyebrow": "objektorientering",
+  "language": "no",
+  "duration": 75,
+  "topic": "Klassen er malen, objektet er en utgave. Når vi skriver Hund med argumenter, stempler malen ut et nytt objekt med egne felter — og selv peker alltid på dette objektet her. Vist med et levende minne-diagram der malen stempler ut to ulike hunder side om side, og en self-pil svinger mellom dem når metoder kalles.",
+  "subject_id": "itgk",
+  "chapter_number": 14,
+  "prerequisites": [
+    "funksjonskall-og-scope",
+    "liste-referanser"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 10.75,
+      "narration": "Du vil ha to ulike hunder med ulike navn og aldre — uten å skrive samme kode to ganger. En klasse hjelper oss her: én mal, mange objekter.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Én mal, mange objekter.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "malen",
+      "start": 10.75,
+      "end": 24.04,
+      "narration": "Klassen Hund er som en mal. Den sier hvilke felter hver hund skal ha — et navn og en alder — og hvilke metoder den kan svare på, som bjeff. Selve malen lagrer ingen verdier ennå.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "class Hund:\n    def __init__(self, navn, alder):\n        self.navn = navn\n        self.alder = alder\n\n    def bjeff(self):\n        return f\"{self.navn} sier voff\"\n\nrex = Hund(\"Rex\", 4)\nluna = Hund(\"Luna\", 2)\nprint(rex.bjeff(), luna.bjeff())",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left"
+          },
+          {
+            "type": "diagram-box",
+            "content": "blueprint card titled 'Hund (mal)' with two empty attribute slots labelled 'navn' and 'alder', and one method tag 'bjeff()'",
+            "delay": 2,
+            "color": "var(--amber-400)",
+            "position": "right",
+            "note": "The mal frame is a dashed-stroke amber card — no values inside, only labels"
+          },
+          {
+            "type": "text-caption",
+            "content": "En mal — ingen verdier ennå.",
+            "delay": 5,
+            "color": "var(--chalk-300)",
+            "position": "below the blueprint"
+          }
+        ]
+      }
+    },
+    {
+      "id": "stempleRex",
+      "start": 24.04,
+      "end": 37.19,
+      "narration": "Når vi skriver rex er lik Hund med Rex og fire, stempler malen ut et nytt objekt. Argumentene reiser inn i init og lander i selvets felter: navnet blir Rex, alderen blir fire.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "highlighted line: rex = Hund(\"Rex\", 4)",
+            "delay": 0,
+            "color": "var(--chalk-100)",
+            "position": "left"
+          },
+          {
+            "type": "diagram-box",
+            "content": "two argument chips 'Rex' and '4' fly from the call site into a freshly drawn rex object frame; chips land in the navn and alder slots",
+            "delay": 0.6,
+            "color": "var(--amber-400)",
+            "position": "right",
+            "note": "GENUINE MOTION — chips lerp from chip launch position into the object slots; slot border flashes when the chip lands"
+          },
+          {
+            "type": "text-caption",
+            "content": "rex er stemplet ut.",
+            "delay": 7,
+            "color": "var(--chalk-300)",
+            "position": "below the rex frame"
+          }
+        ]
+      }
+    },
+    {
+      "id": "stempleLuna",
+      "start": 37.19,
+      "end": 50.33,
+      "narration": "Vi gjør det samme én gang til. Luna og to lander i et helt nytt objekt med sine egne felter. Nå finnes to hunder side om side, hver med sin egen navnelapp og sin egen alder.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "highlighted line: luna = Hund(\"Luna\", 2)",
+            "delay": 0,
+            "color": "var(--chalk-100)",
+            "position": "left"
+          },
+          {
+            "type": "diagram-box",
+            "content": "a second object frame appears next to rex; chips 'Luna' and '2' fly into the new luna frame's slots",
+            "delay": 0.6,
+            "color": "var(--teal-400)",
+            "position": "right",
+            "note": "GENUINE MOTION — the second frame materialises and chips land in its slots; rex's frame remains visible and untouched"
+          },
+          {
+            "type": "text-caption",
+            "content": "To utgaver — uavhengige liv.",
+            "delay": 7,
+            "color": "var(--chalk-300)",
+            "position": "below both frames"
+          }
+        ]
+      }
+    },
+    {
+      "id": "selvPeker",
+      "start": 50.33,
+      "end": 66.06,
+      "narration": "Når vi sier rex punkt bjeff, kjører metoden — men selv peker på rex sitt objekt, og leser Rex fra rex sitt navnefelt. For luna punkt bjeff svinger selv over til Luna. Samme metode, ulike svar.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "highlighted line: print(rex.bjeff(), luna.bjeff())",
+            "delay": 0,
+            "color": "var(--chalk-100)",
+            "position": "left"
+          },
+          {
+            "type": "svg-path",
+            "content": "self arrow from method body to rex frame, then swings to luna frame",
+            "delay": 0.4,
+            "color": "var(--amber-400)",
+            "position": "right",
+            "note": "GENUINE MOTION — self pointer first points at rex (highlight rex's navn slot), then swings to luna (highlight luna's navn slot)"
+          },
+          {
+            "type": "diagram-box",
+            "content": "utskrift-panel: Rex sier voff Luna sier voff",
+            "delay": 5,
+            "color": "var(--amber-300)",
+            "position": "panel, mono payoff"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 66.06,
+      "end": 75,
+      "narration": "Klassen er malen, objektet er en utgave som lever sitt eget liv, og selv peker alltid på dette objektet her.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Klassen er malen — objektet er utgaven.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "class Hund · rex = Hund(...) · self peker på dette objektet her",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}
