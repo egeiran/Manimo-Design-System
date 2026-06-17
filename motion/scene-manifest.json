@@ -3614,6 +3614,31 @@
       ],
       "subject_id": "algdat",
       "chapter_number": 3
+    },
+    {
+      "id": "klasse-og-objekt",
+      "file": "klasse-og-objekt.jsx",
+      "html": "klasse-og-objekt.html",
+      "spec": "klasse-og-objekt.spec.json",
+      "title": "Klassen som mal, objektet som tegning",
+      "eyebrow": "objektorientering",
+      "topic": "Klassen er malen, objektet er en utgave. Når vi skriver Hund med argumenter, stempler malen ut et nytt objekt med egne felter — og selv peker alltid på dette objektet her. Vist med et levende minne-diagram der malen stempler ut to ulike hunder side om side, og en self-pil svinger mellom dem når metoder kalles.",
+      "duration": 75,
+      "language": "no",
+      "prerequisites": [
+        "funksjonskall-og-scope",
+        "liste-referanser"
+      ],
+      "concepts": [
+        "klasse",
+        "objekt",
+        "instansiering",
+        "self",
+        "attributter",
+        "metoder"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 14
     }
   ]
 }

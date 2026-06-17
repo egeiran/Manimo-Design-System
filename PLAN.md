@@ -114,17 +114,21 @@ invent a chapter number to make the FK happy.
   pseudocode, milestones as fractions of sprite duration, array cells
   + pointers + VarBox vocabulary).
 
-- **Next ITGK batch — continuing after the 2026-06-16 ch.9 dict scene.**
-  Seven ITGK scenes are now in the manifest (founding five, plus
-  `slicing-mellom-tegnene` for ch.7 on 2026-06-15, plus tonight's
-  `dict-oppslag-vs-liste-sok` for ch.9). Strongest next topics, in
-  priority order: `klasse-og-objekt` (ch.14 — class as blueprint
-  stamping out two instances, `self` as the "this one here" arrow; beat
-  sketch already approved in the 2026-06-09 plan), if/elif/else as a
-  railway switch (ch.4 — a value rolls through the branch points, only
-  one path lights), for-løkke + range (ch.5 — companion to
-  `while-lokke-trace`), try/except-flyt (ch.10 — exception bubbles up
-  past frames until a handler catches). All ITGK scenes are Norwegian
+- **Next ITGK batch — continuing after the 2026-06-17 ch.14 klasse-og-objekt scene.**
+  Eight ITGK scenes are now in the manifest (founding five, plus
+  `slicing-mellom-tegnene` for ch.7 on 2026-06-15, `dict-oppslag-vs-liste-sok`
+  for ch.9 on 2026-06-16, and tonight's `klasse-og-objekt` for ch.14 —
+  blueprint card stamping out two object frames side by side, `self`
+  arrow swings between rex and luna when methods are called). Strongest
+  next topics, in priority order: if/elif/else as a railway switch
+  (ch.4 — a value rolls through the branch points, only one path
+  lights up; ch.4 still at 0 scenes), for-løkke + range (ch.5 —
+  companion to `while-lokke-trace`, the index marches through the
+  range, the accumulator updates), try/except-flyt (ch.10 — exception
+  bubbles up past stack frames until a handler catches; ch.10 still at
+  0 scenes). After that, ch.2 (variabler/datatyper) admits a
+  reference-vs-value model and ch.3 (inn-/utdata) only animates as
+  a print-flow trace — both weaker. All ITGK scenes are Norwegian
   (`language: "no"`) — generate-audio.js automatically uses voice Liam
   (`TX3LPaxmHKxFdv7VOQHJ`) on `eleven_turbo_v2_5` with
   `language_code: "no"`; never multilingual_v2 (it reads bokmål as
@@ -161,6 +165,8 @@ invent a chapter number to make the FK happy.
 
 - **[HUMAN] Re-run `npm run publish all`** once Supabase env vars are wired into the nightly sandbox. Two cumulative backlogs are pending: (a) the 2026-05-13 chapter-remap that moved 8 of 9 ADE scenes to their corrected `chapter_number` values (specs + manifest updated locally, not yet pushed to Supabase) plus the earlier `basis-change-grid` ch.1→ch.2 fix that reconciles the local/remote mismatch flagged by `npm run coverage mat2b`; (b) every nightly-added scene that has not been published yet — including all ADE additions through 2026-05-21 PM and all Mat2B additions through 2026-05-23 evening (chapter-3 Indreproduktrom: `cauchy-schwarz-inequality`, `qr-factorisation-via-gram-schmidt`, `angle-preservation-by-rotation`; chapter-2 Lineærtransformasjoner: `gaussian-elimination-2d`, `matrix-product-as-composition`, `rotation-matrix-family`; chapter-4 Differensialligninger: `separable-variables-circles`, `newtons-law-of-cooling`, `characteristic-roots-regimes`; chapter-5/6: `quadratic-taylor-approximation`, `partial-derivative-as-slice`, `clairaut-mixed-partials`; chapter-1 Vektorrom: `basis-uniqueness`, `null-space-as-line`, `polynomial-vectors`; chapter-6 Ekstremalpunkter: `gradient-descent-on-contours`, `extrema-on-a-circle`, `the-saddle-point`; chapter-4 Differensialligninger (numerical methods, added 2026-05-24 PM): `heun-improved-euler`, `explicit-vs-implicit-euler`, `numerical-orbit-energy-drift`). The new entries are in `motion/scene-manifest.json` with correct `subject_id` + `chapter_number` but no `public.scenes` row yet. Originally flagged 2026-05-15, extended through 2026-05-24 PM. (Supabase remained unreachable this run — `npm run coverage mat2b` fell back to the local manifest.)
 
+- **[HUMAN] flettesortering splitt + fletteOpp beats — cells live only at the deepest-visible level; higher/lower bracket rows render empty.** In `motion/algdat/flettesortering.jsx` `SplittBeat` and `FletteOppBeat`, the 8 value cells are positioned at `deepestVisibleLevel` (Splitt) or `shallowestLanded` (FletteOpp) only — the brackets at the other 2–3 levels draw in but their cells stay invisible. At any midpoint snapshot the tree shows one populated row of cells and 2–3 ghost-only bracket rows. Choreography is technically correct (cells lerp DOWN through levels as splits happen, then UP through levels as merges happen) and the takeaway works, but visually it can read as "data evaporated from the other rows" instead of "same data, regrouped." Fix options: (a) render dimmed ghost copies of every value at every visible level (so all four rows always have numbers), or (b) keep cells at their *deepest reached* level and only animate the new wave onto a fresh row above/below, so all already-landed levels stay populated. The flette (two-pointer merge) beat between them is excellent and not affected. Reviewer flagged on 2026-06-17.
+
 - **ADE chapter map** (Supabase `public.chapters` for `subject_id='ade'`, 10 chapters as of 2026-05-13): ch.1 Kretsteori, ch.2 Energi og effekt, ch.3 Superposisjon og Thévenin, ch.4 Dioder, ch.5 Digital elektronikk, ch.6 Transistorer, ch.7 Minne og register, ch.8 Reaktive elementer, ch.9 Operasjonsforsterker, ch.10 Digital design. Current scene coverage (after the 2026-05-21 PM run): ch.1 (KVL, voltage-divider, KCL, ohms-law, current-divider — 5), ch.2 (capacitor-energy, inductor-energy, max-power-transfer, joule-heating, power-triangle — 5), ch.3 (Thévenin, Norton, superposition, source-transformations, wheatstone-bridge — 5), ch.4 (half-wave-rectifier, full-wave-bridge-rectifier, zener-clipper, diode-iv-curve, diode-clamper, **voltage-doubler** — added tonight — 6), ch.5 (NAND universality, two's-complement, hexadecimal-counting, binary-addition, full-adder — 5), ch.6 (mosfet-switch, bjt-load-line, cmos-inverter, bjt-current-mirror, emitter-follower, **mosfet-transfer-characteristic** — added tonight — 6), ch.7 (D flip-flop, shift-register, SR latch, jk-flip-flop, ripple-counter, t-flip-flop — 6), ch.8 (phasor-rotation, low-pass-bode, rc-charging, rl-transient, rlc-resonance, high-pass-bode, **ac-impedance-triangle** — added tonight — 7), ch.9 (inverting op-amp, non-inverting op-amp, summing-amplifier, integrator-op-amp, op-amp-comparator, schmitt-trigger — 6), ch.10 (K-map, FSM, multiplexer-4-to-1, 2-to-4 decoder, demultiplexer-1-to-4, priority-encoder — 6). Most under-served now: ch.1, ch.2, ch.3, ch.5 (tied at 5). Strongest follow-ups: mesh/nodal analysis (ch.1), AC power-factor correction or apparent-vs-real-power distinct from the existing power-triangle (ch.2), Millman's theorem or delta-Y conversion (ch.3), BCD/seven-segment decoder (ch.5), Schottky diode I-V (ch.4 if more wanted), JFET as an alternative transistor topic (ch.6), 555-timer architecture (ch.10 or new chapter).
 
 - **Mat2B chapter map** (Supabase `public.chapters` for `subject_id='mat2b'`, 6 chapters): ch.1 Vektorrom, ch.2 Lineærtransformasjoner, ch.3 Indreproduktrom, ch.4 Differensialligninger, ch.5 Funksjoner og derivasjon, ch.6 Ekstremalpunkter. Coverage after 2026-05-23 evening nightly: ch.1 (span-and-dependence, dimension-intuition, subspace-test, linear-combination-recipe, basis-uniqueness, null-space-as-line, polynomial-vectors — 7), ch.2 (rank-nullity-visual, change-of-basis-matrix, basis-change-grid, matrix-as-function, linear-transformation-grid, determinant-as-area, gaussian-elimination-2d, matrix-product-as-composition, rotation-matrix-family — 9), ch.3 (projection-onto-line, best-approximation, gram-schmidt-2d-then-3d, inner-product-geometry, orthogonal-complement, least-squares-normal-equations, **cauchy-schwarz-inequality**, **qr-factorisation-via-gram-schmidt**, **angle-preservation-by-rotation** — added tonight — 9), ch.4 (euler-step, euler-vs-rk4, second-order-to-system, diagonalisation-eigenaxes, phase-portrait-2x2, separable-variables-circles, newtons-law-of-cooling, characteristic-roots-regimes, **heun-improved-euler**, **explicit-vs-implicit-euler**, **numerical-orbit-energy-drift** — added 2026-05-24 PM numerical run — 11), ch.5 (gradient-and-level-curves, directional-derivative, tangent-plane-linearisation, multivariable-limit-paths, chain-rule-on-path, partial-derivative-as-slice, clairaut-mixed-partials, **implicit-slope-on-a-level-curve**, **velocity-acceleration-on-a-curve**, **gradient-steepest-ascent** — added 2026-05-24 ch.5 run — 10), ch.6 (global-extrema-triangle, hesse-eigenvalues, hessian-test, lagrange-multipliers, critical-points-gradient-field, quadratic-taylor-approximation, **gradient-descent-on-contours**, **extrema-on-a-circle**, **the-saddle-point** — added 2026-05-24 — 9). Most under-served now: ch.1 (7) alone, then ch.2/ch.3/ch.6 (9 each), ch.5 (10); ch.4 is the deepest (11). Strongest follow-ups: span-of-two-vectors-as-a-plane in R³ (ch.1 — sweep the two coefficients to fill the plane, collapse to a line for dependence; the lone strong motion-topic left in an otherwise saturated chapter), shear-decomposition (ch.2 — every 2×2 matrix factors as rotation × scaling × rotation via SVD). The 2026-05-24 ch.5 run closed the implicit-differentiation, vector-functions, and steepest-ascent-cosine gaps. **Curriculum correction (verified against the Nøkkelbegrep wiki + Plenum 5/6, 2026-05-24 PM):** TMA4411's ch.4 is a *numerical-methods* chapter (Uke 8–10: Euler, trapes/Crank–Nicolson, convergence, lokal feil, Runge–Kutta + Butcher-tablå, ordens-analyse, systemer/høyere orden) — it is NOT analytic ODE classification, so the old "exact-ODE / integrating-factor (ch.4 last classification slot)" follow-up does not match this course and was removed. Remaining ch.4 numerical gaps for a future run: trapezoidal / Crank–Nicolson as a distinct *implicit RK2* (this run did backward Euler only), the Butcher-tableau notation + explicit-vs-implicit reading (Plenum 5 oppg. 1b/2b), and local-vs-global truncation error / order via Taylor (Plenum 5 oppg. 3 — distinct from euler-vs-rk4's log-log comparison). Note: the 2026-05-24 ch.6 run covered boundary-parametrisation (`extrema-on-a-circle`), saddle geometry (`the-saddle-point`) and iterative minimisation (`gradient-descent-on-contours`); the 2026-05-24 PM run added the three ch.4 numerical scenes above. A KKT / inequality-constrained-on-a-closed-region scene is still open for ch.6 if more are wanted.
@@ -191,13 +197,15 @@ invent a chapter number to make the FK happy.
   ch.9 Dictionaries og sets, ch.10 Filbehandling og unntak, ch.11
   Rekursjon/sortering/søk, ch.12 NumPy, ch.13 Matplotlib, ch.14
   Objektorientering (TDT4109), ch.15 IKT-teori: maskinvare/binært/Git
-  (TDT4109). Coverage after the 2026-06-16 ch.9 nightly (depth-first
+  (TDT4109). Coverage after the 2026-06-17 ch.14 nightly (depth-first
   on the hardest chapters, all Norwegian, **not yet published** —
   awaiting user approval): ch.5 (`while-lokke-trace`), ch.6
   (`funksjonskall-og-scope`), ch.7 (`slicing-mellom-tegnene` — added
   2026-06-15), ch.8 (`liste-referanser`), ch.9
   (`dict-oppslag-vs-liste-sok` — added 2026-06-16), ch.11
-  (`rekursjon-kallstabel`, `binaersok-halvering`). **Norwegian audio
+  (`rekursjon-kallstabel`, `binaersok-halvering`), ch.14
+  (`klasse-og-objekt` — added 2026-06-17, blueprint mal card stamping
+  out rex and luna with the self pointer swinging between them). **Norwegian audio
   pin:** voice Liam `TX3LPaxmHKxFdv7VOQHJ`, model `eleven_turbo_v2_5`,
   `language_code: "no"` — wired as automatic default in
   generate-audio.js for `language: "no"`; multilingual_v2 renders bokmål
