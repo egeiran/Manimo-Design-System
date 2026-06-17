@@ -1,0 +1,37 @@
+{
+  "sceneId": "binaerhaug-sift-opp",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/binaerhaug-sift-opp/scene.mp3",
+  "durationSec": 54.1,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "En maks-haug holder alltid det største øverst. Hva skjer når et nytt tall kommer inn nederst?"
+    },
+    {
+      "id": "struktur",
+      "audioStart": 5.96,
+      "narration": "Hver forelder er minst like stor som barna — det er regelen som må holde. Vi lagrer haugen som en liste, og barna til indeks i ligger på to i pluss én og to i pluss to."
+    },
+    {
+      "id": "siftOpp",
+      "audioStart": 19.32,
+      "narration": "Førtisju kommer inn på neste ledige plass. Den er større enn forelderen ti — bytt. Større enn tretti — bytt igjen. Men førtisju er mindre enn femti, så vi stopper. Tallet har boblet oppover til regelen holder."
+    },
+    {
+      "id": "kjoretid",
+      "audioStart": 36,
+      "narration": "I verste fall klatrer det nye tallet helt opp til roten. Treet er balansert med høyde log to av n, så innsetting bruker bare orden log n bytter. En million tall — omtrent tjue bytter."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 49.34,
+      "narration": "Boble oppover, ett bytte om gangen — så ligger den største alltid på toppen."
+    }
+  ]
+}

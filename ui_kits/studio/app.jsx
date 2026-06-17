@@ -154,6 +154,7 @@ const initialScenes = [
   { id: 'live-implicit-slope-on-a-level-curve', kind: 'live', kindLabel: 'Live', cardTitle: 'Implicit Differentiation: Slope Along a Level Curve', duration: '0:48', html: '../../motion/mat2b/implicit-slope-on-a-level-curve.html' },
   { id: 'live-velocity-acceleration-on-a-curve', kind: 'live', kindLabel: 'Live', cardTitle: 'Vector Functions: Velocity and Acceleration', duration: '0:41', html: '../../motion/mat2b/velocity-acceleration-on-a-curve.html' },
   { id: 'live-gradient-steepest-ascent', kind: 'live', kindLabel: 'Live', cardTitle: 'Why the Gradient Is Steepest: A Cosine of Heading', duration: '0:43', html: '../../motion/mat2b/gradient-steepest-ascent.html' },
+  { id: 'live-binaerhaug-sift-opp', kind: 'live', kindLabel: 'Live', cardTitle: 'Max-Heap: A New Number Bubbles Up', duration: 56, html: '../../motion/algdat/binaerhaug-sift-opp.html' },
 ];
 
 function loadJSON(key, fallback) {

@@ -1,0 +1,173 @@
+{
+  "id": "binaerhaug-sift-opp",
+  "title": "Maks-haug: et nytt tall bobler oppover",
+  "eyebrow": "hauger",
+  "language": "no",
+  "duration": 56,
+  "topic": "Hva skjer når et nytt tall settes inn i en maks-haug? Det lander nederst, og bobler så oppover gjennom treet — sammenligner med forelderen, bytter hvis det er større, og stopper når regelen igjen holder. Vist med to synkroniserte vinduer: det balanserte treet og lista bak. Førtisju kommer inn på indeks sju, klatrer forbi ti, så forbi tretti, og stopper under femti. To bytter, ikke n — orden log n innsettinger på en million-elementers haug.",
+  "subject_id": "algdat",
+  "chapter_number": 5,
+  "prerequisites": [
+    "asymptotisk-vekst"
+  ],
+  "concepts": [
+    "maks-haug",
+    "binært tre",
+    "sift-opp",
+    "haug-regelen",
+    "log n innsetting"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 5.96,
+      "narration": "En maks-haug holder alltid det største øverst. Hva skjer når et nytt tall kommer inn nederst?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Hvor havner et nytt tall i haugen?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "struktur",
+      "start": 5.96,
+      "end": 19.32,
+      "narration": "Hver forelder er minst like stor som barna — det er regelen som må holde. Vi lagrer haugen som en liste, og barna til indeks i ligger på to i pluss én og to i pluss to.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "binært tre med syv noder: 50 i roten, 30 og 40 på neste nivå, 10, 20, 35, 25 nederst — kanter trekkes inn fra rot mot blad",
+            "delay": 0.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "diagram-box",
+            "content": "samme syv tall som array-rad med indekser 0-6, koblet til tre-noden med samme verdi gjennom et fadende glow",
+            "delay": 4,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "regelen: hver forelder ≥ begge barn  ·  barn(i) = 2i+1, 2i+2",
+            "delay": 7,
+            "color": "var(--chalk-200)",
+            "position": "under bordet, mono"
+          }
+        ]
+      }
+    },
+    {
+      "id": "siftOpp",
+      "start": 19.32,
+      "end": 36,
+      "narration": "Førtisju kommer inn på neste ledige plass. Den er større enn forelderen ti — bytt. Større enn tretti — bytt igjen. Men førtisju er mindre enn femti, så vi stopper. Tallet har boblet oppover til regelen holder.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "førtisju dukker opp på indeks 7 (nederst, under 10) — fades inn i amber",
+            "delay": 0.5,
+            "color": "var(--amber-300)",
+            "note": "GENUINE MOTION — new node enters at the bottom of the tree AND at the end of the array, then bubbles up two swap arcs"
+          },
+          {
+            "type": "svg-path",
+            "content": "sammenligningsglow rundt 47 og 10, så en parabolsk bytte-bue: 47 stiger til indeks 3, 10 faller til indeks 7 — i lista flyttes verdiene mellom cellene",
+            "delay": 4,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "sammenligningsglow rundt 47 og 30, så bytte-bue: 47 stiger til indeks 1, 30 faller til indeks 3",
+            "delay": 9,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "svg-path",
+            "content": "sammenligningsglow rundt 47 og 50 — verdiknapp lyser teal, ingen bytte, stopp-merket pulserer",
+            "delay": 14,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "verdier i ledetekst: «større — bytt» × 2, «mindre — stopp»",
+            "delay": 4,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kjoretid",
+      "start": 36,
+      "end": 49.34,
+      "narration": "I verste fall klatrer det nye tallet helt opp til roten. Treet er balansert med høyde log to av n, så innsetting bruker bare orden log n bytter. En million tall — omtrent tjue bytter.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "stilisert dypere tre med 4-5 nivåer — en høydebjelke til venstre med teksten log₂ n, et nytt rødt tall stiger nivå for nivå fra blad til rot",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-formula",
+            "content": "1 000 000 tall  →  ca. 20 bytter",
+            "delay": 5,
+            "color": "var(--amber-300)",
+            "position": "below diagram, mono"
+          },
+          {
+            "type": "text-caption",
+            "content": "innsetting: O(log n) — ikke O(n)",
+            "delay": 7.5,
+            "color": "var(--chalk-100)",
+            "position": "below formula, mono"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 49.34,
+      "end": 56,
+      "narration": "Boble oppover, ett bytte om gangen — så ligger den største alltid på toppen.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Boble oppover til regelen igjen holder.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "den største ligger alltid på toppen",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono"
+          }
+        ]
+      }
+    }
+  ]
+}

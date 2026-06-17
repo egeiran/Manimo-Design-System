@@ -3614,6 +3614,29 @@
       ],
       "subject_id": "algdat",
       "chapter_number": 3
+    },
+    {
+      "id": "binaerhaug-sift-opp",
+      "file": "binaerhaug-sift-opp.jsx",
+      "html": "binaerhaug-sift-opp.html",
+      "spec": "binaerhaug-sift-opp.spec.json",
+      "title": "Maks-haug: et nytt tall bobler oppover",
+      "eyebrow": "hauger",
+      "topic": "Hva skjer når et nytt tall settes inn i en maks-haug? Det lander nederst, og bobler så oppover gjennom treet — sammenligner med forelderen, bytter hvis det er større, og stopper når regelen igjen holder. Vist med to synkroniserte vinduer: det balanserte treet og lista bak. Førtisju kommer inn på indeks sju, klatrer forbi ti, så forbi tretti, og stopper under femti. To bytter, ikke n — orden log n innsettinger på en million-elementers haug.",
+      "duration": 56,
+      "language": "no",
+      "prerequisites": [
+        "asymptotisk-vekst"
+      ],
+      "concepts": [
+        "maks-haug",
+        "binært tre",
+        "sift-opp",
+        "haug-regelen",
+        "log n innsetting"
+      ],
+      "subject_id": "algdat",
+      "chapter_number": 5
     }
   ]
 }
