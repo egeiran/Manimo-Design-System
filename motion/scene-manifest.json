@@ -3641,6 +3641,30 @@
       "chapter_number": 14
     },
     {
+      "id": "betingelser-jernbanevekslere",
+      "file": "betingelser-jernbanevekslere.jsx",
+      "html": "betingelser-jernbanevekslere.html",
+      "spec": "betingelser-jernbanevekslere.spec.json",
+      "title": "if, elif, else: jernbaneveksleren",
+      "eyebrow": "betingelser",
+      "topic": "Klassikeren «hvorfor kjørte ikke alle de andre?»: if, elif og else er ikke tre uavhengige spørsmål, men én jernbaneveksler hvor bare ett spor blir åpent. Vist med en levende rute der verdien ruller ned spina, første veksler sier nei og lyser rosa, andre sier ja og lyser teal — og B låses fast mens resten av sjekkene aldri kjører. En ny verdi triller helt ned til else.",
+      "duration": 59,
+      "language": "no",
+      "prerequisites": [
+        "while-lokke-trace"
+      ],
+      "concepts": [
+        "if-setning",
+        "elif",
+        "else",
+        "betingelse",
+        "kontrollflyt",
+        "kort-slutning"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 4
+    },
+    {
       "id": "binaerhaug-sift",
       "file": "binaerhaug-sift.jsx",
       "html": "binaerhaug-sift.html",

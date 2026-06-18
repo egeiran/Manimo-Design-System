@@ -1,0 +1,138 @@
+{
+  "id": "betingelser-jernbanevekslere",
+  "title": "if, elif, else: jernbaneveksleren",
+  "eyebrow": "betingelser",
+  "language": "no",
+  "duration": 59,
+  "topic": "Klassikeren «hvorfor kjørte ikke alle de andre?»: if, elif og else er ikke tre uavhengige spørsmål, men én jernbaneveksler hvor bare ett spor blir åpent. Vist med en levende rute der verdien ruller ned spina, første veksler sier nei og lyser rosa, andre sier ja og lyser teal — og B låses fast mens resten av sjekkene aldri kjører. En ny verdi triller helt ned til else.",
+  "subject_id": "itgk",
+  "chapter_number": 4,
+  "prerequisites": [
+    "while-lokke-trace"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.99,
+      "narration": "Tre veier ut av en if-blokk, men bare én blir åpen. Hvordan vet datamaskinen hvilken som skal kjøre?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Bare ett spor blir åpent.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kode",
+      "start": 7.99,
+      "end": 22.83,
+      "narration": "Tenk på en liten karakterfunksjon. Er prosenten nittien eller mer, gir vi A. Hvis ikke, men minst sekstien, blir det B. Ellers en F. Og vi spør om karakteren til femogåtti.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "def karakter(p):\n    if p >= 90:\n        return \"A\"\n    elif p >= 60:\n        return \"B\"\n    else:\n        return \"F\"\n\nprint(karakter(85))",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left, reveal lines one by one",
+            "note": "CodeBlock reveal='lines'"
+          },
+          {
+            "type": "text-caption",
+            "content": "Tre porter i samme blokk — hvem slipper p gjennom?",
+            "delay": 4,
+            "color": "var(--chalk-300)",
+            "position": "panel right"
+          }
+        ]
+      }
+    },
+    {
+      "id": "trace85",
+      "start": 22.83,
+      "end": 38.21,
+      "narration": "Femogåtti ruller ned til første veksler. Nittien eller mer? Nei, og sporet stenger — A blir aldri rørt. Videre ned: sekstien eller mer? Ja, og dermed låses B. Else-grenen blir aldri sjekket.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "samme kode, kjøre-markøren går fra linje to (sjekk) til linje fire (sjekk) til linje fem (kjør)",
+            "delay": 0.3,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — CodeBlock highlight driven by trace phase"
+          },
+          {
+            "type": "diagram-box",
+            "content": "right panel: a vertical rail with three switch nodes; an 85-marker descends, switch 1 lights rose (false), then switch 2 lights teal (true), the marker routes east onto the B-branch, and the B chip lights amber.",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "panel right"
+          }
+        ]
+      }
+    },
+    {
+      "id": "trace45",
+      "start": 38.21,
+      "end": 49.2,
+      "narration": "Prøv igjen, men denne gangen med femogførti. Nittien? Nei. Sekstien? Nei heller. Da fanger else opp resten — og det blir en F.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "markøren går linje to, fire, seks, syv — to falske sjekker, deretter else fanger resten",
+            "delay": 0.3,
+            "color": "var(--rose-400)"
+          },
+          {
+            "type": "diagram-box",
+            "content": "samme rail; 45-marker triller forbi to rosa switchere og lander i else-grenen, F chip lights amber.",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "panel right"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 49.2,
+      "end": 59,
+      "narration": "Det er hele logikken. Sjekkene leses ovenfra og ned, og bare den første som er sann får kjøre. Resten blir hoppet over.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Bare den første sanne får kjøre.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "sjekk → første sanne → kjør → hopp over resten",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}
