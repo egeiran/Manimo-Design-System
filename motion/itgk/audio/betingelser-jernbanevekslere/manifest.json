@@ -1,0 +1,37 @@
+{
+  "sceneId": "betingelser-jernbanevekslere",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/betingelser-jernbanevekslere/scene.mp3",
+  "durationSec": 57.73,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Tre veier ut av en if-blokk, men bare én blir åpen. Hvordan vet datamaskinen hvilken som skal kjøre?"
+    },
+    {
+      "id": "kode",
+      "audioStart": 7.99,
+      "narration": "Tenk på en liten karakterfunksjon. Er prosenten nittien eller mer, gir vi A. Hvis ikke, men minst sekstien, blir det B. Ellers en F. Og vi spør om karakteren til femogåtti."
+    },
+    {
+      "id": "trace85",
+      "audioStart": 22.83,
+      "narration": "Femogåtti ruller ned til første veksler. Nittien eller mer? Nei, og sporet stenger — A blir aldri rørt. Videre ned: sekstien eller mer? Ja, og dermed låses B. Else-grenen blir aldri sjekket."
+    },
+    {
+      "id": "trace45",
+      "audioStart": 38.21,
+      "narration": "Prøv igjen, men denne gangen med femogførti. Nittien? Nei. Sekstien? Nei heller. Da fanger else opp resten — og det blir en F."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 49.2,
+      "narration": "Det er hele logikken. Sjekkene leses ovenfra og ned, og bare den første som er sann får kjøre. Resten blir hoppet over."
+    }
+  ]
+}
