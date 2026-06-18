@@ -3663,6 +3663,30 @@
       ],
       "subject_id": "itgk",
       "chapter_number": 4
+    },
+    {
+      "id": "binaerhaug-sift",
+      "file": "binaerhaug-sift.jsx",
+      "html": "binaerhaug-sift.html",
+      "spec": "binaerhaug-sift.spec.json",
+      "title": "Binærhaug: sift opp",
+      "eyebrow": "hauger",
+      "topic": "En binærhaug er det samme objektet sett på to måter — som et tre der hver forelder er større enn barna, og som en flat liste der forelderen til celle i ligger på i minus en delt på to. Når vi setter inn nittitalls verdi nederst i lista, vandrer den oppover ved å bytte plass med forelderen sin så lenge den er større. Tre bytter senere står den på toppen. Hver innsetting koster orden log n fordi banen fra et blad til rota har høyden til treet — og treet har høyde log to av n.",
+      "duration": 64,
+      "language": "no",
+      "prerequisites": [
+        "asymptotisk-vekst"
+      ],
+      "concepts": [
+        "binærhaug",
+        "max-heap",
+        "sift opp",
+        "tre + array dualview",
+        "heap-egenskap",
+        "log n"
+      ],
+      "subject_id": "algdat",
+      "chapter_number": 5
     }
   ]
 }

@@ -1,0 +1,37 @@
+{
+  "sceneId": "binaerhaug-sift",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/binaerhaug-sift/scene.mp3",
+  "durationSec": 62.14,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du har en stadig voksende haug med tall, og du vil hele tiden vite det største. Kan du det uten å sortere alt på nytt? En binærhaug klarer det."
+    },
+    {
+      "id": "dualView",
+      "audioStart": 9.25,
+      "narration": "En binærhaug er det samme objektet sett på to måter. Som et tre der hver forelder er større enn barna, og som en flat liste der forelderen til celle i ligger på i minus en delt på to. Toppen av treet er alltid det største tallet."
+    },
+    {
+      "id": "siftOpp",
+      "audioStart": 25.03,
+      "narration": "Sett inn nitti nederst i lista. Større enn forelderen femten? Bytt. Større enn forelderen tjue? Bytt. Større enn rota femtifem? Bytt. Tre bytter, og nitti står på toppen."
+    },
+    {
+      "id": "heightLogN",
+      "audioStart": 40.77,
+      "narration": "Hvor mange bytter måtte vi gjøre? Aldri flere enn høyden på treet. Et tre med n celler har høyde log to av n. Sift opp koster orden log n."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 52.42,
+      "narration": "Det er trikset. Hver innsetting, hvert største-uttak, alt for orden log n. Selv med en million tall — bare tjue nivåer å klatre."
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "id": "binaerhaug-sift",
+  "title": "Binærhaug: sift opp",
+  "eyebrow": "hauger",
+  "language": "no",
+  "duration": 64,
+  "topic": "En binærhaug er det samme objektet sett på to måter — som et tre der hver forelder er større enn barna, og som en flat liste der forelderen til celle i ligger på i minus en delt på to. Når vi setter inn nittitalls verdi nederst i lista, vandrer den oppover ved å bytte plass med forelderen sin så lenge den er større. Tre bytter senere står den på toppen. Hver innsetting koster orden log n fordi banen fra et blad til rota har høyden til treet — og treet har høyde log to av n.",
+  "subject_id": "algdat",
+  "chapter_number": 5,
+  "prerequisites": [
+    "asymptotisk-vekst"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 9.25,
+      "narration": "Du har en stadig voksende haug med tall, og du vil hele tiden vite det største. Kan du det uten å sortere alt på nytt? En binærhaug klarer det.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Hold alltid det største øverst.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dualView",
+      "start": 9.25,
+      "end": 25.03,
+      "narration": "En binærhaug er det samme objektet sett på to måter. Som et tre der hver forelder er større enn barna, og som en flat liste der forelderen til celle i ligger på i minus en delt på to. Toppen av treet er alltid det største tallet.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "Tre til venstre: rota 55 på topp; barn 20 og 50; blader 15, 18, 40, 45. Hver kant trekkes inn; hver forelder pulser kort amber for å signalisere heap-egenskapen — forelderen er større.",
+            "delay": 0.4,
+            "color": "var(--amber-400)",
+            "position": "left half",
+            "note": "House pattern: nodes are LabeledBox-style sirkler med tall i mono; kanter er TraceIn lines."
+          },
+          {
+            "type": "diagram-box",
+            "content": "Array til høyre: åtte celler i en horisontal rekke. Cellene 0..6 fylles med 55, 20, 50, 15, 18, 40, 45 i rekkefølge. En lett amber linje peker fra hver celle til den tilsvarende node i treet for å vise korrespondansen.",
+            "delay": 1.8,
+            "color": "var(--amber-300)",
+            "position": "right half",
+            "note": "Cell index labels (mono, chalk-300) sit above each cell. The 8th cell is empty (dashed) — reserved for the insertion."
+          },
+          {
+            "type": "text-formula",
+            "content": "forelder(i) = (i − 1) // 2",
+            "delay": 8,
+            "color": "var(--amber-300)",
+            "position": "centred below, mono"
+          }
+        ]
+      }
+    },
+    {
+      "id": "siftOpp",
+      "start": 25.03,
+      "end": 40.77,
+      "narration": "Sett inn nitti nederst i lista. Større enn forelderen femten? Bytt. Større enn forelderen tjue? Bytt. Større enn rota femtifem? Bytt. Tre bytter, og nitti står på toppen.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "GENUINE MOTION — 90 lander først i den ledige bladposisjonen (indeks 7, under 15). Tre swap-trinn bobler 90 opp: bytt med 15 (slot 7 ↔ 3), bytt med 20 (slot 3 ↔ 1), bytt med 55 (slot 1 ↔ 0). Hvert trinn animerer som en faktisk bytting både i treet (noden glir oppover langs kanten) og i lista (cellene blinker amber under byttet).",
+            "delay": 0.6,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — the data structure actually MOVES. Three step beats inside the sprite: each step shows the compare badge ('90 > 15 → bytt'), the swap motion, then a brief pause before the next step. Banen 90 tar oppover får en svak amber glødestripe."
+          },
+          {
+            "type": "text-formula",
+            "content": "trinn 1 av 3 · 90 > 15 → bytt",
+            "delay": 4,
+            "color": "var(--amber-300)",
+            "position": "compare badge, mono — updates per step"
+          }
+        ]
+      }
+    },
+    {
+      "id": "heightLogN",
+      "start": 40.77,
+      "end": 52.42,
+      "narration": "Hvor mange bytter måtte vi gjøre? Aldri flere enn høyden på treet. Et tre med n celler har høyde log to av n. Sift opp koster orden log n.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "Treet vises etter sift-up. Banen 90 tok fra bladnivået til rota lyser amber. En høyde-brakett til høyre for treet markerer de tre nivåene — log₂(8) = 3.",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "note": "Het sift-bane (slot 7 → 3 → 1 → 0) viste amber. Bracket annotates 'høyde = log₂ n'."
+          },
+          {
+            "type": "text-formula",
+            "content": "høyde ≈ log₂ n  ⇒  sift opp ∈ O(log n)",
+            "delay": 3.4,
+            "color": "var(--amber-300)",
+            "position": "below tree, mono"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 52.42,
+      "end": 64,
+      "narration": "Det er trikset. Hver innsetting, hvert største-uttak, alt for orden log n. Selv med en million tall — bare tjue nivåer å klatre.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "innsetting · uttak-av-største · O(log n)",
+            "delay": 0.4,
+            "color": "var(--amber-300)",
+            "position": "center, mono"
+          },
+          {
+            "type": "text-caption",
+            "content": "En million tall — tjue nivåer å klatre.",
+            "delay": 2.4,
+            "color": "var(--chalk-100)",
+            "position": "below, serif italic"
+          }
+        ]
+      }
+    }
+  ]
+}
