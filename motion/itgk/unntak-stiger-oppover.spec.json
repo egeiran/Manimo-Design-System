@@ -1,0 +1,161 @@
+{
+  "id": "unntak-stiger-oppover",
+  "title": "Unntak: feilen stiger oppover",
+  "eyebrow": "unntak",
+  "language": "no",
+  "duration": 64,
+  "topic": "Et unntak stopper ikke koden der den oppstår — den stiger oppover kallstabelen, ramme for ramme, til den finner en except som passer. Vist med samme program kjørt to ganger: først uten håndtak (feilen rømmer ut til topps og krasjer programmet med en sporing), så pakket inn i try og except (feilen stiger som før, men fanges i hovedrammen og programmet skriver en vennlig beskjed i stedet).",
+  "subject_id": "itgk",
+  "chapter_number": 10,
+  "prerequisites": [
+    "funksjonskall-og-scope"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 11.39,
+      "narration": "Hva skjer når noe går galt i koden? Python stopper ikke stille — den sender en feilmelding oppover gjennom kallstabelen, og leter etter noen som kan ta imot.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Når noe går galt, hvem rydder opp?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kode",
+      "start": 11.39,
+      "end": 23.82,
+      "narration": "Her ber programmet om et tall, sender det til behandle, som sender det videre til parse. Parse prøver å lage et heltall. Hva om brukeren skriver bokstaver i stedet?",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "def parse(s):\n    return int(s)\n\ndef behandle(s):\n    return 10 / parse(s)\n\ns = input(\"tall: \")\nprint(behandle(s))",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left, reveal lines one by one",
+            "note": "CodeBlock reveal='lines' with fontVariantLigatures none"
+          },
+          {
+            "type": "text-caption",
+            "content": "Brukeren skriver \"hei\" — ikke et tall.",
+            "delay": 4,
+            "color": "var(--chalk-300)",
+            "position": "panel right"
+          },
+          {
+            "type": "diagram-box",
+            "content": "stable-ramme-rad bygges visuelt opp under koden",
+            "delay": 7,
+            "color": "var(--amber-300)",
+            "position": "panel right"
+          }
+        ]
+      }
+    },
+    {
+      "id": "utenHandtak",
+      "start": 23.82,
+      "end": 39.21,
+      "narration": "Inne i parse oppstår en verdifeil. Feilen stiger oppover, ramme for ramme. Behandle har ingen håndtak. Hovedprogrammet heller ikke. Feilen rømmer ut, og Python skriver en sporing og avslutter.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "samme kode, men nå med en kjøre-markør og en rød verdifeil-knapp som spawner i parse",
+            "delay": 0.3,
+            "color": "var(--rose-400)",
+            "note": "GENUINE MOTION — exception chip rises through three stack frames, each frame flashes rose then drops as the chip passes; chip exits top, traceback panel appears below"
+          },
+          {
+            "type": "diagram-box",
+            "content": "tre stabel-rammer: hovedprogram, behandle, parse; en rosa ValueError-knapp stiger fra parse, gjennom behandle, gjennom hovedprogrammet, og rømmer ut",
+            "delay": 0.5,
+            "color": "var(--rose-400)",
+            "position": "panel right"
+          },
+          {
+            "type": "text-caption",
+            "content": "Traceback: programmet krasjer",
+            "delay": 10,
+            "color": "var(--rose-300)",
+            "position": "below stack, mono"
+          }
+        ]
+      }
+    },
+    {
+      "id": "medHandtak",
+      "start": 39.21,
+      "end": 54.57,
+      "narration": "Pakk kallet inn i en try-blokk, og legg til en except for verdifeil. Nå stiger feilen oppover som før, men i hovedprogrammet venter et håndtak. Feilen fanges, og brukeren får en vennlig beskjed i stedet for en krasj.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "samme kode med try-blokk rundt print(behandle(s)) og except ValueError under",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "note": "CodeBlock med try-band highlighted teal når feilen fanges"
+          },
+          {
+            "type": "diagram-box",
+            "content": "samme tre rammer med try-bånd festet til hovedprogrammet; rosa chip stiger fra parse, gjennom behandle, og lander i try-båndet der den fanges og blir teal",
+            "delay": 0.5,
+            "color": "var(--teal-400)",
+            "position": "panel right",
+            "note": "GENUINE MOTION — same rising motion, but lands at the try band instead of escaping"
+          },
+          {
+            "type": "text-caption",
+            "content": "Utskrift: Kunne ikke tolke",
+            "delay": 10,
+            "color": "var(--amber-300)",
+            "position": "below stack, mono payoff"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 54.57,
+      "end": 64,
+      "narration": "Et unntak stiger oppover, ramme for ramme. Finner det en passende except, fortsetter programmet. Finner det ingen, krasjer alt.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Stiger oppover, ramme for ramme.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "raise → except → fortsett",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}
