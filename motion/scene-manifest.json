@@ -3689,6 +3689,31 @@
       "chapter_number": 5
     },
     {
+      "id": "unntak-stiger-oppover",
+      "file": "unntak-stiger-oppover.jsx",
+      "html": "unntak-stiger-oppover.html",
+      "spec": "unntak-stiger-oppover.spec.json",
+      "title": "Unntak: feilen stiger oppover",
+      "eyebrow": "unntak",
+      "topic": "Et unntak stopper ikke koden der den oppstår — den stiger oppover kallstabelen, ramme for ramme, til den finner en except som passer. Vist med samme program kjørt to ganger: først uten håndtak (en rosa ValueError-chip stiger fra parse, gjennom behandle, gjennom hovedrammen, rømmer ut og programmet krasjer med en sporing), så pakket inn i try og except (samme stigning, men chipen lander i try-båndet i hovedrammen, blir teal, og programmet skriver en vennlig beskjed).",
+      "duration": 64,
+      "language": "no",
+      "prerequisites": [
+        "funksjonskall-og-scope"
+      ],
+      "concepts": [
+        "unntak",
+        "raise",
+        "try",
+        "except",
+        "ValueError",
+        "kallstabel",
+        "stack unwinding"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 10
+    },
+    {
       "id": "dp-fylling-fib",
       "file": "dp-fylling-fib.jsx",
       "html": "dp-fylling-fib.html",

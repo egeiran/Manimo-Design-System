@@ -1,0 +1,37 @@
+{
+  "sceneId": "unntak-stiger-oppover",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/unntak-stiger-oppover/scene.mp3",
+  "durationSec": 62.56,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Hva skjer når noe går galt i koden? Python stopper ikke stille — den sender en feilmelding oppover gjennom kallstabelen, og leter etter noen som kan ta imot."
+    },
+    {
+      "id": "kode",
+      "audioStart": 11.39,
+      "narration": "Her ber programmet om et tall, sender det til behandle, som sender det videre til parse. Parse prøver å lage et heltall. Hva om brukeren skriver bokstaver i stedet?"
+    },
+    {
+      "id": "utenHandtak",
+      "audioStart": 23.82,
+      "narration": "Inne i parse oppstår en verdifeil. Feilen stiger oppover, ramme for ramme. Behandle har ingen håndtak. Hovedprogrammet heller ikke. Feilen rømmer ut, og Python skriver en sporing og avslutter."
+    },
+    {
+      "id": "medHandtak",
+      "audioStart": 39.21,
+      "narration": "Pakk kallet inn i en try-blokk, og legg til en except for verdifeil. Nå stiger feilen oppover som før, men i hovedprogrammet venter et håndtak. Feilen fanges, og brukeren får en vennlig beskjed i stedet for en krasj."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 54.57,
+      "narration": "Et unntak stiger oppover, ramme for ramme. Finner det en passende except, fortsetter programmet. Finner det ingen, krasjer alt."
+    }
+  ]
+}
