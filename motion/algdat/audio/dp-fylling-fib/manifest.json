@@ -1,0 +1,37 @@
+{
+  "sceneId": "dp-fylling-fib",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/dp-fylling-fib/scene.mp3",
+  "durationSec": 69.52,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du vil regne fib av fem. Den rekursive definisjonen ser uskyldig ut — men hvor mange kall trenger maskinen før den er ferdig?"
+    },
+    {
+      "id": "naivRekursjon",
+      "audioStart": 9.36,
+      "narration": "Hvert fib-kall splitter i to nye kall, helt til vi treffer fib av én eller fib av null. Treet vokser nedover. Og se: fib av tre ligger der to ganger. Fib av to dukker opp tre ganger. Fib av én — fem. Hver eneste gang regner vi det samme på nytt."
+    },
+    {
+      "id": "dpFylling",
+      "audioStart": 27.68,
+      "narration": "Dynamisk programmering snur problemet på hodet. Vi starter med fib av null og fib av én, og fyller resten av tabellen oppover. Hver ny celle er bare summen av de to forrige. Og siden vi lagrer hvert svar, regner vi hvert delproblem nøyaktig én gang."
+    },
+    {
+      "id": "kontrast",
+      "audioStart": 47.67,
+      "narration": "Femten kall mot seks celler. Doble n, og det rekursive treet nesten tredobler seg, mens tabellen vokser med bare ett ledd om gangen. To i n-te mot n — eksponentielt mot lineært."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 61.79,
+      "narration": "Det er hele ideen bak dynamisk programmering. Husk svaret du allerede har regnet — så slipper du å regne det igjen."
+    }
+  ]
+}

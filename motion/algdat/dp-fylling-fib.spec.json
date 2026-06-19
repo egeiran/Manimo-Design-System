@@ -1,0 +1,135 @@
+{
+  "id": "dp-fylling-fib",
+  "title": "Dynamisk programmering: fyll tabellen",
+  "eyebrow": "dynamisk programmering",
+  "language": "no",
+  "duration": 71,
+  "topic": "Hvorfor er rekursiv Fibonacci så treg, og hva fikser dynamisk programmering? Det rekursive treet for fib av fem eksploderer til femten kall — samme delproblem regnes igjen og igjen. Dynamisk programmering snur problemet på hodet: en tabell fylles nedenfra, hver celle pluss-er sammen de to forrige, hver delsvar lagres én gang. Femten kall mot seks celler — eksponentiell mot lineær. Vist med en levende rekursjonstre der duplikate fib-noder lyser rose, og en DP-tabell der pilene fra forrige to celler tegnes inn før hvert nytt svar dukker opp.",
+  "subject_id": "algdat",
+  "chapter_number": 6,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 9.36,
+      "narration": "Du vil regne fib av fem. Den rekursive definisjonen ser uskyldig ut — men hvor mange kall trenger maskinen før den er ferdig?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Husk det du allerede har regnet.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "naivRekursjon",
+      "start": 9.36,
+      "end": 27.68,
+      "narration": "Hvert fib-kall splitter i to nye kall, helt til vi treffer fib av én eller fib av null. Treet vokser nedover. Og se: fib av tre ligger der to ganger. Fib av to dukker opp tre ganger. Fib av én — fem. Hver eneste gang regner vi det samme på nytt.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "rekursjonstre for fib av fem som vokser nedover gjennom fem lag; femten noder totalt; duplikat-noder for fib av tre, to, én og null flasher rose for å vise at samme delproblem regnes om igjen",
+            "delay": 0.4,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — tree expands TOP-DOWN level by level, edges TraceIn from parent to child; duplicate-call badge ticks up to 15; rose pulse on each repeated fib(k) when its second/third instance appears."
+          },
+          {
+            "type": "text-caption",
+            "content": "kallteller: 15",
+            "delay": 11,
+            "color": "var(--rose-300)",
+            "position": "top-right badge, mono"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dpFylling",
+      "start": 27.68,
+      "end": 47.67,
+      "narration": "Dynamisk programmering snur problemet på hodet. Vi starter med fib av null og fib av én, og fyller resten av tabellen oppover. Hver ny celle er bare summen av de to forrige. Og siden vi lagrer hvert svar, regner vi hvert delproblem nøyaktig én gang.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "DP-tabell med seks celler for F av null til F av fem; cellene har stiplet ramme i starten; cellene fylles én etter én fra venstre",
+            "delay": 0.6,
+            "color": "var(--amber-300)",
+            "note": "GENUINE MOTION — cells fill left to right; for i >= 2, two curved arrows TraceIn from cells i-1 and i-2 INTO cell i, then the value appears; counter ticks 1..6 cells; final F[5]=5 highlighted."
+          },
+          {
+            "type": "text-formula",
+            "content": "F[i] = F[i−1] + F[i−2]",
+            "delay": 1,
+            "color": "var(--amber-300)",
+            "position": "above the table, mono"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kontrast",
+      "start": 47.67,
+      "end": 61.79,
+      "narration": "Femten kall mot seks celler. Doble n, og det rekursive treet nesten tredobler seg, mens tabellen vokser med bare ett ledd om gangen. To i n-te mot n — eksponentielt mot lineært.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "to side-om-side statistikkbokser: naiv rekursjon — kallteller 15 (rose), eksponentiell vekst; DP — cellteller 6 (amber), lineær vekst",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "graph-curve",
+            "content": "lite plott under boksene: 2 i n-te (rose) skyter til værs mens n (amber) klyver flatt — n fra null til ti",
+            "delay": 2.4,
+            "color": "var(--rose-400)",
+            "note": "Two TraceIn curves in a compact plot box; rose 2^n (clipped) vs amber linear n."
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 61.79,
+      "end": 71,
+      "narration": "Det er hele ideen bak dynamisk programmering. Husk svaret du allerede har regnet — så slipper du å regne det igjen.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Husk svaret du allerede har regnet.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "2 i n-te → n",
+            "delay": 1.6,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}
