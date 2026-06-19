@@ -3712,6 +3712,28 @@
       ],
       "subject_id": "itgk",
       "chapter_number": 10
+    },
+    {
+      "id": "dp-fylling-fib",
+      "file": "dp-fylling-fib.jsx",
+      "html": "dp-fylling-fib.html",
+      "spec": "dp-fylling-fib.spec.json",
+      "title": "Dynamisk programmering: fyll tabellen",
+      "eyebrow": "dynamisk programmering",
+      "topic": "Hvorfor er rekursiv Fibonacci så treg, og hva fikser dynamisk programmering? Det rekursive treet for fib av fem eksploderer til femten kall — samme delproblem regnes igjen og igjen. Dynamisk programmering snur problemet på hodet: en tabell fylles nedenfra, hver celle pluss-er sammen de to forrige, hver delsvar lagres én gang. Femten kall mot seks celler — eksponentiell mot lineær. Vist med en levende rekursjonstre der duplikate fib-noder lyser rose, og en DP-tabell der pilene fra forrige to celler tegnes inn før hvert nytt svar dukker opp.",
+      "duration": 71,
+      "language": "no",
+      "prerequisites": [],
+      "concepts": [
+        "dynamisk programmering",
+        "memoisering",
+        "tabulering nedenfra og opp",
+        "Fibonacci",
+        "overlappende delproblemer",
+        "eksponentiell vs lineær kjøretid"
+      ],
+      "subject_id": "algdat",
+      "chapter_number": 6
     }
   ]
 }
