@@ -1,0 +1,167 @@
+{
+  "id": "f-strenger-hullene-fylles",
+  "title": "f-strenger: hullene fylles med verdier",
+  "eyebrow": "strenger",
+  "language": "no",
+  "duration": 48,
+  "topic": "Hvordan får du variabler inn i en setning uten å lime sammen med pluss og str-kall? En f-streng er en mal: en f foran anførselstegnet flagger den, krøllparentesene er hull, og resten er bokstaver Python lar stå. Vist ved å la to verdier — navn og alder — gli ut av sine variabelbokser og lande i hullene i malen, så bygges hele setningen opp tegn for tegn. Avsluttes med et hull som inneholder pris ganger antall — Python regner ut uttrykket inne i hullet og lar bare svaret bli stående igjen.",
+  "subject_id": "itgk",
+  "chapter_number": 3,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 8.85,
+      "narration": "Du har en variabel, og du vil putte den inn i en setning. Hvordan setter du strengen sammen uten å lime alt med pluss?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Sett verdien rett inn der den hører hjemme.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "anatomi",
+      "start": 8.85,
+      "end": 18.76,
+      "narration": "En f-streng er en mal. En f foran anførselstegnet flagger den, krøllparentesene er hull, og resten er bokstaver Python lar stå.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "f\"Hei {navn}! Du er {alder} år.\"",
+            "delay": 0.4,
+            "color": "var(--chalk-100)",
+            "position": "centre, mono, large",
+            "note": "Single line. The f-prefix tinted rose, the {navn} and {alder} slots framed amber, the literal text in chalk-100."
+          },
+          {
+            "type": "text-caption",
+            "content": "f-flagg · hull (slot) · bokstaver",
+            "delay": 2,
+            "color": "var(--chalk-300)",
+            "position": "below template, with three callout brackets connecting words to parts"
+          }
+        ]
+      }
+    },
+    {
+      "id": "glirInn",
+      "start": 18.76,
+      "end": 30.19,
+      "narration": "Variablene står klare i sine egne bokser. Når Python møter et hull, henter den verdien fra boksen og glir den inn på plassen — én etter én, til hele setningen er ferdig.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "to VarBoxes side om side øverst: navn = \"Ada\" og alder = 17",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "top row"
+          },
+          {
+            "type": "text-formula",
+            "content": "f\"Hei {navn}! Du er {alder} år.\"",
+            "delay": 1.2,
+            "color": "var(--chalk-100)",
+            "position": "middle row, slots highlighted amber, mono, no ligatures"
+          },
+          {
+            "type": "diagram-box",
+            "content": "value chip Ada og chip 17 glir fra hver VarBox og lander i sin slot",
+            "delay": 3,
+            "color": "var(--teal-400)",
+            "position": "interpolated between VarBox and slot",
+            "note": "GENUINE MOTION — value chips fly from VarBox to slot, slot content swaps from amber placeholder to teal value when chip lands; this is the data-model motion that earns the scene"
+          },
+          {
+            "type": "text-caption",
+            "content": "utskrift: Hei Ada! Du er 17 år.",
+            "delay": 9.5,
+            "color": "var(--amber-300)",
+            "position": "bottom row, mono payoff band"
+          }
+        ]
+      }
+    },
+    {
+      "id": "merEnnNavn",
+      "start": 30.19,
+      "end": 39.82,
+      "narration": "Hullet er ikke begrenset til et navn. Python regner ut det som står inni — som pris ganger antall — og lar bare svaret bli stående igjen.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "to VarBoxes: pris = 25 og antall = 4",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "top row"
+          },
+          {
+            "type": "text-formula",
+            "content": "print(f\"Totalt: {pris * antall} kroner\")",
+            "delay": 1.2,
+            "color": "var(--chalk-100)",
+            "position": "middle row, the slot {pris * antall} highlighted amber, mono"
+          },
+          {
+            "type": "text-formula",
+            "content": "inne i hullet: pris * antall → 25 * 4 → 100",
+            "delay": 4,
+            "color": "var(--teal-400)",
+            "position": "above the slot, three-step morph",
+            "note": "GENUINE MOTION — slot content evaluates step by step: expression → substituted values → final answer"
+          },
+          {
+            "type": "text-caption",
+            "content": "utskrift: Totalt: 100 kroner",
+            "delay": 9,
+            "color": "var(--amber-300)",
+            "position": "bottom row, mono payoff band"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 39.82,
+      "end": 48,
+      "narration": "En f-streng er en mal med hull. Python regner ut hver bit i hullet, og fyller den inn for deg.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "En mal med hull — Python fyller dem for deg.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "f\"... {uttrykk} ...\"",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}
