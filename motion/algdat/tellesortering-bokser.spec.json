@@ -1,0 +1,135 @@
+{
+  "id": "tellesortering-bokser",
+  "title": "Tellesortering: tall i bokser",
+  "eyebrow": "sortering i lineær tid",
+  "language": "no",
+  "duration": 63,
+  "topic": "Hvorfor kan vi sortere ti tall raskere enn n log n når tallene er små? Tellesortering sammenligner ingen par i det hele tatt — den gir hver mulig verdi sin egen boks, slipper input ned i riktig boks i én runde, og tømmer så boksene fra venstre mot høyre rett ut i utlista. Ti tall mellom én og seks faller en etter en ned i seks bokser, så strømmer ut igjen i sortert orden. Kjøretiden lander på orden n pluss k — lineær når k er liten.",
+  "subject_id": "algdat",
+  "chapter_number": 4,
+  "prerequisites": [
+    "asymptotisk-vekst",
+    "flettesortering"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.65,
+      "narration": "Kan du sortere ti tall uten å sammenligne et eneste par? Hvis tallene er små nok, kan du det.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Sortere — uten å sammenligne.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "oppsett",
+      "start": 7.65,
+      "end": 18.91,
+      "narration": "Vi har ti tall mellom én og seks. I stedet for å sammenligne dem, gir vi hver verdi sin egen boks. Seks bokser, én for hvert mulige tall.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "input-rad med ti tall traces inn øverst",
+            "delay": 0.3,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "diagram-box",
+            "content": "seks tomme bokser med etiketter 1 til 6 dukker opp under inputraden",
+            "delay": 2.5,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "telling",
+      "start": 18.91,
+      "end": 36.47,
+      "narration": "Vi går gjennom lista én gang. For hver verdi slipper vi tallet ned i den boksen som hører til. Tre — ned i boksen for tre. En — ned i boksen for én. Slik fortsetter vi til hele lista er flyttet inn i boksene.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "en peker vandrer langs input-raden; for hver indeks faller cellen ned i sin boks og stables nederst i boksen",
+            "delay": 0.8,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — ten input cells fly cell-by-cell down into six buckets, stacks growing"
+          },
+          {
+            "type": "text-caption",
+            "content": "telleren tikker fra 1 til 10",
+            "delay": 0.8,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "uttoeming",
+      "start": 36.47,
+      "end": 50.65,
+      "narration": "Nå tømmer vi boksene i rekkefølge fra venstre mot høyre. Først alle énerne, så toerne, så treerne, og videre. Det vi får ut er en sortert liste — uten å sammenligne to tall.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "bokser tømmes venstre-til-høyre; hver celle flyr fra boksen ned i neste ledige plass i utlista",
+            "delay": 0.6,
+            "color": "var(--amber-300)",
+            "note": "GENUINE MOTION — ten cells emit from six buckets into the output row in sorted order"
+          },
+          {
+            "type": "text-caption",
+            "content": "utlista fylles celle for celle",
+            "delay": 0.6,
+            "color": "var(--chalk-200)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 50.65,
+      "end": 63,
+      "narration": "En runde gjennom lista, og en runde gjennom boksene. Kjøretid orden n pluss k. Når k er liten, slår tellesortering selv den raskeste sammenligningsorteringen.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "O(n + k)",
+            "delay": 0.4,
+            "color": "var(--amber-300)",
+            "position": "centre, large mono"
+          },
+          {
+            "type": "text-caption",
+            "content": "Liten k → sortering uten en eneste sammenligning.",
+            "delay": 1.6,
+            "color": "var(--chalk-100)",
+            "position": "below, serif italic"
+          }
+        ]
+      }
+    }
+  ]
+}

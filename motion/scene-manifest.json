@@ -3734,6 +3734,31 @@
       ],
       "subject_id": "algdat",
       "chapter_number": 6
+    },
+    {
+      "id": "tellesortering-bokser",
+      "file": "tellesortering-bokser.jsx",
+      "html": "tellesortering-bokser.html",
+      "spec": "tellesortering-bokser.spec.json",
+      "title": "Tellesortering: tall i bokser",
+      "eyebrow": "sortering i lineær tid",
+      "topic": "Hvorfor kan vi sortere ti tall raskere enn n log n når tallene er små? Tellesortering sammenligner ingen par i det hele tatt — den gir hver mulig verdi sin egen boks, slipper input ned i riktig boks i én runde, og tømmer så boksene fra venstre mot høyre rett ut i utlista. Ti tall mellom én og seks faller en etter en ned i seks bokser, så strømmer ut igjen i sortert orden. Kjøretiden lander på orden n pluss k — lineær når k er liten.",
+      "duration": 63,
+      "language": "no",
+      "prerequisites": [
+        "asymptotisk-vekst",
+        "flettesortering"
+      ],
+      "concepts": [
+        "tellesortering",
+        "sortering uten sammenligning",
+        "bøtter",
+        "stabil sortering",
+        "lineær tid",
+        "n pluss k"
+      ],
+      "subject_id": "algdat",
+      "chapter_number": 4
     }
   ]
 }

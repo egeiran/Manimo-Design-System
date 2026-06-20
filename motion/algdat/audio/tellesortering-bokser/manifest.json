@@ -1,0 +1,37 @@
+{
+  "sceneId": "tellesortering-bokser",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/tellesortering-bokser/scene.mp3",
+  "durationSec": 62,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Kan du sortere ti tall uten å sammenligne et eneste par? Hvis tallene er små nok, kan du det."
+    },
+    {
+      "id": "oppsett",
+      "audioStart": 7.65,
+      "narration": "Vi har ti tall mellom én og seks. I stedet for å sammenligne dem, gir vi hver verdi sin egen boks. Seks bokser, én for hvert mulige tall."
+    },
+    {
+      "id": "telling",
+      "audioStart": 18.91,
+      "narration": "Vi går gjennom lista én gang. For hver verdi slipper vi tallet ned i den boksen som hører til. Tre — ned i boksen for tre. En — ned i boksen for én. Slik fortsetter vi til hele lista er flyttet inn i boksene."
+    },
+    {
+      "id": "uttoeming",
+      "audioStart": 36.47,
+      "narration": "Nå tømmer vi boksene i rekkefølge fra venstre mot høyre. Først alle énerne, så toerne, så treerne, og videre. Det vi får ut er en sortert liste — uten å sammenligne to tall."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 50.65,
+      "narration": "En runde gjennom lista, og en runde gjennom boksene. Kjøretid orden n pluss k. Når k er liten, slår tellesortering selv den raskeste sammenligningsorteringen."
+    }
+  ]
+}
