@@ -1,0 +1,37 @@
+{
+  "sceneId": "f-strenger-hullene-fylles",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/f-strenger-hullene-fylles/scene.mp3",
+  "durationSec": 46.07,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du har en variabel, og du vil putte den inn i en setning. Hvordan setter du strengen sammen uten å lime alt med pluss?"
+    },
+    {
+      "id": "anatomi",
+      "audioStart": 8.85,
+      "narration": "En f-streng er en mal. En f foran anførselstegnet flagger den, krøllparentesene er hull, og resten er bokstaver Python lar stå."
+    },
+    {
+      "id": "glirInn",
+      "audioStart": 18.76,
+      "narration": "Variablene står klare i sine egne bokser. Når Python møter et hull, henter den verdien fra boksen og glir den inn på plassen — én etter én, til hele setningen er ferdig."
+    },
+    {
+      "id": "merEnnNavn",
+      "audioStart": 30.19,
+      "narration": "Hullet er ikke begrenset til et navn. Python regner ut det som står inni — som pris ganger antall — og lar bare svaret bli stående igjen."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 39.82,
+      "narration": "En f-streng er en mal med hull. Python regner ut hver bit i hullet, og fyller den inn for deg."
+    }
+  ]
+}
