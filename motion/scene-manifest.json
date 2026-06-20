@@ -3736,6 +3736,28 @@
       "chapter_number": 6
     },
     {
+      "id": "f-strenger-hullene-fylles",
+      "file": "f-strenger-hullene-fylles.jsx",
+      "html": "f-strenger-hullene-fylles.html",
+      "spec": "f-strenger-hullene-fylles.spec.json",
+      "title": "f-strenger: hullene fylles med verdier",
+      "eyebrow": "strenger",
+      "topic": "En f-streng er en mal: en f foran anførselstegnet flagger den, krøllparentesene er hull, og resten er bokstaver Python lar stå. Vist ved å la verdiene navn og alder gli ut av sine variabelbokser og lande i hullene i malen, før den ferdige setningen Hei Ada! Du er 17 år bygger seg opp i en utskriftslinje. Avsluttes med et hull som inneholder pris ganger antall — Python regner ut uttrykket inne i hullet og lar bare svaret bli stående igjen.",
+      "duration": 48,
+      "language": "no",
+      "prerequisites": [],
+      "concepts": [
+        "f-streng",
+        "strengformatering",
+        "interpolasjon",
+        "mal med hull",
+        "uttrykk i strengen",
+        "print"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 3
+    },
+    {
       "id": "tellesortering-bokser",
       "file": "tellesortering-bokser.jsx",
       "html": "tellesortering-bokser.html",
