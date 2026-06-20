@@ -89,7 +89,7 @@ function layoutGeom(portrait) {
       bucketCellW: 38, bucketCellH: 32, bucketCellGap: 4,
       valueFont: 18, bucketLabelFont: 13,
       inputRowY: 240, bucketRowY: 380, outputRowY: 880,
-      counterX: 60, counterY: 1100, counterFont: 22,
+      counterX: 540, counterY: 1100, counterFont: 22,
       captionY: 1180, captionFont: 14,
       inputRowX: null,                             // null → centre
       outputRowX: null,
@@ -104,7 +104,7 @@ function layoutGeom(portrait) {
     bucketCellW: 44, bucketCellH: 38, bucketCellGap: 4,
     valueFont: 21, bucketLabelFont: 14,
     inputRowY: 132, bucketRowY: 215, outputRowY: 560,
-    counterX: 56, counterY: 638, counterFont: 26,
+    counterX: 1100, counterY: 638, counterFont: 26,
     captionY: 678, captionFont: 16,
     inputRowX: null,
     outputRowX: null,
