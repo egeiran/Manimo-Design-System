@@ -1,0 +1,175 @@
+{
+  "id": "for-lokke-range",
+  "title": "for-løkka og range: gå gjennom en ferdig rekke",
+  "eyebrow": "løkker",
+  "language": "no",
+  "duration": 65,
+  "topic": "Mens while jobber på en betingelse, plukker for-løkka verdier fra en ferdig rekke. range fra én til seks bygger en rad med fem tall, og for-løkka går igjennom dem én av gangen — pekeren hopper fra celle til celle, i tar verdien som ligger der, og summen vokser fra null til femten. Når rekka er tom, er løkka ferdig — og i beholder den siste verdien, ikke seks.",
+  "subject_id": "itgk",
+  "chapter_number": 5,
+  "prerequisites": [
+    "while-lokke-trace"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 9.49,
+      "narration": "Du har allerede en while-løkke. Hva gjør for-løkka så nyttig? Den lar deg gå gjennom en ferdig rekke verdier — én av gangen.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Én jobb per verdi — og rekka er allerede skrevet.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rangeBuilder",
+      "start": 9.49,
+      "end": 23.24,
+      "narration": "Først lager vi rekka. range fra én til seks gir oss en ferdig rad med tallene én, to, tre, fire, fem. Den siste verdien er ikke med — rekka stopper akkurat før seks.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "range(1, 6)",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "upper area, mono, big",
+            "note": "CodeBlock reveal='lines', a single line as title"
+          },
+          {
+            "type": "diagram-box",
+            "content": "five teal-toned cells [1][2][3][4][5] fade up in a row below the range line, one after another",
+            "delay": 1.4,
+            "color": "var(--teal-400)",
+            "position": "centred row below the code"
+          },
+          {
+            "type": "text-caption",
+            "content": "fra én, opp til men ikke med seks — halvåpent intervall.",
+            "delay": 3.6,
+            "color": "var(--chalk-300)",
+            "position": "below the row, sans serif"
+          },
+          {
+            "type": "text-formula",
+            "content": "range(a, b) bygger en ferdig rekke verdier.",
+            "delay": 7,
+            "color": "var(--chalk-100)",
+            "position": "small note above row, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "forSchritt",
+      "start": 23.24,
+      "end": 40.28,
+      "narration": "Nå tar for-løkka over. For hver verdi i rekka, binder Python verdien til navnet i, og kjører kroppen. Pekeren flytter seg ett hakk, i tar den nye verdien, og summen vokser. Runde etter runde, til siste celle er besøkt.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "total = 0\nfor i in range(1, 6):\n    total = total + i",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left or top — CodeBlock with body highlight per step",
+            "note": "GENUINE MOTION — highlight cycles between line 3 (header) and line 4 (body), driven by localTime through a 5-step schedule"
+          },
+          {
+            "type": "diagram-box",
+            "content": "the same five range cells visible; an amber pointer walks from cell to cell, visited cells dim, the current cell glows",
+            "delay": 0.3,
+            "color": "var(--amber-400)",
+            "position": "row centred along bottom (landscape) or middle (portrait)",
+            "note": "GENUINE MOTION — discrete hops with lerp glide between cells"
+          },
+          {
+            "type": "diagram-box",
+            "content": "two VarBoxes for i and total updating each step; amber flash when the line that owns them runs",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "position": "right panel or below row"
+          }
+        ]
+      }
+    },
+    {
+      "id": "etterpaa",
+      "start": 40.28,
+      "end": 52.88,
+      "narration": "Når rekka er tom, er løkka ferdig. Variabelen i beholder den siste verdien — fem, ikke seks — og summen står på femten. Programmet skriver ut svaret.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "total = 0\nfor i in range(1, 6):\n    total = total + i\nprint(total)",
+            "delay": 0.3,
+            "color": "var(--amber-400)",
+            "position": "highlight on print line",
+            "note": "CodeBlock highlight='4' (print line) — amber accent"
+          },
+          {
+            "type": "diagram-box",
+            "content": "row of five cells, all dimmed (rekka tom)",
+            "delay": 0.3,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "diagram-box",
+            "content": "VarBoxes settled: i = 5 (rose accent for surprise), total = 15 (amber payoff). A subtle annotation: «i ble fem, ikke seks».",
+            "delay": 0.8,
+            "color": "var(--rose-300)"
+          },
+          {
+            "type": "diagram-box",
+            "content": "utskrift-panel: 15",
+            "delay": 3,
+            "color": "var(--amber-300)",
+            "position": "mono payoff, amber-bordered"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 52.88,
+      "end": 65,
+      "narration": "Og det er hele forskjellen. while-løkka sjekker en betingelse hver runde — for-løkka plukker verdier fra en ferdig rekke, helt til rekka er tom.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "for plukker verdier fra en ferdig rekke.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "for i in range(...): ...",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}

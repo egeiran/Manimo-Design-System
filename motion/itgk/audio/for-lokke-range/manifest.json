@@ -1,0 +1,37 @@
+{
+  "sceneId": "for-lokke-range",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/for-lokke-range/scene.mp3",
+  "durationSec": 63.25,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du har allerede en while-løkke. Hva gjør for-løkka så nyttig? Den lar deg gå gjennom en ferdig rekke verdier — én av gangen."
+    },
+    {
+      "id": "rangeBuilder",
+      "audioStart": 9.49,
+      "narration": "Først lager vi rekka. range fra én til seks gir oss en ferdig rad med tallene én, to, tre, fire, fem. Den siste verdien er ikke med — rekka stopper akkurat før seks."
+    },
+    {
+      "id": "forSchritt",
+      "audioStart": 23.24,
+      "narration": "Nå tar for-løkka over. For hver verdi i rekka, binder Python verdien til navnet i, og kjører kroppen. Pekeren flytter seg ett hakk, i tar den nye verdien, og summen vokser. Runde etter runde, til siste celle er besøkt."
+    },
+    {
+      "id": "etterpaa",
+      "audioStart": 40.28,
+      "narration": "Når rekka er tom, er løkka ferdig. Variabelen i beholder den siste verdien — fem, ikke seks — og summen står på femten. Programmet skriver ut svaret."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 52.88,
+      "narration": "Og det er hele forskjellen. while-løkka sjekker en betingelse hver runde — for-løkka plukker verdier fra en ferdig rekke, helt til rekka er tom."
+    }
+  ]
+}
