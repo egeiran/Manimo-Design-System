@@ -3781,6 +3781,30 @@
       ],
       "subject_id": "algdat",
       "chapter_number": 4
+    },
+    {
+      "id": "for-lokke-range",
+      "file": "for-lokke-range.jsx",
+      "html": "for-lokke-range.html",
+      "spec": "for-lokke-range.spec.json",
+      "title": "for-løkka og range: gå gjennom en ferdig rekke",
+      "eyebrow": "løkker",
+      "topic": "Mens while jobber på en betingelse, plukker for-løkka verdier fra en ferdig rekke. range fra én til seks bygger en rad med fem teal-celler, og for-løkka går igjennom dem én av gangen — en amber-peker hopper fra celle til celle, i tar verdien som ligger der, og total vokser fra null til femten. Når rekka er tom er løkka ferdig, og i beholder den siste verdien — fem, ikke seks. Vist med kode + levende rekke + variabelbokser i, total.",
+      "duration": 65,
+      "language": "no",
+      "prerequisites": [
+        "while-lokke-trace"
+      ],
+      "concepts": [
+        "for-løkke",
+        "range",
+        "halvåpent intervall",
+        "iterasjon over sekvens",
+        "akkumulator",
+        "kontrollflyt"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 5
     }
   ]
 }
