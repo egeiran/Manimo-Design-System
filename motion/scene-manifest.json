@@ -3781,6 +3781,29 @@
       ],
       "subject_id": "algdat",
       "chapter_number": 4
+    },
+    {
+      "id": "aktivitetsutvelgelse",
+      "file": "aktivitetsutvelgelse.jsx",
+      "html": "aktivitetsutvelgelse.html",
+      "spec": "aktivitetsutvelgelse.spec.json",
+      "title": "Aktivitetsutvelgelse: grådig regel",
+      "eyebrow": "grådige algoritmer",
+      "topic": "Du har én dag og åtte aktiviteter som overlapper hverandre. Hvilken regel maksimerer antall aktiviteter du rekker? Den grådige innsikten: sortér aktivitetene etter når de slutter, og plukk alltid den som slutter først blant de som ikke krasjer med forrige valg. Vist med åtte navngitte aktiviteter som først dukker opp på en tidslinje, så sorterer seg vertikalt etter sluttid, så blir gjennomgått av en sveipende klokke — fire blir valgt og lyser amber, fire blir avvist og dimmer til rose. Sorteringen koster orden n log n; selve plukket koster lineær tid.",
+      "duration": 57,
+      "language": "no",
+      "prerequisites": [
+        "asymptotisk-vekst"
+      ],
+      "concepts": [
+        "grådig algoritme",
+        "aktivitetsutvelgelse",
+        "intervallplanlegging",
+        "sortering etter sluttid",
+        "n log n"
+      ],
+      "subject_id": "algdat",
+      "chapter_number": 7
     }
   ]
 }
