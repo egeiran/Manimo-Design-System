@@ -1,0 +1,37 @@
+{
+  "sceneId": "aktivitetsutvelgelse",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/aktivitetsutvelgelse/scene.mp3",
+  "durationSec": 55.59,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du har én dag og altfor mange aktiviteter. Mange overlapper. Hvilken regel velger så mange du rekker?"
+    },
+    {
+      "id": "problemOppstilling",
+      "audioStart": 7.9,
+      "narration": "Åtte aktiviteter ligger på en dag fra åtte til tjueén. Bredden er hvor lenge den varer, og venstrekanten er starttiden. Du kan bare gjøre én om gangen — to som overlapper er ute av spørsmålet."
+    },
+    {
+      "id": "sortering",
+      "audioStart": 22.3,
+      "narration": "Grådig regel: sortér aktivitetene etter når de er ferdige. Den som slutter først, blir første kandidat — for den frigjør tiden tidligst."
+    },
+    {
+      "id": "gradigSveip",
+      "audioStart": 32.52,
+      "narration": "Vi går nedover de sorterte radene. Plukk den første, den slutter klokken ti. Hopp over alle som starter før klokken ti. Plukk den neste som er ledig — klokken elleve. Og så videre. Fire aktiviteter passer inn i dagen."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 45.98,
+      "narration": "Fire av åtte aktiviteter. Sorteringen koster orden n log n; selve plukket går på lineær tid. Velg det som blir ferdig først."
+    }
+  ]
+}

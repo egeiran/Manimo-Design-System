@@ -1,0 +1,131 @@
+{
+  "id": "aktivitetsutvelgelse",
+  "title": "Aktivitetsutvelgelse: grådig regel",
+  "eyebrow": "grådige algoritmer",
+  "language": "no",
+  "duration": 57,
+  "topic": "Du har én dag og åtte aktiviteter som overlapper hverandre. Hvilken regel maksimerer antall aktiviteter du rekker? Den grådige innsikten: sortér aktivitetene etter når de slutter, og plukk alltid den som slutter først blant de som ikke krasjer med forrige valg. Vist med åtte navngitte aktiviteter som først dukker opp på en tidslinje, så sorterer seg vertikalt etter sluttid, så blir gjennomgått av en sveipende klokke — fire blir valgt og lyser amber, fire blir avvist og dimmer til rose. Sorteringen koster orden n log n; selve plukket koster lineær tid.",
+  "subject_id": "algdat",
+  "chapter_number": 7,
+  "prerequisites": [
+    "asymptotisk-vekst"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 7.9,
+      "narration": "Du har én dag og altfor mange aktiviteter. Mange overlapper. Hvilken regel velger så mange du rekker?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Velg det som blir ferdig først.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "problemOppstilling",
+      "start": 7.9,
+      "end": 22.3,
+      "narration": "Åtte aktiviteter ligger på en dag fra åtte til tjueén. Bredden er hvor lenge den varer, og venstrekanten er starttiden. Du kan bare gjøre én om gangen — to som overlapper er ute av spørsmålet.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "horisontal tidslinje fra klokken åtte til klokken tjueén; åtte aktivitetsbarer A til H tegnes inn én etter én på hver sin rad i opprinnelig rekkefølge; overlappende intervaller er tydelig synlige",
+            "delay": 0.3,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — eight bars TraceIn left-to-right one by one onto their own rows; viewer sees the overlap mess before the sort beat untangles it."
+          }
+        ]
+      }
+    },
+    {
+      "id": "sortering",
+      "start": 22.3,
+      "end": 32.52,
+      "narration": "Grådig regel: sortér aktivitetene etter når de er ferdige. Den som slutter først, blir første kandidat — for den frigjør tiden tidligst.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "de åtte barene glir vertikalt om hverandre til ny rekkefølge sortert etter sluttidspunkt; A først, så B, så D, så C, så E, så F, så G, så H; en pil til høyre peker på sluttkanten av hver bar",
+            "delay": 0.3,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — bars interpolate from original y-row to sorted y-row over the beat; right-edge end-times stay visible so the rule reads."
+          },
+          {
+            "type": "text-caption",
+            "content": "sortér etter sluttid",
+            "delay": 1.2,
+            "color": "var(--amber-300)",
+            "position": "below timeline, mono uppercase"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gradigSveip",
+      "start": 32.52,
+      "end": 45.98,
+      "narration": "Vi går nedover de sorterte radene. Plukk den første, den slutter klokken ti. Hopp over alle som starter før klokken ti. Plukk den neste som er ledig — klokken elleve. Og så videre. Fire aktiviteter passer inn i dagen.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "en vertikal pekerlinje glir nedover de sorterte radene; for hver rad lyser baren enten amber (valgt) eller rose dimmet (avvist) etter om starttiden er etter forrige valgte slutt; en horisontal klokkemarkør på tidslinjen rykker fremover til siste valgte slutt",
+            "delay": 0.4,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — sweep pointer descends the sorted rows; lastEnd marker on the timeline jumps to the right edge of each newly selected bar; selected count badge ticks 0..4."
+          },
+          {
+            "type": "text-caption",
+            "content": "valgt: 4 / 8",
+            "delay": 14,
+            "color": "var(--amber-300)",
+            "position": "top-right badge, mono"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 45.98,
+      "end": 57,
+      "narration": "Fire av åtte aktiviteter. Sorteringen koster orden n log n; selve plukket går på lineær tid. Velg det som blir ferdig først.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Velg det som blir ferdig først.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "n log n + n  →  n log n",
+            "delay": 1.6,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}
