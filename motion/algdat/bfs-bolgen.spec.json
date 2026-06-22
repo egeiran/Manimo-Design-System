@@ -1,0 +1,134 @@
+{
+  "id": "bfs-bolgen",
+  "title": "Bredde-først søk: bølgen sprer seg",
+  "eyebrow": "grafer",
+  "language": "no",
+  "duration": 55,
+  "topic": "Hvordan finner du korteste antall skritt fra ett punkt til alle andre i en graf? En kø, og lag for lag. Bredde-først søk starter i S, putter naboene i en førstemann-inn-førstemann-ut kø og lar bølgen spre seg utover. Hver node får sin endelige avstand første gangen den dukker opp — fordi FIFO behandler de nærmeste først. Vist med ni levende noder, en pulserende frontbølge som vokser fra ett til to til tre nivåer, og en kø-stripe der bokstaver glir inn på enden og forsvinner fra fronten i takt med at bølgen utvider seg.",
+  "subject_id": "algdat",
+  "chapter_number": 8,
+  "prerequisites": [],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 10.16,
+      "narration": "Du står på et knutepunkt i en graf. Hvor mange skritt er det til hvert eneste annet punkt? Bredde-først søk svarer lag for lag.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Korteste antall skritt — fra S til alle andre.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "grafenOgKoen",
+      "start": 10.16,
+      "end": 17.4,
+      "narration": "Vi starter i S og setter den i en kø — en førstemann-inn, førstemann-ut. S har avstand null.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "ni noder S, A, B, C, D, E, F, G, H med kanter mellom; S markeres amber, alle andre dempet",
+            "delay": 0.6,
+            "color": "var(--amber-400)",
+            "note": "graph fades in node by node, edges trace"
+          },
+          {
+            "type": "diagram-box",
+            "content": "FIFO-kø-stripe under grafen: S glir inn fra høyre, avstands-etikett null lyser",
+            "delay": 2.8,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bolgenSprerSeg",
+      "start": 17.4,
+      "end": 37.07,
+      "narration": "Tar vi S ut og leser av naboene? A og B legges i køen med avstand én. Så A: naboene C og D føyes inn med avstand to. B legger til E. C og D gir oss F og G — avstand tre. Helt til slutt når F frem til H med avstand fire.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "BFS-bølgen sprer seg lag for lag — front pulserer teal og settles til amber per nivå, avstands-etiketter teller opp én, to, tre, fire",
+            "delay": 0.5,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — frontier sweeps outward, queue strip slides letters in on the right and drops them from the front as each node is dequeued"
+          },
+          {
+            "type": "diagram-box",
+            "content": "kø-stripe oppdaterer FIFO: enq A B, deq S, enq C D, deq A, enq E, deq B, enq F G, deq C, deq D, enq H, deq E F G H",
+            "delay": 0.5,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hvorforFifo",
+      "start": 37.07,
+      "end": 45.92,
+      "narration": "Hver node får sin endelige avstand første gangen den dukker opp i køen. Det er FIFO som garanterer at vi alltid behandler nærmest først.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "én korteste sti uthevet fra S til H — fire kanter lyser amber langs banen",
+            "delay": 0.6,
+            "color": "var(--amber-300)",
+            "note": "shortest path S → B → E → G → H lights up, distance four"
+          },
+          {
+            "type": "text-caption",
+            "content": "FIFO + lag for lag = nærmest først.",
+            "delay": 3.5,
+            "color": "var(--chalk-200)",
+            "position": "below graph, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 45.92,
+      "end": 55,
+      "narration": "En kø, og lag for lag. Bredde-først søk gir korteste antall skritt fra startpunktet til alt det kan nå.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Bredde-først søk: én kø — lag for lag.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "BFS ∈ O(n + m)",
+            "delay": 1.6,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}

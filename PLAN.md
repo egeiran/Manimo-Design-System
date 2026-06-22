@@ -95,27 +95,28 @@ invent a chapter number to make the FK happy.
 
 ### [AGENT] — safe for the next nightly run
 
-- **Next algdat batch — sixth scene after tonight's 2026-06-20 `tellesortering-bokser` (ch.4).**
+- **Next algdat batch — seventh scene after tonight's 2026-06-22 `bfs-bolgen` (ch.8).**
   Coverage so far: ch.1 `asymptotisk-vekst`, ch.3 `flettesortering`,
-  ch.4 `tellesortering-bokser` (tonight — ten input cells fall
-  one-by-one into six labelled boxes during the telling beat, then
-  the boxes drain left-to-right straight into a sorted output row
-  during uttoeming, payoff O(n + k)), ch.5 `binaerhaug-sift`, ch.6
-  `dp-fylling-fib`. Strongest follow-ups in priority order:
-  `bfs-frontier` (ch.8 Grafer og traversering — BFS frontier
-  expanding across nodes with the queue updating), `aktivitetsvalg-grådig`
-  (ch.7 Grådige algoritmer — activity selection sorts intervals by
-  finish time, then greedily picks non-overlapping ones one by one),
-  `dijkstra-relaxation` (ch.10 Korteste vei fra én kilde — relaxing
-  distance labels as the frontier grows from the source),
+  ch.4 `tellesortering-bokser`, ch.5 `binaerhaug-sift`, ch.6
+  `dp-fylling-fib`, ch.8 `bfs-bolgen` (tonight — nine nodes laid out
+  in five BFS layers from S, a pulsing teal frontier sweeps outward
+  layer by layer, and a centred FIFO queue strip slides letters in on
+  the right and pulses rose at the front as each dequeue happens; the
+  hvorforFifo beat lights one shortest path S → B → E → G → H amber on
+  the dimmed graph, payoff O(n + m)). Strongest follow-ups in priority
+  order: `aktivitetsvalg-grådig` (ch.7 Grådige algoritmer — activity
+  selection sorts intervals by finish time, then greedily picks
+  non-overlapping ones one by one), `dijkstra-relaxation` (ch.10
+  Korteste vei fra én kilde — relaxing distance labels as the frontier
+  grows from the source, builds directly on tonight's BFS vocabulary),
   `prim-safe-edge` (ch.9 Minimale spenntrær — Prim adds one safe edge
   at a time, growing tree highlighted). Skip ch.13 / ch.14 (NP-classes)
   — they animate poorly. All algdat scenes are Norwegian
   (`language: "no"`); generate-audio.js automatically routes to voice
   Liam (`TX3LPaxmHKxFdv7VOQHJ`) on `eleven_turbo_v2_5`. Match the ITGK
-  house pattern (CodeBlock with `fontVariantLigatures: 'none'` for
-  pseudocode, milestones as fractions of sprite duration, array cells
-  + pointers + VarBox vocabulary).
+  + algdat house pattern (CodeBlock with `fontVariantLigatures: 'none'`
+  for pseudocode, milestones as fractions of sprite duration, graph
+  nodes + edges + FIFO queue + distance labels for graph scenes).
 
 - **Next ITGK batch — continuing after the 2026-06-21 ch.5 for-lokke-range scene.**
   Twelve ITGK scenes are now in the manifest (founding five, plus
@@ -177,7 +178,7 @@ invent a chapter number to make the FK happy.
 
 - **[HUMAN] Re-run `npm run publish all`** once Supabase env vars are wired into the nightly sandbox. Two cumulative backlogs are pending: (a) the 2026-05-13 chapter-remap that moved 8 of 9 ADE scenes to their corrected `chapter_number` values (specs + manifest updated locally, not yet pushed to Supabase) plus the earlier `basis-change-grid` ch.1→ch.2 fix that reconciles the local/remote mismatch flagged by `npm run coverage mat2b`; (b) every nightly-added scene that has not been published yet — including all ADE additions through 2026-05-21 PM and all Mat2B additions through 2026-05-23 evening (chapter-3 Indreproduktrom: `cauchy-schwarz-inequality`, `qr-factorisation-via-gram-schmidt`, `angle-preservation-by-rotation`; chapter-2 Lineærtransformasjoner: `gaussian-elimination-2d`, `matrix-product-as-composition`, `rotation-matrix-family`; chapter-4 Differensialligninger: `separable-variables-circles`, `newtons-law-of-cooling`, `characteristic-roots-regimes`; chapter-5/6: `quadratic-taylor-approximation`, `partial-derivative-as-slice`, `clairaut-mixed-partials`; chapter-1 Vektorrom: `basis-uniqueness`, `null-space-as-line`, `polynomial-vectors`; chapter-6 Ekstremalpunkter: `gradient-descent-on-contours`, `extrema-on-a-circle`, `the-saddle-point`; chapter-4 Differensialligninger (numerical methods, added 2026-05-24 PM): `heun-improved-euler`, `explicit-vs-implicit-euler`, `numerical-orbit-energy-drift`). The new entries are in `motion/scene-manifest.json` with correct `subject_id` + `chapter_number` but no `public.scenes` row yet. Originally flagged 2026-05-15, extended through 2026-05-24 PM. (Supabase remained unreachable this run — `npm run coverage mat2b` fell back to the local manifest.)
 
-- **[HUMAN] Re-run `npm run publish betingelser-jernbanevekslere klasse-og-objekt dict-oppslag-vs-liste-sok slicing-mellom-tegnene asymptotisk-vekst flettesortering binaerhaug-sift unntak-stiger-oppover dp-fylling-fib f-strenger-hullene-fylles tellesortering-bokser for-lokke-range`** once Supabase env vars are available on the nightly sandbox. Reviewer skipped publish for the five scenes merged from PR #56 (2026-06-17 nightly) because `.env` was missing on the sandbox — `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are needed for `scripts/publish-scene.js` to upsert the `public.scenes` rows. The backlog now also includes `unntak-stiger-oppover` and `dp-fylling-fib` from 2026-06-19, `f-strenger-hullene-fylles` (ch.3 ITGK) and `tellesortering-bokser` (ch.4 algdat) from 2026-06-20, and tonight's `for-lokke-range` (ch.5 ITGK) from 2026-06-21. The scene HTML is already live on Pages (`https://egeiran.github.io/Manimo-Design-System/motion/itgk/<id>.html` and `.../motion/algdat/<id>.html`); only the kort-forklart row is missing. Reviewer flagged on 2026-06-17, extended 2026-06-18, 2026-06-19, 2026-06-20, 2026-06-21.
+- **[HUMAN] Re-run `npm run publish betingelser-jernbanevekslere klasse-og-objekt dict-oppslag-vs-liste-sok slicing-mellom-tegnene asymptotisk-vekst flettesortering binaerhaug-sift unntak-stiger-oppover dp-fylling-fib f-strenger-hullene-fylles tellesortering-bokser for-lokke-range bfs-bolgen`** once Supabase env vars are available on the nightly sandbox. Reviewer skipped publish for the five scenes merged from PR #56 (2026-06-17 nightly) because `.env` was missing on the sandbox — `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are needed for `scripts/publish-scene.js` to upsert the `public.scenes` rows. The backlog now also includes `unntak-stiger-oppover` and `dp-fylling-fib` from 2026-06-19, `f-strenger-hullene-fylles` (ch.3 ITGK) and `tellesortering-bokser` (ch.4 algdat) from 2026-06-20, `for-lokke-range` (ch.5 ITGK) from 2026-06-21, and tonight's `bfs-bolgen` (ch.8 algdat) from 2026-06-22. The scene HTML is already live on Pages (`https://egeiran.github.io/Manimo-Design-System/motion/itgk/<id>.html` and `.../motion/algdat/<id>.html`); only the kort-forklart row is missing. Reviewer flagged on 2026-06-17, extended 2026-06-18, 2026-06-19, 2026-06-20, 2026-06-21, 2026-06-22.
 
 - **[HUMAN] flettesortering splitt + fletteOpp beats — cells live only at the deepest-visible level; higher/lower bracket rows render empty.** In `motion/algdat/flettesortering.jsx` `SplittBeat` and `FletteOppBeat`, the 8 value cells are positioned at `deepestVisibleLevel` (Splitt) or `shallowestLanded` (FletteOpp) only — the brackets at the other 2–3 levels draw in but their cells stay invisible. At any midpoint snapshot the tree shows one populated row of cells and 2–3 ghost-only bracket rows. Choreography is technically correct (cells lerp DOWN through levels as splits happen, then UP through levels as merges happen) and the takeaway works, but visually it can read as "data evaporated from the other rows" instead of "same data, regrouped." Fix options: (a) render dimmed ghost copies of every value at every visible level (so all four rows always have numbers), or (b) keep cells at their *deepest reached* level and only animate the new wave onto a fresh row above/below, so all already-landed levels stay populated. The flette (two-pointer merge) beat between them is excellent and not affected. Reviewer flagged on 2026-06-17.
 

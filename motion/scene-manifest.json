@@ -3805,6 +3805,28 @@
       ],
       "subject_id": "itgk",
       "chapter_number": 5
+    },
+    {
+      "id": "bfs-bolgen",
+      "file": "bfs-bolgen.jsx",
+      "html": "bfs-bolgen.html",
+      "spec": "bfs-bolgen.spec.json",
+      "title": "Bredde-først søk: bølgen sprer seg",
+      "eyebrow": "grafer",
+      "topic": "Hvordan finner du korteste antall skritt fra ett punkt til alle andre i en graf? En kø, og lag for lag. Bredde-først søk starter i S, putter naboene i en førstemann-inn-førstemann-ut kø og lar bølgen spre seg utover. Hver node får sin endelige avstand første gangen den dukker opp — fordi FIFO behandler de nærmeste først. Vist med ni levende noder, en pulserende frontbølge som vokser fra ett til to til tre nivåer, og en kø-stripe der bokstaver glir inn på enden og forsvinner fra fronten i takt med at bølgen utvider seg.",
+      "duration": 55,
+      "language": "no",
+      "prerequisites": [],
+      "concepts": [
+        "bredde-først søk",
+        "graf-traversering",
+        "FIFO-kø",
+        "frontier",
+        "korteste-avstand i ukjent graf",
+        "lag-for-lag"
+      ],
+      "subject_id": "algdat",
+      "chapter_number": 8
     }
   ]
 }
