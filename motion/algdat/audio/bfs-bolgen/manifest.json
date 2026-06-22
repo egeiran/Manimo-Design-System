@@ -1,0 +1,37 @@
+{
+  "sceneId": "bfs-bolgen",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/bfs-bolgen/scene.mp3",
+  "durationSec": 53.04,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du står på et knutepunkt i en graf. Hvor mange skritt er det til hvert eneste annet punkt? Bredde-først søk svarer lag for lag."
+    },
+    {
+      "id": "grafenOgKoen",
+      "audioStart": 10.16,
+      "narration": "Vi starter i S og setter den i en kø — en førstemann-inn, førstemann-ut. S har avstand null."
+    },
+    {
+      "id": "bolgenSprerSeg",
+      "audioStart": 17.4,
+      "narration": "Tar vi S ut og leser av naboene? A og B legges i køen med avstand én. Så A: naboene C og D føyes inn med avstand to. B legger til E. C og D gir oss F og G — avstand tre. Helt til slutt når F frem til H med avstand fire."
+    },
+    {
+      "id": "hvorforFifo",
+      "audioStart": 37.07,
+      "narration": "Hver node får sin endelige avstand første gangen den dukker opp i køen. Det er FIFO som garanterer at vi alltid behandler nærmest først."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 45.92,
+      "narration": "En kø, og lag for lag. Bredde-først søk gir korteste antall skritt fra startpunktet til alt det kan nå."
+    }
+  ]
+}
