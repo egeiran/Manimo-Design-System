@@ -1,0 +1,37 @@
+{
+  "sceneId": "numpy-broadcasting",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/numpy-broadcasting/scene.mp3",
+  "durationSec": 65.76,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "NumPy arrays kan ha forskjellig form, og likevel snakke sammen. Det heter broadcasting — og det er kjernen i hvorfor NumPy er så raskt."
+    },
+    {
+      "id": "skalarBroadcast",
+      "audioStart": 9.24,
+      "narration": "Si vi har et array med tre tall, og legger til ti. NumPy lager en kopi av ti for hver celle, og legger sammen elementvis. Vi får elleve, tolv, tretten."
+    },
+    {
+      "id": "kolonneOgRad",
+      "audioStart": 21.57,
+      "narration": "Nå et morsommere eksempel. En kolonne med tre tall — ti, tjue, tretti — møter en rad — én, to, tre. NumPy strekker kolonnen til høyre, og raden nedover, til de fyller det samme rutenettet. Så legger den sammen elementvis."
+    },
+    {
+      "id": "regelen",
+      "audioStart": 40.88,
+      "narration": "Det er hele regelen. Sammenlign formene fra høyre. En dimensjon med størrelse én strekkes ut for å passe den andre. Slik vokser tre tall i en kolonne og tre tall i en rad til ni i et fullt rutenett."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 56.3,
+      "narration": "Små arrays vokser ut for å møte store, helt av seg selv. Det er derfor NumPy slipper unna med én regneoperasjon der ren Python trenger en løkke."
+    }
+  ]
+}
