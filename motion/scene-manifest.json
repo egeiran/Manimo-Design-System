@@ -3805,6 +3805,31 @@
       ],
       "subject_id": "itgk",
       "chapter_number": 5
+    },
+    {
+      "id": "numpy-broadcasting",
+      "file": "numpy-broadcasting.jsx",
+      "html": "numpy-broadcasting.html",
+      "spec": "numpy-broadcasting.spec.json",
+      "title": "NumPy: broadcasting",
+      "eyebrow": "numpy",
+      "topic": "NumPy lar arrays med forskjellig form snakke sammen. Et skalart ti kloner seg til tre kopier under en rad med tre tall og legges til elementvis — elleve, tolv, tretten. Så møter en kolonne tre én ti, tjue, tretti en rad én tre én, to, tre: kolonnen tiler til høyre, raden nedover, til de fyller samme tre ganger tre rutenett der elementvis sum lander celle for celle. Regelen oppsummeres med formene tre én pluss én tre blir tre tre — størrelse én strekkes ut. Avslutning: små arrays vokser ut for å møte store, helt av seg selv.",
+      "duration": 67,
+      "language": "no",
+      "prerequisites": [
+        "for-lokke-range",
+        "liste-referanser"
+      ],
+      "concepts": [
+        "numpy",
+        "broadcasting",
+        "array-form",
+        "elementvise operasjoner",
+        "vektorisering",
+        "kolonne vs rad"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 12
     }
   ]
 }

@@ -117,36 +117,35 @@ invent a chapter number to make the FK happy.
   pseudocode, milestones as fractions of sprite duration, array cells
   + pointers + VarBox vocabulary).
 
-- **Next ITGK batch — continuing after the 2026-06-21 ch.5 for-lokke-range scene.**
-  Twelve ITGK scenes are now in the manifest (founding five, plus
+- **Next ITGK batch — continuing after the 2026-06-22 ch.12 numpy-broadcasting scene.**
+  Thirteen ITGK scenes are now in the manifest (founding five, plus
   `slicing-mellom-tegnene` for ch.7 on 2026-06-15, `dict-oppslag-vs-liste-sok`
   for ch.9 on 2026-06-16, `klasse-og-objekt` for ch.14 on 2026-06-17,
   `betingelser-jernbanevekslere` for ch.4 on 2026-06-18,
   `unntak-stiger-oppover` for ch.10 on 2026-06-19,
-  `f-strenger-hullene-fylles` for ch.3 on 2026-06-20, and tonight's
-  `for-lokke-range` for ch.5 — depth-not-coverage companion to
-  `while-lokke-trace`: a `range(1, 6)` header reveals, five teal cells
-  fade up in a row with a struck-through ghost `6` flagging the
-  half-open stop, an amber pointer then walks the five cells one by
-  one during the forSchritt beat with the code-line highlight flipping
-  between line 2 (header) on landing and line 3 (body) once executed,
-  i VarBox takes the cell value and total VarBox climbs through
-  0→1→3→6→10→15, then etterpaa shows the surprise that i holds 5 not
-  6 — rose-accented — alongside the `print(15)` amber payoff). ch.5
-  now has 2 scenes (while + for). Strongest next topics, in priority
-  order: variabler / datatyper / referanse-vs-verdi (ch.2 — a
-  reference-vs-value model on int vs list; ch.2 still at 0), NumPy
-  array broadcasting (ch.12 still at 0; a row vector replicates across
-  a matrix as it adds), Matplotlib live plot of a sampled function
-  (ch.13 still at 0; x sweeps the domain, y traces the curve). Avoid
-  ch.1 (introduksjon) and ch.15 (IKT-teori) — both animate poorly.
-  All ITGK scenes are Norwegian (`language: "no"`) — generate-audio.js
-  automatically uses voice Liam (`TX3LPaxmHKxFdv7VOQHJ`) on
-  `eleven_turbo_v2_5` with `language_code: "no"`; never
-  multilingual_v2 (it reads bokmål as Danish). Match the founding
-  five's house pattern: CodeBlock with `fontVariantLigatures: 'none'`,
-  milestones as fractions of sprite duration, VarBox/chip/frame
-  vocabulary.
+  `f-strenger-hullene-fylles` for ch.3 on 2026-06-20,
+  `for-lokke-range` for ch.5 on 2026-06-21, and tonight's
+  `numpy-broadcasting` for ch.12 — the first scene in the NumPy
+  chapter: a scalar `10` chip clones into three copies under a row
+  `[1, 2, 3]` and lands amber sums `[11, 12, 13]`, then a teal `(3,1)`
+  column and a rose `(1,3)` row tile through their missing
+  dimensions to fill a 3×3 grid where each cell is the elementwise
+  sum, closing with the rule that size-one dimensions stretch and
+  the takeaway that one vectorised op replaces a Python loop, 67 s,
+  5 beats). Strongest next topics, in priority order: variabler /
+  datatyper / referanse-vs-verdi (ch.2 — a reference-vs-value model
+  on int vs list; ch.2 still at 0), Matplotlib live plot of a
+  sampled function (ch.13 still at 0; x sweeps the domain, y traces
+  the curve), or a second NumPy scene like vektorisering vs
+  Python-løkke (ch.12 — same op shown twice, side by side, with
+  timing). Avoid ch.1 (introduksjon) and ch.15 (IKT-teori) — both
+  animate poorly. All ITGK scenes are Norwegian (`language: "no"`) —
+  generate-audio.js automatically uses voice Liam
+  (`TX3LPaxmHKxFdv7VOQHJ`) on `eleven_turbo_v2_5` with
+  `language_code: "no"`; never multilingual_v2 (it reads bokmål as
+  Danish). Match the founding five's house pattern: CodeBlock with
+  `fontVariantLigatures: 'none'`, milestones as fractions of sprite
+  duration, VarBox/chip/frame vocabulary.
 
 - **Next Mat2B run — remaining genuine-motion gaps.** ch.4 numerical follow-ups still open: trapezoidal / Crank–Nicolson as a distinct *implicit RK2* (the 2026-05-24 PM run did backward Euler only), Butcher-tableau notation + explicit-vs-implicit reading (Plenum 5 oppg. 1b/2b), and local-vs-global truncation error / order via Taylor (Plenum 5 oppg. 3 — distinct from `euler-vs-rk4`'s log-log plot). After the 2026-05-24 ch.5 run (`implicit-slope-on-a-level-curve`, `velocity-acceleration-on-a-curve`, `gradient-steepest-ascent`), **ch.1 Vektorrom (7) is now the lone most under-served chapter** — but it is saturated on 2D span / basis / dependence; the strongest remaining genuine-motion topic there is span-of-two-vectors-as-a-plane in R³ (sweep the two coefficients to fill the plane, then collapse one vector onto the other's line to show dependence). ch.2 still wants shear-decomposition (every 2×2 = rotation × scaling × rotation via SVD).
 
@@ -177,7 +176,7 @@ invent a chapter number to make the FK happy.
 
 - **[HUMAN] Re-run `npm run publish all`** once Supabase env vars are wired into the nightly sandbox. Two cumulative backlogs are pending: (a) the 2026-05-13 chapter-remap that moved 8 of 9 ADE scenes to their corrected `chapter_number` values (specs + manifest updated locally, not yet pushed to Supabase) plus the earlier `basis-change-grid` ch.1→ch.2 fix that reconciles the local/remote mismatch flagged by `npm run coverage mat2b`; (b) every nightly-added scene that has not been published yet — including all ADE additions through 2026-05-21 PM and all Mat2B additions through 2026-05-23 evening (chapter-3 Indreproduktrom: `cauchy-schwarz-inequality`, `qr-factorisation-via-gram-schmidt`, `angle-preservation-by-rotation`; chapter-2 Lineærtransformasjoner: `gaussian-elimination-2d`, `matrix-product-as-composition`, `rotation-matrix-family`; chapter-4 Differensialligninger: `separable-variables-circles`, `newtons-law-of-cooling`, `characteristic-roots-regimes`; chapter-5/6: `quadratic-taylor-approximation`, `partial-derivative-as-slice`, `clairaut-mixed-partials`; chapter-1 Vektorrom: `basis-uniqueness`, `null-space-as-line`, `polynomial-vectors`; chapter-6 Ekstremalpunkter: `gradient-descent-on-contours`, `extrema-on-a-circle`, `the-saddle-point`; chapter-4 Differensialligninger (numerical methods, added 2026-05-24 PM): `heun-improved-euler`, `explicit-vs-implicit-euler`, `numerical-orbit-energy-drift`). The new entries are in `motion/scene-manifest.json` with correct `subject_id` + `chapter_number` but no `public.scenes` row yet. Originally flagged 2026-05-15, extended through 2026-05-24 PM. (Supabase remained unreachable this run — `npm run coverage mat2b` fell back to the local manifest.)
 
-- **[HUMAN] Re-run `npm run publish betingelser-jernbanevekslere klasse-og-objekt dict-oppslag-vs-liste-sok slicing-mellom-tegnene asymptotisk-vekst flettesortering binaerhaug-sift unntak-stiger-oppover dp-fylling-fib f-strenger-hullene-fylles tellesortering-bokser for-lokke-range`** once Supabase env vars are available on the nightly sandbox. Reviewer skipped publish for the five scenes merged from PR #56 (2026-06-17 nightly) because `.env` was missing on the sandbox — `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are needed for `scripts/publish-scene.js` to upsert the `public.scenes` rows. The backlog now also includes `unntak-stiger-oppover` and `dp-fylling-fib` from 2026-06-19, `f-strenger-hullene-fylles` (ch.3 ITGK) and `tellesortering-bokser` (ch.4 algdat) from 2026-06-20, and tonight's `for-lokke-range` (ch.5 ITGK) from 2026-06-21. The scene HTML is already live on Pages (`https://egeiran.github.io/Manimo-Design-System/motion/itgk/<id>.html` and `.../motion/algdat/<id>.html`); only the kort-forklart row is missing. Reviewer flagged on 2026-06-17, extended 2026-06-18, 2026-06-19, 2026-06-20, 2026-06-21.
+- **[HUMAN] Re-run `npm run publish betingelser-jernbanevekslere klasse-og-objekt dict-oppslag-vs-liste-sok slicing-mellom-tegnene asymptotisk-vekst flettesortering binaerhaug-sift unntak-stiger-oppover dp-fylling-fib f-strenger-hullene-fylles tellesortering-bokser for-lokke-range numpy-broadcasting`** once Supabase env vars are available on the nightly sandbox. Reviewer skipped publish for the five scenes merged from PR #56 (2026-06-17 nightly) because `.env` was missing on the sandbox — `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are needed for `scripts/publish-scene.js` to upsert the `public.scenes` rows. The backlog now also includes `unntak-stiger-oppover` and `dp-fylling-fib` from 2026-06-19, `f-strenger-hullene-fylles` (ch.3 ITGK) and `tellesortering-bokser` (ch.4 algdat) from 2026-06-20, `for-lokke-range` (ch.5 ITGK) from 2026-06-21, and tonight's `numpy-broadcasting` (ch.12 ITGK) from 2026-06-22. The scene HTML is already live on Pages (`https://egeiran.github.io/Manimo-Design-System/motion/itgk/<id>.html` and `.../motion/algdat/<id>.html`); only the kort-forklart row is missing. Reviewer flagged on 2026-06-17, extended 2026-06-18, 2026-06-19, 2026-06-20, 2026-06-21, 2026-06-22.
 
 - **[HUMAN] flettesortering splitt + fletteOpp beats — cells live only at the deepest-visible level; higher/lower bracket rows render empty.** In `motion/algdat/flettesortering.jsx` `SplittBeat` and `FletteOppBeat`, the 8 value cells are positioned at `deepestVisibleLevel` (Splitt) or `shallowestLanded` (FletteOpp) only — the brackets at the other 2–3 levels draw in but their cells stay invisible. At any midpoint snapshot the tree shows one populated row of cells and 2–3 ghost-only bracket rows. Choreography is technically correct (cells lerp DOWN through levels as splits happen, then UP through levels as merges happen) and the takeaway works, but visually it can read as "data evaporated from the other rows" instead of "same data, regrouped." Fix options: (a) render dimmed ghost copies of every value at every visible level (so all four rows always have numbers), or (b) keep cells at their *deepest reached* level and only animate the new wave onto a fresh row above/below, so all already-landed levels stay populated. The flette (two-pointer merge) beat between them is excellent and not affected. Reviewer flagged on 2026-06-17.
 
@@ -215,7 +214,7 @@ invent a chapter number to make the FK happy.
   ch.9 Dictionaries og sets, ch.10 Filbehandling og unntak, ch.11
   Rekursjon/sortering/søk, ch.12 NumPy, ch.13 Matplotlib, ch.14
   Objektorientering (TDT4109), ch.15 IKT-teori: maskinvare/binært/Git
-  (TDT4109). Coverage after the 2026-06-21 ch.5 nightly (depth-first
+  (TDT4109). Coverage after the 2026-06-22 ch.12 nightly (depth-first
   on the hardest chapters, all Norwegian, **not yet published** —
   awaiting user approval): ch.3 (`f-strenger-hullene-fylles` — added
   2026-06-20, two teal value chips glide from VarBoxes navn and alder
@@ -239,9 +238,16 @@ invent a chapter number to make the FK happy.
   through parse→behandle→modul, escapes to a Traceback crash in the
   bare version, lands at the try band on modul and turns teal in the
   try/except version), ch.11 (`rekursjon-kallstabel`,
-  `binaersok-halvering`), ch.14 (`klasse-og-objekt` — added 2026-06-17,
-  blueprint mal card stamping out rex and luna with the self pointer
-  swinging between them). **Norwegian audio pin:** voice Liam
+  `binaersok-halvering`), ch.12 (`numpy-broadcasting` — added
+  2026-06-22, the first NumPy scene: scalar `10` clones across a row
+  `[1, 2, 3]` to land amber sums `[11, 12, 13]`, then a teal `(3,1)`
+  column and a rose `(1,3)` row tile through their missing
+  dimensions to fill a 3×3 grid of elementwise sums, closing with
+  the rule that size-one stretches and the takeaway that one
+  vectorised op replaces a Python loop), ch.14 (`klasse-og-objekt`
+  — added 2026-06-17, blueprint mal card stamping out rex and luna
+  with the self pointer swinging between them). **Norwegian audio
+  pin:** voice Liam
   `TX3LPaxmHKxFdv7VOQHJ`, model `eleven_turbo_v2_5`,
   `language_code: "no"` — wired as automatic default in
   generate-audio.js for `language: "no"`; multilingual_v2 renders bokmål
