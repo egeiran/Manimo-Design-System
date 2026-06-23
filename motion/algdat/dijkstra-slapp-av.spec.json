@@ -1,0 +1,146 @@
+{
+  "id": "dijkstra-slapp-av",
+  "title": "Dijkstra: slapp av avstandene",
+  "eyebrow": "korteste vei",
+  "language": "no",
+  "duration": 61,
+  "topic": "Korteste vei fra ett punkt til alt det kan nå — Dijkstras algoritme. Vi setter startnoden til null og alt det andre til uendelig, og trekker så ut den nærmeste ferskvaren én etter én. Hver gang en ny node trekkes ut, slappes naboene av: går den kjente avstanden ned, oppdateres tallet. Vist på en seks-node-graf med vektede kanter — to klare gevinster (B faller fra fem til tre, C fra ni til seks) og ett forsøk som ikke vinner (D mot E, ni mot sju). Påvisning av hvorfor «nærmest først» nettopp er nok.",
+  "subject_id": "algdat",
+  "chapter_number": 10,
+  "prerequisites": [
+    "bfs-bolgen"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 11.71,
+      "narration": "Du står på et kart med vekter på veiene. Hvor langt er det egentlig fra start til hver eneste by? Dijkstra svarer ved å slappe av avstandene én etter én.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Trekk ut nærmeste — slapp av naboene.",
+            "delay": 0.8,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "initialState",
+      "start": 11.71,
+      "end": 19.03,
+      "narration": "Vi setter S til null, og alt det andre til uendelig. Hver kant viser hvor mye det koster å gå over.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Seks noder og åtte vektede kanter glir inn; S blir amber med null, de andre står med uendelig",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "vektene leses som «koster k å gå over»",
+            "delay": 4.5,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "extractSRelax",
+      "start": 19.03,
+      "end": 26.39,
+      "narration": "Trekk ut nærmeste — S er null. Naboene oppdateres: A blir to og B blir fem.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "S pulser amber og blir endelig; kantene S–A og S–B lyser amber mens A og B sine avstandstall faller fra uendelig til to og fem",
+            "delay": 0.3,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — distance labels physically tick from ∞ to a number"
+          }
+        ]
+      }
+    },
+    {
+      "id": "extractARelax",
+      "start": 26.39,
+      "end": 38.55,
+      "narration": "Så A. Veien via A til B er kortere: fem ned til tre. C settes til ni. Nå er B nærmest med tre — og igjen kortes C, fra ni til seks, mens D blir sju.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "A trekkes ut, så B (med ned-pil 5→3) og C (9). Deretter trekkes B ut og C kortes igjen (9→6) mens D blir sju",
+            "delay": 0.3,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — two relaxation wins, each with a visible 'old → new' ticker"
+          },
+          {
+            "type": "text-caption",
+            "content": "kortere via nabo? — ja, ta den",
+            "delay": 6,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "extractCDE",
+      "start": 38.55,
+      "end": 48.9,
+      "narration": "Vi tar ut C, så E settes til sju. D er ute nå, og forsøker mot E — men sju pluss to slår ikke sju. E står fast. Til slutt E, ferdig.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "C → E setter E til sju. D → E forsøker, men 9 ≥ 7 — kanten blinker rose og dør, E står fast",
+            "delay": 0.3,
+            "color": "var(--rose-400)",
+            "note": "GENUINE MOTION — explicit 'no improvement' attempt with a clear failure indicator"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 48.9,
+      "end": 61,
+      "narration": "Trekk alltid ut den nærmeste først. Da er den ferdig, og vi slipper å gå tilbake. Det er hele ideen — én haug, og hver kant slappes av bare én gang.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Nærmest først — så er den ferdig.",
+            "delay": 0.4,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "Dijkstra ∈ O((n + m) log n)",
+            "delay": 2.2,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}

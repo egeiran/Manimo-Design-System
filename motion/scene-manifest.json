@@ -3852,6 +3852,30 @@
       ],
       "subject_id": "algdat",
       "chapter_number": 8
+    },
+    {
+      "id": "dijkstra-slapp-av",
+      "file": "dijkstra-slapp-av.jsx",
+      "html": "dijkstra-slapp-av.html",
+      "spec": "dijkstra-slapp-av.spec.json",
+      "title": "Dijkstra: slapp av avstandene",
+      "eyebrow": "korteste vei",
+      "topic": "Korteste vei fra ett punkt til alt det kan nå — Dijkstras algoritme. Vi setter startnoden til null og alt det andre til uendelig, og trekker så ut den nærmeste ferskvaren én etter én. Hver gang en ny node trekkes ut, slappes naboene av: går den kjente avstanden ned, oppdateres tallet. Vist på en seks-node-graf med vektede kanter — to klare gevinster (B faller fra fem til tre, C fra ni til seks) og ett forsøk som ikke vinner (D mot E, ni mot sju).",
+      "duration": 61,
+      "language": "no",
+      "prerequisites": [
+        "bfs-bolgen"
+      ],
+      "concepts": [
+        "Dijkstras algoritme",
+        "vektet graf",
+        "kant-relaksering",
+        "tentative avstander",
+        "trekk-ut-nærmeste",
+        "korteste-vei-tre"
+      ],
+      "subject_id": "algdat",
+      "chapter_number": 10
     }
   ]
 }
