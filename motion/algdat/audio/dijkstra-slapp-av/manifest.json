@@ -1,0 +1,42 @@
+{
+  "sceneId": "dijkstra-slapp-av",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/dijkstra-slapp-av/scene.mp3",
+  "durationSec": 59.95,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du står på et kart med vekter på veiene. Hvor langt er det egentlig fra start til hver eneste by? Dijkstra svarer ved å slappe av avstandene én etter én."
+    },
+    {
+      "id": "initialState",
+      "audioStart": 11.71,
+      "narration": "Vi setter S til null, og alt det andre til uendelig. Hver kant viser hvor mye det koster å gå over."
+    },
+    {
+      "id": "extractSRelax",
+      "audioStart": 19.03,
+      "narration": "Trekk ut nærmeste — S er null. Naboene oppdateres: A blir to og B blir fem."
+    },
+    {
+      "id": "extractARelax",
+      "audioStart": 26.39,
+      "narration": "Så A. Veien via A til B er kortere: fem ned til tre. C settes til ni. Nå er B nærmest med tre — og igjen kortes C, fra ni til seks, mens D blir sju."
+    },
+    {
+      "id": "extractCDE",
+      "audioStart": 38.55,
+      "narration": "Vi tar ut C, så E settes til sju. D er ute nå, og forsøker mot E — men sju pluss to slår ikke sju. E står fast. Til slutt E, ferdig."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 48.9,
+      "narration": "Trekk alltid ut den nærmeste først. Da er den ferdig, og vi slipper å gå tilbake. Det er hele ideen — én haug, og hver kant slappes av bare én gang."
+    }
+  ]
+}
