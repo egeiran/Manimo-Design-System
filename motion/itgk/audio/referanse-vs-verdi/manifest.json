@@ -1,0 +1,37 @@
+{
+  "sceneId": "referanse-vs-verdi",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/referanse-vs-verdi/scene.mp3",
+  "durationSec": 67.11,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du har sett at en variabel husker en verdi. Men noen ganger gjør Python noe overraskende. Hvorfor reagerer tall og lister så ulikt på det samme likhetstegnet?"
+    },
+    {
+      "id": "tallKopierer",
+      "audioStart": 12.23,
+      "narration": "Si at a er fem. Når vi skriver b er lik a, kopierer Python verdien — b blir også fem. Når vi øker b med én, lages det et helt nytt tall: seks. a er fortsatt fem, fordi tall ikke kan forandres."
+    },
+    {
+      "id": "listeneDeler",
+      "audioStart": 28.85,
+      "narration": "Lister er annerledes. a peker på en rad med tre tall, og b er lik a lager ingen ny rad — bare en pil til, til den samme. Når vi legger på et firetall gjennom b, vokser den ene lista vi har — og a ser endringen også."
+    },
+    {
+      "id": "datatypenBestemmer",
+      "audioStart": 44.84,
+      "narration": "Datatypen bestemmer hva som skjer i minnet. Tall er uforanderlige — du må alltid lage et nytt et, så det føles som en kopi. Lister kan endres på plass — og to navn deler det de peker på."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 58.31,
+      "narration": "Uforanderlige typer føles som kopier. Foranderlige typer deler. Sjekk datatypen først, så slutter likhetstegnet å overraske deg."
+    }
+  ]
+}
