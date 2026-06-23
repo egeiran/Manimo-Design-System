@@ -1,0 +1,189 @@
+{
+  "id": "referanse-vs-verdi",
+  "title": "Tall kopierer, lister deler",
+  "eyebrow": "datatyper",
+  "language": "no",
+  "duration": 69,
+  "topic": "Hvorfor reagerer tall og lister så ulikt på det samme likhetstegnet? Tall er uforanderlige: b er lik a kopierer verdien, og b er lik b pluss én lager et helt nytt tall — a er upåvirket. Lister er foranderlige: b er lik a lager bare en pil til til samme rad i minnet, og b dot append fire vokser den ene lista — så a ser endringen også. Vist med to VarBokser som splittes når et nytt tall lages, og et minnediagram der to navnelapper deler ett rad og et firetall vokser ut.",
+  "subject_id": "itgk",
+  "chapter_number": 2,
+  "prerequisites": [
+    "liste-referanser"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 12.23,
+      "narration": "Du har sett at en variabel husker en verdi. Men noen ganger gjør Python noe overraskende. Hvorfor reagerer tall og lister så ulikt på det samme likhetstegnet?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Samme likhetstegn — to historier.",
+            "delay": 0.8,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tallKopierer",
+      "start": 12.23,
+      "end": 28.85,
+      "narration": "Si at a er fem. Når vi skriver b er lik a, kopierer Python verdien — b blir også fem. Når vi øker b med én, lages det et helt nytt tall: seks. a er fortsatt fem, fordi tall ikke kan forandres.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "a = 5\nb = a\nb = b + 1\nprint(a, b)",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left",
+            "note": "highlight follows the narration: line 1 → 2 → 3 → 4"
+          },
+          {
+            "type": "diagram-box",
+            "content": "VarBox a med tallchip 5 — tegnes inn",
+            "delay": 1.2,
+            "color": "var(--teal-400)"
+          },
+          {
+            "type": "diagram-box",
+            "content": "VarBox b — tom, så får en kopi-chip 5 som dupliseres fra a (GENUINE MOTION)",
+            "delay": 3,
+            "color": "var(--teal-400)",
+            "note": "snapshot semantics — chip glides from a's box into b's box"
+          },
+          {
+            "type": "diagram-box",
+            "content": "b's chip lifts ut, krysses ut, en ny chip 6 dropper inn ovenfra (GENUINE MOTION)",
+            "delay": 7,
+            "color": "var(--amber-400)",
+            "note": "rebinding — new int object materialises, b's slot now reads 6"
+          },
+          {
+            "type": "diagram-box",
+            "content": "utskrift-panel: 5 6",
+            "delay": 11,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    },
+    {
+      "id": "listeneDeler",
+      "start": 28.85,
+      "end": 44.84,
+      "narration": "Lister er annerledes. a peker på en rad med tre tall, og b er lik a lager ingen ny rad — bare en pil til, til den samme. Når vi legger på et firetall gjennom b, vokser den ene lista vi har — og a ser endringen også.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "a = [1, 2, 3]\nb = a\nb.append(4)\nprint(a, b)",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left",
+            "note": "highlight follows the narration: line 1 → 2 → 3 → 4"
+          },
+          {
+            "type": "diagram-box",
+            "content": "rad med tre celler 1 2 3, navnelapp a peker på rada",
+            "delay": 1.2,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "diagram-box",
+            "content": "navnelapp b tegnes inn — pila peker på SAMME rad (GENUINE MOTION)",
+            "delay": 4,
+            "color": "var(--chalk-200)",
+            "note": "second arrow lands on the same row — no new cells appear"
+          },
+          {
+            "type": "diagram-box",
+            "content": "en fjerde celle med 4 vokser ut av rada (GENUINE MOTION)",
+            "delay": 7.5,
+            "color": "var(--rose-400)",
+            "note": "row physically grows in place; both arrows now span 4 cells"
+          },
+          {
+            "type": "diagram-box",
+            "content": "utskrift-panel: [1, 2, 3, 4]  [1, 2, 3, 4]",
+            "delay": 11,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    },
+    {
+      "id": "datatypenBestemmer",
+      "start": 44.84,
+      "end": 58.31,
+      "narration": "Datatypen bestemmer hva som skjer i minnet. Tall er uforanderlige — du må alltid lage et nytt et, så det føles som en kopi. Lister kan endres på plass — og to navn deler det de peker på.",
+      "visuals": {
+        "layout": "top-bottom",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "uforanderlig: kopi-følelse",
+            "delay": 0.6,
+            "color": "var(--teal-400)",
+            "position": "left column, top",
+            "note": "left half: int — two separate value boxes, no shared arrow"
+          },
+          {
+            "type": "text-caption",
+            "content": "foranderlig: delt liste",
+            "delay": 0.6,
+            "color": "var(--rose-300)",
+            "position": "right column, top",
+            "note": "right half: list — two arrows landing on one row"
+          },
+          {
+            "type": "text-formula",
+            "content": "int, str, tuple — kopierer · list, dict, set — deler",
+            "delay": 6.5,
+            "color": "var(--amber-300)",
+            "position": "centred below, mono payoff"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 58.31,
+      "end": 69,
+      "narration": "Uforanderlige typer føles som kopier. Foranderlige typer deler. Sjekk datatypen først, så slutter likhetstegnet å overraske deg.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Tall kopierer — lister deler.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "uforanderlig · kopi  |  foranderlig · alias",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}

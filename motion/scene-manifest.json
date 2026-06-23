@@ -3832,6 +3832,30 @@
       "chapter_number": 12
     },
     {
+      "id": "referanse-vs-verdi",
+      "file": "referanse-vs-verdi.jsx",
+      "html": "referanse-vs-verdi.html",
+      "spec": "referanse-vs-verdi.spec.json",
+      "title": "Tall kopierer, lister deler",
+      "eyebrow": "datatyper",
+      "topic": "Hvorfor reagerer tall og lister så ulikt på det samme likhetstegnet? Tall er uforanderlige: b er lik a kopierer verdien, og b er lik b pluss én lager et helt nytt tall — a er upåvirket. Lister er foranderlige: b er lik a lager bare en pil til til samme rad i minnet, og b dot append fire vokser den ene lista — så a ser endringen også. Vist med to VarBokser som splittes når et nytt tall lages, og et minnediagram der to navnelapper deler ett rad og et firetall vokser ut.",
+      "duration": 69,
+      "language": "no",
+      "prerequisites": [
+        "liste-referanser"
+      ],
+      "concepts": [
+        "variabler",
+        "datatyper",
+        "uforanderlig vs foranderlig",
+        "referanse-semantikk",
+        "alias",
+        "tallrepresentasjon"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 2
+    },
+    {
       "id": "bfs-bolgen",
       "file": "bfs-bolgen.jsx",
       "html": "bfs-bolgen.html",
