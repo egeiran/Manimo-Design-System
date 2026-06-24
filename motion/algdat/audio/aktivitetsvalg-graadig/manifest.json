@@ -1,0 +1,37 @@
+{
+  "sceneId": "aktivitetsvalg-graadig",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/aktivitetsvalg-graadig/scene.mp3",
+  "durationSec": 62.97,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du har sju aktiviteter som vil bruke det samme rommet. Hvor mange rekker du å gjennomføre uten at noen overlapper?"
+    },
+    {
+      "id": "setup",
+      "audioStart": 8.27,
+      "narration": "Hver aktivitet har et starttidspunkt og et sluttidspunkt. Tegnet som søyler på tidslinjen ser vi at noen er korte, noen lange, og at flere overlapper hverandre."
+    },
+    {
+      "id": "sortByFinish",
+      "audioStart": 19.01,
+      "narration": "Det grådige trikset er å sortere etter slutttid, ikke etter start og ikke etter lengde. Da kan vi alltid plukke den som rydder rommet først."
+    },
+    {
+      "id": "greedyPick",
+      "audioStart": 28.75,
+      "narration": "Vi tar den som slutter først — aktivitet to slutter i tre. Da må neste starte i tre eller senere. Aktivitet seks overlapper, hopp over. Fem starter i fire, ta den, slutter i sju. Sju starter i åtte, ta den, slutter i ti. Til slutt tre fra elleve. Fire aktiviteter får plass."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 51.42,
+      "narration": "Sorter etter slutttid, og plukk det første som ikke overlapper. Sorteringen tar orden n log n, plukket er bare ett gjennomløp. Grådig — og likevel optimalt."
+    }
+  ]
+}

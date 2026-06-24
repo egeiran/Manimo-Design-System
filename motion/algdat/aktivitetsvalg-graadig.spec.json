@@ -1,0 +1,144 @@
+{
+  "id": "aktivitetsvalg-graadig",
+  "title": "Aktivitetsvalg: ta den som slutter først",
+  "eyebrow": "grådige algoritmer",
+  "language": "no",
+  "duration": 64,
+  "topic": "Sju aktiviteter vil bruke det samme rommet på overlappende tider — hvor mange rekker du? Det grådige trikset er å sortere etter slutttid (ikke start, ikke lengde) og plukke den første som ikke kolliderer med det forrige valget. Et stykke usortert tegnes på en tidslinje, søylene glir sortert etter slutt, og en grense-strek vandrer høyrover mens fire aktiviteter lyser amber og de overlappende dimmes. Lander på sortering pluss ett gjennomløp, og at grådig faktisk er optimalt for dette problemet.",
+  "subject_id": "algdat",
+  "chapter_number": 7,
+  "prerequisites": [
+    "asymptotisk-vekst"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 8.27,
+      "narration": "Du har sju aktiviteter som vil bruke det samme rommet. Hvor mange rekker du å gjennomføre uten at noen overlapper?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Sju tidsvinduer, ett rom — hvor mange rekker du?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "setup",
+      "start": 8.27,
+      "end": 19.01,
+      "narration": "Hver aktivitet har et starttidspunkt og et sluttidspunkt. Tegnet som søyler på tidslinjen ser vi at noen er korte, noen lange, og at flere overlapper hverandre.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "horisontal tidslinje med tall null til tretten",
+            "delay": 0.3,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "diagram-box",
+            "content": "sju søyler tegnes inn fra topp til bunn, hver med id, start og slutt; rekkefølgen er usortert",
+            "delay": 1.2,
+            "color": "var(--amber-400)",
+            "note": "Bars trace in cascading from row 0 to row 6; each bar's geometry maps (start, finish) on the timeline"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sortByFinish",
+      "start": 19.01,
+      "end": 28.75,
+      "narration": "Det grådige trikset er å sortere etter slutttid, ikke etter start og ikke etter lengde. Da kan vi alltid plukke den som rydder rommet først.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "alle sju søylene glir vertikalt på plass i rekkefølge etter slutttid; en sluttid-akse-pil til høyre signaliserer sorteringsnøkkelen",
+            "delay": 0.4,
+            "color": "var(--amber-300)",
+            "note": "GENUINE MOTION — vertical slide of each bar between unsorted slot and finish-sorted slot, lerped with easeInOutCubic over the middle 45 percent of T"
+          },
+          {
+            "type": "text-caption",
+            "content": "sortert etter slutt",
+            "delay": 4.5,
+            "color": "var(--amber-300)",
+            "position": "right side badge"
+          }
+        ]
+      }
+    },
+    {
+      "id": "greedyPick",
+      "start": 28.75,
+      "end": 51.42,
+      "narration": "Vi tar den som slutter først — aktivitet to slutter i tre. Da må neste starte i tre eller senere. Aktivitet seks overlapper, hopp over. Fem starter i fire, ta den, slutter i sju. Sju starter i åtte, ta den, slutter i ti. Til slutt tre fra elleve. Fire aktiviteter får plass.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "vertikal grense-strek starter ved tid null og vandrer høyrover hver gang en aktivitet plukkes",
+            "delay": 0.2,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — cutoff line marches right; bars pulse considering, then settle amber (taken) or dim chalk (skipped); rose flash before dimming on skip"
+          },
+          {
+            "type": "text-caption",
+            "content": "valgt-teller tikker fra null til fire",
+            "delay": 1,
+            "color": "var(--amber-300)",
+            "position": "right side badge"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 51.42,
+      "end": 64,
+      "narration": "Sorter etter slutttid, og plukk det første som ikke overlapper. Sorteringen tar orden n log n, plukket er bare ett gjennomløp. Grådig — og likevel optimalt.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Sorter etter slutt — plukk det første som ikke overlapper.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "n log n + n",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          },
+          {
+            "type": "text-caption",
+            "content": "fire av sju — og det er optimalt",
+            "delay": 2.4,
+            "color": "var(--chalk-300)",
+            "position": "below payoff, sans"
+          }
+        ]
+      }
+    }
+  ]
+}
