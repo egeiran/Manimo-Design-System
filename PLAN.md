@@ -122,34 +122,36 @@ invent a chapter number to make the FK happy.
   strip below for current operation, milestones as fractions of
   sprite duration, dual-aspect layoutGeom with usePortrait()).
 
-- **Next ITGK batch — continuing after the 2026-06-23 ch.2 referanse-vs-verdi scene.**
-  Fourteen ITGK scenes are now in the manifest (founding five, plus
-  `slicing-mellom-tegnene` for ch.7 on 2026-06-15, `dict-oppslag-vs-liste-sok`
-  for ch.9 on 2026-06-16, `klasse-og-objekt` for ch.14 on 2026-06-17,
-  `betingelser-jernbanevekslere` for ch.4 on 2026-06-18,
-  `unntak-stiger-oppover` for ch.10 on 2026-06-19,
-  `f-strenger-hullene-fylles` for ch.3 on 2026-06-20,
-  `for-lokke-range` for ch.5 on 2026-06-21,
-  `numpy-broadcasting` for ch.12 on 2026-06-22, and tonight's
-  `referanse-vs-verdi` for ch.2 — the first scene in the data-types
-  chapter: same `b = a` line, two stories. For ints, a teal VarBox
-  copy chip flies from a's box to b's slot, then `b = b + 1` lifts
-  b's ghosted 5 out, drops in a fresh amber 6 from above, and a
-  stays untouched (utskrift `5 6`). For lists, two name-tags both
-  land on one row of cells [1, 2, 3], a rose 4 grows in place, and
-  both arrows pulse — utskrift shows `[1, 2, 3, 4]` twice. Side-by-
-  side compare-cards close with the rule `int · str · tuple —
-  kopierer · list · dict · set — deler`, 69 s, 5 beats).
-  Strongest next topics, in priority order: Matplotlib live plot of
-  a sampled function (ch.13 still at 0; x sweeps the domain, y
-  traces the curve, point glides along), a second NumPy scene like
-  vektorisering vs Python-løkke (ch.12 — same op shown twice, side
-  by side, with timing), or for-løkke nestet-løkker (ch.5 — nested
-  iteration as a 2D grid sweep, deepens ch.5 beyond the existing
-  while + for scenes). Avoid ch.1 (introduksjon) and ch.15
-  (IKT-teori) — both animate poorly. All ITGK scenes are Norwegian
-  (`language: "no"`) — generate-audio.js automatically uses voice
-  Liam (`TX3LPaxmHKxFdv7VOQHJ`) on `eleven_turbo_v2_5` with
+- **Next ITGK batch — continuing after the 2026-06-24 ch.13 matplotlib-funksjonskurve scene.**
+  Fifteen ITGK scenes are now in the manifest (founding five plus
+  `slicing-mellom-tegnene`, `dict-oppslag-vs-liste-sok`,
+  `klasse-og-objekt`, `betingelser-jernbanevekslere`,
+  `unntak-stiger-oppover`, `f-strenger-hullene-fylles`,
+  `for-lokke-range`, `numpy-broadcasting`, `referanse-vs-verdi`, and
+  tonight's `matplotlib-funksjonskurve` for ch.13 — the chapter's
+  first scene and the cleanest matplotlib mental-model: an x-pointer
+  marches across the axis, drops eight teal dots at `sin(x_i)` while
+  the `ys` row of cells fills cell-by-cell; then amber line
+  segments draw between consecutive dots — the polyline reveals
+  itself as just "dots connected"; then `N` flips from 8 to 50, 42
+  rose dots fade in along the curve and a dense amber polyline
+  redraws so smooth that the student feels why matplotlib *looks*
+  continuous. Closes with `plt.plot(xs, ys)` as the payoff and the
+  rule "vil du ha den jevnere, gi den flere prøvepunkter." 66 s, 5
+  beats). Strongest next topics, in priority order: a second
+  Matplotlib scene like akser-og-tittel (`plt.xlabel/ylabel/title`
+  + axis-range — same plot, then the labels and `plt.xlim` window
+  slide in to crop the visible range, ch.13 — a depth-not-coverage
+  companion); for-løkke nestet-løkker (ch.5 — outer + inner index
+  walk a 2D grid, building a multiplication table or coordinate
+  pattern, deepens ch.5 beyond while + range); a second NumPy
+  scene like vektorisering-vs-pythonlokke (ch.12 — same dot
+  product two ways, side by side with a wall-clock ticker so the
+  vectorised op finishes while the Python loop is still walking).
+  Avoid ch.1 (introduksjon) and ch.15 (IKT-teori) — both animate
+  poorly. All ITGK scenes are Norwegian (`language: "no"`) —
+  generate-audio.js automatically uses voice Liam
+  (`TX3LPaxmHKxFdv7VOQHJ`) on `eleven_turbo_v2_5` with
   `language_code: "no"`; never multilingual_v2 (it reads bokmål as
   Danish). Match the founding five's house pattern: CodeBlock with
   `fontVariantLigatures: 'none'`, milestones as fractions of sprite
@@ -184,7 +186,7 @@ invent a chapter number to make the FK happy.
 
 - **[HUMAN] Re-run `npm run publish all`** once Supabase env vars are wired into the nightly sandbox. Two cumulative backlogs are pending: (a) the 2026-05-13 chapter-remap that moved 8 of 9 ADE scenes to their corrected `chapter_number` values (specs + manifest updated locally, not yet pushed to Supabase) plus the earlier `basis-change-grid` ch.1→ch.2 fix that reconciles the local/remote mismatch flagged by `npm run coverage mat2b`; (b) every nightly-added scene that has not been published yet — including all ADE additions through 2026-05-21 PM and all Mat2B additions through 2026-05-23 evening (chapter-3 Indreproduktrom: `cauchy-schwarz-inequality`, `qr-factorisation-via-gram-schmidt`, `angle-preservation-by-rotation`; chapter-2 Lineærtransformasjoner: `gaussian-elimination-2d`, `matrix-product-as-composition`, `rotation-matrix-family`; chapter-4 Differensialligninger: `separable-variables-circles`, `newtons-law-of-cooling`, `characteristic-roots-regimes`; chapter-5/6: `quadratic-taylor-approximation`, `partial-derivative-as-slice`, `clairaut-mixed-partials`; chapter-1 Vektorrom: `basis-uniqueness`, `null-space-as-line`, `polynomial-vectors`; chapter-6 Ekstremalpunkter: `gradient-descent-on-contours`, `extrema-on-a-circle`, `the-saddle-point`; chapter-4 Differensialligninger (numerical methods, added 2026-05-24 PM): `heun-improved-euler`, `explicit-vs-implicit-euler`, `numerical-orbit-energy-drift`). The new entries are in `motion/scene-manifest.json` with correct `subject_id` + `chapter_number` but no `public.scenes` row yet. Originally flagged 2026-05-15, extended through 2026-05-24 PM. (Supabase remained unreachable this run — `npm run coverage mat2b` fell back to the local manifest.)
 
-- **[HUMAN] Re-run `npm run publish betingelser-jernbanevekslere klasse-og-objekt dict-oppslag-vs-liste-sok slicing-mellom-tegnene asymptotisk-vekst flettesortering binaerhaug-sift unntak-stiger-oppover dp-fylling-fib f-strenger-hullene-fylles tellesortering-bokser for-lokke-range bfs-bolgen referanse-vs-verdi dijkstra-slapp-av`** once Supabase env vars are available on the nightly sandbox. Reviewer skipped publish for the five scenes merged from PR #56 (2026-06-17 nightly) because `.env` was missing on the sandbox — `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are needed for `scripts/publish-scene.js` to upsert the `public.scenes` rows. The backlog now also includes `unntak-stiger-oppover` and `dp-fylling-fib` from 2026-06-19, `f-strenger-hullene-fylles` (ch.3 ITGK) and `tellesortering-bokser` (ch.4 algdat) from 2026-06-20, `for-lokke-range` (ch.5 ITGK) from 2026-06-21, `bfs-bolgen` (ch.8 algdat) from 2026-06-22, and tonight's `referanse-vs-verdi` (ch.2 ITGK) and `dijkstra-slapp-av` (ch.10 algdat) from 2026-06-23. `numpy-broadcasting` from PR #65 was published successfully on 2026-06-22 by the reviewer — re-check whether subsequent runs see the keys before reflagging. The scene HTML is already live on Pages (`https://egeiran.github.io/Manimo-Design-System/motion/itgk/<id>.html` and `.../motion/algdat/<id>.html`); only the kort-forklart row is missing. Reviewer flagged on 2026-06-17, extended 2026-06-18, 2026-06-19, 2026-06-20, 2026-06-21, 2026-06-22, 2026-06-23.
+- **[HUMAN] Re-run `npm run publish betingelser-jernbanevekslere klasse-og-objekt dict-oppslag-vs-liste-sok slicing-mellom-tegnene asymptotisk-vekst flettesortering binaerhaug-sift unntak-stiger-oppover dp-fylling-fib f-strenger-hullene-fylles tellesortering-bokser for-lokke-range bfs-bolgen referanse-vs-verdi dijkstra-slapp-av matplotlib-funksjonskurve`** once Supabase env vars are available on the nightly sandbox. Reviewer skipped publish for the five scenes merged from PR #56 (2026-06-17 nightly) because `.env` was missing on the sandbox — `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are needed for `scripts/publish-scene.js` to upsert the `public.scenes` rows. The backlog now also includes `unntak-stiger-oppover` and `dp-fylling-fib` from 2026-06-19, `f-strenger-hullene-fylles` (ch.3 ITGK) and `tellesortering-bokser` (ch.4 algdat) from 2026-06-20, `for-lokke-range` (ch.5 ITGK) from 2026-06-21, `bfs-bolgen` (ch.8 algdat) from 2026-06-22, `referanse-vs-verdi` (ch.2 ITGK) and `dijkstra-slapp-av` (ch.10 algdat) from 2026-06-23, and tonight's `matplotlib-funksjonskurve` (ch.13 ITGK) from 2026-06-24. `numpy-broadcasting` from PR #65 was published successfully on 2026-06-22 by the reviewer — re-check whether subsequent runs see the keys before reflagging. The scene HTML is already live on Pages (`https://egeiran.github.io/Manimo-Design-System/motion/itgk/<id>.html` and `.../motion/algdat/<id>.html`); only the kort-forklart row is missing. Reviewer flagged on 2026-06-17, extended 2026-06-18, 2026-06-19, 2026-06-20, 2026-06-21, 2026-06-22, 2026-06-23, 2026-06-24.
 
 - **[HUMAN] flettesortering splitt + fletteOpp beats — cells live only at the deepest-visible level; higher/lower bracket rows render empty.** In `motion/algdat/flettesortering.jsx` `SplittBeat` and `FletteOppBeat`, the 8 value cells are positioned at `deepestVisibleLevel` (Splitt) or `shallowestLanded` (FletteOpp) only — the brackets at the other 2–3 levels draw in but their cells stay invisible. At any midpoint snapshot the tree shows one populated row of cells and 2–3 ghost-only bracket rows. Choreography is technically correct (cells lerp DOWN through levels as splits happen, then UP through levels as merges happen) and the takeaway works, but visually it can read as "data evaporated from the other rows" instead of "same data, regrouped." Fix options: (a) render dimmed ghost copies of every value at every visible level (so all four rows always have numbers), or (b) keep cells at their *deepest reached* level and only animate the new wave onto a fresh row above/below, so all already-landed levels stay populated. The flette (two-pointer merge) beat between them is excellent and not affected. Reviewer flagged on 2026-06-17.
 
@@ -262,7 +264,15 @@ invent a chapter number to make the FK happy.
   column and a rose `(1,3)` row tile through their missing
   dimensions to fill a 3×3 grid of elementwise sums, closing with
   the rule that size-one stretches and the takeaway that one
-  vectorised op replaces a Python loop), ch.14 (`klasse-og-objekt`
+  vectorised op replaces a Python loop), ch.13
+  (`matplotlib-funksjonskurve` — added tonight 2026-06-24, the
+  chapter's first scene: x-pointer marches across the axis, eight
+  teal `sin(x_i)` dots land while the ys-cell row fills cell-by-
+  cell, amber segments then draw between consecutive dots revealing
+  the polyline-is-just-dots-connected truth, finally N flips from 8
+  to 50 and 42 rose dots fill the gaps under a dense amber polyline
+  so the curve reads smooth — payoff `plt.plot(xs, ys)`, 66 s, 5
+  beats), ch.14 (`klasse-og-objekt`
   — added 2026-06-17, blueprint mal card stamping out rex and luna
   with the self pointer swinging between them). **Norwegian audio
   pin:** voice Liam
