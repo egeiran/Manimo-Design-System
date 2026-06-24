@@ -1,0 +1,170 @@
+{
+  "id": "matplotlib-funksjonskurve",
+  "title": "Matplotlib: kurven er prikker som er koblet",
+  "eyebrow": "matplotlib",
+  "language": "no",
+  "duration": 66,
+  "topic": "plt.plot ser ut som en glatt kurve, men er bare prikker som er koblet. Først sampler vi åtte funksjonsverdier — en peker marsjerer over x-aksen, og for hver verdi lander en teal prikk i koordinatsystemet og en celle fylles i ys-arrayen. Så kobler plt.plot prikkene sammen med rette amber linjestykker. Når vi øker antall prøvepunkter fra åtte til femti, fylles gapene inn og linjestykkene blir så korte at øyet leser det som en jevn kurve. Avslutningen festes ved at matplotlib bare kobler prikker — vil du ha en jevnere kurve, gi den flere prøvepunkter.",
+  "subject_id": "itgk",
+  "chapter_number": 13,
+  "prerequisites": [
+    "numpy-broadcasting",
+    "for-lokke-range"
+  ],
+  "concepts": [
+    "matplotlib",
+    "plt.plot",
+    "sampling",
+    "linspace",
+    "polylinje",
+    "oppløsning"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 9.89,
+      "narration": "Når du ber matplotlib tegne en kurve, ser den glatt og rund ut. Men hva gjør plot egentlig? La oss følge med, punkt for punkt.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Kurven er bare prikker — koblet sammen.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "samplePunkter",
+      "start": 9.89,
+      "end": 30.57,
+      "narration": "Først lager vi prøvepunktene. linspace gir oss åtte tall jevnt fordelt over intervallet, fra null og opp mot to pi. For hver av disse verdiene regner vi ut sinusen, og dropper en prikk i koordinatsystemet. Pekeren marsjerer fra venstre mot høyre, og ys-listen fylles, celle for celle.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "xs = np.linspace(0, 2*np.pi, 8)\nys = np.sin(xs)\nplt.plot(xs, ys)\nplt.show()",
+            "delay": 0.2,
+            "color": "var(--chalk-100)",
+            "position": "left or top, mono, fontVariantLigatures off",
+            "note": "Highlight lines 1, then 2 as the sampling progresses."
+          },
+          {
+            "type": "diagram-box",
+            "content": "Plot with axes — x from 0 to 2π, y from -1.2 to 1.2. A teal pointer marches across the x-axis. At each of 8 sample positions a dashed vertical line rises to sin(x_i), then a teal dot lands on the curve and a cell in the ys-row below the plot fills with the value.",
+            "delay": 1,
+            "color": "var(--teal-400)",
+            "position": "right or middle, dominant area"
+          },
+          {
+            "type": "diagram-box",
+            "content": "GENUINE MOTION — i-VarBox ticks 0..7, ys[0..7] cells fill teal one by one as the pointer hops to each sample.",
+            "delay": 2,
+            "color": "var(--amber-400)",
+            "position": "below the plot, mono row"
+          }
+        ]
+      }
+    },
+    {
+      "id": "koblePunkter",
+      "start": 30.57,
+      "end": 42.12,
+      "narration": "Nå tar plot over. Den kobler sammen prikk og prikk med rette linjestykker. Det er hele jobben. Du gir den listene xs og ys, og den tegner linjer fra punkt til punkt.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "xs = np.linspace(0, 2*np.pi, 8)\nys = np.sin(xs)\nplt.plot(xs, ys)\nplt.show()",
+            "delay": 0,
+            "color": "var(--chalk-100)",
+            "position": "same panel as beat 2, but line 3 highlighted",
+            "note": "highlight line 3 (plt.plot)."
+          },
+          {
+            "type": "diagram-box",
+            "content": "GENUINE MOTION — same plot with the 8 teal dots from beat 2. Amber line segments draw, in sequence, from dot to dot. The polyline grows left to right and lands as a clearly jagged sine outline.",
+            "delay": 0.5,
+            "color": "var(--amber-400)",
+            "position": "right or middle, dominant area"
+          },
+          {
+            "type": "text-caption",
+            "content": "rette linjer mellom prikkene",
+            "delay": 6.5,
+            "color": "var(--chalk-300)",
+            "position": "small sans caption below the plot"
+          }
+        ]
+      }
+    },
+    {
+      "id": "flereProver",
+      "start": 42.12,
+      "end": 56.87,
+      "narration": "Men hvorfor ser kurven da glatt ut i praksis? Fordi du bytter åtte prøvepunkter med femti. Samme funksjon, samme kode, bare flere punkter. Linjestykkene blir så små at øyet leser dem som en jevn kurve.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "xs = np.linspace(0, 2*np.pi, 50)\nys = np.sin(xs)\nplt.plot(xs, ys)\nplt.show()",
+            "delay": 0,
+            "color": "var(--chalk-100)",
+            "position": "code panel — the literal 8 is replaced by 50 and that token is amber"
+          },
+          {
+            "type": "diagram-box",
+            "content": "GENUINE MOTION — the same plot as beats 2 and 3, with the 8 teal dots and jagged amber polyline still visible but dimmed. 42 additional rose dots fade in at their sin(x_i) positions all across the curve, and a new amber polyline traces over the dense point set so the curve looks visibly smoother.",
+            "delay": 0.5,
+            "color": "var(--rose-400)",
+            "position": "right or middle, dominant area"
+          },
+          {
+            "type": "text-caption",
+            "content": "samme kode — flere prøvepunkter",
+            "delay": 7,
+            "color": "var(--amber-300)",
+            "position": "small sans caption below the plot"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 56.87,
+      "end": 66,
+      "narration": "Matplotlib kobler prikker, ingen magi i kurven. Vil du ha den jevnere, gir du den bare flere prøvepunkter.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "matplotlib kobler prikker — ingen magi i kurven.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "plt.plot(xs, ys)",
+            "delay": 1.6,
+            "color": "var(--amber-300)",
+            "position": "mono payoff below"
+          }
+        ]
+      }
+    }
+  ]
+}

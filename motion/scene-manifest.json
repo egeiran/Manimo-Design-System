@@ -3902,6 +3902,31 @@
       "chapter_number": 10
     },
     {
+      "id": "matplotlib-funksjonskurve",
+      "file": "matplotlib-funksjonskurve.jsx",
+      "html": "matplotlib-funksjonskurve.html",
+      "spec": "matplotlib-funksjonskurve.spec.json",
+      "title": "Matplotlib: kurven er prikker som er koblet",
+      "eyebrow": "matplotlib",
+      "topic": "plt.plot ser ut som en glatt kurve, men er bare prikker som er koblet. Først sampler vi åtte funksjonsverdier — en peker marsjerer over x-aksen, og for hver verdi lander en teal prikk i koordinatsystemet og en celle fylles i ys-arrayen. Så kobler plt.plot prikkene sammen med rette amber linjestykker. Når vi øker antall prøvepunkter fra åtte til femti, fylles gapene inn og linjestykkene blir så korte at øyet leser det som en jevn kurve. Avslutningen festes ved at matplotlib bare kobler prikker — vil du ha en jevnere kurve, gi den flere prøvepunkter.",
+      "duration": 66,
+      "language": "no",
+      "prerequisites": [
+        "numpy-broadcasting",
+        "for-lokke-range"
+      ],
+      "concepts": [
+        "matplotlib",
+        "plt.plot",
+        "sampling",
+        "linspace",
+        "polylinje",
+        "oppløsning"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 13
+    },
+    {
       "id": "aktivitetsvalg-graadig",
       "file": "aktivitetsvalg-graadig.jsx",
       "html": "aktivitetsvalg-graadig.html",

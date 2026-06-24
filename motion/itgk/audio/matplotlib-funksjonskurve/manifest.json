@@ -1,0 +1,37 @@
+{
+  "sceneId": "matplotlib-funksjonskurve",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/matplotlib-funksjonskurve/scene.mp3",
+  "durationSec": 64.78,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Når du ber matplotlib tegne en kurve, ser den glatt og rund ut. Men hva gjør plot egentlig? La oss følge med, punkt for punkt."
+    },
+    {
+      "id": "samplePunkter",
+      "audioStart": 9.89,
+      "narration": "Først lager vi prøvepunktene. linspace gir oss åtte tall jevnt fordelt over intervallet, fra null og opp mot to pi. For hver av disse verdiene regner vi ut sinusen, og dropper en prikk i koordinatsystemet. Pekeren marsjerer fra venstre mot høyre, og ys-listen fylles, celle for celle."
+    },
+    {
+      "id": "koblePunkter",
+      "audioStart": 30.57,
+      "narration": "Nå tar plot over. Den kobler sammen prikk og prikk med rette linjestykker. Det er hele jobben. Du gir den listene xs og ys, og den tegner linjer fra punkt til punkt."
+    },
+    {
+      "id": "flereProver",
+      "audioStart": 42.12,
+      "narration": "Men hvorfor ser kurven da glatt ut i praksis? Fordi du bytter åtte prøvepunkter med femti. Samme funksjon, samme kode, bare flere punkter. Linjestykkene blir så små at øyet leser dem som en jevn kurve."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 56.87,
+      "narration": "Matplotlib kobler prikker, ingen magi i kurven. Vil du ha den jevnere, gir du den bare flere prøvepunkter."
+    }
+  ]
+}
