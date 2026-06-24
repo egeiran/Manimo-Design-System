@@ -85,7 +85,7 @@ function layoutGeom(portrait) {
       plotLeft: 50, plotTop: 480,
       plotW: 620, plotH: 360,
       // ys-array row below the plot
-      cell: 56, cellGap: 6, cellsTop: 960, cellFont: 16,
+      cell: 56, cellGap: 6, cellsTop: 990, cellFont: 16,
       // VarBox i — sits ABOVE the ys row so Manimo (bottom-left corner) is clear
       iLeft: 90, iTop: 860,
     };
