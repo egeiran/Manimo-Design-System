@@ -95,32 +95,33 @@ invent a chapter number to make the FK happy.
 
 ### [AGENT] — safe for the next nightly run
 
-- **Next algdat batch — eighth scene after tonight's 2026-06-23 `dijkstra-slapp-av` (ch.10).**
+- **Next algdat batch — ninth scene after tonight's 2026-06-24 `aktivitetsvalg-graadig` (ch.7).**
   Coverage so far: ch.1 `asymptotisk-vekst`, ch.3 `flettesortering`,
   ch.4 `tellesortering-bokser`, ch.5 `binaerhaug-sift`, ch.6
-  `dp-fylling-fib`, ch.8 `bfs-bolgen`, ch.10 `dijkstra-slapp-av`
-  (tonight — six nodes laid out in a horizontal diamond with eight
-  weighted edges; each extract pulses amber and the in-queue
-  candidates wear a teal ring with a tentative distance; relaxations
-  light the edge amber and the target node carries an "old → new"
-  ticker so the two wins B 5→3 via A and C 9→6 via B are
-  unmissable, and the D → E try-relax shows a dashed rose edge plus
-  a "9 ≥ 7" ticker so the "no improvement" frame reads cleanly;
-  takeaway lights the shortest-path tree S → A → B → C → E + B → D
-  amber on the dim graph, payoff O((n + m) log n)). Strongest
-  follow-ups in priority order: `aktivitetsvalg-grådig` (ch.7
-  Grådige algoritmer — activity selection sorts intervals by finish
-  time, then greedily picks non-overlapping ones one by one),
+  `dp-fylling-fib`, ch.7 `aktivitetsvalg-graadig` (tonight — sju
+  aktiviteter på en delt tidslinje med start/slutt-stempel; usortert
+  rad tegnes inn, glir vertikalt på plass etter sluttid, så vandrer
+  en stiplet amber grense-strek høyrover mens hver søyle får et
+  considerings-puls i teal og settler enten amber (tatt) eller dim
+  med rose-flash (hoppet over); valg-teller tikker 0→4 og lander på
+  "n log n + n" + "4 av 7 — og det er optimalt"), ch.8 `bfs-bolgen`,
+  ch.10 `dijkstra-slapp-av`. Strongest follow-ups in priority order:
   `prim-safe-edge` (ch.9 Minimale spenntrær — Prim adds one safe
   edge at a time on the cut, growing tree highlighted; pairs
-  naturally with tonight's Dijkstra vocabulary). Skip ch.13 / ch.14
+  naturally with the existing Dijkstra vocabulary), `floyd-warshall-dp`
+  (ch.11 Korteste vei mellom alle par — N×N distance matrix updates
+  cell by cell, three nested loops as a heatmap that brightens with
+  each relaxation), `ford-fulkerson-augment` (ch.12 Maksimal flyt —
+  augmenting paths sending flow through a directed graph, residual
+  capacities updating as edges saturate). Skip ch.13 / ch.14
   (NP-classes) — they animate poorly. All algdat scenes are
   Norwegian (`language: "no"`); generate-audio.js automatically
   routes to voice Liam (`TX3LPaxmHKxFdv7VOQHJ`) on
   `eleven_turbo_v2_5`. Match the algdat house pattern (graph nodes
-  with letter + tentative distance + tree-edge highlight, action
-  strip below for current operation, milestones as fractions of
-  sprite duration, dual-aspect layoutGeom with usePortrait()).
+  with letter + tentative distance + tree-edge highlight, or
+  array/timeline cells with cutoff sweep + state colouring,
+  milestones as fractions of sprite duration, dual-aspect layoutGeom
+  with usePortrait()).
 
 - **Next ITGK batch — continuing after the 2026-06-24 ch.13 matplotlib-funksjonskurve scene.**
   Fifteen ITGK scenes are now in the manifest (founding five plus

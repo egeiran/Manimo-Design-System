@@ -3925,6 +3925,29 @@
       ],
       "subject_id": "itgk",
       "chapter_number": 13
+    },
+    {
+      "id": "aktivitetsvalg-graadig",
+      "file": "aktivitetsvalg-graadig.jsx",
+      "html": "aktivitetsvalg-graadig.html",
+      "spec": "aktivitetsvalg-graadig.spec.json",
+      "title": "Aktivitetsvalg: ta den som slutter først",
+      "eyebrow": "grådige algoritmer",
+      "topic": "Sju aktiviteter vil bruke det samme rommet på overlappende tider — hvor mange rekker du? Det grådige trikset er å sortere etter slutttid (ikke start, ikke lengde) og plukke den første som ikke kolliderer med det forrige valget. Søylene tegnes usortert på en tidslinje, glir på plass etter slutt, og en grense-strek vandrer høyrover mens fire aktiviteter lyser amber og de overlappende dimmes. Lander på sortering pluss ett gjennomløp, og at grådig faktisk er optimalt for dette problemet.",
+      "duration": 64,
+      "language": "no",
+      "prerequisites": [
+        "asymptotisk-vekst"
+      ],
+      "concepts": [
+        "grådig algoritme",
+        "aktivitetsvalg",
+        "sortering etter slutttid",
+        "ikke-overlappende intervaller",
+        "optimal underbygging"
+      ],
+      "subject_id": "algdat",
+      "chapter_number": 7
     }
   ]
 }
