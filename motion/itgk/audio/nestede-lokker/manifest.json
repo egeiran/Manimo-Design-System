@@ -1,0 +1,37 @@
+{
+  "sceneId": "nestede-lokker",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/nestede-lokker/scene.mp3",
+  "durationSec": 64.92,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "En løkke inne i en løkke. Det høres rotete ut, men er regelen for nesten alle tabeller — den ytre teller radene, den indre teller kolonnene."
+    },
+    {
+      "id": "oppsett",
+      "audioStart": 10.37,
+      "narration": "Her er koden. Den ytre løkka går fra én til tre, og inni den gjør den indre det samme. I bunnen plasseres i ganger j i en celle. Spørsmålet er: hvor mange celler fylles?"
+    },
+    {
+      "id": "kjor",
+      "audioStart": 24.22,
+      "narration": "Sånn ser det ut når koden kjører. i er én, og j ruller gjennom én, to, tre — rad én fyller seg med én, to, tre. Så hopper i til to, og j starter på nytt fra én — rad to blir to, fire, seks. Til slutt blir rad tre tre, seks, ni. Den indre løkka ruller helt rundt for hver runde av den ytre."
+    },
+    {
+      "id": "telling",
+      "audioStart": 48.7,
+      "narration": "Telleverket lander på ni. Tre runder ganger tre runder gir ni iterasjoner — og hele gangetabellen står ferdig."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 55.62,
+      "narration": "Det er hele mønsteret. Ytre løkke teller hovedrundene, indre teller alle de små inni. Når du ser nestede løkker, tenk rad og kolonne."
+    }
+  ]
+}
