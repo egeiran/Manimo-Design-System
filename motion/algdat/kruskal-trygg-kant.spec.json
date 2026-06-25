@@ -1,0 +1,135 @@
+{
+  "id": "kruskal-trygg-kant",
+  "title": "Kruskals algoritme: trygge kanter først",
+  "eyebrow": "minimale spenntrær",
+  "language": "no",
+  "duration": 60,
+  "topic": "Kruskals algoritme bygger det minimale spenntreet ved å sortere alle kantene etter vekt og så ta hver kant som ikke lager en sirkel. Vist på fem byer og seks veier: vi sorterer kantene fra lett til tung, sveiper ovenfra og ned i lista, og merker hver kant trygg eller sirkel. Fire kanter aksepteres med vekt én, to, tre og seks; to kanter hoppes over fordi de ville lukket en sirkel. Totalvekt tolv, og hele grafen henger sammen — sortér, og vær grådig.",
+  "subject_id": "algdat",
+  "chapter_number": 9,
+  "prerequisites": [
+    "bfs-bolgen",
+    "aktivitetsvalg-graadig"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 10.41,
+      "narration": "Hvilke kanter må vi ta med for å koble alle nodene sammen så billig som mulig? Kruskals algoritme finner svaret — én trygg kant av gangen.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Sortér, og vær grådig — trygge kanter først.",
+            "delay": 0.9,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "initialGraph",
+      "start": 10.41,
+      "end": 18.16,
+      "narration": "Her er fem byer og seks veier, hver med sin kostnad. Vi vil koble alle sammen og bruke minst mulig.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Five vertices A B C D E in a planar layout; six weighted edges fade in with their weight badges",
+            "delay": 0.3,
+            "color": "var(--chalk-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "ingen sirkler, all sammenheng",
+            "delay": 4.5,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sortEdges",
+      "start": 18.16,
+      "end": 23.82,
+      "narration": "Først sorterer vi kantene etter vekt — den letteste først, den tyngste til slutt.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Six edge cards appear next to the graph in insertion order (AB 1, BC 3, AC 4, CD 2, BD 5, DE 6), then animate upward and downward to settle into weight-sorted order (AB 1, CD 2, BC 3, AC 4, BD 5, DE 6)",
+            "delay": 0.4,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — edge cards physically swap row positions on the way to a sorted list"
+          },
+          {
+            "type": "text-caption",
+            "content": "sortert etter vekt",
+            "delay": 5,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweepAccept",
+      "start": 23.82,
+      "end": 51.03,
+      "narration": "Så går vi gjennom listen ovenfra og ned. Ta kanten hvis den ikke lager en sirkel — ellers hopp over. A til B med vekt én er trygg. C til D med to er trygg. B til C med tre kobler de to delene sammen. A til C med fire ville lukket en sirkel — hopp over. B til D med fem også — hopp. Til slutt D til E med seks kobler den siste byen inn.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "A pointer sweeps down the sorted list. For each row, the corresponding graph edge highlights teal as it is evaluated, then turns amber and stays glowing if accepted, or flashes rose with a dashed cross and dims back if it would close a cycle. The row gets an amber check or rose cross. Vertices fill in with the amber settled ring as their component joins the tree.",
+            "delay": 0.3,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — Kruskal's main loop: edges accepted or rejected one at a time, MST grows visibly"
+          },
+          {
+            "type": "text-caption",
+            "content": "trygg? — ta den. sirkel? — hopp.",
+            "delay": 2,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 51.03,
+      "end": 60,
+      "narration": "Fire trygge kanter, og alle nodene henger sammen. Det er det minimale spenntreet, og totalvekten er tolv.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Sortér — vær grådig — hopp over sirkler.",
+            "delay": 0.4,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "Kruskal ∈ O(m log m)",
+            "delay": 2.2,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "sceneId": "kruskal-trygg-kant",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/kruskal-trygg-kant/scene.mp3",
+  "durationSec": 58.61,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Hvilke kanter må vi ta med for å koble alle nodene sammen så billig som mulig? Kruskals algoritme finner svaret — én trygg kant av gangen."
+    },
+    {
+      "id": "initialGraph",
+      "audioStart": 10.41,
+      "narration": "Her er fem byer og seks veier, hver med sin kostnad. Vi vil koble alle sammen og bruke minst mulig."
+    },
+    {
+      "id": "sortEdges",
+      "audioStart": 18.16,
+      "narration": "Først sorterer vi kantene etter vekt — den letteste først, den tyngste til slutt."
+    },
+    {
+      "id": "sweepAccept",
+      "audioStart": 23.82,
+      "narration": "Så går vi gjennom listen ovenfra og ned. Ta kanten hvis den ikke lager en sirkel — ellers hopp over. A til B med vekt én er trygg. C til D med to er trygg. B til C med tre kobler de to delene sammen. A til C med fire ville lukket en sirkel — hopp over. B til D med fem også — hopp. Til slutt D til E med seks kobler den siste byen inn."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 51.03,
+      "narration": "Fire trygge kanter, og alle nodene henger sammen. Det er det minimale spenntreet, og totalvekten er tolv."
+    }
+  ]
+}
