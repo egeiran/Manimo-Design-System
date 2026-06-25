@@ -3971,6 +3971,31 @@
       ],
       "subject_id": "itgk",
       "chapter_number": 5
+    },
+    {
+      "id": "kruskal-trygg-kant",
+      "file": "kruskal-trygg-kant.jsx",
+      "html": "kruskal-trygg-kant.html",
+      "spec": "kruskal-trygg-kant.spec.json",
+      "title": "Kruskals algoritme: trygge kanter først",
+      "eyebrow": "minimale spenntrær",
+      "topic": "Kruskals algoritme bygger det minimale spenntreet ved å sortere alle kantene etter vekt og så ta hver kant som ikke lager en sirkel. Vist på fem byer og seks veier: vi sorterer kantene fra lett til tung, sveiper ovenfra og ned i lista, og merker hver kant trygg eller sirkel. Fire kanter aksepteres med vekt én, to, tre og seks; to kanter hoppes over fordi de ville lukket en sirkel. Totalvekt tolv, og hele grafen henger sammen — sortér, og vær grådig.",
+      "duration": 60,
+      "language": "no",
+      "prerequisites": [
+        "bfs-bolgen",
+        "aktivitetsvalg-graadig"
+      ],
+      "concepts": [
+        "Kruskals algoritme",
+        "minimalt spenntre",
+        "MST",
+        "trygg kant",
+        "sortér og vær grådig",
+        "sirkel-deteksjon"
+      ],
+      "subject_id": "algdat",
+      "chapter_number": 9
     }
   ]
 }
