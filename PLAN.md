@@ -122,32 +122,34 @@ invent a chapter number to make the FK happy.
   milestones as fractions of sprite duration, dual-aspect layoutGeom
   with usePortrait()).
 
-- **Next ITGK batch — continuing after the 2026-06-24 ch.13 matplotlib-funksjonskurve scene.**
-  Fifteen ITGK scenes are now in the manifest (founding five plus
+- **Next ITGK batch — continuing after the 2026-06-25 ch.5 nestede-lokker scene.**
+  Sixteen ITGK scenes are now in the manifest (founding five plus
   `slicing-mellom-tegnene`, `dict-oppslag-vs-liste-sok`,
   `klasse-og-objekt`, `betingelser-jernbanevekslere`,
   `unntak-stiger-oppover`, `f-strenger-hullene-fylles`,
-  `for-lokke-range`, `numpy-broadcasting`, `referanse-vs-verdi`, and
-  tonight's `matplotlib-funksjonskurve` for ch.13 — the chapter's
-  first scene and the cleanest matplotlib mental-model: an x-pointer
-  marches across the axis, drops eight teal dots at `sin(x_i)` while
-  the `ys` row of cells fills cell-by-cell; then amber line
-  segments draw between consecutive dots — the polyline reveals
-  itself as just "dots connected"; then `N` flips from 8 to 50, 42
-  rose dots fade in along the curve and a dense amber polyline
-  redraws so smooth that the student feels why matplotlib *looks*
-  continuous. Closes with `plt.plot(xs, ys)` as the payoff and the
-  rule "vil du ha den jevnere, gi den flere prøvepunkter." 66 s, 5
-  beats). Strongest next topics, in priority order: a second
-  Matplotlib scene like akser-og-tittel (`plt.xlabel/ylabel/title`
-  + axis-range — same plot, then the labels and `plt.xlim` window
-  slide in to crop the visible range, ch.13 — a depth-not-coverage
-  companion); for-løkke nestet-løkker (ch.5 — outer + inner index
-  walk a 2D grid, building a multiplication table or coordinate
-  pattern, deepens ch.5 beyond while + range); a second NumPy
-  scene like vektorisering-vs-pythonlokke (ch.12 — same dot
+  `for-lokke-range`, `numpy-broadcasting`, `referanse-vs-verdi`,
+  `matplotlib-funksjonskurve`, and tonight's `nestede-lokker` for
+  ch.5 — a depth companion to `for-lokke-range`: a 3×3 grid with
+  i-row labels and j-column labels sits empty, then the nested-for
+  runs cell by cell in row-major order. An amber cell-outline marks
+  the active (i, j), a teal pointer ticks the column, and i/j/runder
+  VarBoxes climb 0→9 in lockstep while the code line-highlight
+  cycles between outer header, inner header, and body. Telleverket
+  lands on `runde 9 av 9` with the full multiplication table lit;
+  payoff is `3 × 3 = 9` in an amber pill. 66 s, 5 beats. Strongest
+  next topics, in priority order: a second Matplotlib scene like
+  akser-og-tittel (`plt.xlabel/ylabel/title` + axis-range — same
+  plot, then the labels and `plt.xlim` window slide in to crop the
+  visible range, ch.13 — a depth-not-coverage companion); a second
+  NumPy scene like vektorisering-vs-pythonlokke (ch.12 — same dot
   product two ways, side by side with a wall-clock ticker so the
-  vectorised op finishes while the Python loop is still walking).
+  vectorised op finishes while the Python loop is still walking);
+  break/continue-løkkekontroll (ch.5 — a value flowing through a
+  loop body either fires print or short-circuits back to the header
+  / breaks out entirely, the misconception is that break exits ALL
+  enclosing loops); shallow-vs-deep-copy (ch.8 — `import copy`;
+  a nested list with `b = a`, `b = a.copy()`, `b = copy.deepcopy(a)`
+  side by side, only deepcopy unhooks the inner list when mutated).
   Avoid ch.1 (introduksjon) and ch.15 (IKT-teori) — both animate
   poorly. All ITGK scenes are Norwegian (`language: "no"`) —
   generate-audio.js automatically uses voice Liam
@@ -186,7 +188,7 @@ invent a chapter number to make the FK happy.
 
 - **[HUMAN] Re-run `npm run publish all`** once Supabase env vars are wired into the nightly sandbox. Two cumulative backlogs are pending: (a) the 2026-05-13 chapter-remap that moved 8 of 9 ADE scenes to their corrected `chapter_number` values (specs + manifest updated locally, not yet pushed to Supabase) plus the earlier `basis-change-grid` ch.1→ch.2 fix that reconciles the local/remote mismatch flagged by `npm run coverage mat2b`; (b) every nightly-added scene that has not been published yet — including all ADE additions through 2026-05-21 PM and all Mat2B additions through 2026-05-23 evening (chapter-3 Indreproduktrom: `cauchy-schwarz-inequality`, `qr-factorisation-via-gram-schmidt`, `angle-preservation-by-rotation`; chapter-2 Lineærtransformasjoner: `gaussian-elimination-2d`, `matrix-product-as-composition`, `rotation-matrix-family`; chapter-4 Differensialligninger: `separable-variables-circles`, `newtons-law-of-cooling`, `characteristic-roots-regimes`; chapter-5/6: `quadratic-taylor-approximation`, `partial-derivative-as-slice`, `clairaut-mixed-partials`; chapter-1 Vektorrom: `basis-uniqueness`, `null-space-as-line`, `polynomial-vectors`; chapter-6 Ekstremalpunkter: `gradient-descent-on-contours`, `extrema-on-a-circle`, `the-saddle-point`; chapter-4 Differensialligninger (numerical methods, added 2026-05-24 PM): `heun-improved-euler`, `explicit-vs-implicit-euler`, `numerical-orbit-energy-drift`). The new entries are in `motion/scene-manifest.json` with correct `subject_id` + `chapter_number` but no `public.scenes` row yet. Originally flagged 2026-05-15, extended through 2026-05-24 PM. (Supabase remained unreachable this run — `npm run coverage mat2b` fell back to the local manifest.)
 
-- **[HUMAN] Re-run `npm run publish betingelser-jernbanevekslere klasse-og-objekt dict-oppslag-vs-liste-sok slicing-mellom-tegnene asymptotisk-vekst flettesortering binaerhaug-sift unntak-stiger-oppover dp-fylling-fib f-strenger-hullene-fylles tellesortering-bokser for-lokke-range bfs-bolgen referanse-vs-verdi dijkstra-slapp-av matplotlib-funksjonskurve aktivitetsvalg-graadig kruskal-trygg-kant`** once Supabase env vars are available on the nightly sandbox. Reviewer skipped publish for the five scenes merged from PR #56 (2026-06-17 nightly) because `.env` was missing on the sandbox — `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are needed for `scripts/publish-scene.js` to upsert the `public.scenes` rows. The backlog now also includes `unntak-stiger-oppover` and `dp-fylling-fib` from 2026-06-19, `f-strenger-hullene-fylles` (ch.3 ITGK) and `tellesortering-bokser` (ch.4 algdat) from 2026-06-20, `for-lokke-range` (ch.5 ITGK) from 2026-06-21, `bfs-bolgen` (ch.8 algdat) from 2026-06-22, `referanse-vs-verdi` (ch.2 ITGK) and `dijkstra-slapp-av` (ch.10 algdat) from 2026-06-23, `matplotlib-funksjonskurve` (ch.13 ITGK) and `aktivitetsvalg-graadig` (ch.7 algdat) from 2026-06-24, and tonight's `kruskal-trygg-kant` (ch.9 algdat) from 2026-06-25. `numpy-broadcasting` from PR #65 was published successfully on 2026-06-22 by the reviewer — re-check whether subsequent runs see the keys before reflagging. The scene HTML is already live on Pages (`https://egeiran.github.io/Manimo-Design-System/motion/itgk/<id>.html` and `.../motion/algdat/<id>.html`); only the kort-forklart row is missing. Reviewer flagged on 2026-06-17, extended 2026-06-18, 2026-06-19, 2026-06-20, 2026-06-21, 2026-06-22, 2026-06-23, 2026-06-24, 2026-06-25.
+- **[HUMAN] Re-run `npm run publish betingelser-jernbanevekslere klasse-og-objekt dict-oppslag-vs-liste-sok slicing-mellom-tegnene asymptotisk-vekst flettesortering binaerhaug-sift unntak-stiger-oppover dp-fylling-fib f-strenger-hullene-fylles tellesortering-bokser for-lokke-range bfs-bolgen referanse-vs-verdi dijkstra-slapp-av matplotlib-funksjonskurve aktivitetsvalg-graadig nestede-lokker kruskal-trygg-kant`** once Supabase env vars are available on the nightly sandbox. Reviewer skipped publish for the five scenes merged from PR #56 (2026-06-17 nightly) because `.env` was missing on the sandbox — `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are needed for `scripts/publish-scene.js` to upsert the `public.scenes` rows. The backlog now also includes `unntak-stiger-oppover` and `dp-fylling-fib` from 2026-06-19, `f-strenger-hullene-fylles` (ch.3 ITGK) and `tellesortering-bokser` (ch.4 algdat) from 2026-06-20, `for-lokke-range` (ch.5 ITGK) from 2026-06-21, `bfs-bolgen` (ch.8 algdat) from 2026-06-22, `referanse-vs-verdi` (ch.2 ITGK) and `dijkstra-slapp-av` (ch.10 algdat) from 2026-06-23, `matplotlib-funksjonskurve` (ch.13 ITGK) and `aktivitetsvalg-graadig` (ch.7 algdat) from 2026-06-24, and tonight's `nestede-lokker` (ch.5 ITGK) and `kruskal-trygg-kant` (ch.9 algdat) from 2026-06-25. `numpy-broadcasting` from PR #65 was published successfully on 2026-06-22 by the reviewer — re-check whether subsequent runs see the keys before reflagging. The scene HTML is already live on Pages (`https://egeiran.github.io/Manimo-Design-System/motion/itgk/<id>.html` and `.../motion/algdat/<id>.html`); only the kort-forklart row is missing. Reviewer flagged on 2026-06-17, extended 2026-06-18, 2026-06-19, 2026-06-20, 2026-06-21, 2026-06-22, 2026-06-23, 2026-06-24, 2026-06-25.
 
 - **[HUMAN] flettesortering splitt + fletteOpp beats — cells live only at the deepest-visible level; higher/lower bracket rows render empty.** In `motion/algdat/flettesortering.jsx` `SplittBeat` and `FletteOppBeat`, the 8 value cells are positioned at `deepestVisibleLevel` (Splitt) or `shallowestLanded` (FletteOpp) only — the brackets at the other 2–3 levels draw in but their cells stay invisible. At any midpoint snapshot the tree shows one populated row of cells and 2–3 ghost-only bracket rows. Choreography is technically correct (cells lerp DOWN through levels as splits happen, then UP through levels as merges happen) and the takeaway works, but visually it can read as "data evaporated from the other rows" instead of "same data, regrouped." Fix options: (a) render dimmed ghost copies of every value at every visible level (so all four rows always have numbers), or (b) keep cells at their *deepest reached* level and only animate the new wave onto a fresh row above/below, so all already-landed levels stay populated. The flette (two-pointer merge) beat between them is excellent and not affected. Reviewer flagged on 2026-06-17.
 
@@ -256,7 +258,16 @@ invent a chapter number to make the FK happy.
   forSchritt an amber pointer hops across the cells while i and total
   VarBoxes climb 0→1→3→6→10→15 in lockstep with the code-line
   highlight flipping between header and body, closing on the surprise
-  that i holds 5 not 6 plus `print(15)` payoff — 65 s, 5 beats), ch.6
+  that i holds 5 not 6 plus `print(15)` payoff — 65 s, 5 beats;
+  `nestede-lokker` — added tonight 2026-06-25, a third ch.5 scene:
+  a 3×3 grid with `i=…` row labels and `j=…` column labels stands
+  empty, then the nested-for runs cell by cell in row-major order
+  — an amber outline marks the active (i, j), products 1·2·3 / 2·4·6
+  / 3·6·9 land in sequence, and i/j/runder VarBoxes climb 0→9 while
+  the code line-highlight cycles between outer header, inner header,
+  and body. Lands on `runde 9 av 9` with the full multiplication
+  table lit and the payoff `3 × 3 = 9` in an amber pill — 66 s, 5
+  beats), ch.6
   (`funksjonskall-og-scope`), ch.7 (`slicing-mellom-tegnene` — added
   2026-06-15), ch.8 (`liste-referanser`), ch.9
   (`dict-oppslag-vs-liste-sok` — added 2026-06-16), ch.10

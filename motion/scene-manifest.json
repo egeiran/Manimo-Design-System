@@ -3950,6 +3950,29 @@
       "chapter_number": 7
     },
     {
+      "id": "nestede-lokker",
+      "file": "nestede-lokker.jsx",
+      "html": "nestede-lokker.html",
+      "spec": "nestede-lokker.spec.json",
+      "title": "nestede løkker: ytre teller rader, indre teller kolonner",
+      "eyebrow": "løkker",
+      "topic": "En løkke inne i en løkke. Den ytre venter mens den indre ruller helt rundt — og det er nettopp slik en gangetabell fylles. Vi setter opp en tre-ganger-tre-rute, kjører den nestede koden, og ser cellene lyse opp i rad-først rekkefølge mens i og j klatrer i lockstep. Telleverket lander på ni runder — tre ytre ganger tre indre.",
+      "duration": 66,
+      "language": "no",
+      "prerequisites": [
+        "for-lokke-range"
+      ],
+      "concepts": [
+        "nestede løkker",
+        "rad og kolonne",
+        "gangetabell",
+        "rad-først rekkefølge",
+        "iterasjonsantall"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 5
+    },
+    {
       "id": "kruskal-trygg-kant",
       "file": "kruskal-trygg-kant.jsx",
       "html": "kruskal-trygg-kant.html",
