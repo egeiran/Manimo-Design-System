@@ -95,32 +95,34 @@ invent a chapter number to make the FK happy.
 
 ### [AGENT] — safe for the next nightly run
 
-- **Next algdat batch — tenth scene after tonight's 2026-06-25 `kruskal-trygg-kant` (ch.9 Minimale spenntrær).**
+- **Next algdat batch — eleventh scene after tonight's 2026-06-26 `floyd-warshall-via-k` (ch.11 Korteste vei mellom alle par).**
   Coverage so far: ch.1 `asymptotisk-vekst`, ch.3 `flettesortering`,
   ch.4 `tellesortering-bokser`, ch.5 `binaerhaug-sift`, ch.6
   `dp-fylling-fib`, ch.7 `aktivitetsvalg-graadig`, ch.8 `bfs-bolgen`,
-  ch.9 `kruskal-trygg-kant` (tonight — five vertices and six weighted
-  edges, edge rows fly into sorted order on the right, then a teal
-  pointer sweeps top-to-bottom marking each edge trygg (amber check)
-  or sirkel (rose X) — four accepts AB CD BC DE with total weight 12
-  and two cycle-skips AC and BD), ch.10 `dijkstra-slapp-av`. Strongest
-  remaining motion follow-ups in priority order: `floyd-warshall-dp`
-  (ch.11 Korteste vei mellom alle par — N×N distance matrix updates
-  cell by cell, three nested loops as a heatmap that brightens with
-  each relaxation through intermediate vertex k), `ford-fulkerson-augment`
+  ch.9 `kruskal-trygg-kant`, ch.10 `dijkstra-slapp-av`, ch.11
+  `floyd-warshall-via-k` (tonight — four-node directed weighted graph
+  feeding a 4×4 distance matrix; one passover for each intermediate
+  vertex k = 0,1,2,3; seven cells tick from old → new (∞→5 and ∞→9
+  via 0; ∞→7 and ∞→13 via 1; 10→8, ∞→6 and 8→5 via 2; k=3 dry);
+  row k + col k get a violet "via" tint, node k highlights amber in
+  the mini-graph, FORBEDRINGER counter rises 0 → 7; takeaway traces
+  0→2→3 and 1→2→3 as worked examples plus O(n^3) payoff). Strongest
+  remaining motion follow-ups in priority order: `ford-fulkerson-augment`
   (ch.12 Maksimal flyt — augmenting paths sending flow through a
-  directed graph, residual capacities updating as edges saturate), or
+  directed graph with residual capacities updating as edges
+  saturate, then min-cut payoff; the canonical algdat ch.12 motion),
   a second ch.9 depth scene `prim-cut-frontier` (Prim grows the MST
   from one vertex outwards, the cut frontier expanding edge by edge,
-  visually complementary to tonight's Kruskal sort-and-sweep).
-  Skip ch.13 / ch.14 (NP-classes) — they animate poorly. All algdat
-  scenes are Norwegian (`language: "no"`); generate-audio.js
-  automatically routes to voice Liam (`TX3LPaxmHKxFdv7VOQHJ`) on
-  `eleven_turbo_v2_5`. Match the algdat house pattern (graph nodes
-  with letter + tentative distance + tree-edge highlight, or
-  array/timeline cells with cutoff sweep + state colouring,
-  milestones as fractions of sprite duration, dual-aspect layoutGeom
-  with usePortrait()).
+  visually complementary to `kruskal-trygg-kant`'s sort-and-sweep),
+  or a ch.5 depth scene `rod-svart-rotasjon` (red-black tree balance
+  after insert — the rotation is the motion). Skip ch.13 / ch.14
+  (NP-classes) — they animate poorly. All algdat scenes are Norwegian
+  (`language: "no"`); generate-audio.js automatically routes to voice
+  Liam (`TX3LPaxmHKxFdv7VOQHJ`) on `eleven_turbo_v2_5`. Match the
+  algdat house pattern (graph nodes with letter + tentative distance
+  + tree-edge highlight, or array/timeline cells with cutoff sweep
+  + state colouring, milestones as fractions of sprite duration,
+  dual-aspect layoutGeom with usePortrait()).
 
 - **Next ITGK batch — continuing after the 2026-06-25 ch.5 nestede-lokker scene.**
   Sixteen ITGK scenes are now in the manifest (founding five plus
@@ -188,7 +190,7 @@ invent a chapter number to make the FK happy.
 
 - **[HUMAN] Re-run `npm run publish all`** once Supabase env vars are wired into the nightly sandbox. Two cumulative backlogs are pending: (a) the 2026-05-13 chapter-remap that moved 8 of 9 ADE scenes to their corrected `chapter_number` values (specs + manifest updated locally, not yet pushed to Supabase) plus the earlier `basis-change-grid` ch.1→ch.2 fix that reconciles the local/remote mismatch flagged by `npm run coverage mat2b`; (b) every nightly-added scene that has not been published yet — including all ADE additions through 2026-05-21 PM and all Mat2B additions through 2026-05-23 evening (chapter-3 Indreproduktrom: `cauchy-schwarz-inequality`, `qr-factorisation-via-gram-schmidt`, `angle-preservation-by-rotation`; chapter-2 Lineærtransformasjoner: `gaussian-elimination-2d`, `matrix-product-as-composition`, `rotation-matrix-family`; chapter-4 Differensialligninger: `separable-variables-circles`, `newtons-law-of-cooling`, `characteristic-roots-regimes`; chapter-5/6: `quadratic-taylor-approximation`, `partial-derivative-as-slice`, `clairaut-mixed-partials`; chapter-1 Vektorrom: `basis-uniqueness`, `null-space-as-line`, `polynomial-vectors`; chapter-6 Ekstremalpunkter: `gradient-descent-on-contours`, `extrema-on-a-circle`, `the-saddle-point`; chapter-4 Differensialligninger (numerical methods, added 2026-05-24 PM): `heun-improved-euler`, `explicit-vs-implicit-euler`, `numerical-orbit-energy-drift`). The new entries are in `motion/scene-manifest.json` with correct `subject_id` + `chapter_number` but no `public.scenes` row yet. Originally flagged 2026-05-15, extended through 2026-05-24 PM. (Supabase remained unreachable this run — `npm run coverage mat2b` fell back to the local manifest.)
 
-- **[HUMAN] Re-run `npm run publish betingelser-jernbanevekslere klasse-og-objekt dict-oppslag-vs-liste-sok slicing-mellom-tegnene asymptotisk-vekst flettesortering binaerhaug-sift unntak-stiger-oppover dp-fylling-fib f-strenger-hullene-fylles tellesortering-bokser for-lokke-range bfs-bolgen referanse-vs-verdi dijkstra-slapp-av matplotlib-funksjonskurve aktivitetsvalg-graadig nestede-lokker kruskal-trygg-kant`** once Supabase env vars are available on the nightly sandbox. Reviewer skipped publish for the five scenes merged from PR #56 (2026-06-17 nightly) because `.env` was missing on the sandbox — `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are needed for `scripts/publish-scene.js` to upsert the `public.scenes` rows. The backlog now also includes `unntak-stiger-oppover` and `dp-fylling-fib` from 2026-06-19, `f-strenger-hullene-fylles` (ch.3 ITGK) and `tellesortering-bokser` (ch.4 algdat) from 2026-06-20, `for-lokke-range` (ch.5 ITGK) from 2026-06-21, `bfs-bolgen` (ch.8 algdat) from 2026-06-22, `referanse-vs-verdi` (ch.2 ITGK) and `dijkstra-slapp-av` (ch.10 algdat) from 2026-06-23, `matplotlib-funksjonskurve` (ch.13 ITGK) and `aktivitetsvalg-graadig` (ch.7 algdat) from 2026-06-24, and tonight's `nestede-lokker` (ch.5 ITGK) and `kruskal-trygg-kant` (ch.9 algdat) from 2026-06-25. `numpy-broadcasting` from PR #65 was published successfully on 2026-06-22 by the reviewer — re-check whether subsequent runs see the keys before reflagging. The scene HTML is already live on Pages (`https://egeiran.github.io/Manimo-Design-System/motion/itgk/<id>.html` and `.../motion/algdat/<id>.html`); only the kort-forklart row is missing. Reviewer flagged on 2026-06-17, extended 2026-06-18, 2026-06-19, 2026-06-20, 2026-06-21, 2026-06-22, 2026-06-23, 2026-06-24, 2026-06-25.
+- **[HUMAN] Re-run `npm run publish betingelser-jernbanevekslere klasse-og-objekt dict-oppslag-vs-liste-sok slicing-mellom-tegnene asymptotisk-vekst flettesortering binaerhaug-sift unntak-stiger-oppover dp-fylling-fib f-strenger-hullene-fylles tellesortering-bokser for-lokke-range bfs-bolgen referanse-vs-verdi dijkstra-slapp-av matplotlib-funksjonskurve aktivitetsvalg-graadig nestede-lokker kruskal-trygg-kant floyd-warshall-via-k`** once Supabase env vars are available on the nightly sandbox. Reviewer skipped publish for the five scenes merged from PR #56 (2026-06-17 nightly) because `.env` was missing on the sandbox — `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are needed for `scripts/publish-scene.js` to upsert the `public.scenes` rows. The backlog now also includes `unntak-stiger-oppover` and `dp-fylling-fib` from 2026-06-19, `f-strenger-hullene-fylles` (ch.3 ITGK) and `tellesortering-bokser` (ch.4 algdat) from 2026-06-20, `for-lokke-range` (ch.5 ITGK) from 2026-06-21, `bfs-bolgen` (ch.8 algdat) from 2026-06-22, `referanse-vs-verdi` (ch.2 ITGK) and `dijkstra-slapp-av` (ch.10 algdat) from 2026-06-23, `matplotlib-funksjonskurve` (ch.13 ITGK) and `aktivitetsvalg-graadig` (ch.7 algdat) from 2026-06-24, and tonight's `nestede-lokker` (ch.5 ITGK) and `kruskal-trygg-kant` (ch.9 algdat) from 2026-06-25. `numpy-broadcasting` from PR #65 was published successfully on 2026-06-22 by the reviewer — re-check whether subsequent runs see the keys before reflagging. The scene HTML is already live on Pages (`https://egeiran.github.io/Manimo-Design-System/motion/itgk/<id>.html` and `.../motion/algdat/<id>.html`); only the kort-forklart row is missing. Reviewer flagged on 2026-06-17, extended 2026-06-18, 2026-06-19, 2026-06-20, 2026-06-21, 2026-06-22, 2026-06-23, 2026-06-24, 2026-06-25.
 
 - **[HUMAN] flettesortering splitt + fletteOpp beats — cells live only at the deepest-visible level; higher/lower bracket rows render empty.** In `motion/algdat/flettesortering.jsx` `SplittBeat` and `FletteOppBeat`, the 8 value cells are positioned at `deepestVisibleLevel` (Splitt) or `shallowestLanded` (FletteOpp) only — the brackets at the other 2–3 levels draw in but their cells stay invisible. At any midpoint snapshot the tree shows one populated row of cells and 2–3 ghost-only bracket rows. Choreography is technically correct (cells lerp DOWN through levels as splits happen, then UP through levels as merges happen) and the takeaway works, but visually it can read as "data evaporated from the other rows" instead of "same data, regrouped." Fix options: (a) render dimmed ghost copies of every value at every visible level (so all four rows always have numbers), or (b) keep cells at their *deepest reached* level and only animate the new wave onto a fresh row above/below, so all already-landed levels stay populated. The flette (two-pointer merge) beat between them is excellent and not affected. Reviewer flagged on 2026-06-17.
 
@@ -204,27 +206,30 @@ invent a chapter number to make the FK happy.
   algoritmer, ch.8 Grafer og traversering, ch.9 Minimale spenntrær,
   ch.10 Korteste vei fra én kilde, ch.11 Korteste vei mellom alle par,
   ch.12 Maksimal flyt, ch.13 Kompleksitetsklasser/NP, ch.14 NP-komplette
-  problemer. Coverage after the 2026-06-25 nightly (Norwegian, not yet
+  problemer. Coverage after the 2026-06-26 nightly (Norwegian, not yet
   published): ch.1 (`asymptotisk-vekst`), ch.3 (`flettesortering`),
   ch.4 (`tellesortering-bokser`), ch.5 (`binaerhaug-sift`), ch.6
   (`dp-fylling-fib`), ch.7 (`aktivitetsvalg-graadig`), ch.8
-  (`bfs-bolgen`), ch.9 (`kruskal-trygg-kant` — added tonight, the
-  chapter's first scene: five vertices and six weighted edges, edge
-  rows fade in to the right of the graph in insertion order then
-  bubble-swap into weight-sorted order (CD lifts from row 3 to row 1
-  past BC and AC), a teal pointer sweeps the sorted list top-to-
-  bottom while each evaluated edge highlights teal in the graph then
-  turns amber (trygg ✓) or flashes rose dashed (sirkel ✗) — four
-  accepts AB CD BC DE total 12, two cycle-skips AC and BD; takeaway
-  payoff O(m log m)), ch.10 (`dijkstra-slapp-av`). Strongest motion
-  follow-ups (priority order): ch.11 Floyd-Warshall as a triple-loop
-  DP table over (i, j) with intermediate k as a brightening heatmap,
-  ch.12 Ford-Fulkerson augmenting paths through a directed graph
-  with residual capacities updating, ch.9 depth-not-coverage Prim's
-  algorithm as a cut frontier (complementary motion to tonight's
-  Kruskal sort-and-sweep). Skip ch.13/ch.14 (theory, animates
-  poorly) for now. Norwegian audio pin same as ITGK — voice Liam
-  `TX3LPaxmHKxFdv7VOQHJ`, model `eleven_turbo_v2_5`,
+  (`bfs-bolgen`), ch.9 (`kruskal-trygg-kant`), ch.10
+  (`dijkstra-slapp-av`), ch.11 (`floyd-warshall-via-k` — added
+  tonight, the chapter's first scene: four-node directed weighted
+  graph (edges 0→1:3, 0→3:10, 1→2:4, 1→3:8, 2→0:2, 2→3:1, 3→0:6)
+  feeding a 4×4 distance matrix; for each k = 0,1,2,3 node k pulses
+  amber, row k + col k get a violet tint, and any cell where D[i][k]
+  + D[k][j] < D[i][j] ticks from old to new with an amber pulse —
+  seven cells improve across the four passes (k=0: ∞→5, ∞→9; k=1:
+  ∞→7, ∞→13; k=2: 10→8, ∞→6, 8→5; k=3 dry); FORBEDRINGER counter
+  rises 0 → 7; takeaway re-overlays the graph with the worked paths
+  0→2→3 (10→8) and 1→2→3 (8→5), then drops the O(n^3) payoff).
+  Strongest motion follow-ups (priority order): ch.12 Ford-Fulkerson
+  augmenting paths through a directed graph with residual capacities
+  updating as edges saturate then a min-cut payoff (the canonical
+  ch.12 motion piece), ch.9 depth-not-coverage Prim as a cut
+  frontier expanding edge by edge (complementary motion to Kruskal),
+  ch.5 depth `rod-svart-rotasjon` (red-black tree rebalance after
+  insert — the rotation IS the motion). Skip ch.13/ch.14 (theory,
+  animates poorly) for now. Norwegian audio pin same as ITGK — voice
+  Liam `TX3LPaxmHKxFdv7VOQHJ`, model `eleven_turbo_v2_5`,
   `language_code: "no"`.
 
 - **ITGK chapter map** (Supabase `public.chapters` for `subject_id='itgk'`,

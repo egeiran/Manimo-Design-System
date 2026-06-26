@@ -3996,6 +3996,31 @@
       ],
       "subject_id": "algdat",
       "chapter_number": 9
+    },
+    {
+      "id": "floyd-warshall-via-k",
+      "file": "floyd-warshall-via-k.jsx",
+      "html": "floyd-warshall-via-k.html",
+      "spec": "floyd-warshall-via-k.spec.json",
+      "title": "Floyd–Warshall: korteste vei via et mellomledd",
+      "eyebrow": "alle par",
+      "topic": "Hvordan finne korteste vei mellom hvert eneste par av byer på en gang. Floyd–Warshall fyller en n ganger n avstandstabell ved å spørre: kan vi finne en kortere vei fra i til j hvis vi får lov å gå innom én ny mellomstasjon k? Vi tillater én mellomstasjon av gangen — k lik null, så én, så to, så tre — og hver gang sammenligner vi den kjente avstanden D av i og j mot D av i og k pluss D av k og j. Sju forbedringer faller på plass på fire firkanten over fire passeringer; node to viser seg å være en ekstra effektiv koblingsstasjon. Tre nestede løkker, orden n i tredje, og hele tabellen er ferdig.",
+      "duration": 65,
+      "language": "no",
+      "prerequisites": [
+        "dijkstra-slapp-av",
+        "dp-fylling-fib"
+      ],
+      "concepts": [
+        "Floyd-Warshall",
+        "alle-par korteste vei",
+        "dynamisk programmering",
+        "avstandsmatrise",
+        "mellomstasjon",
+        "tre nestede løkker"
+      ],
+      "subject_id": "algdat",
+      "chapter_number": 11
     }
   ]
 }

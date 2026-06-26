@@ -1,0 +1,138 @@
+{
+  "id": "floyd-warshall-via-k",
+  "title": "Floyd–Warshall: korteste vei via et mellomledd",
+  "eyebrow": "alle par",
+  "language": "no",
+  "duration": 65,
+  "topic": "Hvordan finne korteste vei mellom hvert eneste par av byer på en gang. Floyd–Warshall fyller en n ganger n avstandstabell ved å spørre: kan vi finne en kortere vei fra i til j hvis vi får lov å gå innom én ny mellomstasjon k? Vi tillater én mellomstasjon av gangen — k lik null, så én, så to, så tre — og hver gang sammenligner vi den kjente avstanden D av i og j mot D av i og k pluss D av k og j. Sju forbedringer faller på plass på fire firkanten over fire passeringer; node to viser seg å være en ekstra effektiv koblingsstasjon. Tre nestede løkker, orden n i tredje, og hele tabellen er ferdig.",
+  "subject_id": "algdat",
+  "chapter_number": 11,
+  "prerequisites": [
+    "dijkstra-slapp-av",
+    "dp-fylling-fib"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 9.93,
+      "narration": "Hva om vi vil ha korteste vei mellom hvert eneste par av byer på en gang? Floyd og Warshall løser hele tabellen, én mellomstasjon av gangen.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Tillat én ny mellomstasjon — og se om tabellen krymper.",
+            "delay": 0.8,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "grafOgTabell",
+      "start": 9.93,
+      "end": 21.4,
+      "narration": "Her er fire byer og sju veier med kostnader. Vi starter med direkte avstander: null på diagonalen, kantens vekt der det går en kant, og uendelig ellers.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Fire noder i et kvadrat (0 oppe-venstre, 1 oppe-høyre, 2 nede-høyre, 3 nede-venstre) med sju rettede kanter og vektmerker.",
+            "delay": 0.3,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "diagram-box",
+            "content": "Fire ganger fire avstandsmatrise, kolonneoverskrift 0 1 2 3, radoverskrift 0 1 2 3. Cellene fylles fra kantlisten: null på diagonalen, kantvekter på direkte kanter, uendelig ellers.",
+            "delay": 2.5,
+            "color": "var(--amber-300)",
+            "note": "Setup — cells fade in row by row to match the edge list; no algorithm motion yet."
+          }
+        ]
+      }
+    },
+    {
+      "id": "rekursjon",
+      "start": 21.4,
+      "end": 34.98,
+      "narration": "Kjernen er én idé. Kan vi finne en kortere vei fra i til j hvis vi får gå innom én mellomstasjon, kall den k? Er D av i og k pluss D av k og j kortere enn det vi har, bytter vi.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "D[i][j] ← min(D[i][j], D[i][k] + D[k][j])",
+            "delay": 0.5,
+            "color": "var(--amber-300)",
+            "position": "centre, mono"
+          },
+          {
+            "type": "svg-path",
+            "content": "Liten gjenbruk av grafen: en mellomstasjon k lyser violet, og to piler i → k → j tegnes inn",
+            "delay": 2,
+            "color": "var(--violet-400)",
+            "note": "Conceptual visual — pointer chain i→k→j highlighting the recurrence."
+          }
+        ]
+      }
+    },
+    {
+      "id": "allePass",
+      "start": 34.98,
+      "end": 54.46,
+      "narration": "Vi tillater én mellomstasjon av gangen. Via node null åpnes to nye veier. Via node én, to nye til. Via node to faller tre forbedringer på rappen — alt går fint gjennom node to. Via node tre — ingen flere gevinster. Tabellen er ferdig.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "Avstandsmatrisen er hovedfokuset. For hver k = 0, 1, 2, 3 lyser node k amber i grafen, rad k og kolonne k i matrisen får en svak violet tinting, og cellene som forbedres pulser amber og verdien tikker fra gammel til ny.",
+            "delay": 0.4,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — sju celler oppdateres synlig over fire k-pass; en teller øker fra 0 til 7."
+          },
+          {
+            "type": "text-caption",
+            "content": "k = 0, 1, 2, 3 — én ny mellomstasjon tillates av gangen",
+            "delay": 0.6,
+            "color": "var(--chalk-300)",
+            "position": "top, mono"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 54.46,
+      "end": 65,
+      "narration": "Tre nestede løkker — én for mellomstasjonen og to for paret. Da har du korteste vei mellom hvert eneste par, på orden n i tredje.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Tillat én ny mellomstasjon av gangen — så er du ferdig.",
+            "delay": 0.4,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "Floyd–Warshall ∈ O(n^3)",
+            "delay": 2,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}
