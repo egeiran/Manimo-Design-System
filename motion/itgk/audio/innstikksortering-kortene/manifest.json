@@ -1,0 +1,37 @@
+{
+  "sceneId": "innstikksortering-kortene",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/innstikksortering-kortene/scene.mp3",
+  "durationSec": 56.89,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Hvordan sorterer du kort på hånden? Du plukker ett og ett, og smetter det inn på riktig plass blant dem du allerede har lagt fra deg."
+    },
+    {
+      "id": "oppsett",
+      "audioStart": 8.57,
+      "narration": "Vi starter med seks tall i tilfeldig rekkefølge. Det første har vi ingen jobb med — det er allerede sortert med seg selv. Resten må vi plukke opp og finne plassen til."
+    },
+    {
+      "id": "mekanikken",
+      "audioStart": 19.76,
+      "narration": "Vi plukker opp neste tall, en toer. Den skal smettes inn blant de sorterte til venstre. Vi sammenligner med femmeren — femmeren er større, så vi skyver den ett hakk høyre, og toeren faller ned i hullet."
+    },
+    {
+      "id": "resten",
+      "audioStart": 34.4,
+      "narration": "Resten går likt. Firetallet smetter forbi femmeren. Sekseren blir stående der den er. Ettallet vandrer helt til venstre, forbi alle de større. Treeren stopper mellom to og fire. Da er hele rekka sortert."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 49.17,
+      "narration": "Det er hele trikset. Hold venstre side sortert, plukk neste, og skyv de større til høyre til det finner plassen sin."
+    }
+  ]
+}

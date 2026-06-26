@@ -3996,6 +3996,31 @@
       ],
       "subject_id": "algdat",
       "chapter_number": 9
+    },
+    {
+      "id": "innstikksortering-kortene",
+      "file": "innstikksortering-kortene.jsx",
+      "html": "innstikksortering-kortene.html",
+      "spec": "innstikksortering-kortene.spec.json",
+      "title": "Innstikksortering: én og én på riktig plass",
+      "eyebrow": "sortering",
+      "topic": "Hvordan sorterer du kort på hånden? Innstikksortering plukker neste tall, sammenligner med de allerede sorterte til venstre, skyver de større ett hakk høyre, og slipper kortet ned i hullet som åpner seg. Vist live på seks tall — fem, to, fire, seks, ett, tre: lift, skyv, drop, om og om igjen, til hele rekka står på rad fra én til seks.",
+      "duration": 58,
+      "language": "no",
+      "prerequisites": [
+        "while-lokke-trace",
+        "for-lokke-range"
+      ],
+      "concepts": [
+        "innstikksortering",
+        "sortering",
+        "sortert prefiks",
+        "skyv større til høyre",
+        "in-place algoritme",
+        "while-løkke"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 11
     }
   ]
 }

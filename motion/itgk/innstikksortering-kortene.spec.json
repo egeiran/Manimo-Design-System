@@ -1,0 +1,148 @@
+{
+  "id": "innstikksortering-kortene",
+  "title": "Innstikksortering: én og én på riktig plass",
+  "eyebrow": "sortering",
+  "language": "no",
+  "duration": 58,
+  "topic": "Hvordan sorterer du kort på hånden? Innstikksortering plukker neste tall, sammenligner med de allerede sorterte til venstre, skyver de større ett hakk høyre, og slipper kortet ned i hullet som åpner seg. Vist live på seks tall: lift, skyv, drop — om og om igjen til hele rekka er sortert.",
+  "subject_id": "itgk",
+  "chapter_number": 11,
+  "prerequisites": [
+    "while-lokke-trace",
+    "for-lokke-range"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 8.57,
+      "narration": "Hvordan sorterer du kort på hånden? Du plukker ett og ett, og smetter det inn på riktig plass blant dem du allerede har lagt fra deg.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Ett og ett kort, inn på riktig plass.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "oppsett",
+      "start": 8.57,
+      "end": 19.76,
+      "narration": "Vi starter med seks tall i tilfeldig rekkefølge. Det første har vi ingen jobb med — det er allerede sortert med seg selv. Resten må vi plukke opp og finne plassen til.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "rad med seks tall: fem, to, fire, seks, ett, tre",
+            "delay": 0.4,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "diagram-box",
+            "content": "amber-glow rundt første kort som markerer «sortert side»",
+            "delay": 2.2,
+            "color": "var(--amber-300)",
+            "note": "Sorted region starts with sortedSize=1"
+          },
+          {
+            "type": "text-caption",
+            "content": "Python-koden side om side: for-løkke som plukker neste, while-løkke som skyver større til høyre",
+            "delay": 4.5,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mekanikken",
+      "start": 19.76,
+      "end": 34.4,
+      "narration": "Vi plukker opp neste tall, en toer. Den skal smettes inn blant de sorterte til venstre. Vi sammenligner med femmeren — femmeren er større, så vi skyver den ett hakk høyre, og toeren faller ned i hullet.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "GENUINE MOTION: kort med verdi to løftes opp fra plass én, femtallet glir ett hakk høyre, hullet åpner seg på plass null, toeren faller ned i hullet",
+            "delay": 0.5,
+            "color": "var(--amber-400)",
+            "note": "Beat 3 GENUINE DATA-MODEL MOTION — lifted card + array cell positions transition via CSS"
+          },
+          {
+            "type": "text-caption",
+            "content": "Kode-blokken highlight veksler: linje 'key = a[i]' under løft, 'a[j+1] = a[j]' under skyv, 'a[j+1] = key' under drop",
+            "delay": 1,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "Sortert-regionen vokser fra én til to kort",
+            "delay": 13,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "resten",
+      "start": 34.4,
+      "end": 49.17,
+      "narration": "Resten går likt. Firetallet smetter forbi femmeren. Sekseren blir stående der den er. Ettallet vandrer helt til venstre, forbi alle de større. Treeren stopper mellom to og fire. Da er hele rekka sortert.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "GENUINE MOTION: fire innstikk i sekvens — fire smetter inn, seks står, ett vandrer hele veien, tre stopper midt i. Sortert-regionen vokser til alle seks.",
+            "delay": 0.3,
+            "color": "var(--amber-400)",
+            "note": "Beat 4 GENUINE DATA-MODEL MOTION — eleven choreographed substeps over the beat duration"
+          },
+          {
+            "type": "text-caption",
+            "content": "ferdig-banner: «sortert»",
+            "delay": 14,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 49.17,
+      "end": 58,
+      "narration": "Det er hele trikset. Hold venstre side sortert, plukk neste, og skyv de større til høyre til det finner plassen sin.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Hold venstre side sortert — plukk neste, skyv større.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "løft → skyv → slipp",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}
