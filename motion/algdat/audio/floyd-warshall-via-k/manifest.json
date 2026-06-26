@@ -1,0 +1,37 @@
+{
+  "sceneId": "floyd-warshall-via-k",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/floyd-warshall-via-k/scene.mp3",
+  "durationSec": 63.85,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Hva om vi vil ha korteste vei mellom hvert eneste par av byer på en gang? Floyd og Warshall løser hele tabellen, én mellomstasjon av gangen."
+    },
+    {
+      "id": "grafOgTabell",
+      "audioStart": 9.93,
+      "narration": "Her er fire byer og sju veier med kostnader. Vi starter med direkte avstander: null på diagonalen, kantens vekt der det går en kant, og uendelig ellers."
+    },
+    {
+      "id": "rekursjon",
+      "audioStart": 21.4,
+      "narration": "Kjernen er én idé. Kan vi finne en kortere vei fra i til j hvis vi får gå innom én mellomstasjon, kall den k? Er D av i og k pluss D av k og j kortere enn det vi har, bytter vi."
+    },
+    {
+      "id": "allePass",
+      "audioStart": 34.98,
+      "narration": "Vi tillater én mellomstasjon av gangen. Via node null åpnes to nye veier. Via node én, to nye til. Via node to faller tre forbedringer på rappen — alt går fint gjennom node to. Via node tre — ingen flere gevinster. Tabellen er ferdig."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 54.46,
+      "narration": "Tre nestede løkker — én for mellomstasjonen og to for paret. Da har du korteste vei mellom hvert eneste par, på orden n i tredje."
+    }
+  ]
+}
