@@ -4023,6 +4023,31 @@
       "chapter_number": 11
     },
     {
+      "id": "arv-og-overstyring",
+      "file": "arv-og-overstyring.jsx",
+      "html": "arv-og-overstyring.html",
+      "spec": "arv-og-overstyring.spec.json",
+      "title": "Arv: barnet låner foreldrenes triks",
+      "eyebrow": "objektorientering",
+      "topic": "En Hund-klasse trenger ikke skrive den samme presenter-koden som en Katt — det felles ligger i en foreldreklasse Dyr, og Hund arver det gratis. Vist live: vi tegner klasse-blokkene side om side, og når rex punkt presenter kalles, vandrer et oppslag opp arvepilen fra Hund (ingen treff) til Dyr (treff). Deretter får Hund sin egen lyd-metode, og samme oppslag stopper med en gang i Hund — overstyring. Lander på at arv er gratis lån, og overstyring er barnet som sier dette gjør jeg selv.",
+      "duration": 67,
+      "language": "no",
+      "prerequisites": [
+        "klasse-og-objekt",
+        "funksjonskall-og-scope"
+      ],
+      "concepts": [
+        "arv",
+        "overstyring",
+        "method resolution order",
+        "subklasse",
+        "superklasse",
+        "polymorfi"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 14
+    },
+    {
       "id": "floyd-warshall-mellomstopp",
       "file": "floyd-warshall-mellomstopp.jsx",
       "html": "floyd-warshall-mellomstopp.html",

@@ -1,0 +1,195 @@
+{
+  "id": "arv-og-overstyring",
+  "title": "Arv: barnet låner foreldrenes triks",
+  "eyebrow": "objektorientering",
+  "language": "no",
+  "duration": 67,
+  "topic": "En Hund-klasse trenger ikke skrive den samme presenter-koden som en Katt — det felles ligger i en foreldreklasse Dyr, og Hund arver det gratis. Vist live: vi tegner klasse-blokkene side om side, og når rex punkt presenter kalles, vandrer et oppslag opp arvepilen fra Hund (ingen treff) til Dyr (treff!). Deretter får Hund sin egen lyd-metode, og samme oppslag stopper med en gang i Hund — overstyring. Lander på at arv er gratis lån, og overstyring er barnet som sier dette gjør jeg selv.",
+  "subject_id": "itgk",
+  "chapter_number": 14,
+  "prerequisites": [
+    "klasse-og-objekt",
+    "funksjonskall-og-scope"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 11.38,
+      "narration": "Du har en Hund-klasse og en Katt-klasse. Begge skal kunne presentere seg, men hund og katt har forskjellige lyder. Må vi skrive den samme presenter-koden to ganger?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Skal vi skrive det samme to ganger?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "arven",
+      "start": 11.38,
+      "end": 26.74,
+      "narration": "Vi lager en klasse Dyr som har det felles. Den kan både presentere seg selv og lage en lyd. Når vi sier at Hund arver fra Dyr, betyr det at hver hund automatisk får disse evnene gratis — uten å skrive dem på nytt.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "class Dyr: def __init__, def presenter, def lyd",
+            "delay": 0.3,
+            "color": "var(--amber-400)",
+            "position": "top-right class block, serif heading, mono method list"
+          },
+          {
+            "type": "text-formula",
+            "content": "class Hund(Dyr): pass",
+            "delay": 1,
+            "color": "var(--teal-400)",
+            "position": "bottom-right class block, empty body"
+          },
+          {
+            "type": "svg-path",
+            "content": "Inheritance arrow from Hund block top edge up to Dyr block bottom edge",
+            "delay": 1.6,
+            "color": "var(--teal-400)",
+            "position": "between the two class blocks"
+          },
+          {
+            "type": "text-caption",
+            "content": "rex får presenter og lyd gratis fra Dyr.",
+            "delay": 4,
+            "color": "var(--chalk-300)",
+            "position": "below the diagram"
+          }
+        ]
+      }
+    },
+    {
+      "id": "oppslagWalkerOpp",
+      "start": 26.74,
+      "end": 43.55,
+      "narration": "Vi kaller presenter på rex. Python ser først i Hund-klassen. Den finner ingen presenter der. Så går oppslaget oppover langs arvepilen til Dyr — der ligger presenter. Den kjøres, og Rex sier: hei, jeg er Rex.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "rex.presenter() highlight line in code panel",
+            "delay": 0.2,
+            "color": "var(--amber-400)",
+            "position": "code panel"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Lookup chip flies from the code call to the Hund block, scans, finds nothing",
+            "delay": 0.8,
+            "color": "var(--rose-400)",
+            "position": "Hund block border briefly pulses rose (miss)"
+          },
+          {
+            "type": "svg-path",
+            "content": "Lookup chip slides up the inheritance arrow to the Dyr block",
+            "delay": 2.6,
+            "color": "var(--amber-400)",
+            "position": "along the inheritance arrow"
+          },
+          {
+            "type": "text-formula",
+            "content": "Dyr.presenter row pulses amber and the print output appears",
+            "delay": 4.2,
+            "color": "var(--amber-300)",
+            "position": "Dyr block row + output box"
+          },
+          {
+            "type": "text-caption",
+            "content": "Hei, jeg er Rex",
+            "delay": 5.4,
+            "color": "var(--amber-300)",
+            "position": "amber-framed output row"
+          }
+        ]
+      }
+    },
+    {
+      "id": "overstyring",
+      "start": 43.55,
+      "end": 58.94,
+      "narration": "Nå legger vi inn en egen lyd-metode i Hund. Når vi kaller lyd på rex, finner Python den med en gang i Hund og stopper. Den går aldri videre opp i kjeden. Hundens voff vinner over den generelle lyden. Det er overstyring.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "def lyd(self): return \"voff\" draws into Hund block",
+            "delay": 0.4,
+            "color": "var(--rose-400)",
+            "position": "Hund block adds a new method row"
+          },
+          {
+            "type": "text-formula",
+            "content": "rex.lyd() highlight line in code panel",
+            "delay": 2.6,
+            "color": "var(--rose-400)",
+            "position": "code panel"
+          },
+          {
+            "type": "svg-circle",
+            "content": "Lookup chip flies from the call to the Hund block and stops on lyd (HIT, no walk up)",
+            "delay": 3.2,
+            "color": "var(--rose-400)",
+            "position": "Hund.lyd row pulses; Dyr.lyd row dimmed and crossed out softly"
+          },
+          {
+            "type": "text-caption",
+            "content": "voff",
+            "delay": 5,
+            "color": "var(--amber-300)",
+            "position": "amber-framed output row"
+          },
+          {
+            "type": "text-caption",
+            "content": "Hund stopper oppslaget — Dyr sin lyd kjøres aldri.",
+            "delay": 6.8,
+            "color": "var(--chalk-300)",
+            "position": "below the diagram"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 58.94,
+      "end": 67,
+      "narration": "Arv lar barnet låne foreldrenes evner. Overstyring lar barnet si: dette gjør jeg selv.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "arv og overstyring",
+            "delay": 0,
+            "color": "var(--amber-300)",
+            "position": "mono eyebrow above the takeaway line"
+          },
+          {
+            "type": "text-formula",
+            "content": "Arv låner — overstyring sier: det gjør jeg selv.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          }
+        ]
+      }
+    }
+  ]
+}
