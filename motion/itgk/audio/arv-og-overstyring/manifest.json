@@ -1,0 +1,37 @@
+{
+  "sceneId": "arv-og-overstyring",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/arv-og-overstyring/scene.mp3",
+  "durationSec": 65.02,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du har en Hund-klasse og en Katt-klasse. Begge skal kunne presentere seg, men hund og katt har forskjellige lyder. Må vi skrive den samme presenter-koden to ganger?"
+    },
+    {
+      "id": "arven",
+      "audioStart": 11.38,
+      "narration": "Vi lager en klasse Dyr som har det felles. Den kan både presentere seg selv og lage en lyd. Når vi sier at Hund arver fra Dyr, betyr det at hver hund automatisk får disse evnene gratis — uten å skrive dem på nytt."
+    },
+    {
+      "id": "oppslagWalkerOpp",
+      "audioStart": 26.74,
+      "narration": "Vi kaller presenter på rex. Python ser først i Hund-klassen. Den finner ingen presenter der. Så går oppslaget oppover langs arvepilen til Dyr — der ligger presenter. Den kjøres, og Rex sier: hei, jeg er Rex."
+    },
+    {
+      "id": "overstyring",
+      "audioStart": 43.55,
+      "narration": "Nå legger vi inn en egen lyd-metode i Hund. Når vi kaller lyd på rex, finner Python den med en gang i Hund og stopper. Den går aldri videre opp i kjeden. Hundens voff vinner over den generelle lyden. Det er overstyring."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 58.94,
+      "narration": "Arv lar barnet låne foreldrenes evner. Overstyring lar barnet si: dette gjør jeg selv."
+    }
+  ]
+}
