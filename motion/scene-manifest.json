@@ -4046,6 +4046,31 @@
       ],
       "subject_id": "itgk",
       "chapter_number": 14
+    },
+    {
+      "id": "floyd-warshall-mellomstopp",
+      "file": "floyd-warshall-mellomstopp.jsx",
+      "html": "floyd-warshall-mellomstopp.html",
+      "spec": "floyd-warshall-mellomstopp.spec.json",
+      "title": "Floyd-Warshall: tillat én mellomstopp",
+      "eyebrow": "korteste vei mellom alle par",
+      "topic": "Korteste vei fra hver node til hver eneste annen — på én gang. Floyd-Warshall bygger en n×n-tabell ved å tillate én og én mellomstopp: for hver runde k spør vi om veien fra i til j blir kortere hvis vi får lov til å bytte tog innom node k. Vist på fire noder og seks rettede kanter — sju oppdateringer fordelt over fire runder, med en sen vinner der tre til to faller fra fem til to via node fire. Recurrence D[i][j] = min(D[i][j], D[i][k] + D[k][j]) brytes ned til ett spørsmål per celle per runde.",
+      "duration": 68,
+      "language": "no",
+      "prerequisites": [
+        "dijkstra-slapp-av",
+        "dp-fylling-fib"
+      ],
+      "concepts": [
+        "Floyd-Warshall",
+        "korteste vei mellom alle par",
+        "dynamisk programmering på grafer",
+        "intermediær node",
+        "matrise-relaksasjon",
+        "rettet vektet graf"
+      ],
+      "subject_id": "algdat",
+      "chapter_number": 11
     }
   ]
 }

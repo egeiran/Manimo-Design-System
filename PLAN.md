@@ -95,27 +95,31 @@ invent a chapter number to make the FK happy.
 
 ### [AGENT] — safe for the next nightly run
 
-- **Next algdat batch — tenth scene after tonight's 2026-06-25 `kruskal-trygg-kant` (ch.9 Minimale spenntrær).**
+- **Next algdat batch — eleventh scene after tonight's 2026-06-27 `floyd-warshall-mellomstopp` (ch.11 Korteste vei mellom alle par).**
   Coverage so far: ch.1 `asymptotisk-vekst`, ch.3 `flettesortering`,
   ch.4 `tellesortering-bokser`, ch.5 `binaerhaug-sift`, ch.6
   `dp-fylling-fib`, ch.7 `aktivitetsvalg-graadig`, ch.8 `bfs-bolgen`,
-  ch.9 `kruskal-trygg-kant` (tonight — five vertices and six weighted
-  edges, edge rows fly into sorted order on the right, then a teal
-  pointer sweeps top-to-bottom marking each edge trygg (amber check)
-  or sirkel (rose X) — four accepts AB CD BC DE with total weight 12
-  and two cycle-skips AC and BD), ch.10 `dijkstra-slapp-av`. Strongest
-  remaining motion follow-ups in priority order: `floyd-warshall-dp`
-  (ch.11 Korteste vei mellom alle par — N×N distance matrix updates
-  cell by cell, three nested loops as a heatmap that brightens with
-  each relaxation through intermediate vertex k), `ford-fulkerson-augment`
-  (ch.12 Maksimal flyt — augmenting paths sending flow through a
-  directed graph, residual capacities updating as edges saturate), or
-  a second ch.9 depth scene `prim-cut-frontier` (Prim grows the MST
-  from one vertex outwards, the cut frontier expanding edge by edge,
-  visually complementary to tonight's Kruskal sort-and-sweep).
-  Skip ch.13 / ch.14 (NP-classes) — they animate poorly. All algdat
-  scenes are Norwegian (`language: "no"`); generate-audio.js
-  automatically routes to voice Liam (`TX3LPaxmHKxFdv7VOQHJ`) on
+  ch.9 `kruskal-trygg-kant`, ch.10 `dijkstra-slapp-av`, ch.11
+  `floyd-warshall-mellomstopp` (tonight — four nodes and six directed
+  weighted edges with a 4×4 distance matrix beside the graph; the
+  k-th row+column highlights teal as the round advances, seven
+  updates land across k=1..4 including a late re-relaxation of (3,2)
+  from 5 down to 2 via vertex 4; counter ticks 0..7, recurrence
+  D[i][j] = min(D[i][j], D[i][k] + D[k][j]) above the matrix; payoff
+  Floyd-Warshall ∈ O(n³)). Strongest remaining motion follow-ups in
+  priority order: `ford-fulkerson-augment` (ch.12 Maksimal flyt —
+  augmenting paths sending flow through a directed graph, residual
+  capacities updating as edges saturate), a second ch.9 depth scene
+  `prim-cut-frontier` (Prim grows the MST from one vertex outwards,
+  the cut frontier expanding edge by edge, visually complementary to
+  Kruskal's sort-and-sweep), or a depth companion in ch.6 like
+  `dp-rod-cutting` (1-D table fills with each cut option overlaid,
+  optimal-substructure made visible) or in ch.3 `quicksort-partisjon`
+  (Lomuto partition with a pivot, walker, and two-region sweep —
+  complements flettesortering's split-and-merge). Skip ch.13 / ch.14
+  (NP-classes) — they animate poorly. All algdat scenes are
+  Norwegian (`language: "no"`); generate-audio.js automatically
+  routes to voice Liam (`TX3LPaxmHKxFdv7VOQHJ`) on
   `eleven_turbo_v2_5`. Match the algdat house pattern (graph nodes
   with letter + tentative distance + tree-edge highlight, or
   array/timeline cells with cutoff sweep + state colouring,
