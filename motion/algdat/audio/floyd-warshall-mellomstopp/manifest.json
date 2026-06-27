@@ -1,0 +1,37 @@
+{
+  "sceneId": "floyd-warshall-mellomstopp",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/floyd-warshall-mellomstopp/scene.mp3",
+  "durationSec": 66.6,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du vil vite korteste vei fra hver node til hver eneste annen — på én gang. Dijkstra svarer for én startnode. Hva med alle samtidig?"
+    },
+    {
+      "id": "tabellOgGraf",
+      "audioStart": 11.04,
+      "narration": "Vi setter opp en tabell: rad i, kolonne j, verdien er korteste kjente vei fra i til j. I starten vet vi bare om de direkte kantene — alt annet står på uendelig."
+    },
+    {
+      "id": "rundeEnOgTo",
+      "audioStart": 24.51,
+      "narration": "Nå tillater vi én mellomstopp om gangen. Runde én — kan vi bli kortere ved å hoppe via node én? Tre til to åpner seg fra ingenting til fem. Runde to — via node to: én til tre lander på sju, fire til tre på fem."
+    },
+    {
+      "id": "rundeTreOgFire",
+      "audioStart": 40.41,
+      "narration": "Via node tre faller mange tall på plass: to til én blir seks, to til fire blir fem, fire til én blir sju. Og når vi til slutt tillater node fire som mellomstopp, finner vi en enda kortere vei fra tre til to — tre til fire til to, bare to."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 56.77,
+      "narration": "Floyd-Warshall: tillat én og én mellomstopp. Fire runder over alle par i og j — n i tredje, og du har korteste vei mellom hver eneste node."
+    }
+  ]
+}
