@@ -4071,6 +4071,31 @@
       ],
       "subject_id": "algdat",
       "chapter_number": 11
+    },
+    {
+      "id": "mutable-default-arg-felle",
+      "file": "mutable-default-arg-felle.jsx",
+      "html": "mutable-default-arg-felle.html",
+      "spec": "mutable-default-arg-felle.spec.json",
+      "title": "Standardverdier lages én gang",
+      "eyebrow": "funksjoner",
+      "topic": "Den klassiske Python-fella med muterbar standardverdi: def legg_til(x, lst=[]) lager den tomme lista én gang når def kjører, og samme liste deles av alle kall som ikke gir sin egen. Vist live — funksjonsobjektet eier sin tomme standardliste, og tre kall (1, 2, 3) lar tre brikker fly inn på den samme delte lista, slik at utskriften vokser fra én, til én to, til én to tre. Fiksen er å bruke None som standard og lage lista inni funksjonen.",
+      "duration": 75,
+      "language": "no",
+      "prerequisites": [
+        "funksjonskall-og-scope",
+        "liste-referanser"
+      ],
+      "concepts": [
+        "muterbar standardverdi",
+        "default argument trap",
+        "funksjonsobjekt",
+        "delt referanse",
+        "definisjonstidspunkt",
+        "None-pattern"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 6
     }
   ]
 }
