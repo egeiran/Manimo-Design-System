@@ -1,0 +1,192 @@
+{
+  "id": "mutable-default-arg-felle",
+  "title": "Standardverdier lages én gang",
+  "eyebrow": "funksjoner",
+  "language": "no",
+  "duration": 75,
+  "topic": "Den klassiske Python-fella: en funksjon med en muterbar standardverdi husker forrige kall. def legg_til(x, lst=[]) lager den tomme lista én gang når def kjører, og samme liste deles av hvert kall som ikke gir sin egen. Vist live: funksjonsobjektet får sin tomme liste, og tre kall — én, to, tre — lar tre brikker fly inn på den samme delte lista, slik at utskriften vokser fra én, til én to, til én to tre. Avslutter med fiksen: bruk None som standard og lag lista inni.",
+  "subject_id": "itgk",
+  "chapter_number": 6,
+  "prerequisites": [
+    "funksjonskall-og-scope",
+    "liste-referanser"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 10.34,
+      "narration": "Du skriver en funksjon som legger et tall til ei liste, og du kaller den tre ganger uten å sende inn ei liste — og lista bare vokser. Hva er det som skjer?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Hvorfor husker funksjonen forrige kall?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kode",
+      "start": 10.34,
+      "end": 26.74,
+      "narration": "Funksjonen tar imot et tall og ei liste. Hvis ingen sender med ei liste, bruker vi en tom liste som standardverdi. Vi gjør tre kall — med én, med to, og med tre. Du venter kanskje at hver utskrift er én énverdig liste.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "def legg_til(x, lst=[]):\n    lst.append(x)\n    return lst\n\nprint(legg_til(1))\nprint(legg_til(2))\nprint(legg_til(3))",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left, reveal lines one by one",
+            "note": "CodeBlock reveal='lines'"
+          },
+          {
+            "type": "text-caption",
+            "content": "forventet utskrift — tre friske lister",
+            "delay": 4.8,
+            "color": "var(--chalk-300)",
+            "position": "right panel"
+          },
+          {
+            "type": "diagram-box",
+            "content": "forventet-utskrift: [1] · [2] · [3]  med rose «?» badge",
+            "delay": 5.4,
+            "color": "var(--rose-400)",
+            "note": "expected-output panel — the misconception in chalk-300 strike-through later"
+          }
+        ]
+      }
+    },
+    {
+      "id": "definisjonen",
+      "start": 26.74,
+      "end": 42.05,
+      "narration": "Men hemmeligheten ligger her: def kjører bare én gang, og det er da den tomme lista blir laget. Den lever inne i funksjonsobjektet som standardverdi. Hver gang noen kaller uten å sende inn ei egen liste, lånes den samme.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "funksjonsobjekt-ramme «legg_til» tegnes opp, med en tom liste-rad merket «standardverdi lst»",
+            "delay": 0.8,
+            "color": "var(--amber-400)",
+            "note": "MemFrame with title legg_til, containing the empty default list (a bracket [ ])"
+          },
+          {
+            "type": "svg-label",
+            "content": "standardverdi · lst",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "above the empty list row"
+          },
+          {
+            "type": "text-caption",
+            "content": "lista lever i funksjonen — én gang, ikke per kall",
+            "delay": 5,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "treKallSammeListe",
+      "start": 42.05,
+      "end": 63.23,
+      "narration": "Første kall: vi sender inn én. Det legges til den delte lista, som nå er én. Andre kall: vi sender inn to. Lista var ikke fersk — den hadde allerede én. To legges på, og lista er nå én to. Tredje kall legger til tre, og lista er én to tre. Funksjonen husket ingenting — det var den samme lista hele veien.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "brikke «1» flyr fra kallinjen til den delte lista; lista vokser fra [] til [1]",
+            "delay": 1.2,
+            "color": "var(--amber-300)",
+            "note": "GENUINE MOTION — chip 1: kall #1 landing on shared list"
+          },
+          {
+            "type": "diagram-box",
+            "content": "utskriftsrad «[1]» dukker opp",
+            "delay": 2.8,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "brikke «2» flyr inn på den samme delte lista; lista vokser til [1, 2]",
+            "delay": 6.4,
+            "color": "var(--amber-300)",
+            "note": "GENUINE MOTION — chip 2: same shared list, second cell appears"
+          },
+          {
+            "type": "diagram-box",
+            "content": "utskriftsrad «[1, 2]» dukker opp",
+            "delay": 8,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "svg-path",
+            "content": "brikke «3» flyr inn på samme liste; lista vokser til [1, 2, 3]",
+            "delay": 11.6,
+            "color": "var(--amber-300)",
+            "note": "GENUINE MOTION — chip 3: third cell joins the SAME row"
+          },
+          {
+            "type": "diagram-box",
+            "content": "utskriftsrad «[1, 2, 3]» dukker opp, takeaway-glød på den delte lista",
+            "delay": 13.2,
+            "color": "var(--amber-300)"
+          },
+          {
+            "type": "text-caption",
+            "content": "samme liste — den vokste mellom kallene",
+            "delay": 15,
+            "color": "var(--rose-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 63.23,
+      "end": 75,
+      "narration": "Vil du ha en frisk start hvert kall, bruk None som standard og lag lista inni funksjonen. Da fødes en ny liste hver gang du kaller — som du faktisk ventet.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Standardverdier lages én gang.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "code-block",
+            "content": "def legg_til(x, lst=None):\n    if lst is None:\n        lst = []\n    lst.append(x)\n    return lst",
+            "delay": 1.4,
+            "color": "var(--teal-400)",
+            "position": "below punchline, small mono panel",
+            "note": "the fix: build a fresh list inside the function"
+          },
+          {
+            "type": "text-formula",
+            "content": "None som standard · ny liste hver gang",
+            "delay": 4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}
