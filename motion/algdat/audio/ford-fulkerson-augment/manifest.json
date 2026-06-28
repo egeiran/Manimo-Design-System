@@ -1,0 +1,37 @@
+{
+  "sceneId": "ford-fulkerson-augment",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/ford-fulkerson-augment/scene.mp3",
+  "durationSec": 70.96,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du har et nett av rør, og hver kant har en kapasitet. Hvor mye flyt kan du sende fra kilden helt fram til sluket?"
+    },
+    {
+      "id": "nettverket",
+      "audioStart": 9,
+      "narration": "Vi har en kilde S, et sluk T, og to mellomstasjoner A og B. På hver kant står det flyt skråstrek kapasitet. Til å begynne med er all flyt null."
+    },
+    {
+      "id": "enkleStier",
+      "audioStart": 20.36,
+      "narration": "Vi leter etter en sti fra S til T der det er plass igjen på hver kant. S til A til T går fint — flaskehalsen er fire. Send fire enheter, og A til T er metta. Så finner vi S til B til T. Flaskehalsen her er seks. Send seks, og S til B blir metta. Total flyt er nå ti."
+    },
+    {
+      "id": "tredjeSti",
+      "audioStart": 41.34,
+      "narration": "Vi er ikke ferdige. A til T er metta, men S til A er åpen enda, og A til B er åpen, og B til T har plass til to enheter. Vi sniker forbi flaskehalsen — S, A, B, T — og sender to enheter. Total flyt er nå tolv."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 56.96,
+      "narration": "Nå finnes ingen sti fra S til T med ledig plass. Total flyt er tolv enheter, og det er det maksimale. Så lenge det finnes en forsterkende sti, send flaskehalsen — så er Ford-Fulkerson ferdig."
+    }
+  ]
+}
