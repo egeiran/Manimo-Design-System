@@ -4071,6 +4071,32 @@
       ],
       "subject_id": "algdat",
       "chapter_number": 11
+    },
+    {
+      "id": "ford-fulkerson-augment",
+      "file": "ford-fulkerson-augment.jsx",
+      "html": "ford-fulkerson-augment.html",
+      "spec": "ford-fulkerson-augment.spec.json",
+      "title": "Ford-Fulkerson: send flyt langs forsterkende stier",
+      "eyebrow": "maksimal flyt",
+      "topic": "Maksimal flyt fra kilde til sluk i en kapasitert graf. Ford-Fulkerson kjører i runder: så lenge det finnes en sti fra S til T der hver kant har plass igjen, send flyt lik flaskehalsen langs den stien. Vist på fire noder og fem rettede kanter — tre forsterkende stier på rad: S-A-T sender fire enheter og metter A-T, S-B-T sender seks og metter S-B, og til slutt S-A-B-T henter de to siste enhetene ved å snike forbi den mettede A-T-kanten. Total flyt blir tolv.",
+      "duration": 72,
+      "language": "no",
+      "prerequisites": [
+        "bfs-bolgen",
+        "dijkstra-slapp-av"
+      ],
+      "concepts": [
+        "Ford-Fulkerson",
+        "maksimal flyt",
+        "forsterkende sti",
+        "flaskehals",
+        "metta kant",
+        "rettet vektet graf",
+        "kilde og sluk"
+      ],
+      "subject_id": "algdat",
+      "chapter_number": 12
     }
   ]
 }
