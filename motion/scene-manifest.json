@@ -4099,6 +4099,30 @@
       "chapter_number": 12
     },
     {
+      "id": "grunn-vs-dyp-kopi",
+      "file": "grunn-vs-dyp-kopi.jsx",
+      "html": "grunn-vs-dyp-kopi.html",
+      "spec": "grunn-vs-dyp-kopi.spec.json",
+      "title": "Grunn og dyp kopi: hva deler kopien fortsatt?",
+      "eyebrow": "lister",
+      "topic": "Shallow vs deep copy for nestede lister — a.copy() bygger en ny ytre liste men deler de indre listene; copy.deepcopy(a) lager ferske kopier på alle nivåer. Vist med tre matrise-kort (a, b, c), en delt-indre-bracket mellom a og b som pulser når a[0][0] endres slik at begge fliser flipper samtidig, og en uavhengig c som ikke flyttes når a deretter endres.",
+      "duration": 70,
+      "language": "no",
+      "prerequisites": [
+        "liste-referanser"
+      ],
+      "concepts": [
+        "grunn kopi",
+        "dyp kopi",
+        "copy.deepcopy",
+        "nestede lister",
+        "referanse vs verdi",
+        "muterbarhet"
+      ],
+      "subject_id": "itgk",
+      "chapter_number": 8
+    },
+    {
       "id": "rekursjonstre-arbeidsrader",
       "file": "rekursjonstre-arbeidsrader.jsx",
       "html": "rekursjonstre-arbeidsrader.html",

@@ -1,0 +1,37 @@
+{
+  "sceneId": "grunn-vs-dyp-kopi",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/grunn-vs-dyp-kopi/scene.mp3",
+  "durationSec": 68.03,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du har lært at funksjonen list bygger en kopi av ei liste. Men hva om lista inneholder en annen liste? Da er det ikke alltid så enkelt som det ser ut."
+    },
+    {
+      "id": "nestetData",
+      "audioStart": 11.02,
+      "narration": "a er en liste med to lister inni: en og to, så tre og fire. Når vi kaller metoden copy på a, lages en ny ytre liste. Men inne i den lever de samme pekerne — så b og a deler de to indre listene."
+    },
+    {
+      "id": "sjokket",
+      "audioStart": 27.07,
+      "narration": "Vi endrer det første tallet i den første indre lista til nittini. Det er jo bare én indre liste der — så når vi skriver ut, viser både a og b nittini på samme plass. Metoden copy var ikke nok."
+    },
+    {
+      "id": "dypKopi",
+      "audioStart": 41.06,
+      "narration": "Funksjonen deepcopy fra modulen copy lager nye kopier på alle nivåer. c får sine egne indre lister. Når vi nå setter det første tallet i a til hundre, ser bare a endringen. c er trygg."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 55.34,
+      "narration": "Copy gir deg en ny ytre liste. Deepcopy gir deg nye lister hele veien ned. Lager du en kopi av en nesta liste, må du tenke på hvor dypt det skal kopieres."
+    }
+  ]
+}

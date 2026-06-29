@@ -131,27 +131,25 @@ invent a chapter number to make the FK happy.
   milestones as fractions of sprite duration, dual-aspect
   layoutGeom with usePortrait()).
 
-- **Next ITGK batch — continuing after the 2026-06-27 ch.14 arv-og-overstyring scene.**
-  Eighteen ITGK scenes are now in the manifest (founding five plus
+- **Next ITGK batch — continuing after the 2026-06-29 ch.8 grunn-vs-dyp-kopi scene.**
+  Nineteen ITGK scenes are now in the manifest (founding five plus
   `slicing-mellom-tegnene`, `dict-oppslag-vs-liste-sok`,
   `klasse-og-objekt`, `betingelser-jernbanevekslere`,
   `unntak-stiger-oppover`, `f-strenger-hullene-fylles`,
   `for-lokke-range`, `numpy-broadcasting`, `referanse-vs-verdi`,
   `matplotlib-funksjonskurve`, `nestede-lokker`,
-  `innstikksortering-kortene`, and tonight's `arv-og-overstyring`
-  for ch.14 — the chapter's second OO scene next to
-  `klasse-og-objekt`: a parent `class Dyr` block (amber) sits above
-  a child `class Hund(Dyr)` block (teal) with a teal inheritance
-  arrow pointing up between them. Beat 3 carries the genuine
-  data-model motion: a lookup chip labelled `oppslag: presenter`
-  flies from the highlighted `print(rex.presenter())` call line
-  into the Hund block (rose miss pulse), then slides UP along the
-  arrow and lands on Dyr.presenter (amber row highlight), with
-  output `Hei, jeg er Rex` appearing in an amber-framed row. Beat
-  4 mirrors the structure with override: Hund grows its own
-  `def lyd(self): return "voff"` row in rose; the lookup chip for
-  `rex.lyd()` lands on Hund and STOPS — Dyr.lyd is shown struck
-  through and dimmed (present but bypassed). 67 s, 4 explicit
+  `innstikksortering-kortene`, `arv-og-overstyring`, and tonight's
+  `grunn-vs-dyp-kopi` for ch.8 — a depth companion to
+  `liste-referanser`. Three matrix cards (a amber, b teal, c teal)
+  render the nested list `[[1, 2], [3, 4]]` as a 2x2 grid; a dashed
+  "samme indre" bracket links a and b after `b = a.copy()`. Beat 3
+  carries the first genuine data-model motion: `a[0][0] = 99`
+  flips BOTH a's and b's (0,0) cell simultaneously and the bracket
+  pulses rose, payoff `[[99, 2], [3, 4]] [[99, 2], [3, 4]]`. Beat
+  4 carries the second: `c = copy.deepcopy(a)` materialises c
+  independent (no bracket), b fades, then `a[0][0] = 100` flips
+  only a's cell while c stays at 99, payoff
+  `[[100, 2], [3, 4]] [[99, 2], [3, 4]]`. 70 s, 4 explicit
   beats + SceneChrome intro. Strongest next topics, in priority
   order: a second Matplotlib scene like akser-og-tittel
   (`plt.xlabel/ylabel/title` + axis-range — same plot, then the
@@ -163,10 +161,7 @@ invent a chapter number to make the FK happy.
   break/continue-løkkekontroll (ch.5 — a value flowing through a
   loop body either fires print or short-circuits back to the
   header / breaks out entirely, the misconception is that break
-  exits ALL enclosing loops); shallow-vs-deep-copy (ch.8 —
-  `import copy`; a nested list with `b = a`, `b = a.copy()`,
-  `b = copy.deepcopy(a)` side by side, only deepcopy unhooks the
-  inner list when mutated); valgsortering-finn-minste (ch.11 —
+  exits ALL enclosing loops); valgsortering-finn-minste (ch.11 —
   depth companion to innstikksortering: a pointer sweeps right to
   find the min of the unsorted suffix then swaps it with the
   leftmost unsorted cell, the sorted prefix grows one card per
@@ -211,11 +206,13 @@ invent a chapter number to make the FK happy.
 
 - **[HUMAN] Re-run `npm run publish all`** once Supabase env vars are wired into the nightly sandbox. Two cumulative backlogs are pending: (a) the 2026-05-13 chapter-remap that moved 8 of 9 ADE scenes to their corrected `chapter_number` values (specs + manifest updated locally, not yet pushed to Supabase) plus the earlier `basis-change-grid` ch.1→ch.2 fix that reconciles the local/remote mismatch flagged by `npm run coverage mat2b`; (b) every nightly-added scene that has not been published yet — including all ADE additions through 2026-05-21 PM and all Mat2B additions through 2026-05-23 evening (chapter-3 Indreproduktrom: `cauchy-schwarz-inequality`, `qr-factorisation-via-gram-schmidt`, `angle-preservation-by-rotation`; chapter-2 Lineærtransformasjoner: `gaussian-elimination-2d`, `matrix-product-as-composition`, `rotation-matrix-family`; chapter-4 Differensialligninger: `separable-variables-circles`, `newtons-law-of-cooling`, `characteristic-roots-regimes`; chapter-5/6: `quadratic-taylor-approximation`, `partial-derivative-as-slice`, `clairaut-mixed-partials`; chapter-1 Vektorrom: `basis-uniqueness`, `null-space-as-line`, `polynomial-vectors`; chapter-6 Ekstremalpunkter: `gradient-descent-on-contours`, `extrema-on-a-circle`, `the-saddle-point`; chapter-4 Differensialligninger (numerical methods, added 2026-05-24 PM): `heun-improved-euler`, `explicit-vs-implicit-euler`, `numerical-orbit-energy-drift`). The new entries are in `motion/scene-manifest.json` with correct `subject_id` + `chapter_number` but no `public.scenes` row yet. Originally flagged 2026-05-15, extended through 2026-05-24 PM. (Supabase remained unreachable this run — `npm run coverage mat2b` fell back to the local manifest.)
 
-- **[HUMAN] Re-run `npm run publish betingelser-jernbanevekslere klasse-og-objekt dict-oppslag-vs-liste-sok slicing-mellom-tegnene asymptotisk-vekst flettesortering binaerhaug-sift unntak-stiger-oppover dp-fylling-fib f-strenger-hullene-fylles tellesortering-bokser for-lokke-range bfs-bolgen referanse-vs-verdi dijkstra-slapp-av matplotlib-funksjonskurve aktivitetsvalg-graadig nestede-lokker kruskal-trygg-kant innstikksortering-kortene floyd-warshall-mellomstopp ford-fulkerson-augment rekursjonstre-arbeidsrader`** once Supabase env vars are available on the nightly sandbox. Reviewer skipped publish for the five scenes merged from PR #56 (2026-06-17 nightly) because `.env` was missing on the sandbox — `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are needed for `scripts/publish-scene.js` to upsert the `public.scenes` rows. The backlog now also includes `unntak-stiger-oppover` and `dp-fylling-fib` from 2026-06-19, `f-strenger-hullene-fylles` (ch.3 ITGK) and `tellesortering-bokser` (ch.4 algdat) from 2026-06-20, `for-lokke-range` (ch.5 ITGK) from 2026-06-21, `bfs-bolgen` (ch.8 algdat) from 2026-06-22, `referanse-vs-verdi` (ch.2 ITGK) and `dijkstra-slapp-av` (ch.10 algdat) from 2026-06-23, `matplotlib-funksjonskurve` (ch.13 ITGK) and `aktivitetsvalg-graadig` (ch.7 algdat) from 2026-06-24, and `nestede-lokker` (ch.5 ITGK) and `kruskal-trygg-kant` (ch.9 algdat) from 2026-06-25, `innstikksortering-kortene` (ch.11 ITGK) from 2026-06-26, and tonight's `arv-og-overstyring` (ch.14 ITGK) from 2026-06-27. `numpy-broadcasting` from PR #65 was published successfully on 2026-06-22 by the reviewer — re-check whether subsequent runs see the keys before reflagging. The scene HTML is already live on Pages (`https://egeiran.github.io/Manimo-Design-System/motion/itgk/<id>.html` and `.../motion/algdat/<id>.html`); only the kort-forklart row is missing. Reviewer flagged on 2026-06-17, extended 2026-06-18, 2026-06-19, 2026-06-20, 2026-06-21, 2026-06-22, 2026-06-23, 2026-06-24, 2026-06-25, 2026-06-26, 2026-06-27.
+- **[HUMAN] Re-run `npm run publish betingelser-jernbanevekslere klasse-og-objekt dict-oppslag-vs-liste-sok slicing-mellom-tegnene asymptotisk-vekst flettesortering binaerhaug-sift unntak-stiger-oppover dp-fylling-fib f-strenger-hullene-fylles tellesortering-bokser for-lokke-range bfs-bolgen referanse-vs-verdi dijkstra-slapp-av matplotlib-funksjonskurve aktivitetsvalg-graadig nestede-lokker kruskal-trygg-kant innstikksortering-kortene floyd-warshall-mellomstopp ford-fulkerson-augment arv-og-overstyring grunn-vs-dyp-kopi rekursjonstre-arbeidsrader`** once Supabase env vars are available on the nightly sandbox. Reviewer skipped publish for the five scenes merged from PR #56 (2026-06-17 nightly) because `.env` was missing on the sandbox — `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are needed for `scripts/publish-scene.js` to upsert the `public.scenes` rows. The backlog now also includes `unntak-stiger-oppover` and `dp-fylling-fib` from 2026-06-19, `f-strenger-hullene-fylles` (ch.3 ITGK) and `tellesortering-bokser` (ch.4 algdat) from 2026-06-20, `for-lokke-range` (ch.5 ITGK) from 2026-06-21, `bfs-bolgen` (ch.8 algdat) from 2026-06-22, `referanse-vs-verdi` (ch.2 ITGK) and `dijkstra-slapp-av` (ch.10 algdat) from 2026-06-23, `matplotlib-funksjonskurve` (ch.13 ITGK) and `aktivitetsvalg-graadig` (ch.7 algdat) from 2026-06-24, and `nestede-lokker` (ch.5 ITGK) and `kruskal-trygg-kant` (ch.9 algdat) from 2026-06-25, `innstikksortering-kortene` (ch.11 ITGK) from 2026-06-26, `arv-og-overstyring` (ch.14 ITGK) from 2026-06-27, `grunn-vs-dyp-kopi` (ch.8 ITGK) and `rekursjonstre-arbeidsrader` (ch.0 algdat) from 2026-06-29. `numpy-broadcasting` from PR #65 was published successfully on 2026-06-22 by the reviewer — re-check whether subsequent runs see the keys before reflagging. The scene HTML is already live on Pages (`https://egeiran.github.io/Manimo-Design-System/motion/itgk/<id>.html` and `.../motion/algdat/<id>.html`); only the kort-forklart row is missing. Reviewer flagged on 2026-06-17, extended 2026-06-18, 2026-06-19, 2026-06-20, 2026-06-21, 2026-06-22, 2026-06-23, 2026-06-24, 2026-06-25, 2026-06-26, 2026-06-27, 2026-06-29.
 
 - **[HUMAN] flettesortering splitt + fletteOpp beats — cells live only at the deepest-visible level; higher/lower bracket rows render empty.** In `motion/algdat/flettesortering.jsx` `SplittBeat` and `FletteOppBeat`, the 8 value cells are positioned at `deepestVisibleLevel` (Splitt) or `shallowestLanded` (FletteOpp) only — the brackets at the other 2–3 levels draw in but their cells stay invisible. At any midpoint snapshot the tree shows one populated row of cells and 2–3 ghost-only bracket rows. Choreography is technically correct (cells lerp DOWN through levels as splits happen, then UP through levels as merges happen) and the takeaway works, but visually it can read as "data evaporated from the other rows" instead of "same data, regrouped." Fix options: (a) render dimmed ghost copies of every value at every visible level (so all four rows always have numbers), or (b) keep cells at their *deepest reached* level and only animate the new wave onto a fresh row above/below, so all already-landed levels stay populated. The flette (two-pointer merge) beat between them is excellent and not affected. Reviewer flagged on 2026-06-17.
 
 - **[HUMAN] binaerhaug-sift dualView portrait — array cells 5–7 clipped off the right edge.** In `motion/algdat/binaerhaug-sift.jsx` `DualViewBeat`, the portrait `layoutGeom` places the 8-cell array row with `arrayLeftX=60`, `arrayPitch=70`, `arrayCell=60` — but the dualView portrait snapshot (t≈17.14 s) shows only cells 0–4 (values 55, 20, 50, 15, 18) on-canvas; cells 5, 6, 7 (values 40, 45 and the empty/dashed slot for incoming 90) sit off the right edge. The dual-correspondence story (tree-node ↔ array-cell at the same index) is broken in portrait because half the array is invisible. Not a single-coordinate fix — needs the whole array row to shrink (`arrayPitch` 70 → ~58 and/or `arrayCell` 60 → ~46) so 8 × pitch + cell fits within svgW=720, plus a re-derive of the correspondence-line endpoints that consume those constants. Landscape is unaffected. Reviewer flagged on 2026-06-28.
+
+- **[HUMAN] grunn-vs-dyp-kopi `SharedBracket` label "samme indre" sits over card-a's right edge.** In `motion/itgk/grunn-vs-dyp-kopi.jsx` `SharedBracket`, the label is centred at `cx = G.sharedX` (landscape 690, portrait 320) at fontSize 13 — but the gap between card a (right edge at aX+cardW = 680 landscape / 300 portrait) and card b (left edge bX = 760 landscape / 420 portrait) is 80 px landscape / 120 px portrait, and the rendered label is ~85 px wide. The text clips into card a's right grid edge in both aspects of beats 2 and 3. The dashed bracket itself reads fine; only the centred text label crowds card a. Fix options: (a) drop label fontSize from 13 → 11 so it fits cleanly in the 80 px landscape gap, (b) move the label OUT of the bracket band — render it above the bracket band as a separate centred caption between the two card titles, or (c) widen the inter-card gap in both `layoutGeom` branches (e.g. landscape bX 760 → 800; portrait bX 420 → 460). Not BROKEN, just tight. Reviewer flagged on 2026-06-29.
 
 - **ADE chapter map** (Supabase `public.chapters` for `subject_id='ade'`, 10 chapters as of 2026-05-13): ch.1 Kretsteori, ch.2 Energi og effekt, ch.3 Superposisjon og Thévenin, ch.4 Dioder, ch.5 Digital elektronikk, ch.6 Transistorer, ch.7 Minne og register, ch.8 Reaktive elementer, ch.9 Operasjonsforsterker, ch.10 Digital design. Current scene coverage (after the 2026-05-21 PM run): ch.1 (KVL, voltage-divider, KCL, ohms-law, current-divider — 5), ch.2 (capacitor-energy, inductor-energy, max-power-transfer, joule-heating, power-triangle — 5), ch.3 (Thévenin, Norton, superposition, source-transformations, wheatstone-bridge — 5), ch.4 (half-wave-rectifier, full-wave-bridge-rectifier, zener-clipper, diode-iv-curve, diode-clamper, **voltage-doubler** — added tonight — 6), ch.5 (NAND universality, two's-complement, hexadecimal-counting, binary-addition, full-adder — 5), ch.6 (mosfet-switch, bjt-load-line, cmos-inverter, bjt-current-mirror, emitter-follower, **mosfet-transfer-characteristic** — added tonight — 6), ch.7 (D flip-flop, shift-register, SR latch, jk-flip-flop, ripple-counter, t-flip-flop — 6), ch.8 (phasor-rotation, low-pass-bode, rc-charging, rl-transient, rlc-resonance, high-pass-bode, **ac-impedance-triangle** — added tonight — 7), ch.9 (inverting op-amp, non-inverting op-amp, summing-amplifier, integrator-op-amp, op-amp-comparator, schmitt-trigger — 6), ch.10 (K-map, FSM, multiplexer-4-to-1, 2-to-4 decoder, demultiplexer-1-to-4, priority-encoder — 6). Most under-served now: ch.1, ch.2, ch.3, ch.5 (tied at 5). Strongest follow-ups: mesh/nodal analysis (ch.1), AC power-factor correction or apparent-vs-real-power distinct from the existing power-triangle (ch.2), Millman's theorem or delta-Y conversion (ch.3), BCD/seven-segment decoder (ch.5), Schottky diode I-V (ch.4 if more wanted), JFET as an alternative transistor topic (ch.6), 555-timer architecture (ch.10 or new chapter).
 
@@ -306,7 +303,16 @@ invent a chapter number to make the FK happy.
   table lit and the payoff `3 × 3 = 9` in an amber pill — 66 s, 5
   beats), ch.6
   (`funksjonskall-og-scope`), ch.7 (`slicing-mellom-tegnene` — added
-  2026-06-15), ch.8 (`liste-referanser`), ch.9
+  2026-06-15), ch.8 (`liste-referanser`, `grunn-vs-dyp-kopi` —
+  added tonight 2026-06-29, a depth companion to liste-referanser:
+  three matrix cards (a amber, b teal, c teal) render
+  `[[1, 2], [3, 4]]` as a 2x2 grid; a dashed "samme indre"
+  bracket links a and b after `b = a.copy()`. Beat 3 flips both
+  cards' (0,0) cell to 99 simultaneously while the bracket pulses
+  rose; beat 4 fades b, materialises an independent c via
+  `copy.deepcopy(a)`, then mutates `a[0][0] = 100` to show only a
+  changes while c stays at 99 — 70 s, 4 beats + SceneChrome
+  intro), ch.9
   (`dict-oppslag-vs-liste-sok` — added 2026-06-16), ch.10
   (`unntak-stiger-oppover` — added 2026-06-19, ValueError chip rises
   through parse→behandle→modul, escapes to a Traceback crash in the
