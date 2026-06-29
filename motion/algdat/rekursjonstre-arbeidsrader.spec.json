@@ -1,0 +1,144 @@
+{
+  "id": "rekursjonstre-arbeidsrader",
+  "title": "Rekursjonstre: arbeid på hvert nivå",
+  "eyebrow": "verktøykassa",
+  "language": "no",
+  "duration": 64,
+  "topic": "Hvordan vet vi at en del-og-hersk-algoritme bruker n ganger log n? Vi bretter rekursjonen ut som et tre, leser av arbeidet i hver node, og oppdager at hver rad summerer til n. Roten gjør n arbeid. To barn med n delt på to. Fire barnebarn med n delt på fire. Helt ned til løvene på ett. Treet er log av n nivåer dypt — og hvert nivå koster n. Sum: n ganger log n. Det er motoren bak flettesortering, hurtigsort, og hver eneste splitt-og-hersk-algoritme i pensum.",
+  "subject_id": "algdat",
+  "chapter_number": 0,
+  "prerequisites": [
+    "asymptotisk-vekst"
+  ],
+  "concepts": [
+    "rekursjonstre",
+    "splitt-og-hersk-kjoretid",
+    "arbeid-per-niva"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 10.3,
+      "narration": "Hvor mye arbeid gjør en algoritme som deler problemet i to og løser hver halvdel? Vi bretter rekursjonen ut som et tre og leser av kjøretida.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Rekursjonstreet er regnearket.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rekursjonsligningen",
+      "start": 10.3,
+      "end": 23.75,
+      "narration": "Si at vi løser et problem av størrelse n med n arbeid på toppen, og så kaller oss selv to ganger på halv størrelse. Da er T av n lik to ganger T av n delt på to, pluss n.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "T(n) = 2·T(n/2) + n — store mono-bokser for hvert ledd, koblet av piler",
+            "delay": 0.4,
+            "color": "var(--amber-300)",
+            "position": "center, mono"
+          },
+          {
+            "type": "text-caption",
+            "content": "n arbeid her oppe · to halve problemer der nede",
+            "delay": 3.2,
+            "color": "var(--chalk-200)",
+            "position": "under formelen, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "treetVokser",
+      "start": 23.75,
+      "end": 42.61,
+      "narration": "Vi bretter ut rekursjonen. Roten gjør n arbeid. Den har to barn med n delt på to. Hvert barn deler igjen, så vi får fire med n delt på fire, og åtte løv med ett arbeid. Legg merke til summen i hver rad — den er alltid n.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "rekursjonstreet vokser nedover i fire nivåer: én rotnode med kostnad n, to noder med n/2, fire med n/4, åtte løv med 1; pile-koblinger tegnes fra forelder til barn ettersom hvert nivå lander",
+            "delay": 0.5,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — tre vokser nedover ett nivå om gangen, hver node skrives inn med costverdien, koblingslinjer trekker seg fra forelder til to barn"
+          },
+          {
+            "type": "text-formula",
+            "content": "rad-summen for hver rad lyser opp etter at raden har landet — alltid n",
+            "delay": 8.5,
+            "color": "var(--amber-300)",
+            "position": "right of the tree, mono",
+            "note": "GENUINE MOTION — fire badger på høyresiden, én per nivå, fader inn i tur og orden med teksten «= n»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "summering",
+      "start": 42.61,
+      "end": 54.2,
+      "narration": "Treet stopper når delproblemene er på ett — det skjer etter log av n nivåer. Hvert nivå koster n. Tell sammen, og kjøretida lander på n ganger log n.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "diagram-box",
+            "content": "samme rekursjonstre, men nå dempet; en høyrekolonne med fire rad-summer markeres med ramme, og en pil peker fra summene til en stor blockformel",
+            "delay": 0.3,
+            "color": "var(--amber-300)",
+            "note": "GENUINE MOTION — rad-summene rammes inn en for en og hyttler i en pile-graf til payoff-boksen"
+          },
+          {
+            "type": "text-formula",
+            "content": "log₂ n nivåer · n per nivå = n · log n",
+            "delay": 5.5,
+            "color": "var(--amber-300)",
+            "position": "right side payoff panel, mono"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 54.2,
+      "end": 64,
+      "narration": "Det er motoren bak del og hersk. Når roten gjør lineært arbeid og delproblemene halveres, lander kjøretida på orden n log n.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-formula",
+            "content": "T(n) = O(n log n)",
+            "delay": 0.5,
+            "color": "var(--amber-300)",
+            "position": "center, mono pill"
+          },
+          {
+            "type": "text-caption",
+            "content": "Rekursjonstreet er motoren bak splitt og hersk.",
+            "delay": 2.4,
+            "color": "var(--chalk-100)",
+            "position": "below, serif italic"
+          }
+        ]
+      }
+    }
+  ]
+}

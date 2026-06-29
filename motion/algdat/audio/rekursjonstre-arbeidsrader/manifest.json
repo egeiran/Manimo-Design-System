@@ -1,0 +1,37 @@
+{
+  "sceneId": "rekursjonstre-arbeidsrader",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/rekursjonstre-arbeidsrader/scene.mp3",
+  "durationSec": 62.65,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Hvor mye arbeid gjør en algoritme som deler problemet i to og løser hver halvdel? Vi bretter rekursjonen ut som et tre og leser av kjøretida."
+    },
+    {
+      "id": "rekursjonsligningen",
+      "audioStart": 10.3,
+      "narration": "Si at vi løser et problem av størrelse n med n arbeid på toppen, og så kaller oss selv to ganger på halv størrelse. Da er T av n lik to ganger T av n delt på to, pluss n."
+    },
+    {
+      "id": "treetVokser",
+      "audioStart": 23.75,
+      "narration": "Vi bretter ut rekursjonen. Roten gjør n arbeid. Den har to barn med n delt på to. Hvert barn deler igjen, så vi får fire med n delt på fire, og åtte løv med ett arbeid. Legg merke til summen i hver rad — den er alltid n."
+    },
+    {
+      "id": "summering",
+      "audioStart": 42.61,
+      "narration": "Treet stopper når delproblemene er på ett — det skjer etter log av n nivåer. Hvert nivå koster n. Tell sammen, og kjøretida lander på n ganger log n."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 54.2,
+      "narration": "Det er motoren bak del og hersk. Når roten gjør lineært arbeid og delproblemene halveres, lander kjøretida på orden n log n."
+    }
+  ]
+}
