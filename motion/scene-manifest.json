@@ -4121,6 +4121,28 @@
       ],
       "subject_id": "itgk",
       "chapter_number": 8
+    },
+    {
+      "id": "rekursjonstre-arbeidsrader",
+      "file": "rekursjonstre-arbeidsrader.jsx",
+      "html": "rekursjonstre-arbeidsrader.html",
+      "spec": "rekursjonstre-arbeidsrader.spec.json",
+      "title": "Rekursjonstre: arbeid på hvert nivå",
+      "eyebrow": "verktøykassa",
+      "topic": "Hvordan vet vi at en del-og-hersk-algoritme bruker n ganger log n? Vi bretter rekursjonen ut som et tre, leser av arbeidet i hver node, og oppdager at hver rad summerer til n. Roten gjør n arbeid. To barn med n delt på to. Fire barnebarn med n delt på fire. Helt ned til løvene på ett. Treet er log av n nivåer dypt — og hvert nivå koster n. Sum: n ganger log n. Det er motoren bak flettesortering, hurtigsort, og hver eneste splitt-og-hersk-algoritme i pensum.",
+      "duration": 64,
+      "language": "no",
+      "prerequisites": [
+        "asymptotisk-vekst"
+      ],
+      "concepts": [
+        "rekursjonstre",
+        "splitt og hersk",
+        "arbeid per nivå",
+        "kjøretid"
+      ],
+      "subject_id": "algdat",
+      "chapter_number": 0
     }
   ]
 }
