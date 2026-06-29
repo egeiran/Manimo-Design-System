@@ -1,0 +1,176 @@
+{
+  "id": "grunn-vs-dyp-kopi",
+  "title": "Grunn og dyp kopi: hva deler kopien fortsatt?",
+  "eyebrow": "lister",
+  "language": "no",
+  "duration": 70,
+  "topic": "Shallow vs deep copy for nestede lister — a.copy() bygger en ny ytre liste men deler de indre listene; copy.deepcopy(a) lager ferske kopier på alle nivåer. Vist med tre matrise-kort (a, b, c), en delt-indre-bracket mellom a og b som pulser når a[0][0] endres slik at begge fliser flipper samtidig, og en uavhengig c som ikke flyttes når a deretter endres.",
+  "subject_id": "itgk",
+  "chapter_number": 8,
+  "prerequisites": [
+    "liste-referanser"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 11.02,
+      "narration": "Du har lært at funksjonen list bygger en kopi av ei liste. Men hva om lista inneholder en annen liste? Da er det ikke alltid så enkelt som det ser ut.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Kopierer du virkelig alt?",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nestetData",
+      "start": 11.02,
+      "end": 27.07,
+      "narration": "a er en liste med to lister inni: en og to, så tre og fire. Når vi kaller metoden copy på a, lages en ny ytre liste. Men inne i den lever de samme pekerne — så b og a deler de to indre listene.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "import copy\na = [[1, 2], [3, 4]]\nb = a.copy()\na[0][0] = 99\nprint(a, b)\n\nc = copy.deepcopy(a)\na[0][0] = 100\nprint(a, c)",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left",
+            "note": "highlight follows the narration: lines 2, then 3"
+          },
+          {
+            "type": "diagram-box",
+            "content": "matrix card a with grid [[1,2],[3,4]]",
+            "delay": 1,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "diagram-box",
+            "content": "matrix card b with grid [[1,2],[3,4]] appears beside a",
+            "delay": 4,
+            "color": "var(--teal-400)",
+            "note": "GENUINE MOTION — shared-inner bracket draws between a and b"
+          },
+          {
+            "type": "text-caption",
+            "content": "Ny ytre — samme indre.",
+            "delay": 8,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sjokket",
+      "start": 27.07,
+      "end": 41.06,
+      "narration": "Vi endrer det første tallet i den første indre lista til nittini. Det er jo bare én indre liste der — så når vi skriver ut, viser både a og b nittini på samme plass. Metoden copy var ikke nok.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "highlight line 4, then line 5",
+            "delay": 0,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "diagram-box",
+            "content": "a[0][0] cell flips from 1 to 99; b[0][0] cell flips from 1 to 99 in lockstep; shared-inner bracket pulses rose",
+            "delay": 1.5,
+            "color": "var(--rose-400)",
+            "note": "GENUINE MOTION — both cards' (0,0) cells flip simultaneously"
+          },
+          {
+            "type": "diagram-box",
+            "content": "utskrift-panel: [[99, 2], [3, 4]] [[99, 2], [3, 4]]",
+            "delay": 6,
+            "color": "var(--amber-300)",
+            "position": "panel, mono payoff"
+          },
+          {
+            "type": "text-caption",
+            "content": "Begge ser den samme endringen.",
+            "delay": 9,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dypKopi",
+      "start": 41.06,
+      "end": 55.34,
+      "narration": "Funksjonen deepcopy fra modulen copy lager nye kopier på alle nivåer. c får sine egne indre lister. Når vi nå setter det første tallet i a til hundre, ser bare a endringen. c er trygg.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "highlight line 6, then 7, then 8",
+            "delay": 0,
+            "color": "var(--chalk-100)"
+          },
+          {
+            "type": "diagram-box",
+            "content": "matrix card c appears with grid [[99,2],[3,4]] — no shared link to a",
+            "delay": 1.5,
+            "color": "var(--teal-400)",
+            "note": "GENUINE MOTION — c materialises with its own cells"
+          },
+          {
+            "type": "diagram-box",
+            "content": "a[0][0] flips from 99 to 100 (only a's grid changes; c stays at 99)",
+            "delay": 7,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — only a's cell mutates this time"
+          },
+          {
+            "type": "diagram-box",
+            "content": "utskrift-panel: [[100, 2], [3, 4]] [[99, 2], [3, 4]]",
+            "delay": 11,
+            "color": "var(--amber-300)",
+            "position": "panel, mono payoff"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 55.34,
+      "end": 70,
+      "narration": "Copy gir deg en ny ytre liste. Deepcopy gir deg nye lister hele veien ned. Lager du en kopi av en nesta liste, må du tenke på hvor dypt det skal kopieres.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Hvor dypt vil du kopiere?",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "copy: nytt ytre · deepcopy: nytt hele veien ned",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}
