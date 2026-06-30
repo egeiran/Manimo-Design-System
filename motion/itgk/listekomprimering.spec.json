@@ -1,0 +1,151 @@
+{
+  "id": "listekomprimering",
+  "title": "Listekomprimering: løkka presset ned til én linje",
+  "eyebrow": "lister",
+  "language": "no",
+  "duration": 77,
+  "topic": "Den verbose for-løkka som bygger en ny liste kan presses ned til én linje med listekomprimering. Klammene rundt sier «ny liste», uttrykket foran sier «hva som havner i hver celle», og resten er en helt vanlig for-løkke. Vist live: først kjøres den lange varianten med tom liste og append, så samme jobb med kortformen — en peker vandrer over kildelisten, hver verdi flyr opp gjennom et kvadrat-glyph og lander som ny celle. Til slutt et if-filter: oddetall blir avvist og glir av skjermen, partall slipper gjennom og kvadreres. Misforståelsen som rettes: studenter tror listekomprimering er noe nytt — den ER en for-løkke, i komprimert form.",
+  "subject_id": "itgk",
+  "chapter_number": 8,
+  "prerequisites": [
+    "for-lokke-range",
+    "liste-referanser"
+  ],
+  "concepts": [
+    "list comprehension",
+    "for-loop transformation",
+    "filter clause",
+    "append vs build-in-place"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 11.98,
+      "narration": "Du har en for-løkke som bygger en ny liste. Fire linjer kode. Plutselig ser du den samme jobben gjort i én linje, med klammeparenteser rundt. Er det magi?",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Den lange løkka, presset ned til én linje.",
+            "delay": 0.7,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "langVariant",
+      "start": 11.98,
+      "end": 27.7,
+      "narration": "Først den lange varianten. Vi starter med en tom liste, vandrer over tallene én til fem, og legger kvadratet av hver verdi inn på slutten. Etter fem runder står kvadratene én, fire, ni, seksten og tjuefem på rad.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "tall = [1, 2, 3, 4, 5]\nkvadrater = []\nfor x in tall:\n    kvadrater.append(x * x)",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left, mono, ligatures off",
+            "note": "CodeBlock reveal='all', highlight cycles between line 3 (header) and line 4 (append) per step"
+          },
+          {
+            "type": "diagram-box",
+            "content": "source row of five chalk cells [1][2][3][4][5] visible top; a pointer hops cell to cell, x takes the value; result row grows from empty — each iteration a new amber-toned cell with x*x slides in from above",
+            "delay": 0.3,
+            "color": "var(--amber-400)",
+            "position": "right, two rows stacked",
+            "note": "GENUINE MOTION — discrete hops, cells materialise into the result row one per step"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kortVariant",
+      "start": 27.7,
+      "end": 45.81,
+      "narration": "Nå kortformen. Klammene rundt sier ny liste. Uttrykket foran sier hva som havner i hver celle. Resten er den samme løkka. Samme verdier flyr gjennom kvadrat-operasjonen og lander i den nye lista — samme resultat, færre linjer.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "kvadrater = [x * x for x in tall]",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left, mono, big — segments tinted: brackets amber, expression chalk, for-clause teal",
+            "note": "Three coloured spans inside one CodeBlock-style panel so the structure is obvious"
+          },
+          {
+            "type": "diagram-box",
+            "content": "same source row [1..5]; a pointer walks; each x lifts off the source cell, flies up through a serif-italic (·)² glyph in the middle, and lands as an amber-toned cell in the result row below the glyph",
+            "delay": 0.3,
+            "color": "var(--amber-400)",
+            "position": "right, source above, transform glyph centre, result below",
+            "note": "GENUINE MOTION — flying chip lerps along an eased arc per iteration; same data-model action as beat 2, compact code"
+          }
+        ]
+      }
+    },
+    {
+      "id": "medFilter",
+      "start": 45.81,
+      "end": 62.21,
+      "narration": "Vi kan også filtrere underveis. Et if helt til slutt sier hvilke verdier som slipper gjennom. Nå blir bare partallene tatt med — én, tre og fem blir avvist, mens to og fire kvadreres og lander i lista. Resultatet er fire og seksten.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "code-block",
+            "content": "kvadrater = [x * x for x in tall if x % 2 == 0]",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "left, mono, the if-clause tinted teal",
+            "note": "Same coloured-span layout as beat 3, with the if-clause added at the right"
+          },
+          {
+            "type": "diagram-box",
+            "content": "source row [1..5]; pointer hops; on odd values an x veers off to the side, dims, and a small mono 'False' tag fades next to it; on even values x flies up through (·)² and lands in the result row, which ends as [4, 16]",
+            "delay": 0.3,
+            "color": "var(--teal-400)",
+            "position": "right",
+            "note": "GENUINE MOTION — selective branching per step, two clearly distinct visual outcomes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 62.21,
+      "end": 77,
+      "narration": "Listekomprimering er ikke magi. Det er en for-løkke som bygger en ny liste, skrevet på én linje. Klammene rundt, uttrykket foran, løkka bak — eventuelt et filter på slutten.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "En for-løkke, presset ned til én linje.",
+            "delay": 0.3,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "[ uttrykk  for x in xs  if betingelse ]",
+            "delay": 1.4,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}

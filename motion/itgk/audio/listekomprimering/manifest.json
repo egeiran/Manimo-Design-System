@@ -1,0 +1,37 @@
+{
+  "sceneId": "listekomprimering",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/listekomprimering/scene.mp3",
+  "durationSec": 75.05,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Du har en for-løkke som bygger en ny liste. Fire linjer kode. Plutselig ser du den samme jobben gjort i én linje, med klammeparenteser rundt. Er det magi?"
+    },
+    {
+      "id": "langVariant",
+      "audioStart": 11.98,
+      "narration": "Først den lange varianten. Vi starter med en tom liste, vandrer over tallene én til fem, og legger kvadratet av hver verdi inn på slutten. Etter fem runder står kvadratene én, fire, ni, seksten og tjuefem på rad."
+    },
+    {
+      "id": "kortVariant",
+      "audioStart": 27.7,
+      "narration": "Nå kortformen. Klammene rundt sier ny liste. Uttrykket foran sier hva som havner i hver celle. Resten er den samme løkka. Samme verdier flyr gjennom kvadrat-operasjonen og lander i den nye lista — samme resultat, færre linjer."
+    },
+    {
+      "id": "medFilter",
+      "audioStart": 45.81,
+      "narration": "Vi kan også filtrere underveis. Et if helt til slutt sier hvilke verdier som slipper gjennom. Nå blir bare partallene tatt med — én, tre og fem blir avvist, mens to og fire kvadreres og lander i lista. Resultatet er fire og seksten."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 62.21,
+      "narration": "Listekomprimering er ikke magi. Det er en for-løkke som bygger en ny liste, skrevet på én linje. Klammene rundt, uttrykket foran, løkka bak — eventuelt et filter på slutten."
+    }
+  ]
+}
