@@ -1,0 +1,129 @@
+{
+  "id": "prim-cut-frontier",
+  "title": "Prims algoritme: vokse treet utover",
+  "eyebrow": "minimale spenntrær",
+  "language": "no",
+  "duration": 59,
+  "topic": "Samme minimale spenntre som Kruskal fant — men nå bygget på en helt annen måte. Prims algoritme starter i én by, lar trémengden vokse utover én by av gangen, og tar alltid den letteste kanten som krysser snittet mellom det vi har og det vi mangler. Vist på samme fem byer og seks veier som Kruskal: start i A, så er kantene over snittet AB med vekt én og AC med vekt fire — vi tar AB. Nytt snitt: vi tar BC med vekt tre. Igjen: CD med vekt to. Til slutt DE med vekt seks. Samme totalvekt tolv, samme MST — men her som en voksende klynge i stedet for en sortert liste.",
+  "subject_id": "algdat",
+  "chapter_number": 9,
+  "prerequisites": [
+    "kruskal-trygg-kant",
+    "bfs-bolgen"
+  ],
+  "beats": [
+    {
+      "id": "manimoIntro",
+      "start": 0,
+      "end": 10.15,
+      "narration": "Kruskal sorterte alle kantene først. Hva om vi heller lar treet vokse utover fra én by? Det er Prims algoritme — én by inn av gangen.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "manimo-enter",
+            "content": "Manimo bobs in centre-screen",
+            "delay": 0
+          },
+          {
+            "type": "text-caption",
+            "content": "Vokse treet utover — alltid letteste kant over snittet.",
+            "delay": 0.9,
+            "color": "var(--chalk-100)",
+            "position": "beside Manimo, serif italic"
+          }
+        ]
+      }
+    },
+    {
+      "id": "startVertex",
+      "start": 10.15,
+      "end": 18.94,
+      "narration": "Samme graf som Kruskal: fem byer, seks veier. Vi velger en by å starte i — A. Trémengden er bare A.",
+      "visuals": {
+        "layout": "full",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Five vertices A B C D E and six weighted edges fade in idle; then A pulses and turns amber as the start vertex. A 'trémengde' pill labels the tree set {A} on the side panel.",
+            "delay": 0.3,
+            "color": "var(--amber-400)"
+          },
+          {
+            "type": "text-caption",
+            "content": "trémengden vokser — én by av gangen",
+            "delay": 4.5,
+            "color": "var(--chalk-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "firstCut",
+      "start": 18.94,
+      "end": 33.26,
+      "narration": "Snittkantene er de som har én ende inne i treet og én ende utenfor. Akkurat nå: A til B med vekt én, og A til C med vekt fire. Den letteste er A til B — vi tar den, og B kommer inn.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Edges AB and AC light teal as the cut edges from {A}. A 'snittkanter' panel on the side lists them sorted by weight (AB 1, AC 4). The AB row pulses and turns amber; the AB edge on the graph turns amber; B joins the tree (amber ring).",
+            "delay": 0.3,
+            "color": "var(--teal-400)",
+            "note": "GENUINE MOTION — cut frontier identified, lightest cut edge selected, tree set grows"
+          }
+        ]
+      }
+    },
+    {
+      "id": "growLoop",
+      "start": 33.26,
+      "end": 48.15,
+      "narration": "Nytt snitt etter B. Letteste kant over: B til C med tre — C kommer inn. Nytt snitt: nå er C til D med vekt to lettest — D kommer inn. Til slutt har vi bare én by igjen, og kanten D til E med seks tar den hjem.",
+      "visuals": {
+        "layout": "left-right",
+        "elements": [
+          {
+            "type": "svg-path",
+            "content": "Three full step-cycles: each cycle recomputes the cut (edges from tree-set to non-tree-set light teal, internal edges fade to grey), the snitt-panel re-fills with current cut edges sorted by weight, the lightest row pulses amber, the matching graph edge turns amber, and the new vertex joins the tree. Step 2 picks BC:3, step 3 picks CD:2, step 4 picks DE:6.",
+            "delay": 0.3,
+            "color": "var(--amber-400)",
+            "note": "GENUINE MOTION — three full Prim iterations: cut recomputes, lightest cut edge wins, tree set expands"
+          },
+          {
+            "type": "text-caption",
+            "content": "nytt snitt — ny letteste kant — ny by inn",
+            "delay": 6,
+            "color": "var(--amber-300)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "takeaway",
+      "start": 48.15,
+      "end": 59,
+      "narration": "Samme minimale spenntre som Kruskal fant — totalvekt tolv. Men her vokste det utover fra én by, ikke ut fra en sortert liste.",
+      "visuals": {
+        "layout": "center",
+        "elements": [
+          {
+            "type": "text-caption",
+            "content": "Vokse utover — alltid letteste kant over snittet.",
+            "delay": 0.4,
+            "color": "var(--chalk-100)",
+            "position": "centre, serif italic"
+          },
+          {
+            "type": "text-formula",
+            "content": "Prim ∈ O((n + m) log n)",
+            "delay": 2.2,
+            "color": "var(--amber-300)",
+            "position": "below, mono payoff"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "sceneId": "prim-cut-frontier",
+  "mode": "single-track",
+  "engine": "elevenlabs",
+  "voice": "TX3LPaxmHKxFdv7VOQHJ",
+  "model": "eleven_turbo_v2_5",
+  "languageCode": "no",
+  "audio": "audio/prim-cut-frontier/scene.mp3",
+  "durationSec": 57.17,
+  "tracks": [
+    {
+      "id": "manimoIntro",
+      "audioStart": 0,
+      "narration": "Kruskal sorterte alle kantene først. Hva om vi heller lar treet vokse utover fra én by? Det er Prims algoritme — én by inn av gangen."
+    },
+    {
+      "id": "startVertex",
+      "audioStart": 10.15,
+      "narration": "Samme graf som Kruskal: fem byer, seks veier. Vi velger en by å starte i — A. Trémengden er bare A."
+    },
+    {
+      "id": "firstCut",
+      "audioStart": 18.94,
+      "narration": "Snittkantene er de som har én ende inne i treet og én ende utenfor. Akkurat nå: A til B med vekt én, og A til C med vekt fire. Den letteste er A til B — vi tar den, og B kommer inn."
+    },
+    {
+      "id": "growLoop",
+      "audioStart": 33.26,
+      "narration": "Nytt snitt etter B. Letteste kant over: B til C med tre — C kommer inn. Nytt snitt: nå er C til D med vekt to lettest — D kommer inn. Til slutt har vi bare én by igjen, og kanten D til E med seks tar den hjem."
+    },
+    {
+      "id": "takeaway",
+      "audioStart": 48.15,
+      "narration": "Samme minimale spenntre som Kruskal fant — totalvekt tolv. Men her vokste det utover fra én by, ikke ut fra en sortert liste."
+    }
+  ]
+}

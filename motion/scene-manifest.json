@@ -4166,6 +4166,31 @@
       ],
       "subject_id": "itgk",
       "chapter_number": 8
+    },
+    {
+      "id": "prim-cut-frontier",
+      "file": "prim-cut-frontier.jsx",
+      "html": "prim-cut-frontier.html",
+      "spec": "prim-cut-frontier.spec.json",
+      "title": "Prims algoritme: vokse treet utover",
+      "eyebrow": "minimale spenntrær",
+      "topic": "Samme minimale spenntre som Kruskal fant — men nå bygget på en helt annen måte. Prims algoritme starter i én by, lar trémengden vokse utover én by av gangen, og tar alltid den letteste kanten som krysser snittet mellom det vi har og det vi mangler. Vist på samme fem byer og seks veier som Kruskal: start i A, så er kantene over snittet AB med vekt én og AC med vekt fire — vi tar AB. Nytt snitt: vi tar BC med vekt tre. Igjen: CD med vekt to. Til slutt DE med vekt seks. Samme totalvekt tolv, samme MST — men her som en voksende klynge i stedet for en sortert liste.",
+      "duration": 59,
+      "language": "no",
+      "prerequisites": [
+        "kruskal-trygg-kant",
+        "bfs-bolgen"
+      ],
+      "concepts": [
+        "Prims algoritme",
+        "minimalt spenntre",
+        "MST",
+        "snittkant",
+        "trygg kant",
+        "vokse treet utover"
+      ],
+      "subject_id": "algdat",
+      "chapter_number": 9
     }
   ]
 }
